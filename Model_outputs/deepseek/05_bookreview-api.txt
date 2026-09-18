@@ -1,0 +1,79 @@
+Based on the provided repository content, here is a structured summary report of the project.
+
+### 1. Overall Purpose and Architecture
+
+**Purpose:** This project is a **book review API** built as a Spring Boot RESTful web service [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=BookreviewApiApplication;lines=7-8]. Its core purpose is to manage books, users, and their associated reviews, providing a platform for users to rate and comment on books.
+
+**Architecture:** The application follows a standard **Model-View-Controller (MVC)** architecture with a layered design.
+
+- **Presentation Layer (Controllers):** Handles HTTP requests and responses for various resources including books, users, reviews, authentication, and health checks [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=1-1], [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=UserController;lines=1-1], [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=ReviewController;lines=1-1], [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=1-1], [cite:file=src/main/java/bookreview_api/controller/HealthController.java;symbol=HealthController;lines=1-1], [cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=UserProfileController;lines=1-1].
+- **Business Logic Layer (Services):** Contains the core application logic. The `UserService` handles user-related operations [cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=UserService;lines=1-1].
+- **Data Access Layer (Repositories):** Uses Spring Data JPA for database operations. The `UserRepository` manages User entities, `BookRepository` manages Book entities, and `ReviewRepository` manages Review entities [cite:file=src/main/java/bookreview_api/repository/UserRepository.java;symbol=UserRepository;lines=1-1], [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=1-1], [cite:file=src/main/java/bookreview_api/repository/ReviewRepository.java;symbol=ReviewRepository;lines=1-1].
+- **Model Layer (Entities):** Represents domain objects including User, Review, and Book [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=1-1], [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=1-1], [cite:file=src/main/java/bookreview_api/model/Book.java;symbol=Book;lines=1-1].
+- **Security Layer:** Implements JWT-based authentication and OAuth2 support [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=1-1], [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=1-1], [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=JwtUtil;lines=1-1], [cite:file=src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java;symbol=CustomOAuth2SuccessHandler;lines=1-1].
+
+The technology stack is Spring Boot with Spring Data JPA [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=SpringBootApplication;lines=7-8], includes security features [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=1-1], and is documented with Swagger/OpenAPI [cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=SwaggerConfig;lines=1-1].
+
+### 2. Key Components / Modules and What They Do
+
+**Authentication and Security Module:** The `SecurityConfig` class configures security rules [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=1-1]. `JwtFilter` intercepts requests to validate JWT tokens [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=1-1], while `JwtUtil` handles token generation and parsing [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=JwtUtil;lines=1-1]. OAuth2 support is provided by `CustomOAuth2SuccessHandler` [cite:file=src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java;symbol=CustomOAuth2SuccessHandler;lines=1-1].
+
+**User Management Module:** The `User` entity stores user information including name, email, password, role, and profile picture URL [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=13-15]. The `UserRepository` provides methods to find users by email and check email existence [cite:file=src/main/java/bookreview_api/repository/UserRepository.java;symbol=UserRepository;lines=8-9]. The `UserService` likely contains business logic for user operations [cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=UserService;lines=1-1].
+
+**Book Management Module:** The `Book` entity represents books with attributes like title, author, genre, and rating [cite:file=src/main/java/bookreview_api/model/Book.java;symbol=Book;lines=1-1]. The `BookRepository` provides comprehensive search capabilities, including searching by title/author, filtering by genre, author, and minimum rating with pagination support [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=9-19].
+
+**Review Module:** The `Review` entity captures a user's rating and comment for a specific book, with a unique constraint preventing duplicate reviews per user-book combination [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=9-10]. Reviews are timestamped with creation and update timestamps [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=29-30].
+
+**Data Transfer Objects (DTOs):** The `ReviewWithBookDTO` class is used to transfer review data along with associated book information, optimizing API responses [cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=ReviewWithBookDTO;lines=1-1].
+
+**Configuration Module:** `WebConfig` configures static resource handling to serve files from the uploads directory [cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=WebConfig;lines=12-14]. `SwaggerConfig` provides API documentation [cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=SwaggerConfig;lines=1-1].
+
+### 3. Notable Functions or Classes and Their Responsibilities
+
+- **`User` Entity:**
+    - Uses UUID as primary key with `@GenericGenerator` strategy [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=12-14].
+    - `@PrePersist` sets `createdAt` timestamp and default role "USER" before saving [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=37-41].
+    - One-to-many relationship with `Review` entities, fetched lazily [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=31-33].
+
+- **`Review` Entity:**
+    - Unique constraint on `user_id` and `book_id` ensures one review per user per book [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=9-10].
+    - `@PrePersist` sets creation timestamp if not already set [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=53-57].
+    - `@PreUpdate` updates the `updatedAt` timestamp on modification [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=60-62].
+    - Many-to-one relationships with `User` and `Book` entities [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=34-41].
+
+- **`BookRepository` Methods:**
+    - `findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(String title, String author, Pageable pageable)`: Enables case-insensitive search across title and author with pagination [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=9-10].
+    - `findByGenre(String genre, Pageable pageable)`: Filters books by genre with pagination [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=12-12].
+    - `findByGenreAndAuthor(String genre, String author, Pageable pageable)`: Combines genre and author filters [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=16-16].
+    - `findByRatingGreaterThanEqual(Double minRating, Pageable pageable)`: Filters books by minimum rating [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=18-18].
+
+- **`UserRepository` Methods:**
+    - `findByEmail(String email)`: Retrieves a user by their email address [cite:file=src/main/java/bookreview_api/repository/UserRepository.java;symbol=UserRepository;lines=8-8].
+    - `existsByEmail(String email)`: Checks if a user with a given email exists [cite:file=src/main/java/bookreview_api/repository/UserRepository.java;symbol=UserRepository;lines=9-9].
+
+- **`WebConfig` Class:**
+    - `addResourceHandlers(ResourceHandlerRegistry registry)`: Configures serving of files from the `uploads/` directory at the `/uploads/**` URL path [cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=WebConfig;lines=12-14].
+
+- **`BookreviewApiApplication` Class:**
+    - The main entry point of the Spring Boot application [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=BookreviewApiApplication;lines=7-11].
+
+### 4. Any Design Patterns You Observe
+
+- **MVC (Model-View-Controller) Pattern:** The core architecture cleanly separates the application into:
+    - **Model:** Entity classes (User, Review, Book) [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=1-1], [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=1-1], [cite:file=src/main/java/bookreview_api/model/Book.java;symbol=Book;lines=1-1].
+    - **Controller:** Classes like `BookController`, `UserController`, `ReviewController` handle HTTP requests [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=1-1], [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=UserController;lines=1-1], [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=ReviewController;lines=1-1].
+    - **View:** While not explicitly present (as this is an API), the controllers return JSON responses, and `WebConfig` serves static files [cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=WebConfig;lines=12-14].
+
+- **Repository Pattern:** Spring Data JPA's `JpaRepository` interface abstracts the data layer. Each entity has a corresponding repository interface (UserRepository, BookRepository, ReviewRepository) that provides standard CRUD and custom query methods [cite:file=src/main/java/bookreview_api/repository/UserRepository.java;symbol=UserRepository;lines=1-1], [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=1-1], [cite:file=src/main/java/bookreview_api/repository/ReviewRepository.java;symbol=ReviewRepository;lines=1-1].
+
+- **Service Layer Pattern:** The `UserService` class encapsulates business logic between controllers and repositories [cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=UserService;lines=1-1]. This acts as a facade and transaction boundary.
+
+- **Dependency Injection (DI) Pattern:** Used extensively with Spring's `@Autowired` annotation (implied) to inject dependencies like repositories into services and controllers.
+
+- **DTO (Data Transfer Object) Pattern:** The `ReviewWithBookDTO` class is used to transfer review data along with associated book information, avoiding direct exposure of entity objects and optimizing API responses [cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=ReviewWithBookDTO;lines=1-1].
+
+- **Security Filters Pattern:** The `JwtFilter` implements a servlet filter to intercept and validate JWT tokens for each request [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=1-1], following the Spring Security filter chain pattern.
+
+### Overall Summary
+
+This repository contains the source code for a **Spring Boot-based book review API**. The application provides RESTful endpoints for managing books, users, and reviews, with JWT-based authentication and OAuth2 support [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=1-1], [cite:file=src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java;symbol=CustomOAuth2SuccessHandler;lines=1-1]. It follows a standard MVC architecture with repository and service layers, uses Spring Data JPA for data persistence, and includes comprehensive search functionality for books. The API supports user registration, authentication, review creation with duplicate prevention, and serves uploaded files. Key design patterns include MVC, Repository, Service Layer, DTO, and Security Filters, demonstrating a well-structured and maintainable enterprise application.

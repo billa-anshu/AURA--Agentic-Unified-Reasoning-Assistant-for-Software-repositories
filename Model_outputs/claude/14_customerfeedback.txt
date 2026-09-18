@@ -1,0 +1,44 @@
+# Repository Analysis Report: Sentix AI (Sentiment Analysis & Feedback Platform)
+
+## 1. Overall Purpose and Architecture
+
+This repository implements a **Streamlit-based customer feedback analytics application** called "Sentix AI" (named in the AI insights prompt) [cite:file=src/ai_insights.py;symbol=generate_insights;lines=17-17]. The application appears to be a multi-page Streamlit app, evidenced by the presence of both an `app_pages/` and a duplicate `pages/` directory, each containing ten numbered page modules covering a Dashboard, Bulk Analysis, AI Insights Center, Feedback History, Reports Center, Word Cloud Analytics, Product Analytics, Trend Monitoring, and an About page.
+
+Only three source modules were provided with visible content: a UI styling utility, an AI-powered insight generator, and a sentiment prediction engine. Based on these, the architecture separates concerns into:
+- **Presentation/theming** (`src/ui_utils.py`) — injects custom CSS into the Streamlit UI [cite:file=src/ui_utils.py;symbol=load_css;lines=3-4].
+- **AI-driven analysis** (`src/ai_insights.py`) — calls an external LLM API (Groq) to summarize customer reviews [cite:file=src/ai_insights.py;symbol=generate_insights;lines=10-11].
+- **Sentiment prediction** (`src/predictor.py`) — uses NLTK's VADER lexicon-based sentiment analyzer rather than a custom-trained ML model [cite:file=src/predictor.py;symbol=predict_sentiment;lines=11-13].
+
+Other referenced modules (`app.py`, `src/auth.py`, `src/database.py`, and all page files) exist in the file tree but their source was not included in the provided content, so no claims can be made about their internal implementation.
+
+## 2. Key Components / Modules
+
+- **`src/ui_utils.py`** — Contains a single function, `load_css`, responsible for injecting a large block of custom CSS via `st.markdown(..., unsafe_allow_html=True)` to theme the Streamlit sidebar, navigation links, metric cards, buttons, and general layout with a "premium dark theme" [cite:file=src/ui_utils.py;symbol=load_css;lines=3-5]. It styles specific elements including the sidebar background and border [cite:file=src/ui_utils.py;symbol=load_css;lines=8-11], a custom logo container [cite:file=src/ui_utils.py;symbol=load_css;lines=14-23], active/inactive Streamlit navigation link styling with a purple gradient highlight [cite:file=src/ui_utils.py;symbol=load_css;lines=26-53], metric card hover effects [cite:file=src/ui_utils.py;symbol=load_css;lines=79-93], and custom button styling [cite:file=src/ui_utils.py;symbol=load_css;lines=113-129].
+
+- **`src/ai_insights.py`** — Loads environment variables via `dotenv` and reads a `GROQ_API_KEY` from the environment [cite:file=src/ai_insights.py;symbol=GROQ_API_KEY;lines=7-7]. It instantiates a `Groq` client, wrapped in a try/except that falls back to `None` on failure [cite:file=src/ai_insights.py;symbol=client;lines=9-12]. The module exposes `generate_insights`, which builds an analytical prompt from a list of review texts.
+
+- **`src/predictor.py`** — Initializes NLTK's VADER lexicon, downloading it if not already present [cite:file=src/predictor.py;symbol=nltk.download;lines=4-7], and instantiates a `SentimentIntensityAnalyzer` [cite:file=src/predictor.py;symbol=sia;lines=9-9]. It exposes `predict_sentiment` for classifying text sentiment.
+
+- **`app_pages/` and `pages/` directories** — Both contain identically named sets of ten page files (`01_Dashboard.py` through `10_About_Project.py`), suggesting a Streamlit multi-page app structure, though the content of these files was not provided and their exact functionality cannot be described.
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`load_css()`** — Injects a static block of scoped CSS overrides to give the Streamlit app a custom dark, "premium" visual theme, targeting Streamlit's internal `data-testid` attributes for the sidebar, navigation, metrics, markdown text, and buttons [cite:file=src/ui_utils.py;symbol=load_css;lines=3-146].
+
+- **`generate_insights(reviews_text_list)`** — Takes a list of review strings, guards against a missing or placeholder API key by returning an explanatory message instead of calling the API [cite:file=src/ai_insights.py;symbol=generate_insights;lines=13-14], joins up to the first 100 reviews into a combined text block [cite:file=src/ai_insights.py;symbol=generate_insights;lines=16-16], and constructs a prompt instructing an LLM to act as a business analyst extracting top complaints, top praises, and business recommendations, formatted in Markdown [cite:file=src/ai_insights.py;symbol=generate_insights;lines=18-27]. It calls the Groq chat completions endpoint using the `openai/gpt-oss-120b` model with a system message framing the assistant as a professional business analyst, a temperature of 0.7, and a 1024 max-token limit [cite:file=src/ai_insights.py;symbol=generate_insights;lines=29-39], returning the generated content on success [cite:file=src/ai_insights.py;symbol=generate_insights;lines=40-40] or an error message string on failure [cite:file=src/ai_insights.py;symbol=generate_insights;lines=41-42].
+
+- **`predict_sentiment(text)`** — Returns `("Neutral", 0.0)` immediately if the input text is empty or whitespace-only [cite:file=src/predictor.py;symbol=predict_sentiment;lines=15-16]. Otherwise, it computes VADER polarity scores and classifies the text as "Positive" if the compound score is at least 0.05, "Negative" if at most -0.05, and "Neutral" otherwise, using standard VADER thresholds [cite:file=src/predictor.py;symbol=predict_sentiment;lines=18-27]. For positive/negative classifications, confidence is derived from the (absolute) compound score; for neutral classifications, confidence is instead taken from VADER's `neu` score [cite:file=src/predictor.py;symbol=predict_sentiment;lines=20-27]. The final confidence value is scaled to a percentage and rounded to two decimal places before being returned alongside the sentiment label [cite:file=src/predictor.py;symbol=predict_sentiment;lines=29-29].
+
+## 4. Notable Design Patterns and Observations
+
+- **Lexicon-based sentiment analysis over ML models**: Despite the module being named `predictor.py` (suggesting a trained model), the implementation explicitly uses NLTK's rule-based VADER analyzer instead of a pre-trained machine learning model, as noted directly in the function's own docstring [cite:file=src/predictor.py;symbol=predict_sentiment;lines=12-14].
+
+- **Graceful degradation / defensive fallback pattern**: Both AI-related modules avoid hard failures — `ai_insights.py` wraps client instantiation in a try/except that defaults to `None` [cite:file=src/ai_insights.py;symbol=client;lines=9-12] and checks for a missing/placeholder API key before attempting a network call [cite:file=src/ai_insights.py;symbol=generate_insights;lines=13-14], returning a human-readable message rather than raising an exception; similarly, `generate_insights` catches exceptions from the API call and returns an error string instead of crashing the app [cite:file=src/ai_insights.py;symbol=generate_insights;lines=41-42].
+
+- **Environment-driven configuration**: API credentials are loaded from environment variables via `python-dotenv`'s `load_dotenv()` rather than being hardcoded [cite:file=src/ai_insights.py;symbol=load_dotenv;lines=4-4][cite:file=src/ai_insights.py;symbol=GROQ_API_KEY;lines=7-7].
+
+- **Lazy/guarded resource initialization**: The VADER lexicon is only downloaded if it isn't already present locally, checked via a `try/except LookupError` around `nltk.data.find` [cite:file=src/predictor.py;symbol=nltk.download;lines=4-7], avoiding redundant downloads on repeated runs.
+
+- **Separation of styling from logic**: UI theming is isolated into a dedicated utility module (`ui_utils.py`) that other pages presumably import and invoke, keeping CSS/styling concerns separate from business logic modules like `predictor.py` and `ai_insights.py` [cite:file=src/ui_utils.py;symbol=load_css;lines=1-146].
+
+- **Possible page-directory duplication**: The presence of two parallel directories (`app_pages/` and `pages/`) with identical file names is structurally notable, though without visibility into their contents it cannot be determined whether one is legacy/unused or whether they serve different purposes.

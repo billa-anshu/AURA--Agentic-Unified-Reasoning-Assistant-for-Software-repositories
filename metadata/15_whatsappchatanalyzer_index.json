@@ -1,0 +1,512 @@
+{
+  "preprocessor.py::preprocess": {
+    "kind": "function",
+    "path": "preprocessor.py",
+    "line_start": 6,
+    "line_end": 60
+  },
+  "preprocessor.py::pattern": {
+    "kind": "variable",
+    "path": "preprocessor.py",
+    "line_start": 7,
+    "line_end": 7
+  },
+  "preprocessor.py::messages": {
+    "kind": "variable",
+    "path": "preprocessor.py",
+    "line_start": 9,
+    "line_end": 9
+  },
+  "preprocessor.py::dates": {
+    "kind": "variable",
+    "path": "preprocessor.py",
+    "line_start": 10,
+    "line_end": 10
+  },
+  "preprocessor.py::df": {
+    "kind": "variable",
+    "path": "preprocessor.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "preprocessor.py::users": {
+    "kind": "variable",
+    "path": "preprocessor.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "preprocessor.py::period": {
+    "kind": "variable",
+    "path": "preprocessor.py",
+    "line_start": 45,
+    "line_end": 45
+  },
+  "preprocessor.py::entry": {
+    "kind": "variable",
+    "path": "preprocessor.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "preprocessor.py::hour": {
+    "kind": "variable",
+    "path": "preprocessor.py",
+    "line_start": 50,
+    "line_end": 50
+  },
+  "helper.py::extract": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 9,
+    "line_end": 9
+  },
+  "helper.py::analyzer": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 10,
+    "line_end": 10
+  },
+  "helper.py::fetch_stats": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 13,
+    "line_end": 29
+  },
+  "helper.py::fetch_most_active_users": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 32,
+    "line_end": 35
+  },
+  "helper.py::create_wordcloud": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 37,
+    "line_end": 49
+  },
+  "helper.py::get_most_common_words": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 52,
+    "line_end": 66
+  },
+  "helper.py::emoji_analysis": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 69,
+    "line_end": 95
+  },
+  "helper.py::fetch_monthly_timeline": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 98,
+    "line_end": 107
+  },
+  "helper.py::fetch_daily_timeline": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 110,
+    "line_end": 115
+  },
+  "helper.py::fetch_week_activity_map": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 118,
+    "line_end": 121
+  },
+  "helper.py::fetch_month_activity_map": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 124,
+    "line_end": 127
+  },
+  "helper.py::fetch_activity_heatmap": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 130,
+    "line_end": 135
+  },
+  "helper.py::sentiment_analysis": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 138,
+    "line_end": 168
+  },
+  "helper.py::get_media_distribution": {
+    "kind": "function",
+    "path": "helper.py",
+    "line_start": 171,
+    "line_end": 186
+  },
+  "helper.py::num_messages": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "helper.py::words": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 19,
+    "line_end": 19
+  },
+  "helper.py::num_media_messages": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 23,
+    "line_end": 23
+  },
+  "helper.py::links": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "helper.py::x": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "helper.py::df_percent": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 34,
+    "line_end": 34
+  },
+  "helper.py::temp": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "helper.py::wc": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 44,
+    "line_end": 44
+  },
+  "helper.py::df_wc": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 48,
+    "line_end": 48
+  },
+  "helper.py::most_common_df": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "helper.py::emojis": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 73,
+    "line_end": 73
+  },
+  "helper.py::emoji_df": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 77,
+    "line_end": 77
+  },
+  "helper.py::joy_emojis": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "helper.py::approval_emojis": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 80,
+    "line_end": 80
+  },
+  "helper.py::surprise_emojis": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 81,
+    "line_end": 81
+  },
+  "helper.py::joy_count": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 83,
+    "line_end": 83
+  },
+  "helper.py::approval_count": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 84,
+    "line_end": 84
+  },
+  "helper.py::surprise_count": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 85,
+    "line_end": 85
+  },
+  "helper.py::others_count": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 86,
+    "line_end": 86
+  },
+  "helper.py::spectrum": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 88,
+    "line_end": 93
+  },
+  "helper.py::timeline": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 102,
+    "line_end": 102
+  },
+  "helper.py::time": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 103,
+    "line_end": 103
+  },
+  "helper.py::daily_timeline": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 114,
+    "line_end": 114
+  },
+  "helper.py::user_heatmap": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 134,
+    "line_end": 134
+  },
+  "helper.py::positives": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 145,
+    "line_end": 145
+  },
+  "helper.py::negatives": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 146,
+    "line_end": 146
+  },
+  "helper.py::neutrals": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 147,
+    "line_end": 147
+  },
+  "helper.py::compound": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 148,
+    "line_end": 148
+  },
+  "helper.py::sentiment_velocity": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 162,
+    "line_end": 162
+  },
+  "helper.py::pos_count": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 164,
+    "line_end": 164
+  },
+  "helper.py::neg_count": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 165,
+    "line_end": 165
+  },
+  "helper.py::neu_count": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 166,
+    "line_end": 166
+  },
+  "helper.py::num_media": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 175,
+    "line_end": 175
+  },
+  "helper.py::images": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 177,
+    "line_end": 177
+  },
+  "helper.py::voice": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 178,
+    "line_end": 178
+  },
+  "helper.py::docs": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 179,
+    "line_end": 179
+  },
+  "helper.py::dist": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 181,
+    "line_end": 185
+  },
+  "helper.py::df": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "helper.py::score": {
+    "kind": "variable",
+    "path": "helper.py",
+    "line_start": 151,
+    "line_end": 151
+  },
+  "app.py::local_css": {
+    "kind": "function",
+    "path": "app.py",
+    "line_start": 9,
+    "line_end": 11
+  },
+  "app.py::nav_selection": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "app.py::uploaded_file": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "app.py::bytes_data": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "app.py::data": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 30,
+    "line_end": 30
+  },
+  "app.py::df": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 31,
+    "line_end": 31
+  },
+  "app.py::user_list": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "app.py::selected_user": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 42,
+    "line_end": 42
+  },
+  "app.py::dist": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "app.py::total_media": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "app.py::icons": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 82,
+    "line_end": 82
+  },
+  "app.py::colors_map": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 83,
+    "line_end": 83
+  },
+  "app.py::dominant": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 84,
+    "line_end": 84
+  },
+  "app.py::daily_timeline": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 142,
+    "line_end": 142
+  },
+  "app.py::user_heatmap": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 153,
+    "line_end": 153
+  },
+  "app.py::pct": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 90,
+    "line_end": 90
+  },
+  "app.py::color": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 91,
+    "line_end": 91
+  },
+  "app.py::timeline": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 122,
+    "line_end": 122
+  },
+  "app.py::busy_month": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 132,
+    "line_end": 132
+  },
+  "app.py::df_wc": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 182,
+    "line_end": 182
+  },
+  "app.py::most_common_df": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 195,
+    "line_end": 195
+  },
+  "app.py::filtered_spectrum": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 207,
+    "line_end": 207
+  },
+  "app.py::spectrum_colors": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 209,
+    "line_end": 209
+  }
+}

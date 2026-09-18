@@ -1,0 +1,52 @@
+# Repository Summary Report: AI Resume Screening System
+
+## 1. Overall Purpose and Architecture
+
+This is an **"AI Resume Screening System"** — a full-stack application for recruiters to manage job descriptions, upload/manage resumes, run AI-powered resume-to-job analysis (via Gemini AI, based on comments and config filenames), and rank candidates for a given job [cite:file=frontend/src/components/Navbar.jsx;symbol=Navbar;lines=17-17][cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=3-8]. The system has a **React frontend** (Vite-based) and a **Spring Boot backend** with JWT-based authentication.
+
+**Frontend architecture**: A Vite + React SPA (evidenced by `vite.config.js` using `@vitejs/plugin-react`) [cite:file=frontend/vite.config.js;symbol=defineConfig;lines=1-7], using `react-router-dom` for routing and `localStorage` for auth-token persistence rather than cookies [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=5-5]. It follows a `pages`/`components`/`services` structure, with `services/` housing thin API-client wrappers around a shared `api.js` instance [cite:file=frontend/src/services/jobService.js;symbol=getJobs;lines=3-5].
+
+**Backend architecture**: A Spring Boot application (package `com.AIResumeScreeningSystem.backend`) [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java;symbol=BackendApplication;lines=1-1 — note: file content not provided; inferred from file tree package path] following a standard layered structure: `controller`, `service`, `repository`, `entity`, `dto`, `config`, `security`, and `exception` packages. The presence of `JwtAuthenticationFilter.java`, `JwtUtil.java`, `SecurityConfig.java`, `CustomUserDetailsService.java`, and `PasswordConfig.java` strongly indicates **Spring Security with JWT-based authentication**, and `GeminiConfig.java` indicates integration with Google's Gemini AI API for resume analysis. However, none of these backend files' actual contents were included in the provided repository content, so their implementation cannot be verified — only their existence and inferred purpose from naming.
+
+## 2. Key Components / Modules and What They Do
+
+**Frontend — fully visible files:**
+- **`App.jsx`** — the root routing component; defines seven routes: `/` (Login, public), `/register` (Register, public), and five protected routes — `/dashboard`, `/jobs`, `/resumes`, `/analysis`, `/ranking` — each wrapped in `ProtectedRoute`, plus a catch-all `*` route redirecting to `/` [cite:file=frontend/src/App.jsx;symbol=App;lines=10-64].
+- **`main.jsx`** — the application entry point; wraps `App` in a `BrowserRouter` and mounts it to the DOM [cite:file=frontend/src/main.jsx;symbol=main.jsx;lines=1-11].
+- **`ProtectedRoute.jsx`** — a route-guard component that checks for a `"token"` key in `localStorage`; if absent, redirects to `/`, otherwise renders the wrapped `children` [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=3-11].
+- **`Navbar.jsx`** — the app's navigation bar, with links to Dashboard, Jobs, Resumes, Analysis, and Ranking, plus a logout button that removes the `"token"` from `localStorage` and navigates back to `/` [cite:file=frontend/src/components/Navbar.jsx;symbol=Navbar;lines=3-13].
+- **`services/jobService.js`** — exposes `getJobs()`, a thin wrapper issuing a `GET /jobs` request via the shared `api` client [cite:file=frontend/src/services/jobService.js;symbol=getJobs;lines=3-5].
+- **`services/analysisService.js`** — exposes three functions: `analyzeResume` (runs a non-persisting AI analysis via `POST /analysis/analyze`), `saveAnalysis` (persists an analysis via `POST /analysis/save/{resumeId}/{jobId}`), and `getRanking` (fetches candidate rankings for a job via `GET /analysis/rank/{jobId}`) [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=3-8][cite:file=frontend/src/services/analysisService.js;symbol=saveAnalysis;lines=11-23][cite:file=frontend/src/services/analysisService.js;symbol=getRanking;lines=26-28].
+
+**Frontend — listed but content not provided:** `services/resumeService.js`, `services/api.js`, and all page components (`Ranking.jsx`, `Jobs.jsx`, `Resumes.jsx`, `Analysis.jsx`, `Dashboard.jsx`, `Login.jsx`, `Register.jsx`).
+
+**Backend — listed but content not provided (inferred purpose from names only):**
+- **DTOs**: `AnalysisResponse`, `RegisterRequest`, `AIResponse`, `AnalysisRequest`, `JobDescriptionRequest`, `LoginRequest`, `AIAnalysisResponse`, `AuthResponse` — request/response payload shapes for auth and analysis endpoints.
+- **Config**: `SecurityConfig`, `GeminiConfig`, `PasswordConfig` — Spring Security setup, Gemini AI client configuration, and password-encoding configuration respectively.
+- **Repositories**: `JobDescriptionRepository`, `RecruiterRepository`, `ResumeAnalysisRepository`, `ResumeRepository` — Spring Data JPA data-access interfaces for the four core entities.
+- **Entities**: `Recruiter`, `ResumeAnalysis`, `Resume`, `JobDescription` — the core domain model.
+- **Services**: `AIAnalysisService`, `JobDescriptionService`, `ResumeService`, `RecruiterService`, `CustomUserDetailsService` — business logic, with `CustomUserDetailsService` implying a custom Spring Security `UserDetailsService` implementation for authenticating `Recruiter` users.
+- **Controllers**: `JobDescriptionController`, `AIAnalysisController`, `ResumeController`, `AuthController`, `TestController` — REST endpoints matching the frontend's `/jobs`, `/analysis/*`, resume, and auth routes referenced in `analysisService.js` and `jobService.js`.
+- **Security**: `JwtAuthenticationFilter`, `JwtUtil` — JWT token validation/parsing filter and utility.
+- **`GlobalExceptionHandler`** — implies centralized exception handling, likely via `@ControllerAdvice`.
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`ProtectedRoute({ children })`** — reads the `"token"` value from `localStorage`; if no token exists, immediately renders a `<Navigate to="/" />` redirect, otherwise renders the protected `children` content — a client-side-only auth guard with no token validation beyond presence [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=5-9].
+- **`Navbar.logout()`** — removes the `"token"` entry from `localStorage` and calls `navigate("/")` to return the user to the login page [cite:file=frontend/src/components/Navbar.jsx;symbol=logout;lines=7-10].
+- **`analysisService.analyzeResume(resumeText, jobDescription)`** — posts resume text and job description to `/analysis/analyze` for an AI-driven match analysis that, per its comment, does not persist the result [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=3-8].
+- **`analysisService.saveAnalysis(resumeId, jobId, resumeText, jobDescription)`** — posts to a resume/job-ID-scoped endpoint (`/analysis/save/{resumeId}/{jobId}`) to persist a previously-run analysis [cite:file=frontend/src/services/analysisService.js;symbol=saveAnalysis;lines=11-23].
+- **`analysisService.getRanking(jobId)`** — fetches ranked candidates for a specific job via `GET /analysis/rank/{jobId}`, with an explicit code comment noting it matches the corresponding backend endpoint [cite:file=frontend/src/services/analysisService.js;symbol=getRanking;lines=25-28].
+- **`jobService.getJobs()`** — fetches the list of job descriptions via `GET /jobs` [cite:file=frontend/src/services/jobService.js;symbol=getJobs;lines=3-5].
+
+## 4. Design Patterns Observed
+
+- **Protected Route / Route Guard Pattern**: `App.jsx` wraps every authenticated page route in a shared `ProtectedRoute` component rather than duplicating auth-check logic per page [cite:file=frontend/src/App.jsx;symbol=App;lines=17-58].
+- **Service Layer / API Client Abstraction**: Frontend API calls are centralized in dedicated `services/*.js` modules (`jobService.js`, `analysisService.js`) that wrap a shared `api` client rather than making HTTP calls directly from page components [cite:file=frontend/src/services/jobService.js;symbol=jobService.js;lines=1-1][cite:file=frontend/src/services/analysisService.js;symbol=analysisService.js;lines=1-1].
+- **Token-based Client-Side Auth State**: Authentication state is tracked purely via a token's presence in `localStorage`, checked independently by `ProtectedRoute` (to gate routes) and `Navbar` (to clear on logout), rather than via a centralized auth context/store [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=5-5][cite:file=frontend/src/components/Navbar.jsx;symbol=logout;lines=8-8].
+- **Layered Backend Architecture (inferred from structure)**: The backend's package layout (`controller` → `service` → `repository` → `entity`, with separate `dto`, `config`, `security`, `exception` packages) follows a conventional layered Spring Boot design, though this is inferred from file/package naming rather than verified code content.
+- **JWT Filter Pattern (inferred)**: The presence of `JwtAuthenticationFilter` alongside `JwtUtil` and `SecurityConfig` suggests a custom servlet filter intercepts requests to validate JWTs before they reach controllers, a standard Spring Security JWT pattern — but this is inferred from naming only, not verified code.
+
+## Scope Limitations
+
+The vast majority of this repository's files were **not included** in the provided content. On the frontend, all page components (`Login.jsx`, `Register.jsx`, `Dashboard.jsx`, `Jobs.jsx`, `Resumes.jsx`, `Analysis.jsx`, `Ranking.jsx`) and `services/api.js`/`services/resumeService.js` are missing. On the backend, **every single file** listed (all DTOs, config, repositories, entities, services, controllers, security classes, and the main application class) appears only in the file tree with no content provided. This report's backend claims are therefore based entirely on file/package naming conventions and are explicitly labeled as inferred rather than verified. The actual authentication logic, AI-analysis implementation, database schema, and REST endpoint behavior could not be confirmed.

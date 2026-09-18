@@ -1,0 +1,890 @@
+{
+  "src/test/java/com/example/demo/FinalProjectApplicationTests.java::FinalProjectApplicationTests": {
+    "kind": "function_or_class",
+    "path": "src/test/java/com/example/demo/FinalProjectApplicationTests.java",
+    "line_start": 7,
+    "line_end": 13
+  },
+  "src/test/java/com/example/demo/FinalProjectApplicationTests.java::contextLoads": {
+    "kind": "function_or_class",
+    "path": "src/test/java/com/example/demo/FinalProjectApplicationTests.java",
+    "line_start": 10,
+    "line_end": 13
+  },
+  "src/main/java/com/example/demo/FinalProjectApplication.java::FinalProjectApplication": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/FinalProjectApplication.java",
+    "line_start": 7,
+    "line_end": 13
+  },
+  "src/main/java/com/example/demo/FinalProjectApplication.java::main": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/FinalProjectApplication.java",
+    "line_start": 9,
+    "line_end": 13
+  },
+  "src/main/java/com/example/demo/service/AuthService.java::AuthService": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AuthService.java",
+    "line_start": 16,
+    "line_end": 53
+  },
+  "src/main/java/com/example/demo/service/AuthService.java::validateAdmin": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AuthService.java",
+    "line_start": 28,
+    "line_end": 53
+  },
+  "src/main/java/com/example/demo/service/AuthService.java::validateTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AuthService.java",
+    "line_start": 34,
+    "line_end": 53
+  },
+  "src/main/java/com/example/demo/service/AuthService.java::validateStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AuthService.java",
+    "line_start": 40,
+    "line_end": 53
+  },
+  "src/main/java/com/example/demo/service/AuthService.java::getStudentByEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AuthService.java",
+    "line_start": 46,
+    "line_end": 53
+  },
+  "src/main/java/com/example/demo/service/AuthService.java::getTeacherByEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AuthService.java",
+    "line_start": 49,
+    "line_end": 53
+  },
+  "src/main/java/com/example/demo/service/ClassroomService.java::ClassroomService": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/ClassroomService.java",
+    "line_start": 12,
+    "line_end": 26
+  },
+  "src/main/java/com/example/demo/service/ClassroomService.java::getClassroomsByTeacherId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/ClassroomService.java",
+    "line_start": 18,
+    "line_end": 26
+  },
+  "src/main/java/com/example/demo/service/ClassroomService.java::getClassroomById": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/ClassroomService.java",
+    "line_start": 23,
+    "line_end": 26
+  },
+  "src/main/java/com/example/demo/service/StudentService.java::StudentService": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/StudentService.java",
+    "line_start": 11,
+    "line_end": 20
+  },
+  "src/main/java/com/example/demo/service/StudentService.java::getStudentsByClassroomId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/StudentService.java",
+    "line_start": 17,
+    "line_end": 20
+  },
+  "src/main/java/com/example/demo/service/TeacherService.java::TeacherService": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/TeacherService.java",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "src/main/java/com/example/demo/service/TeacherService.java::getLoggedInTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/TeacherService.java",
+    "line_start": 28,
+    "line_end": 68
+  },
+  "src/main/java/com/example/demo/service/TeacherService.java::getCoursesByTeacherEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/TeacherService.java",
+    "line_start": 35,
+    "line_end": 75
+  },
+  "src/main/java/com/example/demo/service/TeacherService.java::getClassroomsByTeacherEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/TeacherService.java",
+    "line_start": 43,
+    "line_end": 83
+  },
+  "src/main/java/com/example/demo/service/TeacherService.java::markAttendance": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/TeacherService.java",
+    "line_start": 52,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/service/TeacherService.java::viewAttendance": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/TeacherService.java",
+    "line_start": 80,
+    "line_end": 99
+  },
+  "src/main/java/com/example/demo/service/AttendanceService.java::AttendanceService": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AttendanceService.java",
+    "line_start": 17,
+    "line_end": 52
+  },
+  "src/main/java/com/example/demo/service/AttendanceService.java::markAttendance": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AttendanceService.java",
+    "line_start": 28,
+    "line_end": 52
+  },
+  "src/main/java/com/example/demo/service/AttendanceService.java::viewAttendance": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/AttendanceService.java",
+    "line_start": 47,
+    "line_end": 52
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::AdminServiceImpl": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 16,
+    "line_end": 56
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::saveStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 42,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::updateStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 51,
+    "line_end": 91
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::deleteStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 57,
+    "line_end": 97
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::searchStudents": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 62,
+    "line_end": 102
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getAllStudents": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 70,
+    "line_end": 110
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::saveTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 76,
+    "line_end": 116
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::saveTeacherWithCourseAssignments": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 85,
+    "line_end": 125
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::updateTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 110,
+    "line_end": 150
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::updateTeacherWithCourseAssignments": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 115,
+    "line_end": 155
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::deleteTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 158,
+    "line_end": 198
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getAllTeachers": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 170,
+    "line_end": 210
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getTeacherById": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 175,
+    "line_end": 215
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::saveCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 182,
+    "line_end": 222
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::assignTeacherToCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 196,
+    "line_end": 236
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getAllCourses": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 203,
+    "line_end": 243
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getCourseById": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 208,
+    "line_end": 248
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::deleteCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 214,
+    "line_end": 254
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::saveClassroom": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 219,
+    "line_end": 259
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getAllClassrooms": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 225,
+    "line_end": 265
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getClassroomById": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 230,
+    "line_end": 270
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::assignTeacherToClass": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 236,
+    "line_end": 276
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::markHoliday": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 247,
+    "line_end": 281
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getAllHolidays": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 255,
+    "line_end": 281
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::lockAttendance": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 261,
+    "line_end": 281
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getAttendanceForStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 266,
+    "line_end": 281
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getStudentsByClassroomId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 271,
+    "line_end": 281
+  },
+  "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java::getAttendanceForClassroomOnDate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+    "line_start": 276,
+    "line_end": 281
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::Classroom": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 34,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::getClassroomId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 40,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::setClassroomId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 41,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::getClassName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 43,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::setClassName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 44,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::getCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 46,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::setCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 47,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::getTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 49,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::setTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 50,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::getStudents": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 52,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/Classroom.java::setStudents": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Classroom.java",
+    "line_start": 53,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::AttendanceRecord": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 38,
+    "line_end": 78
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::getRecordId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 46,
+    "line_end": 86
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::setRecordId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 50,
+    "line_end": 90
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::getStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 54,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::setStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 58,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::getClassroom": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 62,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::setClassroom": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 66,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::getDate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 70,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::setDate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 74,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::getStatus": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 78,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/entity/AttendanceRecord.java::setStatus": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+    "line_start": 82,
+    "line_end": 92
+  },
+  "src/main/java/com/example/demo/entity/Course.java::Course": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Course.java",
+    "line_start": 30,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/entity/Course.java::getCourseId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Course.java",
+    "line_start": 36,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/entity/Course.java::setCourseId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Course.java",
+    "line_start": 39,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/entity/Course.java::getCourseName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Course.java",
+    "line_start": 42,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/entity/Course.java::setCourseName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Course.java",
+    "line_start": 45,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/entity/Course.java::setClassrooms": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Course.java",
+    "line_start": 51,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/entity/Course.java::getTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Course.java",
+    "line_start": 55,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/entity/Course.java::setTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Course.java",
+    "line_start": 58,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/entity/Student.java::Student": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 35,
+    "line_end": 75
+  },
+  "src/main/java/com/example/demo/entity/Student.java::getStudentId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 48,
+    "line_end": 88
+  },
+  "src/main/java/com/example/demo/entity/Student.java::setStudentId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 52,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Student.java::getName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 56,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Student.java::setName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 60,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Student.java::getEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 64,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Student.java::setEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 68,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Student.java::getPassword": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 72,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Student.java::setPassword": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 76,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Student.java::getClassrooms": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 80,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Student.java::setClassrooms": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Student.java",
+    "line_start": 84,
+    "line_end": 89
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::Teacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 33,
+    "line_end": 73
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::getTeacherId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 41,
+    "line_end": 81
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::setTeacherId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 44,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::getName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 47,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::setName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 50,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::getEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 53,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::setEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 56,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::getPassword": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 59,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::setPassword": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 62,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::getCourses": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 65,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::setCourses": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 68,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::addCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 73,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/Teacher.java::removeCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Teacher.java",
+    "line_start": 78,
+    "line_end": 82
+  },
+  "src/main/java/com/example/demo/entity/HolidayCalendar.java::HolidayCalendar": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/HolidayCalendar.java",
+    "line_start": 24,
+    "line_end": 56
+  },
+  "src/main/java/com/example/demo/entity/HolidayCalendar.java::getId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/HolidayCalendar.java",
+    "line_start": 30,
+    "line_end": 56
+  },
+  "src/main/java/com/example/demo/entity/HolidayCalendar.java::setId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/HolidayCalendar.java",
+    "line_start": 34,
+    "line_end": 56
+  },
+  "src/main/java/com/example/demo/entity/HolidayCalendar.java::getDate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/HolidayCalendar.java",
+    "line_start": 38,
+    "line_end": 56
+  },
+  "src/main/java/com/example/demo/entity/HolidayCalendar.java::setDate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/HolidayCalendar.java",
+    "line_start": 42,
+    "line_end": 56
+  },
+  "src/main/java/com/example/demo/entity/HolidayCalendar.java::getDescription": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/HolidayCalendar.java",
+    "line_start": 46,
+    "line_end": 56
+  },
+  "src/main/java/com/example/demo/entity/HolidayCalendar.java::setDescription": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/HolidayCalendar.java",
+    "line_start": 50,
+    "line_end": 56
+  },
+  "src/main/java/com/example/demo/entity/Admin.java::Admin": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Admin.java",
+    "line_start": 41,
+    "line_end": 48
+  },
+  "src/main/java/com/example/demo/entity/Admin.java::getAdminId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Admin.java",
+    "line_start": 20,
+    "line_end": 48
+  },
+  "src/main/java/com/example/demo/entity/Admin.java::setAdminId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Admin.java",
+    "line_start": 23,
+    "line_end": 48
+  },
+  "src/main/java/com/example/demo/entity/Admin.java::getEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Admin.java",
+    "line_start": 26,
+    "line_end": 48
+  },
+  "src/main/java/com/example/demo/entity/Admin.java::setEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Admin.java",
+    "line_start": 29,
+    "line_end": 48
+  },
+  "src/main/java/com/example/demo/entity/Admin.java::getPassword": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Admin.java",
+    "line_start": 32,
+    "line_end": 48
+  },
+  "src/main/java/com/example/demo/entity/Admin.java::setPassword": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/entity/Admin.java",
+    "line_start": 35,
+    "line_end": 48
+  },
+  "src/main/java/com/example/demo/controller/StudentDashboardController.java::StudentDashboardController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/StudentDashboardController.java",
+    "line_start": 23,
+    "line_end": 63
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::AdminController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 20,
+    "line_end": 60
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::dashboard": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 26,
+    "line_end": 66
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::studentsPage": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 37,
+    "line_end": 77
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::newStudentForm": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 43,
+    "line_end": 83
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::editStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 93,
+    "line_end": 133
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::deleteStudent": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 102,
+    "line_end": 142
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::teachersPage": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 109,
+    "line_end": 149
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::newTeacherForm": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 115,
+    "line_end": 155
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::editTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 138,
+    "line_end": 178
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::deleteTeacher": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 160,
+    "line_end": 200
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::classroomsPage": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 167,
+    "line_end": 207
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::newClassroomForm": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 174,
+    "line_end": 214
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::editClassroom": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 205,
+    "line_end": 245
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::coursesPage": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 216,
+    "line_end": 256
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::newCourseForm": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 223,
+    "line_end": 263
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::editCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 241,
+    "line_end": 281
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::deleteCourse": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 260,
+    "line_end": 298
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::holidaysPage": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 267,
+    "line_end": 298
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::markHoliday": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 273,
+    "line_end": 298
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::searchStudents": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 281,
+    "line_end": 298
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::studentAttendance": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 288,
+    "line_end": 298
+  },
+  "src/main/java/com/example/demo/controller/AdminController.java::logout": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/AdminController.java",
+    "line_start": 295,
+    "line_end": 298
+  },
+  "src/main/java/com/example/demo/controller/LoginController.java::LoginController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/LoginController.java",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "src/main/java/com/example/demo/controller/LoginController.java::showLogin": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/LoginController.java",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "src/main/java/com/example/demo/controller/LoginController.java::logout": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/LoginController.java",
+    "line_start": 66,
+    "line_end": 70
+  },
+  "src/main/java/com/example/demo/controller/TeacherDashboardController.java::TeacherDashboardController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/TeacherDashboardController.java",
+    "line_start": 24,
+    "line_end": 64
+  },
+  "src/main/java/com/example/demo/controller/TeacherDashboardController.java::teacherDashboard": {
+    "kind": "function_or_class",
+    "path": "src/main/java/com/example/demo/controller/TeacherDashboardController.java",
+    "line_start": 31,
+    "line_end": 71
+  }
+}

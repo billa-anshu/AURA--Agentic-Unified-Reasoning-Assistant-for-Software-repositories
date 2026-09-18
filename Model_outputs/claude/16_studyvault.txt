@@ -1,0 +1,51 @@
+# Repository Analysis Report: Study Materials & Q&A Platform (Merged Codebase)
+
+## 1. Overall Purpose and Architecture
+
+This repository appears to contain **two distinct full-stack applications co-located in the same file tree**, based on the file structure and the source code that was provided. One is a **study materials management platform** (subjects, materials, PDF uploads — see `server/index.js`, `server/routes/`, `server/models/Material.js`, `server/models/Subject.js`, and frontend components like `PdfViewerModal.tsx`, `AddMaterialModal.tsx`, `Subjects.tsx`). The other is a **Q&A / forum-style platform** with questions and answers (root-level `server.js`, root-level `models/Question.js`, `models/Answer.js`, `models/User.js`, and `middleware/auth.js`). Both use **Express** and **MongoDB via Mongoose**, and both define their own independent server entry points, database connection logic, and authentication concerns, which is a notable structural duplication in the codebase.
+
+The frontend is a **React + TypeScript + Vite** application [cite:file=vite.config.ts;symbol=defineConfig;lines=6-8], styled with **Tailwind CSS** using CSS custom properties for theming (colors like `background`, `primary`, `accent` are mapped to `var(--*)` CSS variables) [cite:file=tailwind.config.js;symbol=default;lines=9-19], and PostCSS with the Tailwind and Autoprefixer plugins [cite:file=postcss.config.js;symbol=default;lines=2-5]. Class-based dark mode is enabled [cite:file=tailwind.config.js;symbol=default;lines=7-7].
+
+## 2. Key Components / Modules
+
+### Q&A Backend (`server.js`)
+A single-file Express server that connects to MongoDB using Mongoose [cite:file=server.js;symbol=mongoose.connect;lines=12-17], loads environment variables via `dotenv` [cite:file=server.js;symbol=require;lines=1-1], and defines routes directly inline (rather than via a separate router module) for signup, login, posting/fetching questions, and posting/fetching answers [cite:file=server.js;symbol=app.post;lines=37-40][cite:file=server.js;symbol=app.get;lines=121-128]. It imports `verifyToken` and `verifyAdmin` middleware from `./middleware/auth` to protect the answer-related routes [cite:file=server.js;symbol=require;lines=11-11][cite:file=server.js;symbol=app.post;lines=133-133][cite:file=server.js;symbol=app.get;lines=155-155].
+
+### Study Materials Backend (`server/`)
+A modular Express server with a separate entry point (`server/index.js`) that loads environment variables, connects to the database via a dedicated `connectDB` function, and mounts four distinct routers for authentication, subjects, materials, and uploads under `/api/*` prefixes [cite:file=server/index.js;symbol=app.use;lines=17-20]. It also serves an `/uploads` static file directory for uploaded content (e.g., PDFs) [cite:file=server/index.js;symbol=app.use;lines=23-23].
+
+- **`server/config/db.js`** — Provides `connectDB`, an async function that connects to MongoDB using a URI from the environment and exits the process on failure [cite:file=server/config/db.js;symbol=connectDB;lines=3-10].
+- **`server/test-upload.js`** — A standalone script (not part of the server runtime) that manually tests the file upload endpoint by creating a dummy PDF file, submitting it via `axios` and `form-data` to `http://localhost:5000/api/upload`, and logging the result, cleaning up the dummy file afterward [cite:file=server/test-upload.js;symbol=testUpload;lines=6-27].
+
+### Frontend
+- **`vite.config.ts`** — Configures Vite with the React plugin [cite:file=vite.config.ts;symbol=defineConfig;lines=7-7].
+- **`src/vite-env.d.ts`** — A standard Vite TypeScript reference declaration file providing Vite client types [cite:file=src/vite-env.d.ts;symbol=reference;lines=1-1].
+- Numerous component, page, layout, service, and context files are listed in the file tree (`AddSubjectModal.tsx`, `PdfViewerModal.tsx`, `MaterialContext.tsx`, `UserContext.tsx`, `api.ts`, `firebase.ts`, various pages) indicating a full React SPA structure, but their source content was not included and so no functional claims can be made about them.
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`connectDB` (server/config/db.js)** — Establishes an async Mongoose connection using `process.env.MONGO_URI`, logs the connected host on success, and terminates the process (`process.exit(1)`) if the connection fails [cite:file=server/config/db.js;symbol=connectDB;lines=3-10].
+
+- **Signup handler (`server.js`, `POST /signup`)** — Validates that email and password are present, checks for an existing user with the same email and rejects duplicates with a 409 status, hashes the password with bcrypt (10 salt rounds), and persists a new `User` document [cite:file=server.js;symbol=app.post;lines=37-62].
+
+- **Login handler (`server.js`, `POST /login`)** — Validates input, looks up the user by email (404 if not found), compares the password hash with bcrypt (401 on mismatch), and on success issues a JWT signed with `userId` and `role` claims, expiring in 1 hour [cite:file=server.js;symbol=app.post;lines=65-95].
+
+- **Question handlers (`server.js`)** — `POST /questions` validates title/description and creates a new `Question` document [cite:file=server.js;symbol=app.post;lines=97-114]; `GET /questions` retrieves all questions sorted by creation date descending [cite:file=server.js;symbol=app.get;lines=121-128].
+
+- **Answer handlers (`server.js`)** — `POST /answers` is protected by `verifyToken` and `verifyAdmin` middleware, validates required fields, and creates a new `Answer` document linked to a question [cite:file=server.js;symbol=app.post;lines=133-150]. `GET /answers` is likewise protected and retrieves all answers, populating the associated question's `title` field and sorting by creation date descending [cite:file=server.js;symbol=app.get;lines=155-163].
+
+- **`testUpload` (server/test-upload.js)** — An async diagnostic function that writes a dummy PDF to disk, wraps it in a `multipart/form-data` payload, POSTs it to the local upload endpoint, logs success or detailed error/status information, and always deletes the dummy file in a `finally` block [cite:file=server/test-upload.js;symbol=testUpload;lines=6-27].
+
+## 4. Notable Design Patterns and Observations
+
+- **Duplicated/parallel application structure**: The repository contains two independent Express server entry points — a monolithic, inline-route file (`server.js`) [cite:file=server.js;symbol=app;lines=23-23] and a modular router-based server (`server/index.js`) [cite:file=server/index.js;symbol=app.use;lines=17-20] — each with its own database connection logic, `User` model, and JWT-based authentication, suggesting either two merged projects or an incomplete migration from one architecture to the other.
+
+- **Role-based access control middleware**: The Q&A backend uses a two-tier middleware pattern (`verifyToken`, `verifyAdmin`) chained on sensitive routes to enforce both authentication and admin-only authorization before allowing answer creation/retrieval [cite:file=server.js;symbol=app.post;lines=133-133][cite:file=server.js;symbol=app.get;lines=155-155].
+
+- **Environment-driven configuration**: Both backends load secrets (Mongo URI, JWT secret, port) from environment variables via `dotenv`, keeping credentials out of source code [cite:file=server.js;symbol=require;lines=1-1][cite:file=server/index.js;symbol=dotenv.config;lines=7-7][cite:file=server/config/db.js;symbol=connectDB;lines=4-4].
+
+- **Fail-fast database connection pattern**: `server/config/db.js` explicitly terminates the process on a failed database connection [cite:file=server/config/db.js;symbol=connectDB;lines=7-9], whereas `server.js` instead only logs the error without exiting [cite:file=server.js;symbol=mongoose.connect;lines=12-17] — an inconsistency between the two backends' error-handling strategies.
+
+- **CSS-variable-based theming**: The Tailwind configuration delegates actual color values to CSS custom properties rather than hardcoding hex values in the Tailwind theme, enabling runtime theme switching (consistent with the `darkMode: 'class'` setting) [cite:file=tailwind.config.js;symbol=default;lines=7-19].
+
+- **Static file serving for uploads**: The modular backend exposes uploaded files directly via Express's static middleware at the `/uploads` path, implying uploaded materials (e.g., PDFs) are stored on local disk rather than an external object store [cite:file=server/index.js;symbol=app.use;lines=23-23].

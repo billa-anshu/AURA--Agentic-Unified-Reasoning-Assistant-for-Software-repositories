@@ -1,0 +1,1040 @@
+{
+  "frontend/src/App.js::App": {
+    "kind": "function_or_class",
+    "path": "frontend/src/App.js",
+    "line_start": 16,
+    "line_end": 32
+  },
+  "frontend/src/components/Modal.js::Modal": {
+    "kind": "function_or_class",
+    "path": "frontend/src/components/Modal.js",
+    "line_start": 4,
+    "line_end": 34
+  },
+  "frontend/src/pages/VirtualTourForm.js::VirtualTourForm": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/VirtualTourForm.js",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "frontend/src/pages/VirtualTourForm.js::handleImageUpload": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/VirtualTourForm.js",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "frontend/src/pages/VirtualTourForm.js::handleAddRoom": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/VirtualTourForm.js",
+    "line_start": 32,
+    "line_end": 72
+  },
+  "frontend/src/pages/VirtualTourForm.js::handleRemoveImage": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/VirtualTourForm.js",
+    "line_start": 39,
+    "line_end": 79
+  },
+  "frontend/src/pages/VirtualTourForm.js::handleGeneratePanorama": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/VirtualTourForm.js",
+    "line_start": 46,
+    "line_end": 86
+  },
+  "frontend/src/pages/Signup.js::handleSignup": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Signup.js",
+    "line_start": 12,
+    "line_end": 52
+  },
+  "frontend/src/pages/TourEditorPage.js::TourEditorPage": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "frontend/src/pages/TourEditorPage.js::showConfirmation": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 70,
+    "line_end": 110
+  },
+  "frontend/src/pages/TourEditorPage.js::handleConfirm": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 76,
+    "line_end": 116
+  },
+  "frontend/src/pages/TourEditorPage.js::handleCancelConfirm": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 81,
+    "line_end": 121
+  },
+  "frontend/src/pages/TourEditorPage.js::fetchTourData": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 87,
+    "line_end": 127
+  },
+  "frontend/src/pages/TourEditorPage.js::updateTourInSupabase": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 154,
+    "line_end": 194
+  },
+  "frontend/src/pages/TourEditorPage.js::handleReuploadClick": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 163,
+    "line_end": 203
+  },
+  "frontend/src/pages/TourEditorPage.js::handleFileChange": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 164,
+    "line_end": 204
+  },
+  "frontend/src/pages/TourEditorPage.js::handleRemoveSelectedFile": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 172,
+    "line_end": 212
+  },
+  "frontend/src/pages/TourEditorPage.js::handleActualReupload": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 176,
+    "line_end": 216
+  },
+  "frontend/src/pages/TourEditorPage.js::handleStartRecording": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 226,
+    "line_end": 266
+  },
+  "frontend/src/pages/TourEditorPage.js::handleStopRecording": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 235,
+    "line_end": 275
+  },
+  "frontend/src/pages/TourEditorPage.js::handleAudioFileChange": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 245,
+    "line_end": 285
+  },
+  "frontend/src/pages/TourEditorPage.js::handleUploadAudio": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 264,
+    "line_end": 304
+  },
+  "frontend/src/pages/TourEditorPage.js::handleRemoveAudio": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 302,
+    "line_end": 342
+  },
+  "frontend/src/pages/TourEditorPage.js::handleRetryAudio": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 332,
+    "line_end": 372
+  },
+  "frontend/src/pages/TourEditorPage.js::handleNameEdit": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 347,
+    "line_end": 387
+  },
+  "frontend/src/pages/TourEditorPage.js::handleNameInputChange": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 348,
+    "line_end": 388
+  },
+  "frontend/src/pages/TourEditorPage.js::handleNameSave": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 350,
+    "line_end": 390
+  },
+  "frontend/src/pages/TourEditorPage.js::handleRemoveRoom": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 398,
+    "line_end": 438
+  },
+  "frontend/src/pages/TourEditorPage.js::handleAddMarker": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 452,
+    "line_end": 492
+  },
+  "frontend/src/pages/TourEditorPage.js::handleRemoveMarker": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 497,
+    "line_end": 537
+  },
+  "frontend/src/pages/TourEditorPage.js::handleSelectRoomForTooltipEdit": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 528,
+    "line_end": 568
+  },
+  "frontend/src/pages/TourEditorPage.js::handlePrepareNewTooltipPlacement": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 536,
+    "line_end": 576
+  },
+  "frontend/src/pages/TourEditorPage.js::handlePanoramaClickForTooltip": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 546,
+    "line_end": 586
+  },
+  "frontend/src/pages/TourEditorPage.js::x": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 553,
+    "line_end": 593
+  },
+  "frontend/src/pages/TourEditorPage.js::y": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 554,
+    "line_end": 594
+  },
+  "frontend/src/pages/TourEditorPage.js::handleEditTooltip": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 614,
+    "line_end": 654
+  },
+  "frontend/src/pages/TourEditorPage.js::tooltipToEdit": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 615,
+    "line_end": 655
+  },
+  "frontend/src/pages/TourEditorPage.js::handleSaveEditedTooltipContent": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 625,
+    "line_end": 665
+  },
+  "frontend/src/pages/TourEditorPage.js::handleRemoveTooltip": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 651,
+    "line_end": 691
+  },
+  "frontend/src/pages/TourEditorPage.js::handleCancelTooltipEditMode": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 673,
+    "line_end": 713
+  },
+  "frontend/src/pages/TourEditorPage.js::handleGenerateTour": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 682,
+    "line_end": 722
+  },
+  "frontend/src/pages/TourEditorPage.js::handleStartRoomChange": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 693,
+    "line_end": 733
+  },
+  "frontend/src/pages/TourEditorPage.js::RoomCard": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/TourEditorPage.js",
+    "line_start": 707,
+    "line_end": 747
+  },
+  "frontend/src/pages/Login.js::handleLogin": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Login.js",
+    "line_start": 12,
+    "line_end": 52
+  },
+  "frontend/src/pages/Home.js::handleCreateClick": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Home.js",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "frontend/src/pages/Home.js::LandingButton": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Home.js",
+    "line_start": 71,
+    "line_end": 95
+  },
+  "frontend/src/pages/AllToursPage.js::AllToursPage": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/AllToursPage.js",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "frontend/src/pages/AllToursPage.js::fetchTours": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/AllToursPage.js",
+    "line_start": 10,
+    "line_end": 50
+  },
+  "frontend/src/pages/PanoramaViewer.js::PanoramaViewer": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/PanoramaViewer.js",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "frontend/src/pages/PanoramaViewer.js::fetchTourData": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/PanoramaViewer.js",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "frontend/src/pages/PanoramaViewer.js::yaw": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/PanoramaViewer.js",
+    "line_start": 64,
+    "line_end": 104
+  },
+  "frontend/src/pages/PanoramaViewer.js::pitch": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/PanoramaViewer.js",
+    "line_start": 65,
+    "line_end": 105
+  },
+  "backend/stitcher.py::stitch_images": {
+    "kind": "function",
+    "path": "backend/stitcher.py",
+    "line_start": 4,
+    "line_end": 33
+  },
+  "backend/stitcher.py::remove_black_borders": {
+    "kind": "function",
+    "path": "backend/stitcher.py",
+    "line_start": 35,
+    "line_end": 60
+  },
+  "backend/stitcher.py::images": {
+    "kind": "variable",
+    "path": "backend/stitcher.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "backend/stitcher.py::stitcher": {
+    "kind": "variable",
+    "path": "backend/stitcher.py",
+    "line_start": 22,
+    "line_end": 22
+  },
+  "backend/stitcher.py::gray": {
+    "kind": "variable",
+    "path": "backend/stitcher.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "backend/stitcher.py::cropped_image": {
+    "kind": "variable",
+    "path": "backend/stitcher.py",
+    "line_start": 59,
+    "line_end": 59
+  },
+  "backend/stitcher.py::stitched_image": {
+    "kind": "variable",
+    "path": "backend/stitcher.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "backend/app.py::app": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "backend/app.py::UPLOAD_FOLDER": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 23,
+    "line_end": 23
+  },
+  "backend/app.py::TEMP_OUTPUT_FOLDER": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "backend/app.py::SUPABASE_URL": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "backend/app.py::SUPABASE_KEY": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 34,
+    "line_end": 34
+  },
+  "backend/app.py::SUPABASE_BUCKET_NAME": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 35,
+    "line_end": 35
+  },
+  "backend/app.py::SUPABASE_AUDIO_BUCKET_NAME": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 36,
+    "line_end": 36
+  },
+  "backend/app.py::SUPABASE_PANORAMAS_TABLE": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "backend/app.py::SUPABASE_MARKERS_TABLE": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 38,
+    "line_end": 38
+  },
+  "backend/app.py::SUPABASE_TOOLTIPS_TABLE": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 39,
+    "line_end": 39
+  },
+  "backend/app.py::SUPABASE_TOURS_TABLE": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 40,
+    "line_end": 40
+  },
+  "backend/app.py::SUPABASE_TOUR_AUDIO_TABLE": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "backend/app.py::calculate_view_constraints": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 52,
+    "line_end": 100
+  },
+  "backend/app.py::process_room_images": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 104,
+    "line_end": 199
+  },
+  "backend/app.py::stitch_tour_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 204,
+    "line_end": 283
+  },
+  "backend/app.py::restitch_room_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 286,
+    "line_end": 339
+  },
+  "backend/app.py::rename_room_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 343,
+    "line_end": 422
+  },
+  "backend/app.py::delete_room_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 426,
+    "line_end": 498
+  },
+  "backend/app.py::get_tour_data_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 502,
+    "line_end": 631
+  },
+  "backend/app.py::save_markers_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 634,
+    "line_end": 675
+  },
+  "backend/app.py::save_tooltips_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 678,
+    "line_end": 719
+  },
+  "backend/app.py::upload_audio_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 722,
+    "line_end": 778
+  },
+  "backend/app.py::delete_audio_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 781,
+    "line_end": 813
+  },
+  "backend/app.py::update_start_room_endpoint": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 816,
+    "line_end": 842
+  },
+  "backend/app.py::gray": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 60,
+    "line_end": 60
+  },
+  "backend/app.py::thresh": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "backend/app.py::c": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 70,
+    "line_end": 70
+  },
+  "backend/app.py::mask": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 71,
+    "line_end": 71
+  },
+  "backend/app.py::center_x": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 82,
+    "line_end": 82
+  },
+  "backend/app.py::center_y": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 83,
+    "line_end": 83
+  },
+  "backend/app.py::left_angle": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 90,
+    "line_end": 90
+  },
+  "backend/app.py::right_angle": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 91,
+    "line_end": 91
+  },
+  "backend/app.py::top_angle": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 92,
+    "line_end": 92
+  },
+  "backend/app.py::bottom_angle": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 93,
+    "line_end": 93
+  },
+  "backend/app.py::image_paths": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 110,
+    "line_end": 110
+  },
+  "backend/app.py::temp_upload_dir": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 112,
+    "line_end": 112
+  },
+  "backend/app.py::stitched_output_filename_local": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 132,
+    "line_end": 132
+  },
+  "backend/app.py::stitched_output_path_local": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 133,
+    "line_end": 133
+  },
+  "backend/app.py::stitched_image_np": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 136,
+    "line_end": 136
+  },
+  "backend/app.py::supabase_file_path": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 163,
+    "line_end": 163
+  },
+  "backend/app.py::panorama_url": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 166,
+    "line_end": 166
+  },
+  "backend/app.py::room_panorama_urls": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 206,
+    "line_end": 206
+  },
+  "backend/app.py::tour_id": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 207,
+    "line_end": 207
+  },
+  "backend/app.py::room_name": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 289,
+    "line_end": 289
+  },
+  "backend/app.py::files": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 290,
+    "line_end": 290
+  },
+  "backend/app.py::data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 345,
+    "line_end": 345
+  },
+  "backend/app.py::img_bytes": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 157,
+    "line_end": 157
+  },
+  "backend/app.py::upload_result": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 168,
+    "line_end": 172
+  },
+  "backend/app.py::tour_entry_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 218,
+    "line_end": 218
+  },
+  "backend/app.py::existing_tour_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 219,
+    "line_end": 219
+  },
+  "backend/app.py::room_files_map": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 240,
+    "line_end": 240
+  },
+  "backend/app.py::first_room_processed": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 250,
+    "line_end": 250
+  },
+  "backend/app.py::processed_result": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 301,
+    "line_end": 301
+  },
+  "backend/app.py::new_panorama_url": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 302,
+    "line_end": 302
+  },
+  "backend/app.py::update_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 309,
+    "line_end": 311
+  },
+  "backend/app.py::old_room_name": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 353,
+    "line_end": 353
+  },
+  "backend/app.py::new_room_name": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 354,
+    "line_end": 354
+  },
+  "backend/app.py::pan_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 373,
+    "line_end": 373
+  },
+  "backend/app.py::tour_check_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 391,
+    "line_end": 391
+  },
+  "backend/app.py::old_file_path_in_bucket": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 396,
+    "line_end": 396
+  },
+  "backend/app.py::new_file_path_in_bucket": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 397,
+    "line_end": 397
+  },
+  "backend/app.py::file_path_in_bucket": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 447,
+    "line_end": 447
+  },
+  "backend/app.py::pan_del_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 457,
+    "line_end": 457
+  },
+  "backend/app.py::mark_from_del_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 461,
+    "line_end": 461
+  },
+  "backend/app.py::mark_to_del_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 462,
+    "line_end": 462
+  },
+  "backend/app.py::tip_del_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 466,
+    "line_end": 466
+  },
+  "backend/app.py::audio_del_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 471,
+    "line_end": 471
+  },
+  "backend/app.py::audio_file_path_in_bucket": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 475,
+    "line_end": 475
+  },
+  "backend/app.py::tour_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 486,
+    "line_end": 486
+  },
+  "backend/app.py::tour_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 505,
+    "line_end": 505
+  },
+  "backend/app.py::tour_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 506,
+    "line_end": 506
+  },
+  "backend/app.py::start_room": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 511,
+    "line_end": 511
+  },
+  "backend/app.py::panoramas_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 515,
+    "line_end": 515
+  },
+  "backend/app.py::panoramas": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 516,
+    "line_end": 516
+  },
+  "backend/app.py::panorama_urls": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 520,
+    "line_end": 520
+  },
+  "backend/app.py::final_start_room": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 529,
+    "line_end": 529
+  },
+  "backend/app.py::markers_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 549,
+    "line_end": 549
+  },
+  "backend/app.py::markers_raw": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 550,
+    "line_end": 550
+  },
+  "backend/app.py::markers_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 554,
+    "line_end": 554
+  },
+  "backend/app.py::tooltips_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 576,
+    "line_end": 576
+  },
+  "backend/app.py::tooltips_raw": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 577,
+    "line_end": 577
+  },
+  "backend/app.py::tooltips_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 581,
+    "line_end": 581
+  },
+  "backend/app.py::audio_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 604,
+    "line_end": 604
+  },
+  "backend/app.py::audio_raw": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 605,
+    "line_end": 605
+  },
+  "backend/app.py::audio_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 608,
+    "line_end": 608
+  },
+  "backend/app.py::response_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 617,
+    "line_end": 624
+  },
+  "backend/app.py::room_from": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 639,
+    "line_end": 639
+  },
+  "backend/app.py::new_markers": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 640,
+    "line_end": 640
+  },
+  "backend/app.py::delete_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 649,
+    "line_end": 649
+  },
+  "backend/app.py::new_tooltips": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 684,
+    "line_end": 684
+  },
+  "backend/app.py::audio_file": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 727,
+    "line_end": 727
+  },
+  "backend/app.py::supabase_audio_path": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 737,
+    "line_end": 737
+  },
+  "backend/app.py::db_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 760,
+    "line_end": 764
+  },
+  "backend/app.py::new_start_room": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 821,
+    "line_end": 821
+  },
+  "backend/app.py::response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 830,
+    "line_end": 830
+  },
+  "backend/app.py::filename": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 118,
+    "line_end": 118
+  },
+  "backend/app.py::save_path": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 119,
+    "line_end": 119
+  },
+  "backend/app.py::public_url": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 178,
+    "line_end": 178
+  },
+  "backend/app.py::tour_name": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 223,
+    "line_end": 223
+  },
+  "backend/app.py::insert_tour_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 226,
+    "line_end": 226
+  },
+  "backend/app.py::insert_tour_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 231,
+    "line_end": 231
+  },
+  "backend/app.py::insert_response": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 317,
+    "line_end": 319
+  },
+  "backend/app.py::new_public_url": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 407,
+    "line_end": 407
+  },
+  "backend/app.py::remaining_panoramas": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 489,
+    "line_end": 489
+  },
+  "backend/app.py::required_marker_keys": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 556,
+    "line_end": 556
+  },
+  "backend/app.py::from_room": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 561,
+    "line_end": 561
+  },
+  "backend/app.py::required_tooltip_keys": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 583,
+    "line_end": 583
+  },
+  "backend/app.py::markers_to_insert": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 653,
+    "line_end": 653
+  },
+  "backend/app.py::insert_res": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 665,
+    "line_end": 665
+  },
+  "backend/app.py::tooltips_to_insert": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 697,
+    "line_end": 697
+  },
+  "backend/app.py::first_valid_room": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 534,
+    "line_end": 534
+  },
+  "backend/app.py::marker_id": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 655,
+    "line_end": 655
+  },
+  "backend/app.py::tooltip_id": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 699,
+    "line_end": 699
+  },
+  "backend/app.py::audio_url": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 750,
+    "line_end": 750
+  }
+}

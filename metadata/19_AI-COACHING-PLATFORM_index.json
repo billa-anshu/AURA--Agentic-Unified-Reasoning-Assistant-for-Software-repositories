@@ -1,0 +1,206 @@
+{
+  "components/ui/textarea.jsx::Textarea": {
+    "kind": "function_or_class",
+    "path": "components/ui/textarea.jsx",
+    "line_start": 5,
+    "line_end": 20
+  },
+  "components/ui/dialog.jsx::Dialog": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/dialog.jsx::DialogTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "components/ui/dialog.jsx::DialogPortal": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "components/ui/dialog.jsx::DialogClose": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "components/ui/dialog.jsx::DialogOverlay": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 33,
+    "line_end": 73
+  },
+  "components/ui/dialog.jsx::DialogContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 48,
+    "line_end": 88
+  },
+  "components/ui/dialog.jsx::DialogHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 74,
+    "line_end": 114
+  },
+  "components/ui/dialog.jsx::DialogFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 86,
+    "line_end": 126
+  },
+  "components/ui/dialog.jsx::DialogTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 98,
+    "line_end": 133
+  },
+  "components/ui/dialog.jsx::DialogDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.jsx",
+    "line_start": 110,
+    "line_end": 133
+  },
+  "components/ui/button.jsx::Button": {
+    "kind": "function_or_class",
+    "path": "components/ui/button.jsx",
+    "line_start": 38,
+    "line_end": 55
+  },
+  "components/magicui/blur-fade.jsx::BlurFade": {
+    "kind": "function_or_class",
+    "path": "components/magicui/blur-fade.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "services/GlobalServices.jsx::AIModel": {
+    "kind": "function_or_class",
+    "path": "services/GlobalServices.jsx",
+    "line_start": 9,
+    "line_end": 28
+  },
+  "app/provider.js::Provider": {
+    "kind": "function_or_class",
+    "path": "app/provider.js",
+    "line_start": 7,
+    "line_end": 17
+  },
+  "app/AuthProvider.jsx::AuthProvider": {
+    "kind": "function_or_class",
+    "path": "app/AuthProvider.jsx",
+    "line_start": 9,
+    "line_end": 34
+  },
+  "app/(main)/layout.jsx::DashboardLayout": {
+    "kind": "function_or_class",
+    "path": "app/(main)/layout.jsx",
+    "line_start": 4,
+    "line_end": 18
+  },
+  "app/(main)/discussion-room/[roomid]/page.jsx::DiscussionRoom": {
+    "kind": "function_or_class",
+    "path": "app/(main)/discussion-room/[roomid]/page.jsx",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "app/(main)/discussion-room/[roomid]/page.jsx::checkVoices": {
+    "kind": "function_or_class",
+    "path": "app/(main)/discussion-room/[roomid]/page.jsx",
+    "line_start": 56,
+    "line_end": 96
+  },
+  "app/(main)/discussion-room/[roomid]/page.jsx::startListening": {
+    "kind": "function_or_class",
+    "path": "app/(main)/discussion-room/[roomid]/page.jsx",
+    "line_start": 104,
+    "line_end": 144
+  },
+  "app/(main)/discussion-room/[roomid]/page.jsx::stopListening": {
+    "kind": "function_or_class",
+    "path": "app/(main)/discussion-room/[roomid]/page.jsx",
+    "line_start": 156,
+    "line_end": 196
+  },
+  "app/(main)/discussion-room/[roomid]/page.jsx::checkVoiceSupport": {
+    "kind": "function_or_class",
+    "path": "app/(main)/discussion-room/[roomid]/page.jsx",
+    "line_start": 163,
+    "line_end": 203
+  },
+  "app/(main)/discussion-room/[roomid]/page.jsx::handleSendToAI": {
+    "kind": "function_or_class",
+    "path": "app/(main)/discussion-room/[roomid]/page.jsx",
+    "line_start": 169,
+    "line_end": 209
+  },
+  "app/(main)/discussion-room/[roomid]/page.jsx::speakResponse": {
+    "kind": "function_or_class",
+    "path": "app/(main)/discussion-room/[roomid]/page.jsx",
+    "line_start": 220,
+    "line_end": 260
+  },
+  "app/(main)/discussion-room/[roomid]/page.jsx::handleMicIcon": {
+    "kind": "function_or_class",
+    "path": "app/(main)/discussion-room/[roomid]/page.jsx",
+    "line_start": 276,
+    "line_end": 316
+  },
+  "app/(main)/_components/ChatSession.jsx::ChatComponent": {
+    "kind": "function_or_class",
+    "path": "app/(main)/_components/ChatSession.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "app/(main)/_components/AppHeader.jsx::AppHeader": {
+    "kind": "function_or_class",
+    "path": "app/(main)/_components/AppHeader.jsx",
+    "line_start": 6,
+    "line_end": 31
+  },
+  "app/(main)/dashboard/page.jsx::Dashboard": {
+    "kind": "function_or_class",
+    "path": "app/(main)/dashboard/page.jsx",
+    "line_start": 6,
+    "line_end": 18
+  },
+  "app/(main)/dashboard/_components/UserInputDialog.jsx::UserInputDialog": {
+    "kind": "function_or_class",
+    "path": "app/(main)/dashboard/_components/UserInputDialog.jsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "app/(main)/dashboard/_components/UserInputDialog.jsx::onClickNext": {
+    "kind": "function_or_class",
+    "path": "app/(main)/dashboard/_components/UserInputDialog.jsx",
+    "line_start": 29,
+    "line_end": 69
+  },
+  "app/(main)/dashboard/_components/Feedback.jsx::Feedback": {
+    "kind": "function_or_class",
+    "path": "app/(main)/dashboard/_components/Feedback.jsx",
+    "line_start": 3,
+    "line_end": 12
+  },
+  "app/(main)/dashboard/_components/History.jsx::History": {
+    "kind": "function_or_class",
+    "path": "app/(main)/dashboard/_components/History.jsx",
+    "line_start": 3,
+    "line_end": 12
+  },
+  "app/(main)/dashboard/_components/FeatureAssistants.jsx::FeatureAssistants": {
+    "kind": "function_or_class",
+    "path": "app/(main)/dashboard/_components/FeatureAssistants.jsx",
+    "line_start": 10,
+    "line_end": 50
+  },
+  "lib/utils.js::cn": {
+    "kind": "function_or_class",
+    "path": "lib/utils.js",
+    "line_start": 4,
+    "line_end": 6
+  }
+}

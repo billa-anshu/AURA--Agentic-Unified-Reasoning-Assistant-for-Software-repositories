@@ -1,0 +1,84 @@
+Based on the provided repository content, here is a structured summary report of the project.
+
+### 1. Overall Purpose and Architecture
+
+**Purpose:** This project is a **home services booking platform** that connects customers with workers for various home services. The application enables customers to browse available services, view workers, and book appointments.
+
+**Architecture:** The application follows a standard **Model-View-Controller (MVC)** architecture with Spring Boot.
+
+- **Presentation Layer (Controllers):** Handles HTTP requests and responses. Controllers include `HomeController` for the main page [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=1-1], `AuthController` for authentication [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=AuthController;lines=1-1], `ServiceController` for service management [cite:file=src/main/java/com/app/controller/ServiceController.java;symbol=ServiceController;lines=1-1], `BookingController` for booking management [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=1-1], and `WorkerController` for worker management [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=WorkerController;lines=1-1].
+- **Business Logic Layer (Services):** Contains service classes for business logic, including `DataLoader` for initializing data [cite:file=src/main/java/com/app/service/DataLoader.java;symbol=DataLoader;lines=1-1] and `EmailService` for email notifications [cite:file=src/main/java/com/app/service/EmailService.java;symbol=EmailService;lines=1-1].
+- **Data Access Layer (Repositories):** Uses Spring Data JPA for database operations. Repositories include `CustomerRepository` [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=CustomerRepository;lines=1-1], `WorkerRepository` [cite:file=src/main/java/com/app/repository/WorkerRepository.java;symbol=WorkerRepository;lines=1-1], `HomeServiceRepository` [cite:file=src/main/java/com/app/repository/HomeServiceRepository.java;symbol=HomeServiceRepository;lines=1-1], and `BookingRepository` [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=1-1].
+- **Model Layer (Entities):** Represents domain objects including `Customer` [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=1-1], `Worker` [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=1-1], `HomeService` [cite:file=src/main/java/com/app/model/HomeService.java;symbol=HomeService;lines=1-1], and `Booking` [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=1-1].
+
+The technology stack is Spring Boot with Spring Data JPA [cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=HomeServicesApplication;lines=7-8], and the application uses server-side rendering with Thymeleaf or similar templating (implied by controller returning view names).
+
+### 2. Key Components / Modules and What They Do
+
+**Customer Module:** The `Customer` entity stores user information including name, email (unique), and password [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=8-9]. The `CustomerRepository` provides authentication methods to find customers by email and password, and check email existence [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=CustomerRepository;lines=8-9].
+
+**Worker Module:** The `Worker` entity represents service providers with name, email, phone, experience, and an associated `HomeService` [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=11-15]. The `WorkerRepository` provides methods to find workers by email and by service ID [cite:file=src/main/java/com/app/repository/WorkerRepository.java;symbol=WorkerRepository;lines=8-11].
+
+**Service Module:** The `HomeService` entity represents the different types of services available (e.g., plumbing, electrical work) [cite:file=src/main/java/com/app/model/HomeService.java;symbol=HomeService;lines=8-13]. The `HomeServiceRepository` provides basic CRUD operations [cite:file=src/main/java/com/app/repository/HomeServiceRepository.java;symbol=HomeServiceRepository;lines=1-1].
+
+**Booking Module:** The `Booking` entity tracks bookings with relationships to Customer, Service, and Worker [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=10-22]. The `BookingRepository` provides methods to check for existing bookings and retrieve bookings by customer or worker ID [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=8-16].
+
+**Service Layer Module:** The `DataLoader` class likely initializes sample data at application startup [cite:file=src/main/java/com/app/service/DataLoader.java;symbol=DataLoader;lines=1-1]. The `EmailService` handles email notifications for bookings and other events [cite:file=src/main/java/com/app/service/EmailService.java;symbol=EmailService;lines=1-1].
+
+### 3. Notable Functions or Classes and Their Responsibilities
+
+- **`HomeController` Class:**
+    - Constructor injects `HomeServiceRepository` [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=14-16].
+    - `index()` method handles both "/" and "/index" routes [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=19-19].
+    - Adds all services to the model for display [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=20-20].
+    - Adds customer session attribute to the model for authentication state [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=21-21].
+    - Returns the "index" view [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=22-22].
+
+- **`Booking` Entity:**
+    - Many-to-one relationships with Customer, HomeService, and Worker [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=11-22].
+    - `@PrePersist` callback sets `bookingDate` to current time if not already set [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=25-28].
+    - Sets default status to "Booked" if not provided [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=26-27].
+
+- **`Customer` Entity:**
+    - Uses email as a unique identifier with non-null constraint [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=8-9].
+    - Password field is non-null [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=12-12].
+
+- **`Worker` Entity:**
+    - Many-to-one relationship with HomeService, fetched lazily [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=14-15].
+    - Fields include name, email, phone, and experience [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=11-13].
+
+- **`CustomerRepository` Methods:**
+    - `findByEmailAndPassword(String email, String password)`: Authenticates a customer [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=CustomerRepository;lines=8-8].
+    - `existsByEmail(String email)`: Checks if a customer with the given email exists [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=CustomerRepository;lines=9-9].
+
+- **`WorkerRepository` Methods:**
+    - `findByEmail(String email)`: Finds a worker by email [cite:file=src/main/java/com/app/repository/WorkerRepository.java;symbol=WorkerRepository;lines=8-8].
+    - `findByServiceId(Integer serviceId)`: Lists workers offering a specific service [cite:file=src/main/java/com/app/repository/WorkerRepository.java;symbol=WorkerRepository;lines=10-10].
+
+- **`BookingRepository` Methods:**
+    - `existsByCustomerIdAndServiceIdAndWorkerIdAndStatus()`: Prevents duplicate bookings by checking for existing bookings [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=9-12].
+    - `findByCustomerIdOrderByIdDesc()`: Retrieves a customer's booking history [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=14-14].
+    - `findByWorkerIdOrderByIdDesc()`: Retrieves a worker's booking history [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=16-16].
+
+### 4. Any Design Patterns You Observe
+
+- **MVC (Model-View-Controller) Pattern:** The application cleanly separates:
+    - **Model:** Entity classes (Customer, Worker, HomeService, Booking) [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=1-1], [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=1-1], [cite:file=src/main/java/com/app/model/HomeService.java;symbol=HomeService;lines=1-1], [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=1-1].
+    - **View:** Templates (implied by controller returning view names like "index") [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=22-22].
+    - **Controller:** Classes like HomeController, AuthController, BookingController handle HTTP requests [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=1-1], [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=AuthController;lines=1-1].
+
+- **Repository Pattern:** Spring Data JPA repositories abstract data access for each entity (CustomerRepository, WorkerRepository, HomeServiceRepository, BookingRepository) [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=CustomerRepository;lines=1-1], [cite:file=src/main/java/com/app/repository/WorkerRepository.java;symbol=WorkerRepository;lines=1-1], [cite:file=src/main/java/com/app/repository/HomeServiceRepository.java;symbol=HomeServiceRepository;lines=1-1], [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=1-1].
+
+- **Dependency Injection Pattern:** Used throughout with constructor injection in controllers like `HomeController` [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=14-16] and field injection implied in services.
+
+- **Service Layer Pattern:** The `DataLoader` and `EmailService` classes encapsulate business logic, acting as a facade between controllers and repositories [cite:file=src/main/java/com/app/service/DataLoader.java;symbol=DataLoader;lines=1-1], [cite:file=src/main/java/com/app/service/EmailService.java;symbol=EmailService;lines=1-1].
+
+- **Factory Pattern (Implied):** The `DataLoader` likely uses a factory-like pattern to create and save initial test data [cite:file=src/main/java/com/app/service/DataLoader.java;symbol=DataLoader;lines=1-1].
+
+- **Template Method Pattern:** The `@PrePersist` callback in `Booking` is a template method that runs before persistence to set default values [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=25-28].
+
+- **Composite Pattern (Implied):** The booking system combines Customer, Service, and Worker entities into a single Booking entity [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=10-22].
+
+### Overall Summary
+
+This repository contains the source code for a **Spring Boot-based home services booking platform**. The application enables customers to browse available home services, view workers, and book appointments [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=20-20]. The architecture follows MVC with clear separation of concerns across controller, service, repository, and model layers. Key features include customer authentication [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=CustomerRepository;lines=8-9], service and worker management [cite:file=src/main/java/com/app/repository/WorkerRepository.java;symbol=WorkerRepository;lines=10-10], booking with duplicate prevention [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=8-12], and email notifications [cite:file=src/main/java/com/app/service/EmailService.java;symbol=EmailService;lines=1-1]. The system demonstrates enterprise patterns including MVC, Repository, Service Layer, and Dependency Injection, providing a solid foundation for a home services marketplace [cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=HomeServicesApplication;lines=1-1].

@@ -1,0 +1,73 @@
+Structured Repository Summary
+1. Overall purpose and architecture
+
+The repository is an AI study-assistant backend/library centered on processing uploaded PDFs into searchable text and generating study material from that content. The PDF-processing module explicitly converts PDFs into LangChain Document chunks for downstream embedding/retrieval. [cite:file=src/pdf_processor.py;symbol=process_pdf;lines=43-46]
+
+The architecture separates concerns into configuration, authentication, document processing, and AI-generated study aids. The provided files define centralized configuration in Config, SQLite-backed authentication functions in auth.py, PDF ingestion/chunking in pdf_processor.py, and flashcard generation in flashcard_generator.py. [cite:file=src/config.py;symbol=Config;lines=11-22] [cite:file=src/auth.py;symbol=register_user;lines=42-61] [cite:file=src/pdf_processor.py;symbol=process_pdf;lines=43-46] [cite:file=src/flashcard_generator.py;symbol=generate_flashcards;lines=37-59]
+
+The AI layer uses LangChain abstractions and a Gemini-backed LLM obtained through get_llm, while generation calls are wrapped by invoke_with_retry. [cite:file=src/flashcard_generator.py;symbol=generate_flashcards;lines=42-47]
+
+2. Key components / modules
+Configuration
+
+Config centralizes the Google API key, embedding model, Gemini model, Chroma persistence directory, and chunking/retrieval parameters, with values loaded from environment variables and defaults supplied where appropriate. [cite:file=src/config.py;symbol=Config;lines=11-22]
+
+Config.is_ready() provides a readiness check that returns whether a Gemini API key is available. [cite:file=src/config.py;symbol=is_ready;lines=24-26]
+
+Authentication
+
+AuthUser defines the authenticated-user shape containing an integer ID, username, and email. [cite:file=src/auth.py;symbol=AuthUser;lines=17-20]
+
+hash_password() hashes passwords using bcrypt and verify_password() checks a supplied password against a bcrypt hash, returning False for malformed hashes. [cite:file=src/auth.py;symbol=hash_password;lines=23-24] [cite:file=src/auth.py;symbol=verify_password;lines=27-32]
+
+validate_registration() validates required fields, username format, email format, minimum password length, and password confirmation. [cite:file=src/auth.py;symbol=validate_registration;lines=35-40]
+
+register_user() checks whether the username or email already exists, stores a bcrypt password hash in the SQLite users table, commits the transaction, and returns the inserted user ID. [cite:file=src/auth.py;symbol=register_user;lines=43-61]
+
+authenticate_user() looks up a user by username, verifies the stored password hash, and returns the user's ID, username, and email on successful authentication. [cite:file=src/auth.py;symbol=authenticate_user;lines=64-78]
+
+PDF processing
+
+extract_text_from_pdf() reads PDF bytes with PdfReader, extracts text page-by-page, and creates LangChain Document objects containing the source filename and page number as metadata. [cite:file=src/pdf_processor.py;symbol=extract_text_from_pdf;lines=13-34]
+
+extract_text_from_pdf() raises a ValueError when no extractable text is found, explicitly accounting for scanned/image-only PDFs that may require OCR. [cite:file=src/pdf_processor.py;symbol=extract_text_from_pdf;lines=35-40]
+
+chunk_documents() uses RecursiveCharacterTextSplitter with configurable chunk size and overlap to divide page-level documents into smaller chunks. [cite:file=src/pdf_processor.py;symbol=chunk_documents;lines=48-57]
+
+process_pdf() provides a convenience pipeline that performs extraction followed by chunking. [cite:file=src/pdf_processor.py;symbol=process_pdf;lines=60-63]
+
+full_text_from_documents() reconstructs plain text by joining document contents with blank lines, which the module identifies as being used for summarization. [cite:file=src/pdf_processor.py;symbol=full_text_from_documents;lines=66-68]
+
+Flashcard generation
+
+FLASHCARD_PROMPT instructs the language model to generate definition-style and concept-check flashcards from supplied study material, keep answers concise, avoid unsupported facts, and return JSON. [cite:file=src/flashcard_generator.py;symbol=FLASHCARD_PROMPT;lines=12-34]
+
+_extract_json() removes optional Markdown code fences and parses the remaining response as JSON. [cite:file=src/flashcard_generator.py;symbol=_extract_json;lines=28-30]
+
+generate_flashcards() selects representative document text, invokes the LLM with the flashcard prompt, and accepts either a JSON array or an object containing flashcards/cards. [cite:file=src/flashcard_generator.py;symbol=generate_flashcards;lines=37-54]
+
+generate_flashcards() converts JSON parsing or shape failures into a ValueError that includes a truncated portion of the model response. [cite:file=src/flashcard_generator.py;symbol=generate_flashcards;lines=55-59]
+
+3. Notable functions/classes and responsibilities
+Component	Responsibility
+Config	Centralizes environment-driven AI, storage, and retrieval configuration. [cite:file=src/config.py;symbol=Config;lines=11-22]
+Config.is_ready	Checks whether the Gemini API key is configured. [cite:file=src/config.py;symbol=is_ready;lines=24-26]
+hash_password	Produces bcrypt password hashes. [cite:file=src/auth.py;symbol=hash_password;lines=23-24]
+verify_password	Validates passwords against bcrypt hashes and fails closed on malformed hashes. [cite:file=src/auth.py;symbol=verify_password;lines=27-32]
+register_user	Creates a SQLite user after checking username/email uniqueness. [cite:file=src/auth.py;symbol=register_user;lines=43-61]
+authenticate_user	Authenticates a username/password pair and returns a sanitized user dictionary. [cite:file=src/auth.py;symbol=authenticate_user;lines=64-78]
+extract_text_from_pdf	Converts PDF pages into metadata-bearing LangChain documents. [cite:file=src/pdf_processor.py;symbol=extract_text_from_pdf;lines=13-34]
+chunk_documents	Splits documents into overlapping retrieval chunks. [cite:file=src/pdf_processor.py;symbol=chunk_documents;lines=48-57]
+process_pdf	Combines extraction and chunking into one operation. [cite:file=src/pdf_processor.py;symbol=process_pdf;lines=60-63]
+generate_flashcards	Uses an LLM to create structured study flashcards from document content. [cite:file=src/flashcard_generator.py;symbol=generate_flashcards;lines=37-59]
+4. Design patterns and architectural observations
+
+Pipeline/composition pattern: PDF processing is explicitly composed as extract -> chunk, with process_pdf() acting as the higher-level pipeline entry point. [cite:file=src/pdf_processor.py;symbol=process_pdf;lines=60-63]
+
+Configuration object pattern: Runtime settings are centralized in the Config class rather than being scattered through processing code, with environment variables providing overrides. [cite:file=src/config.py;symbol=Config;lines=11-22]
+
+Adapter/convenience-wrapper pattern: process_pdf() hides the two-step extraction/chunking implementation behind a single function, while full_text_from_documents() provides a representation conversion for consumers such as summarization. [cite:file=src/pdf_processor.py;symbol=process_pdf;lines=60-63] [cite:file=src/pdf_processor.py;symbol=full_text_from_documents;lines=66-68]
+
+Service-style separation of concerns: Authentication operations are isolated in auth.py, PDF ingestion in pdf_processor.py, configuration in config.py, and flashcard generation in flashcard_generator.py. [cite:file=src/auth.py;symbol=register_user;lines=42-61] [cite:file=src/pdf_processor.py;symbol=process_pdf;lines=43-46] [cite:file=src/config.py;symbol=Config;lines=11-22] [cite:file=src/flashcard_generator.py;symbol=generate_flashcards;lines=37-59]
+
+Defensive parsing/failure handling: Password verification catches malformed bcrypt hashes, PDF ingestion rejects documents with no extractable text, and flashcard generation validates the model's JSON shape and raises descriptive errors for invalid output. [cite:file=src/auth.py;symbol=verify_password;lines=27-32] [cite:file=src/pdf_processor.py;symbol=extract_text_from_pdf;lines=35-40] [cite:file=src/flashcard_generator.py;symbol=generate_flashcards;lines=49-59]

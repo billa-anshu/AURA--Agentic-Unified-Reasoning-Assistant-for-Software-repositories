@@ -1,0 +1,45 @@
+# Repository Summary Report: Steganography Image App (Supabase-backed)
+
+## ⚠️ Security Note (upfront)
+
+Before the structured analysis: this repository contains a **hardcoded Supabase project URL and API key** committed directly in source [cite:file=src/supabaseClient.js;symbol=supabaseClient.js;lines=3-4]. While Supabase "anon" keys are designed to be exposed client-side, this should still be flagged since it's paired with an `uploads` storage bucket and database table that appear to accept authenticated writes — worth confirming Row Level Security policies are properly configured on the Supabase project.
+
+## 1. Overall Purpose and Architecture
+
+This is a **React single-page application** with a companion **Python backend script**, built around image steganography — the file names (`StegoApp.js`, `stego-images` storage bucket, `psnr.py` — a common image-quality metric used in steganography/watermarking) and upload flow strongly indicate a system for hiding/encoding data in images, uploading them, and storing metadata [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=7-35]. The frontend was bootstrapped with Create React App, evidenced by `reportWebVitals.js`, `setupTests.js`, and the standard render entry point [cite:file=src/index.js;symbol=index.js;lines=1-16].
+
+The architecture is a **client-heavy SPA backed by Supabase** (used as both auth provider and backend-as-a-service for storage/database), plus a separate `backend/app.py` Python service and a standalone `psnr.py` script whose contents were not included in the provided file contents, so no functional claims can be made about them. The React app uses `react-router-dom` for route-based navigation with authentication gating handled entirely in local component state [cite:file=src/App.js;symbol=App;lines=8-9].
+
+## 2. Key Components / Modules and What They Do
+
+- **`supabaseClient.js`** — initializes and exports a shared Supabase client instance using a hardcoded project URL and anon key [cite:file=src/supabaseClient.js;symbol=supabase;lines=1-6].
+- **`App.js`** — the root component; defines four routes (`/login`, `/app`, `/upload`, and a catch-all `*`), gating `/app` and `/upload` behind an `isAuthenticated` boolean and redirecting unauthenticated users to `/login` [cite:file=src/App.js;symbol=App;lines=15-46].
+- **`LoginPage.js`** — imported and used in `App.js` as the login route's component, invoked with an `onLoginSuccess` callback [cite:file=src/App.js;symbol=App;lines=3-19], but its own source was not included in the provided content, so its internal implementation cannot be described.
+- **`StegoApp.js`** — imported and rendered at the `/app` route as the main authenticated application view [cite:file=src/App.js;symbol=App;lines=4-27], but its source was not provided.
+- **`UploadComponent.js`** — a form-based file upload UI; lets the user select an image file, triggers an upload via `uploadImageToSupabase`, and displays status messages and a preview of the uploaded image on success [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=6-32].
+- **`uploadToSupabase.js`** — handles the actual upload pipeline: checks for an active Supabase auth session, uploads the file to the `stego-images` storage bucket, retrieves its public URL, and inserts a metadata record into the `uploads` table [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=7-35].
+- **`Databaseinsert.js`** — a diagnostic/test utility for verifying database insert functionality independent of the upload flow, checking authentication and inserting a synthetic test record into the `uploads` table [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=4-38].
+- **`reportWebVitals.js`** — a standard Create React App performance-measurement utility that dynamically loads `web-vitals` and reports Core Web Vitals metrics if given a callback [cite:file=src/reportWebVitals.js;symbol=reportWebVitals;lines=1-11].
+- **`index.js`** — application entry point; mounts `App` into the DOM within `React.StrictMode` and calls `reportWebVitals` [cite:file=src/index.js;symbol=index.js;lines=7-16].
+- **`App.test.js`** — a default Create React App test asserting a "learn react" link renders; this appears to be an unmodified template test unrelated to the app's actual (steganography/upload) functionality [cite:file=src/App.test.js;symbol=test;lines=4-8].
+- **`HomePage.jsx`** and **`backend/app.py`** are present in the file tree but their contents were not included, so no claims are made about them.
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`uploadImageToSupabase(file, encryptionKey)`** — the core upload function: validates a file was provided, confirms an active Supabase session exists, uploads the file to the `stego-images` bucket under a `stego/{timestamp}-{filename}` path, fetches its public URL, and writes a row to the `uploads` table containing the user's email, file name, public URL, and an `encryption_key` field — the latter suggesting the app encodes/encrypts data as part of the steganography workflow [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=7-35].
+- **`App.handleLoginSuccess`** — a simple callback that flips `isAuthenticated` to `true`, passed down into `LoginPage` to be invoked upon successful login [cite:file=src/App.js;symbol=handleLoginSuccess;lines=10-12].
+- **`UploadComponent.handleUpload`** — an async handler that sets a "Uploading..." status, calls `uploadImageToSupabase` with a hardcoded email (`'yasha@example.com'`), and updates UI state based on success or failure [cite:file=src/UploadComponent.js;symbol=handleUpload;lines=10-18]. Note that this hardcoded email appears to be leftover test/debug code rather than using the actual authenticated user's email.
+- **`testDatabaseInsert()`** — an async diagnostic function that authenticates the current user, builds a synthetic test record, attempts to insert it into the `uploads` table, and logs detailed error information (error code, message, details) to help debug insert failures [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=4-38].
+- **Module-level top-level `await`** in `uploadToSupabase.js` — the file calls `await supabase.auth.getSession()` and logs session info directly at module scope (outside any function), before the `uploadImageToSupabase` function definition [cite:file=src/uploadToSupabase.js;symbol=uploadToSupabase.js;lines=3-5]. This is debugging code left in the module and will execute as a side effect on import, which is a notable code-quality issue.
+
+## 4. Design Patterns Observed
+
+- **Protected Route / Route Guard Pattern**: Routes in `App.js` conditionally render either the target component or a `<Navigate>` redirect based on the `isAuthenticated` state, including a catch-all route for unmatched paths [cite:file=src/App.js;symbol=App;lines=15-46].
+- **Backend-as-a-Service (BaaS) Client Pattern**: A single shared Supabase client is instantiated once and imported wherever needed (`Databaseinsert.js`, `uploadToSupabase.js`), rather than creating new client instances per call [cite:file=src/supabaseClient.js;symbol=supabase;lines=6-6][cite:file=src/uploadToSupabase.js;symbol=uploadToSupabase.js;lines=1-1][cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=1-1].
+- **Result-Object Error Handling**: Both `uploadImageToSupabase` and `testDatabaseInsert` consistently return plain objects with either an `error` key or a `success`/`url`/`data` key rather than throwing exceptions, letting calling UI code branch on the result shape [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=10-34][cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=8-37].
+- **Lifting State Up**: Authentication state (`isAuthenticated`) is held in the root `App` component and passed down to children via props/callbacks (e.g., `onLoginSuccess` to `LoginPage`) [cite:file=src/App.js;symbol=App;lines=9-19].
+- **Lazy/Dynamic Import**: `reportWebVitals.js` dynamically imports the `web-vitals` module only when a valid callback is supplied [cite:file=src/reportWebVitals.js;symbol=reportWebVitals;lines=1-3].
+
+## Scope Limitations
+
+The following files appear in the file tree but their contents were **not provided**, so no functional claims have been made about them: `README.md`, `psnr.py`, `src/HomePage.jsx`, `src/LoginPage.js`, `src/StegoApp.js`, and `backend/app.py`. Given the naming (`psnr.py`, `StegoApp.js`, `backend/app.py`), these likely contain the actual steganography encoding/decoding logic and image-quality evaluation, but this cannot be confirmed from the content available.

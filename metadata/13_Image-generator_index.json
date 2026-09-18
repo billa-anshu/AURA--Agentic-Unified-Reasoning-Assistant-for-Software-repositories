@@ -1,0 +1,158 @@
+{
+  "server/controllers/userController.js::registerUser": {
+    "kind": "function_or_class",
+    "path": "server/controllers/userController.js",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "server/controllers/userController.js::loginUser": {
+    "kind": "function_or_class",
+    "path": "server/controllers/userController.js",
+    "line_start": 32,
+    "line_end": 72
+  },
+  "server/controllers/userController.js::userCredits": {
+    "kind": "function_or_class",
+    "path": "server/controllers/userController.js",
+    "line_start": 54,
+    "line_end": 78
+  },
+  "server/controllers/imageController.js::generateImage": {
+    "kind": "function_or_class",
+    "path": "server/controllers/imageController.js",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "server/middlewares/auth.js::userAuth": {
+    "kind": "function_or_class",
+    "path": "server/middlewares/auth.js",
+    "line_start": 3,
+    "line_end": 25
+  },
+  "server/config/mongodb.js::connectDB": {
+    "kind": "function_or_class",
+    "path": "server/config/mongodb.js",
+    "line_start": 2,
+    "line_end": 8
+  },
+  "client/src/App.jsx::App": {
+    "kind": "function_or_class",
+    "path": "client/src/App.jsx",
+    "line_start": 13,
+    "line_end": 32
+  },
+  "client/src/components/GenerateBtn.jsx::GenerateBtn": {
+    "kind": "function_or_class",
+    "path": "client/src/components/GenerateBtn.jsx",
+    "line_start": 7,
+    "line_end": 35
+  },
+  "client/src/components/GenerateBtn.jsx::onClickHandler": {
+    "kind": "function_or_class",
+    "path": "client/src/components/GenerateBtn.jsx",
+    "line_start": 10,
+    "line_end": 35
+  },
+  "client/src/components/Description.jsx::Description": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Description.jsx",
+    "line_start": 5,
+    "line_end": 28
+  },
+  "client/src/components/Steps.jsx::Steps": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Steps.jsx",
+    "line_start": 5,
+    "line_end": 30
+  },
+  "client/src/components/Footer.jsx::Footer": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Footer.jsx",
+    "line_start": 4,
+    "line_end": 19
+  },
+  "client/src/components/Header.jsx::Header": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Header.jsx",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "client/src/components/Header.jsx::onClickHandler": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Header.jsx",
+    "line_start": 10,
+    "line_end": 50
+  },
+  "client/src/components/Navbar.jsx::Navbar": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Navbar.jsx",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "client/src/components/Login.jsx::Login": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Login.jsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "client/src/components/Login.jsx::onSubmitHandler": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Login.jsx",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "client/src/components/Testimonials.jsx::Testimonials": {
+    "kind": "function_or_class",
+    "path": "client/src/components/Testimonials.jsx",
+    "line_start": 5,
+    "line_end": 41
+  },
+  "client/src/pages/BuyCredit.jsx::BuyCredit": {
+    "kind": "function_or_class",
+    "path": "client/src/pages/BuyCredit.jsx",
+    "line_start": 7,
+    "line_end": 41
+  },
+  "client/src/pages/Result.jsx::Result": {
+    "kind": "function_or_class",
+    "path": "client/src/pages/Result.jsx",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "client/src/pages/Result.jsx::onSubmitHandler": {
+    "kind": "function_or_class",
+    "path": "client/src/pages/Result.jsx",
+    "line_start": 12,
+    "line_end": 52
+  },
+  "client/src/pages/Home.jsx::Home": {
+    "kind": "function_or_class",
+    "path": "client/src/pages/Home.jsx",
+    "line_start": 8,
+    "line_end": 20
+  },
+  "client/src/context/AppContext.jsx::AppContextProvider": {
+    "kind": "function_or_class",
+    "path": "client/src/context/AppContext.jsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "client/src/context/AppContext.jsx::loadCreditsData": {
+    "kind": "function_or_class",
+    "path": "client/src/context/AppContext.jsx",
+    "line_start": 29,
+    "line_end": 69
+  },
+  "client/src/context/AppContext.jsx::generateImage": {
+    "kind": "function_or_class",
+    "path": "client/src/context/AppContext.jsx",
+    "line_start": 52,
+    "line_end": 92
+  },
+  "client/src/context/AppContext.jsx::logout": {
+    "kind": "function_or_class",
+    "path": "client/src/context/AppContext.jsx",
+    "line_start": 76,
+    "line_end": 95
+  }
+}

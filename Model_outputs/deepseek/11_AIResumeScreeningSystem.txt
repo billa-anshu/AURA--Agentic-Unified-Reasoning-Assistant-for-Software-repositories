@@ -1,0 +1,89 @@
+Based on the provided repository content, here is a structured summary report of the project.
+
+### 1. Overall Purpose and Architecture
+
+**Purpose:** This project is an **AI-powered resume screening system** that helps recruiters analyze resumes against job descriptions using artificial intelligence. The system provides automated resume matching, candidate ranking, and analysis capabilities.
+
+**Architecture:** The application is a full-stack web application with a clear separation between frontend and backend.
+
+- **Frontend (React.js + Vite):** A modern single-page application built with React and Vite for fast development and build times [cite:file=frontend/vite.config.js;symbol=vite.config;lines=1-1]. The frontend uses React Router for client-side routing [cite:file=frontend/src/main.jsx;symbol=main;lines=3-3] and includes protected routes for authenticated users [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=1-1].
+- **Backend (Spring Boot):** A RESTful API built with Spring Boot, providing endpoints for authentication, resume management, job description management, and AI analysis [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java;symbol=BackendApplication;lines=1-1].
+- **AI Integration:** Uses Google's Gemini AI for resume analysis through the `GeminiConfig` and `AIAnalysisService` [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java;symbol=GeminiConfig;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1].
+- **Security:** Implements JWT-based authentication with `JwtUtil` and `JwtAuthenticationFilter` [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java;symbol=JwtUtil;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtAuthenticationFilter.java;symbol=JwtAuthenticationFilter;lines=1-1].
+
+The technology stack includes React with Vite for the frontend [cite:file=frontend/vite.config.js;symbol=vite.config;lines=1-1], Spring Boot for the backend [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java;symbol=BackendApplication;lines=1-1], Google Gemini AI for analysis [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java;symbol=GeminiConfig;lines=1-1], and JWT for security [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/SecurityConfig.java;symbol=SecurityConfig;lines=1-1].
+
+### 2. Key Components / Modules and What They Do
+
+**Authentication Module:** The `AuthController` handles user registration and login [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AuthController.java;symbol=AuthController;lines=1-1]. JWT is used for token-based authentication [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java;symbol=JwtUtil;lines=1-1]. The frontend `ProtectedRoute` component checks for a token in localStorage and redirects to login if not present [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=5-6].
+
+**Job Description Module:** The `JobDescription` entity stores job descriptions [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/JobDescription.java;symbol=JobDescription;lines=1-1]. The `JobDescriptionController` and `JobDescriptionService` handle CRUD operations [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/JobDescriptionController.java;symbol=JobDescriptionController;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java;symbol=JobDescriptionService;lines=1-1]. The frontend `Jobs` page displays available jobs [cite:file=frontend/src/pages/Jobs.jsx;symbol=Jobs;lines=1-1].
+
+**Resume Module:** The `Resume` entity stores resume data [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Resume.java;symbol=Resume;lines=1-1]. The `ResumeController` and `ResumeService` handle resume uploads and management [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/ResumeController.java;symbol=ResumeController;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/ResumeService.java;symbol=ResumeService;lines=1-1]. The frontend `Resumes` page allows users to manage resumes [cite:file=frontend/src/pages/Resumes.jsx;symbol=Resumes;lines=1-1].
+
+**AI Analysis Module:** The `AIAnalysisService` integrates with Google Gemini AI to analyze resumes against job descriptions [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1]. The `AIAnalysisController` provides endpoints for analysis and ranking [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java;symbol=AIAnalysisController;lines=1-1]. The frontend `analysisService` provides methods to analyze resumes and save results [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=5-6], [cite:file=frontend/src/services/analysisService.js;symbol=saveAnalysis;lines=9-11].
+
+**Ranking Module:** The `Ranking` page displays candidate rankings for a specific job [cite:file=frontend/src/pages/Ranking.jsx;symbol=Ranking;lines=1-1]. The `getRanking` service retrieves ranking data from the backend [cite:file=frontend/src/services/analysisService.js;symbol=getRanking;lines=20-21].
+
+**Data Layer:** Repositories handle data persistence including `RecruiterRepository`, `JobDescriptionRepository`, `ResumeRepository`, and `ResumeAnalysisRepository` [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/RecruiterRepository.java;symbol=RecruiterRepository;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/JobDescriptionRepository.java;symbol=JobDescriptionRepository;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/ResumeRepository.java;symbol=ResumeRepository;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/ResumeAnalysisRepository.java;symbol=ResumeAnalysisRepository;lines=1-1].
+
+### 3. Notable Functions or Classes and Their Responsibilities
+
+- **`ProtectedRoute` Component:**
+    - Checks for the presence of a JWT token in localStorage [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=5-5].
+    - Redirects to the login page if no token is found [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=6-7].
+    - Renders children components if authenticated [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=9-9].
+
+- **`Navbar` Component:**
+    - Provides navigation links to all major sections (Dashboard, Jobs, Resumes, Analysis, Ranking) [cite:file=frontend/src/components/Navbar.jsx;symbol=Navbar;lines=19-47].
+    - `logout()` function removes the JWT token and redirects to login [cite:file=frontend/src/components/Navbar.jsx;symbol=Navbar;lines=8-11].
+    - Includes a logout button [cite:file=frontend/src/components/Navbar.jsx;symbol=Navbar;lines=49-51].
+
+- **`analyzeResume` Service Function:**
+    - Makes a POST request to `/analysis/analyze` with resume text and job description [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=5-8].
+    - This endpoint uses Gemini AI for analysis without persisting results [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=4-4].
+
+- **`saveAnalysis` Service Function:**
+    - Makes a POST request to `/analysis/save/{resumeId}/{jobId}` to persist analysis results [cite:file=frontend/src/services/analysisService.js;symbol=saveAnalysis;lines=11-20].
+    - Sends resume text and job description in the request body [cite:file=frontend/src/services/analysisService.js;symbol=saveAnalysis;lines=16-19].
+
+- **`getRanking` Service Function:**
+    - Fetches candidate rankings for a specific job from the backend [cite:file=frontend/src/services/analysisService.js;symbol=getRanking;lines=24-25].
+    - Uses the endpoint `/analysis/rank/{jobId}` as defined in the backend [cite:file=frontend/src/services/analysisService.js;symbol=getRanking;lines=23-23].
+
+- **`App` Component:**
+    - Defines routes for all pages with protected routes for authenticated sections [cite:file=frontend/src/App.jsx;symbol=App;lines=14-57].
+    - Redirects unmatched routes to the login page [cite:file=frontend/src/App.jsx;symbol=App;lines=56-56].
+
+- **Backend Service Classes:**
+    - `RecruiterService`: Handles recruiter-related business logic [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java;symbol=RecruiterService;lines=1-1].
+    - `CustomUserDetailsService`: Implements Spring Security's user details service for authentication [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/CustomUserDetailsService.java;symbol=CustomUserDetailsService;lines=1-1].
+
+### 4. Any Design Patterns You Observe
+
+- **Component-Based Architecture:** The frontend is built with reusable React components (ProtectedRoute, Navbar, and page components) [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=1-1], [cite:file=frontend/src/components/Navbar.jsx;symbol=Navbar;lines=1-1], [cite:file=frontend/src/pages/Dashboard.jsx;symbol=Dashboard;lines=1-1].
+
+- **Single-Page Application Pattern:** The frontend uses React Router for client-side routing, enabling navigation without full page reloads [cite:file=frontend/src/main.jsx;symbol=main;lines=3-3], [cite:file=frontend/src/App.jsx;symbol=App;lines=14-57].
+
+- **Higher-Order Component Pattern:** The `ProtectedRoute` component acts similarly to a HOC by wrapping other components and adding authentication checks [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=3-3].
+
+- **MVC (Model-View-Controller) Pattern (Backend):** The backend follows MVC with:
+    - **Model:** Entity classes (Recruiter, JobDescription, Resume, ResumeAnalysis) [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Recruiter.java;symbol=Recruiter;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/JobDescription.java;symbol=JobDescription;lines=1-1].
+    - **Controller:** REST controllers handling HTTP requests [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AuthController.java;symbol=AuthController;lines=1-1].
+    - **Service Layer:** Business logic services [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1].
+
+- **Repository Pattern:** Spring Data JPA repositories abstract data access [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/RecruiterRepository.java;symbol=RecruiterRepository;lines=1-1].
+
+- **Dependency Injection Pattern:** Used throughout the backend with Spring's `@Autowired` and constructor injection in controllers and services [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java;symbol=AIAnalysisController;lines=1-1].
+
+- **DTO (Data Transfer Object) Pattern:** DTOs like `AnalysisRequest`, `AnalysisResponse`, `LoginRequest`, and `AuthResponse` are used to transfer data between layers [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisRequest.java;symbol=AnalysisRequest;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisResponse.java;symbol=AnalysisResponse;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/LoginRequest.java;symbol=LoginRequest;lines=1-1].
+
+- **Security Filter Pattern:** The `JwtAuthenticationFilter` intercepts requests to validate JWT tokens [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtAuthenticationFilter.java;symbol=JwtAuthenticationFilter;lines=1-1].
+
+- **Singleton Pattern:** The Gemini AI client and JWT utility are likely configured as singletons through Spring's component management [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java;symbol=GeminiConfig;lines=1-1], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java;symbol=JwtUtil;lines=1-1].
+
+- **Factory Pattern (Implied):** The `GeminiConfig` likely uses a factory approach to create and configure the Gemini AI client [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java;symbol=GeminiConfig;lines=1-1].
+
+### Overall Summary
+
+This repository contains the source code for an **AI-powered resume screening system** built with a React frontend and Spring Boot backend. The application enables recruiters to upload resumes, manage job descriptions, and use Google's Gemini AI to analyze resumes against job descriptions [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=5-6], [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1]. The system features JWT-based authentication [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java;symbol=JwtUtil;lines=1-1], protected routes in the frontend [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=1-1], and candidate ranking capabilities [cite:file=frontend/src/pages/Ranking.jsx;symbol=Ranking;lines=1-1]. The architecture demonstrates modern full-stack patterns including component-based UI, RESTful APIs, service layer separation, and AI integration. Key design patterns include Component-Based Architecture, MVC, Repository, DTO, and Security Filter patterns, providing a robust foundation for an AI-driven recruitment platform.

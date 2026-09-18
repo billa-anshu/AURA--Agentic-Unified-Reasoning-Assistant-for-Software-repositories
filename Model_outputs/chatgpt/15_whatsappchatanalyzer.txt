@@ -1,0 +1,86 @@
+Structured Summary Report
+1. Overall purpose and architecture
+
+The repository contains the preprocessing and analytics core of a Streamlit-based chat/WhatsApp-style conversation analysis application. The preprocessing module converts exported chat text into structured tabular data, while the helper module computes message, activity, content, emoji, and sentiment analytics. [cite:file=preprocessor.py;symbol=preprocess;lines=5-52] [cite:file=helper.py;symbol=fetch_stats;lines=9-26] [cite:file=helper.py;symbol=sentiment_analysis;lines=124-153]
+
+The architecture is divided into two principal utility modules: preprocessor.py handles raw-chat parsing and feature creation, while helper.py provides reusable analytical functions over the resulting pandas DataFrame. [cite:file=preprocessor.py;symbol=preprocess;lines=5-52] [cite:file=helper.py;symbol=fetch_stats;lines=9-26]
+
+The preprocessing function is decorated with Streamlit's @st.cache_data, indicating that its computed result is intended to be cached by the Streamlit application. [cite:file=preprocessor.py;symbol=preprocess;lines=5-6]
+
+Most analytical helper functions are likewise decorated with @st.cache_data, providing a consistent cached-computation approach for repeated analytics. [cite:file=helper.py;symbol=fetch_stats;lines=9-10] [cite:file=helper.py;symbol=fetch_most_active_users;lines=28-30] [cite:file=helper.py;symbol=sentiment_analysis;lines=124-125]
+
+2. Key components / modules
+preprocessor.py
+
+preprocess() parses raw chat text using a regular expression that recognizes date/time prefixes followed by " - ". [cite:file=preprocessor.py;symbol=preprocess;lines=5-10]
+
+It separates timestamps from message bodies and constructs a pandas DataFrame containing the initial message and timestamp fields. [cite:file=preprocessor.py;symbol=preprocess;lines=12-17]
+
+It converts timestamps into pandas datetime values using mixed-format parsing with day-first interpretation. [cite:file=preprocessor.py;symbol=preprocess;lines=19-20]
+
+It separates sender names from message content using a name: message-style pattern and labels messages without a sender prefix as group_notification. [cite:file=preprocessor.py;symbol=preprocess;lines=22-32]
+
+It derives temporal features including date, year, month number/name, day, weekday name, hour, and minute. [cite:file=preprocessor.py;symbol=preprocess;lines=34-42]
+
+It also creates an hourly period feature, representing hours as ranges such as "23-00" or "00-01". [cite:file=preprocessor.py;symbol=preprocess;lines=44-55]
+
+helper.py
+
+fetch_stats() computes overall or per-user message count, word count, media-message count, and extracted URL count. [cite:file=helper.py;symbol=fetch_stats;lines=9-26]
+
+fetch_most_active_users() calculates the most frequent users and a percentage distribution of messages by user. [cite:file=helper.py;symbol=fetch_most_active_users;lines=28-31]
+
+create_wordcloud() filters out group notifications and media placeholders before generating a transparent-background word cloud from message text. [cite:file=helper.py;symbol=create_wordcloud;lines=33-45]
+
+get_most_common_words() filters short/common excluded words and returns the 20 most frequent remaining words as a DataFrame. [cite:file=helper.py;symbol=get_most_common_words;lines=47-62]
+
+emoji_analysis() counts emojis, returns the 20 most common emojis, and groups selected emojis into laughter/joy, approval/like, surprise/shock, and other categories. [cite:file=helper.py;symbol=emoji_analysis;lines=64-88]
+
+fetch_monthly_timeline() aggregates messages by year and month and creates a combined month-year label. [cite:file=helper.py;symbol=fetch_monthly_timeline;lines=90-100]
+
+fetch_daily_timeline() aggregates messages by calendar date. [cite:file=helper.py;symbol=fetch_daily_timeline;lines=102-107]
+
+fetch_week_activity_map() and fetch_month_activity_map() count messages by weekday and month name respectively. [cite:file=helper.py;symbol=fetch_week_activity_map;lines=109-118]
+
+fetch_activity_heatmap() creates a day-of-week × hourly-period pivot table containing message counts. [cite:file=helper.py;symbol=fetch_activity_heatmap;lines=120-123]
+
+sentiment_analysis() applies VADER sentiment scoring to non-notification, non-media messages, calculates daily average compound sentiment, and counts positive, neutral, and negative messages. [cite:file=helper.py;symbol=sentiment_analysis;lines=124-153]
+
+get_media_distribution() estimates media categories from the number of media-placeholder messages, assigning 60% to images, 25% to voice notes, and the remainder to documents. [cite:file=helper.py;symbol=get_media_distribution;lines=155-171]
+
+3. Notable functions and responsibilities
+preprocess()
+
+preprocess() is the primary data-ingestion transformation function. It converts raw exported chat text into a DataFrame suitable for downstream analytics, including sender, message, temporal, and hourly-period fields. [cite:file=preprocessor.py;symbol=preprocess;lines=5-55]
+
+It also handles the empty-message case by returning an empty DataFrame. [cite:file=preprocessor.py;symbol=preprocess;lines=10-13]
+
+fetch_stats()
+
+fetch_stats() provides a compact summary of conversation volume and content: messages, words, media placeholders, and URLs. [cite:file=helper.py;symbol=fetch_stats;lines=9-26]
+
+sentiment_analysis()
+
+sentiment_analysis() is the main sentiment-analysis routine. It uses a module-level SentimentIntensityAnalyzer, stores VADER's positive, negative, neutral, and compound scores for each analyzed message, and derives daily sentiment velocity and sentiment counts. [cite:file=helper.py;symbol=sentiment_analysis;lines=7-7] [cite:file=helper.py;symbol=sentiment_analysis;lines=124-153]
+
+create_wordcloud()
+
+create_wordcloud() provides a visual-content preparation layer by assembling eligible message text and passing it to WordCloud.generate(). [cite:file=helper.py;symbol=create_wordcloud;lines=33-45]
+
+emoji_analysis()
+
+emoji_analysis() combines raw frequency analysis with a simple semantic categorization of selected emojis into predefined emotional/interaction groups. [cite:file=helper.py;symbol=emoji_analysis;lines=64-88]
+
+4. Design patterns and architectural observations
+Separation of concerns
+The repository separates data transformation from analytics: preprocess() produces structured records, while the functions in helper.py consume that DataFrame for independent analyses. [cite:file=preprocessor.py;symbol=preprocess;lines=5-55] [cite:file=helper.py;symbol=fetch_stats;lines=9-26]
+Functional analytics / utility-module pattern
+The analytics layer is composed primarily of focused functions rather than classes, with each function performing one analytical operation such as timeline generation, word frequency, emoji analysis, or sentiment analysis. [cite:file=helper.py;symbol=get_most_common_words;lines=47-62] [cite:file=helper.py;symbol=emoji_analysis;lines=64-88] [cite:file=helper.py;symbol=fetch_daily_timeline;lines=102-107]
+Cached-computation pattern
+Streamlit's @st.cache_data is repeatedly applied to expensive or reusable data-processing operations, including preprocessing, statistical summaries, timelines, activity maps, and sentiment analysis. [cite:file=preprocessor.py;symbol=preprocess;lines=5-6] [cite:file=helper.py;symbol=fetch_stats;lines=9-10] [cite:file=helper.py;symbol=sentiment_analysis;lines=124-125]
+Reusable filtering pattern
+Many analytics functions implement the same "Overall" versus selected-user behavior: when a specific user is selected, the DataFrame is filtered before the calculation; otherwise the complete DataFrame is analyzed. [cite:file=helper.py;symbol=fetch_stats;lines=10-12] [cite:file=helper.py;symbol=create_wordcloud;lines=34-35] [cite:file=helper.py;symbol=sentiment_analysis;lines=125-127]
+Pipeline-style data processing
+The preprocessing flow follows a sequential transformation pipeline: split raw text → build a DataFrame → parse dates → identify users/messages → remove intermediate columns → derive temporal features → return structured data. [cite:file=preprocessor.py;symbol=preprocess;lines=9-55]
+
+Overall, the supplied code forms a data-analysis utility layer for a Streamlit chat analytics application, centered on converting exported chat text into structured records and then deriving reusable statistical, temporal, textual, emoji, media, and sentiment insights. [cite:file=preprocessor.py;symbol=preprocess;lines=5-55] [cite:file=helper.py;symbol=fetch_stats;lines=9-26] [cite:file=helper.py;symbol=sentiment_analysis;lines=124-153]

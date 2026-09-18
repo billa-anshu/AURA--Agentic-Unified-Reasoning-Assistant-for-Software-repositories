@@ -1,0 +1,67 @@
+Structured Summary Report
+1. Overall purpose and architecture
+
+The repository implements Sentix AI, a Streamlit-oriented customer-feedback analytics application whose visible source includes sentiment prediction, AI-generated business insights, and UI customization functionality. [cite:file=src/ai_insights.py;symbol=generate_insights;lines=11-41] [cite:file=src/predictor.py;symbol=predict_sentiment;lines=11-32] [cite:file=src/ui_utils.py;symbol=load_css;lines=3-93]
+
+The architecture is organized around three functional concerns visible in the supplied source: predictor.py provides local sentiment analysis, ai_insights.py provides LLM-based review analysis, and ui_utils.py provides Streamlit presentation styling. [cite:file=src/predictor.py;symbol=predict_sentiment;lines=1-32] [cite:file=src/ai_insights.py;symbol=generate_insights;lines=1-41] [cite:file=src/ui_utils.py;symbol=load_css;lines=1-93]
+
+The repository also contains an app.py entry point and multiple dashboard/analysis page files under app_pages/ and pages/, but their implementations are not included in the supplied source content, so their specific responsibilities cannot be established from the provided code.
+
+2. Key components / modules
+Sentiment analysis
+
+src/predictor.py uses NLTK's VADER SentimentIntensityAnalyzer as its sentiment-analysis engine. [cite:file=src/predictor.py;symbol=SentimentIntensityAnalyzer;lines=1-9]
+
+The module attempts to download the VADER lexicon when it cannot be found locally, then initializes a reusable SentimentIntensityAnalyzer instance. [cite:file=src/predictor.py;symbol=sia;lines=3-9]
+
+predict_sentiment() returns a sentiment class of "Positive", "Negative", or "Neutral" together with a percentage-style confidence value. [cite:file=src/predictor.py;symbol=predict_sentiment;lines=11-32]
+
+Positive sentiment is selected when the VADER compound score is at least 0.05, negative sentiment when it is at most -0.05, and neutral sentiment otherwise. [cite:file=src/predictor.py;symbol=predict_sentiment;lines=17-29]
+
+AI insights
+
+src/ai_insights.py integrates the Groq client and obtains its API key from the GROQ_API_KEY environment variable after loading environment configuration with dotenv. [cite:file=src/ai_insights.py;symbol=GROQ_API_KEY;lines=1-9]
+
+generate_insights() combines at most the first 100 review strings into a single text block before sending them to the AI service. [cite:file=src/ai_insights.py;symbol=generate_insights;lines=11-21]
+
+Its prompt asks the AI to identify three complaints, three praises, and three business recommendations, with the response formatted as Markdown. [cite:file=src/ai_insights.py;symbol=generate_insights;lines=17-25]
+
+The function calls Groq's chat-completions API using the openai/gpt-oss-120b model and returns the generated message content. [cite:file=src/ai_insights.py;symbol=generate_insights;lines=26-38]
+
+If the API client is unavailable or the configured key is still the placeholder value, the function returns a configuration message rather than attempting the request. [cite:file=src/ai_insights.py;symbol=generate_insights;lines=11-13]
+
+API-call failures are caught and converted into an error string returned by the function. [cite:file=src/ai_insights.py;symbol=generate_insights;lines=39-41]
+
+Streamlit UI styling
+
+src/ui_utils.py exposes load_css(), which injects custom CSS into Streamlit using st.markdown(..., unsafe_allow_html=True). [cite:file=src/ui_utils.py;symbol=load_css;lines=1-93]
+
+The styling establishes a dark sidebar, customized navigation links, metric cards, buttons, application sizing, and typography. [cite:file=src/ui_utils.py;symbol=load_css;lines=4-91]
+
+The supplied CSS specifically gives active sidebar navigation links a purple gradient and styles inactive links with hover effects. [cite:file=src/ui_utils.py;symbol=load_css;lines=29-50]
+
+Metric widgets are given dark backgrounds, borders, shadows, larger values, and hover effects. [cite:file=src/ui_utils.py;symbol=load_css;lines=53-76]
+
+3. Notable functions and their responsibilities
+
+predict_sentiment(text) — handles the core sentiment-classification workflow: empty-input handling, VADER scoring, threshold-based classification, confidence calculation, and percentage rounding. [cite:file=src/predictor.py;symbol=predict_sentiment;lines=11-32]
+
+generate_insights(reviews_text_list) — acts as the AI-analysis boundary: validates API availability, prepares review text and an analysis prompt, invokes Groq, and returns either generated insights or an error/configuration message. [cite:file=src/ai_insights.py;symbol=generate_insights;lines=11-41]
+
+load_css() — centralizes the application's custom Streamlit visual styling rather than distributing CSS definitions throughout the application. [cite:file=src/ui_utils.py;symbol=load_css;lines=3-93]
+
+SentimentIntensityAnalyzer instance sia — provides the reusable VADER analyzer consumed by predict_sentiment(). [cite:file=src/predictor.py;symbol=sia;lines=3-9]
+
+4. Design patterns and architectural observations
+Separation of concerns
+The visible implementation separates sentiment computation, external AI insight generation, and UI styling into distinct modules, which is a straightforward separation-of-concerns structure. [cite:file=src/predictor.py;symbol=predict_sentiment;lines=1-32] [cite:file=src/ai_insights.py;symbol=generate_insights;lines=1-41] [cite:file=src/ui_utils.py;symbol=load_css;lines=1-93]
+Service-wrapper pattern
+generate_insights() functions as a small service wrapper around the external Groq API: callers provide reviews while the function owns prompt construction, model configuration, invocation, and error handling. [cite:file=src/ai_insights.py;symbol=generate_insights;lines=11-41]
+Shared utility/module pattern
+The VADER analyzer is initialized once at module scope and reused by predict_sentiment(), avoiding construction of a new analyzer for every prediction. [cite:file=src/predictor.py;symbol=sia;lines=3-9] [cite:file=src/predictor.py;symbol=predict_sentiment;lines=11-32]
+Configuration-through-environment pattern
+The AI integration obtains its API credential from an environment variable rather than embedding the credential directly in the function's API call. [cite:file=src/ai_insights.py;symbol=GROQ_API_KEY;lines=1-9] [cite:file=src/ai_insights.py;symbol=generate_insights;lines=11-13]
+Defensive error handling
+Both the sentiment module and AI-insight module contain defensive handling for operational problems: the sentiment module handles missing VADER data and empty input, while the AI module handles missing configuration and API exceptions. [cite:file=src/predictor.py;symbol=predict_sentiment;lines=3-15] [cite:file=src/ai_insights.py;symbol=generate_insights;lines=11-13] [cite:file=src/ai_insights.py;symbol=generate_insights;lines=39-41]
+
+Overall, the supplied implementation shows a modular Streamlit analytics application combining deterministic/local sentiment scoring with external LLM-based qualitative analysis and a centralized presentation layer. [cite:file=src/predictor.py;symbol=predict_sentiment;lines=11-32] [cite:file=src/ai_insights.py;symbol=generate_insights;lines=11-41] [cite:file=src/ui_utils.py;symbol=load_css;lines=3-93]

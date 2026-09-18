@@ -1,0 +1,83 @@
+Based on the provided repository content, here is a structured summary report of the project.
+
+### 1. Overall Purpose and Architecture
+
+**Purpose:** This project is a **pet care appointment booking platform** that enables pet owners to find doctors, manage their pets, and book appointments. The system supports multiple user roles including pet owners (USER), doctors (DOCTOR), and administrators (ADMIN).
+
+**Architecture:** The application is a full-stack web application with a clear separation between frontend and backend.
+
+- **Frontend (React.js + Vite):** A modern single-page application built with React and Vite for fast development [cite:file=frontend/vite.config.js;symbol=vite.config;lines=1-1]. The frontend uses React Bootstrap for UI components [cite:file=frontend/src/App.jsx;symbol=App;lines=12-12], Axios for API communication [cite:file=frontend/src/services/api.js;symbol=api;lines=1-1], and Context API for state management [cite:file=frontend/src/context/AuthContext.jsx;symbol=AuthContext;lines=1-1].
+- **Backend (Spring Boot):** A RESTful API built with Spring Boot, providing endpoints for authentication, pets, doctors, appointments, and payments [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=7-7]. The backend uses Spring Security with JWT for authentication [cite:file=backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java;symbol=WebSecurityConfig;lines=1-1].
+- **Database:** JPA/Hibernate for database interactions with entities for User, Doctor, Pet, Appointment, and Payment [cite:file=backend/src/main/java/com/smartpetcare/entity/User.java;symbol=User;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/entity/Doctor.java;symbol=Doctor;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/entity/Pet.java;symbol=Pet;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/entity/Appointment.java;symbol=Appointment;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/entity/Payment.java;symbol=Payment;lines=1-1].
+
+The technology stack includes React with Vite for the frontend [cite:file=frontend/vite.config.js;symbol=vite.config;lines=1-1], Spring Boot with Spring Security for the backend [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=7-7], JWT for authentication [cite:file=backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java;symbol=JwtUtils;lines=1-1], and React Bootstrap for UI components [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=3-3].
+
+### 2. Key Components / Modules and What They Do
+
+**Authentication Module:** The `AuthController` handles user registration and login [cite:file=backend/src/main/java/com/smartpetcare/controller/AuthController.java;symbol=AuthController;lines=1-1]. JWT authentication is implemented through `JwtUtils` [cite:file=backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java;symbol=JwtUtils;lines=1-1], `AuthTokenFilter` [cite:file=backend/src/main/java/com/smartpetcare/security/jwt/AuthTokenFilter.java;symbol=AuthTokenFilter;lines=1-1], and `AuthEntryPointJwt` [cite:file=backend/src/main/java/com/smartpetcare/security/jwt/AuthEntryPointJwt.java;symbol=AuthEntryPointJwt;lines=1-1]. `UserDetailsServiceImpl` loads user details for authentication [cite:file=backend/src/main/java/com/smartpetcare/security/services/UserDetailsServiceImpl.java;symbol=UserDetailsServiceImpl;lines=1-1]. The frontend `AuthContext` manages authentication state [cite:file=frontend/src/context/AuthContext.jsx;symbol=AuthContext;lines=1-1], and `auth.service.js` handles login/register API calls [cite:file=frontend/src/services/auth.service.js;symbol=auth.service;lines=1-1].
+
+**Pet Management Module:** The `PetController` handles CRUD operations for pets [cite:file=backend/src/main/java/com/smartpetcare/controller/PetController.java;symbol=PetController;lines=1-1]. Users can manage their pets through the `MyPets` page [cite:file=frontend/src/pages/MyPets.jsx;symbol=MyPets;lines=1-1]. The `Pet` entity stores pet details [cite:file=backend/src/main/java/com/smartpetcare/entity/Pet.java;symbol=Pet;lines=1-1].
+
+**Doctor Management Module:** The `DoctorController` handles doctor-related operations [cite:file=backend/src/main/java/com/smartpetcare/controller/DoctorController.java;symbol=DoctorController;lines=1-1]. The `DoctorList` page displays available doctors [cite:file=frontend/src/pages/DoctorList.jsx;symbol=DoctorList;lines=1-1]. The `Doctor` entity stores doctor information [cite:file=backend/src/main/java/com/smartpetcare/entity/Doctor.java;symbol=Doctor;lines=1-1]. Doctors have a dashboard for managing appointments [cite:file=frontend/src/pages/DoctorDashboard.jsx;symbol=DoctorDashboard;lines=1-1].
+
+**Appointment Module:** The `AppointmentController` handles booking and managing appointments [cite:file=backend/src/main/java/com/smartpetcare/controller/AppointmentController.java;symbol=AppointmentController;lines=1-1]. Users can book appointments through `BookAppointment` page [cite:file=frontend/src/pages/BookAppointment.jsx;symbol=BookAppointment;lines=1-1] and view them in `MyAppointments` [cite:file=frontend/src/pages/MyAppointments.jsx;symbol=MyAppointments;lines=1-1]. The `Appointment` entity tracks appointment details with status [cite:file=backend/src/main/java/com/smartpetcare/entity/Appointment.java;symbol=Appointment;lines=1-1], and `AppointmentStatus` enum defines possible states [cite:file=backend/src/main/java/com/smartpetcare/enums/AppointmentStatus.java;symbol=AppointmentStatus;lines=1-1].
+
+**Payment Module:** The `PaymentController` handles payment processing [cite:file=backend/src/main/java/com/smartpetcare/controller/PaymentController.java;symbol=PaymentController;lines=1-1]. The `Payment` entity stores payment details [cite:file=backend/src/main/java/com/smartpetcare/entity/Payment.java;symbol=Payment;lines=1-1].
+
+**Security Configuration Module:** `WebSecurityConfig` configures Spring Security with JWT [cite:file=backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java;symbol=WebSecurityConfig;lines=1-1]. `UserRole` enum defines user roles [cite:file=backend/src/main/java/com/smartpetcare/enums/UserRole.java;symbol=UserRole;lines=1-1]. Request/response DTOs handle data transfer [cite:file=backend/src/main/java/com/smartpetcare/payload/request/LoginRequest.java;symbol=LoginRequest;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/payload/response/JwtResponse.java;symbol=JwtResponse;lines=1-1].
+
+**API Service Module:** The frontend uses an Axios instance with interceptors for JWT token management [cite:file=frontend/src/services/api.js;symbol=api;lines=1-1]. Services include `auth.service.js` for authentication [cite:file=frontend/src/services/auth.service.js;symbol=auth.service;lines=1-1], `user.service.js` for user operations [cite:file=frontend/src/services/user.service.js;symbol=user.service;lines=1-1], and `api.js` as the base API client [cite:file=frontend/src/services/api.js;symbol=api;lines=1-1].
+
+### 3. Notable Functions or Classes and Their Responsibilities
+
+- **`Navigation` Component:**
+    - Uses `AuthContext` to access current user and logout function [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=7-7].
+    - Conditionally renders navigation links based on user roles [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=24-37].
+    - Shows "My Pets" and "Appointments" for USER role [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=27-30].
+    - Shows "Dashboard" for DOCTOR or ADMIN roles [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=33-35].
+    - `handleLogout()`: Calls logout and navigates to login page [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=10-13].
+
+- **`App` Component:**
+    - Wraps the application with `AuthProvider` for global authentication state [cite:file=frontend/src/App.jsx;symbol=App;lines=15-15].
+    - Defines routes for all pages including Home, Login, Register, DoctorList, MyPets, MyAppointments, DoctorDashboard, and BookAppointment [cite:file=frontend/src/App.jsx;symbol=App;lines=17-27].
+    - Imports Bootstrap CSS for styling [cite:file=frontend/src/App.jsx;symbol=App;lines=12-12].
+
+- **`api.js` Axios Instance:**
+    - Configures base URL to `http://localhost:8080` [cite:file=frontend/src/services/api.js;symbol=api;lines=4-4].
+    - Sets default headers for JSON content [cite:file=frontend/src/services/api.js;symbol=api;lines=5-7].
+    - Implements request interceptor to add JWT token from localStorage [cite:file=frontend/src/services/api.js;symbol=api;lines=10-17].
+    - Handles token injection for all authenticated requests [cite:file=frontend/src/services/api.js;symbol=api;lines=13-14].
+
+- **`SmartPetCareApplication` Class:**
+    - The main entry point for the Spring Boot application [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=7-7].
+    - Uses `@SpringBootApplication` annotation for auto-configuration [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=7-7].
+    - Launches the application using `SpringApplication.run()` [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=9-11].
+
+### 4. Any Design Patterns You Observe
+
+- **MVC (Model-View-Controller) Pattern:**
+    - **Model:** Entity classes (User, Doctor, Pet, Appointment, Payment) [cite:file=backend/src/main/java/com/smartpetcare/entity/User.java;symbol=User;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/entity/Doctor.java;symbol=Doctor;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/entity/Pet.java;symbol=Pet;lines=1-1]
+    - **Controller:** REST controllers handling HTTP requests [cite:file=backend/src/main/java/com/smartpetcare/controller/AuthController.java;symbol=AuthController;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/controller/PetController.java;symbol=PetController;lines=1-1]
+    - **View:** React components provide the presentation layer [cite:file=frontend/src/pages/Home.jsx;symbol=Home;lines=1-1], [cite:file=frontend/src/pages/Login.jsx;symbol=Login;lines=1-1]
+
+- **Repository Pattern:** JPA repositories abstract data access operations [cite:file=backend/src/main/java/com/smartpetcare/repository/UserRepository.java;symbol=UserRepository;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/repository/PetRepository.java;symbol=PetRepository;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/repository/AppointmentRepository.java;symbol=AppointmentRepository;lines=1-1].
+
+- **Security Filter Pattern:** JWT authentication filter intercepts requests for token validation [cite:file=backend/src/main/java/com/smartpetcare/security/jwt/AuthTokenFilter.java;symbol=AuthTokenFilter;lines=1-1].
+
+- **DTO (Data Transfer Object) Pattern:** DTOs are used for request/response objects including `LoginRequest`, `SignupRequest`, `AppointmentRequest`, `JwtResponse`, and `MessageResponse` [cite:file=backend/src/main/java/com/smartpetcare/payload/request/LoginRequest.java;symbol=LoginRequest;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/payload/response/JwtResponse.java;symbol=JwtResponse;lines=1-1].
+
+- **Context Pattern (Frontend):** `AuthContext` provides global authentication state management [cite:file=frontend/src/context/AuthContext.jsx;symbol=AuthContext;lines=1-1].
+
+- **Singleton Pattern:** The Axios instance and JWT utility are created once and reused [cite:file=frontend/src/services/api.js;symbol=api;lines=3-3], [cite:file=backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java;symbol=JwtUtils;lines=1-1].
+
+- **Component-Based Architecture:** The frontend is built with reusable React components (Navigation, pages) [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=1-1], [cite:file=frontend/src/pages/Home.jsx;symbol=Home;lines=1-1].
+
+- **Single-Page Application Pattern:** The frontend uses React Router for client-side routing [cite:file=frontend/src/App.jsx;symbol=App;lines=2-2].
+
+- **Factory Pattern (Implied):** JWT token creation in the backend uses a factory approach [cite:file=backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java;symbol=JwtUtils;lines=1-1].
+
+- **Interceptor Pattern:** Axios interceptors add JWT tokens to outgoing requests [cite:file=frontend/src/services/api.js;symbol=api;lines=10-17].
+
+### Overall Summary
+
+This repository contains the source code for a **pet care appointment booking platform** built with a React frontend and Spring Boot backend. The application enables pet owners to find doctors, manage their pets, and book appointments [cite:file=frontend/src/App.jsx;symbol=App;lines=17-27], [cite:file=backend/src/main/java/com/smartpetcare/controller/PetController.java;symbol=PetController;lines=1-1]. The system features JWT-based authentication with role-based access control [cite:file=backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java;symbol=WebSecurityConfig;lines=1-1], [cite:file=backend/src/main/java/com/smartpetcare/enums/UserRole.java;symbol=UserRole;lines=1-1], supporting three user roles (USER, DOCTOR, ADMIN) [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=24-37]. The frontend uses React Bootstrap for UI components and Axios with interceptors for API communication [cite:file=frontend/src/services/api.js;symbol=api;lines=10-17]. The architecture demonstrates clean separation of concerns with MVC pattern, repository pattern for data access, and DTOs for data transfer. Key design patterns include Context for state management, Security Filter for JWT authentication, and Component-Based Architecture for the frontend, providing a robust foundation for a pet care management system.

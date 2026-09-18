@@ -1,0 +1,89 @@
+Structured Repository Summary
+1. Overall purpose and architecture
+
+The repository implements a web application with a React/Vite frontend configuration and a Node.js/Express backend connected to MongoDB. The frontend toolchain is configured through Vite with the React plugin. [cite:file=vite.config.ts;symbol=defineConfig;lines=1-5] Tailwind CSS is configured to scan the HTML and src tree, support class-based dark mode, and expose theme colors through CSS variables. [cite:file=tailwind.config.js;symbol=default;lines=1-24]
+
+The backend contains two apparent Express application entry points: server.js and server/index.js. server.js creates an Express application, connects directly to MongoDB with Mongoose, and defines authentication plus question/answer endpoints. [cite:file=server.js;symbol=app;lines=1-18] server/index.js creates another Express application that delegates feature endpoints to separate route modules for authentication, subjects, materials, and uploads, and serves an uploads directory statically. [cite:file=server/index.js;symbol=app;lines=1-25]
+
+The application therefore follows a broadly layered web architecture: an HTTP/UI layer, Express route/controller-style handlers, authentication middleware, Mongoose data models, and MongoDB persistence. The separated route setup is visible in server/index.js, while the authentication and question/answer handlers are implemented directly in server.js. [cite:file=server/index.js;symbol=app;lines=11-25] [cite:file=server.js;symbol=app;lines=22-34]
+
+2. Key components / modules
+Frontend configuration
+Vite configuration: The frontend uses Vite with the official React plugin. [cite:file=vite.config.ts;symbol=defineConfig;lines=1-5]
+Tailwind configuration: Tailwind scans index.html and files beneath src, uses class-based dark mode, defines semantic colors such as background, surface, primary, secondary, accent, and text colors through CSS variables, and sets Inter as the sans-serif font family. [cite:file=tailwind.config.js;symbol=default;lines=1-24]
+PostCSS: PostCSS is configured with the Tailwind PostCSS plugin and Autoprefixer. [cite:file=postcss.config.js;symbol=default;lines=1-6]
+Backend application
+Primary Express setup: server.js loads environment variables, creates an Express application, enables CORS and JSON parsing, and uses a configurable port defaulting to 5000. [cite:file=server.js;symbol=app;lines=1-29]
+Alternative modular server setup: server/index.js loads environment variables, connects to MongoDB through connectDB, enables CORS/JSON middleware, mounts /api/auth, /api/subjects, /api/materials, and /api/upload, and exposes /uploads as static content. [cite:file=server/index.js;symbol=app;lines=1-29]
+Database connection: connectDB connects Mongoose to the URI supplied by MONGO_URI, logs the connected host, and terminates the process if connection fails. [cite:file=server/config/db.js;symbol=connectDB;lines=3-12]
+Authentication and authorization
+
+The application provides signup and login endpoints in server.js. Signup validates the presence of email and password, checks for an existing email, hashes the password with bcrypt, saves a User, and returns a success response. [cite:file=server.js;symbol=app;lines=34-60]
+
+Login looks up the user by email, compares the supplied password against the stored bcrypt hash, and creates a JWT containing the user's ID and role with a one-hour expiration. [cite:file=server.js;symbol=app;lines=62-91]
+
+The question-answer endpoints demonstrate role-based authorization: creating and retrieving answers both require verifyToken followed by verifyAdmin. [cite:file=server.js;symbol=app;lines=117-146]
+
+Question and answer functionality
+
+The backend exposes a question creation endpoint that requires a title and description, constructs a Question document, saves it, and returns a creation response. [cite:file=server.js;symbol=app;lines=94-115]
+
+Questions can also be retrieved through GET /questions; the implementation queries all questions and sorts them by createdAt descending. [cite:file=server.js;symbol=app;lines=108-115]
+
+Answers are created from a questionId and answerText, persisted as an Answer document, and returned with a success response. [cite:file=server.js;symbol=app;lines=117-132] Answer retrieval populates the referenced question's title and sorts answers by creation time descending. [cite:file=server.js;symbol=app;lines=134-146]
+
+Upload testing
+
+The repository includes a standalone upload test that creates a dummy PDF file, submits it as multipart form data to /api/upload, reports success or failure, and deletes the temporary file afterward. [cite:file=server/test-upload.js;symbol=testUpload;lines=6-31]
+
+3. Notable functions and classes
+connectDB
+
+connectDB encapsulates the MongoDB connection logic using Mongoose and handles connection failure by logging the error and exiting the process. [cite:file=server/config/db.js;symbol=connectDB;lines=3-12]
+
+Signup handler
+
+The signup handler in server.js is responsible for validating credentials, detecting duplicate email addresses, bcrypt-hashing passwords, creating the user document, and returning an HTTP 201 response. [cite:file=server.js;symbol=app;lines=34-60]
+
+Login handler
+
+The login handler authenticates a user using email and password, distinguishes missing users and incorrect passwords through different HTTP responses, and issues a JWT containing both identity and role information. [cite:file=server.js;symbol=app;lines=62-91]
+
+Question creation handler
+
+The question endpoint validates the required fields and persists a new Question document through Mongoose. [cite:file=server.js;symbol=app;lines=94-106]
+
+Question retrieval handler
+
+The question retrieval endpoint obtains all Question documents and orders them from newest to oldest using createdAt. [cite:file=server.js;symbol=app;lines=108-115]
+
+Answer creation and retrieval handlers
+
+The answer creation handler validates questionId and answerText before persisting an Answer. [cite:file=server.js;symbol=app;lines=117-132] The retrieval handler uses Mongoose populate to include the associated question title and sorts the resulting answers by creation time. [cite:file=server.js;symbol=app;lines=134-146]
+
+testUpload
+
+testUpload provides a small integration-style utility for exercising the upload API with multipart form data and cleaning up its temporary test file. [cite:file=server/test-upload.js;symbol=testUpload;lines=6-31]
+
+4. Design patterns and architectural observations
+Layered / modular architecture
+
+The repository shows a separation between infrastructure, routing, middleware, and application entry points. Database connectivity is isolated in server/config/db.js, authentication middleware is referenced independently from route handlers, and server/index.js delegates feature areas to separate route modules. [cite:file=server/config/db.js;symbol=connectDB;lines=3-12] [cite:file=server/index.js;symbol=app;lines=11-25]
+
+Middleware-based authentication and authorization
+
+Protected endpoints use Express middleware composition. The answer endpoints apply verifyToken first and verifyAdmin second, allowing authentication and authorization to remain separate from the endpoint's core business logic. [cite:file=server.js;symbol=app;lines=117-146]
+
+Repository/model-oriented persistence
+
+The backend uses Mongoose model operations such as User.findOne, User.save, Question.find, and Answer.find().populate(...) rather than embedding raw MongoDB operations directly into the endpoint logic. [cite:file=server.js;symbol=app;lines=34-146]
+
+Token-based authentication
+
+JWTs are used as the authentication mechanism, with the login handler embedding userId and role in the token and assigning a one-hour expiration. [cite:file=server.js;symbol=app;lines=62-91] The protected answer routes then rely on token-verification middleware. [cite:file=server.js;symbol=app;lines=117-146]
+
+Potential architectural duplication
+
+There are two separately constructed Express servers in the supplied repository: server.js defines authentication and question/answer APIs directly, while server/index.js defines a second application and mounts modular routes for authentication, subjects, materials, and uploads. [cite:file=server.js;symbol=app;lines=1-29] [cite:file=server/index.js;symbol=app;lines=1-29] Because both default to port 5000, running both applications simultaneously would create a port conflict unless one is configured differently. [cite:file=server.js;symbol=app;lines=22-29] [cite:file=server/index.js;symbol=app;lines=25-29]
+
+Overall assessment: the supplied code represents a JavaScript/TypeScript full-stack application centered on a React/Vite frontend and Express/MongoDB backend, with JWT/bcrypt authentication and a question-and-answer feature in the directly visible backend implementation. [cite:file=vite.config.ts;symbol=defineConfig;lines=1-5] [cite:file=server.js;symbol=app;lines=1-18] [cite:file=server.js;symbol=app;lines=34-146]

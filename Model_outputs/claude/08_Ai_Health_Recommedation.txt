@@ -1,0 +1,44 @@
+# Repository Summary Report: Disease Prediction & Recommendation System
+
+## 1. Overall Purpose and Architecture
+
+This repository implements a **Flask-based web application for disease prediction from symptoms**, which then returns associated descriptions, precautions, medications, diets, and workout recommendations [cite:file=main.py;symbol=index;lines=97-100][cite:file=main.py;symbol=predict;lines=121-137]. Users select symptoms via a web form, submit them to the app, and receive a predicted disease along with supporting health guidance.
+
+The architecture is a **monolithic single-file Flask application** (`main.py`) combining data loading, a pre-trained ML model, business logic, and route handlers all in one module, with no separate service/model/controller layering visible. It relies on:
+- **Pandas** for loading six CSV datasets at startup (symptoms, precautions, workout, description, medications, diets) [cite:file=main.py;symbol=main.py;lines=7-12].
+- **A pre-trained scikit-learn SVC (Support Vector Classifier) model**, loaded from a pickle file at startup [cite:file=main.py;symbol=main.py;lines=15-15].
+- **NumPy** to construct the model's binary input feature vector from selected symptoms [cite:file=main.py;symbol=get_predicted_value;lines=67-68].
+- **Jinja2/Flask `render_template`** to render HTML views (`index.html`, `about.html`, `contact.html`, `blog.html`, `developer.html`), none of which are included in the provided file tree [cite:file=main.py;symbol=main.py;lines=1-1].
+
+The `readme.md` file is listed in the file tree but its content was not included in the provided repository content, so no claims can be made about it.
+
+## 2. Key Components / Modules and What They Do
+
+- **Data loading block** — reads six CSVs into pandas DataFrames at module load time: `sym_des` (symptoms), `precautions`, `workout`, `description`, `medication`, and `diets` [cite:file=main.py;symbol=main.py;lines=7-12].
+- **Model loading** — unpickles a pre-trained model (`models/svc.pkl`) into the `model` variable, used later for predictions [cite:file=main.py;symbol=main.py;lines=15-15].
+- **`symptoms_dict`** — a large static dictionary mapping 132 symptom name strings to fixed integer indices, used to build the model's input feature vector [cite:file=main.py;symbol=symptoms_dict;lines=19-52].
+- **`diseases_list`** — a static dictionary mapping 41 integer class labels (as predicted by the model) to human-readable disease names [cite:file=main.py;symbol=diseases_list;lines=54-63].
+- **`get_predicted_value`** — the core prediction function, converting a list of symptom names into a one-hot-style binary feature vector and returning the model's predicted disease name [cite:file=main.py;symbol=get_predicted_value;lines=67-73].
+- **`helper`** — a lookup function that, given a predicted disease name, retrieves and formats its description, precautions, medications, diet recommendations, and workout suggestions from the various loaded DataFrames [cite:file=main.py;symbol=helper;lines=76-92].
+- **Flask routes** — `/` (home page with symptom list), `/search` (looks up info for an already-known disease name), `/predict` (runs the ML prediction from submitted symptoms), and four static content pages: `/about`, `/contact`, `/blog`, `/developer` [cite:file=main.py;symbol=main.py;lines=97-156].
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`get_predicted_value(patient_symptoms)`** — builds a zero-vector of length equal to `symptoms_dict`, sets a `1` at the index of each symptom present in the input list, then calls `model.predict()` on that vector and maps the resulting numeric class back to a disease name via `diseases_list` [cite:file=main.py;symbol=get_predicted_value;lines=67-73].
+- **`helper(predicted_disease)`** — performs four separate DataFrame filter-and-extract operations: joins description text into a single string [cite:file=main.py;symbol=helper;lines=77-78], extracts up to four precaution columns as a list of arrays [cite:file=main.py;symbol=helper;lines=80-82], extracts medication values [cite:file=main.py;symbol=helper;lines=84-85], extracts diet values [cite:file=main.py;symbol=helper;lines=87-88], and extracts workout suggestions (note: this uses the `workout` DataFrame's `'disease'` column, lowercase, unlike the other DataFrames which use `'Disease'`) [cite:file=main.py;symbol=helper;lines=90-90].
+- **`index()`** — the home route; passes the full list of known symptom names (keys of `symptoms_dict`) to the template for populating a selection UI [cite:file=main.py;symbol=index;lines=98-100].
+- **`search_disease()`** — a POST-handling route that takes an already-known disease name directly from a form field (`request.form.get('disease')`), calls `helper()` on it, and renders the results — this bypasses the ML model entirely and is used for direct disease lookup rather than prediction [cite:file=main.py;symbol=search_disease;lines=104-118].
+- **`predict()`** — a POST-handling route that reads a list of symptoms from the submitted form (`request.form.getlist('symptoms')`), calls `get_predicted_value()` to run the ML model, then `helper()` to gather supporting info, and renders the combined results [cite:file=main.py;symbol=predict;lines=123-137].
+- Both `search_disease` and `predict` perform near-identical **manual string-cleaning logic** on the `med` and `die` values — stripping brackets/quotes and splitting on `", "` — duplicated verbatim in both routes rather than factored into a shared helper [cite:file=main.py;symbol=search_disease;lines=112-114][cite:file=main.py;symbol=predict;lines=131-133].
+
+## 4. Design Patterns Observed
+
+- **Application-Level Singleton / Load-Once Resources**: Datasets and the ML model are loaded once at module import time as top-level variables, rather than per-request, so they're shared (read-only) across all incoming requests [cite:file=main.py;symbol=main.py;lines=7-15].
+- **Route-per-Function (Flask convention)**: Each URL path is mapped to a dedicated view function via the `@app.route` decorator, a standard Flask MVC-lite pattern [cite:file=main.py;symbol=main.py;lines=97-156].
+- **Lookup Table Pattern**: Both `symptoms_dict` and `diseases_list` are hardcoded dictionaries acting as static lookup/encoding tables bridging human-readable names and the model's numeric feature/label space, rather than being derived dynamically from the loaded CSVs [cite:file=main.py;symbol=symptoms_dict;lines=19-52][cite:file=main.py;symbol=diseases_list;lines=54-63].
+- **Duplicated Logic Across Similar Routes**: `search_disease()` and `predict()` share almost identical result-formatting logic (calling `helper()`, extracting `pre`, cleaning `med`/`die`, then rendering the same template with the same variable set), suggesting these could be refactored into a shared function — a code-smell rather than an intentional design pattern [cite:file=main.py;symbol=search_disease;lines=104-118][cite:file=main.py;symbol=predict;lines=123-137].
+- **Guard-by-HTTP-Method**: Both `search_disease` and `predict` are registered for both `GET` and `POST` methods but only execute their core logic inside an `if request.method == 'POST':` block, implicitly returning `None` on `GET` requests to those routes (no explicit `GET` handling/template render is shown) [cite:file=main.py;symbol=search_disease;lines=104-105][cite:file=main.py;symbol=predict;lines=123-124].
+
+## Scope Limitations
+
+`readme.md` was listed in the file tree but its content was not provided. Additionally, this application depends on several files not included in the repository content: the HTML templates (`index.html`, `about.html`, `contact.html`, `blog.html`, `developer.html`), the six CSV datasets under `datasets/`, and the pickled model file `models/svc.pkl` — none of these were provided, so their structure and content cannot be verified beyond how they're referenced in `main.py`.

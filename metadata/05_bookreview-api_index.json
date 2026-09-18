@@ -1,0 +1,752 @@
+{
+  "src/test/java/bookreview_api/BookreviewApiApplicationTests.java::BookreviewApiApplicationTests": {
+    "kind": "function_or_class",
+    "path": "src/test/java/bookreview_api/BookreviewApiApplicationTests.java",
+    "line_start": 7,
+    "line_end": 13
+  },
+  "src/test/java/bookreview_api/BookreviewApiApplicationTests.java::contextLoads": {
+    "kind": "function_or_class",
+    "path": "src/test/java/bookreview_api/BookreviewApiApplicationTests.java",
+    "line_start": 10,
+    "line_end": 13
+  },
+  "src/main/java/bookreview_api/BookreviewApiApplication.java::BookreviewApiApplication": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/BookreviewApiApplication.java",
+    "line_start": 7,
+    "line_end": 12
+  },
+  "src/main/java/bookreview_api/BookreviewApiApplication.java::main": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/BookreviewApiApplication.java",
+    "line_start": 9,
+    "line_end": 12
+  },
+  "src/main/java/bookreview_api/WebConfig.java::WebConfig": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/WebConfig.java",
+    "line_start": 8,
+    "line_end": 16
+  },
+  "src/main/java/bookreview_api/WebConfig.java::addResourceHandlers": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/WebConfig.java",
+    "line_start": 11,
+    "line_end": 16
+  },
+  "src/main/java/bookreview_api/model/User.java::User": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 39,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::onCreate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 47,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::getId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 53,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::setId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 54,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::getName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 55,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::setName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 56,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::getEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 57,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::setEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 58,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::getPassword": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 59,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::setPassword": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 60,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::getRole": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 61,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::setRole": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 62,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::getProfilePictureUrl": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 63,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::setProfilePictureUrl": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 64,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::getCreatedAt": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 65,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::setCreatedAt": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 66,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::getReviews": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 67,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/User.java::setReviews": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/User.java",
+    "line_start": 68,
+    "line_end": 69
+  },
+  "src/main/java/bookreview_api/model/Review.java::Review": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 43,
+    "line_end": 83
+  },
+  "src/main/java/bookreview_api/model/Review.java::onCreate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 51,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::onUpdate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 58,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::getReviewId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 63,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::setReviewId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 64,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::getRating": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 66,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::setRating": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 67,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::getComment": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 69,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::setComment": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 70,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::getCreatedAt": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 72,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::setCreatedAt": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 73,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::getUpdatedAt": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 76,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::setUpdatedAt": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 77,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::getUser": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 79,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::setUser": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 80,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::getBook": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 82,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Review.java::setBook": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Review.java",
+    "line_start": 83,
+    "line_end": 84
+  },
+  "src/main/java/bookreview_api/model/Book.java::Book": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 30,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 41,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 42,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getTitle": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 43,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setTitle": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 44,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getAuthor": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 45,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setAuthor": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 46,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getGenre": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 47,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setGenre": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 48,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getDescription": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 49,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setDescription": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 50,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getCoverImage": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 51,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setCoverImage": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 52,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getPublishYear": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 53,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setPublishYear": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 54,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getRating": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 55,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setRating": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 56,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getReviewCount": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 57,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setReviewCount": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 58,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::getReviews": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 59,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/model/Book.java::setReviews": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/model/Book.java",
+    "line_start": 60,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::ReviewWithBookDTO": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 17,
+    "line_end": 57
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getReviewId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 34,
+    "line_end": 74
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getRating": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 71,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getComment": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 36,
+    "line_end": 76
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getCreatedAt": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 37,
+    "line_end": 77
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getUpdatedAt": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 38,
+    "line_end": 78
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getBook": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 39,
+    "line_end": 79
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getUser": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 40,
+    "line_end": 80
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::BookDTO": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 53,
+    "line_end": 93
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 89,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getTitle": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 66,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getAuthor": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 67,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getGenre": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 68,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getCoverImage": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 69,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getPublishYear": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 70,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getReviewCount": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 72,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::UserDTO": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 81,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getName": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 90,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 91,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java::getRole": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/dto/ReviewWithBookDTO.java",
+    "line_start": 92,
+    "line_end": 94
+  },
+  "src/main/java/bookreview_api/config/SwaggerConfig.java::SwaggerConfig": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/config/SwaggerConfig.java",
+    "line_start": 14,
+    "line_end": 38
+  },
+  "src/main/java/bookreview_api/config/SwaggerConfig.java::customOpenAPI": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/config/SwaggerConfig.java",
+    "line_start": 17,
+    "line_end": 38
+  },
+  "src/main/java/bookreview_api/service/UserService.java::UserService": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/service/UserService.java",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "src/main/java/bookreview_api/service/UserService.java::register": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/service/UserService.java",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "src/main/java/bookreview_api/service/UserService.java::authenticate": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/service/UserService.java",
+    "line_start": 42,
+    "line_end": 82
+  },
+  "src/main/java/bookreview_api/service/UserService.java::findById": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/service/UserService.java",
+    "line_start": 55,
+    "line_end": 83
+  },
+  "src/main/java/bookreview_api/service/UserService.java::findByEmail": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/service/UserService.java",
+    "line_start": 60,
+    "line_end": 83
+  },
+  "src/main/java/bookreview_api/service/UserService.java::emailExists": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/service/UserService.java",
+    "line_start": 65,
+    "line_end": 83
+  },
+  "src/main/java/bookreview_api/service/UserService.java::updateUser": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/service/UserService.java",
+    "line_start": 70,
+    "line_end": 83
+  },
+  "src/main/java/bookreview_api/controller/BookController.java::BookController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/BookController.java",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "src/main/java/bookreview_api/controller/BookController.java::getBookById": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/BookController.java",
+    "line_start": 38,
+    "line_end": 76
+  },
+  "src/main/java/bookreview_api/controller/UserController.java::UserController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserController.java",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/controller/UserController.java::getCurrentUserId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserController.java",
+    "line_start": 26,
+    "line_end": 66
+  },
+  "src/main/java/bookreview_api/controller/UserController.java::getCurrentUser": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserController.java",
+    "line_start": 30,
+    "line_end": 70
+  },
+  "src/main/java/bookreview_api/controller/UserController.java::getAllUsers": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserController.java",
+    "line_start": 36,
+    "line_end": 76
+  },
+  "src/main/java/bookreview_api/controller/UserController.java::getCurrentUserProfile": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserController.java",
+    "line_start": 46,
+    "line_end": 86
+  },
+  "src/main/java/bookreview_api/controller/UserController.java::getUserById": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserController.java",
+    "line_start": 119,
+    "line_end": 159
+  },
+  "src/main/java/bookreview_api/controller/UserController.java::deleteUser": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserController.java",
+    "line_start": 136,
+    "line_end": 163
+  },
+  "src/main/java/bookreview_api/controller/UserController.java::updateUserRole": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserController.java",
+    "line_start": 148,
+    "line_end": 163
+  },
+  "src/main/java/bookreview_api/controller/ReviewController.java::ReviewController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/ReviewController.java",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "src/main/java/bookreview_api/controller/ReviewController.java::getCurrentUserId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/ReviewController.java",
+    "line_start": 33,
+    "line_end": 73
+  },
+  "src/main/java/bookreview_api/controller/ReviewController.java::updateBookRating": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/ReviewController.java",
+    "line_start": 37,
+    "line_end": 77
+  },
+  "src/main/java/bookreview_api/controller/ReviewController.java::getReviewsByBookId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/ReviewController.java",
+    "line_start": 55,
+    "line_end": 95
+  },
+  "src/main/java/bookreview_api/controller/ReviewController.java::getAllReviews": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/ReviewController.java",
+    "line_start": 68,
+    "line_end": 108
+  },
+  "src/main/java/bookreview_api/controller/ReviewController.java::getMyReviews": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/ReviewController.java",
+    "line_start": 74,
+    "line_end": 114
+  },
+  "src/main/java/bookreview_api/controller/HealthController.java::HealthController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/HealthController.java",
+    "line_start": 10,
+    "line_end": 19
+  },
+  "src/main/java/bookreview_api/controller/AuthController.java::AuthController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/AuthController.java",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "src/main/java/bookreview_api/controller/UserProfileController.java::UserProfileController": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserProfileController.java",
+    "line_start": 19,
+    "line_end": 59
+  },
+  "src/main/java/bookreview_api/controller/UserProfileController.java::getCurrentUserId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserProfileController.java",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "src/main/java/bookreview_api/controller/UserProfileController.java::uploadProfilePicture": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserProfileController.java",
+    "line_start": 33,
+    "line_end": 73
+  },
+  "src/main/java/bookreview_api/controller/UserProfileController.java::getProfilePictureUrl": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserProfileController.java",
+    "line_start": 66,
+    "line_end": 93
+  },
+  "src/main/java/bookreview_api/controller/UserProfileController.java::updateProfile": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/controller/UserProfileController.java",
+    "line_start": 78,
+    "line_end": 93
+  },
+  "src/main/java/bookreview_api/security/SecurityConfig.java::SecurityConfig": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/SecurityConfig.java",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "src/main/java/bookreview_api/security/SecurityConfig.java::corsConfigurationSource": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/SecurityConfig.java",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "src/main/java/bookreview_api/security/SecurityConfig.java::webSecurityCustomizer": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/SecurityConfig.java",
+    "line_start": 51,
+    "line_end": 91
+  },
+  "src/main/java/bookreview_api/security/SecurityConfig.java::passwordEncoder": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/SecurityConfig.java",
+    "line_start": 105,
+    "line_end": 108
+  },
+  "src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java::CustomOAuth2SuccessHandler": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java",
+    "line_start": 17,
+    "line_end": 57
+  },
+  "src/main/java/bookreview_api/security/JwtFilter.java::JwtFilter": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/JwtFilter.java",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "src/main/java/bookreview_api/security/JwtUtil.java::JwtUtil": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/JwtUtil.java",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "src/main/java/bookreview_api/security/JwtUtil.java::getSigningKey": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/JwtUtil.java",
+    "line_start": 23,
+    "line_end": 63
+  },
+  "src/main/java/bookreview_api/security/JwtUtil.java::generateToken": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/JwtUtil.java",
+    "line_start": 29,
+    "line_end": 63
+  },
+  "src/main/java/bookreview_api/security/JwtUtil.java::extractUserId": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/JwtUtil.java",
+    "line_start": 42,
+    "line_end": 63
+  },
+  "src/main/java/bookreview_api/security/JwtUtil.java::validateToken": {
+    "kind": "function_or_class",
+    "path": "src/main/java/bookreview_api/security/JwtUtil.java",
+    "line_start": 52,
+    "line_end": 63
+  }
+}

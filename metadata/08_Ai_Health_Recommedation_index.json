@@ -1,0 +1,170 @@
+{
+  "main.py::sym_des": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 7,
+    "line_end": 7
+  },
+  "main.py::precautions": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 8,
+    "line_end": 8
+  },
+  "main.py::workout": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 9,
+    "line_end": 9
+  },
+  "main.py::description": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 10,
+    "line_end": 10
+  },
+  "main.py::medication": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 11,
+    "line_end": 11
+  },
+  "main.py::diets": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 12,
+    "line_end": 12
+  },
+  "main.py::model": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "main.py::app": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "main.py::symptoms_dict": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 19,
+    "line_end": 52
+  },
+  "main.py::diseases_list": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 54,
+    "line_end": 63
+  },
+  "main.py::get_predicted_value": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 67,
+    "line_end": 73
+  },
+  "main.py::helper": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 76,
+    "line_end": 92
+  },
+  "main.py::index": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 98,
+    "line_end": 100
+  },
+  "main.py::search_disease": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 104,
+    "line_end": 118
+  },
+  "main.py::predict": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 122,
+    "line_end": 137
+  },
+  "main.py::about": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 140,
+    "line_end": 141
+  },
+  "main.py::contact": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 145,
+    "line_end": 146
+  },
+  "main.py::blog": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 150,
+    "line_end": 151
+  },
+  "main.py::developer": {
+    "kind": "function",
+    "path": "main.py",
+    "line_start": 155,
+    "line_end": 156
+  },
+  "main.py::input_vector": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "main.py::desc": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 77,
+    "line_end": 77
+  },
+  "main.py::pre": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 80,
+    "line_end": 81
+  },
+  "main.py::med": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 84,
+    "line_end": 84
+  },
+  "main.py::die": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 87,
+    "line_end": 87
+  },
+  "main.py::wrkout": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 90,
+    "line_end": 90
+  },
+  "main.py::symptoms_list": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 99,
+    "line_end": 99
+  },
+  "main.py::predicted_disease": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 106,
+    "line_end": 106
+  },
+  "main.py::symptoms": {
+    "kind": "variable",
+    "path": "main.py",
+    "line_start": 124,
+    "line_end": 124
+  }
+}

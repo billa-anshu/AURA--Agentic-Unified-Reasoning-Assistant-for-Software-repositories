@@ -1,0 +1,72 @@
+Repository Summary Report
+1. Overall purpose and architecture
+
+The repository implements an AI image-generation web application with a separate React client and Express/Node.js server. The server exposes user and image API routers, while the client is configured as a Vite React application. [cite:file=server/server.js;symbol=app;lines=1-15] [cite:file=client/vite.config.js;symbol=default;lines=1-7]
+
+The backend uses Express for HTTP routing, MongoDB/Mongoose for persistence, JWT for authentication, bcrypt for password hashing, and an external ClipDrop text-to-image API for image generation. [cite:file=server/server.js;symbol=app;lines=1-15] [cite:file=server/controllers/userController.js;symbol=registerUser;lines=1-25] [cite:file=server/config/mongodb.js;symbol=connectDB;lines=1-7] [cite:file=server/controllers/imageController.js;symbol=generateImage;lines=1-68]
+
+The server connects to MongoDB using the MONGODB_URI environment variable and specifically connects to an imagify database. [cite:file=server/config/mongodb.js;symbol=connectDB;lines=2-7]
+
+The backend mounts user functionality under /api/user and image functionality under /api/image, and exposes a root endpoint returning "API WORKING". [cite:file=server/server.js;symbol=app;lines=8-15]
+
+Authentication is implemented with JWTs: registration and login generate one-hour tokens, while the authentication middleware verifies bearer tokens and places the decoded user ID on req.userId. [cite:file=server/controllers/userController.js;symbol=registerUser;lines=17-22] [cite:file=server/controllers/userController.js;symbol=loginUser;lines=39-44] [cite:file=server/middlewares/auth.js;symbol=userAuth;lines=3-20]
+
+2. Key components / modules
+Backend server
+server.js initializes Express, enables JSON request parsing and CORS, connects to MongoDB, mounts the user and image routers, and starts the server on PORT or port 4000. [cite:file=server/server.js;symbol=app;lines=1-18]
+User model and persistence
+
+userModel defines MongoDB users with required name, email, and password fields plus a creditBalance field whose default value is 5. [cite:file=server/models/userModel.js;symbol=userSchema;lines=2-7]
+
+The email field is marked unique in the Mongoose schema. [cite:file=server/models/userModel.js;symbol=userSchema;lines=2-7]
+
+Authentication
+
+registerUser() validates that name, email, and password are present, hashes the password with bcrypt, saves a new user, creates a JWT containing the user's MongoDB ID, and returns the token and user's name. [cite:file=server/controllers/userController.js;symbol=registerUser;lines=5-25]
+
+loginUser() finds a user by email, compares the supplied password with the stored bcrypt hash, and returns a one-hour JWT when authentication succeeds. [cite:file=server/controllers/userController.js;symbol=loginUser;lines=27-48]
+
+userAuth() protects authenticated endpoints by requiring a Bearer authorization header, verifying the JWT, and assigning its ID to req.userId. [cite:file=server/middlewares/auth.js;symbol=userAuth;lines=3-20]
+
+The user router exposes registration, login, and an authenticated credits endpoint. [cite:file=server/routes/userRoutes.js;symbol=userRouter;lines=1-11]
+
+Image generation
+
+generateImage() accepts a prompt, validates the bearer token, retrieves the corresponding user, checks that the user has credits remaining, and sends the prompt to ClipDrop's text-to-image endpoint. [cite:file=server/controllers/imageController.js;symbol=generateImage;lines=5-48]
+
+The generated binary image is converted into a Base64 data URL before being returned to the client. [cite:file=server/controllers/imageController.js;symbol=generateImage;lines=49-52]
+
+Each successful image generation decrements the user's credit balance by one and returns the updated balance together with the generated image. [cite:file=server/controllers/imageController.js;symbol=generateImage;lines=54-63]
+
+The image router protects the /generate-image endpoint with userAuth. [cite:file=server/routes/imageRoutes.js;symbol=imageRouter;lines=1-6]
+
+Frontend
+
+The client is configured with Vite and the React plugin. [cite:file=client/vite.config.js;symbol=default;lines=1-7]
+
+The file tree indicates a React client organized into reusable components, pages, application context, and assets, including components for generation, descriptions, navigation, login, testimonials, and application steps. [cite:file=client/src/App.jsx;symbol=App;lines=1-1]
+
+3. Notable functions/classes and responsibilities
+Symbol	Responsibility
+connectDB	Establishes the Mongoose connection to the imagify database and logs when the connection is established. [cite:file=server/config/mongodb.js;symbol=connectDB;lines=2-7]
+registerUser	Validates registration fields, hashes the password, persists the user, and issues a JWT. [cite:file=server/controllers/userController.js;symbol=registerUser;lines=5-25]
+loginUser	Authenticates users by email/password and issues a JWT on success. [cite:file=server/controllers/userController.js;symbol=loginUser;lines=27-48]
+userCredits	Retrieves the authenticated user and returns their credit balance and name. [cite:file=server/controllers/userController.js;symbol=userCredits;lines=50-69]
+userAuth	JWT authentication middleware that extracts and validates bearer tokens and attaches the user ID to the request. [cite:file=server/middlewares/auth.js;symbol=userAuth;lines=3-20]
+generateImage	Validates a prompt and authenticated user, checks credits, calls ClipDrop, converts the response to a Base64 image, and deducts one credit. [cite:file=server/controllers/imageController.js;symbol=generateImage;lines=5-68]
+userSchema	Defines the persisted user structure, including credentials and the default five-credit balance. [cite:file=server/models/userModel.js;symbol=userSchema;lines=2-7]
+4. Design patterns and architectural observations
+Controller–router separation
+
+The backend separates HTTP routing from business logic: userRoutes.js maps endpoints to controller functions, while userController.js contains registration, login, and credit logic. [cite:file=server/routes/userRoutes.js;symbol=userRouter;lines=1-11] [cite:file=server/controllers/userController.js;symbol=registerUser;lines=5-25]
+
+Image routing similarly delegates the /generate-image endpoint to generateImage and applies authentication middleware at the route level. [cite:file=server/routes/imageRoutes.js;symbol=imageRouter;lines=1-6]
+
+Middleware-based authentication
+Authentication follows the Express middleware pattern, with userAuth performing authorization before invoking next() for valid requests. [cite:file=server/middlewares/auth.js;symbol=userAuth;lines=3-20]
+MVC-like organization
+The backend separates models, controllers, routes, middleware, and configuration, which is consistent with an MVC-style layered organization. [cite:file=server/models/userModel.js;symbol=userSchema;lines=1-7] [cite:file=server/controllers/userController.js;symbol=registerUser;lines=1-5] [cite:file=server/routes/userRoutes.js;symbol=userRouter;lines=1-11] [cite:file=server/middlewares/auth.js;symbol=userAuth;lines=1-3] [cite:file=server/config/mongodb.js;symbol=connectDB;lines=1-2]
+Credit/quota mechanism
+Image generation uses a simple quota model in which each user starts with five credits and each successful generation reduces the balance by one. [cite:file=server/models/userModel.js;symbol=userSchema;lines=2-7] [cite:file=server/controllers/imageController.js;symbol=generateImage;lines=39-63]
+Environment-based configuration
+Sensitive or deployment-specific values such as the MongoDB connection string, JWT secret, ClipDrop API key, and server port are obtained from environment variables rather than hard-coded application configuration. [cite:file=server/config/mongodb.js;symbol=connectDB;lines=5-7] [cite:file=server/controllers/userController.js;symbol=registerUser;lines=17-22] [cite:file=server/controllers/imageController.js;symbol=generateImage;lines=29-47] [cite:file=server/server.js;symbol=app;lines=5-6]

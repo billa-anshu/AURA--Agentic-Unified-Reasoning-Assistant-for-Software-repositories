@@ -1,0 +1,74 @@
+{
+  "src/App.js::App": {
+    "kind": "function_or_class",
+    "path": "src/App.js",
+    "line_start": 10,
+    "line_end": 46
+  },
+  "src/Components/Login.js::Login": {
+    "kind": "function_or_class",
+    "path": "src/Components/Login.js",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "src/Components/Login.js::handleChange": {
+    "kind": "function_or_class",
+    "path": "src/Components/Login.js",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "src/Components/Login.js::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "src/Components/Login.js",
+    "line_start": 13,
+    "line_end": 51
+  },
+  "src/Components/Home.js::Home": {
+    "kind": "function_or_class",
+    "path": "src/Components/Home.js",
+    "line_start": 4,
+    "line_end": 19
+  },
+  "src/Components/About.js::About": {
+    "kind": "function_or_class",
+    "path": "src/Components/About.js",
+    "line_start": 4,
+    "line_end": 21
+  },
+  "src/Components/Favorites.js::Favorites": {
+    "kind": "function_or_class",
+    "path": "src/Components/Favorites.js",
+    "line_start": 4,
+    "line_end": 44
+  },
+  "src/Components/Navbar.js::Navbar": {
+    "kind": "function_or_class",
+    "path": "src/Components/Navbar.js",
+    "line_start": 5,
+    "line_end": 22
+  },
+  "src/Components/Recipes.js::Recipes": {
+    "kind": "function_or_class",
+    "path": "src/Components/Recipes.js",
+    "line_start": 4,
+    "line_end": 44
+  },
+  "src/Components/Recipes.js::fetchRecipes": {
+    "kind": "function_or_class",
+    "path": "src/Components/Recipes.js",
+    "line_start": 10,
+    "line_end": 50
+  },
+  "src/Components/Recipes.js::handleSearch": {
+    "kind": "function_or_class",
+    "path": "src/Components/Recipes.js",
+    "line_start": 28,
+    "line_end": 68
+  },
+  "src/Components/Recipes.js::toggleFavorite": {
+    "kind": "function_or_class",
+    "path": "src/Components/Recipes.js",
+    "line_start": 33,
+    "line_end": 73
+  }
+}

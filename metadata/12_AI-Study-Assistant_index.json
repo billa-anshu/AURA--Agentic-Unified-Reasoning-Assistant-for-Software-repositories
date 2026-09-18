@@ -1,0 +1,926 @@
+{
+  "app.py::render_login_signup": {
+    "kind": "function",
+    "path": "app.py",
+    "line_start": 43,
+    "line_end": 81
+  },
+  "app.py::current_user": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 88,
+    "line_end": 88
+  },
+  "app.py::defaults": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 91,
+    "line_end": 100
+  },
+  "app.py::render_chat_turn": {
+    "kind": "function",
+    "path": "app.py",
+    "line_start": 206,
+    "line_end": 227
+  },
+  "app.py::handle_new_question": {
+    "kind": "function",
+    "path": "app.py",
+    "line_start": 230,
+    "line_end": 256
+  },
+  "app.py::api_key_input": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 123,
+    "line_end": 128
+  },
+  "app.py::uploaded_file": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 133,
+    "line_end": 133
+  },
+  "app.py::process_clicked": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 135,
+    "line_end": 135
+  },
+  "app.py::question": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 283,
+    "line_end": 283
+  },
+  "app.py::num_q": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 315,
+    "line_end": 315
+  },
+  "app.py::num_cards": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 366,
+    "line_end": 366
+  },
+  "app.py::voice_question": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 269,
+    "line_end": 276
+  },
+  "app.py::style": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 292,
+    "line_end": 292
+  },
+  "app.py::cols": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 377,
+    "line_end": 377
+  },
+  "app.py::username": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "app.py::password": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 52,
+    "line_end": 52
+  },
+  "app.py::submitted": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "app.py::new_username": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 67,
+    "line_end": 67
+  },
+  "app.py::new_email": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "app.py::new_password": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "app.py::confirm_password": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 70,
+    "line_end": 70
+  },
+  "app.py::error": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 73,
+    "line_end": 73
+  },
+  "app.py::user_answers": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 326,
+    "line_end": 326
+  },
+  "app.py::score": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 339,
+    "line_end": 339
+  },
+  "app.py::user": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 58,
+    "line_end": 58
+  },
+  "app.py::result": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 237,
+    "line_end": 237
+  },
+  "app.py::turn": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 244,
+    "line_end": 244
+  },
+  "app.py::options": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 329,
+    "line_end": 329
+  },
+  "app.py::labels": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 330,
+    "line_end": 330
+  },
+  "app.py::choice": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 331,
+    "line_end": 333
+  },
+  "app.py::correct": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 341,
+    "line_end": 341
+  },
+  "app.py::given": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 342,
+    "line_end": 342
+  },
+  "app.py::is_correct": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 343,
+    "line_end": 343
+  },
+  "app.py::icon": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 345,
+    "line_end": 345
+  },
+  "app.py::file_bytes": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 145,
+    "line_end": 145
+  },
+  "app.py::chunks": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 146,
+    "line_end": 146
+  },
+  "app.py::collection_name": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 147,
+    "line_end": 147
+  },
+  "app.py::vectordb": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 148,
+    "line_end": 148
+  },
+  "src/flashcard_generator.py::FLASHCARD_PROMPT": {
+    "kind": "variable",
+    "path": "src/flashcard_generator.py",
+    "line_start": 15,
+    "line_end": 37
+  },
+  "src/flashcard_generator.py::_extract_json": {
+    "kind": "function",
+    "path": "src/flashcard_generator.py",
+    "line_start": 40,
+    "line_end": 42
+  },
+  "src/flashcard_generator.py::generate_flashcards": {
+    "kind": "function",
+    "path": "src/flashcard_generator.py",
+    "line_start": 45,
+    "line_end": 68
+  },
+  "src/flashcard_generator.py::cleaned": {
+    "kind": "variable",
+    "path": "src/flashcard_generator.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "src/flashcard_generator.py::llm": {
+    "kind": "variable",
+    "path": "src/flashcard_generator.py",
+    "line_start": 50,
+    "line_end": 50
+  },
+  "src/flashcard_generator.py::text": {
+    "kind": "variable",
+    "path": "src/flashcard_generator.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "src/flashcard_generator.py::chain": {
+    "kind": "variable",
+    "path": "src/flashcard_generator.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "src/flashcard_generator.py::result": {
+    "kind": "variable",
+    "path": "src/flashcard_generator.py",
+    "line_start": 54,
+    "line_end": 54
+  },
+  "src/flashcard_generator.py::parsed": {
+    "kind": "variable",
+    "path": "src/flashcard_generator.py",
+    "line_start": 57,
+    "line_end": 57
+  },
+  "src/auth.py::USERNAME_RE": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 12,
+    "line_end": 12
+  },
+  "src/auth.py::EMAIL_RE": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 13,
+    "line_end": 13
+  },
+  "src/auth.py::AuthUser": {
+    "kind": "class",
+    "path": "src/auth.py",
+    "line_start": 16,
+    "line_end": 19
+  },
+  "src/auth.py::hash_password": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 22,
+    "line_end": 23
+  },
+  "src/auth.py::verify_password": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 26,
+    "line_end": 31
+  },
+  "src/auth.py::validate_registration": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 34,
+    "line_end": 46
+  },
+  "src/auth.py::register_user": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 49,
+    "line_end": 68
+  },
+  "src/auth.py::authenticate_user": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 71,
+    "line_end": 85
+  },
+  "src/auth.py::conn": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "src/auth.py::cur": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "src/auth.py::row": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 80,
+    "line_end": 80
+  },
+  "src/config.py::Config": {
+    "kind": "class",
+    "path": "src/config.py",
+    "line_start": 12,
+    "line_end": 31
+  },
+  "src/config.py::Config.is_ready": {
+    "kind": "method",
+    "path": "src/config.py",
+    "line_start": 29,
+    "line_end": 31
+  },
+  "src/config.py::is_ready": {
+    "kind": "function",
+    "path": "src/config.py",
+    "line_start": 29,
+    "line_end": 31
+  },
+  "src/pdf_processor.py::extract_text_from_pdf": {
+    "kind": "function",
+    "path": "src/pdf_processor.py",
+    "line_start": 15,
+    "line_end": 42
+  },
+  "src/pdf_processor.py::chunk_documents": {
+    "kind": "function",
+    "path": "src/pdf_processor.py",
+    "line_start": 45,
+    "line_end": 55
+  },
+  "src/pdf_processor.py::process_pdf": {
+    "kind": "function",
+    "path": "src/pdf_processor.py",
+    "line_start": 58,
+    "line_end": 61
+  },
+  "src/pdf_processor.py::full_text_from_documents": {
+    "kind": "function",
+    "path": "src/pdf_processor.py",
+    "line_start": 64,
+    "line_end": 66
+  },
+  "src/pdf_processor.py::reader": {
+    "kind": "variable",
+    "path": "src/pdf_processor.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "src/pdf_processor.py::documents": {
+    "kind": "variable",
+    "path": "src/pdf_processor.py",
+    "line_start": 22,
+    "line_end": 22
+  },
+  "src/pdf_processor.py::splitter": {
+    "kind": "variable",
+    "path": "src/pdf_processor.py",
+    "line_start": 50,
+    "line_end": 54
+  },
+  "src/pdf_processor.py::pages": {
+    "kind": "variable",
+    "path": "src/pdf_processor.py",
+    "line_start": 60,
+    "line_end": 60
+  },
+  "src/pdf_processor.py::text": {
+    "kind": "variable",
+    "path": "src/pdf_processor.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "src/summarizer.py::FULL_DOCUMENT_CHAR_BUDGET": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 23,
+    "line_end": 23
+  },
+  "src/summarizer.py::SINGLE_CALL_PROMPT": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 25,
+    "line_end": 37
+  },
+  "src/summarizer.py::BRIEF_PROMPT": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 39,
+    "line_end": 47
+  },
+  "src/summarizer.py::MAP_PROMPT": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 49,
+    "line_end": 58
+  },
+  "src/summarizer.py::COMBINE_PROMPT": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 60,
+    "line_end": 72
+  },
+  "src/summarizer.py::_batch_documents": {
+    "kind": "function",
+    "path": "src/summarizer.py",
+    "line_start": 75,
+    "line_end": 91
+  },
+  "src/summarizer.py::summarize_documents": {
+    "kind": "function",
+    "path": "src/summarizer.py",
+    "line_start": 94,
+    "line_end": 130
+  },
+  "src/summarizer.py::n": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 81,
+    "line_end": 81
+  },
+  "src/summarizer.py::batch_size": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 85,
+    "line_end": 85
+  },
+  "src/summarizer.py::batched": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 86,
+    "line_end": 86
+  },
+  "src/summarizer.py::llm": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 101,
+    "line_end": 101
+  },
+  "src/summarizer.py::total_chars": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 102,
+    "line_end": 102
+  },
+  "src/summarizer.py::target_batches": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 120,
+    "line_end": 120
+  },
+  "src/summarizer.py::batched_docs": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 121,
+    "line_end": 121
+  },
+  "src/summarizer.py::chain": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 122,
+    "line_end": 128
+  },
+  "src/summarizer.py::result": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 129,
+    "line_end": 129
+  },
+  "src/summarizer.py::group": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 88,
+    "line_end": 88
+  },
+  "src/summarizer.py::combined": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 89,
+    "line_end": 89
+  },
+  "src/summarizer.py::combined_text": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 105,
+    "line_end": 105
+  },
+  "src/summarizer.py::full_text": {
+    "kind": "variable",
+    "path": "src/summarizer.py",
+    "line_start": 113,
+    "line_end": 113
+  },
+  "src/quiz_generator.py::QUIZ_PROMPT": {
+    "kind": "variable",
+    "path": "src/quiz_generator.py",
+    "line_start": 16,
+    "line_end": 44
+  },
+  "src/quiz_generator.py::_extract_json": {
+    "kind": "function",
+    "path": "src/quiz_generator.py",
+    "line_start": 47,
+    "line_end": 50
+  },
+  "src/quiz_generator.py::generate_quiz": {
+    "kind": "function",
+    "path": "src/quiz_generator.py",
+    "line_start": 53,
+    "line_end": 76
+  },
+  "src/quiz_generator.py::cleaned": {
+    "kind": "variable",
+    "path": "src/quiz_generator.py",
+    "line_start": 49,
+    "line_end": 49
+  },
+  "src/quiz_generator.py::llm": {
+    "kind": "variable",
+    "path": "src/quiz_generator.py",
+    "line_start": 58,
+    "line_end": 58
+  },
+  "src/quiz_generator.py::text": {
+    "kind": "variable",
+    "path": "src/quiz_generator.py",
+    "line_start": 59,
+    "line_end": 59
+  },
+  "src/quiz_generator.py::chain": {
+    "kind": "variable",
+    "path": "src/quiz_generator.py",
+    "line_start": 61,
+    "line_end": 61
+  },
+  "src/quiz_generator.py::result": {
+    "kind": "variable",
+    "path": "src/quiz_generator.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "src/quiz_generator.py::parsed": {
+    "kind": "variable",
+    "path": "src/quiz_generator.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "src/voice.py::text_to_speech": {
+    "kind": "function",
+    "path": "src/voice.py",
+    "line_start": 14,
+    "line_end": 30
+  },
+  "src/voice.py::speakable": {
+    "kind": "variable",
+    "path": "src/voice.py",
+    "line_start": 23,
+    "line_end": 23
+  },
+  "src/voice.py::buf": {
+    "kind": "variable",
+    "path": "src/voice.py",
+    "line_start": 27,
+    "line_end": 27
+  },
+  "src/rag_chain.py::QA_PROMPT_TEMPLATE": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 16,
+    "line_end": 26
+  },
+  "src/rag_chain.py::_rate_limiter": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 33,
+    "line_end": 37
+  },
+  "src/rag_chain.py::get_llm": {
+    "kind": "function",
+    "path": "src/rag_chain.py",
+    "line_start": 40,
+    "line_end": 55
+  },
+  "src/rag_chain.py::_is_rate_limit_error": {
+    "kind": "function",
+    "path": "src/rag_chain.py",
+    "line_start": 58,
+    "line_end": 60
+  },
+  "src/rag_chain.py::_parse_retry_delay_seconds": {
+    "kind": "function",
+    "path": "src/rag_chain.py",
+    "line_start": 63,
+    "line_end": 77
+  },
+  "src/rag_chain.py::invoke_with_retry": {
+    "kind": "function",
+    "path": "src/rag_chain.py",
+    "line_start": 80,
+    "line_end": 95
+  },
+  "src/rag_chain.py::build_qa_chain": {
+    "kind": "function",
+    "path": "src/rag_chain.py",
+    "line_start": 98,
+    "line_end": 113
+  },
+  "src/rag_chain.py::ask_question": {
+    "kind": "function",
+    "path": "src/rag_chain.py",
+    "line_start": 116,
+    "line_end": 134
+  },
+  "src/rag_chain.py::msg": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 59,
+    "line_end": 59
+  },
+  "src/rag_chain.py::match": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 71,
+    "line_end": 71
+  },
+  "src/rag_chain.py::last_error": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 86,
+    "line_end": 86
+  },
+  "src/rag_chain.py::retriever": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 100,
+    "line_end": 102
+  },
+  "src/rag_chain.py::prompt": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 103,
+    "line_end": 105
+  },
+  "src/rag_chain.py::chain": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 106,
+    "line_end": 112
+  },
+  "src/rag_chain.py::result": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 122,
+    "line_end": 122
+  },
+  "src/rag_chain.py::sources": {
+    "kind": "variable",
+    "path": "src/rag_chain.py",
+    "line_start": 124,
+    "line_end": 124
+  },
+  "src/vector_store.py::_embeddings_cache": {
+    "kind": "variable",
+    "path": "src/vector_store.py",
+    "line_start": 13,
+    "line_end": 13
+  },
+  "src/vector_store.py::get_embeddings": {
+    "kind": "function",
+    "path": "src/vector_store.py",
+    "line_start": 16,
+    "line_end": 28
+  },
+  "src/vector_store.py::build_vectorstore": {
+    "kind": "function",
+    "path": "src/vector_store.py",
+    "line_start": 31,
+    "line_end": 48
+  },
+  "src/vector_store.py::load_vectorstore": {
+    "kind": "function",
+    "path": "src/vector_store.py",
+    "line_start": 51,
+    "line_end": 61
+  },
+  "src/vector_store.py::get_retriever": {
+    "kind": "function",
+    "path": "src/vector_store.py",
+    "line_start": 64,
+    "line_end": 67
+  },
+  "src/vector_store.py::persist_directory": {
+    "kind": "variable",
+    "path": "src/vector_store.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "src/vector_store.py::vectordb": {
+    "kind": "variable",
+    "path": "src/vector_store.py",
+    "line_start": 42,
+    "line_end": 47
+  },
+  "src/vector_store.py::k": {
+    "kind": "variable",
+    "path": "src/vector_store.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "src/db.py::DB_PATH": {
+    "kind": "variable",
+    "path": "src/db.py",
+    "line_start": 11,
+    "line_end": 11
+  },
+  "src/db.py::get_connection": {
+    "kind": "function",
+    "path": "src/db.py",
+    "line_start": 14,
+    "line_end": 22
+  },
+  "src/db.py::init_db": {
+    "kind": "function",
+    "path": "src/db.py",
+    "line_start": 25,
+    "line_end": 59
+  },
+  "src/db.py::conn": {
+    "kind": "variable",
+    "path": "src/db.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "src/chat_history.py::save_chat_turn": {
+    "kind": "function",
+    "path": "src/chat_history.py",
+    "line_start": 12,
+    "line_end": 24
+  },
+  "src/chat_history.py::load_chat_history": {
+    "kind": "function",
+    "path": "src/chat_history.py",
+    "line_start": 27,
+    "line_end": 66
+  },
+  "src/chat_history.py::clear_chat_history": {
+    "kind": "function",
+    "path": "src/chat_history.py",
+    "line_start": 69,
+    "line_end": 81
+  },
+  "src/chat_history.py::list_documents_with_history": {
+    "kind": "function",
+    "path": "src/chat_history.py",
+    "line_start": 84,
+    "line_end": 101
+  },
+  "src/chat_history.py::conn": {
+    "kind": "variable",
+    "path": "src/chat_history.py",
+    "line_start": 13,
+    "line_end": 13
+  },
+  "src/chat_history.py::cur": {
+    "kind": "variable",
+    "path": "src/chat_history.py",
+    "line_start": 31,
+    "line_end": 31
+  },
+  "src/chat_history.py::rows": {
+    "kind": "variable",
+    "path": "src/chat_history.py",
+    "line_start": 54,
+    "line_end": 54
+  },
+  "src/utils.py::friendly_error_message": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 9,
+    "line_end": 23
+  },
+  "src/utils.py::make_collection_name": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 26,
+    "line_end": 33
+  },
+  "src/utils.py::select_representative_text": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 36,
+    "line_end": 64
+  },
+  "src/utils.py::flashcards_to_text": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 67,
+    "line_end": 75
+  },
+  "src/utils.py::quiz_to_text": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 78,
+    "line_end": 88
+  },
+  "src/utils.py::flashcards_to_json": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 91,
+    "line_end": 92
+  },
+  "src/utils.py::quiz_to_json": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 95,
+    "line_end": 96
+  },
+  "src/utils.py::msg": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 14,
+    "line_end": 14
+  },
+  "src/utils.py::digest": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 31,
+    "line_end": 31
+  },
+  "src/utils.py::safe_name": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "src/utils.py::total_chars": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 45,
+    "line_end": 45
+  },
+  "src/utils.py::n": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 49,
+    "line_end": 49
+  },
+  "src/utils.py::avg_len": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 50,
+    "line_end": 50
+  },
+  "src/utils.py::target_count": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "src/utils.py::selected": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 63,
+    "line_end": 63
+  },
+  "src/utils.py::lines": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "src/utils.py::indices": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 54,
+    "line_end": 54
+  }
+}

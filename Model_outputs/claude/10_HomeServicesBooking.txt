@@ -1,0 +1,50 @@
+# Repository Summary Report: Home Services Booking Application
+
+## ⚠️ Notable Security Issue (upfront)
+
+This application appears to store and compare **customer passwords in plaintext**. The `Customer` entity has a plain `password` field with no indication of hashing [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=15-16], and `CustomerRepository` authenticates users via a derived query that matches `email` **and** `password` directly against the database, `findByEmailAndPassword(String email, String password)` [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=findByEmailAndPassword;lines=9-9]. A derived query matching on a raw `password` parameter implies the value is compared as stored (plaintext) rather than via a hashed comparison, which is a significant security concern for a production system, though the actual login controller logic (in `AuthController.java`) was not included in the provided content, so this cannot be fully confirmed.
+
+## 1. Overall Purpose and Architecture
+
+This is a **Spring Boot web application for booking home services** (e.g., plumbing, cleaning) — connecting customers to workers who provide specific services [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=8-32]. The application bootstraps via a standard Spring Boot entry point [cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=HomeServicesApplication;lines=7-9].
+
+The architecture is a **layered MVC design** using server-rendered views (a traditional `@Controller`-based, template-driven Spring MVC app rather than a REST API — `HomeController` returns view name strings like `"index"` and populates a `Model`) [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=index;lines=15-19], with distinct `model` (JPA entities), `repository` (Spring Data JPA interfaces), `service`, and `controller` packages. Session state is used for tracking the logged-in customer, as seen in `HomeController` reading a `"customer"` attribute from `HttpSession` [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=index;lines=16-17].
+
+## 2. Key Components / Modules and What They Do
+
+**Entity/Model Layer**:
+- **`Worker`** — represents a service provider, with name, email, phone, experience fields, and a many-to-one relationship to the `HomeService` they offer [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=7-19].
+- **`Customer`** — represents a registered customer with a unique, non-null email and a non-null password field [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=7-17].
+- **`HomeService`** — represents a type of service offered (e.g., a category like "plumbing"), with a service name and a description field capped at 1000 characters [cite:file=src/main/java/com/app/model/HomeService.java;symbol=HomeService;lines=7-15].
+- **`Booking`** — represents a booking linking a `Customer`, a `HomeService`, and a `Worker`, with a booking timestamp and a status field [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=8-19].
+
+**Repository Layer**:
+- **`WorkerRepository`** — supports lookup of a worker by email and finding all workers offering a given service ID [cite:file=src/main/java/com/app/repository/WorkerRepository.java;symbol=WorkerRepository;lines=7-11].
+- **`BookingRepository`** — supports checking for an existing booking matching customer, service, worker, and status; and listing a customer's or worker's bookings ordered by ID descending (most recent first) [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=7-17].
+- **`CustomerRepository`** — supports authentication via `findByEmailAndPassword` and checking whether an email is already registered via `existsByEmail` [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=CustomerRepository;lines=9-11].
+- **`HomeServiceRepository`** — a bare JPA repository for `HomeService` with no custom query methods [cite:file=src/main/java/com/app/repository/HomeServiceRepository.java;symbol=HomeServiceRepository;lines=6-7].
+
+**Controller Layer**:
+- **`HomeController`** — handles the root/index page, listing all available services and passing the current session's customer (if any) to the view [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=9-19].
+- **`ServiceController`, `BookingController`, `WorkerController`, `AuthController`** — listed in the file tree, implying endpoints for browsing services, managing bookings, worker-related actions, and authentication respectively, but none of their contents were included in the provided repository content, so no functional claims can be made about them.
+
+**Service Layer**: `DataLoader` and `EmailService` are listed in the file tree — likely responsible for seeding initial data and sending notification emails (e.g., booking confirmations) respectively — but neither file's content was provided.
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`Booking.beforeSave()`** — a `@PrePersist` lifecycle callback that defaults `bookingDate` to the current time if unset, and defaults `status` to `"Booked"` if it's null or blank, ensuring every new booking has sensible defaults without requiring the caller to set them explicitly [cite:file=src/main/java/com/app/model/Booking.java;symbol=beforeSave;lines=21-24].
+- **`HomeController.index(Model model, HttpSession session)`** — the handler for both `/` and `/index` GET requests; queries all `HomeService` records via `serviceRepository.findAll()` and adds them to the model, and reads the `"customer"` session attribute (presumably set at login) so the view can render logged-in-user-specific content [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=index;lines=15-19].
+- **`BookingRepository.existsByCustomerIdAndServiceIdAndWorkerIdAndStatus`** — a derived query used to check for a duplicate/existing active booking with matching customer, service, worker, and status, likely used to prevent double-booking [cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=existsByCustomerIdAndServiceIdAndWorkerIdAndStatus;lines=10-15].
+- **`CustomerRepository.findByEmailAndPassword`** — the authentication lookup method, returning an `Optional<Customer>` matched by both email and password fields directly [cite:file=src/main/java/com/app/repository/CustomerRepository.java;symbol=findByEmailAndPassword;lines=9-9].
+
+## 4. Design Patterns Observed
+
+- **Repository Pattern**: All four repository interfaces extend Spring Data's `JpaRepository`, delegating CRUD operations to the framework and expressing custom queries via Spring Data's method-name-derived query convention (e.g., `findByServiceId`, `findByCustomerIdOrderByIdDesc`) rather than hand-written SQL/JPQL [cite:file=src/main/java/com/app/repository/WorkerRepository.java;symbol=WorkerRepository;lines=7-11][cite:file=src/main/java/com/app/repository/BookingRepository.java;symbol=BookingRepository;lines=7-17].
+- **Constructor-based Dependency Injection**: `HomeController` receives its `HomeServiceRepository` dependency via constructor injection rather than field injection, which is generally considered the preferred Spring practice for testability [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=11-13].
+- **JPA Entity Lifecycle Callback**: `Booking` uses `@PrePersist` to enforce default values (`bookingDate`, `status`) at the entity layer before insertion, keeping this defaulting logic out of controller/service code [cite:file=src/main/java/com/app/model/Booking.java;symbol=beforeSave;lines=21-24].
+- **Session-based State (Server-rendered MVC)**: The application uses `HttpSession` to track the logged-in customer across requests rather than a stateless token-based approach, consistent with a traditional server-rendered Spring MVC application [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=index;lines=16-17].
+- **Many-to-One Relational Modeling with Lazy Fetching**: `Worker.service`, `Booking.customer`, `Booking.service`, and `Booking.worker` are all declared as `@ManyToOne(fetch = FetchType.LAZY)`, consistently deferring related-entity loading until accessed, which is a deliberate performance pattern to avoid unnecessary joins [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker.service;lines=17-19][cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking.customer;lines=12-14].
+
+## Scope Limitations
+
+The following files appear in the file tree but their contents were **not provided**, so no functional claims have been made about them: `README.md`, `service/DataLoader.java`, `service/EmailService.java`, `controller/ServiceController.java`, `controller/BookingController.java`, `controller/WorkerController.java`, and `controller/AuthController.java`. In particular, `AuthController.java` would be needed to confirm exactly how login/registration and password handling work — the plaintext-password concern raised above is based on the entity and repository definitions alone, not on the actual controller logic.

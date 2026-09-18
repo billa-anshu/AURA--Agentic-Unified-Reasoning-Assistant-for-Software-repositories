@@ -1,0 +1,48 @@
+Structured Summary Report
+1. Overall purpose and architecture
+The repository implements a Flask-based web application for symptom-driven disease prediction. The application loads symptom, disease-description, precaution, medication, diet, and workout datasets from CSV files and loads a serialized prediction model from models/svc.pkl. [cite:file=main.py;symbol=app;lines=6-15]
+The architecture is centered on a single Flask application module that combines data loading, machine-learning inference, recommendation lookup, and HTTP route handling. [cite:file=main.py;symbol=app;lines=6-15]
+Disease prediction uses a pre-trained model together with a fixed symptom-to-index mapping, while additional CSV datasets provide information associated with the predicted disease. [cite:file=main.py;symbol=get_predicted_value;lines=51-57] [cite:file=main.py;symbol=helper;lines=60-75]
+The web layer uses Flask routes and server-side HTML rendering through render_template. [cite:file=main.py;symbol=index;lines=79-81] [cite:file=main.py;symbol=search_disease;lines=84-100] [cite:file=main.py;symbol=predict;lines=103-120]
+2. Key components / modules
+Data and model layer
+The application loads six CSV datasets: symptoms, precautions, workouts, disease descriptions, medications, and diets. [cite:file=main.py;symbol=app;lines=6-12]
+A serialized model is loaded from models/svc.pkl using Python's pickle module. [cite:file=main.py;symbol=app;lines=14-15]
+symptoms_dict maps symptom names to integer feature positions used to construct the model input vector. [cite:file=main.py;symbol=symptoms_dict;lines=17-41]
+diseases_list maps the integer class predictions produced by the model to human-readable disease names. [cite:file=main.py;symbol=diseases_list;lines=43-48]
+Prediction and recommendation logic
+get_predicted_value converts the submitted symptom names into a binary NumPy feature vector and passes that vector to the loaded model's predict method, then translates the resulting class identifier through diseases_list. [cite:file=main.py;symbol=get_predicted_value;lines=51-57]
+helper retrieves the description, four precautions, medication, diet, and workout information corresponding to a predicted disease from the loaded Pandas dataframes. [cite:file=main.py;symbol=helper;lines=60-75]
+Web interface
+The / route builds a list of available symptoms and renders index.html, providing the symptoms to the template. [cite:file=main.py;symbol=index;lines=79-81]
+The /search route accepts a disease supplied through a form submission, retrieves associated recommendations with helper, processes medication and diet values into lists, and renders the results back through index.html. [cite:file=main.py;symbol=search_disease;lines=84-100]
+The /predict route accepts a list of submitted symptoms, obtains a model-generated disease prediction, retrieves the corresponding recommendations, and renders those results through index.html. [cite:file=main.py;symbol=predict;lines=103-120]
+Additional /about, /contact, /blog, and /developer routes render their respective HTML templates. [cite:file=main.py;symbol=about;lines=122-123] [cite:file=main.py;symbol=contact;lines=125-126] [cite:file=main.py;symbol=blog;lines=128-129] [cite:file=main.py;symbol=developer;lines=131-132]
+3. Notable functions and responsibilities
+get_predicted_value
+get_predicted_value(patient_symptoms) is the core inference function. [cite:file=main.py;symbol=get_predicted_value;lines=51-57]
+It initializes a zero-filled NumPy vector whose length equals the number of recognized symptoms, sets positions corresponding to submitted symptoms to 1, invokes the loaded model, and converts the resulting class index into a disease name. [cite:file=main.py;symbol=get_predicted_value;lines=52-57]
+helper
+helper(predicted_disease) acts as a recommendation/data aggregation helper for a predicted disease. [cite:file=main.py;symbol=helper;lines=60-75]
+It filters the loaded datasets by disease name and returns the description, precautions, medications, diet, and workout information. [cite:file=main.py;symbol=helper;lines=61-75]
+search_disease
+search_disease() handles both GET and POST requests on /search, with the prediction/recommendation workflow executed for POST requests. [cite:file=main.py;symbol=search_disease;lines=84-100]
+It extracts a disease from the submitted form, calls helper, and normalizes medication and diet values before passing them to the template. [cite:file=main.py;symbol=search_disease;lines=86-100]
+predict
+predict() handles /predict and obtains multiple submitted symptom values with request.form.getlist('symptoms'). [cite:file=main.py;symbol=predict;lines=103-106]
+It invokes get_predicted_value, obtains supplementary disease information through helper, processes the recommendation values, and renders the results. [cite:file=main.py;symbol=predict;lines=105-120]
+Flask application startup
+The module creates the Flask application with app = Flask(__name__). [cite:file=main.py;symbol=app;lines=16-16]
+When executed directly, the module starts the Flask development server with debugging enabled. [cite:file=main.py;symbol=app;lines=135-136]
+4. Design patterns and architectural observations
+Model–view-style separation
+The code shows a lightweight separation between prediction/data-processing logic and the HTTP presentation layer: get_predicted_value and helper perform application logic, while Flask route functions obtain requests and render templates. [cite:file=main.py;symbol=get_predicted_value;lines=51-57] [cite:file=main.py;symbol=helper;lines=60-75] [cite:file=main.py;symbol=predict;lines=103-120]
+The templates therefore serve as the presentation layer, with route handlers passing calculated values such as predicted_disease, dis_desc, des_pre, des_med, and desc_diet into index.html. [cite:file=main.py;symbol=predict;lines=110-120]
+Data-driven recommendation pattern
+Disease-specific recommendations are not hard-coded inside the route handlers; instead, helper queries the preloaded Pandas dataframes using the predicted disease as the lookup key. [cite:file=main.py;symbol=helper;lines=61-75]
+This creates a pipeline in which the machine-learning model determines a disease class and separate datasets provide the associated explanatory and recommendation content. [cite:file=main.py;symbol=get_predicted_value;lines=51-57] [cite:file=main.py;symbol=helper;lines=60-75]
+Shared helper / reuse pattern
+Both /search and /predict reuse helper rather than independently implementing the disease-information lookup logic. [cite:file=main.py;symbol=search_disease;lines=86-87] [cite:file=main.py;symbol=predict;lines=106-107]
+/predict additionally reuses get_predicted_value as the single point responsible for transforming symptoms into a model prediction. [cite:file=main.py;symbol=predict;lines=105-106]
+Overall assessment
+Overall, this is a small, data-driven Flask/ML application whose central workflow is submitted symptoms → encoded feature vector → serialized model prediction → disease lookup → recommendation lookup → rendered HTML. [cite:file=main.py;symbol=get_predicted_value;lines=51-57] [cite:file=main.py;symbol=helper;lines=60-75] [cite:file=main.py;symbol=predict;lines=103-120]

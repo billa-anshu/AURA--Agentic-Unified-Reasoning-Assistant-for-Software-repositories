@@ -1,0 +1,350 @@
+{
+  "server/test-upload.js::testUpload": {
+    "kind": "function_or_class",
+    "path": "server/test-upload.js",
+    "line_start": 6,
+    "line_end": 32
+  },
+  "server/config/db.js::connectDB": {
+    "kind": "function_or_class",
+    "path": "server/config/db.js",
+    "line_start": 3,
+    "line_end": 13
+  },
+  "server/middleware/authMiddleware.js::protect": {
+    "kind": "function_or_class",
+    "path": "server/middleware/authMiddleware.js",
+    "line_start": 4,
+    "line_end": 30
+  },
+  "server/routes/upload.js::checkFileType": {
+    "kind": "function_or_class",
+    "path": "server/routes/upload.js",
+    "line_start": 29,
+    "line_end": 58
+  },
+  "server/routes/auth.js::generateToken": {
+    "kind": "function_or_class",
+    "path": "server/routes/auth.js",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "src/App.tsx::App": {
+    "kind": "function_or_class",
+    "path": "src/App.tsx",
+    "line_start": 16,
+    "line_end": 54
+  },
+  "src/components/AddSubjectModal.tsx::AddSubjectModal": {
+    "kind": "function_or_class",
+    "path": "src/components/AddSubjectModal.tsx",
+    "line_start": 11,
+    "line_end": 51
+  },
+  "src/components/AddSubjectModal.tsx::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "src/components/AddSubjectModal.tsx",
+    "line_start": 36,
+    "line_end": 76
+  },
+  "src/components/PdfViewerModal.tsx::PdfViewerModal": {
+    "kind": "function_or_class",
+    "path": "src/components/PdfViewerModal.tsx",
+    "line_start": 11,
+    "line_end": 51
+  },
+  "src/components/AddMaterialModal.tsx::AddMaterialModal": {
+    "kind": "function_or_class",
+    "path": "src/components/AddMaterialModal.tsx",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "src/components/AddMaterialModal.tsx::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "src/components/AddMaterialModal.tsx",
+    "line_start": 41,
+    "line_end": 81
+  },
+  "src/components/EditMaterialModal.tsx::EditMaterialModal": {
+    "kind": "function_or_class",
+    "path": "src/components/EditMaterialModal.tsx",
+    "line_start": 12,
+    "line_end": 52
+  },
+  "src/components/EditMaterialModal.tsx::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "src/components/EditMaterialModal.tsx",
+    "line_start": 20,
+    "line_end": 60
+  },
+  "src/components/ConfirmDeleteModal.tsx::ConfirmDeleteModal": {
+    "kind": "function_or_class",
+    "path": "src/components/ConfirmDeleteModal.tsx",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "src/components/ConfirmDeleteModal.tsx::handleConfirm": {
+    "kind": "function_or_class",
+    "path": "src/components/ConfirmDeleteModal.tsx",
+    "line_start": 16,
+    "line_end": 56
+  },
+  "src/layouts/MainLayout.tsx::MainLayout": {
+    "kind": "function_or_class",
+    "path": "src/layouts/MainLayout.tsx",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "src/layouts/MainLayout.tsx::handleLogout": {
+    "kind": "function_or_class",
+    "path": "src/layouts/MainLayout.tsx",
+    "line_start": 35,
+    "line_end": 75
+  },
+  "src/services/firebase.ts::signInWithGooglePopup": {
+    "kind": "function_or_class",
+    "path": "src/services/firebase.ts",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "src/pages/Landing.tsx::Landing": {
+    "kind": "function_or_class",
+    "path": "src/pages/Landing.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "src/pages/Subjects.tsx::Subjects": {
+    "kind": "function_or_class",
+    "path": "src/pages/Subjects.tsx",
+    "line_start": 10,
+    "line_end": 50
+  },
+  "src/pages/Subjects.tsx::getIcon": {
+    "kind": "function_or_class",
+    "path": "src/pages/Subjects.tsx",
+    "line_start": 16,
+    "line_end": 56
+  },
+  "src/pages/Dashboard.tsx::Dashboard": {
+    "kind": "function_or_class",
+    "path": "src/pages/Dashboard.tsx",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "src/pages/Settings.tsx::Settings": {
+    "kind": "function_or_class",
+    "path": "src/pages/Settings.tsx",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "src/pages/Settings.tsx::handleLogout": {
+    "kind": "function_or_class",
+    "path": "src/pages/Settings.tsx",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "src/pages/Settings.tsx::handleSaveProfile": {
+    "kind": "function_or_class",
+    "path": "src/pages/Settings.tsx",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "src/pages/SubjectDetail.tsx::SubjectDetail": {
+    "kind": "function_or_class",
+    "path": "src/pages/SubjectDetail.tsx",
+    "line_start": 11,
+    "line_end": 51
+  },
+  "src/pages/SubjectDetail.tsx::getMaterialIcon": {
+    "kind": "function_or_class",
+    "path": "src/pages/SubjectDetail.tsx",
+    "line_start": 55,
+    "line_end": 95
+  },
+  "src/pages/SubjectDetail.tsx::getMaterialColor": {
+    "kind": "function_or_class",
+    "path": "src/pages/SubjectDetail.tsx",
+    "line_start": 65,
+    "line_end": 105
+  },
+  "src/pages/SubjectDetail.tsx::displayId": {
+    "kind": "function_or_class",
+    "path": "src/pages/SubjectDetail.tsx",
+    "line_start": 135,
+    "line_end": 175
+  },
+  "src/pages/About.tsx::About": {
+    "kind": "function_or_class",
+    "path": "src/pages/About.tsx",
+    "line_start": 30,
+    "line_end": 70
+  },
+  "src/pages/auth/Login.tsx::Login": {
+    "kind": "function_or_class",
+    "path": "src/pages/auth/Login.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "src/pages/auth/Login.tsx::handleLogin": {
+    "kind": "function_or_class",
+    "path": "src/pages/auth/Login.tsx",
+    "line_start": 17,
+    "line_end": 57
+  },
+  "src/pages/auth/Login.tsx::handleGoogleLogin": {
+    "kind": "function_or_class",
+    "path": "src/pages/auth/Login.tsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "src/pages/auth/Signup.tsx::Signup": {
+    "kind": "function_or_class",
+    "path": "src/pages/auth/Signup.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "src/pages/auth/Signup.tsx::handleSignup": {
+    "kind": "function_or_class",
+    "path": "src/pages/auth/Signup.tsx",
+    "line_start": 18,
+    "line_end": 58
+  },
+  "src/pages/auth/Signup.tsx::handleGoogleSignup": {
+    "kind": "function_or_class",
+    "path": "src/pages/auth/Signup.tsx",
+    "line_start": 39,
+    "line_end": 79
+  },
+  "src/context/MaterialContext.tsx::useMaterials": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 44,
+    "line_end": 84
+  },
+  "src/context/MaterialContext.tsx::MaterialProvider": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 52,
+    "line_end": 92
+  },
+  "src/context/MaterialContext.tsx::fetchData": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 61,
+    "line_end": 101
+  },
+  "src/context/MaterialContext.tsx::addMaterial": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 91,
+    "line_end": 131
+  },
+  "src/context/MaterialContext.tsx::addSubject": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 102,
+    "line_end": 142
+  },
+  "src/context/MaterialContext.tsx::deleteMaterial": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 113,
+    "line_end": 153
+  },
+  "src/context/MaterialContext.tsx::deleteSubject": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 122,
+    "line_end": 162
+  },
+  "src/context/MaterialContext.tsx::updateSubject": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 133,
+    "line_end": 173
+  },
+  "src/context/MaterialContext.tsx::updateMaterial": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 143,
+    "line_end": 178
+  },
+  "src/context/MaterialContext.tsx::getMaterialsBySubject": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 153,
+    "line_end": 178
+  },
+  "src/context/MaterialContext.tsx::getSubject": {
+    "kind": "function_or_class",
+    "path": "src/context/MaterialContext.tsx",
+    "line_start": 157,
+    "line_end": 178
+  },
+  "src/context/UserContext.tsx::useUser": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "src/context/UserContext.tsx::UserProvider": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 39,
+    "line_end": 79
+  },
+  "src/context/UserContext.tsx::checkLoggedIn": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 44,
+    "line_end": 84
+  },
+  "src/context/UserContext.tsx::login": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 89,
+    "line_end": 129
+  },
+  "src/context/UserContext.tsx::register": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 96,
+    "line_end": 136
+  },
+  "src/context/UserContext.tsx::loginWithGoogle": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 103,
+    "line_end": 143
+  },
+  "src/context/UserContext.tsx::logout": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 130,
+    "line_end": 170
+  },
+  "src/context/UserContext.tsx::updateUser": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 137,
+    "line_end": 177
+  },
+  "src/context/UserContext.tsx::toggleNotification": {
+    "kind": "function_or_class",
+    "path": "src/context/UserContext.tsx",
+    "line_start": 151,
+    "line_end": 177
+  },
+  "middleware/auth.js::verifyToken": {
+    "kind": "function_or_class",
+    "path": "middleware/auth.js",
+    "line_start": 4,
+    "line_end": 29
+  },
+  "middleware/auth.js::verifyAdmin": {
+    "kind": "function_or_class",
+    "path": "middleware/auth.js",
+    "line_start": 22,
+    "line_end": 29
+  }
+}

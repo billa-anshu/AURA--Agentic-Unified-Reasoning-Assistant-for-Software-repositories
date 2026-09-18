@@ -1,0 +1,48 @@
+Structured Summary Report
+1. Overall purpose and architecture
+The repository implements a React frontend application with a Supabase-backed image upload workflow and a separate Python backend file. [cite:file=src/App.js;symbol=App;lines=1-47] [cite:file=src/supabaseClient.js;symbol=createClient;lines=1-6] [cite:file=backend/app.py;symbol=app.py;lines=1-1]
+The React application uses BrowserRouter, Routes, and Route to provide /login, /app, and /upload routes. [cite:file=src/App.js;symbol=App;lines=14-45]
+Authentication state is maintained in the top-level App component through isAuthenticated, and protected routes redirect unauthenticated users to /login. [cite:file=src/App.js;symbol=App;lines=7-12] [cite:file=src/App.js;symbol=App;lines=23-45]
+Supabase is initialized through createClient using a configured Supabase URL and key. [cite:file=src/supabaseClient.js;symbol=createClient;lines=1-6]
+The upload workflow stores images in a Supabase Storage bucket and records upload metadata in an uploads database table. [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=8-35]
+2. Key components / modules
+Application and authentication
+App is the main routing and authentication-state component. [cite:file=src/App.js;symbol=App;lines=6-47]
+handleLoginSuccess changes the application authentication state to true after successful login. [cite:file=src/App.js;symbol=handleLoginSuccess;lines=9-11]
+/login displays LoginPage when unauthenticated and redirects authenticated users to /app. [cite:file=src/App.js;symbol=App;lines=14-22]
+/app displays StegoApp only when authenticated and otherwise redirects to /login. [cite:file=src/App.js;symbol=App;lines=24-30]
+/upload similarly protects UploadComponent behind the authentication state. [cite:file=src/App.js;symbol=App;lines=32-38]
+Supabase integration
+supabaseClient.js creates and exports a reusable Supabase client. [cite:file=src/supabaseClient.js;symbol=supabase;lines=1-6]
+uploadImageToSupabase first verifies that a file exists and then checks whether an active Supabase authentication session exists. [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=8-15]
+The function constructs a storage path under stego/ using the current timestamp and original filename. [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=17-17]
+It uploads the file to the stego-images storage bucket with caching enabled and upsert disabled. [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=19-25]
+After upload, it obtains a public URL for the stored file. [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=27-29]
+It inserts the authenticated user's email, filename, public URL, and supplied encryption key into the uploads table. [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=31-35]
+Upload UI
+UploadComponent maintains local state for the selected file, uploaded URL, and upload status. [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=5-7]
+The component accepts image files through a file input and stores the selected file in component state. [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=19-24]
+handleUpload invokes uploadImageToSupabase and updates the UI based on whether the operation succeeds or fails. [cite:file=src/UploadComponent.js;symbol=handleUpload;lines=9-17]
+When an upload succeeds, the resulting URL is rendered as an image with a maximum width of 300 pixels. [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=27-27]
+Database diagnostic utility
+testDatabaseInsert checks for a currently authenticated Supabase user before attempting a database insert. [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=4-13]
+It creates test metadata containing an email, generated file path, filename, public URL, file type, and encoding type. [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=15-23]
+It attempts to insert that data into the uploads table and logs detailed database error information when the insert fails. [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=25-39]
+Performance and testing
+reportWebVitals dynamically imports web-vitals and registers callbacks for CLS, FID, FCP, LCP, and TTFB when a performance callback is supplied. [cite:file=src/reportWebVitals.js;symbol=reportWebVitals;lines=1-12]
+setupTests.js imports @testing-library/jest-dom for DOM testing matchers. [cite:file=src/setupTests.js;symbol=default;lines=1-4]
+App.test.js renders App and checks for text matching "learn react". [cite:file=src/App.test.js;symbol=default;lines=1-7]
+3. Notable functions and responsibilities
+App coordinates authentication state, route protection, and selection of the main application components. [cite:file=src/App.js;symbol=App;lines=6-47]
+handleLoginSuccess serves as the callback used to mark the application as authenticated. [cite:file=src/App.js;symbol=handleLoginSuccess;lines=9-11]
+uploadImageToSupabase is the central upload-service function, combining authentication checking, file upload, public URL generation, metadata persistence, and error handling. [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=8-38]
+handleUpload connects the upload UI to the Supabase upload service and translates the returned result into UI state. [cite:file=src/UploadComponent.js;symbol=handleUpload;lines=9-17]
+testDatabaseInsert provides a diagnostic path for testing insertion into the uploads table independently of the normal image-upload flow. [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=4-43]
+4. Design patterns observed
+The frontend uses a component-based React architecture, with application routing, upload UI, and application functionality separated into components/modules. [cite:file=src/App.js;symbol=App;lines=1-6] [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=1-5]
+The application uses a lifted-state pattern, with authentication state owned by App and the login component receiving a callback to update it. [cite:file=src/App.js;symbol=App;lines=7-11] [cite:file=src/App.js;symbol=App;lines=16-20]
+It implements a protected-route pattern through conditional route elements and Navigate redirects based on isAuthenticated. [cite:file=src/App.js;symbol=App;lines=16-45]
+Supabase access is centralized through a shared client module, with supabase exported from supabaseClient.js and imported by database/upload utilities. [cite:file=src/supabaseClient.js;symbol=supabase;lines=1-6] [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=1-2] [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=1-1]
+The upload functionality follows a service/helper separation pattern: UploadComponent handles UI state and user interaction, while uploadImageToSupabase handles the Supabase operations. [cite:file=src/UploadComponent.js;symbol=handleUpload;lines=9-17] [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=8-38]
+Error handling follows a result-object pattern, where the upload function returns objects containing either an error field or success information such as url and success. [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=9-38]
+The application entry point uses React's StrictMode around the root App, providing the standard React development-mode wrapper. [cite:file=src/index.js;symbol=default;lines=1-12]

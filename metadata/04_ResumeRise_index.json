@@ -1,0 +1,530 @@
+{
+  "frontend/src/App.js::App": {
+    "kind": "function_or_class",
+    "path": "frontend/src/App.js",
+    "line_start": 7,
+    "line_end": 21
+  },
+  "frontend/src/pages/InterviewReviewPage.jsx::generateFinalReport": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/InterviewReviewPage.jsx",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "frontend/src/pages/InterviewReviewPage.jsx::avgScore": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/InterviewReviewPage.jsx",
+    "line_start": 77,
+    "line_end": 117
+  },
+  "frontend/src/pages/InterviewReviewPage.jsx::getEmotionColor": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/InterviewReviewPage.jsx",
+    "line_start": 80,
+    "line_end": 120
+  },
+  "frontend/src/pages/InterviewReviewPage.jsx::getEmotionBg": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/InterviewReviewPage.jsx",
+    "line_start": 94,
+    "line_end": 134
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::loadInterviewConfig": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 44,
+    "line_end": 84
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::initCamera": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 84,
+    "line_end": 124
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::formatTime": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 145,
+    "line_end": 185
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::captureFrame": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 152,
+    "line_end": 192
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::startCapturingFrames": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 172,
+    "line_end": 212
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::stopCapturingFrames": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 191,
+    "line_end": 231
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::startRecording": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 200,
+    "line_end": 240
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::stopRecording": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 240,
+    "line_end": 280
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::analyzeFacialExpressions": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 249,
+    "line_end": 289
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::generateNextQuestion": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 273,
+    "line_end": 313
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::handleSubmitAnswer": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 325,
+    "line_end": 365
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::handleEndInterview": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 424,
+    "line_end": 464
+  },
+  "frontend/src/pages/MockInterviewPage.jsx::getEmotionColor": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MockInterviewPage.jsx",
+    "line_start": 443,
+    "line_end": 483
+  },
+  "frontend/src/pages/HomePage.jsx::handleScroll": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/HomePage.jsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "frontend/src/pages/InterviewSetupPage.jsx::handleStartInterview": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/InterviewSetupPage.jsx",
+    "line_start": 24,
+    "line_end": 64
+  },
+  "frontend/src/pages/InterviewSetupPage.jsx::handleInputChange": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/InterviewSetupPage.jsx",
+    "line_start": 89,
+    "line_end": 129
+  },
+  "frontend/src/pages/ResumeMatchPage.jsx::handleFileChange": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/ResumeMatchPage.jsx",
+    "line_start": 16,
+    "line_end": 56
+  },
+  "frontend/src/pages/ResumeMatchPage.jsx::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/ResumeMatchPage.jsx",
+    "line_start": 26,
+    "line_end": 66
+  },
+  "frontend/src/pages/ResumeMatchPage.jsx::getScoreColor": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/ResumeMatchPage.jsx",
+    "line_start": 58,
+    "line_end": 98
+  },
+  "frontend/src/pages/ResumeMatchPage.jsx::getScoreBg": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/ResumeMatchPage.jsx",
+    "line_start": 64,
+    "line_end": 104
+  },
+  "backend/main.py::groq_client": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "backend/main.py::app": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 19,
+    "line_end": 19
+  },
+  "backend/main.py::SubmitResponse": {
+    "kind": "class",
+    "path": "backend/main.py",
+    "line_start": 33,
+    "line_end": 39
+  },
+  "backend/main.py::InterviewTurn": {
+    "kind": "class",
+    "path": "backend/main.py",
+    "line_start": 41,
+    "line_end": 47
+  },
+  "backend/main.py::NextQuestionRequest": {
+    "kind": "class",
+    "path": "backend/main.py",
+    "line_start": 49,
+    "line_end": 53
+  },
+  "backend/main.py::FinalFeedbackRequest": {
+    "kind": "class",
+    "path": "backend/main.py",
+    "line_start": 55,
+    "line_end": 57
+  },
+  "backend/main.py::transcribe_audio": {
+    "kind": "function",
+    "path": "backend/main.py",
+    "line_start": 64,
+    "line_end": 114
+  },
+  "backend/main.py::analyze_face_emotion_batch": {
+    "kind": "function",
+    "path": "backend/main.py",
+    "line_start": 121,
+    "line_end": 164
+  },
+  "backend/main.py::start_interview": {
+    "kind": "function",
+    "path": "backend/main.py",
+    "line_start": 171,
+    "line_end": 219
+  },
+  "backend/main.py::submit_response": {
+    "kind": "function",
+    "path": "backend/main.py",
+    "line_start": 226,
+    "line_end": 264
+  },
+  "backend/main.py::generate_next_question": {
+    "kind": "function",
+    "path": "backend/main.py",
+    "line_start": 271,
+    "line_end": 314
+  },
+  "backend/main.py::generate_final_feedback": {
+    "kind": "function",
+    "path": "backend/main.py",
+    "line_start": 321,
+    "line_end": 394
+  },
+  "backend/main.py::match_resume_ml": {
+    "kind": "function",
+    "path": "backend/main.py",
+    "line_start": 401,
+    "line_end": 595
+  },
+  "backend/main.py::health_check": {
+    "kind": "function",
+    "path": "backend/main.py",
+    "line_start": 602,
+    "line_end": 608
+  },
+  "backend/main.py::history": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 272,
+    "line_end": 272
+  },
+  "backend/main.py::total_score": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 280,
+    "line_end": 280
+  },
+  "backend/main.py::avg_score": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 281,
+    "line_end": 281
+  },
+  "backend/main.py::asked_questions": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 282,
+    "line_end": 282
+  },
+  "backend/main.py::last_answer": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 283,
+    "line_end": 283
+  },
+  "backend/main.py::prompt": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 285,
+    "line_end": 291
+  },
+  "backend/main.py::responses": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 322,
+    "line_end": 322
+  },
+  "backend/main.py::transcript": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 330,
+    "line_end": 330
+  },
+  "backend/main.py::port": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 613,
+    "line_end": 613
+  },
+  "backend/main.py::audio_bytes": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "backend/main.py::encoded_images": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 123,
+    "line_end": 123
+  },
+  "backend/main.py::content": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 134,
+    "line_end": 134
+  },
+  "backend/main.py::response": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 141,
+    "line_end": 146
+  },
+  "backend/main.py::result": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 148,
+    "line_end": 148
+  },
+  "backend/main.py::questions": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 199,
+    "line_end": 199
+  },
+  "backend/main.py::next_question": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 301,
+    "line_end": 301
+  },
+  "backend/main.py::feedback": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 366,
+    "line_end": 366
+  },
+  "backend/main.py::pdf_bytes": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 412,
+    "line_end": 412
+  },
+  "backend/main.py::pdf_reader": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 413,
+    "line_end": 413
+  },
+  "backend/main.py::resume_text": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 414,
+    "line_end": 414
+  },
+  "backend/main.py::jd_skill_prompt": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 427,
+    "line_end": 435
+  },
+  "backend/main.py::jd_response": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 437,
+    "line_end": 442
+  },
+  "backend/main.py::jd_content": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 444,
+    "line_end": 444
+  },
+  "backend/main.py::resume_skill_prompt": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 459,
+    "line_end": 467
+  },
+  "backend/main.py::resume_response": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 469,
+    "line_end": 474
+  },
+  "backend/main.py::resume_content": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 476,
+    "line_end": 476
+  },
+  "backend/main.py::resume_skills_lower": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 491,
+    "line_end": 491
+  },
+  "backend/main.py::job_skills_lower": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 492,
+    "line_end": 492
+  },
+  "backend/main.py::matched_skills": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 494,
+    "line_end": 494
+  },
+  "backend/main.py::missing_skills": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 495,
+    "line_end": 495
+  },
+  "backend/main.py::feedback_prompt": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 541,
+    "line_end": 554
+  },
+  "backend/main.py::feedback_response": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 556,
+    "line_end": 561
+  },
+  "backend/main.py::feedback_content": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 563,
+    "line_end": 563
+  },
+  "backend/main.py::tmp_file_path": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 70,
+    "line_end": 70
+  },
+  "backend/main.py::transcribed_text": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "backend/main.py::analysis_prompt": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 81,
+    "line_end": 86
+  },
+  "backend/main.py::analysis": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 88,
+    "line_end": 93
+  },
+  "backend/main.py::img_bytes": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 125,
+    "line_end": 125
+  },
+  "backend/main.py::img_base64": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 126,
+    "line_end": 126
+  },
+  "backend/main.py::fallback": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 209,
+    "line_end": 215
+  },
+  "backend/main.py::text": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 416,
+    "line_end": 416
+  },
+  "backend/main.py::job_skills": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 451,
+    "line_end": 451
+  },
+  "backend/main.py::resume_skills": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 483,
+    "line_end": 483
+  },
+  "backend/main.py::score": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 519,
+    "line_end": 519
+  },
+  "backend/main.py::match_level": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 525,
+    "line_end": 525
+  },
+  "backend/main.py::recommendation": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 526,
+    "line_end": 526
+  },
+  "backend/main.py::llm_feedback": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 570,
+    "line_end": 570
+  },
+  "backend/main.py::transcription": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 74,
+    "line_end": 77
+  },
+  "backend/main.py::found": {
+    "kind": "variable",
+    "path": "backend/main.py",
+    "line_start": 502,
+    "line_end": 502
+  }
+}

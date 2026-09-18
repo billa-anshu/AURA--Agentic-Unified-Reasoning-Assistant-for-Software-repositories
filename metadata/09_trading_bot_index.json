@@ -1,0 +1,4112 @@
+{
+  "run_harami_study.py::run": {
+    "kind": "function",
+    "path": "run_harami_study.py",
+    "line_start": 10,
+    "line_end": 61
+  },
+  "run_harami_study.py::base": {
+    "kind": "variable",
+    "path": "run_harami_study.py",
+    "line_start": 11,
+    "line_end": 41
+  },
+  "run_harami_study.py::cfg": {
+    "kind": "variable",
+    "path": "run_harami_study.py",
+    "line_start": 48,
+    "line_end": 48
+  },
+  "run_harami_study.py::tmp": {
+    "kind": "variable",
+    "path": "run_harami_study.py",
+    "line_start": 51,
+    "line_end": 53
+  },
+  "run_position_study.py::CONFIGS": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 15,
+    "line_end": 23
+  },
+  "run_position_study.py::MAX_POSITIONS": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "run_position_study.py::MIN_START_DATE": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "run_position_study.py::make_temp_config": {
+    "kind": "function",
+    "path": "run_position_study.py",
+    "line_start": 31,
+    "line_end": 55
+  },
+  "run_position_study.py::main": {
+    "kind": "function",
+    "path": "run_position_study.py",
+    "line_start": 58,
+    "line_end": 76
+  },
+  "run_position_study.py::bt": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 42,
+    "line_end": 42
+  },
+  "run_position_study.py::start": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 43,
+    "line_end": 43
+  },
+  "run_position_study.py::tmp": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 50,
+    "line_end": 52
+  },
+  "run_position_study.py::results": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 59,
+    "line_end": 59
+  },
+  "run_position_study.py::raw": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 34,
+    "line_end": 34
+  },
+  "run_position_study.py::strategy_name": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "run_position_study.py::tmp_path": {
+    "kind": "variable",
+    "path": "run_position_study.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "run_backtest.py::_build_data_source": {
+    "kind": "function",
+    "path": "run_backtest.py",
+    "line_start": 13,
+    "line_end": 21
+  },
+  "run_backtest.py::main": {
+    "kind": "function",
+    "path": "run_backtest.py",
+    "line_start": 24,
+    "line_end": 93
+  },
+  "run_backtest.py::source_type": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "run_backtest.py::config": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "run_backtest.py::data_source": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "run_backtest.py::symbols": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 35,
+    "line_end": 35
+  },
+  "run_backtest.py::total_candles": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "run_backtest.py::engine": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 74,
+    "line_end": 85
+  },
+  "run_backtest.py::result": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 87,
+    "line_end": 87
+  },
+  "run_backtest.py::csv_path": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 90,
+    "line_end": 90
+  },
+  "run_backtest.py::data_dir": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "run_backtest.py::universe": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 44,
+    "line_end": 44
+  },
+  "run_backtest.py::index_candles": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "run_backtest.py::weights": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 59,
+    "line_end": 59
+  },
+  "run_backtest.py::candles": {
+    "kind": "variable",
+    "path": "run_backtest.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "run_fixes_study.py::CONFIGS": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 19,
+    "line_end": 27
+  },
+  "run_fixes_study.py::MIN_START_DATE": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "run_fixes_study.py::_base_overrides": {
+    "kind": "function",
+    "path": "run_fixes_study.py",
+    "line_start": 32,
+    "line_end": 43
+  },
+  "run_fixes_study.py::make_before_config": {
+    "kind": "function",
+    "path": "run_fixes_study.py",
+    "line_start": 46,
+    "line_end": 54
+  },
+  "run_fixes_study.py::make_after_config": {
+    "kind": "function",
+    "path": "run_fixes_study.py",
+    "line_start": 57,
+    "line_end": 96
+  },
+  "run_fixes_study.py::main": {
+    "kind": "function",
+    "path": "run_fixes_study.py",
+    "line_start": 99,
+    "line_end": 116
+  },
+  "run_fixes_study.py::bt": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 38,
+    "line_end": 38
+  },
+  "run_fixes_study.py::start": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 39,
+    "line_end": 39
+  },
+  "run_fixes_study.py::raw": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 50,
+    "line_end": 50
+  },
+  "run_fixes_study.py::tmp": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "run_fixes_study.py::strategy": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 64,
+    "line_end": 64
+  },
+  "run_fixes_study.py::strategy_name": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "run_fixes_study.py::params": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "run_fixes_study.py::risk": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 67,
+    "line_end": 67
+  },
+  "run_fixes_study.py::risk_params": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "run_fixes_study.py::tmp_path": {
+    "kind": "variable",
+    "path": "run_fixes_study.py",
+    "line_start": 108,
+    "line_end": 108
+  },
+  "src/backtest/config_reader.py::BacktestConfig": {
+    "kind": "class",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 53,
+    "line_end": 70
+  },
+  "src/backtest/config_reader.py::_parse_date": {
+    "kind": "function",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 73,
+    "line_end": 75
+  },
+  "src/backtest/config_reader.py::_build_strategy_config": {
+    "kind": "function",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 78,
+    "line_end": 91
+  },
+  "src/backtest/config_reader.py::_build_strategy": {
+    "kind": "function",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 94,
+    "line_end": 108
+  },
+  "src/backtest/config_reader.py::_build_risk_engine": {
+    "kind": "function",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 111,
+    "line_end": 122
+  },
+  "src/backtest/config_reader.py::_build_config_summary": {
+    "kind": "function",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 125,
+    "line_end": 152
+  },
+  "src/backtest/config_reader.py::load_backtest_config": {
+    "kind": "function",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 155,
+    "line_end": 212
+  },
+  "src/backtest/config_reader.py::tax_category_str": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 80,
+    "line_end": 80
+  },
+  "src/backtest/config_reader.py::name": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 96,
+    "line_end": 96
+  },
+  "src/backtest/config_reader.py::strategy_cls": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 103,
+    "line_end": 103
+  },
+  "src/backtest/config_reader.py::params": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 104,
+    "line_end": 104
+  },
+  "src/backtest/config_reader.py::config_section": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 105,
+    "line_end": 105
+  },
+  "src/backtest/config_reader.py::risk_cls": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 120,
+    "line_end": 120
+  },
+  "src/backtest/config_reader.py::backtest": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 127,
+    "line_end": 127
+  },
+  "src/backtest/config_reader.py::data": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 128,
+    "line_end": 128
+  },
+  "src/backtest/config_reader.py::strategy": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 129,
+    "line_end": 129
+  },
+  "src/backtest/config_reader.py::risk": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 130,
+    "line_end": 130
+  },
+  "src/backtest/config_reader.py::execution": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 131,
+    "line_end": 131
+  },
+  "src/backtest/config_reader.py::strategy_config": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 146,
+    "line_end": 146
+  },
+  "src/backtest/config_reader.py::path": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 169,
+    "line_end": 169
+  },
+  "src/backtest/config_reader.py::backtest_section": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 176,
+    "line_end": 176
+  },
+  "src/backtest/config_reader.py::data_section": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 177,
+    "line_end": 177
+  },
+  "src/backtest/config_reader.py::strategy_section": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 178,
+    "line_end": 178
+  },
+  "src/backtest/config_reader.py::risk_section": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 179,
+    "line_end": 179
+  },
+  "src/backtest/config_reader.py::execution_section": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 180,
+    "line_end": 180
+  },
+  "src/backtest/config_reader.py::risk_engine": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 190,
+    "line_end": 190
+  },
+  "src/backtest/config_reader.py::execution_engine": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 191,
+    "line_end": 193
+  },
+  "src/backtest/config_reader.py::cost_model": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 194,
+    "line_end": 194
+  },
+  "src/backtest/config_reader.py::raw": {
+    "kind": "variable",
+    "path": "src/backtest/config_reader.py",
+    "line_start": 174,
+    "line_end": 174
+  },
+  "src/backtest/result_printer.py::_print_config": {
+    "kind": "function",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 10,
+    "line_end": 49
+  },
+  "src/backtest/result_printer.py::print_backtest_result": {
+    "kind": "function",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 52,
+    "line_end": 89
+  },
+  "src/backtest/result_printer.py::_parse_csv_result": {
+    "kind": "function",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 92,
+    "line_end": 117
+  },
+  "src/backtest/result_printer.py::print_all_results_summary": {
+    "kind": "function",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 120,
+    "line_end": 221
+  },
+  "src/backtest/result_printer.py::labels": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 19,
+    "line_end": 32
+  },
+  "src/backtest/result_printer.py::total_return": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 60,
+    "line_end": 60
+  },
+  "src/backtest/result_printer.py::results_path": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 128,
+    "line_end": 128
+  },
+  "src/backtest/result_printer.py::csv_files": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 133,
+    "line_end": 133
+  },
+  "src/backtest/result_printer.py::header": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 153,
+    "line_end": 156
+  },
+  "src/backtest/result_printer.py::best_return_idx": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 160,
+    "line_end": 160
+  },
+  "src/backtest/result_printer.py::best_return_val": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 161,
+    "line_end": 161
+  },
+  "src/backtest/result_printer.py::lowest_dd_idx": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 162,
+    "line_end": 162
+  },
+  "src/backtest/result_printer.py::lowest_dd_val": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 163,
+    "line_end": 163
+  },
+  "src/backtest/result_printer.py::best_strategy": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 205,
+    "line_end": 207
+  },
+  "src/backtest/result_printer.py::lowest_dd_strategy": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 210,
+    "line_end": 212
+  },
+  "src/backtest/result_printer.py::value": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "src/backtest/result_printer.py::win_rate": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "src/backtest/result_printer.py::total_pnl": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "src/backtest/result_printer.py::reader": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 97,
+    "line_end": 97
+  },
+  "src/backtest/result_printer.py::current_section": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 98,
+    "line_end": 98
+  },
+  "src/backtest/result_printer.py::strategy": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 167,
+    "line_end": 167
+  },
+  "src/backtest/result_printer.py::max_dd": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 169,
+    "line_end": 169
+  },
+  "src/backtest/result_printer.py::total_trades": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 171,
+    "line_end": 171
+  },
+  "src/backtest/result_printer.py::kill_switch": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 172,
+    "line_end": 172
+  },
+  "src/backtest/result_printer.py::unique_names": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 216,
+    "line_end": 216
+  },
+  "src/backtest/result_printer.py::entry_date": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 83,
+    "line_end": 83
+  },
+  "src/backtest/result_printer.py::exit_date": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 84,
+    "line_end": 84
+  },
+  "src/backtest/result_printer.py::status": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 85,
+    "line_end": 85
+  },
+  "src/backtest/result_printer.py::return_val": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 175,
+    "line_end": 175
+  },
+  "src/backtest/result_printer.py::dd_val": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 179,
+    "line_end": 179
+  },
+  "src/backtest/result_printer.py::win_rate_str": {
+    "kind": "variable",
+    "path": "src/backtest/result_printer.py",
+    "line_start": 193,
+    "line_end": 193
+  },
+  "src/backtest/__init__.py::__all__": {
+    "kind": "variable",
+    "path": "src/backtest/__init__.py",
+    "line_start": 6,
+    "line_end": 6
+  },
+  "src/backtest/engine.py::Trade": {
+    "kind": "class",
+    "path": "src/backtest/engine.py",
+    "line_start": 24,
+    "line_end": 35
+  },
+  "src/backtest/engine.py::BacktestResult": {
+    "kind": "class",
+    "path": "src/backtest/engine.py",
+    "line_start": 39,
+    "line_end": 126
+  },
+  "src/backtest/engine.py::BacktestResult.save_to_csv": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 53,
+    "line_end": 126
+  },
+  "src/backtest/engine.py::BacktestEngine": {
+    "kind": "class",
+    "path": "src/backtest/engine.py",
+    "line_start": 129,
+    "line_end": 620
+  },
+  "src/backtest/engine.py::BacktestEngine.__init__": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 146,
+    "line_end": 170
+  },
+  "src/backtest/engine.py::BacktestEngine.run": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 172,
+    "line_end": 365
+  },
+  "src/backtest/engine.py::BacktestEngine._trigger_kill_switch_if_breached": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 367,
+    "line_end": 414
+  },
+  "src/backtest/engine.py::BacktestEngine._check_regime": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 416,
+    "line_end": 425
+  },
+  "src/backtest/engine.py::BacktestEngine._build_timestamp_index": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 427,
+    "line_end": 433
+  },
+  "src/backtest/engine.py::BacktestEngine._get_candle_at_timestamp": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 435,
+    "line_end": 442
+  },
+  "src/backtest/engine.py::BacktestEngine._calculate_equity": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 444,
+    "line_end": 460
+  },
+  "src/backtest/engine.py::BacktestEngine._open_position": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 462,
+    "line_end": 505
+  },
+  "src/backtest/engine.py::BacktestEngine._close_position": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 507,
+    "line_end": 554
+  },
+  "src/backtest/engine.py::BacktestEngine._check_exit_conditions": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 556,
+    "line_end": 575
+  },
+  "src/backtest/engine.py::BacktestEngine._force_eod_square_off": {
+    "kind": "method",
+    "path": "src/backtest/engine.py",
+    "line_start": 577,
+    "line_end": 620
+  },
+  "src/backtest/engine.py::save_to_csv": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 53,
+    "line_end": 126
+  },
+  "src/backtest/engine.py::__init__": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 146,
+    "line_end": 170
+  },
+  "src/backtest/engine.py::run": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 172,
+    "line_end": 365
+  },
+  "src/backtest/engine.py::_trigger_kill_switch_if_breached": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 367,
+    "line_end": 414
+  },
+  "src/backtest/engine.py::_check_regime": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 416,
+    "line_end": 425
+  },
+  "src/backtest/engine.py::_build_timestamp_index": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 427,
+    "line_end": 433
+  },
+  "src/backtest/engine.py::_get_candle_at_timestamp": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 435,
+    "line_end": 442
+  },
+  "src/backtest/engine.py::_calculate_equity": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 444,
+    "line_end": 460
+  },
+  "src/backtest/engine.py::_open_position": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 462,
+    "line_end": 505
+  },
+  "src/backtest/engine.py::_close_position": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 507,
+    "line_end": 554
+  },
+  "src/backtest/engine.py::_check_exit_conditions": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 556,
+    "line_end": 575
+  },
+  "src/backtest/engine.py::_force_eod_square_off": {
+    "kind": "function",
+    "path": "src/backtest/engine.py",
+    "line_start": 577,
+    "line_end": 620
+  },
+  "src/backtest/engine.py::output_path": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 64,
+    "line_end": 64
+  },
+  "src/backtest/engine.py::timestamp": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 67,
+    "line_end": 67
+  },
+  "src/backtest/engine.py::filename": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "src/backtest/engine.py::filepath": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "src/backtest/engine.py::portfolio": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 182,
+    "line_end": 182
+  },
+  "src/backtest/engine.py::drawdown_tracker": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 183,
+    "line_end": 183
+  },
+  "src/backtest/engine.py::kill_switch": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 184,
+    "line_end": 184
+  },
+  "src/backtest/engine.py::timestamps": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 192,
+    "line_end": 192
+  },
+  "src/backtest/engine.py::winning_trades": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 352,
+    "line_end": 352
+  },
+  "src/backtest/engine.py::index_candles": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 420,
+    "line_end": 420
+  },
+  "src/backtest/engine.py::closes": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 423,
+    "line_end": 423
+  },
+  "src/backtest/engine.py::sma": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 424,
+    "line_end": 424
+  },
+  "src/backtest/engine.py::equity": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 451,
+    "line_end": 451
+  },
+  "src/backtest/engine.py::stop_distance": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 473,
+    "line_end": 473
+  },
+  "src/backtest/engine.py::quantity": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 477,
+    "line_end": 477
+  },
+  "src/backtest/engine.py::sized_order": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 484,
+    "line_end": 490
+  },
+  "src/backtest/engine.py::fill": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 492,
+    "line_end": 492
+  },
+  "src/backtest/engine.py::tax_category": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 493,
+    "line_end": 493
+  },
+  "src/backtest/engine.py::leverage": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 494,
+    "line_end": 494
+  },
+  "src/backtest/engine.py::cost": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 495,
+    "line_end": 495
+  },
+  "src/backtest/engine.py::position": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 521,
+    "line_end": 521
+  },
+  "src/backtest/engine.py::exit_order": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 525,
+    "line_end": 531
+  },
+  "src/backtest/engine.py::exit_fill": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 594,
+    "line_end": 599
+  },
+  "src/backtest/engine.py::entry_value": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 615,
+    "line_end": 615
+  },
+  "src/backtest/engine.py::exit_value": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 616,
+    "line_end": 616
+  },
+  "src/backtest/engine.py::total_costs": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 617,
+    "line_end": 617
+  },
+  "src/backtest/engine.py::writer": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "src/backtest/engine.py::current_ts": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 196,
+    "line_end": 196
+  },
+  "src/backtest/engine.py::next_ts": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 197,
+    "line_end": 197
+  },
+  "src/backtest/engine.py::positions_list": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 274,
+    "line_end": 274
+  },
+  "src/backtest/engine.py::signals": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 275,
+    "line_end": 275
+  },
+  "src/backtest/engine.py::pos_candles": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 397,
+    "line_end": 397
+  },
+  "src/backtest/engine.py::current_candle": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 398,
+    "line_end": 398
+  },
+  "src/backtest/engine.py::candle": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 453,
+    "line_end": 455
+  },
+  "src/backtest/engine.py::trailing_level": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 570,
+    "line_end": 570
+  },
+  "src/backtest/engine.py::entry_date": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 108,
+    "line_end": 108
+  },
+  "src/backtest/engine.py::exit_date": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 109,
+    "line_end": 109
+  },
+  "src/backtest/engine.py::exit_price": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 110,
+    "line_end": 110
+  },
+  "src/backtest/engine.py::exit_cost": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 111,
+    "line_end": 111
+  },
+  "src/backtest/engine.py::idx": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 208,
+    "line_end": 208
+  },
+  "src/backtest/engine.py::sell_signals": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 278,
+    "line_end": 278
+  },
+  "src/backtest/engine.py::buy_signals": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 279,
+    "line_end": 279
+  },
+  "src/backtest/engine.py::regime_ok": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 305,
+    "line_end": 305
+  },
+  "src/backtest/engine.py::trade": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 233,
+    "line_end": 233
+  },
+  "src/backtest/engine.py::next_candle": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 236,
+    "line_end": 236
+  },
+  "src/backtest/engine.py::exit_type": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 239,
+    "line_end": 239
+  },
+  "src/backtest/engine.py::fill_price": {
+    "kind": "variable",
+    "path": "src/backtest/engine.py",
+    "line_start": 242,
+    "line_end": 242
+  },
+  "src/metrics/__init__.py::__all__": {
+    "kind": "variable",
+    "path": "src/metrics/__init__.py",
+    "line_start": 5,
+    "line_end": 5
+  },
+  "src/metrics/metrics_engine.py::MetricsReport": {
+    "kind": "class",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 8,
+    "line_end": 14
+  },
+  "src/metrics/metrics_engine.py::MetricsEngine": {
+    "kind": "class",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 17,
+    "line_end": 106
+  },
+  "src/metrics/metrics_engine.py::MetricsEngine.compute": {
+    "kind": "method",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 28,
+    "line_end": 73
+  },
+  "src/metrics/metrics_engine.py::MetricsEngine._compute_max_drawdown": {
+    "kind": "method",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 75,
+    "line_end": 91
+  },
+  "src/metrics/metrics_engine.py::MetricsEngine._compute_win_rate": {
+    "kind": "method",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 93,
+    "line_end": 99
+  },
+  "src/metrics/metrics_engine.py::MetricsEngine._compute_expectancy": {
+    "kind": "method",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 101,
+    "line_end": 106
+  },
+  "src/metrics/metrics_engine.py::compute": {
+    "kind": "function",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 28,
+    "line_end": 73
+  },
+  "src/metrics/metrics_engine.py::_compute_max_drawdown": {
+    "kind": "function",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 75,
+    "line_end": 91
+  },
+  "src/metrics/metrics_engine.py::_compute_win_rate": {
+    "kind": "function",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 93,
+    "line_end": 99
+  },
+  "src/metrics/metrics_engine.py::_compute_expectancy": {
+    "kind": "function",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 101,
+    "line_end": 106
+  },
+  "src/metrics/metrics_engine.py::max_drawdown": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "src/metrics/metrics_engine.py::total_return": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "src/metrics/metrics_engine.py::peak": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 80,
+    "line_end": 80
+  },
+  "src/metrics/metrics_engine.py::max_dd": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 81,
+    "line_end": 81
+  },
+  "src/metrics/metrics_engine.py::wins": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 98,
+    "line_end": 98
+  },
+  "src/metrics/metrics_engine.py::win_rate": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 56,
+    "line_end": 56
+  },
+  "src/metrics/metrics_engine.py::expectancy": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 57,
+    "line_end": 57
+  },
+  "src/metrics/metrics_engine.py::post_tax_return": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 64,
+    "line_end": 64
+  },
+  "src/metrics/metrics_engine.py::dd": {
+    "kind": "variable",
+    "path": "src/metrics/metrics_engine.py",
+    "line_start": 87,
+    "line_end": 87
+  },
+  "src/risk/__init__.py::__all__": {
+    "kind": "variable",
+    "path": "src/risk/__init__.py",
+    "line_start": 3,
+    "line_end": 3
+  },
+  "src/risk/__init__.py::__getattr__": {
+    "kind": "function",
+    "path": "src/risk/__init__.py",
+    "line_start": 6,
+    "line_end": 19
+  },
+  "src/risk/intraday_risk_engine.py::IntradayRiskEngine": {
+    "kind": "class",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 13,
+    "line_end": 126
+  },
+  "src/risk/intraday_risk_engine.py::IntradayRiskEngine.__init__": {
+    "kind": "method",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 30,
+    "line_end": 53
+  },
+  "src/risk/intraday_risk_engine.py::IntradayRiskEngine.leverage": {
+    "kind": "method",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 56,
+    "line_end": 58
+  },
+  "src/risk/intraday_risk_engine.py::IntradayRiskEngine.risk_per_trade": {
+    "kind": "method",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 61,
+    "line_end": 63
+  },
+  "src/risk/intraday_risk_engine.py::IntradayRiskEngine.validate": {
+    "kind": "method",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 65,
+    "line_end": 87
+  },
+  "src/risk/intraday_risk_engine.py::IntradayRiskEngine.position_size": {
+    "kind": "method",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 89,
+    "line_end": 126
+  },
+  "src/risk/intraday_risk_engine.py::__init__": {
+    "kind": "function",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 30,
+    "line_end": 53
+  },
+  "src/risk/intraday_risk_engine.py::leverage": {
+    "kind": "function",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 56,
+    "line_end": 58
+  },
+  "src/risk/intraday_risk_engine.py::risk_per_trade": {
+    "kind": "function",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 61,
+    "line_end": 63
+  },
+  "src/risk/intraday_risk_engine.py::validate": {
+    "kind": "function",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 65,
+    "line_end": 87
+  },
+  "src/risk/intraday_risk_engine.py::position_size": {
+    "kind": "function",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 89,
+    "line_end": 126
+  },
+  "src/risk/intraday_risk_engine.py::equity": {
+    "kind": "variable",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "src/risk/intraday_risk_engine.py::cash": {
+    "kind": "variable",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 83,
+    "line_end": 83
+  },
+  "src/risk/intraday_risk_engine.py::risk_amount": {
+    "kind": "variable",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 116,
+    "line_end": 116
+  },
+  "src/risk/intraday_risk_engine.py::risk_based_shares": {
+    "kind": "variable",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 117,
+    "line_end": 117
+  },
+  "src/risk/intraday_risk_engine.py::max_buying_power": {
+    "kind": "variable",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 120,
+    "line_end": 120
+  },
+  "src/risk/intraday_risk_engine.py::leverage_based_shares": {
+    "kind": "variable",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 121,
+    "line_end": 121
+  },
+  "src/risk/intraday_risk_engine.py::final_shares": {
+    "kind": "variable",
+    "path": "src/risk/intraday_risk_engine.py",
+    "line_start": 122,
+    "line_end": 122
+  },
+  "src/risk/risk_engine.py::RiskEngine": {
+    "kind": "class",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 12,
+    "line_end": 41
+  },
+  "src/risk/risk_engine.py::RiskEngine.validate": {
+    "kind": "method",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 16,
+    "line_end": 27
+  },
+  "src/risk/risk_engine.py::RiskEngine.position_size": {
+    "kind": "method",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 30,
+    "line_end": 41
+  },
+  "src/risk/risk_engine.py::FixedFractionalRiskEngine": {
+    "kind": "class",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 44,
+    "line_end": 93
+  },
+  "src/risk/risk_engine.py::FixedFractionalRiskEngine.__init__": {
+    "kind": "method",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 55,
+    "line_end": 56
+  },
+  "src/risk/risk_engine.py::FixedFractionalRiskEngine.validate": {
+    "kind": "method",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 58,
+    "line_end": 74
+  },
+  "src/risk/risk_engine.py::FixedFractionalRiskEngine.position_size": {
+    "kind": "method",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 76,
+    "line_end": 93
+  },
+  "src/risk/risk_engine.py::validate": {
+    "kind": "function",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 58,
+    "line_end": 74
+  },
+  "src/risk/risk_engine.py::position_size": {
+    "kind": "function",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 76,
+    "line_end": 93
+  },
+  "src/risk/risk_engine.py::__init__": {
+    "kind": "function",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 55,
+    "line_end": 56
+  },
+  "src/risk/risk_engine.py::equity": {
+    "kind": "variable",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 90,
+    "line_end": 90
+  },
+  "src/risk/risk_engine.py::risk_amount": {
+    "kind": "variable",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 91,
+    "line_end": 91
+  },
+  "src/risk/risk_engine.py::shares": {
+    "kind": "variable",
+    "path": "src/risk/risk_engine.py",
+    "line_start": 92,
+    "line_end": 92
+  },
+  "src/risk/kill_switch.py::KillSwitch": {
+    "kind": "class",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 6,
+    "line_end": 48
+  },
+  "src/risk/kill_switch.py::KillSwitch.__init__": {
+    "kind": "method",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 14,
+    "line_end": 16
+  },
+  "src/risk/kill_switch.py::KillSwitch.active": {
+    "kind": "method",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 19,
+    "line_end": 21
+  },
+  "src/risk/kill_switch.py::KillSwitch.reason": {
+    "kind": "method",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 24,
+    "line_end": 26
+  },
+  "src/risk/kill_switch.py::KillSwitch.check": {
+    "kind": "method",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 28,
+    "line_end": 35
+  },
+  "src/risk/kill_switch.py::KillSwitch.trigger": {
+    "kind": "method",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 37,
+    "line_end": 48
+  },
+  "src/risk/kill_switch.py::__init__": {
+    "kind": "function",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 14,
+    "line_end": 16
+  },
+  "src/risk/kill_switch.py::active": {
+    "kind": "function",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 19,
+    "line_end": 21
+  },
+  "src/risk/kill_switch.py::reason": {
+    "kind": "function",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 24,
+    "line_end": 26
+  },
+  "src/risk/kill_switch.py::check": {
+    "kind": "function",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 28,
+    "line_end": 35
+  },
+  "src/risk/kill_switch.py::trigger": {
+    "kind": "function",
+    "path": "src/risk/kill_switch.py",
+    "line_start": 37,
+    "line_end": 48
+  },
+  "src/risk/drawdown.py::DrawdownTracker": {
+    "kind": "class",
+    "path": "src/risk/drawdown.py",
+    "line_start": 4,
+    "line_end": 48
+  },
+  "src/risk/drawdown.py::DrawdownTracker.__init__": {
+    "kind": "method",
+    "path": "src/risk/drawdown.py",
+    "line_start": 12,
+    "line_end": 15
+  },
+  "src/risk/drawdown.py::DrawdownTracker.peak_equity": {
+    "kind": "method",
+    "path": "src/risk/drawdown.py",
+    "line_start": 18,
+    "line_end": 20
+  },
+  "src/risk/drawdown.py::DrawdownTracker.current_drawdown": {
+    "kind": "method",
+    "path": "src/risk/drawdown.py",
+    "line_start": 23,
+    "line_end": 25
+  },
+  "src/risk/drawdown.py::DrawdownTracker.max_drawdown": {
+    "kind": "method",
+    "path": "src/risk/drawdown.py",
+    "line_start": 28,
+    "line_end": 30
+  },
+  "src/risk/drawdown.py::DrawdownTracker.update": {
+    "kind": "method",
+    "path": "src/risk/drawdown.py",
+    "line_start": 32,
+    "line_end": 48
+  },
+  "src/risk/drawdown.py::__init__": {
+    "kind": "function",
+    "path": "src/risk/drawdown.py",
+    "line_start": 12,
+    "line_end": 15
+  },
+  "src/risk/drawdown.py::peak_equity": {
+    "kind": "function",
+    "path": "src/risk/drawdown.py",
+    "line_start": 18,
+    "line_end": 20
+  },
+  "src/risk/drawdown.py::current_drawdown": {
+    "kind": "function",
+    "path": "src/risk/drawdown.py",
+    "line_start": 23,
+    "line_end": 25
+  },
+  "src/risk/drawdown.py::max_drawdown": {
+    "kind": "function",
+    "path": "src/risk/drawdown.py",
+    "line_start": 28,
+    "line_end": 30
+  },
+  "src/risk/drawdown.py::update": {
+    "kind": "function",
+    "path": "src/risk/drawdown.py",
+    "line_start": 32,
+    "line_end": 48
+  },
+  "src/costs/__init__.py::__all__": {
+    "kind": "variable",
+    "path": "src/costs/__init__.py",
+    "line_start": 5,
+    "line_end": 5
+  },
+  "src/costs/cost_model.py::CostBreakdown": {
+    "kind": "class",
+    "path": "src/costs/cost_model.py",
+    "line_start": 11,
+    "line_end": 19
+  },
+  "src/costs/cost_model.py::CostModel": {
+    "kind": "class",
+    "path": "src/costs/cost_model.py",
+    "line_start": 22,
+    "line_end": 85
+  },
+  "src/costs/cost_model.py::CostModel.calculate": {
+    "kind": "method",
+    "path": "src/costs/cost_model.py",
+    "line_start": 41,
+    "line_end": 85
+  },
+  "src/costs/cost_model.py::calculate": {
+    "kind": "function",
+    "path": "src/costs/cost_model.py",
+    "line_start": 41,
+    "line_end": 85
+  },
+  "src/costs/cost_model.py::turnover": {
+    "kind": "variable",
+    "path": "src/costs/cost_model.py",
+    "line_start": 58,
+    "line_end": 58
+  },
+  "src/costs/cost_model.py::brokerage": {
+    "kind": "variable",
+    "path": "src/costs/cost_model.py",
+    "line_start": 60,
+    "line_end": 60
+  },
+  "src/costs/cost_model.py::exchange_charges": {
+    "kind": "variable",
+    "path": "src/costs/cost_model.py",
+    "line_start": 67,
+    "line_end": 67
+  },
+  "src/costs/cost_model.py::gst": {
+    "kind": "variable",
+    "path": "src/costs/cost_model.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "src/costs/cost_model.py::total": {
+    "kind": "variable",
+    "path": "src/costs/cost_model.py",
+    "line_start": 76,
+    "line_end": 76
+  },
+  "src/costs/cost_model.py::stt": {
+    "kind": "variable",
+    "path": "src/costs/cost_model.py",
+    "line_start": 63,
+    "line_end": 63
+  },
+  "src/costs/cost_model.py::stamp_duty": {
+    "kind": "variable",
+    "path": "src/costs/cost_model.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "src/portfolio/__init__.py::__all__": {
+    "kind": "variable",
+    "path": "src/portfolio/__init__.py",
+    "line_start": 6,
+    "line_end": 6
+  },
+  "src/portfolio/portfolio.py::Portfolio": {
+    "kind": "class",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 12,
+    "line_end": 97
+  },
+  "src/portfolio/portfolio.py::Portfolio.__init__": {
+    "kind": "method",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 23,
+    "line_end": 35
+  },
+  "src/portfolio/portfolio.py::Portfolio.cash": {
+    "kind": "method",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 38,
+    "line_end": 40
+  },
+  "src/portfolio/portfolio.py::Portfolio.positions": {
+    "kind": "method",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 43,
+    "line_end": 45
+  },
+  "src/portfolio/portfolio.py::Portfolio.get_position": {
+    "kind": "method",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 47,
+    "line_end": 49
+  },
+  "src/portfolio/portfolio.py::Portfolio.get_equity": {
+    "kind": "method",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 51,
+    "line_end": 62
+  },
+  "src/portfolio/portfolio.py::Portfolio.update": {
+    "kind": "method",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 64,
+    "line_end": 97
+  },
+  "src/portfolio/portfolio.py::__init__": {
+    "kind": "function",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 23,
+    "line_end": 35
+  },
+  "src/portfolio/portfolio.py::cash": {
+    "kind": "function",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 38,
+    "line_end": 40
+  },
+  "src/portfolio/portfolio.py::positions": {
+    "kind": "function",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 43,
+    "line_end": 45
+  },
+  "src/portfolio/portfolio.py::get_position": {
+    "kind": "function",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 47,
+    "line_end": 49
+  },
+  "src/portfolio/portfolio.py::get_equity": {
+    "kind": "function",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 51,
+    "line_end": 62
+  },
+  "src/portfolio/portfolio.py::update": {
+    "kind": "function",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 64,
+    "line_end": 97
+  },
+  "src/portfolio/portfolio.py::equity": {
+    "kind": "variable",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 58,
+    "line_end": 58
+  },
+  "src/portfolio/portfolio.py::trade_value": {
+    "kind": "variable",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 76,
+    "line_end": 76
+  },
+  "src/portfolio/portfolio.py::entry_value": {
+    "kind": "variable",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 60,
+    "line_end": 60
+  },
+  "src/portfolio/portfolio.py::position": {
+    "kind": "variable",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 89,
+    "line_end": 89
+  },
+  "src/portfolio/portfolio.py::margin_blocked": {
+    "kind": "variable",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 91,
+    "line_end": 91
+  },
+  "src/portfolio/portfolio.py::pnl": {
+    "kind": "variable",
+    "path": "src/portfolio/portfolio.py",
+    "line_start": 92,
+    "line_end": 92
+  },
+  "src/portfolio/position.py::Position": {
+    "kind": "class",
+    "path": "src/portfolio/position.py",
+    "line_start": 10,
+    "line_end": 16
+  },
+  "src/data/__init__.py::__all__": {
+    "kind": "variable",
+    "path": "src/data/__init__.py",
+    "line_start": 5,
+    "line_end": 5
+  },
+  "src/data/__init__.py::__getattr__": {
+    "kind": "function",
+    "path": "src/data/__init__.py",
+    "line_start": 8,
+    "line_end": 17
+  },
+  "src/data/market_data.py::MarketDataSource": {
+    "kind": "class",
+    "path": "src/data/market_data.py",
+    "line_start": 13,
+    "line_end": 57
+  },
+  "src/data/market_data.py::MarketDataSource.get_symbols": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 17,
+    "line_end": 27
+  },
+  "src/data/market_data.py::MarketDataSource.get_candles": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 30,
+    "line_end": 44
+  },
+  "src/data/market_data.py::MarketDataSource.get_index_candles": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 47,
+    "line_end": 49
+  },
+  "src/data/market_data.py::MarketDataSource.get_symbol_weights": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 52,
+    "line_end": 57
+  },
+  "src/data/market_data.py::JugaadDataSource": {
+    "kind": "class",
+    "path": "src/data/market_data.py",
+    "line_start": 60,
+    "line_end": 210
+  },
+  "src/data/market_data.py::JugaadDataSource.get_symbols": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 63,
+    "line_end": 93
+  },
+  "src/data/market_data.py::JugaadDataSource.get_candles": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 95,
+    "line_end": 136
+  },
+  "src/data/market_data.py::JugaadDataSource.get_index_candles": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 138,
+    "line_end": 183
+  },
+  "src/data/market_data.py::JugaadDataSource.get_symbol_weights": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 185,
+    "line_end": 210
+  },
+  "src/data/market_data.py::YFinanceDataSource": {
+    "kind": "class",
+    "path": "src/data/market_data.py",
+    "line_start": 213,
+    "line_end": 436
+  },
+  "src/data/market_data.py::YFinanceDataSource._csv_url": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 232,
+    "line_end": 236
+  },
+  "src/data/market_data.py::YFinanceDataSource._yahoo_index_ticker": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 238,
+    "line_end": 242
+  },
+  "src/data/market_data.py::YFinanceDataSource.get_symbols": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 244,
+    "line_end": 275
+  },
+  "src/data/market_data.py::YFinanceDataSource.get_candles": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 277,
+    "line_end": 312
+  },
+  "src/data/market_data.py::YFinanceDataSource.get_index_candles": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 314,
+    "line_end": 351
+  },
+  "src/data/market_data.py::YFinanceDataSource.get_candles_bulk": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 353,
+    "line_end": 405
+  },
+  "src/data/market_data.py::YFinanceDataSource.get_symbol_weights": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 407,
+    "line_end": 436
+  },
+  "src/data/market_data.py::CSVDataSource": {
+    "kind": "class",
+    "path": "src/data/market_data.py",
+    "line_start": 439,
+    "line_end": 666
+  },
+  "src/data/market_data.py::CSVDataSource.__init__": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 463,
+    "line_end": 475
+  },
+  "src/data/market_data.py::CSVDataSource._parse_date_value": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 477,
+    "line_end": 485
+  },
+  "src/data/market_data.py::CSVDataSource._normalize_columns": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 487,
+    "line_end": 502
+  },
+  "src/data/market_data.py::CSVDataSource._read_candles_from_csv": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 504,
+    "line_end": 535
+  },
+  "src/data/market_data.py::CSVDataSource.get_symbols": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 537,
+    "line_end": 561
+  },
+  "src/data/market_data.py::CSVDataSource.get_candles": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 563,
+    "line_end": 581
+  },
+  "src/data/market_data.py::CSVDataSource.get_candles_bulk": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 583,
+    "line_end": 602
+  },
+  "src/data/market_data.py::CSVDataSource.get_index_candles": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 604,
+    "line_end": 628
+  },
+  "src/data/market_data.py::CSVDataSource.get_symbol_weights": {
+    "kind": "method",
+    "path": "src/data/market_data.py",
+    "line_start": 630,
+    "line_end": 666
+  },
+  "src/data/market_data.py::get_symbols": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 537,
+    "line_end": 561
+  },
+  "src/data/market_data.py::get_candles": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 563,
+    "line_end": 581
+  },
+  "src/data/market_data.py::get_index_candles": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 604,
+    "line_end": 628
+  },
+  "src/data/market_data.py::get_symbol_weights": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 630,
+    "line_end": 666
+  },
+  "src/data/market_data.py::_csv_url": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 232,
+    "line_end": 236
+  },
+  "src/data/market_data.py::_yahoo_index_ticker": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 238,
+    "line_end": 242
+  },
+  "src/data/market_data.py::get_candles_bulk": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 583,
+    "line_end": 602
+  },
+  "src/data/market_data.py::_DATE_FORMATS": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 461,
+    "line_end": 461
+  },
+  "src/data/market_data.py::__init__": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 463,
+    "line_end": 475
+  },
+  "src/data/market_data.py::_parse_date_value": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 477,
+    "line_end": 485
+  },
+  "src/data/market_data.py::_normalize_columns": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 487,
+    "line_end": 502
+  },
+  "src/data/market_data.py::_read_candles_from_csv": {
+    "kind": "function",
+    "path": "src/data/market_data.py",
+    "line_start": 504,
+    "line_end": 535
+  },
+  "src/data/market_data.py::nse": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 78,
+    "line_end": 78
+  },
+  "src/data/market_data.py::index_data": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "src/data/market_data.py::df": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 111,
+    "line_end": 116
+  },
+  "src/data/market_data.py::date_col": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 154,
+    "line_end": 154
+  },
+  "src/data/market_data.py::url": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 233,
+    "line_end": 233
+  },
+  "src/data/market_data.py::ticker": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 239,
+    "line_end": 239
+  },
+  "src/data/market_data.py::response": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 262,
+    "line_end": 262
+  },
+  "src/data/market_data.py::yahoo_ticker": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 331,
+    "line_end": 331
+  },
+  "src/data/market_data.py::tickers": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 372,
+    "line_end": 372
+  },
+  "src/data/market_data.py::symbols": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 422,
+    "line_end": 422
+  },
+  "src/data/market_data.py::value": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 479,
+    "line_end": 479
+  },
+  "src/data/market_data.py::lower": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 489,
+    "line_end": 489
+  },
+  "src/data/market_data.py::required": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 490,
+    "line_end": 490
+  },
+  "src/data/market_data.py::missing": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 498,
+    "line_end": 498
+  },
+  "src/data/market_data.py::csv_path": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 577,
+    "line_end": 577
+  },
+  "src/data/market_data.py::symbol": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 86,
+    "line_end": 86
+  },
+  "src/data/market_data.py::timestamp": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 120,
+    "line_end": 120
+  },
+  "src/data/market_data.py::candle": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 126,
+    "line_end": 133
+  },
+  "src/data/market_data.py::volume": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 170,
+    "line_end": 170
+  },
+  "src/data/market_data.py::ffmc": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 205,
+    "line_end": 205
+  },
+  "src/data/market_data.py::sym_df": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 388,
+    "line_end": 388
+  },
+  "src/data/market_data.py::reader": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 511,
+    "line_end": 511
+  },
+  "src/data/market_data.py::header": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 512,
+    "line_end": 512
+  },
+  "src/data/market_data.py::col_map": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 513,
+    "line_end": 513
+  },
+  "src/data/market_data.py::name": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 554,
+    "line_end": 554
+  },
+  "src/data/market_data.py::candles": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 599,
+    "line_end": 599
+  },
+  "src/data/market_data.py::market_cap": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 427,
+    "line_end": 427
+  },
+  "src/data/market_data.py::weight_str": {
+    "kind": "variable",
+    "path": "src/data/market_data.py",
+    "line_start": 659,
+    "line_end": 659
+  },
+  "src/data/candle.py::Candle": {
+    "kind": "class",
+    "path": "src/data/candle.py",
+    "line_start": 8,
+    "line_end": 16
+  },
+  "src/strategy/strategy_config.py::StrategyConfig": {
+    "kind": "class",
+    "path": "src/strategy/strategy_config.py",
+    "line_start": 10,
+    "line_end": 24
+  },
+  "src/strategy/moving_average_crossover.py::MovingAverageCrossoverStrategy": {
+    "kind": "class",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 14,
+    "line_end": 108
+  },
+  "src/strategy/moving_average_crossover.py::MovingAverageCrossoverStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 25,
+    "line_end": 41
+  },
+  "src/strategy/moving_average_crossover.py::MovingAverageCrossoverStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 43,
+    "line_end": 90
+  },
+  "src/strategy/moving_average_crossover.py::MovingAverageCrossoverStrategy._calculate_sma": {
+    "kind": "method",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 92,
+    "line_end": 98
+  },
+  "src/strategy/moving_average_crossover.py::MovingAverageCrossoverStrategy._calculate_stop_loss": {
+    "kind": "method",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 100,
+    "line_end": 103
+  },
+  "src/strategy/moving_average_crossover.py::MovingAverageCrossoverStrategy._calculate_target": {
+    "kind": "method",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 105,
+    "line_end": 108
+  },
+  "src/strategy/moving_average_crossover.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 25,
+    "line_end": 41
+  },
+  "src/strategy/moving_average_crossover.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 43,
+    "line_end": 90
+  },
+  "src/strategy/moving_average_crossover.py::_calculate_sma": {
+    "kind": "function",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 92,
+    "line_end": 98
+  },
+  "src/strategy/moving_average_crossover.py::_calculate_stop_loss": {
+    "kind": "function",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 100,
+    "line_end": 103
+  },
+  "src/strategy/moving_average_crossover.py::_calculate_target": {
+    "kind": "function",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 105,
+    "line_end": 108
+  },
+  "src/strategy/moving_average_crossover.py::recent_closes": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 97,
+    "line_end": 97
+  },
+  "src/strategy/moving_average_crossover.py::recent_candles": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 102,
+    "line_end": 102
+  },
+  "src/strategy/moving_average_crossover.py::risk": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 107,
+    "line_end": 107
+  },
+  "src/strategy/moving_average_crossover.py::candles": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 61,
+    "line_end": 61
+  },
+  "src/strategy/moving_average_crossover.py::current_fast": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "src/strategy/moving_average_crossover.py::current_slow": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "src/strategy/moving_average_crossover.py::prev_fast": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 67,
+    "line_end": 67
+  },
+  "src/strategy/moving_average_crossover.py::prev_slow": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "src/strategy/moving_average_crossover.py::golden_cross": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 75,
+    "line_end": 75
+  },
+  "src/strategy/moving_average_crossover.py::last_candle": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 78,
+    "line_end": 78
+  },
+  "src/strategy/moving_average_crossover.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "src/strategy/moving_average_crossover.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/moving_average_crossover.py",
+    "line_start": 80,
+    "line_end": 80
+  },
+  "src/strategy/rsi_mean_reversion.py::RSIMeanReversionStrategy": {
+    "kind": "class",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 14,
+    "line_end": 229
+  },
+  "src/strategy/rsi_mean_reversion.py::RSIMeanReversionStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 39,
+    "line_end": 73
+  },
+  "src/strategy/rsi_mean_reversion.py::RSIMeanReversionStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 75,
+    "line_end": 94
+  },
+  "src/strategy/rsi_mean_reversion.py::RSIMeanReversionStrategy._check_entry": {
+    "kind": "method",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 96,
+    "line_end": 140
+  },
+  "src/strategy/rsi_mean_reversion.py::RSIMeanReversionStrategy._check_exit": {
+    "kind": "method",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 142,
+    "line_end": 168
+  },
+  "src/strategy/rsi_mean_reversion.py::RSIMeanReversionStrategy._sell_order": {
+    "kind": "method",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 170,
+    "line_end": 178
+  },
+  "src/strategy/rsi_mean_reversion.py::RSIMeanReversionStrategy._calculate_sma": {
+    "kind": "method",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 180,
+    "line_end": 188
+  },
+  "src/strategy/rsi_mean_reversion.py::RSIMeanReversionStrategy._calculate_rsi": {
+    "kind": "method",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 190,
+    "line_end": 229
+  },
+  "src/strategy/rsi_mean_reversion.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 39,
+    "line_end": 73
+  },
+  "src/strategy/rsi_mean_reversion.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 75,
+    "line_end": 94
+  },
+  "src/strategy/rsi_mean_reversion.py::_check_entry": {
+    "kind": "function",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 96,
+    "line_end": 140
+  },
+  "src/strategy/rsi_mean_reversion.py::_check_exit": {
+    "kind": "function",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 142,
+    "line_end": 168
+  },
+  "src/strategy/rsi_mean_reversion.py::_sell_order": {
+    "kind": "function",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 170,
+    "line_end": 178
+  },
+  "src/strategy/rsi_mean_reversion.py::_calculate_sma": {
+    "kind": "function",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 180,
+    "line_end": 188
+  },
+  "src/strategy/rsi_mean_reversion.py::_calculate_rsi": {
+    "kind": "function",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 190,
+    "line_end": 229
+  },
+  "src/strategy/rsi_mean_reversion.py::min_candles": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 100,
+    "line_end": 100
+  },
+  "src/strategy/rsi_mean_reversion.py::candles": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 146,
+    "line_end": 146
+  },
+  "src/strategy/rsi_mean_reversion.py::last_candle": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 150,
+    "line_end": 150
+  },
+  "src/strategy/rsi_mean_reversion.py::recent_closes": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 187,
+    "line_end": 187
+  },
+  "src/strategy/rsi_mean_reversion.py::recent": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 209,
+    "line_end": 209
+  },
+  "src/strategy/rsi_mean_reversion.py::gains": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 210,
+    "line_end": 210
+  },
+  "src/strategy/rsi_mean_reversion.py::losses": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 211,
+    "line_end": 211
+  },
+  "src/strategy/rsi_mean_reversion.py::avg_gain": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 220,
+    "line_end": 220
+  },
+  "src/strategy/rsi_mean_reversion.py::avg_loss": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 221,
+    "line_end": 221
+  },
+  "src/strategy/rsi_mean_reversion.py::rs": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 228,
+    "line_end": 228
+  },
+  "src/strategy/rsi_mean_reversion.py::trend_sma": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 110,
+    "line_end": 110
+  },
+  "src/strategy/rsi_mean_reversion.py::rsi": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 117,
+    "line_end": 117
+  },
+  "src/strategy/rsi_mean_reversion.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 131,
+    "line_end": 131
+  },
+  "src/strategy/rsi_mean_reversion.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 132,
+    "line_end": 132
+  },
+  "src/strategy/rsi_mean_reversion.py::change": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 214,
+    "line_end": 214
+  },
+  "src/strategy/rsi_mean_reversion.py::exit_sma": {
+    "kind": "variable",
+    "path": "src/strategy/rsi_mean_reversion.py",
+    "line_start": 159,
+    "line_end": 159
+  },
+  "src/strategy/__init__.py::__all__": {
+    "kind": "variable",
+    "path": "src/strategy/__init__.py",
+    "line_start": 6,
+    "line_end": 13
+  },
+  "src/strategy/__init__.py::__getattr__": {
+    "kind": "function",
+    "path": "src/strategy/__init__.py",
+    "line_start": 16,
+    "line_end": 26
+  },
+  "src/strategy/bullish_marubozu.py::BullishMarubozuStrategy": {
+    "kind": "class",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 14,
+    "line_end": 134
+  },
+  "src/strategy/bullish_marubozu.py::BullishMarubozuStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 29,
+    "line_end": 45
+  },
+  "src/strategy/bullish_marubozu.py::BullishMarubozuStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 47,
+    "line_end": 94
+  },
+  "src/strategy/bullish_marubozu.py::BullishMarubozuStrategy._is_bullish_marubozu": {
+    "kind": "method",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 96,
+    "line_end": 121
+  },
+  "src/strategy/bullish_marubozu.py::BullishMarubozuStrategy._has_bearish_trend": {
+    "kind": "method",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 123,
+    "line_end": 134
+  },
+  "src/strategy/bullish_marubozu.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 29,
+    "line_end": 45
+  },
+  "src/strategy/bullish_marubozu.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 47,
+    "line_end": 94
+  },
+  "src/strategy/bullish_marubozu.py::_is_bullish_marubozu": {
+    "kind": "function",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 96,
+    "line_end": 121
+  },
+  "src/strategy/bullish_marubozu.py::_has_bearish_trend": {
+    "kind": "function",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 123,
+    "line_end": 134
+  },
+  "src/strategy/bullish_marubozu.py::candle_range": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 101,
+    "line_end": 101
+  },
+  "src/strategy/bullish_marubozu.py::body_size": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 105,
+    "line_end": 105
+  },
+  "src/strategy/bullish_marubozu.py::body_percent": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 106,
+    "line_end": 106
+  },
+  "src/strategy/bullish_marubozu.py::upper_shadow": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 111,
+    "line_end": 111
+  },
+  "src/strategy/bullish_marubozu.py::lower_shadow": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 112,
+    "line_end": 112
+  },
+  "src/strategy/bullish_marubozu.py::max_shadow": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 114,
+    "line_end": 114
+  },
+  "src/strategy/bullish_marubozu.py::recent_candles": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 128,
+    "line_end": 128
+  },
+  "src/strategy/bullish_marubozu.py::candles": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 67,
+    "line_end": 67
+  },
+  "src/strategy/bullish_marubozu.py::min_candles_required": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "src/strategy/bullish_marubozu.py::candle": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 77,
+    "line_end": 77
+  },
+  "src/strategy/bullish_marubozu.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 82,
+    "line_end": 82
+  },
+  "src/strategy/bullish_marubozu.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_marubozu.py",
+    "line_start": 84,
+    "line_end": 84
+  },
+  "src/strategy/three_down_days.py::ThreeDownDaysStrategy": {
+    "kind": "class",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 14,
+    "line_end": 181
+  },
+  "src/strategy/three_down_days.py::ThreeDownDaysStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 38,
+    "line_end": 68
+  },
+  "src/strategy/three_down_days.py::ThreeDownDaysStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 70,
+    "line_end": 89
+  },
+  "src/strategy/three_down_days.py::ThreeDownDaysStrategy._check_entry": {
+    "kind": "method",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 91,
+    "line_end": 137
+  },
+  "src/strategy/three_down_days.py::ThreeDownDaysStrategy._check_exit": {
+    "kind": "method",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 139,
+    "line_end": 154
+  },
+  "src/strategy/three_down_days.py::ThreeDownDaysStrategy._sell_order": {
+    "kind": "method",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 156,
+    "line_end": 164
+  },
+  "src/strategy/three_down_days.py::ThreeDownDaysStrategy._has_consecutive_down_days": {
+    "kind": "method",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 166,
+    "line_end": 171
+  },
+  "src/strategy/three_down_days.py::ThreeDownDaysStrategy._calculate_sma": {
+    "kind": "method",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 173,
+    "line_end": 181
+  },
+  "src/strategy/three_down_days.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 38,
+    "line_end": 68
+  },
+  "src/strategy/three_down_days.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 70,
+    "line_end": 89
+  },
+  "src/strategy/three_down_days.py::_check_entry": {
+    "kind": "function",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 91,
+    "line_end": 137
+  },
+  "src/strategy/three_down_days.py::_check_exit": {
+    "kind": "function",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 139,
+    "line_end": 154
+  },
+  "src/strategy/three_down_days.py::_sell_order": {
+    "kind": "function",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 156,
+    "line_end": 164
+  },
+  "src/strategy/three_down_days.py::_has_consecutive_down_days": {
+    "kind": "function",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 166,
+    "line_end": 171
+  },
+  "src/strategy/three_down_days.py::_calculate_sma": {
+    "kind": "function",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 173,
+    "line_end": 181
+  },
+  "src/strategy/three_down_days.py::min_candles": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 95,
+    "line_end": 95
+  },
+  "src/strategy/three_down_days.py::candles": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 146,
+    "line_end": 146
+  },
+  "src/strategy/three_down_days.py::last_candle": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 150,
+    "line_end": 150
+  },
+  "src/strategy/three_down_days.py::recent_closes": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 180,
+    "line_end": 180
+  },
+  "src/strategy/three_down_days.py::pre_decline_close": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 114,
+    "line_end": 114
+  },
+  "src/strategy/three_down_days.py::current_close": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 115,
+    "line_end": 115
+  },
+  "src/strategy/three_down_days.py::total_decline": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 116,
+    "line_end": 116
+  },
+  "src/strategy/three_down_days.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 128,
+    "line_end": 128
+  },
+  "src/strategy/three_down_days.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 129,
+    "line_end": 129
+  },
+  "src/strategy/three_down_days.py::trend_sma": {
+    "kind": "variable",
+    "path": "src/strategy/three_down_days.py",
+    "line_start": 110,
+    "line_end": 110
+  },
+  "src/strategy/strategy.py::Strategy": {
+    "kind": "class",
+    "path": "src/strategy/strategy.py",
+    "line_start": 14,
+    "line_end": 51
+  },
+  "src/strategy/strategy.py::Strategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/strategy.py",
+    "line_start": 17,
+    "line_end": 19
+  },
+  "src/strategy/strategy.py::Strategy.name": {
+    "kind": "method",
+    "path": "src/strategy/strategy.py",
+    "line_start": 22,
+    "line_end": 24
+  },
+  "src/strategy/strategy.py::Strategy.tax_category": {
+    "kind": "method",
+    "path": "src/strategy/strategy.py",
+    "line_start": 27,
+    "line_end": 29
+  },
+  "src/strategy/strategy.py::Strategy.config": {
+    "kind": "method",
+    "path": "src/strategy/strategy.py",
+    "line_start": 32,
+    "line_end": 34
+  },
+  "src/strategy/strategy.py::Strategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/strategy.py",
+    "line_start": 37,
+    "line_end": 51
+  },
+  "src/strategy/strategy.py::NullStrategy": {
+    "kind": "class",
+    "path": "src/strategy/strategy.py",
+    "line_start": 54,
+    "line_end": 64
+  },
+  "src/strategy/strategy.py::NullStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/strategy.py",
+    "line_start": 57,
+    "line_end": 58
+  },
+  "src/strategy/strategy.py::NullStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/strategy.py",
+    "line_start": 60,
+    "line_end": 64
+  },
+  "src/strategy/strategy.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/strategy.py",
+    "line_start": 57,
+    "line_end": 58
+  },
+  "src/strategy/strategy.py::name": {
+    "kind": "function",
+    "path": "src/strategy/strategy.py",
+    "line_start": 22,
+    "line_end": 24
+  },
+  "src/strategy/strategy.py::tax_category": {
+    "kind": "function",
+    "path": "src/strategy/strategy.py",
+    "line_start": 27,
+    "line_end": 29
+  },
+  "src/strategy/strategy.py::config": {
+    "kind": "function",
+    "path": "src/strategy/strategy.py",
+    "line_start": 32,
+    "line_end": 34
+  },
+  "src/strategy/strategy.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/strategy.py",
+    "line_start": 60,
+    "line_end": 64
+  },
+  "src/strategy/bullish_engulfing.py::BullishEngulfingStrategy": {
+    "kind": "class",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 14,
+    "line_end": 128
+  },
+  "src/strategy/bullish_engulfing.py::BullishEngulfingStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 28,
+    "line_end": 41
+  },
+  "src/strategy/bullish_engulfing.py::BullishEngulfingStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 43,
+    "line_end": 89
+  },
+  "src/strategy/bullish_engulfing.py::BullishEngulfingStrategy._is_bullish_engulfing": {
+    "kind": "method",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 91,
+    "line_end": 115
+  },
+  "src/strategy/bullish_engulfing.py::BullishEngulfingStrategy._has_bearish_trend": {
+    "kind": "method",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 117,
+    "line_end": 128
+  },
+  "src/strategy/bullish_engulfing.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 28,
+    "line_end": 41
+  },
+  "src/strategy/bullish_engulfing.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 43,
+    "line_end": 89
+  },
+  "src/strategy/bullish_engulfing.py::_is_bullish_engulfing": {
+    "kind": "function",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 91,
+    "line_end": 115
+  },
+  "src/strategy/bullish_engulfing.py::_has_bearish_trend": {
+    "kind": "function",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 117,
+    "line_end": 128
+  },
+  "src/strategy/bullish_engulfing.py::first_range": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 99,
+    "line_end": 99
+  },
+  "src/strategy/bullish_engulfing.py::first_body": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 103,
+    "line_end": 103
+  },
+  "src/strategy/bullish_engulfing.py::first_body_percent": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 104,
+    "line_end": 104
+  },
+  "src/strategy/bullish_engulfing.py::recent_candles": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 122,
+    "line_end": 122
+  },
+  "src/strategy/bullish_engulfing.py::candles": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 61,
+    "line_end": 61
+  },
+  "src/strategy/bullish_engulfing.py::min_candles_required": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "src/strategy/bullish_engulfing.py::first_candle": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 71,
+    "line_end": 71
+  },
+  "src/strategy/bullish_engulfing.py::second_candle": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "src/strategy/bullish_engulfing.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 77,
+    "line_end": 77
+  },
+  "src/strategy/bullish_engulfing.py::risk": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 78,
+    "line_end": 78
+  },
+  "src/strategy/bullish_engulfing.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_engulfing.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "src/strategy/index_top_pct_gain.py::INDEX_KEY": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 13,
+    "line_end": 13
+  },
+  "src/strategy/index_top_pct_gain.py::IndexTopPctGainStrategy": {
+    "kind": "class",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 16,
+    "line_end": 99
+  },
+  "src/strategy/index_top_pct_gain.py::IndexTopPctGainStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 27,
+    "line_end": 43
+  },
+  "src/strategy/index_top_pct_gain.py::IndexTopPctGainStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 45,
+    "line_end": 99
+  },
+  "src/strategy/index_top_pct_gain.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 27,
+    "line_end": 43
+  },
+  "src/strategy/index_top_pct_gain.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 45,
+    "line_end": 99
+  },
+  "src/strategy/index_top_pct_gain.py::index_candles": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 61,
+    "line_end": 61
+  },
+  "src/strategy/index_top_pct_gain.py::trend_days": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "src/strategy/index_top_pct_gain.py::base_close": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 75,
+    "line_end": 75
+  },
+  "src/strategy/index_top_pct_gain.py::gain": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 78,
+    "line_end": 78
+  },
+  "src/strategy/index_top_pct_gain.py::latest_close": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 88,
+    "line_end": 88
+  },
+  "src/strategy/index_top_pct_gain.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 89,
+    "line_end": 89
+  },
+  "src/strategy/index_top_pct_gain.py::risk": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 90,
+    "line_end": 90
+  },
+  "src/strategy/index_top_pct_gain.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_pct_gain.py",
+    "line_start": 91,
+    "line_end": 91
+  },
+  "src/strategy/index_top_market_cap.py::INDEX_KEY": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 13,
+    "line_end": 13
+  },
+  "src/strategy/index_top_market_cap.py::IndexTopMarketCapStrategy": {
+    "kind": "class",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 16,
+    "line_end": 104
+  },
+  "src/strategy/index_top_market_cap.py::IndexTopMarketCapStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 32,
+    "line_end": 49
+  },
+  "src/strategy/index_top_market_cap.py::IndexTopMarketCapStrategy.load_weights": {
+    "kind": "method",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 51,
+    "line_end": 53
+  },
+  "src/strategy/index_top_market_cap.py::IndexTopMarketCapStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 55,
+    "line_end": 104
+  },
+  "src/strategy/index_top_market_cap.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 32,
+    "line_end": 49
+  },
+  "src/strategy/index_top_market_cap.py::load_weights": {
+    "kind": "function",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 51,
+    "line_end": 53
+  },
+  "src/strategy/index_top_market_cap.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 55,
+    "line_end": 104
+  },
+  "src/strategy/index_top_market_cap.py::index_candles": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 71,
+    "line_end": 71
+  },
+  "src/strategy/index_top_market_cap.py::trend_days": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "src/strategy/index_top_market_cap.py::ranked_symbols": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 83,
+    "line_end": 87
+  },
+  "src/strategy/index_top_market_cap.py::latest_close": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 93,
+    "line_end": 93
+  },
+  "src/strategy/index_top_market_cap.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 94,
+    "line_end": 94
+  },
+  "src/strategy/index_top_market_cap.py::risk": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 95,
+    "line_end": 95
+  },
+  "src/strategy/index_top_market_cap.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/index_top_market_cap.py",
+    "line_start": 96,
+    "line_end": 96
+  },
+  "src/strategy/momentum.py::MomentumStrategy": {
+    "kind": "class",
+    "path": "src/strategy/momentum.py",
+    "line_start": 14,
+    "line_end": 111
+  },
+  "src/strategy/momentum.py::MomentumStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/momentum.py",
+    "line_start": 25,
+    "line_end": 41
+  },
+  "src/strategy/momentum.py::MomentumStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/momentum.py",
+    "line_start": 43,
+    "line_end": 87
+  },
+  "src/strategy/momentum.py::MomentumStrategy._calculate_momentum": {
+    "kind": "method",
+    "path": "src/strategy/momentum.py",
+    "line_start": 89,
+    "line_end": 101
+  },
+  "src/strategy/momentum.py::MomentumStrategy._calculate_stop_loss": {
+    "kind": "method",
+    "path": "src/strategy/momentum.py",
+    "line_start": 103,
+    "line_end": 106
+  },
+  "src/strategy/momentum.py::MomentumStrategy._calculate_target": {
+    "kind": "method",
+    "path": "src/strategy/momentum.py",
+    "line_start": 108,
+    "line_end": 111
+  },
+  "src/strategy/momentum.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/momentum.py",
+    "line_start": 25,
+    "line_end": 41
+  },
+  "src/strategy/momentum.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/momentum.py",
+    "line_start": 43,
+    "line_end": 87
+  },
+  "src/strategy/momentum.py::_calculate_momentum": {
+    "kind": "function",
+    "path": "src/strategy/momentum.py",
+    "line_start": 89,
+    "line_end": 101
+  },
+  "src/strategy/momentum.py::_calculate_stop_loss": {
+    "kind": "function",
+    "path": "src/strategy/momentum.py",
+    "line_start": 103,
+    "line_end": 106
+  },
+  "src/strategy/momentum.py::_calculate_target": {
+    "kind": "function",
+    "path": "src/strategy/momentum.py",
+    "line_start": 108,
+    "line_end": 111
+  },
+  "src/strategy/momentum.py::lookback": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 91,
+    "line_end": 91
+  },
+  "src/strategy/momentum.py::start_price": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 95,
+    "line_end": 95
+  },
+  "src/strategy/momentum.py::end_price": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 96,
+    "line_end": 96
+  },
+  "src/strategy/momentum.py::recent_candles": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 105,
+    "line_end": 105
+  },
+  "src/strategy/momentum.py::risk": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 110,
+    "line_end": 110
+  },
+  "src/strategy/momentum.py::candles": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "src/strategy/momentum.py::momentum": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "src/strategy/momentum.py::last_candle": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 77,
+    "line_end": 77
+  },
+  "src/strategy/momentum.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 78,
+    "line_end": 78
+  },
+  "src/strategy/momentum.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/momentum.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "src/strategy/bullish_harami.py::BullishHaramiStrategy": {
+    "kind": "class",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 14,
+    "line_end": 153
+  },
+  "src/strategy/bullish_harami.py::BullishHaramiStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 30,
+    "line_end": 49
+  },
+  "src/strategy/bullish_harami.py::BullishHaramiStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 51,
+    "line_end": 109
+  },
+  "src/strategy/bullish_harami.py::BullishHaramiStrategy._is_bullish_harami": {
+    "kind": "method",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 111,
+    "line_end": 140
+  },
+  "src/strategy/bullish_harami.py::BullishHaramiStrategy._has_bearish_trend": {
+    "kind": "method",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 142,
+    "line_end": 153
+  },
+  "src/strategy/bullish_harami.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 30,
+    "line_end": 49
+  },
+  "src/strategy/bullish_harami.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 51,
+    "line_end": 109
+  },
+  "src/strategy/bullish_harami.py::_is_bullish_harami": {
+    "kind": "function",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 111,
+    "line_end": 140
+  },
+  "src/strategy/bullish_harami.py::_has_bearish_trend": {
+    "kind": "function",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 142,
+    "line_end": 153
+  },
+  "src/strategy/bullish_harami.py::pattern_offset": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 70,
+    "line_end": 70
+  },
+  "src/strategy/bullish_harami.py::first_range": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 119,
+    "line_end": 119
+  },
+  "src/strategy/bullish_harami.py::first_body": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 123,
+    "line_end": 123
+  },
+  "src/strategy/bullish_harami.py::first_body_percent": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 124,
+    "line_end": 124
+  },
+  "src/strategy/bullish_harami.py::second_body": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 129,
+    "line_end": 129
+  },
+  "src/strategy/bullish_harami.py::recent_candles": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 147,
+    "line_end": 147
+  },
+  "src/strategy/bullish_harami.py::candles": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 73,
+    "line_end": 73
+  },
+  "src/strategy/bullish_harami.py::min_candles_required": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 74,
+    "line_end": 74
+  },
+  "src/strategy/bullish_harami.py::first_candle": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 78,
+    "line_end": 78
+  },
+  "src/strategy/bullish_harami.py::second_candle": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "src/strategy/bullish_harami.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 94,
+    "line_end": 94
+  },
+  "src/strategy/bullish_harami.py::entry_ref": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 95,
+    "line_end": 95
+  },
+  "src/strategy/bullish_harami.py::risk": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 96,
+    "line_end": 96
+  },
+  "src/strategy/bullish_harami.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 99,
+    "line_end": 99
+  },
+  "src/strategy/bullish_harami.py::confirm_candle": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_harami.py",
+    "line_start": 90,
+    "line_end": 90
+  },
+  "src/strategy/bullish_trend_continuation.py::BullishTrendContinuationStrategy": {
+    "kind": "class",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 14,
+    "line_end": 99
+  },
+  "src/strategy/bullish_trend_continuation.py::BullishTrendContinuationStrategy.__init__": {
+    "kind": "method",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 24,
+    "line_end": 37
+  },
+  "src/strategy/bullish_trend_continuation.py::BullishTrendContinuationStrategy.generate_signal": {
+    "kind": "method",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 39,
+    "line_end": 76
+  },
+  "src/strategy/bullish_trend_continuation.py::BullishTrendContinuationStrategy._has_bullish_trend": {
+    "kind": "method",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 78,
+    "line_end": 89
+  },
+  "src/strategy/bullish_trend_continuation.py::BullishTrendContinuationStrategy._calculate_stop_loss": {
+    "kind": "method",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 91,
+    "line_end": 94
+  },
+  "src/strategy/bullish_trend_continuation.py::BullishTrendContinuationStrategy._calculate_target": {
+    "kind": "method",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 96,
+    "line_end": 99
+  },
+  "src/strategy/bullish_trend_continuation.py::__init__": {
+    "kind": "function",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 24,
+    "line_end": 37
+  },
+  "src/strategy/bullish_trend_continuation.py::generate_signal": {
+    "kind": "function",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 39,
+    "line_end": 76
+  },
+  "src/strategy/bullish_trend_continuation.py::_has_bullish_trend": {
+    "kind": "function",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 78,
+    "line_end": 89
+  },
+  "src/strategy/bullish_trend_continuation.py::_calculate_stop_loss": {
+    "kind": "function",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 91,
+    "line_end": 94
+  },
+  "src/strategy/bullish_trend_continuation.py::_calculate_target": {
+    "kind": "function",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 96,
+    "line_end": 99
+  },
+  "src/strategy/bullish_trend_continuation.py::recent_candles": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 83,
+    "line_end": 83
+  },
+  "src/strategy/bullish_trend_continuation.py::risk": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 98,
+    "line_end": 98
+  },
+  "src/strategy/bullish_trend_continuation.py::candles": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 57,
+    "line_end": 57
+  },
+  "src/strategy/bullish_trend_continuation.py::last_candle": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 64,
+    "line_end": 64
+  },
+  "src/strategy/bullish_trend_continuation.py::stop_loss": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "src/strategy/bullish_trend_continuation.py::target": {
+    "kind": "variable",
+    "path": "src/strategy/bullish_trend_continuation.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "src/strategy/enums.py::Side": {
+    "kind": "class",
+    "path": "src/strategy/enums.py",
+    "line_start": 6,
+    "line_end": 10
+  },
+  "src/strategy/enums.py::TaxCategory": {
+    "kind": "class",
+    "path": "src/strategy/enums.py",
+    "line_start": 13,
+    "line_end": 17
+  },
+  "src/strategy/enums.py::BUY": {
+    "kind": "variable",
+    "path": "src/strategy/enums.py",
+    "line_start": 9,
+    "line_end": 9
+  },
+  "src/strategy/enums.py::SELL": {
+    "kind": "variable",
+    "path": "src/strategy/enums.py",
+    "line_start": 10,
+    "line_end": 10
+  },
+  "src/strategy/enums.py::INTRADAY_EQUITY": {
+    "kind": "variable",
+    "path": "src/strategy/enums.py",
+    "line_start": 16,
+    "line_end": 16
+  },
+  "src/strategy/enums.py::DELIVERY_EQUITY": {
+    "kind": "variable",
+    "path": "src/strategy/enums.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "src/strategy/order_intent.py::OrderIntent": {
+    "kind": "class",
+    "path": "src/strategy/order_intent.py",
+    "line_start": 9,
+    "line_end": 16
+  },
+  "src/execution/__init__.py::__all__": {
+    "kind": "variable",
+    "path": "src/execution/__init__.py",
+    "line_start": 6,
+    "line_end": 6
+  },
+  "src/execution/execution_engine.py::ExecutionEngine": {
+    "kind": "class",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 12,
+    "line_end": 27
+  },
+  "src/execution/execution_engine.py::ExecutionEngine.execute": {
+    "kind": "method",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 16,
+    "line_end": 27
+  },
+  "src/execution/execution_engine.py::BacktestExecutionEngine": {
+    "kind": "class",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 30,
+    "line_end": 81
+  },
+  "src/execution/execution_engine.py::BacktestExecutionEngine.__init__": {
+    "kind": "method",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 40,
+    "line_end": 47
+  },
+  "src/execution/execution_engine.py::BacktestExecutionEngine.slippage_pct": {
+    "kind": "method",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 50,
+    "line_end": 52
+  },
+  "src/execution/execution_engine.py::BacktestExecutionEngine.execute": {
+    "kind": "method",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 54,
+    "line_end": 81
+  },
+  "src/execution/execution_engine.py::execute": {
+    "kind": "function",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 54,
+    "line_end": 81
+  },
+  "src/execution/execution_engine.py::__init__": {
+    "kind": "function",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 40,
+    "line_end": 47
+  },
+  "src/execution/execution_engine.py::slippage_pct": {
+    "kind": "function",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 50,
+    "line_end": 52
+  },
+  "src/execution/execution_engine.py::base_price": {
+    "kind": "variable",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "src/execution/execution_engine.py::slippage_amount": {
+    "kind": "variable",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "src/execution/execution_engine.py::fill_price": {
+    "kind": "variable",
+    "path": "src/execution/execution_engine.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "src/execution/fill.py::Fill": {
+    "kind": "class",
+    "path": "src/execution/fill.py",
+    "line_start": 8,
+    "line_end": 14
+  },
+  "tests/test_kill_switch.py::TestKillSwitch": {
+    "kind": "class",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 6,
+    "line_end": 51
+  },
+  "tests/test_kill_switch.py::TestKillSwitch.test_initial_state_inactive": {
+    "kind": "method",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 9,
+    "line_end": 13
+  },
+  "tests/test_kill_switch.py::TestKillSwitch.test_check_returns_false_when_inactive": {
+    "kind": "method",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 15,
+    "line_end": 18
+  },
+  "tests/test_kill_switch.py::TestKillSwitch.test_trigger_activates_switch": {
+    "kind": "method",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 20,
+    "line_end": 25
+  },
+  "tests/test_kill_switch.py::TestKillSwitch.test_check_returns_true_after_trigger": {
+    "kind": "method",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 27,
+    "line_end": 31
+  },
+  "tests/test_kill_switch.py::TestKillSwitch.test_latching_behavior": {
+    "kind": "method",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 33,
+    "line_end": 41
+  },
+  "tests/test_kill_switch.py::TestKillSwitch.test_no_auto_reset": {
+    "kind": "method",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 43,
+    "line_end": 51
+  },
+  "tests/test_kill_switch.py::test_initial_state_inactive": {
+    "kind": "function",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 9,
+    "line_end": 13
+  },
+  "tests/test_kill_switch.py::test_check_returns_false_when_inactive": {
+    "kind": "function",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 15,
+    "line_end": 18
+  },
+  "tests/test_kill_switch.py::test_trigger_activates_switch": {
+    "kind": "function",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 20,
+    "line_end": 25
+  },
+  "tests/test_kill_switch.py::test_check_returns_true_after_trigger": {
+    "kind": "function",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 27,
+    "line_end": 31
+  },
+  "tests/test_kill_switch.py::test_latching_behavior": {
+    "kind": "function",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 33,
+    "line_end": 41
+  },
+  "tests/test_kill_switch.py::test_no_auto_reset": {
+    "kind": "function",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 43,
+    "line_end": 51
+  },
+  "tests/test_kill_switch.py::ks": {
+    "kind": "variable",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 11,
+    "line_end": 11
+  },
+  "tests/test_kill_switch.py::_": {
+    "kind": "variable",
+    "path": "tests/test_kill_switch.py",
+    "line_start": 49,
+    "line_end": 49
+  },
+  "tests/test_execution.py::TestBacktestExecutionEngine": {
+    "kind": "class",
+    "path": "tests/test_execution.py",
+    "line_start": 13,
+    "line_end": 98
+  },
+  "tests/test_execution.py::TestBacktestExecutionEngine.engine": {
+    "kind": "method",
+    "path": "tests/test_execution.py",
+    "line_start": 17,
+    "line_end": 19
+  },
+  "tests/test_execution.py::TestBacktestExecutionEngine.next_candle": {
+    "kind": "method",
+    "path": "tests/test_execution.py",
+    "line_start": 22,
+    "line_end": 31
+  },
+  "tests/test_execution.py::TestBacktestExecutionEngine.test_buy_order_fills_at_open_plus_slippage": {
+    "kind": "method",
+    "path": "tests/test_execution.py",
+    "line_start": 33,
+    "line_end": 49
+  },
+  "tests/test_execution.py::TestBacktestExecutionEngine.test_sell_order_fills_at_open_minus_slippage": {
+    "kind": "method",
+    "path": "tests/test_execution.py",
+    "line_start": 51,
+    "line_end": 66
+  },
+  "tests/test_execution.py::TestBacktestExecutionEngine.test_deterministic_execution": {
+    "kind": "method",
+    "path": "tests/test_execution.py",
+    "line_start": 68,
+    "line_end": 84
+  },
+  "tests/test_execution.py::TestBacktestExecutionEngine.test_zero_slippage": {
+    "kind": "method",
+    "path": "tests/test_execution.py",
+    "line_start": 86,
+    "line_end": 98
+  },
+  "tests/test_execution.py::engine": {
+    "kind": "function",
+    "path": "tests/test_execution.py",
+    "line_start": 17,
+    "line_end": 19
+  },
+  "tests/test_execution.py::next_candle": {
+    "kind": "function",
+    "path": "tests/test_execution.py",
+    "line_start": 22,
+    "line_end": 31
+  },
+  "tests/test_execution.py::test_buy_order_fills_at_open_plus_slippage": {
+    "kind": "function",
+    "path": "tests/test_execution.py",
+    "line_start": 33,
+    "line_end": 49
+  },
+  "tests/test_execution.py::test_sell_order_fills_at_open_minus_slippage": {
+    "kind": "function",
+    "path": "tests/test_execution.py",
+    "line_start": 51,
+    "line_end": 66
+  },
+  "tests/test_execution.py::test_deterministic_execution": {
+    "kind": "function",
+    "path": "tests/test_execution.py",
+    "line_start": 68,
+    "line_end": 84
+  },
+  "tests/test_execution.py::test_zero_slippage": {
+    "kind": "function",
+    "path": "tests/test_execution.py",
+    "line_start": 86,
+    "line_end": 98
+  },
+  "tests/test_execution.py::order": {
+    "kind": "variable",
+    "path": "tests/test_execution.py",
+    "line_start": 37,
+    "line_end": 42
+  },
+  "tests/test_execution.py::fill": {
+    "kind": "variable",
+    "path": "tests/test_execution.py",
+    "line_start": 44,
+    "line_end": 44
+  },
+  "tests/test_execution.py::expected_price": {
+    "kind": "variable",
+    "path": "tests/test_execution.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "tests/test_execution.py::fill1": {
+    "kind": "variable",
+    "path": "tests/test_execution.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "tests/test_execution.py::fill2": {
+    "kind": "variable",
+    "path": "tests/test_execution.py",
+    "line_start": 80,
+    "line_end": 80
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy": {
+    "kind": "class",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 13,
+    "line_end": 154
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.strategy": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 17,
+    "line_end": 19
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.test_detects_perfect_marubozu": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 21,
+    "line_end": 36
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.test_rejects_bearish_candle": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 38,
+    "line_end": 51
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.test_rejects_candle_with_upper_shadow": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 53,
+    "line_end": 68
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.test_rejects_candle_with_lower_shadow": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 70,
+    "line_end": 85
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.test_no_signal_when_position_exists": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 87,
+    "line_end": 103
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.test_no_signal_with_empty_candles": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 105,
+    "line_end": 111
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.test_uses_last_candle": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 113,
+    "line_end": 134
+  },
+  "tests/test_bullish_marubozu.py::TestBullishMarubozuStrategy.test_target_is_twice_body_size": {
+    "kind": "method",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 136,
+    "line_end": 154
+  },
+  "tests/test_bullish_marubozu.py::strategy": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 17,
+    "line_end": 19
+  },
+  "tests/test_bullish_marubozu.py::test_detects_perfect_marubozu": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 21,
+    "line_end": 36
+  },
+  "tests/test_bullish_marubozu.py::test_rejects_bearish_candle": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 38,
+    "line_end": 51
+  },
+  "tests/test_bullish_marubozu.py::test_rejects_candle_with_upper_shadow": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 53,
+    "line_end": 68
+  },
+  "tests/test_bullish_marubozu.py::test_rejects_candle_with_lower_shadow": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 70,
+    "line_end": 85
+  },
+  "tests/test_bullish_marubozu.py::test_no_signal_when_position_exists": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 87,
+    "line_end": 103
+  },
+  "tests/test_bullish_marubozu.py::test_no_signal_with_empty_candles": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 105,
+    "line_end": 111
+  },
+  "tests/test_bullish_marubozu.py::test_uses_last_candle": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 113,
+    "line_end": 134
+  },
+  "tests/test_bullish_marubozu.py::test_target_is_twice_body_size": {
+    "kind": "function",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 136,
+    "line_end": 154
+  },
+  "tests/test_bullish_marubozu.py::candle": {
+    "kind": "variable",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 23,
+    "line_end": 30
+  },
+  "tests/test_bullish_marubozu.py::signal": {
+    "kind": "variable",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "tests/test_bullish_marubozu.py::position": {
+    "kind": "variable",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 99,
+    "line_end": 99
+  },
+  "tests/test_bullish_marubozu.py::old_candle": {
+    "kind": "variable",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 115,
+    "line_end": 122
+  },
+  "tests/test_bullish_marubozu.py::marubozu": {
+    "kind": "variable",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 123,
+    "line_end": 130
+  },
+  "tests/test_bullish_marubozu.py::body_size": {
+    "kind": "variable",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 151,
+    "line_end": 151
+  },
+  "tests/test_bullish_marubozu.py::expected_target": {
+    "kind": "variable",
+    "path": "tests/test_bullish_marubozu.py",
+    "line_start": 152,
+    "line_end": 152
+  },
+  "tests/test_drawdown.py::TestDrawdownTracker": {
+    "kind": "class",
+    "path": "tests/test_drawdown.py",
+    "line_start": 8,
+    "line_end": 68
+  },
+  "tests/test_drawdown.py::TestDrawdownTracker.test_initial_state": {
+    "kind": "method",
+    "path": "tests/test_drawdown.py",
+    "line_start": 11,
+    "line_end": 16
+  },
+  "tests/test_drawdown.py::TestDrawdownTracker.test_peak_tracking": {
+    "kind": "method",
+    "path": "tests/test_drawdown.py",
+    "line_start": 18,
+    "line_end": 28
+  },
+  "tests/test_drawdown.py::TestDrawdownTracker.test_current_drawdown_calculation": {
+    "kind": "method",
+    "path": "tests/test_drawdown.py",
+    "line_start": 30,
+    "line_end": 37
+  },
+  "tests/test_drawdown.py::TestDrawdownTracker.test_max_drawdown_tracking": {
+    "kind": "method",
+    "path": "tests/test_drawdown.py",
+    "line_start": 39,
+    "line_end": 48
+  },
+  "tests/test_drawdown.py::TestDrawdownTracker.test_recovery_does_not_reduce_max_drawdown": {
+    "kind": "method",
+    "path": "tests/test_drawdown.py",
+    "line_start": 50,
+    "line_end": 59
+  },
+  "tests/test_drawdown.py::TestDrawdownTracker.test_new_high_resets_current_drawdown": {
+    "kind": "method",
+    "path": "tests/test_drawdown.py",
+    "line_start": 61,
+    "line_end": 68
+  },
+  "tests/test_drawdown.py::test_initial_state": {
+    "kind": "function",
+    "path": "tests/test_drawdown.py",
+    "line_start": 11,
+    "line_end": 16
+  },
+  "tests/test_drawdown.py::test_peak_tracking": {
+    "kind": "function",
+    "path": "tests/test_drawdown.py",
+    "line_start": 18,
+    "line_end": 28
+  },
+  "tests/test_drawdown.py::test_current_drawdown_calculation": {
+    "kind": "function",
+    "path": "tests/test_drawdown.py",
+    "line_start": 30,
+    "line_end": 37
+  },
+  "tests/test_drawdown.py::test_max_drawdown_tracking": {
+    "kind": "function",
+    "path": "tests/test_drawdown.py",
+    "line_start": 39,
+    "line_end": 48
+  },
+  "tests/test_drawdown.py::test_recovery_does_not_reduce_max_drawdown": {
+    "kind": "function",
+    "path": "tests/test_drawdown.py",
+    "line_start": 50,
+    "line_end": 59
+  },
+  "tests/test_drawdown.py::test_new_high_resets_current_drawdown": {
+    "kind": "function",
+    "path": "tests/test_drawdown.py",
+    "line_start": 61,
+    "line_end": 68
+  },
+  "tests/test_drawdown.py::tracker": {
+    "kind": "variable",
+    "path": "tests/test_drawdown.py",
+    "line_start": 13,
+    "line_end": 13
+  },
+  "tests/test_drawdown.py::expected_dd": {
+    "kind": "variable",
+    "path": "tests/test_drawdown.py",
+    "line_start": 36,
+    "line_end": 36
+  },
+  "tests/test_drawdown.py::expected_max_dd": {
+    "kind": "variable",
+    "path": "tests/test_drawdown.py",
+    "line_start": 47,
+    "line_end": 47
+  }
+}

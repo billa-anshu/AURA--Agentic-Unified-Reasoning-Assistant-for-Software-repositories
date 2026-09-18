@@ -1,0 +1,53 @@
+# Repository Analysis Report: WhatsApp Chat Analyzer
+
+## 1. Overall Purpose and Architecture
+
+This repository implements a **WhatsApp chat analysis tool**, built as a Streamlit application (evidenced by `@st.cache_data` decorators and `streamlit` imports throughout) [cite:file=preprocessor.py;symbol=preprocess;lines=1-5][cite:file=helper.py;symbol=fetch_stats;lines=1,12-13]. The provided source consists of two core backend modules — a preprocessing module that parses raw WhatsApp export text into a structured DataFrame, and a helper module containing a library of analytics functions (statistics, word clouds, sentiment, timelines, emoji analysis) that operate on that DataFrame. An `app.py` entry point and `README.md`/`DEPLOYMENT_GUIDE.md` documentation files are present in the file tree but their content was not included, so their specific implementation cannot be described.
+
+The architecture follows a **two-stage pipeline pattern**: raw chat export text is transformed once into a tabular format by `preprocessor.py`, and the resulting DataFrame is then passed into numerous independent, composable analytics functions in `helper.py`, each typically filtered by a `selected_user` parameter.
+
+## 2. Key Components / Modules
+
+- **`preprocessor.py`** — Contains a single function, `preprocess`, responsible for converting raw exported WhatsApp chat text into a structured `pandas.DataFrame` [cite:file=preprocessor.py;symbol=preprocess;lines=5-6]. It is decorated with `@st.cache_data` to cache results across Streamlit reruns [cite:file=preprocessor.py;symbol=preprocess;lines=5-5].
+
+- **`helper.py`** — A library of analytics functions operating on the preprocessed chat DataFrame. It initializes a module-level `URLExtract` instance for detecting URLs in messages [cite:file=helper.py;symbol=extract;lines=9-9] and a module-level `SentimentIntensityAnalyzer` from the `vaderSentiment` package for sentiment scoring [cite:file=helper.py;symbol=analyzer;lines=7,10]. Nearly every analytics function is decorated with `@st.cache_data` for performance [cite:file=helper.py;symbol=fetch_stats;lines=12-13].
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+### `preprocessor.py`
+
+- **`preprocess(data)`** — Uses a regular expression matching WhatsApp's timestamp format (`d/d/yy, h:mm AM/PM -`) to split the raw chat export into individual messages and their corresponding dates [cite:file=preprocessor.py;symbol=preprocess;lines=7-10]. Returns an empty DataFrame if no messages are found [cite:file=preprocessor.py;symbol=preprocess;lines=12-13]. Builds an initial DataFrame from the split messages/dates, strips separator characters from the date strings, and parses them into datetime objects using a mixed format with day-first ordering [cite:file=preprocessor.py;symbol=preprocess;lines=15-19]. Separates each message into a sender name and message body via a secondary regex split, falling back to a `'group_notification'` label for system messages that don't match the `user: message` pattern [cite:file=preprocessor.py;symbol=preprocess;lines=23-30]. Derives numerous datetime-component columns (`only_date`, `year`, `month_num`, `month`, `day`, `day_name`, `hour`, `minute`) from the parsed date [cite:file=preprocessor.py;symbol=preprocess;lines=36-43]. Computes a custom hourly "period" label for each message (e.g., `"14-15"`), with special-cased wraparound labels for the 23:00 and 00:00 hours, and an `"Unknown"` label for missing hour values [cite:file=preprocessor.py;symbol=preprocess;lines=45-56].
+
+### `helper.py`
+
+- **`fetch_stats(selected_user, df)`** — Optionally filters the DataFrame to a single user, then computes total message count, total word count, count of media-only messages (matching the literal string `'<Media omitted>\n'`), and total extracted URL count, returning all four as a tuple [cite:file=helper.py;symbol=fetch_stats;lines=13-29].
+
+- **`fetch_most_active_users(df)`** — Computes the top users by message count via `value_counts().head()` and a separate percentage breakdown of all users' message share, rounded to two decimals [cite:file=helper.py;symbol=fetch_most_active_users;lines=32-35].
+
+- **`create_wordcloud(selected_user, df)`** — Filters out group notifications and media-omitted messages, then generates a `WordCloud` image object with transparent (`rgba(255, 255, 255, 0)`) background and a green colormap; returns `None` if there is no text to render [cite:file=helper.py;symbol=create_wordcloud;lines=37-49].
+
+- **`get_most_common_words(selected_user, df)`** — Tokenizes non-notification, non-media messages into lowercase words, filters out words of length ≤3 and a small stopword list (`this`, `that`, `with`, `from`, `your`, `have`, `message`, `deleted`), and returns the 20 most common words as a DataFrame via `collections.Counter` [cite:file=helper.py;symbol=get_most_common_words;lines=52-66].
+
+- **`emoji_analysis(selected_user, df)`** — Extracts all emoji characters from messages by checking membership in `emoji.EMOJI_DATA`, tallies the top 20 by frequency, and additionally buckets emojis into hand-curated sentiment categories — Joy, Approval, Surprise, and a residual "Others" — returning both the frequency DataFrame and the category-count "spectrum" dictionary [cite:file=helper.py;symbol=emoji_analysis;lines=69-88].
+
+- **`fetch_monthly_timeline(df)`** — Groups messages by year and month, then builds a combined `"Month-Year"` label column for use in timeline charts [cite:file=helper.py;symbol=fetch_monthly_timeline;lines=1-8 (relative to function)].
+- **`fetch_daily_timeline(df)`** — Groups message counts by calendar date [cite:file=helper.py;symbol=fetch_daily_timeline;lines=1-4 (relative to function)].
+- **`fetch_week_activity_map(df)`** — Returns message counts grouped by day-of-week name [cite:file=helper.py;symbol=fetch_week_activity_map;lines=1-3 (relative to function)].
+- **`fetch_month_activity_map(df)`** — Returns message counts grouped by month name [cite:file=helper.py;symbol=fetch_month_activity_map;lines=1-3 (relative to function)].
+- **`fetch_activity_heatmap(df)`** — Builds a pivot table of message counts indexed by day name and the custom hourly `period` column, filling missing combinations with zero, for heatmap visualization [cite:file=helper.py;symbol=fetch_activity_heatmap;lines=1-4 (relative to function)].
+
+- **`sentiment_analysis(selected_user, df)`** — Filters out group notifications and media messages, then applies VADER's `polarity_scores` to every remaining message to compute per-message positive, negative, neutral, and compound sentiment scores [cite:file=helper.py;symbol=sentiment_analysis;lines=1-19 (relative to function)]. It computes a daily-averaged "sentiment velocity" time series from the compound scores, and separately buckets messages into Positive (compound ≥ 0.05), Negative (compound ≤ -0.05), and Neutral categories using the same VADER threshold convention [cite:file=helper.py;symbol=sentiment_analysis;lines=19-26 (relative to function)].
+
+- **`get_media_distribution(selected_user, df)`** — Counts media-omitted messages and then estimates a breakdown into Images (60%), Voice Notes (25%), and Documents (the remainder), rather than deriving these categories from any real media-type data in the source messages [cite:file=helper.py;symbol=get_media_distribution;lines=1-13 (relative to function)].
+
+## 4. Notable Design Patterns and Observations
+
+- **Caching decorator pattern**: Nearly all data-processing functions in both modules are wrapped in `@st.cache_data`, a Streamlit-specific memoization pattern that avoids recomputation across app reruns [cite:file=preprocessor.py;symbol=preprocess;lines=5-5][cite:file=helper.py;symbol=fetch_stats;lines=12-13][cite:file=helper.py;symbol=fetch_most_active_users;lines=31-32][cite:file=helper.py;symbol=get_most_common_words;lines=51-52][cite:file=helper.py;symbol=emoji_analysis;lines=68-69][cite:file=helper.py;symbol=sentiment_analysis;lines=1-1 (relative to function)].
+
+- **Consistent user-filtering convention**: Most `helper.py` functions share an identical parameter/filtering idiom — accepting `selected_user` and conditionally filtering the DataFrame with `df[df['user'] == selected_user]` unless the value is `'Overall'` — indicating a deliberate, repeated design convention across the module rather than a one-off implementation [cite:file=helper.py;symbol=fetch_stats;lines=14-15][cite:file=helper.py;symbol=create_wordcloud;lines=38-39][cite:file=helper.py;symbol=emoji_analysis;lines=70-71].
+
+- **Regex-driven ETL / parsing pattern**: `preprocess` acts as a single-pass ETL routine, using regular expressions as the primary parsing mechanism to transform semi-structured export text into tabular data suitable for downstream analytics [cite:file=preprocessor.py;symbol=preprocess;lines=7-30].
+
+- **Sentiment thresholding pattern reused across modules**: The same VADER compound-score threshold convention (≥0.05 positive, ≤-0.05 negative, otherwise neutral) is applied consistently within `sentiment_analysis` [cite:file=helper.py;symbol=sentiment_analysis;lines=1-26 (relative to function)].
+
+- **Heuristic/estimated rather than measured data**: `get_media_distribution` notably does not classify actual media types from message content — it applies fixed percentage splits (60/25/15) to the total count of media-omitted messages, which is a simplification/heuristic rather than a true classification of media type [cite:file=helper.py;symbol=get_media_distribution;lines=1-13 (relative to function)].

@@ -1,0 +1,63 @@
+Structured Summary Report
+1. Overall purpose and architecture
+
+The repository is an AI Resume Screening System with a React/Vite frontend and a Java/Spring backend. The frontend application exposes pages for login, registration, dashboard, jobs, resumes, analysis, and candidate ranking. [cite:file=frontend/src/App.jsx;symbol=App;lines=1-57] The backend is organized into controllers, services, repositories, entities, DTOs, security, configuration, and exception-handling packages. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java;symbol=BackendApplication;lines=1-1]
+
+The frontend uses React Router for client-side navigation and wraps dashboard, jobs, resumes, analysis, and ranking routes with ProtectedRoute. [cite:file=frontend/src/App.jsx;symbol=App;lines=1-55] The frontend is bootstrapped with BrowserRouter around the application. [cite:file=frontend/src/main.jsx;symbol=main;lines=1-9]
+
+Authentication state on the frontend is represented by a token stored in localStorage; ProtectedRoute redirects to / when that token is absent. [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=3-11]
+
+The backend contains dedicated security classes for JWT authentication and utilities, including JwtAuthenticationFilter and JwtUtil. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtAuthenticationFilter.java;symbol=JwtAuthenticationFilter;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java;symbol=JwtUtil;lines=1-1]
+
+2. Key components / modules
+Frontend
+Routing: App defines routes for login, registration, dashboard, jobs, resumes, analysis, and ranking, with a fallback redirect to /. [cite:file=frontend/src/App.jsx;symbol=App;lines=9-57]
+Authentication guard: ProtectedRoute checks localStorage for "token" and prevents access when it is missing. [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=3-11]
+Navigation: Navbar provides links to dashboard, jobs, resumes, analysis, and ranking. [cite:file=frontend/src/components/Navbar.jsx;symbol=Navbar;lines=3-58]
+Logout: Navbar.logout removes the stored token and navigates back to the root login route. [cite:file=frontend/src/components/Navbar.jsx;symbol=logout;lines=7-10]
+Job API service: getJobs performs a GET request to /jobs. [cite:file=frontend/src/services/jobService.js;symbol=getJobs;lines=1-3]
+AI analysis API: analyzeResume sends resume text and a job description to /analysis/analyze. [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=3-9]
+Analysis persistence: saveAnalysis sends resume/job identifiers plus resume and job-description text to /analysis/save/{resumeId}/{jobId}. [cite:file=frontend/src/services/analysisService.js;symbol=saveAnalysis;lines=11-22]
+Ranking API: getRanking requests /analysis/rank/{jobId} to obtain candidate-ranking data. [cite:file=frontend/src/services/analysisService.js;symbol=getRanking;lines=24-27]
+
+The frontend is configured as a Vite application using the React plugin. [cite:file=frontend/vite.config.js;symbol=defineConfig;lines=1-7]
+
+Backend
+
+The backend is divided into several conventional Spring application layers visible in the repository tree: controllers, services, repositories, entities, DTOs, security, configuration, and exception handling. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java;symbol=BackendApplication;lines=1-1]
+
+The domain layer contains Recruiter, Resume, ResumeAnalysis, and JobDescription entities. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Recruiter.java;symbol=Recruiter;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Resume.java;symbol=Resume;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/ResumeAnalysis.java;symbol=ResumeAnalysis;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/JobDescription.java;symbol=JobDescription;lines=1-1]
+
+The service layer contains AIAnalysisService, JobDescriptionService, ResumeService, RecruiterService, and CustomUserDetailsService, indicating separate application responsibilities for AI analysis, job descriptions, resumes, recruiters, and user authentication details. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java;symbol=JobDescriptionService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/ResumeService.java;symbol=ResumeService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java;symbol=RecruiterService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/CustomUserDetailsService.java;symbol=CustomUserDetailsService;lines=1-1]
+
+The controller layer includes controllers for authentication, resumes, job descriptions, AI analysis, and testing. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AuthController.java;symbol=AuthController;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/ResumeController.java;symbol=ResumeController;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/JobDescriptionController.java;symbol=JobDescriptionController;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java;symbol=AIAnalysisController;lines=1-1]
+
+The repository layer provides persistence abstractions for job descriptions, recruiters, resume analyses, and resumes. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/JobDescriptionRepository.java;symbol=JobDescriptionRepository;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/RecruiterRepository.java;symbol=RecruiterRepository;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/ResumeAnalysisRepository.java;symbol=ResumeAnalysisRepository;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/ResumeRepository.java;symbol=ResumeRepository;lines=1-1]
+
+3. Notable functions/classes and responsibilities
+
+App acts as the frontend route composition component, mapping URL paths to page components and applying ProtectedRoute to authenticated sections. [cite:file=frontend/src/App.jsx;symbol=App;lines=9-57]
+
+ProtectedRoute implements the frontend authentication gate by reading the "token" key from browser storage and returning a React Router redirect when no token exists. [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=3-11]
+
+Navbar.logout provides the client-side logout behavior by deleting the token and navigating to the login route. [cite:file=frontend/src/components/Navbar.jsx;symbol=logout;lines=7-10]
+
+analyzeResume is the frontend service operation for sending resume text and a job description to the analysis endpoint. [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=3-9]
+
+saveAnalysis is the frontend operation for submitting an analysis together with resume and job identifiers for persistence. [cite:file=frontend/src/services/analysisService.js;symbol=saveAnalysis;lines=11-22]
+
+getRanking is the frontend operation for retrieving ranking results for a specified job. [cite:file=frontend/src/services/analysisService.js;symbol=getRanking;lines=24-27]
+
+The backend exposes AIAnalysisService as a dedicated service-layer component for AI analysis functionality. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1] The repository also contains GeminiConfig, indicating a dedicated configuration component associated with Gemini integration. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java;symbol=GeminiConfig;lines=1-1]
+
+The DTO package contains dedicated request/response types including AnalysisRequest, AnalysisResponse, AIResponse, AIAnalysisResponse, JobDescriptionRequest, LoginRequest, RegisterRequest, and AuthResponse. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisRequest.java;symbol=AnalysisRequest;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisResponse.java;symbol=AnalysisResponse;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/LoginRequest.java;symbol=LoginRequest;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AuthResponse.java;symbol=AuthResponse;lines=1-1]
+
+4. Design patterns and architectural observations
+Layered architecture: The backend separates controllers, services, repositories, entities, DTOs, security, and configuration into distinct packages. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java;symbol=AIAnalysisController;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/ResumeAnalysisRepository.java;symbol=ResumeAnalysisRepository;lines=1-1]
+Service-layer pattern: Business responsibilities are represented by dedicated service classes such as ResumeService, RecruiterService, JobDescriptionService, and AIAnalysisService. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/ResumeService.java;symbol=ResumeService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java;symbol=RecruiterService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java;symbol=JobDescriptionService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1]
+Repository pattern: Persistence responsibilities are isolated into repositories corresponding to the application's major domain objects. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/ResumeRepository.java;symbol=ResumeRepository;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/JobDescriptionRepository.java;symbol=JobDescriptionRepository;lines=1-1]
+DTO pattern: Separate request/response classes are defined for authentication, job-description operations, and AI-analysis operations. [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/RegisterRequest.java;symbol=RegisterRequest;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisRequest.java;symbol=AnalysisRequest;lines=1-1]
+Route-guard pattern: The frontend centralizes authentication gating in ProtectedRoute and reuses it around multiple private routes. [cite:file=frontend/src/components/ProtectedRoute.jsx;symbol=ProtectedRoute;lines=3-11] [cite:file=frontend/src/App.jsx;symbol=App;lines=14-50]
+Service abstraction on the frontend: API calls are separated from page components into service modules, with jobService and analysisService delegating HTTP operations through a shared api module. [cite:file=frontend/src/services/jobService.js;symbol=getJobs;lines=1-3] [cite:file=frontend/src/services/analysisService.js;symbol=analyzeResume;lines=1-27]
+
+Overall, the repository follows a conventional React SPA + Spring backend architecture, with the frontend responsible for navigation and user-facing workflows and the backend organized around domain entities, services, persistence, AI-analysis functionality, and JWT-oriented security. [cite:file=frontend/src/App.jsx;symbol=App;lines=9-57] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java;symbol=AIAnalysisService;lines=1-1] [cite:file=backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java;symbol=JwtUtil;lines=1-1]

@@ -1,0 +1,2102 @@
+{
+  "components/site-nav.tsx::SiteNav": {
+    "kind": "function_or_class",
+    "path": "components/site-nav.tsx",
+    "line_start": 6,
+    "line_end": 27
+  },
+  "components/theme-provider.tsx::ThemeProvider": {
+    "kind": "function_or_class",
+    "path": "components/theme-provider.tsx",
+    "line_start": 9,
+    "line_end": 11
+  },
+  "components/editor/ai-generation-dialog.tsx::AIGenerationDialog": {
+    "kind": "function_or_class",
+    "path": "components/editor/ai-generation-dialog.tsx",
+    "line_start": 17,
+    "line_end": 57
+  },
+  "components/editor/ai-generation-dialog.tsx::handleGenerate": {
+    "kind": "function_or_class",
+    "path": "components/editor/ai-generation-dialog.tsx",
+    "line_start": 25,
+    "line_end": 65
+  },
+  "components/editor/floating-action-tool.tsx::FloatingActionTool": {
+    "kind": "function_or_class",
+    "path": "components/editor/floating-action-tool.tsx",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "components/editor/outline-editor.tsx::OutlineEditor": {
+    "kind": "function_or_class",
+    "path": "components/editor/outline-editor.tsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "components/editor/design-style-selector.tsx::DesignStyleSelector": {
+    "kind": "function_or_class",
+    "path": "components/editor/design-style-selector.tsx",
+    "line_start": 51,
+    "line_end": 91
+  },
+  "components/editor/image-transform-dialog.tsx::ImageTransformDialog": {
+    "kind": "function_or_class",
+    "path": "components/editor/image-transform-dialog.tsx",
+    "line_start": 23,
+    "line_end": 63
+  },
+  "components/editor/image-transform-dialog.tsx::handleTransform": {
+    "kind": "function_or_class",
+    "path": "components/editor/image-transform-dialog.tsx",
+    "line_start": 29,
+    "line_end": 69
+  },
+  "components/editor/slide-preview.tsx::SlidePreview": {
+    "kind": "function_or_class",
+    "path": "components/editor/slide-preview.tsx",
+    "line_start": 18,
+    "line_end": 58
+  },
+  "components/editor/editor-header.tsx::EditorHeader": {
+    "kind": "function_or_class",
+    "path": "components/editor/editor-header.tsx",
+    "line_start": 19,
+    "line_end": 59
+  },
+  "components/editor/editor-header.tsx::handleSaveTitle": {
+    "kind": "function_or_class",
+    "path": "components/editor/editor-header.tsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "components/editor/advanced-slide-editor.tsx::AdvancedSlideEditor": {
+    "kind": "function_or_class",
+    "path": "components/editor/advanced-slide-editor.tsx",
+    "line_start": 56,
+    "line_end": 96
+  },
+  "components/editor/advanced-slide-editor.tsx::handleCopy": {
+    "kind": "function_or_class",
+    "path": "components/editor/advanced-slide-editor.tsx",
+    "line_start": 65,
+    "line_end": 105
+  },
+  "components/editor/export-dialog.tsx::ExportDialog": {
+    "kind": "function_or_class",
+    "path": "components/editor/export-dialog.tsx",
+    "line_start": 16,
+    "line_end": 56
+  },
+  "components/editor/export-dialog.tsx::handleExport": {
+    "kind": "function_or_class",
+    "path": "components/editor/export-dialog.tsx",
+    "line_start": 20,
+    "line_end": 60
+  },
+  "components/ui/tooltip.tsx::TooltipProvider": {
+    "kind": "function_or_class",
+    "path": "components/ui/tooltip.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/tooltip.tsx::Tooltip": {
+    "kind": "function_or_class",
+    "path": "components/ui/tooltip.tsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "components/ui/tooltip.tsx::TooltipTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/tooltip.tsx",
+    "line_start": 31,
+    "line_end": 61
+  },
+  "components/ui/tooltip.tsx::TooltipContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/tooltip.tsx",
+    "line_start": 37,
+    "line_end": 61
+  },
+  "components/ui/button.tsx::Button": {
+    "kind": "function_or_class",
+    "path": "components/ui/button.tsx",
+    "line_start": 39,
+    "line_end": 60
+  },
+  "components/ui/breadcrumb.tsx::Breadcrumb": {
+    "kind": "function_or_class",
+    "path": "components/ui/breadcrumb.tsx",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "components/ui/breadcrumb.tsx::BreadcrumbList": {
+    "kind": "function_or_class",
+    "path": "components/ui/breadcrumb.tsx",
+    "line_start": 11,
+    "line_end": 51
+  },
+  "components/ui/breadcrumb.tsx::BreadcrumbItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/breadcrumb.tsx",
+    "line_start": 24,
+    "line_end": 64
+  },
+  "components/ui/breadcrumb.tsx::BreadcrumbLink": {
+    "kind": "function_or_class",
+    "path": "components/ui/breadcrumb.tsx",
+    "line_start": 34,
+    "line_end": 74
+  },
+  "components/ui/breadcrumb.tsx::BreadcrumbPage": {
+    "kind": "function_or_class",
+    "path": "components/ui/breadcrumb.tsx",
+    "line_start": 52,
+    "line_end": 92
+  },
+  "components/ui/breadcrumb.tsx::BreadcrumbSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/breadcrumb.tsx",
+    "line_start": 65,
+    "line_end": 105
+  },
+  "components/ui/breadcrumb.tsx::BreadcrumbEllipsis": {
+    "kind": "function_or_class",
+    "path": "components/ui/breadcrumb.tsx",
+    "line_start": 83,
+    "line_end": 109
+  },
+  "components/ui/aspect-ratio.tsx::AspectRatio": {
+    "kind": "function_or_class",
+    "path": "components/ui/aspect-ratio.tsx",
+    "line_start": 5,
+    "line_end": 11
+  },
+  "components/ui/spinner.tsx::Spinner": {
+    "kind": "function_or_class",
+    "path": "components/ui/spinner.tsx",
+    "line_start": 5,
+    "line_end": 16
+  },
+  "components/ui/sidebar.tsx::useSidebar": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 47,
+    "line_end": 87
+  },
+  "components/ui/sidebar.tsx::SidebarProvider": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 56,
+    "line_end": 96
+  },
+  "components/ui/sidebar.tsx::handleKeyDown": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 98,
+    "line_end": 138
+  },
+  "components/ui/sidebar.tsx::Sidebar": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 154,
+    "line_end": 194
+  },
+  "components/ui/sidebar.tsx::SidebarTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 256,
+    "line_end": 296
+  },
+  "components/ui/sidebar.tsx::SidebarRail": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 282,
+    "line_end": 322
+  },
+  "components/ui/sidebar.tsx::SidebarInset": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 307,
+    "line_end": 347
+  },
+  "components/ui/sidebar.tsx::SidebarInput": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 321,
+    "line_end": 361
+  },
+  "components/ui/sidebar.tsx::SidebarHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 335,
+    "line_end": 375
+  },
+  "components/ui/sidebar.tsx::SidebarFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 346,
+    "line_end": 386
+  },
+  "components/ui/sidebar.tsx::SidebarSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 357,
+    "line_end": 397
+  },
+  "components/ui/sidebar.tsx::SidebarContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 371,
+    "line_end": 411
+  },
+  "components/ui/sidebar.tsx::SidebarGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 385,
+    "line_end": 425
+  },
+  "components/ui/sidebar.tsx::SidebarGroupLabel": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 396,
+    "line_end": 436
+  },
+  "components/ui/sidebar.tsx::SidebarGroupAction": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 417,
+    "line_end": 457
+  },
+  "components/ui/sidebar.tsx::SidebarGroupContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 440,
+    "line_end": 480
+  },
+  "components/ui/sidebar.tsx::SidebarMenu": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 454,
+    "line_end": 494
+  },
+  "components/ui/sidebar.tsx::SidebarMenuItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 465,
+    "line_end": 505
+  },
+  "components/ui/sidebar.tsx::SidebarMenuButton": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 498,
+    "line_end": 538
+  },
+  "components/ui/sidebar.tsx::button": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 514,
+    "line_end": 554
+  },
+  "components/ui/sidebar.tsx::SidebarMenuAction": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 548,
+    "line_end": 588
+  },
+  "components/ui/sidebar.tsx::SidebarMenuBadge": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 580,
+    "line_end": 620
+  },
+  "components/ui/sidebar.tsx::SidebarMenuSkeleton": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 602,
+    "line_end": 642
+  },
+  "components/ui/sidebar.tsx::SidebarMenuSub": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 640,
+    "line_end": 680
+  },
+  "components/ui/sidebar.tsx::SidebarMenuSubItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 655,
+    "line_end": 695
+  },
+  "components/ui/sidebar.tsx::SidebarMenuSubButton": {
+    "kind": "function_or_class",
+    "path": "components/ui/sidebar.tsx",
+    "line_start": 669,
+    "line_end": 709
+  },
+  "components/ui/pagination.tsx::Pagination": {
+    "kind": "function_or_class",
+    "path": "components/ui/pagination.tsx",
+    "line_start": 11,
+    "line_end": 51
+  },
+  "components/ui/pagination.tsx::PaginationContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/pagination.tsx",
+    "line_start": 23,
+    "line_end": 63
+  },
+  "components/ui/pagination.tsx::PaginationItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/pagination.tsx",
+    "line_start": 36,
+    "line_end": 76
+  },
+  "components/ui/pagination.tsx::PaginationLink": {
+    "kind": "function_or_class",
+    "path": "components/ui/pagination.tsx",
+    "line_start": 45,
+    "line_end": 85
+  },
+  "components/ui/pagination.tsx::PaginationPrevious": {
+    "kind": "function_or_class",
+    "path": "components/ui/pagination.tsx",
+    "line_start": 68,
+    "line_end": 108
+  },
+  "components/ui/pagination.tsx::PaginationNext": {
+    "kind": "function_or_class",
+    "path": "components/ui/pagination.tsx",
+    "line_start": 85,
+    "line_end": 125
+  },
+  "components/ui/pagination.tsx::PaginationEllipsis": {
+    "kind": "function_or_class",
+    "path": "components/ui/pagination.tsx",
+    "line_start": 102,
+    "line_end": 127
+  },
+  "components/ui/use-toast.ts::genId": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-toast.ts",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "components/ui/use-toast.ts::addToRemoveQueue": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-toast.ts",
+    "line_start": 58,
+    "line_end": 98
+  },
+  "components/ui/use-toast.ts::reducer": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-toast.ts",
+    "line_start": 74,
+    "line_end": 114
+  },
+  "components/ui/use-toast.ts::dispatch": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-toast.ts",
+    "line_start": 133,
+    "line_end": 173
+  },
+  "components/ui/use-toast.ts::toast": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-toast.ts",
+    "line_start": 142,
+    "line_end": 182
+  },
+  "components/ui/use-toast.ts::update": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-toast.ts",
+    "line_start": 145,
+    "line_end": 185
+  },
+  "components/ui/use-toast.ts::dismiss": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-toast.ts",
+    "line_start": 150,
+    "line_end": 190
+  },
+  "components/ui/use-toast.ts::useToast": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-toast.ts",
+    "line_start": 171,
+    "line_end": 191
+  },
+  "components/ui/carousel.tsx::useCarousel": {
+    "kind": "function_or_class",
+    "path": "components/ui/carousel.tsx",
+    "line_start": 35,
+    "line_end": 75
+  },
+  "components/ui/carousel.tsx::Carousel": {
+    "kind": "function_or_class",
+    "path": "components/ui/carousel.tsx",
+    "line_start": 45,
+    "line_end": 85
+  },
+  "components/ui/carousel.tsx::CarouselContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/carousel.tsx",
+    "line_start": 135,
+    "line_end": 175
+  },
+  "components/ui/carousel.tsx::CarouselItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/carousel.tsx",
+    "line_start": 156,
+    "line_end": 196
+  },
+  "components/ui/carousel.tsx::CarouselPrevious": {
+    "kind": "function_or_class",
+    "path": "components/ui/carousel.tsx",
+    "line_start": 174,
+    "line_end": 214
+  },
+  "components/ui/carousel.tsx::CarouselNext": {
+    "kind": "function_or_class",
+    "path": "components/ui/carousel.tsx",
+    "line_start": 204,
+    "line_end": 241
+  },
+  "components/ui/progress.tsx::Progress": {
+    "kind": "function_or_class",
+    "path": "components/ui/progress.tsx",
+    "line_start": 8,
+    "line_end": 31
+  },
+  "components/ui/textarea.tsx::Textarea": {
+    "kind": "function_or_class",
+    "path": "components/ui/textarea.tsx",
+    "line_start": 5,
+    "line_end": 18
+  },
+  "components/ui/drawer.tsx::Drawer": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/drawer.tsx::DrawerTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "components/ui/drawer.tsx::DrawerPortal": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 20,
+    "line_end": 60
+  },
+  "components/ui/drawer.tsx::DrawerClose": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 26,
+    "line_end": 66
+  },
+  "components/ui/drawer.tsx::DrawerOverlay": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 32,
+    "line_end": 72
+  },
+  "components/ui/drawer.tsx::DrawerContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 48,
+    "line_end": 88
+  },
+  "components/ui/drawer.tsx::DrawerHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 75,
+    "line_end": 115
+  },
+  "components/ui/drawer.tsx::DrawerFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 88,
+    "line_end": 128
+  },
+  "components/ui/drawer.tsx::DrawerTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 98,
+    "line_end": 135
+  },
+  "components/ui/drawer.tsx::DrawerDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/drawer.tsx",
+    "line_start": 111,
+    "line_end": 135
+  },
+  "components/ui/button-group.tsx::ButtonGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/button-group.tsx",
+    "line_start": 24,
+    "line_end": 64
+  },
+  "components/ui/button-group.tsx::ButtonGroupText": {
+    "kind": "function_or_class",
+    "path": "components/ui/button-group.tsx",
+    "line_start": 40,
+    "line_end": 80
+  },
+  "components/ui/button-group.tsx::ButtonGroupSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/button-group.tsx",
+    "line_start": 60,
+    "line_end": 83
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenu": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuPortal": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 23,
+    "line_end": 63
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 34,
+    "line_end": 74
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 54,
+    "line_end": 94
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 62,
+    "line_end": 102
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuCheckboxItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 85,
+    "line_end": 125
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuRadioGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 111,
+    "line_end": 151
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuRadioItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 122,
+    "line_end": 162
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuLabel": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 146,
+    "line_end": 186
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 166,
+    "line_end": 206
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuShortcut": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 179,
+    "line_end": 219
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuSub": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 195,
+    "line_end": 235
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuSubTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 201,
+    "line_end": 241
+  },
+  "components/ui/dropdown-menu.tsx::DropdownMenuSubContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/dropdown-menu.tsx",
+    "line_start": 225,
+    "line_end": 257
+  },
+  "components/ui/tabs.tsx::Tabs": {
+    "kind": "function_or_class",
+    "path": "components/ui/tabs.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/tabs.tsx::TabsList": {
+    "kind": "function_or_class",
+    "path": "components/ui/tabs.tsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "components/ui/tabs.tsx::TabsTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/tabs.tsx",
+    "line_start": 37,
+    "line_end": 66
+  },
+  "components/ui/tabs.tsx::TabsContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/tabs.tsx",
+    "line_start": 53,
+    "line_end": 66
+  },
+  "components/ui/toggle.tsx::Toggle": {
+    "kind": "function_or_class",
+    "path": "components/ui/toggle.tsx",
+    "line_start": 31,
+    "line_end": 47
+  },
+  "components/ui/accordion.tsx::Accordion": {
+    "kind": "function_or_class",
+    "path": "components/ui/accordion.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/accordion.tsx::AccordionItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/accordion.tsx",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "components/ui/accordion.tsx::AccordionTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/accordion.tsx",
+    "line_start": 28,
+    "line_end": 66
+  },
+  "components/ui/accordion.tsx::AccordionContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/accordion.tsx",
+    "line_start": 50,
+    "line_end": 66
+  },
+  "components/ui/kbd.tsx::Kbd": {
+    "kind": "function_or_class",
+    "path": "components/ui/kbd.tsx",
+    "line_start": 3,
+    "line_end": 28
+  },
+  "components/ui/kbd.tsx::KbdGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/kbd.tsx",
+    "line_start": 18,
+    "line_end": 28
+  },
+  "components/ui/checkbox.tsx::Checkbox": {
+    "kind": "function_or_class",
+    "path": "components/ui/checkbox.tsx",
+    "line_start": 9,
+    "line_end": 32
+  },
+  "components/ui/avatar.tsx::Avatar": {
+    "kind": "function_or_class",
+    "path": "components/ui/avatar.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/avatar.tsx::AvatarImage": {
+    "kind": "function_or_class",
+    "path": "components/ui/avatar.tsx",
+    "line_start": 24,
+    "line_end": 53
+  },
+  "components/ui/avatar.tsx::AvatarFallback": {
+    "kind": "function_or_class",
+    "path": "components/ui/avatar.tsx",
+    "line_start": 37,
+    "line_end": 53
+  },
+  "components/ui/input-group.tsx::InputGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-group.tsx",
+    "line_start": 10,
+    "line_end": 50
+  },
+  "components/ui/input-group.tsx::InputGroupAddon": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-group.tsx",
+    "line_start": 59,
+    "line_end": 99
+  },
+  "components/ui/input-group.tsx::InputGroupButton": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-group.tsx",
+    "line_start": 99,
+    "line_end": 139
+  },
+  "components/ui/input-group.tsx::InputGroupText": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-group.tsx",
+    "line_start": 118,
+    "line_end": 158
+  },
+  "components/ui/input-group.tsx::InputGroupInput": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-group.tsx",
+    "line_start": 130,
+    "line_end": 169
+  },
+  "components/ui/input-group.tsx::InputGroupTextarea": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-group.tsx",
+    "line_start": 146,
+    "line_end": 169
+  },
+  "components/ui/form.tsx::useFormField": {
+    "kind": "function_or_class",
+    "path": "components/ui/form.tsx",
+    "line_start": 45,
+    "line_end": 85
+  },
+  "components/ui/form.tsx::FormItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/form.tsx",
+    "line_start": 76,
+    "line_end": 116
+  },
+  "components/ui/form.tsx::FormLabel": {
+    "kind": "function_or_class",
+    "path": "components/ui/form.tsx",
+    "line_start": 90,
+    "line_end": 130
+  },
+  "components/ui/form.tsx::FormControl": {
+    "kind": "function_or_class",
+    "path": "components/ui/form.tsx",
+    "line_start": 107,
+    "line_end": 147
+  },
+  "components/ui/form.tsx::FormDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/form.tsx",
+    "line_start": 125,
+    "line_end": 165
+  },
+  "components/ui/form.tsx::FormMessage": {
+    "kind": "function_or_class",
+    "path": "components/ui/form.tsx",
+    "line_start": 138,
+    "line_end": 167
+  },
+  "components/ui/collapsible.tsx::Collapsible": {
+    "kind": "function_or_class",
+    "path": "components/ui/collapsible.tsx",
+    "line_start": 5,
+    "line_end": 33
+  },
+  "components/ui/collapsible.tsx::CollapsibleTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/collapsible.tsx",
+    "line_start": 11,
+    "line_end": 33
+  },
+  "components/ui/collapsible.tsx::CollapsibleContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/collapsible.tsx",
+    "line_start": 22,
+    "line_end": 33
+  },
+  "components/ui/toggle-group.tsx::ToggleGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/toggle-group.tsx",
+    "line_start": 17,
+    "line_end": 57
+  },
+  "components/ui/toggle-group.tsx::ToggleGroupItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/toggle-group.tsx",
+    "line_start": 43,
+    "line_end": 73
+  },
+  "components/ui/dialog.tsx::Dialog": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/dialog.tsx::DialogTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "components/ui/dialog.tsx::DialogPortal": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "components/ui/dialog.tsx::DialogClose": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "components/ui/dialog.tsx::DialogOverlay": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 33,
+    "line_end": 73
+  },
+  "components/ui/dialog.tsx::DialogContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 49,
+    "line_end": 89
+  },
+  "components/ui/dialog.tsx::DialogHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 83,
+    "line_end": 123
+  },
+  "components/ui/dialog.tsx::DialogFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 93,
+    "line_end": 133
+  },
+  "components/ui/dialog.tsx::DialogTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 106,
+    "line_end": 143
+  },
+  "components/ui/dialog.tsx::DialogDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/dialog.tsx",
+    "line_start": 119,
+    "line_end": 143
+  },
+  "components/ui/badge.tsx::Badge": {
+    "kind": "function_or_class",
+    "path": "components/ui/badge.tsx",
+    "line_start": 28,
+    "line_end": 46
+  },
+  "components/ui/toaster.tsx::Toaster": {
+    "kind": "function_or_class",
+    "path": "components/ui/toaster.tsx",
+    "line_start": 13,
+    "line_end": 35
+  },
+  "components/ui/empty.tsx::Empty": {
+    "kind": "function_or_class",
+    "path": "components/ui/empty.tsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "components/ui/empty.tsx::EmptyHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/empty.tsx",
+    "line_start": 18,
+    "line_end": 58
+  },
+  "components/ui/empty.tsx::EmptyMedia": {
+    "kind": "function_or_class",
+    "path": "components/ui/empty.tsx",
+    "line_start": 46,
+    "line_end": 86
+  },
+  "components/ui/empty.tsx::EmptyTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/empty.tsx",
+    "line_start": 61,
+    "line_end": 101
+  },
+  "components/ui/empty.tsx::EmptyDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/empty.tsx",
+    "line_start": 71,
+    "line_end": 104
+  },
+  "components/ui/empty.tsx::EmptyContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/empty.tsx",
+    "line_start": 84,
+    "line_end": 104
+  },
+  "components/ui/label.tsx::Label": {
+    "kind": "function_or_class",
+    "path": "components/ui/label.tsx",
+    "line_start": 8,
+    "line_end": 24
+  },
+  "components/ui/input-otp.tsx::InputOTP": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-otp.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/input-otp.tsx::InputOTPGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-otp.tsx",
+    "line_start": 29,
+    "line_end": 69
+  },
+  "components/ui/input-otp.tsx::InputOTPSlot": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-otp.tsx",
+    "line_start": 39,
+    "line_end": 77
+  },
+  "components/ui/input-otp.tsx::InputOTPSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/input-otp.tsx",
+    "line_start": 69,
+    "line_end": 77
+  },
+  "components/ui/chart.tsx::useChart": {
+    "kind": "function_or_class",
+    "path": "components/ui/chart.tsx",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "components/ui/chart.tsx::ChartContainer": {
+    "kind": "function_or_class",
+    "path": "components/ui/chart.tsx",
+    "line_start": 37,
+    "line_end": 77
+  },
+  "components/ui/chart.tsx::ChartStyle": {
+    "kind": "function_or_class",
+    "path": "components/ui/chart.tsx",
+    "line_start": 72,
+    "line_end": 112
+  },
+  "components/ui/chart.tsx::ChartTooltipContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/chart.tsx",
+    "line_start": 107,
+    "line_end": 147
+  },
+  "components/ui/chart.tsx::ChartLegendContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/chart.tsx",
+    "line_start": 253,
+    "line_end": 293
+  },
+  "components/ui/chart.tsx::getPayloadConfigFromPayload": {
+    "kind": "function_or_class",
+    "path": "components/ui/chart.tsx",
+    "line_start": 308,
+    "line_end": 348
+  },
+  "components/ui/theme-toggle.tsx::ThemeToggle": {
+    "kind": "function_or_class",
+    "path": "components/ui/theme-toggle.tsx",
+    "line_start": 7,
+    "line_end": 32
+  },
+  "components/ui/alert-dialog.tsx::AlertDialog": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogPortal": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 23,
+    "line_end": 63
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogOverlay": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 47,
+    "line_end": 87
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 66,
+    "line_end": 106
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 79,
+    "line_end": 119
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 95,
+    "line_end": 135
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 108,
+    "line_end": 148
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogAction": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 121,
+    "line_end": 157
+  },
+  "components/ui/alert-dialog.tsx::AlertDialogCancel": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert-dialog.tsx",
+    "line_start": 133,
+    "line_end": 157
+  },
+  "components/ui/command.tsx::Command": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 16,
+    "line_end": 56
+  },
+  "components/ui/command.tsx::CommandDialog": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 32,
+    "line_end": 72
+  },
+  "components/ui/command.tsx::CommandInput": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 63,
+    "line_end": 103
+  },
+  "components/ui/command.tsx::CommandList": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 85,
+    "line_end": 125
+  },
+  "components/ui/command.tsx::CommandEmpty": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 101,
+    "line_end": 141
+  },
+  "components/ui/command.tsx::CommandGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 113,
+    "line_end": 153
+  },
+  "components/ui/command.tsx::CommandSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 129,
+    "line_end": 169
+  },
+  "components/ui/command.tsx::CommandItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 142,
+    "line_end": 182
+  },
+  "components/ui/command.tsx::CommandShortcut": {
+    "kind": "function_or_class",
+    "path": "components/ui/command.tsx",
+    "line_start": 158,
+    "line_end": 184
+  },
+  "components/ui/calendar.tsx::Calendar": {
+    "kind": "function_or_class",
+    "path": "components/ui/calendar.tsx",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "components/ui/calendar.tsx::CalendarDayButton": {
+    "kind": "function_or_class",
+    "path": "components/ui/calendar.tsx",
+    "line_start": 175,
+    "line_end": 213
+  },
+  "components/ui/alert.tsx::Alert": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert.tsx",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "components/ui/alert.tsx::AlertTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert.tsx",
+    "line_start": 37,
+    "line_end": 66
+  },
+  "components/ui/alert.tsx::AlertDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/alert.tsx",
+    "line_start": 50,
+    "line_end": 66
+  },
+  "components/ui/scroll-area.tsx::ScrollArea": {
+    "kind": "function_or_class",
+    "path": "components/ui/scroll-area.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/scroll-area.tsx::ScrollBar": {
+    "kind": "function_or_class",
+    "path": "components/ui/scroll-area.tsx",
+    "line_start": 31,
+    "line_end": 58
+  },
+  "components/ui/sheet.tsx::Sheet": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/sheet.tsx::SheetTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "components/ui/sheet.tsx::SheetClose": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 19,
+    "line_end": 59
+  },
+  "components/ui/sheet.tsx::SheetPortal": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 25,
+    "line_end": 65
+  },
+  "components/ui/sheet.tsx::SheetOverlay": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "components/ui/sheet.tsx::SheetContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 47,
+    "line_end": 87
+  },
+  "components/ui/sheet.tsx::SheetHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 84,
+    "line_end": 124
+  },
+  "components/ui/sheet.tsx::SheetFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 94,
+    "line_end": 134
+  },
+  "components/ui/sheet.tsx::SheetTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 104,
+    "line_end": 139
+  },
+  "components/ui/sheet.tsx::SheetDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/sheet.tsx",
+    "line_start": 117,
+    "line_end": 139
+  },
+  "components/ui/popover.tsx::Popover": {
+    "kind": "function_or_class",
+    "path": "components/ui/popover.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/popover.tsx::PopoverTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/popover.tsx",
+    "line_start": 14,
+    "line_end": 48
+  },
+  "components/ui/popover.tsx::PopoverContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/popover.tsx",
+    "line_start": 20,
+    "line_end": 48
+  },
+  "components/ui/popover.tsx::PopoverAnchor": {
+    "kind": "function_or_class",
+    "path": "components/ui/popover.tsx",
+    "line_start": 42,
+    "line_end": 48
+  },
+  "components/ui/sonner.tsx::Toaster": {
+    "kind": "function_or_class",
+    "path": "components/ui/sonner.tsx",
+    "line_start": 6,
+    "line_end": 25
+  },
+  "components/ui/menubar.tsx::Menubar": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/menubar.tsx::MenubarMenu": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 25,
+    "line_end": 65
+  },
+  "components/ui/menubar.tsx::MenubarGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "components/ui/menubar.tsx::MenubarPortal": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 37,
+    "line_end": 77
+  },
+  "components/ui/menubar.tsx::MenubarRadioGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 43,
+    "line_end": 83
+  },
+  "components/ui/menubar.tsx::MenubarTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 51,
+    "line_end": 91
+  },
+  "components/ui/menubar.tsx::MenubarContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 67,
+    "line_end": 107
+  },
+  "components/ui/menubar.tsx::MenubarItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 91,
+    "line_end": 131
+  },
+  "components/ui/menubar.tsx::MenubarCheckboxItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 114,
+    "line_end": 154
+  },
+  "components/ui/menubar.tsx::MenubarRadioItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 140,
+    "line_end": 180
+  },
+  "components/ui/menubar.tsx::MenubarLabel": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 164,
+    "line_end": 204
+  },
+  "components/ui/menubar.tsx::MenubarSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 184,
+    "line_end": 224
+  },
+  "components/ui/menubar.tsx::MenubarShortcut": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 197,
+    "line_end": 237
+  },
+  "components/ui/menubar.tsx::MenubarSub": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 213,
+    "line_end": 253
+  },
+  "components/ui/menubar.tsx::MenubarSubTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 219,
+    "line_end": 259
+  },
+  "components/ui/menubar.tsx::MenubarSubContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/menubar.tsx",
+    "line_start": 243,
+    "line_end": 276
+  },
+  "components/ui/input.tsx::Input": {
+    "kind": "function_or_class",
+    "path": "components/ui/input.tsx",
+    "line_start": 5,
+    "line_end": 21
+  },
+  "components/ui/resizable.tsx::ResizablePanelGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/resizable.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/resizable.tsx::ResizablePanel": {
+    "kind": "function_or_class",
+    "path": "components/ui/resizable.tsx",
+    "line_start": 25,
+    "line_end": 56
+  },
+  "components/ui/resizable.tsx::ResizableHandle": {
+    "kind": "function_or_class",
+    "path": "components/ui/resizable.tsx",
+    "line_start": 31,
+    "line_end": 56
+  },
+  "components/ui/radio-group.tsx::RadioGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/radio-group.tsx",
+    "line_start": 9,
+    "line_end": 45
+  },
+  "components/ui/radio-group.tsx::RadioGroupItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/radio-group.tsx",
+    "line_start": 22,
+    "line_end": 45
+  },
+  "components/ui/switch.tsx::Switch": {
+    "kind": "function_or_class",
+    "path": "components/ui/switch.tsx",
+    "line_start": 8,
+    "line_end": 31
+  },
+  "components/ui/card.tsx::Card": {
+    "kind": "function_or_class",
+    "path": "components/ui/card.tsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "components/ui/card.tsx::CardHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/card.tsx",
+    "line_start": 18,
+    "line_end": 58
+  },
+  "components/ui/card.tsx::CardTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/card.tsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "components/ui/card.tsx::CardDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/card.tsx",
+    "line_start": 41,
+    "line_end": 81
+  },
+  "components/ui/card.tsx::CardAction": {
+    "kind": "function_or_class",
+    "path": "components/ui/card.tsx",
+    "line_start": 51,
+    "line_end": 91
+  },
+  "components/ui/card.tsx::CardContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/card.tsx",
+    "line_start": 64,
+    "line_end": 92
+  },
+  "components/ui/card.tsx::CardFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/card.tsx",
+    "line_start": 74,
+    "line_end": 92
+  },
+  "components/ui/hover-card.tsx::HoverCard": {
+    "kind": "function_or_class",
+    "path": "components/ui/hover-card.tsx",
+    "line_start": 8,
+    "line_end": 44
+  },
+  "components/ui/hover-card.tsx::HoverCardTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/hover-card.tsx",
+    "line_start": 14,
+    "line_end": 44
+  },
+  "components/ui/hover-card.tsx::HoverCardContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/hover-card.tsx",
+    "line_start": 22,
+    "line_end": 44
+  },
+  "components/ui/item.tsx::ItemGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/item.tsx::ItemSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 19,
+    "line_end": 59
+  },
+  "components/ui/item.tsx::Item": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 54,
+    "line_end": 94
+  },
+  "components/ui/item.tsx::ItemMedia": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 91,
+    "line_end": 131
+  },
+  "components/ui/item.tsx::ItemContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 106,
+    "line_end": 146
+  },
+  "components/ui/item.tsx::ItemTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 119,
+    "line_end": 159
+  },
+  "components/ui/item.tsx::ItemDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 132,
+    "line_end": 172
+  },
+  "components/ui/item.tsx::ItemActions": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 146,
+    "line_end": 186
+  },
+  "components/ui/item.tsx::ItemHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 156,
+    "line_end": 193
+  },
+  "components/ui/item.tsx::ItemFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/item.tsx",
+    "line_start": 169,
+    "line_end": 193
+  },
+  "components/ui/field.tsx::FieldSet": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 10,
+    "line_end": 50
+  },
+  "components/ui/field.tsx::FieldLegend": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 24,
+    "line_end": 64
+  },
+  "components/ui/field.tsx::FieldGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 44,
+    "line_end": 84
+  },
+  "components/ui/field.tsx::Field": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 81,
+    "line_end": 121
+  },
+  "components/ui/field.tsx::FieldContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 97,
+    "line_end": 137
+  },
+  "components/ui/field.tsx::FieldLabel": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 110,
+    "line_end": 150
+  },
+  "components/ui/field.tsx::FieldTitle": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 128,
+    "line_end": 168
+  },
+  "components/ui/field.tsx::FieldDescription": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 141,
+    "line_end": 181
+  },
+  "components/ui/field.tsx::FieldSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 156,
+    "line_end": 196
+  },
+  "components/ui/field.tsx::FieldError": {
+    "kind": "function_or_class",
+    "path": "components/ui/field.tsx",
+    "line_start": 186,
+    "line_end": 226
+  },
+  "components/ui/table.tsx::Table": {
+    "kind": "function_or_class",
+    "path": "components/ui/table.tsx",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "components/ui/table.tsx::TableHeader": {
+    "kind": "function_or_class",
+    "path": "components/ui/table.tsx",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "components/ui/table.tsx::TableBody": {
+    "kind": "function_or_class",
+    "path": "components/ui/table.tsx",
+    "line_start": 32,
+    "line_end": 72
+  },
+  "components/ui/table.tsx::TableFooter": {
+    "kind": "function_or_class",
+    "path": "components/ui/table.tsx",
+    "line_start": 42,
+    "line_end": 82
+  },
+  "components/ui/table.tsx::TableRow": {
+    "kind": "function_or_class",
+    "path": "components/ui/table.tsx",
+    "line_start": 55,
+    "line_end": 95
+  },
+  "components/ui/table.tsx::TableHead": {
+    "kind": "function_or_class",
+    "path": "components/ui/table.tsx",
+    "line_start": 68,
+    "line_end": 108
+  },
+  "components/ui/table.tsx::TableCell": {
+    "kind": "function_or_class",
+    "path": "components/ui/table.tsx",
+    "line_start": 81,
+    "line_end": 116
+  },
+  "components/ui/table.tsx::TableCaption": {
+    "kind": "function_or_class",
+    "path": "components/ui/table.tsx",
+    "line_start": 94,
+    "line_end": 116
+  },
+  "components/ui/navigation-menu.tsx::NavigationMenu": {
+    "kind": "function_or_class",
+    "path": "components/ui/navigation-menu.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/navigation-menu.tsx::NavigationMenuList": {
+    "kind": "function_or_class",
+    "path": "components/ui/navigation-menu.tsx",
+    "line_start": 32,
+    "line_end": 72
+  },
+  "components/ui/navigation-menu.tsx::NavigationMenuItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/navigation-menu.tsx",
+    "line_start": 48,
+    "line_end": 88
+  },
+  "components/ui/navigation-menu.tsx::NavigationMenuTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/navigation-menu.tsx",
+    "line_start": 65,
+    "line_end": 105
+  },
+  "components/ui/navigation-menu.tsx::NavigationMenuContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/navigation-menu.tsx",
+    "line_start": 85,
+    "line_end": 125
+  },
+  "components/ui/navigation-menu.tsx::NavigationMenuViewport": {
+    "kind": "function_or_class",
+    "path": "components/ui/navigation-menu.tsx",
+    "line_start": 102,
+    "line_end": 142
+  },
+  "components/ui/navigation-menu.tsx::NavigationMenuLink": {
+    "kind": "function_or_class",
+    "path": "components/ui/navigation-menu.tsx",
+    "line_start": 122,
+    "line_end": 162
+  },
+  "components/ui/navigation-menu.tsx::NavigationMenuIndicator": {
+    "kind": "function_or_class",
+    "path": "components/ui/navigation-menu.tsx",
+    "line_start": 138,
+    "line_end": 166
+  },
+  "components/ui/context-menu.tsx::ContextMenu": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/context-menu.tsx::ContextMenuTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "components/ui/context-menu.tsx::ContextMenuGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 23,
+    "line_end": 63
+  },
+  "components/ui/context-menu.tsx::ContextMenuPortal": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "components/ui/context-menu.tsx::ContextMenuSub": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 39,
+    "line_end": 79
+  },
+  "components/ui/context-menu.tsx::ContextMenuRadioGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 45,
+    "line_end": 85
+  },
+  "components/ui/context-menu.tsx::ContextMenuSubTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 56,
+    "line_end": 96
+  },
+  "components/ui/context-menu.tsx::ContextMenuSubContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 80,
+    "line_end": 120
+  },
+  "components/ui/context-menu.tsx::ContextMenuContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 96,
+    "line_end": 136
+  },
+  "components/ui/context-menu.tsx::ContextMenuItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 114,
+    "line_end": 154
+  },
+  "components/ui/context-menu.tsx::ContextMenuCheckboxItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 137,
+    "line_end": 177
+  },
+  "components/ui/context-menu.tsx::ContextMenuRadioItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 163,
+    "line_end": 203
+  },
+  "components/ui/context-menu.tsx::ContextMenuLabel": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 187,
+    "line_end": 227
+  },
+  "components/ui/context-menu.tsx::ContextMenuSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 207,
+    "line_end": 247
+  },
+  "components/ui/context-menu.tsx::ContextMenuShortcut": {
+    "kind": "function_or_class",
+    "path": "components/ui/context-menu.tsx",
+    "line_start": 220,
+    "line_end": 252
+  },
+  "components/ui/use-mobile.tsx::useIsMobile": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-mobile.tsx",
+    "line_start": 5,
+    "line_end": 19
+  },
+  "components/ui/use-mobile.tsx::onChange": {
+    "kind": "function_or_class",
+    "path": "components/ui/use-mobile.tsx",
+    "line_start": 10,
+    "line_end": 19
+  },
+  "components/ui/skeleton.tsx::Skeleton": {
+    "kind": "function_or_class",
+    "path": "components/ui/skeleton.tsx",
+    "line_start": 3,
+    "line_end": 13
+  },
+  "components/ui/slider.tsx::Slider": {
+    "kind": "function_or_class",
+    "path": "components/ui/slider.tsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "components/ui/select.tsx::Select": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/ui/select.tsx::SelectGroup": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "components/ui/select.tsx::SelectValue": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "components/ui/select.tsx::SelectTrigger": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "components/ui/select.tsx::SelectContent": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 53,
+    "line_end": 93
+  },
+  "components/ui/select.tsx::SelectLabel": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 88,
+    "line_end": 128
+  },
+  "components/ui/select.tsx::SelectItem": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 101,
+    "line_end": 141
+  },
+  "components/ui/select.tsx::SelectSeparator": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 125,
+    "line_end": 165
+  },
+  "components/ui/select.tsx::SelectScrollUpButton": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 138,
+    "line_end": 178
+  },
+  "components/ui/select.tsx::SelectScrollDownButton": {
+    "kind": "function_or_class",
+    "path": "components/ui/select.tsx",
+    "line_start": 156,
+    "line_end": 185
+  },
+  "components/ui/separator.tsx::Separator": {
+    "kind": "function_or_class",
+    "path": "components/ui/separator.tsx",
+    "line_start": 8,
+    "line_end": 28
+  },
+  "components/workspace/new-project-dialog.tsx::NewProjectDialog": {
+    "kind": "function_or_class",
+    "path": "components/workspace/new-project-dialog.tsx",
+    "line_start": 17,
+    "line_end": 57
+  },
+  "components/workspace/new-project-dialog.tsx::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "components/workspace/new-project-dialog.tsx",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "components/workspace/workspace-header.tsx::WorkspaceHeader": {
+    "kind": "function_or_class",
+    "path": "components/workspace/workspace-header.tsx",
+    "line_start": 9,
+    "line_end": 49
+  },
+  "components/workspace/project-card.tsx::ProjectCard": {
+    "kind": "function_or_class",
+    "path": "components/workspace/project-card.tsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "hooks/use-toast.ts::genId": {
+    "kind": "function_or_class",
+    "path": "hooks/use-toast.ts",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "hooks/use-toast.ts::addToRemoveQueue": {
+    "kind": "function_or_class",
+    "path": "hooks/use-toast.ts",
+    "line_start": 58,
+    "line_end": 98
+  },
+  "hooks/use-toast.ts::reducer": {
+    "kind": "function_or_class",
+    "path": "hooks/use-toast.ts",
+    "line_start": 74,
+    "line_end": 114
+  },
+  "hooks/use-toast.ts::dispatch": {
+    "kind": "function_or_class",
+    "path": "hooks/use-toast.ts",
+    "line_start": 133,
+    "line_end": 173
+  },
+  "hooks/use-toast.ts::toast": {
+    "kind": "function_or_class",
+    "path": "hooks/use-toast.ts",
+    "line_start": 142,
+    "line_end": 182
+  },
+  "hooks/use-toast.ts::update": {
+    "kind": "function_or_class",
+    "path": "hooks/use-toast.ts",
+    "line_start": 145,
+    "line_end": 185
+  },
+  "hooks/use-toast.ts::dismiss": {
+    "kind": "function_or_class",
+    "path": "hooks/use-toast.ts",
+    "line_start": 150,
+    "line_end": 190
+  },
+  "hooks/use-toast.ts::useToast": {
+    "kind": "function_or_class",
+    "path": "hooks/use-toast.ts",
+    "line_start": 171,
+    "line_end": 191
+  },
+  "hooks/use-mobile.ts::useIsMobile": {
+    "kind": "function_or_class",
+    "path": "hooks/use-mobile.ts",
+    "line_start": 5,
+    "line_end": 19
+  },
+  "hooks/use-mobile.ts::onChange": {
+    "kind": "function_or_class",
+    "path": "hooks/use-mobile.ts",
+    "line_start": 10,
+    "line_end": 19
+  },
+  "app/api/projects/route.ts::GET": {
+    "kind": "function_or_class",
+    "path": "app/api/projects/route.ts",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "app/api/projects/route.ts::POST": {
+    "kind": "function_or_class",
+    "path": "app/api/projects/route.ts",
+    "line_start": 30,
+    "line_end": 56
+  },
+  "app/api/projects/[id]/route.ts::GET": {
+    "kind": "function_or_class",
+    "path": "app/api/projects/[id]/route.ts",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "app/api/projects/[id]/route.ts::PUT": {
+    "kind": "function_or_class",
+    "path": "app/api/projects/[id]/route.ts",
+    "line_start": 36,
+    "line_end": 76
+  },
+  "app/api/projects/[id]/route.ts::DELETE": {
+    "kind": "function_or_class",
+    "path": "app/api/projects/[id]/route.ts",
+    "line_start": 68,
+    "line_end": 92
+  },
+  "app/api/users/route.ts::GET": {
+    "kind": "function_or_class",
+    "path": "app/api/users/route.ts",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "app/api/users/route.ts::POST": {
+    "kind": "function_or_class",
+    "path": "app/api/users/route.ts",
+    "line_start": 30,
+    "line_end": 70
+  },
+  "app/api/users/route.ts::PUT": {
+    "kind": "function_or_class",
+    "path": "app/api/users/route.ts",
+    "line_start": 59,
+    "line_end": 79
+  },
+  "app/api/export/route.ts::POST": {
+    "kind": "function_or_class",
+    "path": "app/api/export/route.ts",
+    "line_start": 4,
+    "line_end": 44
+  },
+  "app/api/export/route.ts::generatePPTX": {
+    "kind": "function_or_class",
+    "path": "app/api/export/route.ts",
+    "line_start": 49,
+    "line_end": 60
+  },
+  "app/api/checkout/route.ts::POST": {
+    "kind": "function_or_class",
+    "path": "app/api/checkout/route.ts",
+    "line_start": 1,
+    "line_end": 18
+  },
+  "app/api/generate-slide/route.ts::POST": {
+    "kind": "function_or_class",
+    "path": "app/api/generate-slide/route.ts",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "app/api/imagekit-auth/route.ts::GET": {
+    "kind": "function_or_class",
+    "path": "app/api/imagekit-auth/route.ts",
+    "line_start": 5,
+    "line_end": 32
+  },
+  "app/workspace/page.tsx::fetchProjects": {
+    "kind": "function_or_class",
+    "path": "app/workspace/page.tsx",
+    "line_start": 28,
+    "line_end": 68
+  },
+  "app/workspace/page.tsx::handleCreateProject": {
+    "kind": "function_or_class",
+    "path": "app/workspace/page.tsx",
+    "line_start": 45,
+    "line_end": 85
+  },
+  "app/workspace/page.tsx::handleDeleteProject": {
+    "kind": "function_or_class",
+    "path": "app/workspace/page.tsx",
+    "line_start": 70,
+    "line_end": 110
+  },
+  "app/workspace/editor/[id]/page.tsx::fetchProject": {
+    "kind": "function_or_class",
+    "path": "app/workspace/editor/[id]/page.tsx",
+    "line_start": 37,
+    "line_end": 77
+  },
+  "app/workspace/editor/[id]/page.tsx::saveProject": {
+    "kind": "function_or_class",
+    "path": "app/workspace/editor/[id]/page.tsx",
+    "line_start": 59,
+    "line_end": 99
+  },
+  "app/workspace/editor/[id]/page.tsx::handleUpdateSlide": {
+    "kind": "function_or_class",
+    "path": "app/workspace/editor/[id]/page.tsx",
+    "line_start": 78,
+    "line_end": 118
+  },
+  "app/workspace/editor/[id]/page.tsx::handleAddSlide": {
+    "kind": "function_or_class",
+    "path": "app/workspace/editor/[id]/page.tsx",
+    "line_start": 84,
+    "line_end": 124
+  },
+  "app/workspace/editor/[id]/page.tsx::handleDeleteSlide": {
+    "kind": "function_or_class",
+    "path": "app/workspace/editor/[id]/page.tsx",
+    "line_start": 97,
+    "line_end": 137
+  },
+  "app/workspace/editor/[id]/page.tsx::handleGenerateSlides": {
+    "kind": "function_or_class",
+    "path": "app/workspace/editor/[id]/page.tsx",
+    "line_start": 106,
+    "line_end": 146
+  },
+  "app/workspace/editor/[id]/page.tsx::handleTitleChange": {
+    "kind": "function_or_class",
+    "path": "app/workspace/editor/[id]/page.tsx",
+    "line_start": 119,
+    "line_end": 159
+  },
+  "app/workspace/editor/[id]/page.tsx::handleDesignStyleChange": {
+    "kind": "function_or_class",
+    "path": "app/workspace/editor/[id]/page.tsx",
+    "line_start": 124,
+    "line_end": 164
+  },
+  "lib/imagekit.ts::buildImageKitUrl": {
+    "kind": "function_or_class",
+    "path": "lib/imagekit.ts",
+    "line_start": 7,
+    "line_end": 44
+  },
+  "lib/utils.ts::cn": {
+    "kind": "function_or_class",
+    "path": "lib/utils.ts",
+    "line_start": 4,
+    "line_end": 6
+  }
+}

@@ -1,0 +1,46 @@
+# Repository Summary Report: Interview/Resume Matching Platform
+
+## 1. Overall Purpose and Architecture
+
+Based on the page names and routes, this repository is a **mock interview and resume-matching web application** — a React frontend with routes for a home page, resume matching, mock interviews, interview setup, and interview review [cite:file=frontend/src/App.js;symbol=App;lines=8-16], paired with a Python backend directory containing `main.py`, `resume_parser.py`, and `test_ml.py`, suggesting resume parsing and possibly ML-based matching/scoring functionality on the backend. However, the contents of `backend/main.py` were not included in the provided repository content, and `backend/resume_parser.py` and `backend/test_ml.py` are present in the file tree but contain **no code** in the provided content (empty files) [cite:file=backend/resume_parser.py;symbol=resume_parser.py;lines=1-1][cite:file=backend/test_ml.py;symbol=test_ml.py;lines=1-1]. No claims can therefore be made about the backend's actual implementation.
+
+The frontend is a **React single-page application** bootstrapped with Create React App, evidenced by `reportWebVitals.js`, `setupTests.js`, and the standard render entry point [cite:file=frontend/src/index.js;symbol=index.js;lines=1-16], styled with **Tailwind CSS** (configured via `tailwind.config.js` and `postcss.config.js`, with PostCSS running the `tailwindcss` and `autoprefixer` plugins) [cite:file=frontend/tailwind.config.js;symbol=module.exports;lines=1-9][cite:file=frontend/postcss.config.js;symbol=module.exports;lines=1-6].
+
+The architecture is a **component-based SPA** using `react-router-dom` for client-side routing, with a flat set of top-level page components rendered directly by route — no nested layouts, no visible authentication gating, and no visible global state management [cite:file=frontend/src/App.js;symbol=App;lines=1-19].
+
+## 2. Key Components / Modules and What They Do
+
+- **`App.js`** — the root component; defines five routes mapping paths to page components: `/` → `HomePage`, `/resume-match` → `ResumeMatchPage`, `/mock-interview` → `MockInterviewPage`, `/interview-setup` → `InterviewSetupPage`, and `/interview-review` → `InterviewReviewPage` [cite:file=frontend/src/App.js;symbol=App;lines=9-15].
+- **`index.js`** — the application entry point; mounts `App` into the DOM within `React.StrictMode` and invokes `reportWebVitals` [cite:file=frontend/src/index.js;symbol=index.js;lines=7-16].
+- **`reportWebVitals.js`** — a standard Create React App performance-measurement utility that dynamically imports the `web-vitals` package and, if given a valid callback, reports CLS, FID, FCP, LCP, and TTFB metrics [cite:file=frontend/src/reportWebVitals.js;symbol=reportWebVitals;lines=1-11].
+- **`setupTests.js`** — configures `@testing-library/jest-dom` custom matchers for the Jest test suite [cite:file=frontend/src/setupTests.js;symbol=setupTests.js;lines=1-5].
+- **`App.test.js`** — a default Create React App template test asserting a "learn react" link renders on `App`; this is likely a stale/unmodified test unrelated to the app's actual interview/resume functionality [cite:file=frontend/src/App.test.js;symbol=test;lines=4-8].
+- **`tailwind.config.js`** — configures Tailwind to scan all JS/JSX/TS/TSX files under `src/` for class usage, with no theme customization or plugins currently defined [cite:file=frontend/tailwind.config.js;symbol=module.exports;lines=2-8].
+- **`HomePage.jsx`, `ResumeMatchPage.jsx`, `MockInterviewPage.jsx`, `InterviewSetupPage.jsx`, `InterviewReviewPage.jsx`** — these are imported and routed in `App.js` [cite:file=frontend/src/App.js;symbol=App;lines=2-6], indicating a five-stage user flow (landing → resume matching → interview setup → mock interview → interview review), but their own source files were not included in the provided content, so their internal implementation cannot be described.
+- **`backend/main.py`** — appears in the file tree as the likely backend entry point, but its content was not included in the provided repository content, so no claims can be made about it.
+- **`backend/resume_parser.py`** and **`backend/test_ml.py`** — present in the file tree but contain no code in the provided content; their intended purpose (resume parsing logic and ML testing, respectively, based on filenames) cannot be verified [cite:file=backend/resume_parser.py;symbol=resume_parser.py;lines=1-1][cite:file=backend/test_ml.py;symbol=test_ml.py;lines=1-1].
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+Only two functions with actual logic are visible in the provided content:
+
+- **`reportWebVitals(onPerfEntry)`** — checks whether a valid callback function was passed, and if so, lazily imports the `web-vitals` library and registers the callback against all five Core Web Vitals metrics [cite:file=frontend/src/reportWebVitals.js;symbol=reportWebVitals;lines=1-9].
+- **`App()`** — a functional component that wraps the app in a `Router` and declares the five page routes described above; it contains no state, props, or logic beyond routing [cite:file=frontend/src/App.js;symbol=App;lines=6-16].
+
+No other functions, classes, or business logic were present in the provided file contents — all page components (`HomePage`, `ResumeMatchPage`, `MockInterviewPage`, `InterviewSetupPage`, `InterviewReviewPage`) and the entire backend implementation are absent from the provided content.
+
+## 4. Design Patterns Observed
+
+- **Page-per-Route Pattern**: Each top-level route in `App.js` maps directly to a single dedicated page component with no shared layout wrapper or nested routing visible [cite:file=frontend/src/App.js;symbol=App;lines=9-15].
+- **Lazy/Dynamic Import**: `reportWebVitals.js` dynamically imports the `web-vitals` module only when a valid callback is supplied, rather than statically importing it up front [cite:file=frontend/src/reportWebVitals.js;symbol=reportWebVitals;lines=1-3].
+- **Convention-based Project Structure**: The repository separates concerns into a `frontend/` (React SPA) and `backend/` (Python) directory at the top level, and within the frontend further separates route-level views into a dedicated `pages/` folder [cite:file=frontend/src/App.js;symbol=App;lines=2-6] — a common structural convention for full-stack JS+Python projects, though this is an observation about file organization rather than in-code logic.
+
+## Scope Limitations
+
+The following files/areas were listed in the file tree but their contents were **not provided** (or were empty), so no functional claims have been made about them:
+- `README.md` and `frontend/README.md` — not provided.
+- `frontend/src/pages/HomePage.jsx`, `ResumeMatchPage.jsx`, `MockInterviewPage.jsx`, `InterviewSetupPage.jsx`, `InterviewReviewPage.jsx` — not provided; these almost certainly contain the actual UI and business logic of the application, but nothing can be confirmed about them.
+- `backend/main.py` — not provided.
+- `backend/resume_parser.py`, `backend/test_ml.py` — listed with empty content blocks, containing no visible code.
+
+Given how much of the actual application logic (all page components and the entire backend) is missing from the provided content, this report is necessarily limited to infrastructure/scaffolding-level observations (routing, build tooling, entry points) rather than the app's core resume-matching or interview functionality.

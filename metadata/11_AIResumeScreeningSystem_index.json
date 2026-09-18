@@ -1,0 +1,560 @@
+{
+  "frontend/src/App.jsx::App": {
+    "kind": "function_or_class",
+    "path": "frontend/src/App.jsx",
+    "line_start": 12,
+    "line_end": 52
+  },
+  "frontend/src/components/ProtectedRoute.jsx::ProtectedRoute": {
+    "kind": "function_or_class",
+    "path": "frontend/src/components/ProtectedRoute.jsx",
+    "line_start": 3,
+    "line_end": 14
+  },
+  "frontend/src/components/Navbar.jsx::Navbar": {
+    "kind": "function_or_class",
+    "path": "frontend/src/components/Navbar.jsx",
+    "line_start": 3,
+    "line_end": 43
+  },
+  "frontend/src/components/Navbar.jsx::logout": {
+    "kind": "function_or_class",
+    "path": "frontend/src/components/Navbar.jsx",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "frontend/src/services/jobService.js::getJobs": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/jobService.js",
+    "line_start": 3,
+    "line_end": 5
+  },
+  "frontend/src/services/analysisService.js::analyzeResume": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/analysisService.js",
+    "line_start": 4,
+    "line_end": 30
+  },
+  "frontend/src/services/analysisService.js::saveAnalysis": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/analysisService.js",
+    "line_start": 12,
+    "line_end": 30
+  },
+  "frontend/src/services/analysisService.js::getRanking": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/analysisService.js",
+    "line_start": 28,
+    "line_end": 30
+  },
+  "frontend/src/services/resumeService.js::getResumes": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/resumeService.js",
+    "line_start": 3,
+    "line_end": 5
+  },
+  "frontend/src/pages/Ranking.jsx::Ranking": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Ranking.jsx",
+    "line_start": 8,
+    "line_end": 48
+  },
+  "frontend/src/pages/Ranking.jsx::loadJobs": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Ranking.jsx",
+    "line_start": 21,
+    "line_end": 61
+  },
+  "frontend/src/pages/Ranking.jsx::loadResumes": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Ranking.jsx",
+    "line_start": 30,
+    "line_end": 70
+  },
+  "frontend/src/pages/Ranking.jsx::candidateName": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Ranking.jsx",
+    "line_start": 39,
+    "line_end": 79
+  },
+  "frontend/src/pages/Ranking.jsx::loadRanking": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Ranking.jsx",
+    "line_start": 44,
+    "line_end": 84
+  },
+  "frontend/src/pages/Jobs.jsx::Jobs": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Jobs.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "frontend/src/pages/Jobs.jsx::saveJob": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Jobs.jsx",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "frontend/src/pages/Resumes.jsx::Resumes": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Resumes.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "frontend/src/pages/Resumes.jsx::loadResumes": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Resumes.jsx",
+    "line_start": 18,
+    "line_end": 58
+  },
+  "frontend/src/pages/Resumes.jsx::uploadResume": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Resumes.jsx",
+    "line_start": 27,
+    "line_end": 67
+  },
+  "frontend/src/pages/Analysis.jsx::parseAIResult": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Analysis.jsx",
+    "line_start": 16,
+    "line_end": 56
+  },
+  "frontend/src/pages/Analysis.jsx::Analysis": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Analysis.jsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "frontend/src/pages/Analysis.jsx::loadJobs": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Analysis.jsx",
+    "line_start": 55,
+    "line_end": 95
+  },
+  "frontend/src/pages/Analysis.jsx::loadResumes": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Analysis.jsx",
+    "line_start": 73,
+    "line_end": 113
+  },
+  "frontend/src/pages/Analysis.jsx::handleAnalysis": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Analysis.jsx",
+    "line_start": 92,
+    "line_end": 132
+  },
+  "frontend/src/pages/Dashboard.jsx::Dashboard": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Dashboard.jsx",
+    "line_start": 4,
+    "line_end": 44
+  },
+  "frontend/src/pages/Login.jsx::Login": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Login.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "frontend/src/pages/Login.jsx::login": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Login.jsx",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "frontend/src/pages/Register.jsx::Register": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Register.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "frontend/src/pages/Register.jsx::register": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Register.jsx",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "backend/src/test/java/com/AIResumeScreeningSystem/backend/BackendApplicationTests.java::BackendApplicationTests": {
+    "kind": "function_or_class",
+    "path": "backend/src/test/java/com/AIResumeScreeningSystem/backend/BackendApplicationTests.java",
+    "line_start": 7,
+    "line_end": 13
+  },
+  "backend/src/test/java/com/AIResumeScreeningSystem/backend/BackendApplicationTests.java::contextLoads": {
+    "kind": "function_or_class",
+    "path": "backend/src/test/java/com/AIResumeScreeningSystem/backend/BackendApplicationTests.java",
+    "line_start": 10,
+    "line_end": 13
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java::BackendApplication": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java",
+    "line_start": 7,
+    "line_end": 13
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java::main": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java",
+    "line_start": 9,
+    "line_end": 13
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisResponse.java::AnalysisResponse": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisResponse.java",
+    "line_start": 6,
+    "line_end": 10
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/RegisterRequest.java::RegisterRequest": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/RegisterRequest.java",
+    "line_start": 7,
+    "line_end": 15
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::AIResponse": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 11,
+    "line_end": 51
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::getScore": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 14,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::setScore": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 18,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::getMatchedSkills": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 22,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::setMatchedSkills": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 26,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::getMissingSkills": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 30,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::setMissingSkills": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 34,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::getSummary": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 38,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::setSummary": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 42,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::getRecommendation": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 46,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java::setRecommendation": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java",
+    "line_start": 50,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisRequest.java::AnalysisRequest": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisRequest.java",
+    "line_start": 6,
+    "line_end": 16
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/JobDescriptionRequest.java::JobDescriptionRequest": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/JobDescriptionRequest.java",
+    "line_start": 6,
+    "line_end": 13
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/LoginRequest.java::LoginRequest": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/LoginRequest.java",
+    "line_start": 7,
+    "line_end": 13
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIAnalysisResponse.java::AIAnalysisResponse": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIAnalysisResponse.java",
+    "line_start": 7,
+    "line_end": 19
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AuthResponse.java::AuthResponse": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AuthResponse.java",
+    "line_start": 10,
+    "line_end": 14
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/SecurityConfig.java::SecurityConfig": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/SecurityConfig.java",
+    "line_start": 28,
+    "line_end": 68
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/SecurityConfig.java::authenticationProvider": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/SecurityConfig.java",
+    "line_start": 45,
+    "line_end": 85
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/SecurityConfig.java::corsConfigurationSource": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/SecurityConfig.java",
+    "line_start": 92,
+    "line_end": 121
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java::GeminiConfig": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java",
+    "line_start": 10,
+    "line_end": 25
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java::geminiClient": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java",
+    "line_start": 18,
+    "line_end": 25
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/PasswordConfig.java::PasswordConfig": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/PasswordConfig.java",
+    "line_start": 9,
+    "line_end": 16
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/PasswordConfig.java::passwordEncoder": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/config/PasswordConfig.java",
+    "line_start": 12,
+    "line_end": 16
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/exception/GlobalExceptionHandler.java::GlobalExceptionHandler": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/exception/GlobalExceptionHandler.java",
+    "line_start": 18,
+    "line_end": 40
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java::AIAnalysisService": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java::testGemini": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java",
+    "line_start": 29,
+    "line_end": 69
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java::cleanJson": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java",
+    "line_start": 93,
+    "line_end": 133
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java::getRankedCandidates": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java",
+    "line_start": 158,
+    "line_end": 164
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java::JobDescriptionService": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java",
+    "line_start": 16,
+    "line_end": 36
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java::create": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java",
+    "line_start": 20,
+    "line_end": 36
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java::getAll": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java",
+    "line_start": 33,
+    "line_end": 36
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/ResumeService.java::ResumeService": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/ResumeService.java",
+    "line_start": 13,
+    "line_end": 53
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/ResumeService.java::getAllResumes": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/ResumeService.java",
+    "line_start": 54,
+    "line_end": 58
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java::RecruiterService": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java",
+    "line_start": 15,
+    "line_end": 51
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java::register": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java",
+    "line_start": 26,
+    "line_end": 51
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java::findByEmail": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java",
+    "line_start": 43,
+    "line_end": 51
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/CustomUserDetailsService.java::CustomUserDetailsService": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/service/CustomUserDetailsService.java",
+    "line_start": 13,
+    "line_end": 31
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Recruiter.java::Recruiter": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Recruiter.java",
+    "line_start": 13,
+    "line_end": 25
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/ResumeAnalysis.java::ResumeAnalysis": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/ResumeAnalysis.java",
+    "line_start": 11,
+    "line_end": 36
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Resume.java::Resume": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Resume.java",
+    "line_start": 11,
+    "line_end": 27
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/JobDescription.java::JobDescription": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/JobDescription.java",
+    "line_start": 13,
+    "line_end": 29
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/JobDescriptionController.java::JobDescriptionController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/JobDescriptionController.java",
+    "line_start": 17,
+    "line_end": 32
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/JobDescriptionController.java::getJobs": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/JobDescriptionController.java",
+    "line_start": 29,
+    "line_end": 32
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java::AIAnalysisController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java",
+    "line_start": 16,
+    "line_end": 56
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java::test": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java",
+    "line_start": 32,
+    "line_end": 72
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/ResumeController.java::ResumeController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/ResumeController.java",
+    "line_start": 13,
+    "line_end": 46
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/ResumeController.java::getAllResumes": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/ResumeController.java",
+    "line_start": 42,
+    "line_end": 46
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AuthController.java::AuthController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AuthController.java",
+    "line_start": 17,
+    "line_end": 57
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/TestController.java::TestController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/TestController.java",
+    "line_start": 9,
+    "line_end": 15
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/TestController.java::test": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/TestController.java",
+    "line_start": 12,
+    "line_end": 15
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtAuthenticationFilter.java::JwtAuthenticationFilter": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtAuthenticationFilter.java",
+    "line_start": 20,
+    "line_end": 60
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java::JwtUtil": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java",
+    "line_start": 15,
+    "line_end": 55
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java::getKey": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java",
+    "line_start": 23,
+    "line_end": 63
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java::generateToken": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java",
+    "line_start": 27,
+    "line_end": 66
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java::extractUsername": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java",
+    "line_start": 38,
+    "line_end": 66
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java::validateToken": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java",
+    "line_start": 43,
+    "line_end": 66
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java::isTokenExpired": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java",
+    "line_start": 51,
+    "line_end": 66
+  },
+  "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java::extractClaims": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java",
+    "line_start": 58,
+    "line_end": 66
+  }
+}

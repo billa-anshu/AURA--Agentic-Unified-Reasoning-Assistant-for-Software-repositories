@@ -1,0 +1,76 @@
+Based on the provided repository content, here is a structured summary report of the project.
+
+### 1. Overall Purpose and Architecture
+
+**Purpose:** This project is a **steganography application** that allows authenticated users to upload images to Supabase storage [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=1-1], likely for the purpose of hiding or encoding data (implied by the project name "StegoApp" and the presence of an encryption key parameter [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=22-22]).
+
+**Architecture:** The application is a full-stack web application with a React frontend and a backend service.
+
+- **Frontend (React.js):** Single-page application with client-side routing and authentication. Components are located in the `src/` directory [cite:file=src/App.js;symbol=App;lines=1-1], [cite:file=src/StegoApp.js;symbol=StegoApp;lines=1-1], [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=1-1].
+- **Backend (Python Flask):** A separate backend service is indicated by the presence of `backend/app.py` [cite:file=backend/app.py;symbol=app;lines=1-1].
+- **Database and Storage:** Uses **Supabase** as a backend-as-a-service for authentication, database storage, and file storage [cite:file=src/supabaseClient.js;symbol=supabase;lines=1-1], [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=19-27].
+- **External Script:** A Python script `psnr.py` at the root level suggests image processing or quality analysis functionality [cite:file=psnr.py;symbol=psnr;lines=1-1].
+
+The technology stack includes React.js for the frontend [cite:file=src/index.js;symbol=index;lines=2-2], Python/Flask for the backend [cite:file=backend/app.py;symbol=app;lines=1-1], and Supabase as the backend service [cite:file=src/supabaseClient.js;symbol=createClient;lines=1-1].
+
+### 2. Key Components / Modules and What They Do
+
+**Authentication Module:** The `LoginPage` component handles user authentication [cite:file=src/LoginPage.js;symbol=LoginPage;lines=1-1]. The `App` component manages the global authentication state and implements protected routes [cite:file=src/App.js;symbol=App;lines=7-49].
+
+**Image Upload Module:** The `UploadComponent` provides a user interface for selecting and uploading image files [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=5-6]. The `uploadImageToSupabase` function handles the actual upload logic, including storage and database operations [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=12-40].
+
+**Steganography Module:** The `StegoApp` component is the main application component that likely contains the core steganography functionality [cite:file=src/StegoApp.js;symbol=StegoApp;lines=1-1].
+
+**Database Integration Module:** The `Databaseinsert.js` file contains a test function for diagnosing database insert issues [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=5-5]. The `supabaseClient.js` file initializes the Supabase client with project credentials [cite:file=src/supabaseClient.js;symbol=createClient;lines=2-3].
+
+**Backend Module:** The Flask application in `backend/app.py` likely provides additional API endpoints for the steganography functionality [cite:file=backend/app.py;symbol=app;lines=1-1].
+
+**Utility Module:** The `psnr.py` script calculates Peak Signal-to-Noise Ratio, indicating image quality analysis capabilities [cite:file=psnr.py;symbol=psnr;lines=1-1].
+
+### 3. Notable Functions or Classes and Their Responsibilities
+
+- **`App` Component:**
+    - Manages global authentication state with `isAuthenticated` [cite:file=src/App.js;symbol=App;lines=7-7].
+    - `handleLoginSuccess()` updates authentication state upon successful login [cite:file=src/App.js;symbol=App;lines=10-12].
+    - Defines protected routes: `/app` (StegoApp) and `/upload` (UploadComponent) require authentication [cite:file=src/App.js;symbol=App;lines=21-40].
+
+- **`uploadImageToSupabase` Function:**
+    - Checks for file presence [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=12-12].
+    - Validates user authentication via Supabase session [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=15-16].
+    - Uploads file to Supabase Storage bucket "stego-images" [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=18-24].
+    - Generates a public URL for the uploaded image [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=27-28].
+    - Inserts metadata (user email, filename, public URL, encryption key) into the "uploads" table [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=31-37].
+
+- **`testDatabaseInsert` Function:**
+    - Authenticates the current user [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=7-13].
+    - Creates test data including user_email, file_path, file_name, public_url, file_type, and encoding_type [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=16-24].
+    - Attempts to insert test data into the "uploads" table with detailed error logging [cite:file=src/Databaseinsert.js;symbol=testDatabaseInsert;lines=27-40].
+
+- **`UploadComponent` Component:**
+    - `handleUpload()` triggers the upload process and manages status messages [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=8-17].
+    - Renders a file input and upload button [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=20-22].
+    - Displays upload status and the uploaded image if successful [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=23-25].
+
+- **`reportWebVitals` Function:**
+    - Measures web performance metrics (CLS, FID, FCP, LCP, TTFB) [cite:file=src/reportWebVitals.js;symbol=reportWebVitals;lines=1-11].
+
+### 4. Any Design Patterns You Observe
+
+- **Component-Based Architecture:** The UI is built with reusable React components (App, LoginPage, StegoApp, UploadComponent) [cite:file=src/App.js;symbol=App;lines=1-1], [cite:file=src/LoginPage.js;symbol=LoginPage;lines=1-1], [cite:file=src/StegoApp.js;symbol=StegoApp;lines=1-1], [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=1-1].
+
+- **Lifting State Up Pattern:** The authentication state is lifted to the `App` component and passed down to child components via props [cite:file=src/App.js;symbol=App;lines=7-7], [cite:file=src/App.js;symbol=App;lines=24-24], [cite:file=src/App.js;symbol=App;lines=36-36].
+
+- **Container/Presentational Pattern:** The `App` component acts as a container managing global state, while components like `UploadComponent` and `LoginPage` handle presentation [cite:file=src/App.js;symbol=App;lines=7-7], [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=1-1].
+
+- **Conditional Rendering:** Used for route protection in the `App` component [cite:file=src/App.js;symbol=App;lines=23-40] and for displaying upload status and images in `UploadComponent` [cite:file=src/UploadComponent.js;symbol=UploadComponent;lines=23-25].
+
+- **Separation of Concerns:** The application separates concerns by having:
+    - UI components in `src/Components/` (though not explicitly shown in file tree, it's implied by the structure)
+    - Business logic in separate files (`uploadToSupabase.js`, `Databaseinsert.js`)
+    - Backend service in `backend/app.py`
+
+- **Client-Server Architecture:** The frontend React app communicates with a Python Flask backend [cite:file=backend/app.py;symbol=app;lines=1-1] and Supabase services [cite:file=src/supabaseClient.js;symbol=supabase;lines=1-1], demonstrating a clear separation between client and server.
+
+### Overall Summary
+
+This repository contains the source code for a **steganography application with image upload capabilities**, built as a full-stack web application. The frontend is built with React.js and features user authentication, protected routes, and integration with Supabase for authentication, database, and file storage. A Python Flask backend provides additional server-side functionality, while a PSNR calculation script enables image quality analysis. The application demonstrates patterns such as component-based architecture, lifting state up, and client-server separation. The core functionality revolves around uploading images, managing them via Supabase, and likely performing steganographic operations (implied by the application name and encryption key parameter) [cite:file=src/uploadToSupabase.js;symbol=uploadImageToSupabase;lines=22-22], [cite:file=src/StegoApp.js;symbol=StegoApp;lines=1-1].

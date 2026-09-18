@@ -1,0 +1,88 @@
+Based on the provided repository content, here is a structured summary report of the project.
+
+### 1. Overall Purpose and Architecture
+
+**Purpose:** This project is a **disease prediction and health advisory web application** that uses machine learning to predict diseases based on user-reported symptoms [cite:file=main.py;symbol=predict;lines=94-95]. It provides comprehensive health information including disease descriptions, precautions, medications, diets, and workout recommendations.
+
+**Architecture:** The application is a monolithic web application built with Flask, following a standard MVC-like pattern with:
+
+- **Presentation Layer (Templates):** HTML templates for the user interface (index, about, contact, blog, developer pages) [cite:file=main.py;symbol=index;lines=67-69], [cite:file=main.py;symbol=about;lines=112-113], [cite:file=main.py;symbol=contact;lines=116-117], [cite:file=main.py;symbol=blog;lines=120-121], [cite:file=main.py;symbol=developer;lines=124-125].
+- **Business Logic Layer (Routes and Functions):** Flask routes handle HTTP requests and contain the core application logic for prediction and information retrieval [cite:file=main.py;symbol=predict;lines=92-109], [cite:file=main.py;symbol=search_disease;lines=72-89].
+- **Data Layer (CSV Files):** Multiple CSV files serve as databases for symptoms, precautions, workouts, descriptions, medications, and diets [cite:file=main.py;symbol=main;lines=6-12].
+- **Machine Learning Model:** A pre-trained Support Vector Classifier (SVC) model loaded from a pickle file [cite:file=main.py;symbol=main;lines=15-15].
+
+The technology stack includes Flask for the web framework [cite:file=main.py;symbol=app;lines=1-1], NumPy and Pandas for data processing [cite:file=main.py;symbol=main;lines=2-3], and scikit-learn's SVC for the machine learning model [cite:file=main.py;symbol=main;lines=15-15].
+
+### 2. Key Components / Modules and What They Do
+
+**Data Loading Module:** Loads six CSV datasets containing symptom mappings, precautions, workouts, disease descriptions, medications, and diets [cite:file=main.py;symbol=main;lines=6-12]. These datasets are used as knowledge bases for the application.
+
+**Symptom Mapping Module:** Defines a comprehensive dictionary mapping 132 symptoms to integer indices [cite:file=main.py;symbol=symptoms_dict;lines=18-48]. This dictionary enables the conversion of user-selected symptoms into a feature vector for the ML model.
+
+**Disease Mapping Module:** Defines a dictionary mapping disease indices (0-40) to disease names [cite:file=main.py;symbol=diseases_list;lines=50-63]. This mapping translates the model's numerical prediction into a human-readable disease name.
+
+**Prediction Module:** The `get_predicted_value` function converts selected symptoms into a feature vector and uses the pre-trained SVC model to predict the disease [cite:file=main.py;symbol=get_predicted_value;lines=66-71].
+
+**Information Retrieval Module:** The `helper` function retrieves comprehensive information about a predicted disease from the various CSV datasets [cite:file=main.py;symbol=helper;lines=74-88].
+
+**Web Routes Module:** Five Flask routes handle different functionalities:
+- `/` - Renders the homepage with the symptom selection form [cite:file=main.py;symbol=index;lines=67-69]
+- `/predict` - Processes symptoms and returns predictions [cite:file=main.py;symbol=predict;lines=92-109]
+- `/search` - Allows direct search by disease name [cite:file=main.py;symbol=search_disease;lines=72-89]
+- Static pages for About, Contact, Blog, and Developer information [cite:file=main.py;symbol=about;lines=112-113], [cite:file=main.py;symbol=contact;lines=116-117], [cite:file=main.py;symbol=blog;lines=120-121], [cite:file=main.py;symbol=developer;lines=124-125]
+
+### 3. Notable Functions or Classes and Their Responsibilities
+
+- **`get_predicted_value(patient_symptoms)` Function:**
+    - Takes a list of symptoms as input [cite:file=main.py;symbol=get_predicted_value;lines=66-66].
+    - Creates a zero vector of length equal to the number of symptoms in the dictionary [cite:file=main.py;symbol=get_predicted_value;lines=67-67].
+    - Sets the value to 1 for each symptom present in the input list [cite:file=main.py;symbol=get_predicted_value;lines=69-70].
+    - Uses the loaded SVC model to predict the disease index and returns the corresponding disease name [cite:file=main.py;symbol=get_predicted_value;lines=71-71].
+
+- **`helper(predicted_disease)` Function:**
+    - Takes a predicted disease name as input [cite:file=main.py;symbol=helper;lines=74-74].
+    - Queries the description dataset to get the disease description [cite:file=main.py;symbol=helper;lines=76-77].
+    - Queries the precautions dataset to get four precautions for the disease [cite:file=main.py;symbol=helper;lines=79-80].
+    - Queries the medication dataset to get recommended medications [cite:file=main.py;symbol=helper;lines=82-83].
+    - Queries the diets dataset to get dietary recommendations [cite:file=main.py;symbol=helper;lines=85-86].
+    - Queries the workout dataset to get recommended exercises [cite:file=main.py;symbol=helper;lines=88-88].
+    - Returns all retrieved information as a tuple [cite:file=main.py;symbol=helper;lines=90-90].
+
+- **`predict()` Route Handler:**
+    - Handles both POST and GET requests for disease prediction [cite:file=main.py;symbol=predict;lines=92-92].
+    - Extracts the list of selected symptoms from the form [cite:file=main.py;symbol=predict;lines=94-94].
+    - Calls `get_predicted_value` to predict the disease [cite:file=main.py;symbol=predict;lines=95-95].
+    - Calls `helper` to retrieve all related information [cite:file=main.py;symbol=predict;lines=96-96].
+    - Processes the retrieved data into a format suitable for display [cite:file=main.py;symbol=predict;lines=99-104].
+    - Renders the index template with all the prediction results [cite:file=main.py;symbol=predict;lines=106-109].
+
+- **`search_disease()` Route Handler:**
+    - Handles both POST and GET requests for searching by disease name [cite:file=main.py;symbol=search_disease;lines=72-72].
+    - Extracts the disease name from the form [cite:file=main.py;symbol=search_disease;lines=74-74].
+    - Calls the `helper` function to retrieve information about the specified disease [cite:file=main.py;symbol=search_disease;lines=75-75].
+    - Processes the data and renders the index template with the results [cite:file=main.py;symbol=search_disease;lines=78-89].
+
+- **`index()` Route Handler:**
+    - Returns a list of all available symptoms to the index template [cite:file=main.py;symbol=index;lines=68-68].
+    - Renders the main page with the symptom selection form [cite:file=main.py;symbol=index;lines=68-69].
+
+### 4. Any Design Patterns You Observe
+
+- **MVC (Model-View-Controller) Pattern:**
+    - **Model:** The CSV datasets serve as the data models [cite:file=main.py;symbol=main;lines=6-12], and the ML model acts as the predictive model [cite:file=main.py;symbol=main;lines=15-15].
+    - **View:** HTML templates (index.html, about.html, contact.html, blog.html, developer.html) provide the presentation layer [cite:file=main.py;symbol=index;lines=68-68], [cite:file=main.py;symbol=about;lines=113-113], [cite:file=main.py;symbol=contact;lines=117-117], [cite:file=main.py;symbol=blog;lines=121-121], [cite:file=main.py;symbol=developer;lines=125-125].
+    - **Controller:** Flask route handlers (`index`, `predict`, `search_disease`) act as controllers, processing requests and coordinating between models and views [cite:file=main.py;symbol=index;lines=67-69], [cite:file=main.py;symbol=predict;lines=92-109], [cite:file=main.py;symbol=search_disease;lines=72-89].
+
+- **Singleton Pattern:** The Flask application instance (`app`) is created once and used throughout the file [cite:file=main.py;symbol=app;lines=17-17], and the CSV datasets and ML model are loaded once at startup [cite:file=main.py;symbol=main;lines=6-15].
+
+- **Helper Function Pattern:** The `helper` function encapsulates the complex task of retrieving related information from multiple data sources, keeping the route handlers clean and focused [cite:file=main.py;symbol=helper;lines=74-90].
+
+- **Configuration Pattern:** The symptom and disease dictionaries serve as configuration mappings, externalizing the mapping logic from the core prediction algorithm [cite:file=main.py;symbol=symptoms_dict;lines=18-48], [cite:file=main.py;symbol=diseases_list;lines=50-63].
+
+- **Template Pattern:** The application reuses the same `index.html` template to display both the symptom selection form and prediction results, showing the template's flexibility [cite:file=main.py;symbol=predict;lines=106-109], [cite:file=main.py;symbol=search_disease;lines=88-89].
+
+- **Request-Response Pattern:** Each Flask route follows the request-response cycle, processing incoming HTTP requests and returning rendered HTML templates [cite:file=main.py;symbol=predict;lines=92-109], [cite:file=main.py;symbol=search_disease;lines=72-89].
+
+### Overall Summary
+
+This repository contains the source code for a **disease prediction web application** powered by a Support Vector Classifier machine learning model. The application allows users to select symptoms from a comprehensive list of 132 symptoms, which are then processed by the ML model to predict one of 41 possible diseases [cite:file=main.py;symbol=symptoms_dict;lines=18-48], [cite:file=main.py;symbol=diseases_list;lines=50-63]. Upon prediction, the application retrieves and displays detailed information including disease descriptions, precautions, medications, dietary recommendations, and workout suggestions from CSV datasets [cite:file=main.py;symbol=helper;lines=74-90]. The application follows Flask's MVC pattern with route handlers as controllers, CSV files as data models, and HTML templates as views. The code demonstrates clean separation of concerns with helper functions for prediction and information retrieval, and includes static pages for About, Contact, Blog, and Developer information [cite:file=main.py;symbol=about;lines=112-113], [cite:file=main.py;symbol=contact;lines=116-117], [cite:file=main.py;symbol=blog;lines=120-121], [cite:file=main.py;symbol=developer;lines=124-125].

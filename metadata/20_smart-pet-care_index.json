@@ -1,0 +1,500 @@
+{
+  "frontend/src/App.jsx::App": {
+    "kind": "function_or_class",
+    "path": "frontend/src/App.jsx",
+    "line_start": 16,
+    "line_end": 36
+  },
+  "frontend/src/components/Navigation.jsx::Navigation": {
+    "kind": "function_or_class",
+    "path": "frontend/src/components/Navigation.jsx",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "frontend/src/components/Navigation.jsx::handleLogout": {
+    "kind": "function_or_class",
+    "path": "frontend/src/components/Navigation.jsx",
+    "line_start": 10,
+    "line_end": 50
+  },
+  "frontend/src/services/user.service.js::getAllDoctors": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/user.service.js",
+    "line_start": 3,
+    "line_end": 31
+  },
+  "frontend/src/services/user.service.js::getMyPets": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/user.service.js",
+    "line_start": 7,
+    "line_end": 31
+  },
+  "frontend/src/services/user.service.js::addPet": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/user.service.js",
+    "line_start": 11,
+    "line_end": 31
+  },
+  "frontend/src/services/user.service.js::bookAppointment": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/user.service.js",
+    "line_start": 15,
+    "line_end": 31
+  },
+  "frontend/src/services/user.service.js::getMyAppointments": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/user.service.js",
+    "line_start": 19,
+    "line_end": 31
+  },
+  "frontend/src/services/auth.service.js::register": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/auth.service.js",
+    "line_start": 3,
+    "line_end": 43
+  },
+  "frontend/src/services/auth.service.js::login": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/auth.service.js",
+    "line_start": 13,
+    "line_end": 44
+  },
+  "frontend/src/services/auth.service.js::logout": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/auth.service.js",
+    "line_start": 28,
+    "line_end": 44
+  },
+  "frontend/src/services/auth.service.js::getCurrentUser": {
+    "kind": "function_or_class",
+    "path": "frontend/src/services/auth.service.js",
+    "line_start": 33,
+    "line_end": 44
+  },
+  "frontend/src/pages/BookAppointment.jsx::BookAppointment": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/BookAppointment.jsx",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "frontend/src/pages/BookAppointment.jsx::handleBookAndPay": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/BookAppointment.jsx",
+    "line_start": 31,
+    "line_end": 71
+  },
+  "frontend/src/pages/BookAppointment.jsx::loadRazorpayScript": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/BookAppointment.jsx",
+    "line_start": 100,
+    "line_end": 140
+  },
+  "frontend/src/pages/MyAppointments.jsx::MyAppointments": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MyAppointments.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "frontend/src/pages/DoctorList.jsx::DoctorList": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/DoctorList.jsx",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "frontend/src/pages/MyPets.jsx::MyPets": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MyPets.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "frontend/src/pages/MyPets.jsx::loadPets": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MyPets.jsx",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "frontend/src/pages/MyPets.jsx::handleInputChange": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MyPets.jsx",
+    "line_start": 25,
+    "line_end": 65
+  },
+  "frontend/src/pages/MyPets.jsx::handleAddPet": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/MyPets.jsx",
+    "line_start": 30,
+    "line_end": 70
+  },
+  "frontend/src/pages/Home.jsx::Home": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Home.jsx",
+    "line_start": 5,
+    "line_end": 44
+  },
+  "frontend/src/pages/Login.jsx::Login": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Login.jsx",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "frontend/src/pages/Login.jsx::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Login.jsx",
+    "line_start": 13,
+    "line_end": 48
+  },
+  "frontend/src/pages/Register.jsx::Register": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Register.jsx",
+    "line_start": 6,
+    "line_end": 46
+  },
+  "frontend/src/pages/Register.jsx::handleChange": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Register.jsx",
+    "line_start": 18,
+    "line_end": 58
+  },
+  "frontend/src/pages/Register.jsx::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/Register.jsx",
+    "line_start": 22,
+    "line_end": 62
+  },
+  "frontend/src/pages/DoctorDashboard.jsx::DoctorDashboard": {
+    "kind": "function_or_class",
+    "path": "frontend/src/pages/DoctorDashboard.jsx",
+    "line_start": 5,
+    "line_end": 45
+  },
+  "frontend/src/context/AuthContext.jsx::AuthProvider": {
+    "kind": "function_or_class",
+    "path": "frontend/src/context/AuthContext.jsx",
+    "line_start": 6,
+    "line_end": 36
+  },
+  "frontend/src/context/AuthContext.jsx::login": {
+    "kind": "function_or_class",
+    "path": "frontend/src/context/AuthContext.jsx",
+    "line_start": 16,
+    "line_end": 36
+  },
+  "frontend/src/context/AuthContext.jsx::logout": {
+    "kind": "function_or_class",
+    "path": "frontend/src/context/AuthContext.jsx",
+    "line_start": 22,
+    "line_end": 36
+  },
+  "frontend/src/context/AuthContext.jsx::register": {
+    "kind": "function_or_class",
+    "path": "frontend/src/context/AuthContext.jsx",
+    "line_start": 27,
+    "line_end": 36
+  },
+  "backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java::SmartPetCareApplication": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java",
+    "line_start": 7,
+    "line_end": 13
+  },
+  "backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java::main": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java",
+    "line_start": 9,
+    "line_end": 13
+  },
+  "backend/src/main/java/com/smartpetcare/payload/request/AppointmentRequest.java::AppointmentRequest": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/payload/request/AppointmentRequest.java",
+    "line_start": 7,
+    "line_end": 11
+  },
+  "backend/src/main/java/com/smartpetcare/payload/request/LoginRequest.java::LoginRequest": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/payload/request/LoginRequest.java",
+    "line_start": 7,
+    "line_end": 13
+  },
+  "backend/src/main/java/com/smartpetcare/payload/request/SignupRequest.java::SignupRequest": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/payload/request/SignupRequest.java",
+    "line_start": 8,
+    "line_end": 25
+  },
+  "backend/src/main/java/com/smartpetcare/payload/response/JwtResponse.java::JwtResponse": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/payload/response/JwtResponse.java",
+    "line_start": 15,
+    "line_end": 22
+  },
+  "backend/src/main/java/com/smartpetcare/payload/response/MessageResponse.java::MessageResponse": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/payload/response/MessageResponse.java",
+    "line_start": 8,
+    "line_end": 10
+  },
+  "backend/src/main/java/com/smartpetcare/entity/Pet.java::Pet": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/entity/Pet.java",
+    "line_start": 13,
+    "line_end": 31
+  },
+  "backend/src/main/java/com/smartpetcare/entity/Doctor.java::Doctor": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/entity/Doctor.java",
+    "line_start": 13,
+    "line_end": 29
+  },
+  "backend/src/main/java/com/smartpetcare/entity/User.java::User": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/entity/User.java",
+    "line_start": 14,
+    "line_end": 34
+  },
+  "backend/src/main/java/com/smartpetcare/entity/Payment.java::Payment": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/entity/Payment.java",
+    "line_start": 13,
+    "line_end": 29
+  },
+  "backend/src/main/java/com/smartpetcare/entity/Appointment.java::Appointment": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/entity/Appointment.java",
+    "line_start": 16,
+    "line_end": 34
+  },
+  "backend/src/main/java/com/smartpetcare/controller/PetController.java::PetController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/PetController.java",
+    "line_start": 19,
+    "line_end": 52
+  },
+  "backend/src/main/java/com/smartpetcare/controller/PetController.java::getMyPets": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/PetController.java",
+    "line_start": 29,
+    "line_end": 52
+  },
+  "backend/src/main/java/com/smartpetcare/controller/PetController.java::addPet": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/PetController.java",
+    "line_start": 37,
+    "line_end": 52
+  },
+  "backend/src/main/java/com/smartpetcare/controller/PetController.java::getPet": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/PetController.java",
+    "line_start": 48,
+    "line_end": 52
+  },
+  "backend/src/main/java/com/smartpetcare/controller/AppointmentController.java::AppointmentController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/AppointmentController.java",
+    "line_start": 24,
+    "line_end": 64
+  },
+  "backend/src/main/java/com/smartpetcare/controller/AppointmentController.java::getAppointments": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/AppointmentController.java",
+    "line_start": 37,
+    "line_end": 75
+  },
+  "backend/src/main/java/com/smartpetcare/controller/AppointmentController.java::bookAppointment": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/AppointmentController.java",
+    "line_start": 60,
+    "line_end": 75
+  },
+  "backend/src/main/java/com/smartpetcare/controller/DoctorController.java::DoctorController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/DoctorController.java",
+    "line_start": 14,
+    "line_end": 37
+  },
+  "backend/src/main/java/com/smartpetcare/controller/DoctorController.java::getAllDoctors": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/DoctorController.java",
+    "line_start": 20,
+    "line_end": 37
+  },
+  "backend/src/main/java/com/smartpetcare/controller/DoctorController.java::getDoctorById": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/DoctorController.java",
+    "line_start": 25,
+    "line_end": 37
+  },
+  "backend/src/main/java/com/smartpetcare/controller/DoctorController.java::createOrUpdateDoctor": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/DoctorController.java",
+    "line_start": 32,
+    "line_end": 37
+  },
+  "backend/src/main/java/com/smartpetcare/controller/AuthController.java::AuthController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/AuthController.java",
+    "line_start": 28,
+    "line_end": 68
+  },
+  "backend/src/main/java/com/smartpetcare/controller/PaymentController.java::PaymentController": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/PaymentController.java",
+    "line_start": 20,
+    "line_end": 60
+  },
+  "backend/src/main/java/com/smartpetcare/controller/PaymentController.java::updateStatus": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/controller/PaymentController.java",
+    "line_start": 66,
+    "line_end": 86
+  },
+  "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java::WebSecurityConfig": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java",
+    "line_start": 26,
+    "line_end": 66
+  },
+  "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java::authenticationJwtTokenFilter": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java",
+    "line_start": 35,
+    "line_end": 75
+  },
+  "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java::authenticationProvider": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java",
+    "line_start": 40,
+    "line_end": 80
+  },
+  "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java::passwordEncoder": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java",
+    "line_start": 53,
+    "line_end": 91
+  },
+  "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java::corsConfigurationSource": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java",
+    "line_start": 79,
+    "line_end": 91
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsServiceImpl.java::UserDetailsServiceImpl": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsServiceImpl.java",
+    "line_start": 13,
+    "line_end": 25
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::UserDetailsImpl": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 14,
+    "line_end": 54
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::build": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 33,
+    "line_end": 73
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::getId": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 49,
+    "line_end": 89
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::getEmail": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 53,
+    "line_end": 93
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::getPassword": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 58,
+    "line_end": 96
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::getUsername": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 63,
+    "line_end": 96
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::isAccountNonExpired": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 68,
+    "line_end": 96
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::isAccountNonLocked": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 73,
+    "line_end": 96
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::isCredentialsNonExpired": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 78,
+    "line_end": 96
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::isEnabled": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 83,
+    "line_end": 96
+  },
+  "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java::equals": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java",
+    "line_start": 88,
+    "line_end": 96
+  },
+  "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java::JwtUtils": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java",
+    "line_start": 17,
+    "line_end": 57
+  },
+  "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java::generateJwtToken": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java",
+    "line_start": 26,
+    "line_end": 63
+  },
+  "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java::key": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java",
+    "line_start": 38,
+    "line_end": 63
+  },
+  "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java::getUserNameFromJwtToken": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java",
+    "line_start": 42,
+    "line_end": 63
+  },
+  "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java::validateJwtToken": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java",
+    "line_start": 47,
+    "line_end": 63
+  },
+  "backend/src/main/java/com/smartpetcare/security/jwt/AuthEntryPointJwt.java::AuthEntryPointJwt": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/jwt/AuthEntryPointJwt.java",
+    "line_start": 15,
+    "line_end": 25
+  },
+  "backend/src/main/java/com/smartpetcare/security/jwt/AuthTokenFilter.java::AuthTokenFilter": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/jwt/AuthTokenFilter.java",
+    "line_start": 20,
+    "line_end": 60
+  },
+  "backend/src/main/java/com/smartpetcare/security/jwt/AuthTokenFilter.java::parseJwt": {
+    "kind": "function_or_class",
+    "path": "backend/src/main/java/com/smartpetcare/security/jwt/AuthTokenFilter.java",
+    "line_start": 53,
+    "line_end": 62
+  }
+}

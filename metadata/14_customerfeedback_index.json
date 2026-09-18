@@ -1,0 +1,1556 @@
+{
+  "app.py::is_authenticated": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "app.py::get_base64_of_bin_file": {
+    "kind": "function",
+    "path": "app.py",
+    "line_start": 99,
+    "line_end": 104
+  },
+  "app.py::hero_img_path": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 106,
+    "line_end": 106
+  },
+  "app.py::hero_img_b64": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 107,
+    "line_end": 107
+  },
+  "app.py::img_html": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 108,
+    "line_end": 108
+  },
+  "app.py::reviews": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 189,
+    "line_end": 189
+  },
+  "app.py::total_reviews": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 190,
+    "line_end": 190
+  },
+  "app.py::pos_rate": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 191,
+    "line_end": 191
+  },
+  "app.py::neg_rate": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 192,
+    "line_end": 192
+  },
+  "app.py::active_products": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 193,
+    "line_end": 193
+  },
+  "app.py::is_demo": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "app.py::user_info": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 38,
+    "line_end": 38
+  },
+  "app.py::dashboard_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 64,
+    "line_end": 64
+  },
+  "app.py::analyze_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "app.py::bulk_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "app.py::history_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 67,
+    "line_end": 67
+  },
+  "app.py::product_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "app.py::trend_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "app.py::insights_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 70,
+    "line_end": 70
+  },
+  "app.py::wordcloud_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 71,
+    "line_end": 71
+  },
+  "app.py::reports_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "app.py::about_page": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 73,
+    "line_end": 73
+  },
+  "app.py::pg": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 75,
+    "line_end": 81
+  },
+  "app.py::df": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 196,
+    "line_end": 196
+  },
+  "app.py::pos_count": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 198,
+    "line_end": 198
+  },
+  "app.py::neg_count": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 199,
+    "line_end": 199
+  },
+  "app.py::name": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 50,
+    "line_end": 50
+  },
+  "app.py::email": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "app.py::picture": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 52,
+    "line_end": 52
+  },
+  "app.py::avatar_html": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "app.py::data": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 102,
+    "line_end": 102
+  },
+  "src/ui_utils.py::load_css": {
+    "kind": "function",
+    "path": "src/ui_utils.py",
+    "line_start": 3,
+    "line_end": 136
+  },
+  "src/auth.py::get_cookie_controller": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 10,
+    "line_end": 13
+  },
+  "src/auth.py::init_session_state": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 24,
+    "line_end": 43
+  },
+  "src/auth.py::get_login_url": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 45,
+    "line_end": 55
+  },
+  "src/auth.py::check_authentification": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 57,
+    "line_end": 99
+  },
+  "src/auth.py::login": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 101,
+    "line_end": 103
+  },
+  "src/auth.py::logout": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 105,
+    "line_end": 120
+  },
+  "src/auth.py::check_auth": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 122,
+    "line_end": 128
+  },
+  "src/auth.py::require_auth": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 130,
+    "line_end": 134
+  },
+  "src/auth.py::get_current_user_email": {
+    "kind": "function",
+    "path": "src/auth.py",
+    "line_start": 136,
+    "line_end": 140
+  },
+  "src/auth.py::CLIENT_ID": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 16,
+    "line_end": 16
+  },
+  "src/auth.py::CLIENT_SECRET": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "src/auth.py::REDIRECT_URI": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "src/auth.py::cookie_controller": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "src/auth.py::saved_email": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 27,
+    "line_end": 27
+  },
+  "src/auth.py::saved_name": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "src/auth.py::params": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 46,
+    "line_end": 53
+  },
+  "src/auth.py::url": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 54,
+    "line_end": 54
+  },
+  "src/auth.py::query_params": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 59,
+    "line_end": 59
+  },
+  "src/auth.py::is_demo": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 126,
+    "line_end": 126
+  },
+  "src/auth.py::is_logged_in": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 127,
+    "line_end": 127
+  },
+  "src/auth.py::code": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 61,
+    "line_end": 61
+  },
+  "src/auth.py::token_url": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 64,
+    "line_end": 64
+  },
+  "src/auth.py::data": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 65,
+    "line_end": 71
+  },
+  "src/auth.py::res": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "src/auth.py::tokens": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 75,
+    "line_end": 75
+  },
+  "src/auth.py::access_token": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 76,
+    "line_end": 76
+  },
+  "src/auth.py::user_info_url": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "src/auth.py::user_res": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 80,
+    "line_end": 80
+  },
+  "src/auth.py::user_info": {
+    "kind": "variable",
+    "path": "src/auth.py",
+    "line_start": 83,
+    "line_end": 83
+  },
+  "src/ai_insights.py::GROQ_API_KEY": {
+    "kind": "variable",
+    "path": "src/ai_insights.py",
+    "line_start": 7,
+    "line_end": 7
+  },
+  "src/ai_insights.py::generate_insights": {
+    "kind": "function",
+    "path": "src/ai_insights.py",
+    "line_start": 14,
+    "line_end": 47
+  },
+  "src/ai_insights.py::client": {
+    "kind": "variable",
+    "path": "src/ai_insights.py",
+    "line_start": 10,
+    "line_end": 10
+  },
+  "src/ai_insights.py::combined_text": {
+    "kind": "variable",
+    "path": "src/ai_insights.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "src/ai_insights.py::prompt": {
+    "kind": "variable",
+    "path": "src/ai_insights.py",
+    "line_start": 20,
+    "line_end": 31
+  },
+  "src/ai_insights.py::completion": {
+    "kind": "variable",
+    "path": "src/ai_insights.py",
+    "line_start": 33,
+    "line_end": 44
+  },
+  "src/predictor.py::sia": {
+    "kind": "variable",
+    "path": "src/predictor.py",
+    "line_start": 10,
+    "line_end": 10
+  },
+  "src/predictor.py::predict_sentiment": {
+    "kind": "function",
+    "path": "src/predictor.py",
+    "line_start": 12,
+    "line_end": 35
+  },
+  "src/predictor.py::scores": {
+    "kind": "variable",
+    "path": "src/predictor.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "src/predictor.py::compound": {
+    "kind": "variable",
+    "path": "src/predictor.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "src/predictor.py::sentiment_str": {
+    "kind": "variable",
+    "path": "src/predictor.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "src/predictor.py::confidence": {
+    "kind": "variable",
+    "path": "src/predictor.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "src/database.py::client": {
+    "kind": "variable",
+    "path": "src/database.py",
+    "line_start": 12,
+    "line_end": 12
+  },
+  "src/database.py::db": {
+    "kind": "variable",
+    "path": "src/database.py",
+    "line_start": 13,
+    "line_end": 13
+  },
+  "src/database.py::reviews_col": {
+    "kind": "variable",
+    "path": "src/database.py",
+    "line_start": 14,
+    "line_end": 14
+  },
+  "src/database.py::insert_review": {
+    "kind": "function",
+    "path": "src/database.py",
+    "line_start": 26,
+    "line_end": 28
+  },
+  "src/database.py::get_all_reviews": {
+    "kind": "function",
+    "path": "src/database.py",
+    "line_start": 30,
+    "line_end": 34
+  },
+  "src/database.py::insert_bulk_reviews": {
+    "kind": "function",
+    "path": "src/database.py",
+    "line_start": 36,
+    "line_end": 38
+  },
+  "src/database.py::get_user_reviews": {
+    "kind": "function",
+    "path": "src/database.py",
+    "line_start": 42,
+    "line_end": 46
+  },
+  "src/database.py::insert_review_for_user": {
+    "kind": "function",
+    "path": "src/database.py",
+    "line_start": 48,
+    "line_end": 52
+  },
+  "src/database.py::insert_bulk_reviews_for_user": {
+    "kind": "function",
+    "path": "src/database.py",
+    "line_start": 54,
+    "line_end": 59
+  },
+  "src/database.py::MONGO_URI": {
+    "kind": "variable",
+    "path": "src/database.py",
+    "line_start": 9,
+    "line_end": 9
+  },
+  "src/database.py::reports_col": {
+    "kind": "variable",
+    "path": "src/database.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "app_pages/01_Dashboard.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "app_pages/01_Dashboard.py::reviews": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "app_pages/01_Dashboard.py::df": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 27,
+    "line_end": 27
+  },
+  "app_pages/01_Dashboard.py::total": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "app_pages/01_Dashboard.py::pos": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 30,
+    "line_end": 30
+  },
+  "app_pages/01_Dashboard.py::neg": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 31,
+    "line_end": 31
+  },
+  "app_pages/01_Dashboard.py::neu": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "app_pages/01_Dashboard.py::fig_pie": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 51,
+    "line_end": 57
+  },
+  "app_pages/01_Dashboard.py::trend_df": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 67,
+    "line_end": 67
+  },
+  "app_pages/01_Dashboard.py::fig_line": {
+    "kind": "variable",
+    "path": "app_pages/01_Dashboard.py",
+    "line_start": 69,
+    "line_end": 76
+  },
+  "app_pages/03_Bulk_Analysis.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 16,
+    "line_end": 16
+  },
+  "app_pages/03_Bulk_Analysis.py::uploaded_file": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "app_pages/03_Bulk_Analysis.py::df": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "app_pages/03_Bulk_Analysis.py::text_cols": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "app_pages/03_Bulk_Analysis.py::selected_col": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "app_pages/03_Bulk_Analysis.py::results": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 38,
+    "line_end": 38
+  },
+  "app_pages/03_Bulk_Analysis.py::db_docs": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 39,
+    "line_end": 39
+  },
+  "app_pages/03_Bulk_Analysis.py::progress_bar": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "app_pages/03_Bulk_Analysis.py::total_rows": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 42,
+    "line_end": 42
+  },
+  "app_pages/03_Bulk_Analysis.py::res_df": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 77,
+    "line_end": 77
+  },
+  "app_pages/03_Bulk_Analysis.py::csv_export": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 80,
+    "line_end": 80
+  },
+  "app_pages/03_Bulk_Analysis.py::text": {
+    "kind": "variable",
+    "path": "app_pages/03_Bulk_Analysis.py",
+    "line_start": 45,
+    "line_end": 45
+  },
+  "app_pages/07_AI_Insights_Center.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/07_AI_Insights_Center.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "app_pages/07_AI_Insights_Center.py::reviews": {
+    "kind": "variable",
+    "path": "app_pages/07_AI_Insights_Center.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "app_pages/07_AI_Insights_Center.py::df": {
+    "kind": "variable",
+    "path": "app_pages/07_AI_Insights_Center.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "app_pages/07_AI_Insights_Center.py::texts": {
+    "kind": "variable",
+    "path": "app_pages/07_AI_Insights_Center.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "app_pages/07_AI_Insights_Center.py::insights_markdown": {
+    "kind": "variable",
+    "path": "app_pages/07_AI_Insights_Center.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "app_pages/04_Feedback_History.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 14,
+    "line_end": 14
+  },
+  "app_pages/04_Feedback_History.py::reviews": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "app_pages/04_Feedback_History.py::df": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "app_pages/04_Feedback_History.py::filtered_df": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 42,
+    "line_end": 42
+  },
+  "app_pages/04_Feedback_History.py::csv": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "app_pages/04_Feedback_History.py::sentiment_filter": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 30,
+    "line_end": 30
+  },
+  "app_pages/04_Feedback_History.py::search_term": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 40,
+    "line_end": 40
+  },
+  "app_pages/04_Feedback_History.py::mask": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "app_pages/04_Feedback_History.py::categories": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 34,
+    "line_end": 34
+  },
+  "app_pages/04_Feedback_History.py::cat_filter": {
+    "kind": "variable",
+    "path": "app_pages/04_Feedback_History.py",
+    "line_start": 35,
+    "line_end": 35
+  },
+  "app_pages/09_Reports_Center.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "app_pages/09_Reports_Center.py::reviews": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "app_pages/09_Reports_Center.py::df": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "app_pages/09_Reports_Center.py::csv_export": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "app_pages/09_Reports_Center.py::total": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "app_pages/09_Reports_Center.py::pos": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 48,
+    "line_end": 48
+  },
+  "app_pages/09_Reports_Center.py::neg": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 49,
+    "line_end": 49
+  },
+  "app_pages/09_Reports_Center.py::neu": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 50,
+    "line_end": 50
+  },
+  "app_pages/09_Reports_Center.py::pos_rate": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 52,
+    "line_end": 52
+  },
+  "app_pages/09_Reports_Center.py::neg_rate": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "app_pages/09_Reports_Center.py::pdf": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 55,
+    "line_end": 55
+  },
+  "app_pages/09_Reports_Center.py::pdf_buffer": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 104,
+    "line_end": 104
+  },
+  "app_pages/09_Reports_Center.py::pdf_bytes": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 105,
+    "line_end": 105
+  },
+  "app_pages/09_Reports_Center.py::prod_stats": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 81,
+    "line_end": 81
+  },
+  "app_pages/09_Reports_Center.py::meaningful": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 88,
+    "line_end": 88
+  },
+  "app_pages/09_Reports_Center.py::top_prods": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 92,
+    "line_end": 92
+  },
+  "app_pages/09_Reports_Center.py::safe_prod": {
+    "kind": "variable",
+    "path": "app_pages/09_Reports_Center.py",
+    "line_start": 96,
+    "line_end": 96
+  },
+  "app_pages/08_Word_Cloud_Analytics.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/08_Word_Cloud_Analytics.py",
+    "line_start": 16,
+    "line_end": 16
+  },
+  "app_pages/08_Word_Cloud_Analytics.py::reviews": {
+    "kind": "variable",
+    "path": "app_pages/08_Word_Cloud_Analytics.py",
+    "line_start": 19,
+    "line_end": 19
+  },
+  "app_pages/08_Word_Cloud_Analytics.py::df": {
+    "kind": "variable",
+    "path": "app_pages/08_Word_Cloud_Analytics.py",
+    "line_start": 27,
+    "line_end": 27
+  },
+  "app_pages/08_Word_Cloud_Analytics.py::pos_reviews": {
+    "kind": "variable",
+    "path": "app_pages/08_Word_Cloud_Analytics.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "app_pages/08_Word_Cloud_Analytics.py::neg_reviews": {
+    "kind": "variable",
+    "path": "app_pages/08_Word_Cloud_Analytics.py",
+    "line_start": 30,
+    "line_end": 30
+  },
+  "app_pages/08_Word_Cloud_Analytics.py::wordcloud_pos": {
+    "kind": "variable",
+    "path": "app_pages/08_Word_Cloud_Analytics.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "app_pages/08_Word_Cloud_Analytics.py::wordcloud_neg": {
+    "kind": "variable",
+    "path": "app_pages/08_Word_Cloud_Analytics.py",
+    "line_start": 48,
+    "line_end": 48
+  },
+  "app_pages/05_Product_Analytics.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "app_pages/05_Product_Analytics.py::reviews": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "app_pages/05_Product_Analytics.py::df": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "app_pages/05_Product_Analytics.py::prod_stats": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "app_pages/05_Product_Analytics.py::meaningful_prods": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 43,
+    "line_end": 43
+  },
+  "app_pages/05_Product_Analytics.py::top_loved": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "app_pages/05_Product_Analytics.py::fig_loved": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 49,
+    "line_end": 56
+  },
+  "app_pages/05_Product_Analytics.py::top_complained": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 63,
+    "line_end": 63
+  },
+  "app_pages/05_Product_Analytics.py::fig_complained": {
+    "kind": "variable",
+    "path": "app_pages/05_Product_Analytics.py",
+    "line_start": 67,
+    "line_end": 74
+  },
+  "app_pages/06_Trend_Monitoring.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "app_pages/06_Trend_Monitoring.py::reviews": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "app_pages/06_Trend_Monitoring.py::df": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "app_pages/06_Trend_Monitoring.py::time_res": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "app_pages/06_Trend_Monitoring.py::trend_df": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 42,
+    "line_end": 42
+  },
+  "app_pages/06_Trend_Monitoring.py::fig": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 44,
+    "line_end": 51
+  },
+  "app_pages/06_Trend_Monitoring.py::recent": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 56,
+    "line_end": 56
+  },
+  "app_pages/06_Trend_Monitoring.py::recent_pos": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 57,
+    "line_end": 57
+  },
+  "app_pages/06_Trend_Monitoring.py::recent_rate": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 58,
+    "line_end": 58
+  },
+  "app_pages/06_Trend_Monitoring.py::freq": {
+    "kind": "variable",
+    "path": "app_pages/06_Trend_Monitoring.py",
+    "line_start": 36,
+    "line_end": 36
+  },
+  "app_pages/02_Analyze_Feedback.py::user_email": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "app_pages/02_Analyze_Feedback.py::feedback": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 30,
+    "line_end": 30
+  },
+  "app_pages/02_Analyze_Feedback.py::submitted": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "app_pages/02_Analyze_Feedback.py::cust_id": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 22,
+    "line_end": 22
+  },
+  "app_pages/02_Analyze_Feedback.py::cust_name": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 23,
+    "line_end": 23
+  },
+  "app_pages/02_Analyze_Feedback.py::category": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "app_pages/02_Analyze_Feedback.py::product": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "app_pages/02_Analyze_Feedback.py::rating": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 27,
+    "line_end": 27
+  },
+  "app_pages/02_Analyze_Feedback.py::date": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "app_pages/02_Analyze_Feedback.py::color": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 45,
+    "line_end": 45
+  },
+  "app_pages/02_Analyze_Feedback.py::emoji": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "app_pages/02_Analyze_Feedback.py::doc": {
+    "kind": "variable",
+    "path": "app_pages/02_Analyze_Feedback.py",
+    "line_start": 53,
+    "line_end": 63
+  },
+  "pages/01_Dashboard.py::reviews": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "pages/01_Dashboard.py::df": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "pages/01_Dashboard.py::total": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 27,
+    "line_end": 27
+  },
+  "pages/01_Dashboard.py::pos": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "pages/01_Dashboard.py::neg": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "pages/01_Dashboard.py::neu": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 30,
+    "line_end": 30
+  },
+  "pages/01_Dashboard.py::fig_pie": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 49,
+    "line_end": 55
+  },
+  "pages/01_Dashboard.py::trend_df": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "pages/01_Dashboard.py::fig_line": {
+    "kind": "variable",
+    "path": "pages/01_Dashboard.py",
+    "line_start": 67,
+    "line_end": 74
+  },
+  "pages/03_Bulk_Analysis.py::uploaded_file": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "pages/03_Bulk_Analysis.py::df": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "pages/03_Bulk_Analysis.py::text_cols": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "pages/03_Bulk_Analysis.py::selected_col": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 34,
+    "line_end": 34
+  },
+  "pages/03_Bulk_Analysis.py::results": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 39,
+    "line_end": 39
+  },
+  "pages/03_Bulk_Analysis.py::db_docs": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 40,
+    "line_end": 40
+  },
+  "pages/03_Bulk_Analysis.py::progress_bar": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 42,
+    "line_end": 42
+  },
+  "pages/03_Bulk_Analysis.py::total_rows": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 43,
+    "line_end": 43
+  },
+  "pages/03_Bulk_Analysis.py::res_df": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 75,
+    "line_end": 75
+  },
+  "pages/03_Bulk_Analysis.py::csv_export": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 78,
+    "line_end": 78
+  },
+  "pages/03_Bulk_Analysis.py::text": {
+    "kind": "variable",
+    "path": "pages/03_Bulk_Analysis.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "pages/07_AI_Insights_Center.py::reviews": {
+    "kind": "variable",
+    "path": "pages/07_AI_Insights_Center.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "pages/07_AI_Insights_Center.py::df": {
+    "kind": "variable",
+    "path": "pages/07_AI_Insights_Center.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "pages/07_AI_Insights_Center.py::texts": {
+    "kind": "variable",
+    "path": "pages/07_AI_Insights_Center.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "pages/07_AI_Insights_Center.py::insights_markdown": {
+    "kind": "variable",
+    "path": "pages/07_AI_Insights_Center.py",
+    "line_start": 36,
+    "line_end": 36
+  },
+  "pages/04_Feedback_History.py::reviews": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 19,
+    "line_end": 19
+  },
+  "pages/04_Feedback_History.py::df": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "pages/04_Feedback_History.py::filtered_df": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "pages/04_Feedback_History.py::csv": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 52,
+    "line_end": 52
+  },
+  "pages/04_Feedback_History.py::sentiment_filter": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "pages/04_Feedback_History.py::search_term": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 39,
+    "line_end": 39
+  },
+  "pages/04_Feedback_History.py::mask": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "pages/04_Feedback_History.py::categories": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "pages/04_Feedback_History.py::cat_filter": {
+    "kind": "variable",
+    "path": "pages/04_Feedback_History.py",
+    "line_start": 34,
+    "line_end": 34
+  },
+  "pages/09_Reports_Center.py::reviews": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "pages/09_Reports_Center.py::df": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "pages/09_Reports_Center.py::csv_export": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 31,
+    "line_end": 31
+  },
+  "pages/09_Reports_Center.py::total": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 45,
+    "line_end": 45
+  },
+  "pages/09_Reports_Center.py::pos": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "pages/09_Reports_Center.py::neg": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "pages/09_Reports_Center.py::neu": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 48,
+    "line_end": 48
+  },
+  "pages/09_Reports_Center.py::pos_rate": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 50,
+    "line_end": 50
+  },
+  "pages/09_Reports_Center.py::neg_rate": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "pages/09_Reports_Center.py::pdf": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "pages/09_Reports_Center.py::pdf_output_path": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 102,
+    "line_end": 102
+  },
+  "pages/09_Reports_Center.py::prod_stats": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 79,
+    "line_end": 79
+  },
+  "pages/09_Reports_Center.py::meaningful": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 86,
+    "line_end": 86
+  },
+  "pages/09_Reports_Center.py::top_prods": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 90,
+    "line_end": 90
+  },
+  "pages/09_Reports_Center.py::pdf_bytes": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 106,
+    "line_end": 106
+  },
+  "pages/09_Reports_Center.py::safe_prod": {
+    "kind": "variable",
+    "path": "pages/09_Reports_Center.py",
+    "line_start": 95,
+    "line_end": 95
+  },
+  "pages/08_Word_Cloud_Analytics.py::reviews": {
+    "kind": "variable",
+    "path": "pages/08_Word_Cloud_Analytics.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "pages/08_Word_Cloud_Analytics.py::df": {
+    "kind": "variable",
+    "path": "pages/08_Word_Cloud_Analytics.py",
+    "line_start": 26,
+    "line_end": 26
+  },
+  "pages/08_Word_Cloud_Analytics.py::pos_reviews": {
+    "kind": "variable",
+    "path": "pages/08_Word_Cloud_Analytics.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "pages/08_Word_Cloud_Analytics.py::neg_reviews": {
+    "kind": "variable",
+    "path": "pages/08_Word_Cloud_Analytics.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "pages/08_Word_Cloud_Analytics.py::wordcloud_pos": {
+    "kind": "variable",
+    "path": "pages/08_Word_Cloud_Analytics.py",
+    "line_start": 36,
+    "line_end": 36
+  },
+  "pages/08_Word_Cloud_Analytics.py::wordcloud_neg": {
+    "kind": "variable",
+    "path": "pages/08_Word_Cloud_Analytics.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "pages/05_Product_Analytics.py::reviews": {
+    "kind": "variable",
+    "path": "pages/05_Product_Analytics.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "pages/05_Product_Analytics.py::df": {
+    "kind": "variable",
+    "path": "pages/05_Product_Analytics.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "pages/05_Product_Analytics.py::prod_stats": {
+    "kind": "variable",
+    "path": "pages/05_Product_Analytics.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "pages/05_Product_Analytics.py::meaningful_prods": {
+    "kind": "variable",
+    "path": "pages/05_Product_Analytics.py",
+    "line_start": 42,
+    "line_end": 42
+  },
+  "pages/05_Product_Analytics.py::top_loved": {
+    "kind": "variable",
+    "path": "pages/05_Product_Analytics.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "pages/05_Product_Analytics.py::fig_loved": {
+    "kind": "variable",
+    "path": "pages/05_Product_Analytics.py",
+    "line_start": 48,
+    "line_end": 55
+  },
+  "pages/05_Product_Analytics.py::top_complained": {
+    "kind": "variable",
+    "path": "pages/05_Product_Analytics.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "pages/05_Product_Analytics.py::fig_complained": {
+    "kind": "variable",
+    "path": "pages/05_Product_Analytics.py",
+    "line_start": 66,
+    "line_end": 73
+  },
+  "pages/06_Trend_Monitoring.py::reviews": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "pages/06_Trend_Monitoring.py::df": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "pages/06_Trend_Monitoring.py::time_res": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "pages/06_Trend_Monitoring.py::trend_df": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "pages/06_Trend_Monitoring.py::fig": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 43,
+    "line_end": 50
+  },
+  "pages/06_Trend_Monitoring.py::recent": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 55,
+    "line_end": 55
+  },
+  "pages/06_Trend_Monitoring.py::recent_pos": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 56,
+    "line_end": 56
+  },
+  "pages/06_Trend_Monitoring.py::recent_rate": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 57,
+    "line_end": 57
+  },
+  "pages/06_Trend_Monitoring.py::freq": {
+    "kind": "variable",
+    "path": "pages/06_Trend_Monitoring.py",
+    "line_start": 35,
+    "line_end": 35
+  },
+  "pages/02_Analyze_Feedback.py::feedback": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 31,
+    "line_end": 31
+  },
+  "pages/02_Analyze_Feedback.py::submitted": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "pages/02_Analyze_Feedback.py::cust_id": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 23,
+    "line_end": 23
+  },
+  "pages/02_Analyze_Feedback.py::cust_name": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "pages/02_Analyze_Feedback.py::category": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "pages/02_Analyze_Feedback.py::product": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 27,
+    "line_end": 27
+  },
+  "pages/02_Analyze_Feedback.py::rating": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "pages/02_Analyze_Feedback.py::date": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "pages/02_Analyze_Feedback.py::color": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "pages/02_Analyze_Feedback.py::emoji": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "pages/02_Analyze_Feedback.py::doc": {
+    "kind": "variable",
+    "path": "pages/02_Analyze_Feedback.py",
+    "line_start": 54,
+    "line_end": 64
+  }
+}

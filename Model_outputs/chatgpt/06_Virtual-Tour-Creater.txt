@@ -1,0 +1,44 @@
+Structured Summary Report
+1. Overall purpose and architecture
+The repository implements a React-based virtual-tour creator/viewer application. [cite:file=frontend/src/pages/Home.js;symbol=LandingPage;lines=5-6] [cite:file=frontend/src/App.js;symbol=App;lines=13-26]
+The frontend uses React Router to provide routes for the landing page, signup, login, tour creation, tour editing, panorama viewing, and listing all tours. [cite:file=frontend/src/App.js;symbol=App;lines=13-26]
+The repository also contains a backend directory with stitcher.py and app.py, but their implementations are not included in the supplied content, so their responsibilities cannot be established from the available source. [cite:file=backend/stitcher.py;symbol=stitcher.py;lines=1-1] [cite:file=backend/app.py;symbol=app.py;lines=1-1]
+The frontend has a separate Supabase client module that creates and exports a Supabase client using a project URL and anonymous key. [cite:file=frontend/src/Supabase.js;symbol=supabase;lines=1-6]
+The application is bootstrapped through ReactDOM.createRoot, renders App inside React.StrictMode, and invokes the web-vitals reporting function. [cite:file=frontend/src/index.js;symbol=default;lines=1-14]
+2. Key components / modules
+Routing and application shell
+App is the main frontend routing component and defines the application's URL-to-page mappings. [cite:file=frontend/src/App.js;symbol=App;lines=13-26]
+/ renders Home, /signup renders Signup, and /login renders Login. [cite:file=frontend/src/App.js;symbol=App;lines=14-18]
+/create renders VirtualTourForm, /editor/:tourId renders TourEditorPage, /tour/:tourId renders PanoramaViewer, and /tours renders AllToursPage. [cite:file=frontend/src/App.js;symbol=App;lines=19-25]
+Bootstrap's CSS is imported globally by App. [cite:file=frontend/src/App.js;symbol=App;lines=10-10]
+Authentication and access control
+ProtectedRoute monitors Firebase authentication state with onAuthStateChanged, stores the current user, and tracks loading and redirect state. [cite:file=frontend/src/components/ProtectedRoute.js;symbol=ProtectedRoute;lines=3-14]
+When no authenticated user is detected, ProtectedRoute displays a sign-in-required modal and schedules a redirect to /login after two seconds. [cite:file=frontend/src/components/ProtectedRoute.js;symbol=ProtectedRoute;lines=15-25]
+Once the redirect flag is set, ProtectedRoute uses React Router's Navigate component to redirect to /login. [cite:file=frontend/src/components/ProtectedRoute.js;symbol=ProtectedRoute;lines=21-21]
+Modal provides a reusable sign-in-required dialog with configurable message, close, and sign-up callbacks. [cite:file=frontend/src/components/Modal.js;symbol=Modal;lines=3-29]
+Home currently contains a hard-coded isAuthenticated state initialized to false, rather than deriving authentication status from an external authentication provider. [cite:file=frontend/src/pages/Home.js;symbol=LandingPage;lines=5-6]
+Home / landing page
+LandingPage presents the application as “Virtual Tour Creator” and describes creating or experiencing immersive 360° journeys. [cite:file=frontend/src/pages/Home.js;symbol=LandingPage;lines=18-35]
+The page provides a button for viewing existing tours that navigates to /tours. [cite:file=frontend/src/pages/Home.js;symbol=LandingPage;lines=38-38]
+The create-tour button invokes handleCreateClick, which currently redirects unauthenticated users to /login and would navigate authenticated users to /create. [cite:file=frontend/src/pages/Home.js;symbol=handleCreateClick;lines=8-15]
+LandingButton is a reusable local button component that manages hover state and changes its styling when hovered. [cite:file=frontend/src/pages/Home.js;symbol=LandingButton;lines=42-70]
+Tour pages
+The frontend defines dedicated page components for creating a virtual tour, editing a tour, viewing a panorama, and browsing all tours. [cite:file=frontend/src/App.js;symbol=App;lines=19-25]
+The editor and panorama routes accept a dynamic tourId path parameter. [cite:file=frontend/src/App.js;symbol=App;lines=20-21]
+Supabase integration
+Supabase.js creates the Supabase client through createClient and exports it for use elsewhere in the frontend. [cite:file=frontend/src/Supabase.js;symbol=supabase;lines=1-6]
+3. Notable functions and responsibilities
+App() establishes the application's client-side route structure using BrowserRouter, Routes, and Route. [cite:file=frontend/src/App.js;symbol=App;lines=13-26]
+LandingPage() manages navigation from the application's landing page and maintains the current hard-coded authentication flag. [cite:file=frontend/src/pages/Home.js;symbol=LandingPage;lines=5-40]
+handleCreateClick() controls access to tour creation by checking isAuthenticated, alerting unauthenticated users, and navigating either to /login or /create. [cite:file=frontend/src/pages/Home.js;symbol=handleCreateClick;lines=8-15]
+LandingButton() encapsulates the landing-page button presentation and uses local state to implement hover effects. [cite:file=frontend/src/pages/Home.js;symbol=LandingButton;lines=42-70]
+ProtectedRoute() acts as an authentication-aware wrapper around child components, using Firebase authentication state and React Router redirection. [cite:file=frontend/src/components/ProtectedRoute.js;symbol=ProtectedRoute;lines=6-31]
+Modal() renders the reusable sign-in-required user interface and exposes callbacks through its onClose and onSignUp props. [cite:file=frontend/src/components/Modal.js;symbol=Modal;lines=3-29]
+supabase is the exported client instance used to communicate with the configured Supabase project. [cite:file=frontend/src/Supabase.js;symbol=supabase;lines=3-6]
+4. Design patterns observed
+The frontend follows a component-based React architecture, with the application shell, reusable modal, reusable landing button, and page-level components separated into different modules. [cite:file=frontend/src/App.js;symbol=App;lines=1-26] [cite:file=frontend/src/components/Modal.js;symbol=Modal;lines=1-31] [cite:file=frontend/src/pages/Home.js;symbol=LandingButton;lines=42-70]
+It uses a client-side routing pattern in which URL paths are mapped directly to React page components. [cite:file=frontend/src/App.js;symbol=App;lines=13-26]
+ProtectedRoute represents a route-guard pattern, separating authentication checking and unauthorized-user handling from the pages that require access control. [cite:file=frontend/src/components/ProtectedRoute.js;symbol=ProtectedRoute;lines=6-31]
+LandingButton and Modal demonstrate reusable presentational components, receiving behavior or content through props rather than hard-coding all interactions at their call sites. [cite:file=frontend/src/pages/Home.js;symbol=LandingButton;lines=42-70] [cite:file=frontend/src/components/Modal.js;symbol=Modal;lines=3-29]
+The application contains an apparent mixed authentication integration: ProtectedRoute uses Firebase authentication, while a separate Supabase client is configured in Supabase.js. [cite:file=frontend/src/components/ProtectedRoute.js;symbol=ProtectedRoute;lines=3-5] [cite:file=frontend/src/Supabase.js;symbol=supabase;lines=1-6]
+The frontend also uses a service/client abstraction for Supabase by creating the client once in a dedicated module and exporting it for reuse. [cite:file=frontend/src/Supabase.js;symbol=supabase;lines=3-6]

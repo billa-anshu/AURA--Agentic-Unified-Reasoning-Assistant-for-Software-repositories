@@ -1,0 +1,100 @@
+Based on the provided repository content, here is a structured summary report of the project.
+
+### 1. Overall Purpose and Architecture
+
+**Purpose:** This project appears to be a **study materials management and Q&A platform** that enables users to manage academic subjects, upload study materials, and participate in a question-and-answer forum. The application provides a comprehensive learning management system with user authentication, subject organization, and administrative capabilities.
+
+**Architecture:** The application is a full-stack web application with a clear separation between frontend and backend, though the repository shows two potentially separate backend implementations.
+
+- **Frontend (React + TypeScript + Vite):** A modern single-page application built with React, TypeScript, and Vite for fast development [cite:file=vite.config.ts;symbol=vite.config;lines=1-1]. The frontend uses Tailwind CSS for styling with dark mode support [cite:file=tailwind.config.js;symbol=tailwind.config;lines=7-7] and includes contexts for state management [cite:file=src/context/MaterialContext.tsx;symbol=MaterialContext;lines=1-1], [cite:file=src/context/UserContext.tsx;symbol=UserContext;lines=1-1].
+- **Backend (Node.js + Express + MongoDB):** Two Express server implementations exist:
+  1. A main server in `server/index.js` that handles API routes for auth, subjects, materials, and uploads [cite:file=server/index.js;symbol=server;lines=18-21]
+  2. A consolidated server in `server.js` that handles user authentication, questions, and answers [cite:file=server.js;symbol=server;lines=1-1]
+- **Database:** MongoDB for data storage with multiple models including User, Subject, Material, Question, and Answer [cite:file=server/models/User.js;symbol=User;lines=1-1], [cite:file=server/models/Material.js;symbol=Material;lines=1-1], [cite:file=server/models/Subject.js;symbol=Subject;lines=1-1].
+- **Authentication:** JWT-based authentication with role-based access control (admin vs. user) [cite:file=server/middleware/authMiddleware.js;symbol=authMiddleware;lines=1-1].
+
+The technology stack includes React with TypeScript and Vite for the frontend [cite:file=vite.config.ts;symbol=vite.config;lines=1-1], Node.js with Express for the backend [cite:file=server/index.js;symbol=server;lines=1-1], MongoDB for data storage [cite:file=server/config/db.js;symbol=connectDB;lines=1-1], and Tailwind CSS for styling [cite:file=tailwind.config.js;symbol=tailwind.config;lines=1-1].
+
+### 2. Key Components / Modules and What They Do
+
+**Authentication Module:** The `server.js` provides authentication endpoints for signup and login [cite:file=server.js;symbol=server;lines=33-33], [cite:file=server.js;symbol=server;lines=66-66]. User passwords are hashed using bcrypt with 10 salt rounds [cite:file=server.js;symbol=server;lines=49-49], and JWT tokens are generated upon successful login [cite:file=server.js;symbol=server;lines=84-84]. The `authMiddleware.js` provides token verification and admin role verification [cite:file=server/middleware/authMiddleware.js;symbol=authMiddleware;lines=1-1].
+
+**Q&A Module:** The `server.js` implements a question-and-answer system. The `/questions` endpoint allows posting new questions [cite:file=server.js;symbol=server;lines=120-120] and fetching all questions [cite:file=server.js;symbol=server;lines=142-142]. The `/answers` endpoint allows admins to post answers [cite:file=server.js;symbol=server;lines=154-154] and fetch answers with populated question titles [cite:file=server.js;symbol=server;lines=177-177].
+
+**Subject and Material Management Module:** The `server/index.js` implements routes for managing subjects and materials [cite:file=server/index.js;symbol=server;lines=18-21]. Models include `Subject` and `Material` [cite:file=server/models/Subject.js;symbol=Subject;lines=1-1], [cite:file=server/models/Material.js;symbol=Material;lines=1-1]. The upload route handles file uploads [cite:file=server/routes/upload.js;symbol=upload;lines=1-1].
+
+**Frontend Pages:** The React frontend includes pages for:
+- Landing page [cite:file=src/pages/Landing.tsx;symbol=Landing;lines=1-1]
+- Subjects management [cite:file=src/pages/Subjects.tsx;symbol=Subjects;lines=1-1]
+- Dashboard [cite:file=src/pages/Dashboard.tsx;symbol=Dashboard;lines=1-1]
+- Subject detail view [cite:file=src/pages/SubjectDetail.tsx;symbol=SubjectDetail;lines=1-1]
+- Authentication (Login, Signup) [cite:file=src/pages/auth/Login.tsx;symbol=Login;lines=1-1], [cite:file=src/pages/auth/Signup.tsx;symbol=Signup;lines=1-1]
+- Settings and About pages [cite:file=src/pages/Settings.tsx;symbol=Settings;lines=1-1], [cite:file=src/pages/About.tsx;symbol=About;lines=1-1]
+
+**UI Components:** Reusable components include modals for adding subjects [cite:file=src/components/AddSubjectModal.tsx;symbol=AddSubjectModal;lines=1-1], adding materials [cite:file=src/components/AddMaterialModal.tsx;symbol=AddMaterialModal;lines=1-1], editing materials [cite:file=src/components/EditMaterialModal.tsx;symbol=EditMaterialModal;lines=1-1], viewing PDFs [cite:file=src/components/PdfViewerModal.tsx;symbol=PdfViewerModal;lines=1-1], and confirmation dialogs [cite:file=src/components/ConfirmDeleteModal.tsx;symbol=ConfirmDeleteModal;lines=1-1].
+
+### 3. Notable Functions or Classes and Their Responsibilities
+
+- **`/signup` Endpoint:**
+    - Validates email and password presence [cite:file=server.js;symbol=server;lines=36-38].
+    - Checks for existing user with the same email [cite:file=server.js;symbol=server;lines=40-42].
+    - Hashes password using bcrypt with 10 salt rounds [cite:file=server.js;symbol=server;lines=45-45].
+    - Creates and saves a new user [cite:file=server.js;symbol=server;lines=47-51].
+    - Returns success message on successful registration [cite:file=server.js;symbol=server;lines=53-53].
+
+- **`/login` Endpoint:**
+    - Validates email and password presence [cite:file=server.js;symbol=server;lines=70-72].
+    - Finds user by email [cite:file=server.js;symbol=server;lines=74-74].
+    - Compares provided password with stored hash [cite:file=server.js;symbol=server;lines=78-78].
+    - Generates JWT token with userId and role, valid for 1 hour [cite:file=server.js;symbol=server;lines=83-87].
+    - Returns token and user role [cite:file=server.js;symbol=server;lines=90-95].
+
+- **`/questions` Endpoint:**
+    - POST: Validates title and description [cite:file=server.js;symbol=server;lines=121-123].
+    - Creates and saves a new question [cite:file=server.js;symbol=server;lines=125-130].
+    - GET: Fetches all questions sorted by newest first [cite:file=server.js;symbol=server;lines=143-143].
+
+- **`/answers` Endpoint:**
+    - Requires token verification and admin role [cite:file=server.js;symbol=server;lines=153-153].
+    - POST: Validates questionId and answerText [cite:file=server.js;symbol=server;lines=156-158].
+    - Creates and saves a new answer [cite:file=server.js;symbol=server;lines=160-164].
+    - GET: Fetches all answers with populated question titles [cite:file=server.js;symbol=server;lines=178-178].
+
+- **`connectDB` Function:**
+    - Establishes MongoDB connection using Mongoose [cite:file=server/config/db.js;symbol=connectDB;lines=3-3].
+    - Logs connection success or failure [cite:file=server/config/db.js;symbol=connectDB;lines=4-4].
+    - Exits process on connection failure [cite:file=server/config/db.js;symbol=connectDB;lines=6-6].
+
+- **`testUpload` Function:**
+    - Creates a dummy PDF file for testing upload functionality [cite:file=server/test-upload.js;symbol=testUpload;lines=7-8].
+    - Sends upload request to `/api/upload` endpoint [cite:file=server/test-upload.js;symbol=testUpload;lines=13-13].
+    - Cleans up the dummy file after testing [cite:file=server/test-upload.js;symbol=testUpload;lines=25-25].
+
+### 4. Any Design Patterns You Observe
+
+- **MVC (Model-View-Controller) Pattern:**
+    - **Model:** Schema definitions in `models/User.js`, `models/Material.js`, `models/Subject.js` [cite:file=server/models/User.js;symbol=User;lines=1-1], [cite:file=server/models/Material.js;symbol=Material;lines=1-1], [cite:file=server/models/Subject.js;symbol=Subject;lines=1-1]
+    - **Controller:** Route handlers in `routes/` directory [cite:file=server/routes/auth.js;symbol=auth;lines=1-1], [cite:file=server/routes/materials.js;symbol=materials;lines=1-1]
+    - **View:** React components provide the presentation layer [cite:file=src/pages/Dashboard.tsx;symbol=Dashboard;lines=1-1]
+
+- **Repository Pattern:** Mongoose models abstract data access operations [cite:file=server/models/User.js;symbol=User;lines=1-1], [cite:file=server/models/Material.js;symbol=Material;lines=1-1].
+
+- **Middleware Pattern:** The `authMiddleware` intercepts requests to protected routes for authentication and authorization [cite:file=server/middleware/authMiddleware.js;symbol=authMiddleware;lines=1-1].
+
+- **Context Pattern (Frontend):** `MaterialContext` and `UserContext` provide global state management for materials and user data [cite:file=src/context/MaterialContext.tsx;symbol=MaterialContext;lines=1-1], [cite:file=src/context/UserContext.tsx;symbol=UserContext;lines=1-1].
+
+- **Component-Based Architecture:** The frontend is built with reusable React components (AddSubjectModal, PdfViewerModal, etc.) [cite:file=src/components/AddSubjectModal.tsx;symbol=AddSubjectModal;lines=1-1], [cite:file=src/components/PdfViewerModal.tsx;symbol=PdfViewerModal;lines=1-1].
+
+- **Single-Page Application Pattern:** The frontend uses React Router (implied) for client-side routing without full page reloads [cite:file=src/App.tsx;symbol=App;lines=1-1].
+
+- **Configuration Pattern:** Environment variables are used for configuration through `dotenv` [cite:file=server.js;symbol=server;lines=1-1], [cite:file=server/index.js;symbol=server;lines=2-2].
+
+- **Singleton Pattern:** The MongoDB connection is established once and reused throughout the application [cite:file=server/config/db.js;symbol=connectDB;lines=1-1].
+
+- **Factory Pattern (Implied):** JWT token creation in the `/login` endpoint uses a factory approach to generate tokens with specific configurations [cite:file=server.js;symbol=server;lines=83-87].
+
+- **DTO (Data Transfer Object) Pattern:** The response objects returned by endpoints (e.g., `{ message, token, role }`) are DTOs that shape API responses [cite:file=server.js;symbol=server;lines=90-95].
+
+### Overall Summary
+
+This repository contains the source code for a **study materials management and Q&A platform** built with a React TypeScript frontend and Node.js/Express backend with MongoDB. The application enables users to manage academic subjects, upload and view study materials, and participate in a question-and-answer forum [cite:file=server/index.js;symbol=server;lines=18-21], [cite:file=server.js;symbol=server;lines=120-189]. The system features JWT-based authentication with role-based access control [cite:file=server/middleware/authMiddleware.js;symbol=authMiddleware;lines=1-1], subject and material management, and a Q&A module where admins can post answers to user questions [cite:file=server.js;symbol=server;lines=154-154]. The frontend uses Tailwind CSS with dark mode support [cite:file=tailwind.config.js;symbol=tailwind.config;lines=7-7] and provides a comprehensive UI with modals for adding/editing materials and viewing PDFs. The architecture demonstrates clean separation of concerns with reusable components, context-based state management, and a modular backend with route separation. While the repository shows two server implementations (`server.js` and `server/index.js`), the overall structure provides a solid foundation for a learning management system.

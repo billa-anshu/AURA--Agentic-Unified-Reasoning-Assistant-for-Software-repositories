@@ -1,0 +1,48 @@
+# Repository Summary Report
+
+## 1. Overall Purpose and Architecture
+
+This is a **Spring Boot** web application for what appears to be an educational institution management system — handling students, teachers, admins, classrooms, courses, and attendance tracking [cite:file=src/main/java/com/example/demo/FinalProjectApplication.java;symbol=FinalProjectApplication;lines=1-12]. The application bootstraps via a standard Spring Boot entry point annotated with `@SpringBootApplication` [cite:file=src/main/java/com/example/demo/FinalProjectApplication.java;symbol=FinalProjectApplication.main;lines=9-11].
+
+The architecture follows a classic **layered (N-tier) design**, evident from the package structure: `repository` (data access), `service` (business logic, with an `impl` sub-package), `entity` (domain models), `controller` (web/presentation layer), and `enums` (supporting types). This maps to the standard Spring Boot pattern of Controller → Service → Repository → Entity.
+
+The domain model centers on academic entities: Students, Teachers, Admins, Classrooms, Courses, Attendance Records, and a Holiday Calendar, based on the entity and repository files present (e.g., `Student`, `Teacher`, `Classroom`, `Course`, `AttendanceRecord`, `Admin`, `HolidayCalendar`) [cite:file=src/main/java/com/example/demo/repository/StudentRepository.java;symbol=StudentRepository;lines=12-19].
+
+## 2. Key Components / Modules and What They Do
+
+**Repository Layer** (data access, all extending Spring Data JPA's `JpaRepository`):
+- `StudentRepository` — provides lookups by name, email, course ID, and classroom ID [cite:file=src/main/java/com/example/demo/repository/StudentRepository.java;symbol=StudentRepository;lines=12-19]
+- `AttendanceRecordRepository` — provides queries for attendance existence checks and lookups by student, classroom, date, and course [cite:file=src/main/java/com/example/demo/repository/AttendanceRecordRepository.java;symbol=AttendanceRecordRepository;lines=13-30]
+- `HolidayRepository` — a bare JPA repository for `HolidayCalendar` with no custom query methods [cite:file=src/main/java/com/example/demo/repository/HolidayRepository.java;symbol=HolidayRepository;lines=7-8]
+- `ClassroomRepository` — supports name search, finding students by course via a JOIN query, and finding classrooms by teacher ID [cite:file=src/main/java/com/example/demo/repository/ClassroomRepository.java;symbol=ClassroomRepository;lines=12-18]
+- `TeacherRepository` — supports lookup by email [cite:file=src/main/java/com/example/demo/repository/TeacherRepository.java;symbol=TeacherRepository;lines=11-13]
+- `CourseRepository` — supports lookup by teacher ID, and a JOIN FETCH query to eagerly load classrooms for a teacher's courses [cite:file=src/main/java/com/example/demo/repository/CourseRepository.java;symbol=CourseRepository;lines=12-15]
+- `AdminRepository` — supports lookup by email [cite:file=src/main/java/com/example/demo/repository/AdminRepository.java;symbol=AdminRepository;lines=9-11]
+
+**Service Layer**:
+- `AuthService` is the only service implementation whose content is visible; it handles authentication logic for all three user types (Admin, Teacher, Student) [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=AuthService;lines=15-46]. Interfaces `ClassroomService`, `StudentService`, `AdminService`, `TeacherService`, and `AttendanceService` are listed in the file tree but their contents were not provided, so no functional claims can be made about them. An implementation class `AdminServiceImpl` exists under `service/impl` but its content is likewise not shown.
+
+**Controller Layer**: `StudentDashboardController`, `AdminController`, `LoginController`, and `TeacherDashboardController` exist per the file tree, suggesting role-based dashboards and a dedicated login endpoint, but their contents were not included in the provided repository content, so I cannot describe their specific behavior.
+
+**Entity Layer**: `Classroom`, `AttendanceRecord`, `Course`, `Student`, `Teacher`, `HolidayCalendar`, and `Admin` are listed as JPA entities (inferred from their use as generic type parameters in the repositories, e.g. `JpaRepository<Student, Long>` [cite:file=src/main/java/com/example/demo/repository/StudentRepository.java;symbol=StudentRepository;lines=12-13]), but their field-level content was not provided.
+
+**Enums**: `AttendanceStatus` is present in the file tree, likely representing attendance states (e.g., present/absent), but its content was not shown.
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`AuthService.validateAdmin(String, String)`** — looks up an admin by email and checks the password against the stored value, returning a boolean [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=validateAdmin;lines=22-25].
+- **`AuthService.validateTeacher(String, String)`** — looks up a teacher by email and validates the password [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=validateTeacher;lines=28-31].
+- **`AuthService.validateStudent(String, String)`** — looks up a student by email and validates the password [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=validateStudent;lines=34-37].
+- **`AuthService.getStudentByEmail(String)`** and **`AuthService.getTeacherByEmail(String)`** — convenience accessors that fetch a `Student` or `Teacher` entity by email for use elsewhere in the app (e.g., after login) [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=getStudentByEmail;lines=40-42][cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=getTeacherByEmail;lines=43-45].
+- **`AttendanceRecordRepository.existsByClassroomAndDate`** — a derived query method used to check whether attendance has already been recorded for a given classroom/date, useful for preventing duplicate attendance entries [cite:file=src/main/java/com/example/demo/repository/AttendanceRecordRepository.java;symbol=existsByClassroomAndDate;lines=15-15].
+- **`CourseRepository.findCoursesWithClassroomsByTeacherId`** — uses a `LEFT JOIN FETCH` JPQL query to eagerly load a teacher's courses along with their classrooms in a single query, avoiding the N+1 query problem [cite:file=src/main/java/com/example/demo/repository/CourseRepository.java;symbol=findCoursesWithClassroomsByTeacherId;lines=13-14].
+- **`ClassroomRepository.findStudentsByCourse`** — a custom JPQL query joining `Classroom` to its `students` collection filtered by course ID [cite:file=src/main/java/com/example/demo/repository/ClassroomRepository.java;symbol=findStudentsByCourse;lines=14-15].
+
+## 4. Design Patterns Observed
+
+- **Repository Pattern**: Every data-access interface extends Spring Data's `JpaRepository`, delegating CRUD and query generation to Spring Data JPA rather than hand-written DAO code [cite:file=src/main/java/com/example/demo/repository/StudentRepository.java;symbol=StudentRepository;lines=12-13][cite:file=src/main/java/com/example/demo/repository/AdminRepository.java;symbol=AdminRepository;lines=10-11].
+- **Dependency Injection**: `AuthService` uses field-based `@Autowired` injection to obtain its three repository dependencies rather than constructor injection [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=AuthService;lines=17-21].
+- **Layered Architecture**: Clear separation between `controller`, `service`, `repository`, and `entity` packages reflects a standard layered/N-tier design, consistent with typical Spring Boot project structure.
+- **Query Method / Derived Query Pattern**: Extensive use of Spring Data JPA's method-name-derived queries (e.g., `findByEmail`, `findByClassrooms_ClassroomId`) alongside explicit `@Query` JPQL annotations where derived naming would be insufficient (e.g., joins) [cite:file=src/main/java/com/example/demo/repository/StudentRepository.java;symbol=findStudentsByCourseId;lines=15-16][cite:file=src/main/java/com/example/demo/repository/CourseRepository.java;symbol=findCoursesWithClassroomsByTeacherId;lines=13-14].
+
+**Note on scope**: Several files referenced in the file tree — the service interfaces (`ClassroomService`, `StudentService`, `AdminService`, `TeacherService`, `AttendanceService`), `AdminServiceImpl`, all four controllers, all entity classes, and `AttendanceStatus` — were not included in the provided file contents. I have avoided making functional claims about these components since their source was not available to verify.

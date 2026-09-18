@@ -1,0 +1,69 @@
+Structured Summary Report
+1. Overall purpose and architecture
+
+The repository implements a Smart Pet Care web application with a React frontend and a Spring Boot backend, with the frontend routing users to pet-care, doctor, appointment, and dashboard views. [cite:file=frontend/src/App.jsx;symbol=App;lines=1-27] [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=1-11]
+
+The frontend is built with React and Vite, and uses React Router for client-side navigation and React Bootstrap for UI styling. [cite:file=frontend/vite.config.js;symbol=default;lines=1-7] [cite:file=frontend/src/App.jsx;symbol=App;lines=1-11] [cite:file=frontend/src/main.jsx;symbol=default;lines=1-8]
+
+The backend is a Spring Boot application whose entry point delegates startup to SpringApplication.run. [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=5-10]
+
+The frontend communicates with a backend at http://localhost:8080 through a shared Axios instance. [cite:file=frontend/src/services/api.js;symbol=instance;lines=3-8]
+
+2. Key components / modules
+Frontend
+
+Application routing: App establishes the authentication context, browser router, navigation bar, and routes for home, authentication, doctors, pets, appointments, and the doctor dashboard. [cite:file=frontend/src/App.jsx;symbol=App;lines=12-27]
+
+Navigation: Navigation consumes AuthContext to determine whether a user is logged in and conditionally exposes pet/appointment links to USER roles and the dashboard to DOCTOR or ADMIN roles. [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=6-42]
+
+Authentication-aware UI: The navigation displays the current user's name and a logout button when authenticated, while unauthenticated users receive login and registration links. [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=44-62]
+
+API layer: The Axios instance centralizes the backend base URL and JSON content type, while a request interceptor reads the JWT from localStorage and adds it as a Bearer authorization header. [cite:file=frontend/src/services/api.js;symbol=instance;lines=3-20]
+
+Application bootstrap: main.jsx mounts the React application inside React.StrictMode and loads the application's CSS and Bootstrap CSS. [cite:file=frontend/src/main.jsx;symbol=default;lines=1-8]
+
+Backend
+
+The backend entry point is SmartPetCareApplication, marked with @SpringBootApplication, making it the Spring Boot application bootstrap class. [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=5-10]
+
+The repository tree shows separate backend packages for repositories, entities, request/response payloads, controllers, enums, and security/JWT services, indicating a layered Spring application structure. [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=1-10]
+
+3. Notable functions and classes
+App
+
+App is the main React component and composes AuthProvider, Router, Navigation, and the application's page routes. [cite:file=frontend/src/App.jsx;symbol=App;lines=12-27]
+
+Its routes include /, /login, /register, /doctors, /my-pets, /my-appointments, /doctor-dashboard, and the parameterized /book-appointment/:doctorId route. [cite:file=frontend/src/App.jsx;symbol=App;lines=16-26]
+
+Navigation
+
+Navigation obtains currentUser and logout from AuthContext, uses React Router's useNavigate, and redirects to /login after logout. [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=6-14]
+
+It also implements client-side role-based navigation by checking the user's roles for USER, DOCTOR, and ADMIN. [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=22-42]
+
+Axios instance
+
+The shared Axios instance provides a single API configuration point with the backend URL and JSON headers. [cite:file=frontend/src/services/api.js;symbol=instance;lines=3-8]
+
+Its request interceptor automatically retrieves the stored token and adds Authorization: Bearer <token> when a token exists. [cite:file=frontend/src/services/api.js;symbol=instance;lines=10-20]
+
+SmartPetCareApplication
+
+SmartPetCareApplication is the Spring Boot entry class and invokes SpringApplication.run(SmartPetCareApplication.class) from its main method. [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=main;lines=7-9]
+
+4. Design patterns and architectural observations
+Layered backend organization
+
+The backend file structure separates persistence repositories, domain entities, controllers, DTO-style request/response payloads, and security services. [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=1-10] This is consistent with a layered architecture, where responsibilities are organized by technical role rather than concentrated in one component.
+
+Context-based frontend state
+
+The frontend wraps its router and UI in AuthProvider, while Navigation consumes AuthContext. [cite:file=frontend/src/App.jsx;symbol=App;lines=12-15] [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=6-8] This represents the React Context pattern for making authentication state available to components without explicitly passing it through every intermediate component.
+
+Shared API service
+
+The exported Axios instance acts as a service-layer abstraction over HTTP communication. [cite:file=frontend/src/services/api.js;symbol=instance;lines=3-20] The interceptor also applies a cross-cutting authentication concern centrally instead of requiring every API call to manually construct its authorization header. [cite:file=frontend/src/services/api.js;symbol=instance;lines=10-20]
+
+Role-based presentation
+
+The navigation component applies role checks before displaying user-specific or doctor/admin-specific navigation options. [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=22-42] This provides a frontend role-based UI pattern, although the supplied code does not establish whether corresponding backend authorization independently enforces those permissions.

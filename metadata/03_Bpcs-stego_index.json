@@ -1,0 +1,1286 @@
+{
+  "psnr.py::PSNRAnalyzer": {
+    "kind": "class",
+    "path": "psnr.py",
+    "line_start": 12,
+    "line_end": 438
+  },
+  "psnr.py::PSNRAnalyzer.__init__": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 13,
+    "line_end": 15
+  },
+  "psnr.py::PSNRAnalyzer.setup_gui": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 17,
+    "line_end": 97
+  },
+  "psnr.py::PSNRAnalyzer.select_cover_image": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 99,
+    "line_end": 106
+  },
+  "psnr.py::PSNRAnalyzer.select_stego_image": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 108,
+    "line_end": 115
+  },
+  "psnr.py::PSNRAnalyzer.select_cover_folder": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 117,
+    "line_end": 121
+  },
+  "psnr.py::PSNRAnalyzer.select_stego_folder": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 123,
+    "line_end": 127
+  },
+  "psnr.py::PSNRAnalyzer.calculate_mse": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 129,
+    "line_end": 135
+  },
+  "psnr.py::PSNRAnalyzer.calculate_psnr": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 137,
+    "line_end": 145
+  },
+  "psnr.py::PSNRAnalyzer.load_image": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 147,
+    "line_end": 153
+  },
+  "psnr.py::PSNRAnalyzer.calculate_psnr_per_channel": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 155,
+    "line_end": 164
+  },
+  "psnr.py::PSNRAnalyzer.calculate_single_psnr": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 166,
+    "line_end": 204
+  },
+  "psnr.py::PSNRAnalyzer.display_single_result": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 206,
+    "line_end": 235
+  },
+  "psnr.py::PSNRAnalyzer.batch_calculate_psnr": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 237,
+    "line_end": 312
+  },
+  "psnr.py::PSNRAnalyzer.display_batch_summary": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 314,
+    "line_end": 344
+  },
+  "psnr.py::PSNRAnalyzer.clear_results": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 346,
+    "line_end": 349
+  },
+  "psnr.py::PSNRAnalyzer.export_csv": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 351,
+    "line_end": 369
+  },
+  "psnr.py::PSNRAnalyzer.show_plot": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 371,
+    "line_end": 389
+  },
+  "psnr.py::PSNRAnalyzer.generate_detailed_report": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 391,
+    "line_end": 434
+  },
+  "psnr.py::PSNRAnalyzer.run": {
+    "kind": "method",
+    "path": "psnr.py",
+    "line_start": 436,
+    "line_end": 438
+  },
+  "psnr.py::__init__": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 13,
+    "line_end": 15
+  },
+  "psnr.py::setup_gui": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 17,
+    "line_end": 97
+  },
+  "psnr.py::select_cover_image": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 99,
+    "line_end": 106
+  },
+  "psnr.py::select_stego_image": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 108,
+    "line_end": 115
+  },
+  "psnr.py::select_cover_folder": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 117,
+    "line_end": 121
+  },
+  "psnr.py::select_stego_folder": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 123,
+    "line_end": 127
+  },
+  "psnr.py::calculate_mse": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 129,
+    "line_end": 135
+  },
+  "psnr.py::calculate_psnr": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 137,
+    "line_end": 145
+  },
+  "psnr.py::load_image": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 147,
+    "line_end": 153
+  },
+  "psnr.py::calculate_psnr_per_channel": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 155,
+    "line_end": 164
+  },
+  "psnr.py::calculate_single_psnr": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 166,
+    "line_end": 204
+  },
+  "psnr.py::display_single_result": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 206,
+    "line_end": 235
+  },
+  "psnr.py::batch_calculate_psnr": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 237,
+    "line_end": 312
+  },
+  "psnr.py::display_batch_summary": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 314,
+    "line_end": 344
+  },
+  "psnr.py::clear_results": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 346,
+    "line_end": 349
+  },
+  "psnr.py::export_csv": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 351,
+    "line_end": 369
+  },
+  "psnr.py::show_plot": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 371,
+    "line_end": 389
+  },
+  "psnr.py::generate_detailed_report": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 391,
+    "line_end": 434
+  },
+  "psnr.py::run": {
+    "kind": "function",
+    "path": "psnr.py",
+    "line_start": 436,
+    "line_end": 438
+  },
+  "psnr.py::analyzer": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 442,
+    "line_end": 442
+  },
+  "psnr.py::main_frame": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "psnr.py::title_label": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "psnr.py::file_frame": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "psnr.py::button_frame": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 64,
+    "line_end": 64
+  },
+  "psnr.py::results_frame": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "psnr.py::scrollbar": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 77,
+    "line_end": 77
+  },
+  "psnr.py::export_frame": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 84,
+    "line_end": 84
+  },
+  "psnr.py::filename": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 101,
+    "line_end": 104
+  },
+  "psnr.py::folder": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 119,
+    "line_end": 119
+  },
+  "psnr.py::mse": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 134,
+    "line_end": 134
+  },
+  "psnr.py::psnr": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 144,
+    "line_end": 144
+  },
+  "psnr.py::img": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 149,
+    "line_end": 149
+  },
+  "psnr.py::psnr_channels": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 157,
+    "line_end": 157
+  },
+  "psnr.py::cover_path": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 168,
+    "line_end": 168
+  },
+  "psnr.py::stego_path": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 169,
+    "line_end": 169
+  },
+  "psnr.py::output": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 208,
+    "line_end": 208
+  },
+  "psnr.py::cover_folder": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 239,
+    "line_end": 239
+  },
+  "psnr.py::stego_folder": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 240,
+    "line_end": 240
+  },
+  "psnr.py::psnr_values": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 319,
+    "line_end": 319
+  },
+  "psnr.py::mse_values": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 320,
+    "line_end": 320
+  },
+  "psnr.py::high_quality": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 333,
+    "line_end": 333
+  },
+  "psnr.py::medium_quality": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 334,
+    "line_end": 334
+  },
+  "psnr.py::low_quality": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 335,
+    "line_end": 335
+  },
+  "psnr.py::cover_img": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 177,
+    "line_end": 177
+  },
+  "psnr.py::stego_img": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 178,
+    "line_end": 178
+  },
+  "psnr.py::psnr_overall": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 181,
+    "line_end": 181
+  },
+  "psnr.py::result": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 186,
+    "line_end": 196
+  },
+  "psnr.py::quality": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 225,
+    "line_end": 225
+  },
+  "psnr.py::image_extensions": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 251,
+    "line_end": 251
+  },
+  "psnr.py::cover_files": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 252,
+    "line_end": 252
+  },
+  "psnr.py::batch_results": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 261,
+    "line_end": 261
+  },
+  "psnr.py::processed_count": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 262,
+    "line_end": 262
+  },
+  "psnr.py::psnr_ch": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 160,
+    "line_end": 160
+  },
+  "psnr.py::stego_file": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 269,
+    "line_end": 269
+  },
+  "psnr.py::df": {
+    "kind": "variable",
+    "path": "psnr.py",
+    "line_start": 365,
+    "line_end": 365
+  },
+  "src/Databaseinsert.js::testDatabaseInsert": {
+    "kind": "function_or_class",
+    "path": "src/Databaseinsert.js",
+    "line_start": 4,
+    "line_end": 44
+  },
+  "src/UploadComponent.js::handleUpload": {
+    "kind": "function_or_class",
+    "path": "src/UploadComponent.js",
+    "line_start": 10,
+    "line_end": 33
+  },
+  "src/App.js::App": {
+    "kind": "function_or_class",
+    "path": "src/App.js",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "src/App.js::handleLoginSuccess": {
+    "kind": "function_or_class",
+    "path": "src/App.js",
+    "line_start": 11,
+    "line_end": 51
+  },
+  "src/StegoApp.js::runTestInsert": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 39,
+    "line_end": 79
+  },
+  "src/StegoApp.js::checkSession": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 54,
+    "line_end": 94
+  },
+  "src/StegoApp.js::handleSignup": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 66,
+    "line_end": 106
+  },
+  "src/StegoApp.js::handleLogin": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 78,
+    "line_end": 118
+  },
+  "src/StegoApp.js::handleLogout": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 90,
+    "line_end": 130
+  },
+  "src/StegoApp.js::handleSidebarToggle": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 95,
+    "line_end": 135
+  },
+  "src/StegoApp.js::handleImageUpload": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 99,
+    "line_end": 139
+  },
+  "src/StegoApp.js::handleSecretImageUpload": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 114,
+    "line_end": 154
+  },
+  "src/StegoApp.js::handleMessageChange": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 127,
+    "line_end": 167
+  },
+  "src/StegoApp.js::fetchUserStegoImages": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 132,
+    "line_end": 172
+  },
+  "src/StegoApp.js::handleSelectStegoImage": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 156,
+    "line_end": 196
+  },
+  "src/StegoApp.js::uploadStegoImageToSupabase": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 197,
+    "line_end": 237
+  },
+  "src/StegoApp.js::handleEncode": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 228,
+    "line_end": 268
+  },
+  "src/StegoApp.js::handleDecode": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 273,
+    "line_end": 313
+  },
+  "src/StegoApp.js::handleImageInImageEncode": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 316,
+    "line_end": 356
+  },
+  "src/StegoApp.js::handleImageInImageDecode": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 383,
+    "line_end": 423
+  },
+  "src/StegoApp.js::toBase64": {
+    "kind": "function_or_class",
+    "path": "src/StegoApp.js",
+    "line_start": 442,
+    "line_end": 482
+  },
+  "src/uploadToSupabase.js::uploadImageToSupabase": {
+    "kind": "function_or_class",
+    "path": "src/uploadToSupabase.js",
+    "line_start": 7,
+    "line_end": 47
+  },
+  "src/HomePage.jsx::handleStart": {
+    "kind": "function_or_class",
+    "path": "src/HomePage.jsx",
+    "line_start": 11,
+    "line_end": 51
+  },
+  "src/LoginPage.js::handleLogin": {
+    "kind": "function_or_class",
+    "path": "src/LoginPage.js",
+    "line_start": 12,
+    "line_end": 52
+  },
+  "src/LoginPage.js::handleSignup": {
+    "kind": "function_or_class",
+    "path": "src/LoginPage.js",
+    "line_start": 29,
+    "line_end": 69
+  },
+  "src/LoginPage.js::handleLogout": {
+    "kind": "function_or_class",
+    "path": "src/LoginPage.js",
+    "line_start": 45,
+    "line_end": 85
+  },
+  "backend/app.py::app": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 14,
+    "line_end": 14
+  },
+  "backend/app.py::recent_operations": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 17,
+    "line_end": 17
+  },
+  "backend/app.py::stored_keys": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 19,
+    "line_end": 19
+  },
+  "backend/app.py::KEY_LENGTH": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "backend/app.py::COMPLEXITY_THRESHOLD": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 22,
+    "line_end": 22
+  },
+  "backend/app.py::BLOCK_SIZE": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 23,
+    "line_end": 23
+  },
+  "backend/app.py::get_image_hash": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 25,
+    "line_end": 26
+  },
+  "backend/app.py::encrypt_message": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 28,
+    "line_end": 29
+  },
+  "backend/app.py::decrypt_message": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 31,
+    "line_end": 32
+  },
+  "backend/app.py::message_to_bitplanes": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 34,
+    "line_end": 56
+  },
+  "backend/app.py::serialize_key": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 57,
+    "line_end": 81
+  },
+  "backend/app.py::deserialize_key": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 84,
+    "line_end": 116
+  },
+  "backend/app.py::bitplanes_to_message": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 118,
+    "line_end": 135
+  },
+  "backend/app.py::calculate_complexity": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 137,
+    "line_end": 157
+  },
+  "backend/app.py::conjugate": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 159,
+    "line_end": 168
+  },
+  "backend/app.py::extract_bitplane": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 170,
+    "line_end": 173
+  },
+  "backend/app.py::set_bitplane": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 175,
+    "line_end": 188
+  },
+  "backend/app.py::get_block": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 190,
+    "line_end": 193
+  },
+  "backend/app.py::set_block": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 196,
+    "line_end": 200
+  },
+  "backend/app.py::encode_with_bpcs": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 202,
+    "line_end": 308
+  },
+  "backend/app.py::decode_with_bpcs": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 310,
+    "line_end": 367
+  },
+  "backend/app.py::encode_to_image": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 370,
+    "line_end": 396
+  },
+  "backend/app.py::decode_from_image": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 398,
+    "line_end": 417
+  },
+  "backend/app.py::index": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 420,
+    "line_end": 448
+  },
+  "backend/app.py::encode_message": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 451,
+    "line_end": 520
+  },
+  "backend/app.py::decode_message": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 523,
+    "line_end": 569
+  },
+  "backend/app.py::encode_image": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 573,
+    "line_end": 652
+  },
+  "backend/app.py::decode_image": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 655,
+    "line_end": 701
+  },
+  "backend/app.py::encode_message_legacy": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 705,
+    "line_end": 749
+  },
+  "backend/app.py::decode_message_legacy": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 752,
+    "line_end": 789
+  },
+  "backend/app.py::log_transition": {
+    "kind": "function",
+    "path": "backend/app.py",
+    "line_start": 792,
+    "line_end": 801
+  },
+  "backend/app.py::binary_message": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "backend/app.py::total_bits_needed": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 40,
+    "line_end": 40
+  },
+  "backend/app.py::blocks": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 44,
+    "line_end": 44
+  },
+  "backend/app.py::key_bytes": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 58,
+    "line_end": 58
+  },
+  "backend/app.py::enc_key": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 61,
+    "line_end": 61
+  },
+  "backend/app.py::embedding_entries": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "backend/app.py::block_count": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 66,
+    "line_end": 66
+  },
+  "backend/app.py::raw": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 85,
+    "line_end": 85
+  },
+  "backend/app.py::ptr": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 86,
+    "line_end": 86
+  },
+  "backend/app.py::embedding_map": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 97,
+    "line_end": 97
+  },
+  "backend/app.py::remaining": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 107,
+    "line_end": 107
+  },
+  "backend/app.py::conjugation_bits": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 108,
+    "line_end": 108
+  },
+  "backend/app.py::conjugation_map": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 109,
+    "line_end": 109
+  },
+  "backend/app.py::decoded": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 127,
+    "line_end": 127
+  },
+  "backend/app.py::changes": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 139,
+    "line_end": 139
+  },
+  "backend/app.py::total": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 140,
+    "line_end": 140
+  },
+  "backend/app.py::checker": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 162,
+    "line_end": 162
+  },
+  "backend/app.py::binary_bitplane": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 176,
+    "line_end": 176
+  },
+  "backend/app.py::mask": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 179,
+    "line_end": 179
+  },
+  "backend/app.py::cleared": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 182,
+    "line_end": 182
+  },
+  "backend/app.py::bit_value": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 185,
+    "line_end": 185
+  },
+  "backend/app.py::image": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 204,
+    "line_end": 204
+  },
+  "backend/app.py::stego_image": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 206,
+    "line_end": 206
+  },
+  "backend/app.py::complex_block_count": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 210,
+    "line_end": 210
+  },
+  "backend/app.py::message_blocks": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 214,
+    "line_end": 214
+  },
+  "backend/app.py::channel_order": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 215,
+    "line_end": 215
+  },
+  "backend/app.py::bit_plane_order": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 216,
+    "line_end": 216
+  },
+  "backend/app.py::estimated_capacity": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 219,
+    "line_end": 219
+  },
+  "backend/app.py::encryption_key": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 230,
+    "line_end": 230
+  },
+  "backend/app.py::encrypted_message": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 231,
+    "line_end": 231
+  },
+  "backend/app.py::block_index": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 242,
+    "line_end": 242
+  },
+  "backend/app.py::map_str": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 300,
+    "line_end": 300
+  },
+  "backend/app.py::key": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 301,
+    "line_end": 306
+  },
+  "backend/app.py::binary_index": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 377,
+    "line_end": 377
+  },
+  "backend/app.py::transition_count": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 378,
+    "line_end": 378
+  },
+  "backend/app.py::max_bits": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 379,
+    "line_end": 379
+  },
+  "backend/app.py::operations_html": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 422,
+    "line_end": 425
+  },
+  "backend/app.py::data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 453,
+    "line_end": 453
+  },
+  "backend/app.py::image_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 454,
+    "line_end": 454
+  },
+  "backend/app.py::message": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 455,
+    "line_end": 455
+  },
+  "backend/app.py::complexity": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 456,
+    "line_end": 456
+  },
+  "backend/app.py::key_str": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 526,
+    "line_end": 526
+  },
+  "backend/app.py::cover_image_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 576,
+    "line_end": 576
+  },
+  "backend/app.py::secret_image_data": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 577,
+    "line_end": 577
+  },
+  "backend/app.py::conj_bytes": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 78,
+    "line_end": 78
+  },
+  "backend/app.py::plane": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 99,
+    "line_end": 99
+  },
+  "backend/app.py::channel": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 100,
+    "line_end": 100
+  },
+  "backend/app.py::y": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 101,
+    "line_end": 101
+  },
+  "backend/app.py::x": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 102,
+    "line_end": 102
+  },
+  "backend/app.py::padded_bits": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 293,
+    "line_end": 293
+  },
+  "backend/app.py::conjugation_bytes": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 294,
+    "line_end": 294
+  },
+  "backend/app.py::conjugation_b64": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 295,
+    "line_end": 295
+  },
+  "backend/app.py::embedding_map_str": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 316,
+    "line_end": 316
+  },
+  "backend/app.py::conjugation_str": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 331,
+    "line_end": 331
+  },
+  "backend/app.py::embedded_blocks": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 341,
+    "line_end": 341
+  },
+  "backend/app.py::decryption_key": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 358,
+    "line_end": 358
+  },
+  "backend/app.py::image_bytes": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 466,
+    "line_end": 466
+  },
+  "backend/app.py::image_id": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 468,
+    "line_end": 468
+  },
+  "backend/app.py::start": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 469,
+    "line_end": 469
+  },
+  "backend/app.py::output": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 475,
+    "line_end": 475
+  },
+  "backend/app.py::stego_base64": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 477,
+    "line_end": 477
+  },
+  "backend/app.py::key_json": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 489,
+    "line_end": 495
+  },
+  "backend/app.py::key_id": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 499,
+    "line_end": 499
+  },
+  "backend/app.py::cover_image_bytes": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 590,
+    "line_end": 590
+  },
+  "backend/app.py::secret_image_bytes": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 591,
+    "line_end": 591
+  },
+  "backend/app.py::cover_image": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 593,
+    "line_end": 593
+  },
+  "backend/app.py::secret_image": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 594,
+    "line_end": 594
+  },
+  "backend/app.py::secret_output": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 597,
+    "line_end": 597
+  },
+  "backend/app.py::secret_string": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 599,
+    "line_end": 599
+  },
+  "backend/app.py::decrypted": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 766,
+    "line_end": 766
+  },
+  "backend/app.py::block_bits": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "backend/app.py::block": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 48,
+    "line_end": 48
+  },
+  "backend/app.py::byte": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 130,
+    "line_end": 130
+  },
+  "backend/app.py::bitplane": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 222,
+    "line_end": 222
+  },
+  "backend/app.py::parts": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 320,
+    "line_end": 320
+  },
+  "backend/app.py::bit": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 408,
+    "line_end": 408
+  },
+  "backend/app.py::idx": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "backend/app.py::pixel": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 389,
+    "line_end": 389
+  },
+  "backend/app.py::chars": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 413,
+    "line_end": 413
+  },
+  "backend/app.py::message_block": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 266,
+    "line_end": 266
+  },
+  "backend/app.py::message_complexity": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 269,
+    "line_end": 269
+  },
+  "backend/app.py::is_conjugated": {
+    "kind": "variable",
+    "path": "backend/app.py",
+    "line_start": 270,
+    "line_end": 270
+  }
+}

@@ -1,0 +1,45 @@
+Structured Summary Report
+1. Overall purpose and architecture
+The repository is organized as an algorithmic-trading/backtesting system, as indicated by the package-level description in src/__init__.py. [cite:file=src/init.py;symbol=module;lines=1-1]
+The visible architecture separates performance metrics into a dedicated src/metrics module, with MetricsReport and MetricsEngine exported from that package. [cite:file=src/metrics/init.py;symbol=module;lines=1-5]
+The repository also exposes a backtesting package containing BacktestEngine, BacktestResult, and print_backtest_result. [cite:file=src/backtest/init.py;symbol=module;lines=1-6]
+Experiment scripts drive repeated backtests from YAML configurations, including experiments that vary the maximum number of concurrent positions. [cite:file=run_position_study.py;symbol=main;lines=39-63]
+The run_harami_study.py script specifically constructs a bullish-harami configuration and runs it with 1, 2, and 4 concurrent positions. [cite:file=run_harami_study.py;symbol=run;lines=8-48]
+2. Key components / modules
+Backtesting and experiment runners
+run_position_study.py defines a collection of seven strategy configuration files and three tested position limits: 1, 2, and 4. [cite:file=run_position_study.py;symbol=CONFIGS;lines=18-26]
+make_temp_config loads a YAML strategy configuration, forces the CSV data source to data/nifty50, adjusts an overly early start date, and writes a temporary configuration containing the requested maximum position count. [cite:file=run_position_study.py;symbol=make_temp_config;lines=29-49]
+main iterates over every configured strategy and every configured position limit, invokes the backtest runner, reports exceptions, and removes each temporary configuration afterward. [cite:file=run_position_study.py;symbol=main;lines=52-72]
+run_harami_study.py uses a similar experiment-oriented approach but directly defines the bullish-harami strategy parameters, backtest dates, risk configuration, and execution slippage before varying the position limit. [cite:file=run_harami_study.py;symbol=run;lines=8-48]
+Metrics
+MetricsReport is an immutable dataclass containing maximum drawdown, win rate, expectancy, and post-tax return. [cite:file=src/metrics/metrics_engine.py;symbol=MetricsReport;lines=7-14]
+MetricsEngine is documented as a read-only metrics computation engine that computes performance metrics from equity-curve data without modifying state. [cite:file=src/metrics/metrics_engine.py;symbol=MetricsEngine;lines=17-22]
+The metrics package defines separate constants for an intraday tax rate of 30% and an STCG tax rate of 20%. [cite:file=src/metrics/metrics_engine.py;symbol=MetricsEngine;lines=24-25]
+3. Notable functions and classes
+MetricsEngine.compute
+compute accepts an equity curve, an optional list of individual trade returns, and a tax rate, and returns a MetricsReport. [cite:file=src/metrics/metrics_engine.py;symbol=compute;lines=27-41]
+For an empty equity curve, compute returns zero for all four reported metrics. [cite:file=src/metrics/metrics_engine.py;symbol=compute;lines=42-48]
+For non-empty data, it computes maximum drawdown and, when trade returns are supplied, calculates win rate and expectancy. [cite:file=src/metrics/metrics_engine.py;symbol=compute;lines=50-59]
+It calculates total return from the first and last equity values and applies the supplied tax rate only when the total return is positive. [cite:file=src/metrics/metrics_engine.py;symbol=compute;lines=61-66]
+MetricsEngine._compute_max_drawdown
+_compute_max_drawdown calculates maximum drawdown by tracking the highest equity value encountered and measuring subsequent declines relative to that peak. [cite:file=src/metrics/metrics_engine.py;symbol=_compute_max_drawdown;lines=75-91]
+MetricsEngine._compute_win_rate
+_compute_win_rate counts positive trade returns and divides that count by the number of supplied returns. [cite:file=src/metrics/metrics_engine.py;symbol=_compute_win_rate;lines=93-100]
+MetricsEngine._compute_expectancy
+_compute_expectancy calculates expectancy as the arithmetic mean of the supplied trade returns. [cite:file=src/metrics/metrics_engine.py;symbol=_compute_expectancy;lines=102-107]
+4. Design patterns and architectural observations
+Strategy/configuration-driven experimentation
+The experiment runners use external YAML configuration files as inputs to backtest execution rather than embedding every strategy configuration directly in the backtest invocation. [cite:file=run_position_study.py;symbol=CONFIGS;lines=18-26] [cite:file=run_position_study.py;symbol=make_temp_config;lines=29-49]
+run_position_study.py further separates experiment definition from execution by using make_temp_config to transform an existing configuration for each experimental condition. [cite:file=run_position_study.py;symbol=make_temp_config;lines=29-49]
+Batch/parameter-sweep pattern
+run_position_study.py implements a parameter sweep across both strategy configurations and maximum concurrent-position values. [cite:file=run_position_study.py;symbol=main;lines=52-63]
+run_harami_study.py applies the same parameter-sweep idea to one explicitly configured strategy. [cite:file=run_harami_study.py;symbol=run;lines=34-48]
+Immutable value-object pattern
+MetricsReport is declared with @dataclass(frozen=True), making the metrics result an immutable value object after construction. [cite:file=src/metrics/metrics_engine.py;symbol=MetricsReport;lines=7-14]
+Stateless computation pattern
+MetricsEngine explicitly describes itself as read-only and non-mutating, and its compute method derives a new MetricsReport from its inputs rather than maintaining calculation state. [cite:file=src/metrics/metrics_engine.py;symbol=MetricsEngine;lines=17-22] [cite:file=src/metrics/metrics_engine.py;symbol=compute;lines=27-41]
+Package facade pattern
+The metrics package re-exports MetricsReport and MetricsEngine, providing a concise package-level interface to the underlying implementation. [cite:file=src/metrics/init.py;symbol=module;lines=1-5]
+Likewise, the backtest package re-exports its principal engine, result, and printing components. [cite:file=src/backtest/init.py;symbol=module;lines=1-6]
+
+Overall: the visible portion of the repository shows a modular trading-analysis codebase with a backtesting-oriented package structure, dedicated performance-metric computation, and separate scripts for reproducible parameter-sweep studies. [cite:file=src/init.py;symbol=module;lines=1-1] [cite:file=src/metrics/metrics_engine.py;symbol=MetricsEngine;lines=17-22] [cite:file=run_position_study.py;symbol=main;lines=52-72]

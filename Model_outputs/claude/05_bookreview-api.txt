@@ -1,0 +1,54 @@
+# Repository Summary Report: Bookreview API
+
+## ⚠️ Notable Code Issue (upfront)
+
+There is a **package/directory mismatch** across this codebase: files physically live under `src/main/java/bookreview_api/...` per the file tree, but their `package` declarations use `com.bookreview.api` (e.g., `package com.bookreview.api;` in `BookreviewApiApplication.java` [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=BookreviewApiApplication;lines=1-1] and `package com.bookreview.api.config;` in `WebConfig.java` [cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=WebConfig;lines=1-1]). Interestingly, the test class uses `package bookreview_api;`, matching the directory [cite:file=src/test/java/bookreview_api/BookreviewApiApplicationTests.java;symbol=BookreviewApiApplicationTests;lines=1-1]. In standard Maven/Gradle layouts, package declarations must match the directory structure exactly, so this mismatch would likely cause build failures unless the actual directory structure differs from what's shown in the file tree.
+
+## 1. Overall Purpose and Architecture
+
+This is a **Spring Boot REST API for a book review platform**, allowing users to register, authenticate, browse/search books, and post reviews with ratings [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=9-13]. The application bootstraps via a standard Spring Boot entry point [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=BookreviewApiApplication.main;lines=9-11].
+
+The architecture follows a **layered design** with clear separation into `model` (JPA entities), `dto` (data transfer objects), `repository` (Spring Data JPA data access), `service`, `controller` (REST endpoints), `security` (authentication/authorization), and `config` packages. The presence of `SecurityConfig`, `JwtFilter`, `JwtUtil`, and `CustomOAuth2SuccessHandler` indicates the API uses **JWT-based authentication combined with OAuth2 login** [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=1-1], though the contents of these security files were not included in the provided content, so their specific implementation cannot be described beyond their existence. A `SwaggerConfig` file suggests the API exposes OpenAPI/Swagger documentation [cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=SwaggerConfig;lines=1-1], though again its content was not provided.
+
+## 2. Key Components / Modules and What They Do
+
+**Entity/Model Layer**:
+- **`User`** — represents a registered user with a UUID primary key, unique name and email, password, role (defaulting to `"USER"`), profile picture URL, creation timestamp, and a lazily-loaded one-to-many relationship to `Review` [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=10-32].
+- **`Review`** — represents a user's review of a book, with a UUID primary key, integer rating, comment (up to 2000 chars), creation/update timestamps, and many-to-one relationships to both `User` and `Book`; enforces a uniqueness constraint so a given user can only review a given book once [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=9-13].
+- **`Book`** — referenced by `BookRepository` and `Review` as an entity, but its own source file content was not included, so its fields cannot be described [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=8-8].
+- **`ReviewWithBookDTO`** — present in the file tree as a DTO, likely combining review and book data for API responses, but its content was not provided.
+
+**Repository Layer**:
+- **`UserRepository`** — provides lookup of a user by email and an existence check by email, useful for registration/login flows [cite:file=src/main/java/bookreview_api/repository/UserRepository.java;symbol=UserRepository;lines=7-11].
+- **`BookRepository`** — provides paginated search by title-or-author (case-insensitive containing match), filtering by genre, by author, by genre-and-author combined, and by minimum rating threshold [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=8-18].
+- **`ReviewRepository`** — listed in the file tree but its content was not included, so no claims can be made about its query methods.
+
+**Configuration Layer**:
+- **`WebConfig`** — configures Spring MVC to serve static files from a local `uploads/` directory at the `/uploads/**` URL path, implying the API supports file uploads (likely profile pictures or book cover images) that are served back as static resources [cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=addResourceHandlers;lines=10-14].
+
+**Controller Layer**: `BookController`, `UserController`, `ReviewController`, `HealthController`, `AuthController`, and `UserProfileController` are listed in the file tree, implying REST endpoints for books, users, reviews, health checks, authentication, and user profile management respectively, but none of their contents were included in the provided repository content, so no functional claims can be made about them.
+
+**Service Layer**: `UserService` is listed in the file tree but its content was not provided.
+
+**Security Layer**: `SecurityConfig`, `CustomOAuth2SuccessHandler`, `JwtFilter`, and `JwtUtil` are listed in the file tree, strongly suggesting JWT-based authentication with OAuth2 social login support, but no content was provided for any of these files, so their specific logic cannot be verified.
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`User.onCreate()`** — a `@PrePersist` lifecycle callback that sets `createdAt` to the current time and defaults `role` to `"USER"` if not explicitly set, ensuring every new user has a sensible default role [cite:file=src/main/java/bookreview_api/model/User.java;symbol=onCreate;lines=44-47].
+- **`Review.onCreate()`** — a `@PrePersist` callback that sets `createdAt` to the current time only if it hasn't already been set [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=onCreate;lines=39-43].
+- **`Review.onUpdate()`** — a `@PreUpdate` callback that stamps `updatedAt` with the current time whenever a review is modified, enabling audit tracking of edits [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=onUpdate;lines=45-48].
+- **`WebConfig.addResourceHandlers(ResourceHandlerRegistry)`** — registers a static resource handler mapping requests under `/uploads/**` to files in the local filesystem `uploads/` directory, enabling the API to serve previously-uploaded files (e.g., profile pictures) [cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=addResourceHandlers;lines=10-14].
+- **`BookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase`** — a derived query method supporting a general, case-insensitive search across both title and author fields, returning paginated results [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase;lines=10-11].
+- **`BookRepository.findByRatingGreaterThanEqual`** — a derived query method filtering books by a minimum rating threshold, also paginated [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=findByRatingGreaterThanEqual;lines=17-17].
+
+## 4. Design Patterns Observed
+
+- **Repository Pattern**: Both `UserRepository` and `BookRepository` extend Spring Data's `JpaRepository`, delegating standard CRUD and pagination to the framework, with custom finder methods expressed via Spring Data's method-name query derivation rather than hand-written SQL/JPQL [cite:file=src/main/java/bookreview_api/repository/UserRepository.java;symbol=UserRepository;lines=7-11][cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=8-18].
+- **JPA Entity Lifecycle Callbacks**: Both `User` and `Review` use `@PrePersist` (and `Review` also uses `@PreUpdate`) to automatically manage timestamp fields, keeping timestamp logic out of service/controller code [cite:file=src/main/java/bookreview_api/model/User.java;symbol=onCreate;lines=44-47][cite:file=src/main/java/bookreview_api/model/Review.java;symbol=onUpdate;lines=45-48].
+- **Pagination Pattern**: `BookRepository` consistently returns Spring Data's `Page<Book>` type across all its query methods, indicating the API is designed to paginate book listings/search results rather than returning unbounded lists [cite:file=src/main/java/bookreview_api/repository/BookRepository.java;symbol=BookRepository;lines=10-18].
+- **DTO Pattern**: The presence of `ReviewWithBookDTO` suggests the API uses dedicated DTOs to shape API responses (e.g., combining review and book data) separately from the underlying JPA entities, though its content was not available to confirm the specific fields or mapping logic.
+- **Bidirectional JPA Relationship with `@JsonIgnore`**: The `User`–`Review` relationship is bidirectional (`User.reviews` and `Review.user`), and both sides use `@JsonIgnore` on the back-reference to prevent infinite recursion during JSON serialization [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User.reviews;lines=27-29][cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review.user;lines=27-29].
+
+## Scope Limitations
+
+The following files appear in the file tree but their contents were **not provided**, so no functional claims have been made about them: `HELP.md`, `model/Book.java`, `dto/ReviewWithBookDTO.java`, `config/SwaggerConfig.java`, `repository/ReviewRepository.java`, `service/UserService.java`, all controller classes (`BookController`, `UserController`, `ReviewController`, `HealthController`, `AuthController`, `UserProfileController`), and all security classes (`SecurityConfig`, `CustomOAuth2SuccessHandler`, `JwtFilter`, `JwtUtil`). This means the actual REST API surface, authentication/authorization logic, and business logic in the service layer could not be verified from the content available.

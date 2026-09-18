@@ -1,0 +1,50 @@
+{
+  "app.py::app": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 6,
+    "line_end": 6
+  },
+  "app.py::predict": {
+    "kind": "function",
+    "path": "app.py",
+    "line_start": 14,
+    "line_end": 26
+  },
+  "app.py::data": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 16,
+    "line_end": 16
+  },
+  "app.py::features": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "app.py::std_features": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "app.py::prediction": {
+    "kind": "variable",
+    "path": "app.py",
+    "line_start": 22,
+    "line_end": 22
+  },
+  "diabetes-predictor/src/App.js::handleChange": {
+    "kind": "function_or_class",
+    "path": "diabetes-predictor/src/App.js",
+    "line_start": 18,
+    "line_end": 58
+  },
+  "diabetes-predictor/src/App.js::handleSubmit": {
+    "kind": "function_or_class",
+    "path": "diabetes-predictor/src/App.js",
+    "line_start": 22,
+    "line_end": 62
+  }
+}

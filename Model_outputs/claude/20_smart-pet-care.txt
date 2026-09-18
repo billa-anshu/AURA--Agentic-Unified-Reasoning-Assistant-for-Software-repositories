@@ -1,0 +1,47 @@
+# Repository Analysis Report: Smart Pet Care Platform
+
+## 1. Overall Purpose and Architecture
+
+This repository implements **Smart Pet Care**, a veterinary appointment booking and pet management platform, structured as a **two-tier application** with a React frontend and a Java Spring Boot backend. The name "Smart Pet Care" appears directly in the navigation UI [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=17-17] and in the backend's root package (`com.smartpetcare`) [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=1-1].
+
+The **frontend** is a React SPA built with Vite [cite:file=frontend/vite.config.js;symbol=defineConfig;lines=6-8], using React Router for client-side navigation [cite:file=frontend/src/App.jsx;symbol=App;lines=2,17-30], React Bootstrap for UI components [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=2,15-15], and Axios for HTTP communication with the backend [cite:file=frontend/src/services/api.js;symbol=instance;lines=1,3-8].
+
+The **backend** is a Spring Boot application [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=6-9] organized into a layered package structure — `repository`, `payload/request`, `payload/response`, `enums`, `entity`, `controller`, and `security` (with `security/services` and `security/jwt` sub-packages) — based on the file tree, covering domain entities for `User`, `Doctor`, `Pet`, `Appointment`, and `Payment`, along with dedicated controllers for each and a JWT-based security layer. Only the application's main entry-point class content was provided among the backend files, so detailed functional claims about the controllers, repositories, entities, and security classes cannot be made beyond what their file names and package structure indicate.
+
+## 2. Key Components / Modules
+
+### Frontend
+- **`App.jsx`** — The root application component. It wraps the entire app in an `AuthProvider` context and a React Router `Router`, rendering a persistent `Navigation` bar and defining routes for the home page, login, registration, doctor listing, pet management, appointment booking (parameterized by `:doctorId`), appointment history, and a doctor dashboard [cite:file=frontend/src/App.jsx;symbol=App;lines=16-31].
+- **`main.jsx`** — The application's entry point, rendering `App` into the DOM inside `React.StrictMode` and importing global and Bootstrap CSS [cite:file=frontend/src/main.jsx;symbol=ReactDOM.createRoot;lines=4-9].
+- **`components/Navigation.jsx`** — A shared navigation bar component that consumes `AuthContext` to conditionally render links based on authentication state and user role [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=6,22-38]. It provides logout functionality that calls a context `logout` method and redirects to `/login` [cite:file=frontend/src/components/Navigation.jsx;symbol=handleLogout;lines=10-13].
+- **`services/api.js`** — A centralized Axios instance configured with a base URL of `http://localhost:8080` and a JSON content-type header [cite:file=frontend/src/services/api.js;symbol=instance;lines=3-8]. It attaches a request interceptor that reads a JWT token from `localStorage` and injects it as a `Bearer` token into the `Authorization` header of every outgoing request, when present [cite:file=frontend/src/services/api.js;symbol=instance.interceptors.request.use;lines=10-20].
+- **`eslint.config.js`** — Configures ESLint for the frontend with recommended JS rules, React Hooks linting, and React Refresh (Vite) rules, targeting `.js`/`.jsx` files, and customizes the `no-unused-vars` rule to ignore variables matching an all-caps/underscore naming pattern [cite:file=frontend/eslint.config.js;symbol=default;lines=7-24].
+- Additional page and service files (`BookAppointment.jsx`, `MyAppointments.jsx`, `DoctorList.jsx`, `MyPets.jsx`, `Home.jsx`, `Login.jsx`, `Register.jsx`, `DoctorDashboard.jsx`, `AuthContext.jsx`, `user.service.js`, `auth.service.js`) are referenced in the file tree and imported by `App.jsx` [cite:file=frontend/src/App.jsx;symbol=App;lines=5-13], but their source content was not provided, so no claims can be made about their internal implementation.
+
+### Backend
+- **`SmartPetCareApplication.java`** — The Spring Boot application's main class, annotated with `@SpringBootApplication` and launching the application via `SpringApplication.run` [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=SmartPetCareApplication;lines=6-9].
+- All other backend files (`repository/`, `payload/`, `enums/`, `entity/`, `controller/`, `security/`) are listed in the file tree only, without provided source content, so their specific responsibilities cannot be confirmed beyond their evident domain purpose from file naming (e.g., `UserRepository.java`, `AppointmentController.java`, `JwtUtils.java`).
+
+## 3. Notable Functions or Classes and Their Responsibilities
+
+- **`App()` (App.jsx)** — Defines the application's top-level route table using React Router's `Routes`/`Route` components, mapping each application page to a distinct URL path, including a dynamic `:doctorId` route parameter for the appointment booking page [cite:file=frontend/src/App.jsx;symbol=App;lines=17-30].
+
+- **`Navigation()` (Navigation.jsx)** — Retrieves `currentUser` and `logout` from `AuthContext` via `useContext` [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=6-6]. Conditionally renders navigation links: pet/appointment links only for users with the `'USER'` role, and a dashboard link for users with `'DOCTOR'` or `'ADMIN'` roles [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=25-33]. Displays the signed-in user's name and a logout button when authenticated, or login/register links otherwise [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=40-52].
+
+- **`handleLogout()` (Navigation.jsx)** — Invokes the `logout` function from context and then programmatically navigates the user to the `/login` route using `useNavigate` [cite:file=frontend/src/components/Navigation.jsx;symbol=handleLogout;lines=10-13].
+
+- **Axios request interceptor (`api.js`)** — Runs before every outgoing request, checking `localStorage` for a stored `'token'` value and, if present, setting the `Authorization` header to `'Bearer ' + token`; on interceptor error, it rejects the promise [cite:file=frontend/src/services/api.js;symbol=instance.interceptors.request.use;lines=11-20].
+
+- **`main()` (SmartPetCareApplication.java)** — The Java application entry point that bootstraps the Spring Boot application context [cite:file=backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java;symbol=main;lines=8-10].
+
+## 4. Notable Design Patterns and Observations
+
+- **Context-based authentication state**: The frontend centralizes authentication state and behavior (`currentUser`, `logout`) in a React Context (`AuthContext`), consumed by both the top-level `App` component (as a provider) and `Navigation` (as a consumer), a standard React pattern for cross-cutting auth state [cite:file=frontend/src/App.jsx;symbol=App;lines=3,18-19][cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=4,6-6].
+
+- **Centralized HTTP client with interceptor-based auth injection**: Rather than manually attaching auth headers in each API call, the frontend uses a single configured Axios instance with a request interceptor to transparently attach JWT bearer tokens to all outgoing requests [cite:file=frontend/src/services/api.js;symbol=instance;lines=3-20].
+
+- **Role-based UI rendering**: The navigation component implements client-side role-based access control for UI visibility, checking `currentUser.roles` for `'USER'`, `'DOCTOR'`, and `'ADMIN'` values to determine which links to display [cite:file=frontend/src/components/Navigation.jsx;symbol=Navigation;lines=25-33].
+
+- **Layered backend architecture (implied)**: The backend's package structure separates concerns into repositories, DTO-style request/response payloads, enums, entities, controllers, and security, consistent with a typical layered Spring Boot architecture — though this observation is based on file/package naming from the file tree rather than confirmed source content, since only the main application class was provided.
+
+- **JWT-based stateless authentication (implied)**: The presence of `security/jwt/JwtUtils.java`, `AuthTokenFilter.java`, `AuthEntryPointJwt.java`, and a `JwtResponse.java` payload class in the file tree, combined with the frontend's token-based Axios interceptor [cite:file=frontend/src/services/api.js;symbol=instance.interceptors.request.use;lines=10-20], suggests the application uses JWT-based stateless authentication, though the backend security class contents were not provided to confirm implementation details.

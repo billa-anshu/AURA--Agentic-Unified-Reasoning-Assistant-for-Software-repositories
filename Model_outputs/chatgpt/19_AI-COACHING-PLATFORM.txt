@@ -1,0 +1,80 @@
+1. Overall Purpose and Architecture
+
+The repository is structured as a Next.js-based web application with Clerk authentication and an AI coaching/chat layer. The authentication middleware uses Clerk's clerkMiddleware and protects routes except /sign-in and /sign-up. [cite:file=middleware.js;symbol=isPublicRoute;lines=3-3] [cite:file=middleware.js;symbol=default;lines=5-7]
+
+The application also contains reusable UI components built around React, Radix UI, Tailwind-style utility classes, and class-variance-authority. [cite:file=components/ui/dialog.jsx;symbol=DialogContent;lines=22-42] [cite:file=components/ui/button.jsx;symbol=buttonVariants;lines=7-35]
+
+The AI functionality is implemented in a client-accessible service that creates an OpenAI-compatible client pointed at OpenRouter and invokes the deepseek/deepseek-chat-v3-0324:free model. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=3-23]
+
+The repository separates concerns into application routing/pages, reusable components, services, authentication/context, and AI/data-access infrastructure. [cite:file=middleware.js;symbol=default;lines=5-7] [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=3-23] [cite:file=app/_context/UserContext.jsx;symbol=UserContext;lines=1-3]
+
+2. Key Components / Modules
+Authentication and route protection
+
+middleware.js defines /sign-in and /sign-up as public routes and calls auth.protect() for routes that are not public. [cite:file=middleware.js;symbol=isPublicRoute;lines=3-3] [cite:file=middleware.js;symbol=default;lines=5-7]
+
+The middleware matcher is configured to skip Next.js internals and static assets while still applying middleware to API and TRPC routes. [cite:file=middleware.js;symbol=config;lines=9-14]
+
+AI service layer
+
+GlobalServices.jsx creates an OpenAI client using OpenRouter as its baseURL and obtains its API key from process.env.NEXT_PUBLIC_AI_OPENROUTER. [cite:file=services/GlobalServices.jsx;symbol=<module>;lines=1-7]
+
+AIModel selects a coaching configuration from CoachingOptions based on the requested coaching option and substitutes the requested topic into that option's prompt. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-11]
+
+AIModel then sends the generated prompt and user's message to the configured DeepSeek model through the OpenAI chat-completions interface. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=13-19]
+
+The service logs the AI response, returns the completion object, and propagates errors after logging them. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=20-23]
+
+Shared UI components
+
+The Button component provides configurable variant and size properties and can render either a native <button> or Radix's Slot when asChild is enabled. [cite:file=components/ui/button.jsx;symbol=Button;lines=38-52]
+
+buttonVariants centralizes button styling through cva, defining default, destructive, outline, secondary, ghost, and link variants as well as default, small, large, and icon sizes. [cite:file=components/ui/button.jsx;symbol=buttonVariants;lines=7-35]
+
+The Textarea component wraps a native <textarea> while combining its default styling with an optional caller-provided className through cn. [cite:file=components/ui/textarea.jsx;symbol=Textarea;lines=5-18]
+
+The dialog module wraps Radix UI's dialog primitives into application-level components including Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, and related components. [cite:file=components/ui/dialog.jsx;symbol=Dialog;lines=7-9] [cite:file=components/ui/dialog.jsx;symbol=DialogContent;lines=22-42] [cite:file=components/ui/dialog.jsx;symbol=DialogHeader;lines=44-51] [cite:file=components/ui/dialog.jsx;symbol=DialogFooter;lines=53-60]
+
+User context
+
+UserContext creates a React context intended to provide user-related state or functionality to components that consume it. [cite:file=app/_context/UserContext.jsx;symbol=UserContext;lines=1-3]
+
+3. Notable Functions and Classes
+AIModel
+
+AIModel is the primary visible business-logic function in the supplied code. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-23] It accepts a topic, coaching option, and user message; retrieves the corresponding coaching option; constructs the prompt; calls the configured AI model; and returns the completion. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-23]
+
+Button
+
+Button acts as a reusable abstraction over button rendering. [cite:file=components/ui/button.jsx;symbol=Button;lines=38-52] Its asChild property determines whether the component renders through Radix Slot or as a normal HTML button. [cite:file=components/ui/button.jsx;symbol=Button;lines=44-50]
+
+DialogContent
+
+DialogContent composes a Radix portal, overlay, and content primitive into a styled modal-content component and automatically provides a close control with an XIcon. [cite:file=components/ui/dialog.jsx;symbol=DialogContent;lines=22-42]
+
+Textarea
+
+Textarea provides a reusable styled text-input primitive while forwarding additional props to the underlying <textarea>. [cite:file=components/ui/textarea.jsx;symbol=Textarea;lines=5-18]
+
+4. Design Patterns Observed
+Middleware-based authentication
+
+The repository uses a middleware/interceptor pattern for authentication: requests are examined centrally before reaching protected application routes, and Clerk authentication is enforced through auth.protect(). [cite:file=middleware.js;symbol=default;lines=5-7]
+
+Service-layer abstraction
+
+AI interaction is isolated behind the AIModel service rather than being implemented directly in individual UI components. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-23] This provides a single application-level function for constructing prompts and invoking the AI provider. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-19]
+
+Component abstraction / composition
+
+The UI follows a component-composition pattern, with generic primitives such as Button, Textarea, and the dialog components encapsulating styling and lower-level implementation details. [cite:file=components/ui/button.jsx;symbol=Button;lines=38-52] [cite:file=components/ui/textarea.jsx;symbol=Textarea;lines=5-18] [cite:file=components/ui/dialog.jsx;symbol=DialogContent;lines=22-42]
+
+Variant-based component design
+
+The button implementation uses class-variance-authority to represent styling differences as explicit variant and size configurations rather than duplicating separate button components. [cite:file=components/ui/button.jsx;symbol=buttonVariants;lines=7-35]
+
+Context pattern
+
+The presence of UserContext indicates a React Context-based mechanism for making user-related state available across component boundaries. [cite:file=app/_context/UserContext.jsx;symbol=UserContext;lines=1-3]
+
+Overall: the supplied portion of the repository combines centralized authentication middleware, reusable React UI primitives, React context, and a dedicated AI service abstraction. [cite:file=middleware.js;symbol=default;lines=5-7] [cite:file=components/ui/button.jsx;symbol=Button;lines=38-52] [cite:file=app/_context/UserContext.jsx;symbol=UserContext;lines=1-3] [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-23]

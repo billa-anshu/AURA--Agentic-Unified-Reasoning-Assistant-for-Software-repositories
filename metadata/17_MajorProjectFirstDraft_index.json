@@ -1,0 +1,824 @@
+{
+  "src/seg_infer.py::sigmoid": {
+    "kind": "function",
+    "path": "src/seg_infer.py",
+    "line_start": 4,
+    "line_end": 4
+  },
+  "src/seg_infer.py::main": {
+    "kind": "function",
+    "path": "src/seg_infer.py",
+    "line_start": 6,
+    "line_end": 34
+  },
+  "src/seg_infer.py::cfg": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 7,
+    "line_end": 7
+  },
+  "src/seg_infer.py::device": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 8,
+    "line_end": 8
+  },
+  "src/seg_infer.py::ckpt": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 11,
+    "line_end": 11
+  },
+  "src/seg_infer.py::model": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 12,
+    "line_end": 12
+  },
+  "src/seg_infer.py::size": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "src/seg_infer.py::thresh": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 16,
+    "line_end": 16
+  },
+  "src/seg_infer.py::ap": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "src/seg_infer.py::args": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "src/seg_infer.py::path": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "src/seg_infer.py::img": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 22,
+    "line_end": 22
+  },
+  "src/seg_infer.py::img_r": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "src/seg_infer.py::inp": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 25,
+    "line_end": 25
+  },
+  "src/seg_infer.py::x": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 27,
+    "line_end": 27
+  },
+  "src/seg_infer.py::prob": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 30,
+    "line_end": 30
+  },
+  "src/seg_infer.py::m": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 31,
+    "line_end": 31
+  },
+  "src/seg_infer.py::logits": {
+    "kind": "variable",
+    "path": "src/seg_infer.py",
+    "line_start": 29,
+    "line_end": 29
+  },
+  "src/view_pt_file.py::view_pt_file": {
+    "kind": "function",
+    "path": "src/view_pt_file.py",
+    "line_start": 4,
+    "line_end": 54
+  },
+  "src/view_pt_file.py::parser": {
+    "kind": "variable",
+    "path": "src/view_pt_file.py",
+    "line_start": 57,
+    "line_end": 57
+  },
+  "src/view_pt_file.py::args": {
+    "kind": "variable",
+    "path": "src/view_pt_file.py",
+    "line_start": 60,
+    "line_end": 60
+  },
+  "src/view_pt_file.py::checkpoint": {
+    "kind": "variable",
+    "path": "src/view_pt_file.py",
+    "line_start": 11,
+    "line_end": 11
+  },
+  "src/view_pt_file.py::model_state_dict": {
+    "kind": "variable",
+    "path": "src/view_pt_file.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "src/features_and_depth.py::pixel_to_mm": {
+    "kind": "function",
+    "path": "src/features_and_depth.py",
+    "line_start": 9,
+    "line_end": 9
+  },
+  "src/features_and_depth.py::width_stats_mm": {
+    "kind": "function",
+    "path": "src/features_and_depth.py",
+    "line_start": 11,
+    "line_end": 15
+  },
+  "src/features_and_depth.py::skeleton_length_mm": {
+    "kind": "function",
+    "path": "src/features_and_depth.py",
+    "line_start": 17,
+    "line_end": 19
+  },
+  "src/features_and_depth.py::area_mm2": {
+    "kind": "function",
+    "path": "src/features_and_depth.py",
+    "line_start": 21,
+    "line_end": 22
+  },
+  "src/features_and_depth.py::classify": {
+    "kind": "function",
+    "path": "src/features_and_depth.py",
+    "line_start": 24,
+    "line_end": 29
+  },
+  "src/features_and_depth.py::repair_plan": {
+    "kind": "function",
+    "path": "src/features_and_depth.py",
+    "line_start": 31,
+    "line_end": 36
+  },
+  "src/features_and_depth.py::main": {
+    "kind": "function",
+    "path": "src/features_and_depth.py",
+    "line_start": 38,
+    "line_end": 105
+  },
+  "src/features_and_depth.py::dist": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 12,
+    "line_end": 12
+  },
+  "src/features_and_depth.py::vals": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 13,
+    "line_end": 13
+  },
+  "src/features_and_depth.py::sk": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "src/features_and_depth.py::cfg": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 39,
+    "line_end": 39
+  },
+  "src/features_and_depth.py::gsd": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 40,
+    "line_end": 40
+  },
+  "src/features_and_depth.py::pairs": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 43,
+    "line_end": 43
+  },
+  "src/features_and_depth.py::feats": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 51,
+    "line_end": 51
+  },
+  "src/features_and_depth.py::df": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 58,
+    "line_end": 58
+  },
+  "src/features_and_depth.py::nde": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 60,
+    "line_end": 60
+  },
+  "src/features_and_depth.py::df_train": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 65,
+    "line_end": 65
+  },
+  "src/features_and_depth.py::X": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "src/features_and_depth.py::y": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "src/features_and_depth.py::rf": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 71,
+    "line_end": 71
+  },
+  "src/features_and_depth.py::pred": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 73,
+    "line_end": 73
+  },
+  "src/features_and_depth.py::mae": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 74,
+    "line_end": 74
+  },
+  "src/features_and_depth.py::r2": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 75,
+    "line_end": 75
+  },
+  "src/features_and_depth.py::out_csv": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 83,
+    "line_end": 83
+  },
+  "src/features_and_depth.py::ap": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 108,
+    "line_end": 108
+  },
+  "src/features_and_depth.py::args": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 114,
+    "line_end": 114
+  },
+  "src/features_and_depth.py::imgp": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 46,
+    "line_end": 46
+  },
+  "src/features_and_depth.py::mskp": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 47,
+    "line_end": 47
+  },
+  "src/features_and_depth.py::m": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 53,
+    "line_end": 53
+  },
+  "src/features_and_depth.py::length": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 54,
+    "line_end": 54
+  },
+  "src/features_and_depth.py::area": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 56,
+    "line_end": 56
+  },
+  "src/features_and_depth.py::img": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 87,
+    "line_end": 87
+  },
+  "src/features_and_depth.py::overlay": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 89,
+    "line_end": 89
+  },
+  "src/features_and_depth.py::y0": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 92,
+    "line_end": 92
+  },
+  "src/features_and_depth.py::outp": {
+    "kind": "variable",
+    "path": "src/features_and_depth.py",
+    "line_start": 102,
+    "line_end": 102
+  },
+  "src/seg_unet_train.py::main": {
+    "kind": "function",
+    "path": "src/seg_unet_train.py",
+    "line_start": 5,
+    "line_end": 52
+  },
+  "src/seg_unet_train.py::cfg": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 6,
+    "line_end": 6
+  },
+  "src/seg_unet_train.py::device": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 8,
+    "line_end": 8
+  },
+  "src/seg_unet_train.py::tcfg": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 9,
+    "line_end": 9
+  },
+  "src/seg_unet_train.py::tr_ds": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "src/seg_unet_train.py::va_ds": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 16,
+    "line_end": 16
+  },
+  "src/seg_unet_train.py::tr_ld": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 18,
+    "line_end": 18
+  },
+  "src/seg_unet_train.py::va_ld": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 19,
+    "line_end": 19
+  },
+  "src/seg_unet_train.py::model": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "src/seg_unet_train.py::opt": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 22,
+    "line_end": 22
+  },
+  "src/seg_unet_train.py::best": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 24,
+    "line_end": 24
+  },
+  "src/seg_unet_train.py::ap": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 55,
+    "line_end": 55
+  },
+  "src/seg_unet_train.py::args": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 57,
+    "line_end": 57
+  },
+  "src/seg_unet_train.py::tr_loss": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "src/seg_unet_train.py::va_loss": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 39,
+    "line_end": 39
+  },
+  "src/seg_unet_train.py::logits": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 32,
+    "line_end": 32
+  },
+  "src/seg_unet_train.py::loss": {
+    "kind": "variable",
+    "path": "src/seg_unet_train.py",
+    "line_start": 33,
+    "line_end": 33
+  },
+  "src/utils.py::load_config": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 10,
+    "line_end": 12
+  },
+  "src/utils.py::set_device": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 14,
+    "line_end": 17
+  },
+  "src/utils.py::seed_everything": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 19,
+    "line_end": 22
+  },
+  "src/utils.py::UNetSmall": {
+    "kind": "class",
+    "path": "src/utils.py",
+    "line_start": 24,
+    "line_end": 65
+  },
+  "src/utils.py::UNetSmall.__init__": {
+    "kind": "method",
+    "path": "src/utils.py",
+    "line_start": 25,
+    "line_end": 51
+  },
+  "src/utils.py::UNetSmall.forward": {
+    "kind": "method",
+    "path": "src/utils.py",
+    "line_start": 53,
+    "line_end": 65
+  },
+  "src/utils.py::bce_dice_loss": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 67,
+    "line_end": 73
+  },
+  "src/utils.py::CrackDataset": {
+    "kind": "class",
+    "path": "src/utils.py",
+    "line_start": 75,
+    "line_end": 109
+  },
+  "src/utils.py::CrackDataset.__init__": {
+    "kind": "method",
+    "path": "src/utils.py",
+    "line_start": 76,
+    "line_end": 94
+  },
+  "src/utils.py::CrackDataset.__len__": {
+    "kind": "method",
+    "path": "src/utils.py",
+    "line_start": 96,
+    "line_end": 96
+  },
+  "src/utils.py::CrackDataset.__getitem__": {
+    "kind": "method",
+    "path": "src/utils.py",
+    "line_start": 98,
+    "line_end": 109
+  },
+  "src/utils.py::list_pairs": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 111,
+    "line_end": 121
+  },
+  "src/utils.py::__init__": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 76,
+    "line_end": 94
+  },
+  "src/utils.py::forward": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 53,
+    "line_end": 65
+  },
+  "src/utils.py::bce": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 68,
+    "line_end": 68
+  },
+  "src/utils.py::probs": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 69,
+    "line_end": 69
+  },
+  "src/utils.py::smooth": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 70,
+    "line_end": 70
+  },
+  "src/utils.py::inter": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 71,
+    "line_end": 71
+  },
+  "src/utils.py::dice": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 72,
+    "line_end": 72
+  },
+  "src/utils.py::__len__": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 96,
+    "line_end": 96
+  },
+  "src/utils.py::__getitem__": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 98,
+    "line_end": 109
+  },
+  "src/utils.py::ims": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 112,
+    "line_end": 112
+  },
+  "src/utils.py::mks": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 113,
+    "line_end": 113
+  },
+  "src/utils.py::backbone": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "src/utils.py::up": {
+    "kind": "function",
+    "path": "src/utils.py",
+    "line_start": 36,
+    "line_end": 42
+  },
+  "src/utils.py::x0": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 54,
+    "line_end": 54
+  },
+  "src/utils.py::x1": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 55,
+    "line_end": 55
+  },
+  "src/utils.py::x2": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 57,
+    "line_end": 57
+  },
+  "src/utils.py::x3": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 58,
+    "line_end": 58
+  },
+  "src/utils.py::x4": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 59,
+    "line_end": 59
+  },
+  "src/utils.py::u4": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 60,
+    "line_end": 60
+  },
+  "src/utils.py::u3": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 61,
+    "line_end": 61
+  },
+  "src/utils.py::u2": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 62,
+    "line_end": 62
+  },
+  "src/utils.py::u1": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 63,
+    "line_end": 63
+  },
+  "src/utils.py::u0": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 64,
+    "line_end": 64
+  },
+  "src/utils.py::img": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 99,
+    "line_end": 99
+  },
+  "src/utils.py::msk": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 100,
+    "line_end": 100
+  },
+  "src/utils.py::x": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 107,
+    "line_end": 107
+  },
+  "src/utils.py::y": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 108,
+    "line_end": 108
+  },
+  "src/utils.py::out": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 104,
+    "line_end": 104
+  },
+  "src/utils.py::im": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 116,
+    "line_end": 116
+  },
+  "src/utils.py::mk": {
+    "kind": "variable",
+    "path": "src/utils.py",
+    "line_start": 117,
+    "line_end": 117
+  },
+  "data/demo/make_synth_demo.py::root": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 4,
+    "line_end": 4
+  },
+  "data/demo/make_synth_demo.py::images": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 5,
+    "line_end": 5
+  },
+  "data/demo/make_synth_demo.py::masks": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 6,
+    "line_end": 6
+  },
+  "data/demo/make_synth_demo.py::make_img": {
+    "kind": "function",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 10,
+    "line_end": 32
+  },
+  "data/demo/make_synth_demo.py::rows": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 34,
+    "line_end": 34
+  },
+  "data/demo/make_synth_demo.py::rng": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 11,
+    "line_end": 11
+  },
+  "data/demo/make_synth_demo.py::base": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 12,
+    "line_end": 12
+  },
+  "data/demo/make_synth_demo.py::y": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 19,
+    "line_end": 19
+  },
+  "data/demo/make_synth_demo.py::crack": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 20,
+    "line_end": 20
+  },
+  "data/demo/make_synth_demo.py::dy": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 21,
+    "line_end": 21
+  },
+  "data/demo/make_synth_demo.py::img": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 28,
+    "line_end": 28
+  },
+  "data/demo/make_synth_demo.py::fn": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 37,
+    "line_end": 37
+  },
+  "data/demo/make_synth_demo.py::dist": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 40,
+    "line_end": 40
+  },
+  "data/demo/make_synth_demo.py::w95_px": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 41,
+    "line_end": 41
+  },
+  "data/demo/make_synth_demo.py::length_px": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 42,
+    "line_end": 42
+  },
+  "data/demo/make_synth_demo.py::w95_mm": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 43,
+    "line_end": 43
+  },
+  "data/demo/make_synth_demo.py::length_mm": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 44,
+    "line_end": 44
+  },
+  "data/demo/make_synth_demo.py::depth": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 45,
+    "line_end": 45
+  },
+  "data/demo/make_synth_demo.py::x": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 15,
+    "line_end": 15
+  },
+  "data/demo/make_synth_demo.py::width": {
+    "kind": "variable",
+    "path": "data/demo/make_synth_demo.py",
+    "line_start": 25,
+    "line_end": 25
+  }
+}
