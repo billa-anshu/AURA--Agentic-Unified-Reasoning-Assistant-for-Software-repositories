@@ -1,0 +1,296 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+src/main/java/com/app/HomeServicesApplication.java
+src/main/java/com/app/model/Worker.java
+src/main/java/com/app/model/Customer.java
+src/main/java/com/app/model/HomeService.java
+src/main/java/com/app/model/Booking.java
+src/main/java/com/app/repository/WorkerRepository.java
+src/main/java/com/app/repository/BookingRepository.java
+src/main/java/com/app/repository/CustomerRepository.java
+src/main/java/com/app/repository/HomeServiceRepository.java
+src/main/java/com/app/service/DataLoader.java
+src/main/java/com/app/service/EmailService.java
+src/main/java/com/app/controller/ServiceController.java
+src/main/java/com/app/controller/BookingController.java
+src/main/java/com/app/controller/WorkerController.java
+src/main/java/com/app/controller/AuthController.java
+src/main/java/com/app/controller/HomeController.java
+
+FILE CONTENTS:
+
+--- src/main/java/com/app/HomeServicesApplication.java ---
+package com.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class HomeServicesApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(HomeServicesApplication.class, args);
+    }
+}
+
+
+--- src/main/java/com/app/model/Worker.java ---
+package com.app.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "workers")
+public class Worker {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String name;
+    private String email;
+    private String phone;
+    private String experience;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_id")
+    private HomeService service;
+
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+    public String getExperience() { return experience; }
+    public void setExperience(String experience) { this.experience = experience; }
+    public HomeService getService() { return service; }
+    public void setService(HomeService service) { this.service = service; }
+}
+
+
+--- src/main/java/com/app/model/Customer.java ---
+package com.app.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "customers")
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String name;
+
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+}
+
+
+--- src/main/java/com/app/model/HomeService.java ---
+package com.app.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "services")
+public class HomeService {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "service_name")
+    private String serviceName;
+
+    @Column(length = 1000)
+    private String description;
+
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public String getServiceName() { return serviceName; }
+    public void setServiceName(String serviceName) { this.serviceName = serviceName; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+}
+
+
+--- src/main/java/com/app/model/Booking.java ---
+package com.app.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "bookings")
+public class Booking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_id")
+    private HomeService service;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "worker_id")
+    private Worker worker;
+
+    @Column(name = "booking_date")
+    private LocalDateTime bookingDate;
+
+    private String status;
+
+    @PrePersist
+    public void beforeSave() {
+        if (bookingDate == null) bookingDate = LocalDateTime.now();
+        if (status == null || status.isBlank()) status = "Booked";
+    }
+
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public Customer getCustomer() { return customer; }
+    public void setCustomer(Customer customer) { this.customer = customer; }
+    public HomeService getService() { return service; }
+    public void setService(HomeService service) { this.service = service; }
+    public Worker getWorker() { return worker; }
+    public void setWorker(Worker worker) { this.worker = worker; }
+    public LocalDateTime getBookingDate() { return bookingDate; }
+    public void setBookingDate(LocalDateTime bookingDate) { this.bookingDate = bookingDate; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+}
+
+
+--- src/main/java/com/app/repository/WorkerRepository.java ---
+package com.app.repository;
+
+import com.app.model.Worker;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface WorkerRepository extends JpaRepository<Worker, Integer> {
+
+    Worker findByEmail(String email);
+
+    List<Worker> findByServiceId(Integer serviceId);
+}
+
+--- src/main/java/com/app/repository/BookingRepository.java ---
+package com.app.repository;
+
+import com.app.model.Booking;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface BookingRepository extends JpaRepository<Booking, Integer> {
+
+    boolean existsByCustomerIdAndServiceIdAndWorkerIdAndStatus(
+            Integer customerId,
+            Integer serviceId,
+            Integer workerId,
+            String status
+    );
+
+    List<Booking> findByCustomerIdOrderByIdDesc(Integer customerId);
+
+    List<Booking> findByWorkerIdOrderByIdDesc(Integer workerId);
+}
+
+--- src/main/java/com/app/repository/CustomerRepository.java ---
+package com.app.repository;
+
+import com.app.model.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+    Optional<Customer> findByEmailAndPassword(String email, String password);
+    boolean existsByEmail(String email);
+}
+
+
+--- src/main/java/com/app/repository/HomeServiceRepository.java ---
+package com.app.repository;
+
+import com.app.model.HomeService;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface HomeServiceRepository extends JpaRepository<HomeService, Integer> {
+}
+
+
+--- src/main/java/com/app/controller/HomeController.java ---
+package com.app.controller;
+
+import com.app.model.Customer;
+import com.app.repository.HomeServiceRepository;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HomeController {
+    private final HomeServiceRepository serviceRepository;
+
+    public HomeController(HomeServiceRepository serviceRepository) {
+        this.serviceRepository = serviceRepository;
+    }
+
+    @GetMapping({"/", "/index"})
+    public String index(Model model, HttpSession session) {
+        model.addAttribute("services", serviceRepository.findAll());
+        model.addAttribute("customer", session.getAttribute("customer"));
+        return "index";
+    }
+}
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

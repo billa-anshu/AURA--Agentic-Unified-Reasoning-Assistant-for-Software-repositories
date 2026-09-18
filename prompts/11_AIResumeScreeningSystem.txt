@@ -1,0 +1,320 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+frontend/vite.config.js
+frontend/README.md
+frontend/src/App.jsx
+frontend/src/main.jsx
+frontend/src/components/ProtectedRoute.jsx
+frontend/src/components/Navbar.jsx
+frontend/src/services/jobService.js
+frontend/src/services/analysisService.js
+frontend/src/services/resumeService.js
+frontend/src/services/api.js
+frontend/src/pages/Ranking.jsx
+frontend/src/pages/Jobs.jsx
+frontend/src/pages/Resumes.jsx
+frontend/src/pages/Analysis.jsx
+frontend/src/pages/Dashboard.jsx
+frontend/src/pages/Login.jsx
+frontend/src/pages/Register.jsx
+backend/src/test/java/com/AIResumeScreeningSystem/backend/BackendApplicationTests.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/BackendApplication.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisResponse.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/RegisterRequest.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIResponse.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AnalysisRequest.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/JobDescriptionRequest.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/LoginRequest.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AIAnalysisResponse.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/dto/AuthResponse.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/config/SecurityConfig.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/config/GeminiConfig.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/config/PasswordConfig.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/JobDescriptionRepository.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/RecruiterRepository.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/ResumeAnalysisRepository.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/repository/ResumeRepository.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/exception/GlobalExceptionHandler.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/service/AIAnalysisService.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/service/JobDescriptionService.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/service/ResumeService.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/service/RecruiterService.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/service/CustomUserDetailsService.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Recruiter.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/ResumeAnalysis.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/Resume.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/entity/JobDescription.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/JobDescriptionController.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AIAnalysisController.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/ResumeController.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/AuthController.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/controller/TestController.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtAuthenticationFilter.java
+backend/src/main/java/com/AIResumeScreeningSystem/backend/security/JwtUtil.java
+
+FILE CONTENTS:
+
+--- frontend/vite.config.js ---
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+
+
+--- frontend/src/App.jsx ---
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import Jobs from "./pages/Jobs";
+import Resumes from "./pages/Resumes";
+import Analysis from "./pages/Analysis";
+import Ranking from "./pages/Ranking";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+function App() {
+    return (
+        <Routes>
+
+            <Route path="/" element={<Login />} />
+
+            <Route path="/register" element={<Register />} />
+
+            <Route
+                path="/dashboard"
+                element={
+                    <ProtectedRoute>
+                        <Dashboard />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/jobs"
+                element={
+                    <ProtectedRoute>
+                        <Jobs />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/resumes"
+                element={
+                    <ProtectedRoute>
+                        <Resumes />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/analysis"
+                element={
+                    <ProtectedRoute>
+                        <Analysis />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/ranking"
+                element={
+                    <ProtectedRoute>
+                        <Ranking />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="*"
+                element={<Navigate to="/" />}
+            />
+           
+
+        </Routes>
+    );
+}
+
+export default App;
+
+--- frontend/src/main.jsx ---
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "./styles/app.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+);
+
+--- frontend/src/components/ProtectedRoute.jsx ---
+import { Navigate } from "react-router-dom";
+
+function ProtectedRoute({ children }) {
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        return <Navigate to="/" />;
+    }
+
+    return children;
+}
+
+export default ProtectedRoute;
+
+--- frontend/src/components/Navbar.jsx ---
+import { Link, useNavigate } from "react-router-dom";
+
+function Navbar() {
+
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    };
+
+    return (
+
+        <nav
+            style={{
+                background: "#1976d2",
+                padding: "15px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                color: "white"
+            }}
+        >
+
+            <h2>AI Resume Screening System</h2>
+
+            <div>
+
+                <Link
+                    to="/dashboard"
+                    style={{ color: "white", marginRight: "20px" }}
+                >
+                    Dashboard
+                </Link>
+
+                <Link
+                    to="/jobs"
+                    style={{ color: "white", marginRight: "20px" }}
+                >
+                    Jobs
+                </Link>
+
+                <Link
+                    to="/resumes"
+                    style={{ color: "white", marginRight: "20px" }}
+                >
+                    Resumes
+                </Link>
+
+                <Link
+                    to="/analysis"
+                    style={{ color: "white", marginRight: "20px" }}
+                >
+                    Analysis
+                </Link>
+
+                <Link
+                    to="/ranking"
+                    style={{ color: "white", marginRight: "20px" }}
+                >
+                    Ranking
+                </Link>
+
+                <button onClick={logout}>
+                    Logout
+                </button>
+
+            </div>
+
+        </nav>
+
+    );
+
+}
+
+export default Navbar;
+
+--- frontend/src/services/jobService.js ---
+import api from "./api";
+
+export const getJobs = () => {
+    return api.get("/jobs");
+};
+
+--- frontend/src/services/analysisService.js ---
+import api from "./api";
+
+// Analyze Resume using Gemini AI (does not persist)
+export const analyzeResume = (resumeText, jobDescription) => {
+    return api.post("/analysis/analyze", {
+        resumeText,
+        jobDescription,
+    });
+};
+
+// Save Analysis to Database
+export const saveAnalysis = (
+    resumeId,
+    jobId,
+    resumeText,
+    jobDescription
+) => {
+    return api.post(
+        `/analysis/save/${resumeId}/${jobId}`,
+        {
+            resumeText,
+            jobDescription,
+        }
+    );
+};
+
+// Get Candidate Ranking for a Job (matches backend: GET /api/analysis/rank/{jobId})
+export const getRanking = (jobId) => {
+    return api.get(`/analysis/rank/${jobId}`);
+};
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

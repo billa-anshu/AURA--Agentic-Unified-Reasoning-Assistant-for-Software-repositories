@@ -1,0 +1,299 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+src/test/java/com/example/demo/FinalProjectApplicationTests.java
+src/main/java/com/example/demo/FinalProjectApplication.java
+src/main/java/com/example/demo/repository/StudentRepository.java
+src/main/java/com/example/demo/repository/AttendanceRecordRepository.java
+src/main/java/com/example/demo/repository/HolidayRepository.java
+src/main/java/com/example/demo/repository/ClassroomRepository.java
+src/main/java/com/example/demo/repository/TeacherRepository.java
+src/main/java/com/example/demo/repository/CourseRepository.java
+src/main/java/com/example/demo/repository/AdminRepository.java
+src/main/java/com/example/demo/service/AuthService.java
+src/main/java/com/example/demo/service/ClassroomService.java
+src/main/java/com/example/demo/service/StudentService.java
+src/main/java/com/example/demo/service/AdminService.java
+src/main/java/com/example/demo/service/TeacherService.java
+src/main/java/com/example/demo/service/AttendanceService.java
+src/main/java/com/example/demo/service/impl/AdminServiceImpl.java
+src/main/java/com/example/demo/enums/AttendanceStatus.java
+src/main/java/com/example/demo/entity/Classroom.java
+src/main/java/com/example/demo/entity/AttendanceRecord.java
+src/main/java/com/example/demo/entity/Course.java
+src/main/java/com/example/demo/entity/Student.java
+src/main/java/com/example/demo/entity/Teacher.java
+src/main/java/com/example/demo/entity/HolidayCalendar.java
+src/main/java/com/example/demo/entity/Admin.java
+src/main/java/com/example/demo/controller/StudentDashboardController.java
+src/main/java/com/example/demo/controller/AdminController.java
+src/main/java/com/example/demo/controller/LoginController.java
+src/main/java/com/example/demo/controller/TeacherDashboardController.java
+
+FILE CONTENTS:
+
+--- src/test/java/com/example/demo/FinalProjectApplicationTests.java ---
+package com.example.demo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class FinalProjectApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+
+--- src/main/java/com/example/demo/FinalProjectApplication.java ---
+package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class FinalProjectApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(FinalProjectApplication.class, args);
+	}
+
+}
+
+
+--- src/main/java/com/example/demo/repository/StudentRepository.java ---
+package com.example.demo.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.Student;
+@Repository
+public interface StudentRepository extends JpaRepository<Student, Long> {
+    
+    List<Student> findByNameContainingIgnoreCase(String name);
+    Optional<Student> findByEmail(String email);
+    @Query("SELECT s FROM Student s JOIN s.classrooms c WHERE c.course.courseId = :courseId")
+    List<Student> findStudentsByCourseId(@Param("courseId") Long courseId);
+	List<Student> findByClassrooms_ClassroomId(Long classroomId);
+}
+
+
+--- src/main/java/com/example/demo/repository/AttendanceRecordRepository.java ---
+package com.example.demo.repository;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.AttendanceRecord;
+import com.example.demo.entity.Classroom;
+import com.example.demo.entity.Teacher;
+@Repository
+public interface AttendanceRecordRepository extends JpaRepository<AttendanceRecord, Long> {
+	
+	boolean existsByClassroomAndDate(Classroom classroom, LocalDate date);
+
+	List<AttendanceRecord> findByStudentStudentId(Long studentId);
+	
+	Optional<AttendanceRecord> findByStudentStudentIdAndDate(Long studentId, LocalDate date);
+
+	List<AttendanceRecord> findByClassroomAndDate(Classroom classroom, LocalDate date);
+
+	List<AttendanceRecord> findByClassroomCourseCourseIdAndDate(Long courseId, LocalDate date);
+
+	
+
+
+	
+	 Optional<AttendanceRecord> findByStudentStudentIdAndClassroomClassroomIdAndDate(
+	            Long studentId, Long classroomId, LocalDate date);
+	    
+	    List<AttendanceRecord> findByClassroomClassroomId(Long classroomId);
+	
+
+	
+}
+
+
+--- src/main/java/com/example/demo/repository/HolidayRepository.java ---
+package com.example.demo.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entity.HolidayCalendar;
+
+public interface HolidayRepository extends JpaRepository<HolidayCalendar, Long> {
+}
+
+
+
+--- src/main/java/com/example/demo/repository/ClassroomRepository.java ---
+package com.example.demo.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.example.demo.entity.Classroom;
+import com.example.demo.entity.Student;
+
+public interface ClassroomRepository extends JpaRepository<Classroom, Long> {
+	List<Classroom> findByClassNameContainingIgnoreCase(String className);
+	@Query("SELECT s FROM Classroom cl JOIN cl.students s WHERE cl.course.courseId = :courseId")
+    List<Student> findStudentsByCourse(@Param("courseId") Long courseId);
+	List<Classroom> findByTeacher_TeacherId(Long teacherId);
+
+	
+	
+}
+
+
+--- src/main/java/com/example/demo/repository/TeacherRepository.java ---
+package com.example.demo.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.Admin;
+import com.example.demo.entity.Teacher;
+@Repository
+public interface TeacherRepository extends JpaRepository<Teacher, Long> {
+	Teacher findByEmail(String email);
+}
+
+
+--- src/main/java/com/example/demo/repository/CourseRepository.java ---
+package com.example.demo.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entity.Course;
+@Repository
+public interface CourseRepository extends JpaRepository<Course, Long> {
+	List<Course> findByTeacherTeacherId(Long teacherId);
+	 @Query("SELECT DISTINCT c FROM Course c LEFT JOIN FETCH c.classrooms WHERE c.teacher.teacherId = :teacherId")
+	    List<Course> findCoursesWithClassroomsByTeacherId(@Param("teacherId") Long teacherId);
+}
+
+
+--- src/main/java/com/example/demo/repository/AdminRepository.java ---
+package com.example.demo.repository;
+
+import com.example.demo.entity.Admin;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AdminRepository extends JpaRepository<Admin, Long> {
+    Optional<Admin> findByEmail(String email);
+}
+
+
+--- src/main/java/com/example/demo/service/AuthService.java ---
+package com.example.demo.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Admin;
+import com.example.demo.entity.Student;
+import com.example.demo.entity.Teacher;
+import com.example.demo.repository.AdminRepository;
+import com.example.demo.repository.StudentRepository;
+import com.example.demo.repository.TeacherRepository;
+
+@Service
+public class AuthService {
+
+    @Autowired
+    private AdminRepository adminRepo;
+
+    @Autowired
+    private TeacherRepository teacherRepo;
+
+    @Autowired
+    private StudentRepository studentRepo;
+
+    // Validate Admin
+    public boolean validateAdmin(String email, String password) {
+        Optional<Admin> admin = adminRepo.findByEmail(email);
+        return admin.isPresent() && admin.get().getPassword().equals(password);
+    }
+
+    // Validate Teacher
+    public boolean validateTeacher(String email, String password) {
+        Teacher teacher = teacherRepo.findByEmail(email);
+        return teacher != null && teacher.getPassword().equals(password);
+    }
+
+    // Validate Student
+    public boolean validateStudent(String email, String password) {
+        Student student = studentRepo.findByEmail(email).orElse(null);
+        return student != null && student.getPassword().equals(password);
+    }
+
+    // Fetch Student by email
+    public Student getStudentByEmail(String email) {
+        return studentRepo.findByEmail(email).orElse(null);
+    }
+    public Teacher getTeacherByEmail(String email) {
+        return teacherRepo.findByEmail(email);
+    }
+
+}
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

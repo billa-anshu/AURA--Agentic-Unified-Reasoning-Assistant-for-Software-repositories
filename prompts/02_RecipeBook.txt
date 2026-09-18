@@ -1,0 +1,360 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+src/reportWebVitals.js
+src/setupTests.js
+src/App.js
+src/index.js
+src/App.test.js
+src/Components/Login.js
+src/Components/Home.js
+src/Components/About.js
+src/Components/Favorites.js
+src/Components/Navbar.js
+src/Components/Recipes.js
+
+FILE CONTENTS:
+
+--- src/reportWebVitals.js ---
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+export default reportWebVitals;
+
+
+--- src/setupTests.js ---
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom';
+
+
+--- src/App.js ---
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./Components/Login";
+import Home from "./Components/Home";
+import Recipes from "./Components/Recipes";
+import About from "./Components/About";
+import Navbar from "./Components/Navbar";
+import Favorites from "./Components/Favorites"; // <-- you'll need this file
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [favorites, setFavorites] = useState([]); // ✅ add favorites state
+
+  return (
+    <Router>
+      {isLoggedIn && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route
+          path="/home"
+          element={isLoggedIn ? <Home /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/recipes"
+          element={
+            isLoggedIn ? (
+              <Recipes favorites={favorites} setFavorites={setFavorites} />
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        />
+        <Route
+          path="/about"
+          element={isLoggedIn ? <About /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/favorites"
+          element={isLoggedIn ? <Favorites favorites={favorites} /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+
+--- src/index.js ---
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+
+--- src/App.test.js ---
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+
+--- src/Components/Login.js ---
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
+
+function Login({ setIsLoggedIn }) {
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.username === "admin" && formData.password === "1234") {
+      setIsLoggedIn(true);
+      navigate("/recipes"); // ✅ redirect to Recipes instead of Home
+    } else {
+      alert("Invalid credentials. Try admin / 1234");
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Welcome Back 🍳</h2>
+        <form onSubmit={handleSubmit}>
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
+
+
+--- src/Components/Home.js ---
+import React from "react";
+import "../App.css";
+
+function Home() {
+  return (
+    <div className="home-container">
+      <h1>
+        Welcome to <span>RecipeBook 🍲</span>
+      </h1>
+      <p>
+        Discover, cook, and enjoy delicious meals from around the world. Search,
+        save, and explore hundreds of recipes with ease.
+      </p>
+      <a href="/recipes">Explore Recipes →</a>
+    </div>
+  );
+}
+
+export default Home;
+
+
+--- src/Components/About.js ---
+import React from "react";
+import "../App.css";
+
+function About() {
+  return (
+    <div className="about-container">
+      <h1>
+        About <span>RecipeBook 👩‍🍳</span>
+      </h1>
+      <p>
+        RecipeBook is your personal cooking companion, built with React.js and
+        powered by TheMealDB API. We aim to make cooking simple, fun, and
+        accessible to everyone. Whether you’re a beginner or a pro, explore our
+        curated recipes and start your culinary journey today!
+      </p>
+      
+    </div>
+  );
+}
+
+export default About;
+
+
+--- src/Components/Favorites.js ---
+import React, { useState } from "react";
+import "../App.css";
+
+function Favorites({ favorites }) {
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
+  return (
+    <div className="recipes-container">
+      <h1>❤️ Your Favorite Recipes</h1>
+
+      {favorites.length === 0 ? (
+        <p style={{ textAlign: "center" }}>No favorites yet. Go like some recipes!</p>
+      ) : (
+        <div className="recipe-grid">
+          {favorites.map((meal) => (
+            <div key={meal.idMeal} className="recipe-card">
+              <img src={meal.strMealThumb} alt={meal.strMeal} />
+              <h2>{meal.strMeal}</h2>
+              <p>
+                <strong>Category:</strong> {meal.strCategory} |{" "}
+                <strong>Area:</strong> {meal.strArea}
+              </p>
+              <button
+                className="recipe-btn"
+                onClick={() => setSelectedRecipe(meal)}
+              >
+                View Recipe →
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* ✅ Modal Popup same as Recipes.js */}
+      {selectedRecipe && (
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedRecipe(null)}
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              onClick={() => setSelectedRecipe(null)}
+            >
+              ✖
+            </button>
+            <h2>{selectedRecipe.strMeal}</h2>
+            <img
+              src={selectedRecipe.strMealThumb}
+              alt={selectedRecipe.strMeal}
+            />
+            <p>
+              <strong>Category:</strong> {selectedRecipe.strCategory}
+            </p>
+            <p>
+              <strong>Area:</strong> {selectedRecipe.strArea}
+            </p>
+            <h3>Instructions:</h3>
+            <p>{selectedRecipe.strInstructions}</p>
+            <h3>Ingredients:</h3>
+            <ul>
+              {Array.from({ length: 20 }).map((_, i) => {
+                const ingredient = selectedRecipe[`strIngredient${i + 1}`];
+                const measure = selectedRecipe[`strMeasure${i + 1}`];
+                return ingredient ? (
+                  <li key={i}>
+                    {ingredient} - {measure}
+                  </li>
+                ) : null;
+              })}
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Favorites;
+
+
+--- src/Components/Navbar.js ---
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "../App.css";
+
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        <a href="/home" className="navbar-logo">🍴 RecipeBook</a>
+        <div className="nav-links">
+          <NavLink to="/home" className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
+          <NavLink to="/recipes" className={({ isActive }) => isActive ? "active" : ""}>Recipes</NavLink>
+          <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>About</NavLink>
+          <NavLink to="/favorites" className={({ isActive }) => isActive ? "active" : ""}>Favorites</NavLink>
+
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export default Navbar;
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

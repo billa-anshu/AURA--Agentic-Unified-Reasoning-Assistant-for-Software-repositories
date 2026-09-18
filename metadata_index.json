@@ -1,0 +1,142 @@
+{
+  "01_Attendance-Management-System": {
+    "slug": "Attendance-Management-System",
+    "url": "https://github.com/hrishiareddy004/Attendance-Management-System",
+    "index_path": "metadata/01_Attendance-Management-System_index.json",
+    "prompt_path": "prompts/01_Attendance-Management-System.txt",
+    "symbol_count": 148
+  },
+  "02_RecipeBook": {
+    "slug": "RecipeBook",
+    "url": "https://github.com/hrishiareddy004/RecipeBook",
+    "index_path": "metadata/02_RecipeBook_index.json",
+    "prompt_path": "prompts/02_RecipeBook.txt",
+    "symbol_count": 12
+  },
+  "03_Bpcs-stego": {
+    "slug": "Bpcs-stego",
+    "url": "https://github.com/hrishiareddy004/Bpcs-stego",
+    "index_path": "metadata/03_Bpcs-stego_index.json",
+    "prompt_path": "prompts/03_Bpcs-stego.txt",
+    "symbol_count": 214
+  },
+  "04_ResumeRise": {
+    "slug": "ResumeRise",
+    "url": "https://github.com/JayasreeUppari/ResumeRise",
+    "index_path": "metadata/04_ResumeRise_index.json",
+    "prompt_path": "prompts/04_ResumeRise.txt",
+    "symbol_count": 88
+  },
+  "05_bookreview-api": {
+    "slug": "bookreview-api",
+    "url": "https://github.com/billa-anshu/bookreview-api",
+    "index_path": "metadata/05_bookreview-api_index.json",
+    "prompt_path": "prompts/05_bookreview-api.txt",
+    "symbol_count": 125
+  },
+  "06_Virtual-Tour-Creater": {
+    "slug": "Virtual-Tour-Creater",
+    "url": "https://github.com/billa-anshu/Virtual-Tour-Creater",
+    "index_path": "metadata/06_Virtual-Tour-Creater_index.json",
+    "prompt_path": "prompts/06_Virtual-Tour-Creater.txt",
+    "symbol_count": 173
+  },
+  "07_ai-ppt-generator": {
+    "slug": "ai-ppt-generator",
+    "url": "https://github.com/SunkaraboinaPraveenKumar/ai-ppt-generator",
+    "index_path": "metadata/07_ai-ppt-generator_index.json",
+    "prompt_path": "prompts/07_ai-ppt-generator.txt",
+    "symbol_count": 350
+  },
+  "08_Ai_Health_Recommedation": {
+    "slug": "Ai_Health_Recommedation",
+    "url": "https://github.com/SunkaraboinaPraveenKumar/Ai_Health_Recommedation",
+    "index_path": "metadata/08_Ai_Health_Recommedation_index.json",
+    "prompt_path": "prompts/08_Ai_Health_Recommedation.txt",
+    "symbol_count": 28
+  },
+  "09_trading_bot": {
+    "slug": "trading_bot",
+    "url": "https://github.com/Mastan1301/trading_bot",
+    "index_path": "metadata/09_trading_bot_index.json",
+    "prompt_path": "prompts/09_trading_bot.txt",
+    "symbol_count": 685
+  },
+  "10_HomeServicesBooking": {
+    "slug": "HomeServicesBooking",
+    "url": "https://github.com/DeepaPalle/HomeServicesBooking",
+    "index_path": "metadata/10_HomeServicesBooking_index.json",
+    "prompt_path": "prompts/10_HomeServicesBooking.txt",
+    "symbol_count": 71
+  },
+  "11_AIResumeScreeningSystem": {
+    "slug": "AIResumeScreeningSystem",
+    "url": "https://github.com/DeepaPalle/AIResumeScreeningSystem",
+    "index_path": "metadata/11_AIResumeScreeningSystem_index.json",
+    "prompt_path": "prompts/11_AIResumeScreeningSystem.txt",
+    "symbol_count": 93
+  },
+  "12_AI-Study-Assistant": {
+    "slug": "AI-Study-Assistant",
+    "url": "https://github.com/DeepaPalle/AI-Study-Assistant",
+    "index_path": "metadata/12_AI-Study-Assistant_index.json",
+    "prompt_path": "prompts/12_AI-Study-Assistant.txt",
+    "symbol_count": 154
+  },
+  "13_Image-generator": {
+    "slug": "Image-generator",
+    "url": "https://github.com/Koppula-Maithri/Image-generator",
+    "index_path": "metadata/13_Image-generator_index.json",
+    "prompt_path": "prompts/13_Image-generator.txt",
+    "symbol_count": 26
+  },
+  "14_customerfeedback": {
+    "slug": "customerfeedback",
+    "url": "https://github.com/NIKHIL-TEJA341/customerfeedback",
+    "index_path": "metadata/14_customerfeedback_index.json",
+    "prompt_path": "prompts/14_customerfeedback.txt",
+    "symbol_count": 259
+  },
+  "15_whatsappchatanalyzer": {
+    "slug": "whatsappchatanalyzer",
+    "url": "https://github.com/NIKHIL-TEJA341/whatsappchatanalyzer",
+    "index_path": "metadata/15_whatsappchatanalyzer_index.json",
+    "prompt_path": "prompts/15_whatsappchatanalyzer.txt",
+    "symbol_count": 85
+  },
+  "16_studyvault": {
+    "slug": "studyvault",
+    "url": "https://github.com/NIKHIL-TEJA341/studyvault",
+    "index_path": "metadata/16_studyvault_index.json",
+    "prompt_path": "prompts/16_studyvault.txt",
+    "symbol_count": 58
+  },
+  "17_MajorProjectFirstDraft": {
+    "slug": "MajorProjectFirstDraft",
+    "url": "https://github.com/GreeshmaKurivella29/MajorProjectFirstDraft",
+    "index_path": "metadata/17_MajorProjectFirstDraft_index.json",
+    "prompt_path": "prompts/17_MajorProjectFirstDraft.txt",
+    "symbol_count": 137
+  },
+  "18_diabetes_predictor": {
+    "slug": "diabetes_predictor",
+    "url": "https://github.com/Ashwinkarnati/diabetes_predictor",
+    "index_path": "metadata/18_diabetes_predictor_index.json",
+    "prompt_path": "prompts/18_diabetes_predictor.txt",
+    "symbol_count": 8
+  },
+  "19_AI-COACHING-PLATFORM": {
+    "slug": "AI-COACHING-PLATFORM",
+    "url": "https://github.com/Ashwinkarnati/AI-COACHING-PLATFORM",
+    "index_path": "metadata/19_AI-COACHING-PLATFORM_index.json",
+    "prompt_path": "prompts/19_AI-COACHING-PLATFORM.txt",
+    "symbol_count": 34
+  },
+  "20_smart-pet-care": {
+    "slug": "smart-pet-care",
+    "url": "https://github.com/Harshitha2020055438/smart-pet-care",
+    "index_path": "metadata/20_smart-pet-care_index.json",
+    "prompt_path": "prompts/20_smart-pet-care.txt",
+    "symbol_count": 83
+  }
+}

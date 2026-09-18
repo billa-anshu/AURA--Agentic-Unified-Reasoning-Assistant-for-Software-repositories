@@ -1,0 +1,227 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+tailwind.config.js
+app.py
+Readme.md
+diabetes-predictor/src/reportWebVitals.js
+diabetes-predictor/src/setupTests.js
+diabetes-predictor/src/App.js
+diabetes-predictor/src/index.js
+diabetes-predictor/src/App.test.js
+
+FILE CONTENTS:
+
+--- tailwind.config.js ---
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: ["./src/**/*.{js,jsx,ts,tsx}"], // Ensures Tailwind works in your components
+    theme: {
+      extend: {},
+    },
+    plugins: [],
+  };
+  
+
+--- app.py ---
+import pickle
+import numpy as np
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+# ✅ Load the StandardScaler and model together
+with open("diabetes_model.pkl", "rb") as f:
+    scaler, model = pickle.load(f)  # Now correctly loading both
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    try:
+        data = request.json  # Get JSON data from frontend
+        # Convert input to NumPy array
+        features = np.array([data["features"]], dtype=np.float64)
+        # ✅ Standardize the input using the saved scaler
+        std_features = scaler.transform(features)
+        # Make prediction
+        prediction = model.predict(std_features)[0]
+        return jsonify({"prediction": int(prediction)})
+    except Exception as e:
+        print("Error:", str(e))
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+--- diabetes-predictor/src/reportWebVitals.js ---
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+export default reportWebVitals;
+
+
+--- diabetes-predictor/src/setupTests.js ---
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom';
+
+
+--- diabetes-predictor/src/App.js ---
+import { useState } from "react";
+
+export default function App() {
+  const [formData, setFormData] = useState({
+    pregnancies: "",
+    glucose: "",
+    bloodPressure: "",
+    skinThickness: "",
+    insulin: "",
+    bmi: "",
+    diabetesPedigree: "",
+    age: "",
+  });
+
+  const [prediction, setPrediction] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const features = Object.values(formData).map(Number); // Convert to numbers
+
+    try {
+      const response = await fetch("http://127.0.0.1:5000/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ features }),
+      });
+
+      const data = await response.json();
+      setPrediction(data.prediction);
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Diabetes Prediction</h2>
+        
+        <form onSubmit={handleSubmit} className="space-y-3">
+          {Object.keys(formData).map((key) => (
+            <div key={key}>
+              <label className="block text-gray-700 capitalize">{key.replace(/([A-Z])/g, " $1")}</label>
+              <input
+                type="number"
+                step="any"
+                name={key}
+                value={formData[key]}
+                onChange={handleChange}
+                className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+              />
+            </div>
+          ))}
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded-md font-bold hover:bg-blue-600"
+            disabled={loading}
+          >
+            {loading ? "Predicting..." : "Predict"}
+          </button>
+        </form>
+
+        {prediction !== null && (
+          <div className={`mt-4 p-3 text-center font-bold text-lg rounded-md ${
+            prediction === 1 ? "bg-red-100 text-red-600" : "bg-green-100 text-green-600"
+          }`}>
+            {prediction === 1 ? "Diabetic" : "Not Diabetic"}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+
+--- diabetes-predictor/src/index.js ---
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+
+--- diabetes-predictor/src/App.test.js ---
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

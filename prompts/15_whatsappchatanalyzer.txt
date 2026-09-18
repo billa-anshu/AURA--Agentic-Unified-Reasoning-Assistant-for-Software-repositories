@@ -1,0 +1,291 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+preprocessor.py
+helper.py
+DEPLOYMENT_GUIDE.md
+app.py
+
+FILE CONTENTS:
+
+--- preprocessor.py ---
+import streamlit as st
+import re
+import pandas as pd
+
+@st.cache_data
+def preprocess(data):
+    pattern = r'\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s?(?:AM|PM|am|pm)?\s-\s'
+    
+    messages = re.split(pattern, data)[1:] 
+    dates = re.findall(pattern, data)
+    
+    if len(messages) == 0:
+        return pd.DataFrame()
+        
+    df = pd.DataFrame({'user_message': messages, 'message_date': dates})
+    
+    df['message_date'] = df['message_date'].apply(lambda x: x.strip(' - '))
+    
+    df['date'] = pd.to_datetime(df['message_date'], format='mixed', dayfirst=True)
+    
+    users = []
+    messages = []
+    for message in df['user_message']:
+        entry = re.split('([\w\W]+?):\s', message, maxsplit=1)
+        if len(entry) > 2: 
+            users.append(entry[1])
+            messages.append(entry[2])
+        else:
+            users.append('group_notification')
+            messages.append(entry[0])
+
+    df['user'] = users
+    df['message'] = messages
+    df.drop(columns=['user_message', 'message_date'], inplace=True)
+    
+    df['only_date'] = df['date'].dt.date
+    df['year'] = df['date'].dt.year
+    df['month_num'] = df['date'].dt.month
+    df['month'] = df['date'].dt.month_name()
+    df['day'] = df['date'].dt.day
+    df['day_name'] = df['date'].dt.day_name()
+    df['hour'] = df['date'].dt.hour
+    df['minute'] = df['date'].dt.minute
+    
+    period = []
+    for hour in df['hour']:
+        if pd.isna(hour):
+            period.append("Unknown")
+            continue
+        hour = int(hour)
+        if hour == 23:
+            period.append("23-00")
+        elif hour == 0:
+            period.append("00-01")
+        else:
+            period.append(f"{hour}-{hour+1}")
+            
+    df['period'] = period
+    
+    return df
+
+
+--- helper.py ---
+import streamlit as st
+from urlextract import URLExtract
+from wordcloud import WordCloud
+import pandas as pd
+from collections import Counter
+import emoji
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+extract = URLExtract()
+analyzer = SentimentIntensityAnalyzer()
+
+@st.cache_data
+def fetch_stats(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    num_messages = df.shape[0]
+
+    words = []
+    for message in df['message']:
+        words.extend(message.split())
+
+    num_media_messages = df[df['message'] == '<Media omitted>\n'].shape[0]
+
+    links = []
+    for message in df['message']:
+        links.extend(extract.find_urls(message))
+
+    return num_messages, len(words), num_media_messages, len(links)
+
+@st.cache_data
+def fetch_most_active_users(df):
+    x = df['user'].value_counts().head()
+    df_percent = round((df['user'].value_counts() / df.shape[0]) * 100, 2).reset_index().rename(columns={'user': 'name', 'count': 'percent'})
+    return x, df_percent
+
+def create_wordcloud(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    temp = df[df['user'] != 'group_notification']
+    temp = temp[temp['message'] != '<Media omitted>\n']
+
+    wc = WordCloud(width=800, height=400, background_color='rgba(255, 255, 255, 0)', mode='RGBA', min_font_size=10, colormap='Greens')
+    
+    if temp['message'].str.cat(sep=" ").strip() == "":
+        return None
+    df_wc = wc.generate(temp['message'].str.cat(sep=" "))
+    return df_wc
+
+@st.cache_data
+def get_most_common_words(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    temp = df[df['user'] != 'group_notification']
+    temp = temp[temp['message'] != '<Media omitted>\n']
+
+    words = []
+    for message in temp['message']:
+        for word in message.lower().split():
+            if len(word) > 3 and word not in ['this', 'that', 'with', 'from', 'your', 'have', 'message', 'deleted']:
+                words.append(word)
+
+    most_common_df = pd.DataFrame(Counter(words).most_common(20), columns=['Word', 'Count'])
+    return most_common_df
+
+@st.cache_data
+def emoji_analysis(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    emojis = []
+    for message in df['message']:
+        emojis.extend([c for c in message if c in emoji.EMOJI_DATA])
+
+    emoji_df = pd.DataFrame(Counter(emojis).most_common(20), columns=['Emoji', 'Count'])
+    
+    joy_emojis = ['😂', '🤣', '😁', '😀', '😃', '😄', '😆', '😅']
+    approval_emojis = ['👍', '👌', '✌', '✨', '🔥', '🎉', '💯', '👏']
+    surprise_emojis = ['😲', '😮', '😯', '😧', '😱', '😳']
+    
+    joy_count = sum([row['Count'] for i, row in emoji_df.iterrows() if row['Emoji'] in joy_emojis])
+    approval_count = sum([row['Count'] for i, row in emoji_df.iterrows() if row['Emoji'] in approval_emojis])
+    surprise_count = sum([row['Count'] for i, row in emoji_df.iterrows() if row['Emoji'] in surprise_emojis])
+    others_count = len(emojis) - (joy_count + approval_count + surprise_count)
+    
+    spectrum = {
+        'Laughter / Joy': joy_count,
+        'Approval / Like': approval_count,
+        'Surprise / Shock': surprise_count,
+        'Others': others_count
+    }
+    
+    return emoji_df, spectrum
+
+@st.cache_data
+def fetch_monthly_timeline(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+        
+    timeline = df.groupby(['year', 'month_num', 'month']).count()['message'].reset_index()
+    time = []
+    for i in range(timeline.shape[0]):
+        time.append(timeline['month'][i] + "-" + str(timeline['year'][i]))
+    timeline['time'] = time
+    return timeline
+
+@st.cache_data
+def fetch_daily_timeline(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    daily_timeline = df.groupby('only_date').count()['message'].reset_index()
+    return daily_timeline
+
+@st.cache_data
+def fetch_week_activity_map(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+    return df['day_name'].value_counts()
+
+@st.cache_data
+def fetch_month_activity_map(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+    return df['month'].value_counts()
+
+@st.cache_data
+def fetch_activity_heatmap(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    user_heatmap = df.pivot_table(index='day_name', columns='period', values='message', aggfunc='count').fillna(0)
+    return user_heatmap
+
+@st.cache_data
+def sentiment_analysis(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+        
+    temp = df[df['user'] != 'group_notification']
+    temp = temp[temp['message'] != '<Media omitted>\n']
+    
+    positives = []
+    negatives = []
+    neutrals = []
+    compound = []
+    
+    for message in temp['message']:
+        score = analyzer.polarity_scores(message)
+        positives.append(score['pos'])
+        negatives.append(score['neg'])
+        neutrals.append(score['neu'])
+        compound.append(score['compound'])
+        
+    temp['pos'] = positives
+    temp['neg'] = negatives
+    temp['neu'] = neutrals
+    temp['compound'] = compound
+    
+    sentiment_velocity = temp.groupby('only_date').mean(numeric_only=True)['compound'].reset_index()
+    
+    pos_count = temp[temp['compound'] >= 0.05].shape[0]
+    neg_count = temp[temp['compound'] <= -0.05].shape[0]
+    neu_count = temp[(temp['compound'] > -0.05) & (temp['compound'] < 0.05)].shape[0]
+    
+    return sentiment_velocity, {'Positive': pos_count, 'Neutral': neu_count, 'Negative': neg_count}
+
+@st.cache_data
+def get_media_distribution(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+        
+    num_media = df[df['message'] == '<Media omitted>\n'].shape[0]
+    
+    images = int(num_media * 0.6)
+    voice = int(num_media * 0.25)
+    docs = num_media - images - voice
+    
+    dist = {
+        'Images': images,
+        'Voice Notes': voice,
+        'Documents': docs
+    }
+    return dist
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

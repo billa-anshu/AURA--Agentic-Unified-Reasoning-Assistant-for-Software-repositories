@@ -1,0 +1,283 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+frontend/vite.config.js
+frontend/eslint.config.js
+frontend/README.md
+frontend/src/App.jsx
+frontend/src/main.jsx
+frontend/src/components/Navigation.jsx
+frontend/src/services/api.js
+frontend/src/services/user.service.js
+frontend/src/services/auth.service.js
+frontend/src/pages/BookAppointment.jsx
+frontend/src/pages/MyAppointments.jsx
+frontend/src/pages/DoctorList.jsx
+frontend/src/pages/MyPets.jsx
+frontend/src/pages/Home.jsx
+frontend/src/pages/Login.jsx
+frontend/src/pages/Register.jsx
+frontend/src/pages/DoctorDashboard.jsx
+frontend/src/context/AuthContext.jsx
+backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java
+backend/src/main/java/com/smartpetcare/repository/UserRepository.java
+backend/src/main/java/com/smartpetcare/repository/AppointmentRepository.java
+backend/src/main/java/com/smartpetcare/repository/PetRepository.java
+backend/src/main/java/com/smartpetcare/repository/DoctorRepository.java
+backend/src/main/java/com/smartpetcare/repository/PaymentRepository.java
+backend/src/main/java/com/smartpetcare/payload/request/AppointmentRequest.java
+backend/src/main/java/com/smartpetcare/payload/request/LoginRequest.java
+backend/src/main/java/com/smartpetcare/payload/request/SignupRequest.java
+backend/src/main/java/com/smartpetcare/payload/response/JwtResponse.java
+backend/src/main/java/com/smartpetcare/payload/response/MessageResponse.java
+backend/src/main/java/com/smartpetcare/enums/AppointmentStatus.java
+backend/src/main/java/com/smartpetcare/enums/UserRole.java
+backend/src/main/java/com/smartpetcare/entity/Pet.java
+backend/src/main/java/com/smartpetcare/entity/Doctor.java
+backend/src/main/java/com/smartpetcare/entity/User.java
+backend/src/main/java/com/smartpetcare/entity/Payment.java
+backend/src/main/java/com/smartpetcare/entity/Appointment.java
+backend/src/main/java/com/smartpetcare/controller/PetController.java
+backend/src/main/java/com/smartpetcare/controller/AppointmentController.java
+backend/src/main/java/com/smartpetcare/controller/DoctorController.java
+backend/src/main/java/com/smartpetcare/controller/AuthController.java
+backend/src/main/java/com/smartpetcare/controller/PaymentController.java
+backend/src/main/java/com/smartpetcare/security/WebSecurityConfig.java
+backend/src/main/java/com/smartpetcare/security/services/UserDetailsServiceImpl.java
+backend/src/main/java/com/smartpetcare/security/services/UserDetailsImpl.java
+backend/src/main/java/com/smartpetcare/security/jwt/JwtUtils.java
+backend/src/main/java/com/smartpetcare/security/jwt/AuthEntryPointJwt.java
+backend/src/main/java/com/smartpetcare/security/jwt/AuthTokenFilter.java
+
+FILE CONTENTS:
+
+--- frontend/vite.config.js ---
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+
+
+--- frontend/eslint.config.js ---
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+])
+
+
+--- frontend/src/App.jsx ---
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import Navigation from './components/Navigation';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import DoctorList from './pages/DoctorList';
+import MyPets from './pages/MyPets';
+import BookAppointment from './pages/BookAppointment';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import MyAppointments from './pages/MyAppointments';
+import DoctorDashboard from './pages/DoctorDashboard';
+
+function App() {
+  return (
+    <AuthProvider>
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/doctors" element={<DoctorList />} />
+          <Route path="/my-pets" element={<MyPets />} />
+          <Route path="/my-appointments" element={<MyAppointments />} />
+          <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
+          <Route path="/book-appointment/:doctorId" element={<BookAppointment />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
+}
+
+export default App;
+
+
+--- frontend/src/main.jsx ---
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+
+
+--- frontend/src/components/Navigation.jsx ---
+import React, { useContext } from 'react';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+
+const Navigation = () => {
+    const { currentUser, logout } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
+
+    return (
+        <Navbar bg="dark" variant="dark" expand="lg">
+            <Container>
+                <Navbar.Brand as={Link} to="/">Smart Pet Care</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/services">Services</Nav.Link>
+                        <Nav.Link as={Link} to="/doctors">Doctors</Nav.Link>
+
+                        {currentUser && (
+                            <>
+                                {currentUser.roles.includes('USER') && (
+                                    <>
+                                        <Nav.Link as={Link} to="/my-pets">My Pets</Nav.Link>
+                                        <Nav.Link as={Link} to="/my-appointments">Appointments</Nav.Link>
+                                    </>
+                                )}
+                                {(currentUser.roles.includes('DOCTOR') || currentUser.roles.includes('ADMIN')) && (
+                                    <Nav.Link as={Link} to="/doctor-dashboard">Dashboard</Nav.Link>
+                                )}
+                            </>
+                        )}
+                    </Nav>
+                    <Nav>
+                        {currentUser ? (
+                            <>
+                                <Navbar.Text className="me-3">
+                                    Signed in as: {currentUser.name}
+                                </Navbar.Text>
+                                <Button variant="outline-light" onClick={handleLogout}>Logout</Button>
+                            </>
+                        ) : (
+                            <>
+                                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                                <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                            </>
+                        )}
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
+};
+
+export default Navigation;
+
+
+--- frontend/src/services/api.js ---
+import axios from 'axios';
+
+const instance = axios.create({
+    baseURL: 'http://localhost:8080',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+});
+
+instance.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers['Authorization'] = 'Bearer ' + token;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
+export default instance;
+
+
+--- backend/src/main/java/com/smartpetcare/SmartPetCareApplication.java ---
+package com.smartpetcare;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SmartPetCareApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SmartPetCareApplication.class, args);
+	}
+
+}
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

@@ -1,0 +1,102 @@
+{
+  "01_Attendance-Management-System": {
+    "url": "https://github.com/hrishiareddy004/Attendance-Management-System",
+    "slug": "Attendance-Management-System",
+    "path": "repositories\\Attendance-Management-System"
+  },
+  "02_RecipeBook": {
+    "url": "https://github.com/hrishiareddy004/RecipeBook",
+    "slug": "RecipeBook",
+    "path": "repositories\\RecipeBook"
+  },
+  "03_Bpcs-stego": {
+    "url": "https://github.com/hrishiareddy004/Bpcs-stego",
+    "slug": "Bpcs-stego",
+    "path": "repositories\\Bpcs-stego"
+  },
+  "04_ResumeRise": {
+    "url": "https://github.com/JayasreeUppari/ResumeRise",
+    "slug": "ResumeRise",
+    "path": "repositories\\ResumeRise"
+  },
+  "05_bookreview-api": {
+    "url": "https://github.com/billa-anshu/bookreview-api",
+    "slug": "bookreview-api",
+    "path": "repositories\\bookreview-api"
+  },
+  "06_Virtual-Tour-Creater": {
+    "url": "https://github.com/billa-anshu/Virtual-Tour-Creater",
+    "slug": "Virtual-Tour-Creater",
+    "path": "repositories\\Virtual-Tour-Creater"
+  },
+  "07_ai-ppt-generator": {
+    "url": "https://github.com/SunkaraboinaPraveenKumar/ai-ppt-generator",
+    "slug": "ai-ppt-generator",
+    "path": "repositories\\ai-ppt-generator"
+  },
+  "08_Ai_Health_Recommedation": {
+    "url": "https://github.com/SunkaraboinaPraveenKumar/Ai_Health_Recommedation",
+    "slug": "Ai_Health_Recommedation",
+    "path": "repositories\\Ai_Health_Recommedation"
+  },
+  "09_trading_bot": {
+    "url": "https://github.com/Mastan1301/trading_bot",
+    "slug": "trading_bot",
+    "path": "repositories\\trading_bot"
+  },
+  "10_HomeServicesBooking": {
+    "url": "https://github.com/DeepaPalle/HomeServicesBooking",
+    "slug": "HomeServicesBooking",
+    "path": "repositories\\HomeServicesBooking"
+  },
+  "11_AIResumeScreeningSystem": {
+    "url": "https://github.com/DeepaPalle/AIResumeScreeningSystem",
+    "slug": "AIResumeScreeningSystem",
+    "path": "repositories\\AIResumeScreeningSystem"
+  },
+  "12_AI-Study-Assistant": {
+    "url": "https://github.com/DeepaPalle/AI-Study-Assistant",
+    "slug": "AI-Study-Assistant",
+    "path": "repositories\\AI-Study-Assistant"
+  },
+  "13_Image-generator": {
+    "url": "https://github.com/Koppula-Maithri/Image-generator",
+    "slug": "Image-generator",
+    "path": "repositories\\Image-generator"
+  },
+  "14_customerfeedback": {
+    "url": "https://github.com/NIKHIL-TEJA341/customerfeedback",
+    "slug": "customerfeedback",
+    "path": "repositories\\customerfeedback"
+  },
+  "15_whatsappchatanalyzer": {
+    "url": "https://github.com/NIKHIL-TEJA341/whatsappchatanalyzer",
+    "slug": "whatsappchatanalyzer",
+    "path": "repositories\\whatsappchatanalyzer"
+  },
+  "16_studyvault": {
+    "url": "https://github.com/NIKHIL-TEJA341/studyvault",
+    "slug": "studyvault",
+    "path": "repositories\\studyvault"
+  },
+  "17_MajorProjectFirstDraft": {
+    "url": "https://github.com/GreeshmaKurivella29/MajorProjectFirstDraft",
+    "slug": "MajorProjectFirstDraft",
+    "path": "repositories\\MajorProjectFirstDraft"
+  },
+  "18_diabetes_predictor": {
+    "url": "https://github.com/Ashwinkarnati/diabetes_predictor",
+    "slug": "diabetes_predictor",
+    "path": "repositories\\diabetes_predictor"
+  },
+  "19_AI-COACHING-PLATFORM": {
+    "url": "https://github.com/Ashwinkarnati/AI-COACHING-PLATFORM",
+    "slug": "AI-COACHING-PLATFORM",
+    "path": "repositories\\AI-COACHING-PLATFORM"
+  },
+  "20_smart-pet-care": {
+    "url": "https://github.com/Harshitha2020055438/smart-pet-care",
+    "slug": "smart-pet-care",
+    "path": "repositories\\smart-pet-care"
+  }
+}

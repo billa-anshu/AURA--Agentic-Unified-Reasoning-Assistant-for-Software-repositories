@@ -1,0 +1,299 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+HELP.md
+src/test/java/bookreview_api/BookreviewApiApplicationTests.java
+src/main/java/bookreview_api/BookreviewApiApplication.java
+src/main/java/bookreview_api/WebConfig.java
+src/main/java/bookreview_api/model/User.java
+src/main/java/bookreview_api/model/Review.java
+src/main/java/bookreview_api/model/Book.java
+src/main/java/bookreview_api/dto/ReviewWithBookDTO.java
+src/main/java/bookreview_api/config/SwaggerConfig.java
+src/main/java/bookreview_api/repository/UserRepository.java
+src/main/java/bookreview_api/repository/BookRepository.java
+src/main/java/bookreview_api/repository/ReviewRepository.java
+src/main/java/bookreview_api/service/UserService.java
+src/main/java/bookreview_api/controller/BookController.java
+src/main/java/bookreview_api/controller/UserController.java
+src/main/java/bookreview_api/controller/ReviewController.java
+src/main/java/bookreview_api/controller/HealthController.java
+src/main/java/bookreview_api/controller/AuthController.java
+src/main/java/bookreview_api/controller/UserProfileController.java
+src/main/java/bookreview_api/security/SecurityConfig.java
+src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java
+src/main/java/bookreview_api/security/JwtFilter.java
+src/main/java/bookreview_api/security/JwtUtil.java
+
+FILE CONTENTS:
+
+--- src/test/java/bookreview_api/BookreviewApiApplicationTests.java ---
+package bookreview_api;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class BookreviewApiApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
+
+
+--- src/main/java/bookreview_api/BookreviewApiApplication.java ---
+package com.bookreview.api;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication  // Tells Spring this is the main class
+public class BookreviewApiApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(BookreviewApiApplication.class, args);
+    }
+}
+
+--- src/main/java/bookreview_api/WebConfig.java ---
+package com.bookreview.api.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // Serve files from the uploads directory
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations("file:uploads/");
+    }
+}
+
+--- src/main/java/bookreview_api/model/User.java ---
+package com.bookreview.api.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "users")
+public class User {
+    
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String id;
+    
+    @Column(unique = true, nullable = false)
+    private String name;
+    
+    @Column(unique = true, nullable = false)
+    private String email;
+    
+    private String password;
+    private String role;
+    private String profilePictureUrl;
+    
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Review> reviews = new ArrayList<>();
+    
+    public User() {}
+    
+    public User(String name, String email, String password, String role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+    
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        if (role == null) role = "USER";
+    }
+    
+    // Getters and Setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+    public String getProfilePictureUrl() { return profilePictureUrl; }
+    public void setProfilePictureUrl(String profilePictureUrl) { this.profilePictureUrl = profilePictureUrl; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    public List<Review> getReviews() { return reviews; }
+    public void setReviews(List<Review> reviews) { this.reviews = reviews; }
+}
+
+
+--- src/main/java/bookreview_api/model/Review.java ---
+package com.bookreview.api.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "reviews", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"user_id", "book_id"}, name = "unique_user_book_review")
+})
+public class Review {
+    
+    @Id
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "VARCHAR(36)")
+    private String reviewId;
+    
+    @Column(nullable = false)
+    private Integer rating;
+    
+    @Column(length = 2000)
+    private String comment;
+    
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    
+    @Column(name = "updated_at")  // ✅ ADD THIS FIELD
+    private LocalDateTime updatedAt;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    private User user;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", nullable = false)
+    private Book book;
+    
+    public Review() {}
+    
+    public Review(Integer rating, String comment, User user, Book book) {
+        this.rating = rating;
+        this.comment = comment;
+        this.user = user;
+        this.book = book;
+    }
+    
+    @PrePersist
+    protected void onCreate() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+    }
+    
+    @PreUpdate  // ✅ ADD THIS - updates updatedAt when review is modified
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
+    
+    // Getters and Setters
+    public String getReviewId() { return reviewId; }
+    public void setReviewId(String reviewId) { this.reviewId = reviewId; }
+    
+    public Integer getRating() { return rating; }
+    public void setRating(Integer rating) { this.rating = rating; }
+    
+    public String getComment() { return comment; }
+    public void setComment(String comment) { this.comment = comment; }
+    
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+    
+    // ✅ ADD THIS GETTER
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+    
+    public User getUser() { return user; }
+    public void setUser(User user) { this.user = user; }
+    
+    public Book getBook() { return book; }
+    public void setBook(Book book) { this.book = book; }
+}
+
+
+--- src/main/java/bookreview_api/repository/UserRepository.java ---
+package com.bookreview.api.repository;
+
+import com.bookreview.api.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, String> {
+    Optional<User> findByEmail(String email);
+    boolean existsByEmail(String email);
+    // NO findByVerificationToken - you don't need it
+}
+
+--- src/main/java/bookreview_api/repository/BookRepository.java ---
+package com.bookreview.api.repository;
+
+import com.bookreview.api.model.Book;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BookRepository extends JpaRepository<Book, String> {
+    
+    Page<Book> findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(
+        String title, String author, Pageable pageable);
+    
+    Page<Book> findByGenre(String genre, Pageable pageable);
+    
+    Page<Book> findByAuthor(String author, Pageable pageable);
+    
+    Page<Book> findByGenreAndAuthor(String genre, String author, Pageable pageable);
+    
+    Page<Book> findByRatingGreaterThanEqual(Double minRating, Pageable pageable);
+}
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

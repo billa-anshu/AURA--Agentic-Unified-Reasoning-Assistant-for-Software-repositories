@@ -1,0 +1,314 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+psnr.py
+src/reportWebVitals.js
+src/supabaseClient.js
+src/Databaseinsert.js
+src/UploadComponent.js
+src/setupTests.js
+src/App.js
+src/StegoApp.js
+src/index.js
+src/uploadToSupabase.js
+src/HomePage.jsx
+src/LoginPage.js
+src/App.test.js
+backend/app.py
+
+FILE CONTENTS:
+
+--- src/reportWebVitals.js ---
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+export default reportWebVitals;
+
+
+--- src/supabaseClient.js ---
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = 'https://iojjqinkvuykxbwdbrby.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvampxaW5rdnV5a3hid2RicmJ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY1MDAxNjIsImV4cCI6MjA2MjA3NjE2Mn0.3if5VQSPa4qJlWDXvFrYeJC9fQ2aMT8xRx2aDuqk7IA';
+
+export const supabase = createClient(supabaseUrl, supabaseKey);
+
+
+--- src/Databaseinsert.js ---
+import { supabase } from './supabaseClient';
+
+// This is a simplified test function to diagnose database insert issues
+export async function testDatabaseInsert() {
+  try {
+    // 1. Get current authenticated user
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    
+    if (userError || !user) {
+      console.error("Authentication error:", userError?.message || "No user found");
+      return { error: "Not authenticated" };
+    }
+    
+    const userEmail = user.email;
+    console.log("Authenticated as:", userEmail);
+    
+    // 2. Create a simple test record
+    const testData = {
+      user_email: userEmail,
+      file_path: `test-path-${Date.now()}`,
+      file_name: "test-file.jpg",
+      public_url: "https://example.com/test-image.jpg",
+      file_type: "test",
+      encoding_type: "text"
+    };
+    
+    console.log("Attempting to insert test data:", testData);
+    
+    // 3. Try the insert with detailed error logging
+    const { data: insertData, error: insertError } = await supabase
+      .from('uploads')
+      .insert(testData)
+      //.select();
+    
+    if (insertError) {
+      console.error("Database insert failed:");
+      console.error("- Error code:", insertError.code);
+      console.error("- Error message:", insertError.message);
+      console.error("- Error details:", insertError.details);
+      return { error: insertError.message };
+    }
+    
+    console.log("Insert successful!", insertData);
+    return { success: true, data: insertData };
+    
+  } catch (error) {
+    console.error("Unexpected error:", error.message);
+    return { error: error.message };
+  }
+}
+
+--- src/UploadComponent.js ---
+// UploadComponent.js
+import React, { useState } from 'react';
+import { uploadImageToSupabase } from './uploadToSupabase';
+
+export default function UploadComponent() {
+  const [file, setFile] = useState(null);
+  const [url, setUrl] = useState('');
+  const [status, setStatus] = useState('');
+
+  const handleUpload = async () => {
+    setStatus('Uploading...');
+    const result = await uploadImageToSupabase(file, 'yasha@example.com');
+    if (result.error) {
+      setStatus('Error: ' + result.error);
+    } else {
+      setUrl(result.url);
+      setStatus('Upload successful!');
+    }
+  };
+
+  return (
+    <div>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={(e) => setFile(e.target.files[0])}
+      />
+      <button onClick={handleUpload}>Upload</button>
+      <p>{status}</p>
+      {url && <img src={url} alt="Uploaded" style={{ maxWidth: '300px' }} />}
+    </div>
+  );
+}
+
+
+--- src/setupTests.js ---
+// jest-dom adds custom jest matchers for asserting on DOM nodes.
+// allows you to do things like:
+// expect(element).toHaveTextContent(/react/i)
+// learn more: https://github.com/testing-library/jest-dom
+import '@testing-library/jest-dom';
+
+
+--- src/App.js ---
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoginPage from "./LoginPage";  // Import your LoginPage component
+import StegoApp from "./StegoApp";
+import UploadComponent from './UploadComponent';
+
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  // Function to handle successful login
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+  };
+
+  return (
+    <Router>
+      <Routes>
+        {/* Login route - show login page if not authenticated */}
+        <Route 
+          path="/login" 
+          element={
+            isAuthenticated ? 
+            <Navigate to="/app" /> : 
+            <LoginPage onLoginSuccess={handleLoginSuccess} />
+          } 
+        />
+        
+        {/* Main app route - requires authentication */}
+        <Route 
+          path="/app" 
+          element={
+            isAuthenticated ? 
+            <StegoApp /> : 
+            <Navigate to="/login" />
+          } 
+        />
+        
+        {/* Upload component route */}
+        <Route 
+          path="/upload" 
+          element={
+            isAuthenticated ? 
+            <UploadComponent /> : 
+            <Navigate to="/login" />
+          } 
+        />
+        
+        {/* Default route - redirect to login if not authenticated, app if authenticated */}
+        <Route 
+          path="*" 
+          element={
+            isAuthenticated ? 
+            <Navigate to="/app" /> : 
+            <Navigate to="/login" />
+          } 
+        />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+--- src/index.js ---
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+
+--- src/uploadToSupabase.js ---
+import { supabase } from './supabaseClient';
+// Add this debugging code at the beginning of your function
+const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+console.log("Current session:", sessionData?.session ? "Active" : "None");
+console.log("Session user:", sessionData?.session?.user?.email);
+// Simplified upload function for debugging
+export async function uploadImageToSupabase(file, encryptionKey = "") {
+  if (!file) return { error: 'No file provided' };
+
+  try {
+    const { data: authData } = await supabase.auth.getSession();
+    if (!authData.session) return { error: 'Not authenticated' };
+
+    const email = authData.session.user.email;
+    const filePath = `stego/${Date.now()}-${file.name}`;
+
+    const { data, error } = await supabase
+      .storage
+      .from('stego-images')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: false,
+      });
+
+    if (error) return { error: error.message };
+
+    // Get public URL
+    const { data: urlData } = supabase.storage.from('stego-images').getPublicUrl(filePath);
+    const publicUrl = urlData.publicUrl;
+
+    // Insert metadata into uploads table
+    const { error: insertError } = await supabase
+      .from('uploads')
+      .insert([{
+        user_email: email,
+        file_name: file.name,
+        public_url: publicUrl,
+        encryption_key: encryptionKey
+      }]);
+
+    if (insertError) return { error: insertError.message };
+
+    return { url: publicUrl, success: true };
+  } catch (err) {
+    return { error: err.message };
+  }
+}
+
+--- src/App.test.js ---
+import { render, screen } from '@testing-library/react';
+import App from './App';
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

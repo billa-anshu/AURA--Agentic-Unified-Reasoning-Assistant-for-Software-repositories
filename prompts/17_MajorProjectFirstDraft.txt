@@ -1,0 +1,266 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+RUN.md
+src/seg_infer.py
+src/view_pt_file.py
+src/features_and_depth.py
+src/seg_unet_train.py
+src/utils.py
+data/demo/make_synth_demo.py
+
+FILE CONTENTS:
+
+--- src/seg_infer.py ---
+import os, argparse, cv2, torch, numpy as np
+from utils import load_config, set_device, UNetSmall
+
+def sigmoid(x): return 1/(1+np.exp(-x))
+
+def main(cfg_path, images_dir, out_masks):
+    cfg = load_config(cfg_path)
+    device = set_device(cfg.get('device','auto'))
+    os.makedirs(out_masks, exist_ok=True)
+
+    ckpt = torch.load(cfg['infer']['weights'], map_location=device)
+    model = UNetSmall(in_ch=1, out_ch=1).to(device)
+    model.load_state_dict(ckpt['model']); model.eval()
+
+    size = cfg['train']['img_size']
+    thresh = float(cfg['infer']['thresh'])
+
+    for fn in sorted(os.listdir(images_dir)):
+        if not fn.lower().endswith(('.jpg','.jpeg','.png','.bmp','.tif','.tiff')):
+            continue
+        path = os.path.join(images_dir, fn)
+        img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+        h,w = img.shape[:2]
+        img_r = cv2.resize(img, (size,size))
+        inp = (img_r[...,None]/255.0 - 0.5)/0.5
+        inp = np.transpose(inp, (2,0,1))[None].astype(np.float32)
+        x = torch.from_numpy(inp).to(device)
+        with torch.no_grad():
+            logits = model(x).cpu().numpy()[0,0]
+        prob = sigmoid(logits)
+        m = (prob > thresh).astype(np.uint8)*255
+        m = cv2.resize(m, (w,h), interpolation=cv2.INTER_NEAREST)
+        cv2.imwrite(os.path.join(out_masks, fn), m)
+        print("Saved mask:", os.path.join(out_masks, fn))
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--config', required=True)
+    ap.add_argument('--images', required=True)
+    ap.add_argument('--out_masks', required=True)
+    args = ap.parse_args()
+    main(args.config, args.images, args.out_masks)
+
+
+--- src/view_pt_file.py ---
+import torch
+import argparse
+
+def view_pt_file(file_path):
+    """
+    Loads a .pt file and prints a summary of its contents.
+    """
+    try:
+        print(f"Loading model from: {file_path}")
+        # Load the checkpoint onto the CPU
+        checkpoint = torch.load(file_path, map_location=torch.device('cpu'))
+        
+        print("\nFile type:", type(checkpoint))
+        
+        if isinstance(checkpoint, dict):
+            # This is common for checkpoints that save more than just the model weights
+            print("\nKeys in checkpoint:", checkpoint.keys())
+            
+            # Try to find the model's state dictionary
+            model_state_dict = None
+            if 'model' in checkpoint:
+                model_state_dict = checkpoint['model']
+            elif 'state_dict' in checkpoint:
+                model_state_dict = checkpoint['state_dict']
+            elif all(isinstance(k, str) and isinstance(v, torch.Tensor) for k, v in checkpoint.items()):
+                # It might be a raw state dictionary
+                model_state_dict = checkpoint
+            
+            if model_state_dict:
+                print("\n--- Model Layers and Parameters ---")
+                for param_tensor, tensor_value in model_state_dict.items():
+                    print(f"{param_tensor:<50} {list(tensor_value.size())}")
+                print("------------------------------------")
+            
+            # Print other metadata if it exists
+            print("\n--- Other Metadata ---")
+            for key, value in checkpoint.items():
+                if key not in ['model', 'state_dict']:
+                    if isinstance(value, dict):
+                        print(f"Key '{key}':")
+                        for sub_key, sub_value in value.items():
+                            print(f"  - {sub_key}: {sub_value}")
+                    else:
+                        print(f"Key '{key}': {value}")
+            print("----------------------")
+
+        else:
+            # This might be the model object itself
+            print("\n--- Model Architecture ---")
+            print(checkpoint)
+            print("--------------------------")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="View the contents of a PyTorch .pt file.")
+    parser.add_argument('file_path', type=str, help='The path to the .pt file.')
+    
+    args = parser.parse_args()
+    
+    view_pt_file(args.file_path)
+
+
+--- src/seg_unet_train.py ---
+import os, argparse, torch, numpy as np
+from utils import load_config, set_device, seed_everything, UNetSmall, CrackDataset, list_pairs, bce_dice_loss
+from sklearn.model_selection import train_test_split
+
+def main(cfg_path):
+    cfg = load_config(cfg_path)
+    seed_everything(cfg.get('seed',42))
+    device = set_device(cfg.get('device','auto'))
+    tcfg = cfg['train']
+
+    ims, mks = list_pairs(tcfg['images_dir'], tcfg['masks_dir'])
+    from sklearn.model_selection import train_test_split
+    Xtr, Xval, Ytr, Yval = train_test_split(ims, mks, test_size=tcfg.get('val_split',0.2), random_state=42)
+
+    tr_ds = CrackDataset(Xtr, Ytr, size=tcfg['img_size'], aug=True)
+    va_ds = CrackDataset(Xval, Yval, size=tcfg['img_size'], aug=False)
+
+    tr_ld = torch.utils.data.DataLoader(tr_ds, batch_size=tcfg['batch_size'], shuffle=True, num_workers=0)
+    va_ld = torch.utils.data.DataLoader(va_ds, batch_size=tcfg['batch_size'], shuffle=False, num_workers=0)
+
+    model = UNetSmall(in_ch=1, out_ch=1).to(device)
+    opt = torch.optim.Adam(model.parameters(), lr=float(tcfg['lr']))
+
+    best = 1e9
+    os.makedirs(tcfg['out_dir'], exist_ok=True)
+    for epoch in range(tcfg['epochs']):
+        model.train()
+        tr_loss=0.0
+        for x,y in tr_ld:
+            x,y = x.to(device), y.to(device)
+            opt.zero_grad()
+            logits = model(x)
+            loss = bce_dice_loss(logits, y)
+            loss.backward(); opt.step()
+            tr_loss += float(loss.item())*x.size(0)
+        tr_loss /= len(tr_ds)
+
+        model.eval()
+        va_loss=0.0
+        with torch.no_grad():
+            for x,y in va_ld:
+                x,y = x.to(device), y.to(device)
+                logits = model(x)
+                loss = bce_dice_loss(logits, y)
+                va_loss += float(loss.item())*x.size(0)
+        va_loss /= len(va_ds)
+
+        print(f"Epoch {epoch+1}/{tcfg['epochs']}  train={tr_loss:.4f}  val={va_loss:.4f}")
+        if va_loss < best:
+            best = va_loss
+            torch.save({'model':model.state_dict(), 'cfg':cfg}, os.path.join(tcfg['out_dir'],'best.pt'))
+    print("Saved best to", os.path.join(tcfg['out_dir'],'best.pt'))
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--config', required=True)
+    args = ap.parse_args()
+    main(args.config)
+
+
+--- data/demo/make_synth_demo.py ---
+import os, cv2, numpy as np, pandas as pd
+from scipy.ndimage import gaussian_filter
+
+root = os.path.dirname(__file__)
+images = os.path.join(root, "images")
+masks  = os.path.join(root, "masks")
+os.makedirs(images, exist_ok=True)
+os.makedirs(masks, exist_ok=True)
+
+def make_img(h=512, w=768, seed=0):
+    rng = np.random.default_rng(seed)
+    base = rng.normal(180, 10, size=(h,w)).astype(np.float32)
+    base = gaussian_filter(base, 1.0)
+    for _ in range(2000):
+        y = rng.integers(0,h); x=rng.integers(0,w)
+        base[y,x] -= rng.uniform(0,20)
+    base = np.clip(base,0,255)
+
+    y = int(h*0.4)
+    crack = np.zeros((h,w), np.uint8)
+    dy = 0
+    for x in range(30, w-30):
+        dy += rng.integers(-1,2); dy = int(np.clip(dy,-2,2))
+        y = int(np.clip(y+dy, 10, h-10))
+        width = int(1 + 6*(0.5 + 0.5*np.sin(x/60)))
+        cv2.circle(crack, (x,y), width//2, 255, -1)
+
+    img = base.copy()
+    img[crack>0] -= 120
+    img = np.clip(img,0,255).astype(np.uint8)
+    img = cv2.GaussianBlur(img, (3,3), 0)
+    return img, crack
+
+rows = []
+for i in range(30):
+    img, m = make_img(seed=i)
+    fn = f"demo_{i:03d}.png"
+    cv2.imwrite(os.path.join(images, fn), img)
+    cv2.imwrite(os.path.join(masks, fn), m)
+    dist = cv2.distanceTransform((m>0).astype(np.uint8), cv2.DIST_L2, 3)
+    w95_px = np.percentile(dist[m>0]*2.0, 95)
+    length_px = (m>0).sum()/max(1, int(np.mean(dist[m>0]*2.0)))
+    w95_mm = w95_px*0.2
+    length_mm = length_px*0.2
+    depth = np.clip(12*(0.6*(w95_mm**1.2) + 0.002*np.sqrt(max(length_mm,1)))+np.random.normal(0,0.5), 0, 30)
+    rows.append(dict(image=fn, depth_mm=float(depth)))
+
+pd.DataFrame(rows).to_csv(os.path.join(root,'nde_groundtruth.csv'), index=False)
+print("Synthetic data written to", images, "and", masks)
+print("NDE CSV at", os.path.join(root,'nde_groundtruth.csv'))
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

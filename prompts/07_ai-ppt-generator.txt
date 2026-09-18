@@ -1,0 +1,336 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+middleware.ts
+components/site-nav.tsx
+components/site-header.tsx
+components/theme-provider.tsx
+components/editor/ai-generation-dialog.tsx
+components/editor/floating-action-tool.tsx
+components/editor/outline-editor.tsx
+components/editor/design-style-selector.tsx
+components/editor/image-transform-dialog.tsx
+components/editor/slide-preview.tsx
+components/editor/editor-header.tsx
+components/editor/advanced-slide-editor.tsx
+components/editor/export-dialog.tsx
+components/ui/tooltip.tsx
+components/ui/button.tsx
+components/ui/breadcrumb.tsx
+components/ui/aspect-ratio.tsx
+components/ui/spinner.tsx
+components/ui/sidebar.tsx
+components/ui/pagination.tsx
+components/ui/use-toast.ts
+components/ui/carousel.tsx
+components/ui/progress.tsx
+components/ui/textarea.tsx
+components/ui/drawer.tsx
+components/ui/button-group.tsx
+components/ui/dropdown-menu.tsx
+components/ui/tabs.tsx
+components/ui/toast.tsx
+components/ui/toggle.tsx
+components/ui/accordion.tsx
+components/ui/kbd.tsx
+components/ui/checkbox.tsx
+components/ui/avatar.tsx
+components/ui/input-group.tsx
+components/ui/form.tsx
+components/ui/collapsible.tsx
+components/ui/toggle-group.tsx
+components/ui/dialog.tsx
+components/ui/badge.tsx
+components/ui/toaster.tsx
+components/ui/empty.tsx
+components/ui/label.tsx
+components/ui/input-otp.tsx
+components/ui/chart.tsx
+components/ui/theme-toggle.tsx
+components/ui/alert-dialog.tsx
+components/ui/command.tsx
+components/ui/calendar.tsx
+components/ui/alert.tsx
+components/ui/scroll-area.tsx
+components/ui/sheet.tsx
+components/ui/popover.tsx
+components/ui/sonner.tsx
+components/ui/menubar.tsx
+components/ui/input.tsx
+components/ui/resizable.tsx
+components/ui/radio-group.tsx
+components/ui/switch.tsx
+components/ui/card.tsx
+components/ui/hover-card.tsx
+components/ui/item.tsx
+components/ui/field.tsx
+components/ui/table.tsx
+components/ui/navigation-menu.tsx
+components/ui/context-menu.tsx
+components/ui/use-mobile.tsx
+components/ui/skeleton.tsx
+components/ui/slider.tsx
+components/ui/select.tsx
+components/ui/separator.tsx
+components/workspace/new-project-dialog.tsx
+components/workspace/workspace-header.tsx
+components/workspace/project-card.tsx
+components/workspace/credits-display.tsx
+hooks/use-toast.ts
+hooks/use-mobile.ts
+app/page.tsx
+app/layout.tsx
+app/api/projects/route.ts
+app/api/projects/[id]/route.ts
+app/api/users/route.ts
+app/api/export/route.ts
+app/api/checkout/route.ts
+app/api/generate-slide/route.ts
+app/api/imagekit-auth/route.ts
+app/workspace/loading.tsx
+app/workspace/page.tsx
+app/workspace/editor/[id]/page.tsx
+app/signup/[[...rest]]/page.tsx
+app/login/[[...rest]]/page.tsx
+app/faqs/page.tsx
+app/pricing/page.tsx
+app/subscription/page.tsx
+lib/imagekit.ts
+lib/utils.ts
+lib/firebase.ts
+lib/firebase-admin.ts
+lib/types.ts
+
+FILE CONTENTS:
+
+--- middleware.ts ---
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server"
+
+
+const isProtectedRoute = createRouteMatcher(["/workspace(.*)", "/subscription(.*)",'/api(.*)'])
+
+export default clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) {
+    await auth.protect()
+  }
+})
+
+export const config = {
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+}
+
+
+--- components/site-nav.tsx ---
+"use client"
+
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+
+export function SiteNav() {
+  const pathname = usePathname()
+
+  // hide Features/Pricing/FAQ when on /pricing; otherwise show them
+  const hideLinks = pathname === "/pricing"
+
+  if (hideLinks) return null
+
+  return (
+    <div className="hidden md:flex items-center gap-8">
+      <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition">
+        Features
+      </a>
+      <Link href="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition">
+        Pricing
+      </Link>
+      <Link href="/faqs" className="text-sm text-muted-foreground hover:text-foreground transition">
+        FAQ
+      </Link>
+    </div>
+  )
+}
+
+
+--- components/site-header.tsx ---
+import Link from "next/link"
+import { Sparkles } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { UserButton } from "@clerk/nextjs"
+import { ThemeToggle } from "./ui/theme-toggle" 
+import { auth } from "@clerk/nextjs/server"
+import { SiteNav } from "./site-nav"
+
+export default async function SiteHeader() {
+  const { userId } = await auth();
+
+  return (
+    <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-primary-foreground" />
+            </div>
+            <span className="font-bold text-lg">SlideAI</span>
+          </Link>
+        </div>
+        <SiteNav />
+        <div className="flex items-center gap-3">
+          {userId ? (
+            <>
+              <Link href="/workspace">
+                <Button variant="ghost" size="sm" className="cursor-pointer">
+                  Dashboard
+                </Button>
+              </Link>
+              <ThemeToggle />
+              <UserButton />
+            </>
+          ) : (
+            <>
+              <Link href="/login">
+                <Button variant="ghost" size="sm" className="cursor-pointer">
+                  Get Started
+                </Button>
+              </Link>
+              <ThemeToggle />
+            </>
+          )}
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+
+--- components/theme-provider.tsx ---
+'use client'
+
+import * as React from 'react'
+import {
+  ThemeProvider as NextThemesProvider,
+  type ThemeProviderProps,
+} from 'next-themes'
+
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
+
+
+--- components/editor/outline-editor.tsx ---
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { Plus, Trash2, GripVertical } from "lucide-react"
+
+interface Slide {
+  id: string
+  title: string
+  content: string
+  notes: string
+}
+
+interface OutlineEditorProps {
+  slides: Slide[]
+  selectedSlideId: string
+  onSelectSlide: (id: string) => void
+  onAddSlide: () => void
+  onDeleteSlide: (id: string) => void
+}
+
+export function OutlineEditor({
+  slides,
+  selectedSlideId,
+  onSelectSlide,
+  onAddSlide,
+  onDeleteSlide,
+}: OutlineEditorProps) {
+  return (
+    <div className="h-full flex flex-col">
+      <div className="p-4 border-b border-border">
+        <h2 className="text-sm font-semibold mb-3">Slides</h2>
+        <Button onClick={onAddSlide} size="sm" className="w-full bg-primary hover:bg-primary/90">
+          <Plus className="w-4 h-4 mr-2" />
+          Add Slide
+        </Button>
+      </div>
+
+      <div className="flex-1 overflow-y-auto">
+        <div className="p-2 space-y-2">
+          {slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              onClick={() => onSelectSlide(slide.id)}
+              className={`p-3 rounded-lg cursor-pointer transition-colors group ${
+                selectedSlideId === slide.id
+                  ? "bg-primary/10 border border-primary"
+                  : "bg-background border border-border hover:border-primary/50"
+              }`}
+            >
+              <div className="flex items-start gap-2">
+                <GripVertical className="w-4 h-4 text-muted-foreground mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="flex-1 min-w-0">
+                  <div className="text-xs font-medium text-muted-foreground mb-1">Slide {index + 1}</div>
+                  <h3 className="text-sm font-medium truncate">{slide.title}</h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2 mt-1">{slide.content}</p>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    onDeleteSlide(slide.id)
+                  }}
+                  className="opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <Trash2 className="w-4 h-4 text-destructive hover:text-destructive/80" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+--- components/ui/aspect-ratio.tsx ---
+'use client'
+
+import * as AspectRatioPrimitive from '@radix-ui/react-aspect-ratio'
+
+function AspectRatio({
+  ...props
+}: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {
+  return <AspectRatioPrimitive.Root data-slot="aspect-ratio" {...props} />
+}
+
+export { AspectRatio }
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

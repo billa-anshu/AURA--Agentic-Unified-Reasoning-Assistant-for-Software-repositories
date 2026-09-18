@@ -1,0 +1,379 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+claude.md
+run_harami_study.py
+run_position_study.py
+run_backtest.py
+README.md
+run_fixes_study.py
+src/__init__.py
+src/backtest/config_reader.py
+src/backtest/result_printer.py
+src/backtest/__init__.py
+src/backtest/engine.py
+src/metrics/__init__.py
+src/metrics/metrics_engine.py
+src/risk/__init__.py
+src/risk/intraday_risk_engine.py
+src/risk/risk_engine.py
+src/risk/kill_switch.py
+src/risk/drawdown.py
+src/costs/__init__.py
+src/costs/cost_model.py
+src/portfolio/__init__.py
+src/portfolio/portfolio.py
+src/portfolio/position.py
+src/data/__init__.py
+src/data/market_data.py
+src/data/candle.py
+src/strategy/strategy_config.py
+src/strategy/moving_average_crossover.py
+src/strategy/rsi_mean_reversion.py
+src/strategy/__init__.py
+src/strategy/bullish_marubozu.py
+src/strategy/three_down_days.py
+src/strategy/strategy.py
+src/strategy/bullish_engulfing.py
+src/strategy/index_top_pct_gain.py
+src/strategy/index_top_market_cap.py
+src/strategy/momentum.py
+src/strategy/bullish_harami.py
+src/strategy/bullish_trend_continuation.py
+src/strategy/enums.py
+src/strategy/order_intent.py
+src/execution/__init__.py
+src/execution/execution_engine.py
+src/execution/fill.py
+tests/test_kill_switch.py
+tests/__init__.py
+tests/test_execution.py
+tests/test_bullish_marubozu.py
+tests/test_drawdown.py
+resources/spec/spec_v1.0.md
+resources/lld/uml_class.md
+resources/lld/uml_sequence.md
+
+FILE CONTENTS:
+
+--- run_harami_study.py ---
+"""Run bullish_harami with 1, 2, 4 max positions using full CSV date range."""
+
+import os
+import tempfile
+import yaml
+
+from run_backtest import main as run_backtest_main
+
+
+def run():
+    base = {
+        "backtest": {
+            "initial_capital": 1000000.0,
+            "start_date": "2021-04-01",
+            "end_date": "2025-12-31",
+            "max_drawdown_limit": 0.15,
+        },
+        "data": {
+            "index": "NIFTY 50",
+            "source": "csv",
+            "csv_dir": "data/nifty50",
+        },
+        "strategy": {
+            "name": "bullish_harami",
+            "params": {
+                "min_first_body_percent": 0.60,
+                "max_second_body_percent": 0.50,
+            },
+            "config": {
+                "tax_category": "DELIVERY_EQUITY",
+                "bearish_trend_days": 3,
+            },
+        },
+        "risk_engine": {
+            "name": "fixed_fractional",
+            "params": {},
+        },
+        "execution": {
+            "slippage_pct": 0.0005,
+        },
+    }
+
+    for max_pos in [1, 2, 4]:
+        print(f"\n{'='*70}")
+        print(f"  bullish_harami | max_positions={max_pos} | 2021-04 to 2025-12")
+        print(f"{'='*70}")
+
+        cfg = yaml.safe_load(yaml.dump(base))
+        cfg["backtest"]["max_concurrent_positions"] = max_pos
+
+        tmp = tempfile.NamedTemporaryFile(
+            mode="w", suffix=".yaml", delete=False, dir="configs"
+        )
+        yaml.dump(cfg, tmp)
+        tmp.close()
+        try:
+            run_backtest_main(tmp.name)
+        except Exception as e:
+            print(f"ERROR: {e}")
+        finally:
+            os.unlink(tmp.name)
+
+
+if __name__ == "__main__":
+    run()
+
+
+--- run_position_study.py ---
+"""Run all strategies with 1, 2, and 4 max concurrent positions."""
+
+import copy
+import os
+import tempfile
+import yaml
+from pathlib import Path
+
+from run_backtest import main as run_backtest_main
+from src.backtest.config_reader import load_backtest_config
+from src.backtest.engine import BacktestEngine
+from src.data.market_data import CSVDataSource
+
+
+CONFIGS = [
+    "configs/three_down_days.yaml",
+    "configs/rsi_mean_reversion.yaml",
+    "configs/ma_crossover.yaml",
+    "configs/bullish_harami.yaml",
+    "configs/bullish_trend_continuation.yaml",
+    "configs/index_top_market_cap.yaml",
+    "configs/index_top_pct_gain.yaml",
+]
+
+MAX_POSITIONS = [1, 2, 4]
+
+# CSV data starts 2021-03-30
+MIN_START_DATE = "2022-01-01"
+
+
+def make_temp_config(config_path: str, max_pos: int) -> str:
+    """Create a temp config with CSV source and given max_positions."""
+    with open(config_path) as f:
+        raw = yaml.safe_load(f)
+
+    # Force CSV data source
+    raw.setdefault("data", {})
+    raw["data"]["source"] = "csv"
+    raw["data"]["csv_dir"] = "data/nifty50"
+
+    # Adjust start date if too early for CSV data
+    bt = raw.setdefault("backtest", {})
+    start = str(bt.get("start_date", "2022-01-01"))
+    if start < MIN_START_DATE:
+        bt["start_date"] = MIN_START_DATE
+
+    # Set max_concurrent_positions
+    bt["max_concurrent_positions"] = max_pos
+
+    tmp = tempfile.NamedTemporaryFile(
+        mode="w", suffix=".yaml", delete=False, dir="configs"
+    )
+    yaml.dump(raw, tmp)
+    tmp.close()
+    return tmp.name
+
+
+def main():
+    results = []
+
+    for config_path in CONFIGS:
+        strategy_name = Path(config_path).stem
+        for max_pos in MAX_POSITIONS:
+            print(f"\n{'='*70}")
+            print(f"  {strategy_name} | max_positions={max_pos}")
+            print(f"{'='*70}")
+
+            tmp_path = make_temp_config(config_path, max_pos)
+            try:
+                run_backtest_main(tmp_path)
+            except Exception as e:
+                print(f"ERROR: {e}")
+            finally:
+                os.unlink(tmp_path)
+
+    print("\n\nDONE — all runs complete. Check the summary table above.")
+
+
+if __name__ == "__main__":
+    main()
+
+
+--- src/__init__.py ---
+"""Algorithmic trading system core."""
+
+
+--- src/backtest/__init__.py ---
+"""Backtest engine module."""
+
+from .engine import BacktestEngine, BacktestResult
+from .result_printer import print_backtest_result
+
+__all__ = ["BacktestEngine", "BacktestResult", "print_backtest_result"]
+
+
+--- src/metrics/__init__.py ---
+"""Metrics module."""
+
+from .metrics_engine import MetricsReport, MetricsEngine
+
+__all__ = ["MetricsReport", "MetricsEngine"]
+
+
+--- src/metrics/metrics_engine.py ---
+"""Metrics computation engine."""
+
+from dataclasses import dataclass
+from typing import List
+
+
+@dataclass(frozen=True)
+class MetricsReport:
+    """Performance metrics report."""
+
+    max_drawdown: float
+    win_rate: float
+    expectancy: float
+    post_tax_return: float
+
+
+class MetricsEngine:
+    """
+    Read-only metrics computation engine.
+
+    Computes performance metrics from equity curve data.
+    Does not modify any state.
+    """
+
+    INTRADAY_TAX_RATE: float = 0.30  # 30% slab tax
+    STCG_TAX_RATE: float = 0.20  # 20% STCG for delivery < 1 year
+
+    def compute(
+        self,
+        equity_curve: List[float],
+        returns: List[float] | None = None,
+        tax_rate: float = INTRADAY_TAX_RATE,
+    ) -> MetricsReport:
+        """
+        Compute performance metrics from equity curve.
+
+        Args:
+            equity_curve: List of equity values over time.
+            returns: Optional list of individual trade returns.
+            tax_rate: Tax rate to apply for post-tax return calculation.
+
+        Returns:
+            MetricsReport with computed metrics.
+        """
+        if not equity_curve:
+            return MetricsReport(
+                max_drawdown=0.0,
+                win_rate=0.0,
+                expectancy=0.0,
+                post_tax_return=0.0,
+            )
+
+        max_drawdown = self._compute_max_drawdown(equity_curve)
+
+        if returns:
+            win_rate = self._compute_win_rate(returns)
+            expectancy = self._compute_expectancy(returns)
+        else:
+            win_rate = 0.0
+            expectancy = 0.0
+
+        total_return = (equity_curve[-1] - equity_curve[0]) / equity_curve[0]
+        if total_return > 0:
+            post_tax_return = total_return * (1 - tax_rate)
+        else:
+            post_tax_return = total_return
+
+        return MetricsReport(
+            max_drawdown=max_drawdown,
+            win_rate=win_rate,
+            expectancy=expectancy,
+            post_tax_return=post_tax_return,
+        )
+
+    def _compute_max_drawdown(self, equity_curve: List[float]) -> float:
+        """Compute maximum drawdown from equity curve."""
+        if len(equity_curve) < 2:
+            return 0.0
+
+        peak = equity_curve[0]
+        max_dd = 0.0
+
+        for equity in equity_curve:
+            if equity > peak:
+                peak = equity
+            if peak > 0:
+                dd = (peak - equity) / peak
+                if dd > max_dd:
+                    max_dd = dd
+
+        return max_dd
+
+    def _compute_win_rate(self, returns: List[float]) -> float:
+        """Compute win rate from returns list."""
+        if not returns:
+            return 0.0
+
+        wins = sum(1 for r in returns if r > 0)
+        return wins / len(returns)
+
+    def _compute_expectancy(self, returns: List[float]) -> float:
+        """Compute expectancy (average return per trade)."""
+        if not returns:
+            return 0.0
+
+        return sum(returns) / len(returns)
+
+
+--- src/costs/__init__.py ---
+"""Cost modeling module."""
+
+from .cost_model import CostBreakdown, CostModel
+
+__all__ = ["CostBreakdown", "CostModel"]
+
+
+--- tests/__init__.py ---
+"""Unit tests."""
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

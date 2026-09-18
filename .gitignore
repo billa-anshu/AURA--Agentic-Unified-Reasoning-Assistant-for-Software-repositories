@@ -1,0 +1,40 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Environment / secrets
+.env
+.env.local
+*.key
+secrets.json
+GROQ_API_KEY*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data / outputs (large or generated)
+Model_outputs/
+repositories/
+metadata/
+*.log
+*.tmp
+
+# Jupyter
+.ipynb_checkpoints/

@@ -1,0 +1,314 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+app.py
+src/flashcard_generator.py
+src/auth.py
+src/config.py
+src/pdf_processor.py
+src/__init__.py
+src/summarizer.py
+src/quiz_generator.py
+src/voice.py
+src/rag_chain.py
+src/vector_store.py
+src/db.py
+src/chat_history.py
+src/utils.py
+
+FILE CONTENTS:
+
+--- src/flashcard_generator.py ---
+"""
+Generates study flashcards (term/question -> answer pairs) from
+document text, again using strict JSON output from Gemini.
+"""
+import json
+import re
+from typing import List, Dict
+
+from langchain.docstore.document import Document
+from langchain.prompts import PromptTemplate
+
+from src.rag_chain import get_llm, invoke_with_retry
+from src.utils import select_representative_text
+
+FLASHCARD_PROMPT = PromptTemplate(
+    template="""You are a study-aid generator. Based ONLY on the material below,
+create {num_cards} flashcards for spaced-repetition study.
+
+Rules:
+- Mix definition-style cards ("What is X?") and concept-check cards
+  ("Why does X happen?")
+- Keep answers concise (1-3 sentences)
+- Do not invent facts not present in the material
+- Return ONLY valid JSON, no markdown fences, no commentary, matching this schema:
+
+{{
+  "flashcards": [
+    {{"front": "question or term", "back": "concise answer", "topic": "short topic label"}}
+  ]
+}}
+
+Study material:
+{text}
+
+JSON output:""",
+    input_variables=["text", "num_cards"],
+)
+
+
+def _extract_json(raw: str) -> dict:
+    cleaned = re.sub(r"```json|```", "", raw).strip()
+    return json.loads(cleaned)
+
+
+def generate_flashcards(documents: List[Document], num_cards: int = 10) -> List[Dict]:
+    """
+    Generate flashcards from a list of Document chunks.
+    Returns a list of {"front", "back", "topic"} dicts.
+    """
+    llm = get_llm(temperature=0.5)
+    text = select_representative_text(documents, max_chars=60000)
+
+    chain = FLASHCARD_PROMPT | llm
+    result = invoke_with_retry(lambda: chain.invoke({"text": text, "num_cards": num_cards}))
+
+    try:
+        parsed = _extract_json(result.content)
+        # Gemini sometimes returns a bare JSON array instead of the
+        # requested {"flashcards": [...]} wrapper — handle both shapes.
+        if isinstance(parsed, list):
+            return parsed
+        if isinstance(parsed, dict):
+            return parsed.get("flashcards", parsed.get("cards", []))
+        raise ValueError(f"Unexpected JSON shape: {type(parsed)}")
+    except (json.JSONDecodeError, KeyError, ValueError) as e:
+        raise ValueError(
+            f"Could not parse flashcard JSON from the model's response: {e}\nRaw output: {result.content[:500]}"
+        )
+
+
+--- src/auth.py ---
+"""
+User authentication: registration and login against the local SQLite
+users table. Passwords are hashed with bcrypt — never stored in plain text.
+"""
+import re
+from typing import Optional, TypedDict
+
+import bcrypt
+
+from src.db import get_connection
+
+USERNAME_RE = re.compile(r"^[a-zA-Z0-9_.-]{3,50}$")
+EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+
+
+class AuthUser(TypedDict):
+    id: int
+    username: str
+    email: str
+
+
+def hash_password(password: str) -> str:
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+
+
+def verify_password(password: str, password_hash: str) -> bool:
+    try:
+        return bcrypt.checkpw(password.encode("utf-8"), password_hash.encode("utf-8"))
+    except ValueError:
+        # Malformed hash (shouldn't happen, but fail closed rather than crash)
+        return False
+
+
+def validate_registration(username: str, email: str, password: str, confirm_password: str) -> Optional[str]:
+    """Returns an error message if invalid, else None."""
+    if not username or not email or not password:
+        return "All fields are required."
+    if not USERNAME_RE.match(username):
+        return "Username must be 3-50 characters (letters, numbers, ., _, - only)."
+    if not EMAIL_RE.match(email):
+        return "Please enter a valid email address."
+    if len(password) < 8:
+        return "Password must be at least 8 characters."
+    if password != confirm_password:
+        return "Passwords do not match."
+    return None
+
+
+def register_user(username: str, email: str, password: str) -> int:
+    """Creates a new user. Raises ValueError if the username/email is taken."""
+    conn = get_connection()
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT id FROM users WHERE username = ? OR email = ?",
+            (username, email),
+        )
+        if cur.fetchone():
+            raise ValueError("That username or email is already registered.")
+
+        cur.execute(
+            "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
+            (username, email, hash_password(password)),
+        )
+        conn.commit()
+        return cur.lastrowid
+    finally:
+        conn.close()
+
+
+def authenticate_user(username: str, password: str) -> Optional[AuthUser]:
+    """Returns the user dict on success, or None on invalid credentials."""
+    conn = get_connection()
+    try:
+        cur = conn.cursor()
+        cur.execute(
+            "SELECT id, username, email, password_hash FROM users WHERE username = ?",
+            (username,),
+        )
+        row = cur.fetchone()
+        if not row or not verify_password(password, row["password_hash"]):
+            return None
+        return {"id": row["id"], "username": row["username"], "email": row["email"]}
+    finally:
+        conn.close()
+
+
+--- src/config.py ---
+"""
+Centralized configuration for the AI Study Assistant.
+Reads settings from environment variables (loaded from a .env file if present)
+so that API keys and tunable parameters never need to be hard-coded.
+"""
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class Config:
+    # --- API keys ---
+    GOOGLE_API_KEY: str = os.getenv("GOOGLE_API_KEY", "")
+
+    # --- Models ---
+    EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+    GEMINI_MODEL: str = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+
+    # --- Storage ---
+    CHROMA_PERSIST_DIR: str = os.getenv("CHROMA_PERSIST_DIR", "chroma_db")
+
+    # --- Chunking / retrieval ---
+    CHUNK_SIZE: int = int(os.getenv("CHUNK_SIZE", 1000))
+    CHUNK_OVERLAP: int = int(os.getenv("CHUNK_OVERLAP", 150))
+    RETRIEVER_K: int = int(os.getenv("RETRIEVER_K", 4))
+
+    @classmethod
+    def is_ready(cls) -> bool:
+        """True once a Gemini API key has been supplied (via .env or the UI)."""
+        return bool(cls.GOOGLE_API_KEY)
+
+
+--- src/pdf_processor.py ---
+"""
+Handles turning an uploaded PDF into clean text and then into
+LangChain Document chunks ready for embedding.
+"""
+from typing import List
+from io import BytesIO
+
+from pypdf import PdfReader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.docstore.document import Document
+
+from src.config import Config
+
+
+def extract_text_from_pdf(file_bytes: bytes, filename: str = "document.pdf") -> List[Document]:
+    """
+    Extract text page-by-page from a PDF and wrap each page in a
+    LangChain Document, keeping page number + source filename as metadata.
+    This per-page metadata later lets the assistant cite sources.
+    """
+    reader = PdfReader(BytesIO(file_bytes))
+    documents = []
+
+    for page_num, page in enumerate(reader.pages, start=1):
+        text = page.extract_text() or ""
+        text = text.strip()
+        if not text:
+            continue
+        documents.append(
+            Document(
+                page_content=text,
+                metadata={"source": filename, "page": page_num},
+            )
+        )
+
+    if not documents:
+        raise ValueError(
+            f"No extractable text found in '{filename}'. "
+            "It may be a scanned/image-only PDF that needs OCR."
+        )
+
+    return documents
+
+
+def chunk_documents(documents: List[Document]) -> List[Document]:
+    """
+    Split page-level documents into smaller overlapping chunks so that
+    retrieval returns focused, relevant context instead of whole pages.
+    """
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=Config.CHUNK_SIZE,
+        chunk_overlap=Config.CHUNK_OVERLAP,
+        separators=["\n\n", "\n", ". ", " ", ""],
+    )
+    return splitter.split_documents(documents)
+
+
+def process_pdf(file_bytes: bytes, filename: str = "document.pdf") -> List[Document]:
+    """Convenience wrapper: extract -> chunk in one call."""
+    pages = extract_text_from_pdf(file_bytes, filename)
+    return chunk_documents(pages)
+
+
+def full_text_from_documents(documents: List[Document]) -> str:
+    """Reconstruct plain text from a list of documents (used for summarization)."""
+    return "\n\n".join(doc.page_content for doc in documents)
+
+
+--- src/__init__.py ---
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.

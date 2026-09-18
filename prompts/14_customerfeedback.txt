@@ -1,0 +1,287 @@
+You are analyzing a software repository. Below is the repository's
+file structure and source code content.
+
+=== REPOSITORY CONTENT ===
+FILE TREE:
+README.md
+app.py
+src/ui_utils.py
+src/auth.py
+src/ai_insights.py
+src/predictor.py
+src/database.py
+app_pages/01_Dashboard.py
+app_pages/03_Bulk_Analysis.py
+app_pages/07_AI_Insights_Center.py
+app_pages/04_Feedback_History.py
+app_pages/10_About_Project.py
+app_pages/09_Reports_Center.py
+app_pages/08_Word_Cloud_Analytics.py
+app_pages/05_Product_Analytics.py
+app_pages/06_Trend_Monitoring.py
+app_pages/02_Analyze_Feedback.py
+pages/01_Dashboard.py
+pages/03_Bulk_Analysis.py
+pages/07_AI_Insights_Center.py
+pages/04_Feedback_History.py
+pages/10_About_Project.py
+pages/09_Reports_Center.py
+pages/08_Word_Cloud_Analytics.py
+pages/05_Product_Analytics.py
+pages/06_Trend_Monitoring.py
+pages/02_Analyze_Feedback.py
+
+FILE CONTENTS:
+
+--- src/ui_utils.py ---
+import streamlit as st
+
+def load_css():
+    """Injects premium dark theme CSS overrides into the Streamlit app."""
+    st.markdown("""
+        <style>
+            /* Sidebar background */
+            [data-testid="stSidebar"] {
+                background-color: #0B1120 !important;
+                border-right: 1px solid #1A2235 !important;
+            }
+            
+            /* Custom Logo Box */
+            .top-sidebar-logo {
+                display: flex; 
+                align-items: center;
+                margin-top: 0;
+                margin-bottom: 1rem;
+                padding: 1.25rem 1rem;
+                background-color: #050810;
+                border: 1px solid #1E293B;
+                border-radius: 16px;
+                box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.4);
+            }
+            
+            /* Style st.navigation active link (Purple Gradient) */
+            [data-testid="stSidebarNavItems"] a[aria-current="page"] {
+                background: linear-gradient(90deg, #4F46E5, #9333EA) !important;
+                border-radius: 8px !important;
+                box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3) !important;
+            }
+            
+            /* Make text white on active link */
+            [data-testid="stSidebarNavItems"] a[aria-current="page"] span {
+                color: #FFFFFF !important;
+                font-weight: 600 !important;
+            }
+            
+            /* Style inactive links */
+            [data-testid="stSidebarNavItems"] a {
+                border-radius: 8px !important;
+                margin: 0.2rem 0.5rem !important;
+                padding: 0.6rem 0.5rem !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            [data-testid="stSidebarNavItems"] a:hover {
+                background-color: rgba(255, 255, 255, 0.05) !important;
+                transform: translateX(3px);
+            }
+            
+            [data-testid="stSidebarNavItems"] span {
+                color: #94A3B8 !important;
+                font-size: 0.95rem !important;
+                font-weight: 500;
+            }
+            
+            /* Subtitles / Headers */
+            [data-testid="stMarkdownContainer"] p, 
+            [data-testid="stMarkdownContainer"] li {
+                color: #E2E8F0;
+                line-height: 1.6;
+            }
+            
+            .hero-subtitle {
+                color: #94A3B8 !important;
+                font-weight: 400;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+            }
+            
+            /* Metrics Cards */
+            [data-testid="stMetric"] {
+                background-color: #0F1626; 
+                padding: 20px;
+                border-radius: 12px;
+                border: 1px solid #1A2235;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+            }
+            
+            [data-testid="stMetric"]:hover {
+                transform: translateY(-4px);
+                border-color: #4F46E5;
+                box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
+            }
+            
+            div[data-testid="stMetricValue"] {
+                color: #FFFFFF;
+                font-size: 3rem !important;
+                font-weight: 700;
+            }
+            div[data-testid="stMetricLabel"] {
+                color: #94A3B8;
+                font-weight: 600;
+                font-size: 1.6rem !important;
+            }
+            div[data-testid="stMetricDelta"] {
+                font-weight: 600;
+                font-size: 1.2rem !important;
+            }
+            
+            /* Custom Buttons */
+            .stButton > button {
+                background-color: #4F46E5;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                padding: 12px 24px;
+                font-weight: 600;
+                font-size: 1.4rem !important;
+                transition: all 0.2s ease;
+                box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+            }
+            .stButton > button:hover {
+                background-color: #4338CA;
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 10px -1px rgba(79, 70, 229, 0.4);
+            }
+            
+            /* General App Layout */
+            .main .block-container {
+                max-width: 1400px !important;
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            
+            h1, h2, h3 {
+                font-family: 'Inter', sans-serif;
+            }
+            .accent-text {
+                color: #818CF8 !important;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+--- src/ai_insights.py ---
+import os
+from groq import Groq
+from dotenv import load_dotenv
+
+load_dotenv()
+
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+try:
+    client = Groq(api_key=GROQ_API_KEY)
+except:
+    client = None
+
+def generate_insights(reviews_text_list):
+    if not client or GROQ_API_KEY == "your_groq_api_key_here":
+        return "Groq API Key not configured. Please add it to your .env file."
+        
+    combined_text = "\n".join(reviews_text_list[:100])
+    
+    prompt = f"""
+    You are an expert AI business analyst for 'Sentix AI'. 
+    Analyze the following customer reviews and extract:
+    1. Top 3 Complaints (with a brief example)
+    2. Top 3 Praises (with a brief example)
+    3. 3 Key Business Recommendations to improve customer satisfaction.
+    
+    Format the response using clean Markdown.
+    
+    Reviews:
+    {combined_text}
+    """
+    try:
+        completion = client.chat.completions.create(
+            model="openai/gpt-oss-120b",
+            messages=[
+                {"role": "system", "content": "You are a highly analytical, professional business analyst."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=1024,
+            top_p=1,
+            stream=False,
+            stop=None,
+        )
+        return completion.choices[0].message.content
+    except Exception as e:
+        return f"Error generating insights: {e}"
+
+
+--- src/predictor.py ---
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+# Ensure the VADER lexicon is downloaded
+try:
+    nltk.data.find('sentiment/vader_lexicon.zip')
+except LookupError:
+    nltk.download('vader_lexicon', quiet=True)
+
+sia = SentimentIntensityAnalyzer()
+
+def predict_sentiment(text):
+    """
+    Predicts sentiment using VADER instead of the pre-trained ML model.
+    Returns the predicted class ("Positive", "Negative", "Neutral") and a confidence score.
+    """
+    if not text or not str(text).strip():
+        return "Neutral", 0.0
+        
+    scores = sia.polarity_scores(text)
+    compound = scores['compound']
+    
+    # Typical VADER thresholds
+    if compound >= 0.05:
+        sentiment_str = "Positive"
+        confidence = compound
+    elif compound <= -0.05:
+        sentiment_str = "Negative"
+        confidence = abs(compound)
+    else:
+        sentiment_str = "Neutral"
+        # For neutral, use the 'neu' score as the confidence metric
+        confidence = scores['neu']
+        
+    return sentiment_str, round(confidence * 100, 2)
+
+
+=== END REPOSITORY CONTENT ===
+
+Write a structured summary report of this repository covering:
+1. Overall purpose and architecture
+2. Key components / modules and what they do
+3. Notable functions or classes and their responsibilities
+4. Any design patterns you observe
+
+
+For every factual claim you make about the code, you MUST attach a citation tag
+in exactly this format immediately after the claim:
+
+[cite:file=<relative/file/path>;symbol=<function_or_class_name>;lines=<start>-<end>]
+
+Example:
+"The system authenticates users via a dedicated login function
+[cite:file=src/auth.py;symbol=authenticate_user;lines=42-58]"
+
+Rules:
+- Every claim about specific functionality needs a citation.
+- Never invent a file path, symbol name, or line number - only cite what you can
+  actually see in the provided repository content below.
+- If you are not sure a specific citation is accurate, do not make the claim.
+
+
+Write the report now.
