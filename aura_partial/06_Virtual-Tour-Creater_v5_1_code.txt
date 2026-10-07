@@ -1,0 +1,35 @@
+1. **PanoramaViewer**
+This React component serves as the primary interface for users to navigate a virtual tour by initializing a 3D viewer, managing node states, and handling audio playback for specific locations. It utilizes `useParams` to retrieve the `tourId` and manages state for the viewer instance, active nodes, and audio settings to provide an immersive experience. [C8]
+
+2. **TourEditorPage**
+This component allows users to edit existing tours by managing room lists, panorama URLs, and full panorama data objects retrieved from the backend. It uses `useParams` to identify the specific tour and `useRef` to manage the panorama reference, facilitating the editing of visual assets and constraints. [C4]
+
+3. **handleRemoveMarker**
+This asynchronous function deletes a specific navigation marker from the Supabase `markers` table based on the tour ID, source room, destination room, and fixed position coordinates. It first prompts the user for confirmation before executing the delete operation to prevent accidental removal of navigation links. [C12]
+
+4. **handleSelectRoomForTooltipEdit**
+This function prepares the UI state for editing tooltips by setting the active room and resetting inputs for new tooltip content and placement positions. It ensures that the editor is focused on the correct room before allowing the user to add or modify informational overlays. [C11]
+
+5. **get_tour_data_endpoint**
+This Flask endpoint retrieves specific tour data, such as the `start_room`, from the Supabase `tour` table using the provided `tour_id`. It returns the tour data as a JSON response or indicates if no tour was found, serving as a bridge between the frontend and the database for initial tour loading. [C1]
+
+6. **VirtualTourForm**
+This component handles the creation of new virtual tours by generating a unique `tourId` using `uuidv4` and managing the state for room names and image uploads. It processes file inputs using `FileReader` to create image previews, preparing the data for subsequent submission to the backend. [C2]
+
+7. **AllToursPage**
+This component displays a list of all available tours by fetching `tour_id` and `tour_name` from the Supabase `tour` table, ordered by creation date in descending order. It manages loading states and error handling to ensure a smooth user experience when retrieving and displaying tour data. [C7]
+
+8. **handleSignup**
+This asynchronous function processes user registration by calling `supabase.auth.signUp` with the provided email and password. It handles potential errors by displaying alert messages and confirms successful account creation, prompting the user to verify their email. [C3]
+
+9. **handleLogin**
+This function authenticates users by calling `supabase.auth.signInWithPassword` and checks if the user's email has been confirmed before allowing access. It manages error states and displays appropriate feedback messages for failed login attempts or unverified accounts. [C5]
+
+10. **handleCreateClick**
+This function controls navigation to the tour creation page by first checking if the user is authenticated. If the user is not logged in, it displays an alert and redirects them to the login page; otherwise, it navigates directly to the `/create` route. [C6]
+
+11. **delete_audio_endpoint**
+This Flask endpoint processes requests to delete audio files associated with a specific room in a tour by extracting `tourId` and `roomName` from the JSON payload. It validates the input parameters and initiates the deletion process from Supabase Storage to keep the backend resources clean. [C9]
+
+12. **tour_name**
+This code segment is part of the `stitch_tour_endpoint` logic that checks if a tour exists in the Supabase database and, if not, prepares to insert a new entry using the `tour_name` retrieved from the request form. It logs the received tour name to aid in debugging the tour creation process. [C10]

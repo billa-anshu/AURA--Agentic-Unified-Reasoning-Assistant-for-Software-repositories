@@ -1,0 +1,53 @@
+**1. handleGenerate**
+This function manages the client-side logic for AI slide generation by validating the user's prompt and managing loading states. It sends a POST request to the `/api/generate-slide` endpoint with the prompt, desired slide count, and streaming preference, handling potential errors from the response [C12].
+
+**2. POST (generate-slide)**
+This API route handler serves as the backend entry point for AI slide generation, first verifying user authentication via `auth()` to ensure only authorized users can access the service. It retrieves user document data from the Firestore database to process the generation request, acting as the bridge between the frontend dialog and the AI service [C15].
+
+**3. AIGenerationDialog**
+This React component provides the user interface for initiating AI-powered slide creation, managing local state for the prompt, slide count, and loading status. It renders a form that triggers the `handleGenerate` function upon submission, allowing users to customize the generation parameters before processing [C1].
+
+**4. GET (projects)**
+This API route handler retrieves the list of projects associated with the currently authenticated user by querying the Firestore `projects` collection. It filters documents where the `createdBy` field matches the user's ID and returns the project data with formatted timestamps for the workspace view [C3].
+
+**5. fetchProjects**
+This function is a `useEffect` hook within the workspace page that fetches project data from the `/api/projects` endpoint upon component mount. It updates the local state with the retrieved projects and manages the loading indicator, ensuring the user sees their available presentations [C16].
+
+**6. handleDesignStyleChange**
+This function updates the application's design style state and immediately persists the change by calling `saveProject` with the current slides, title, and new style. It ensures that any visual theme selection made by the user is saved to the backend to maintain consistency across sessions [C11].
+
+**7. DesignStyleSelector**
+This component renders a modal dialog that allows users to choose a visual design style for their presentation from a grid of options. It manages the open/closed state of the dialog and triggers the `onStyleChange` callback when a user selects a specific style [C7].
+
+**8. OutlineEditor**
+This component displays a list of slides within the editor, allowing users to select, add, or delete individual slides. It provides a structural overview of the presentation, enabling users to manage the order and existence of slides before detailed editing [C6].
+
+**9. FloatingActionTool**
+This component renders a fixed-position floating button that expands to reveal quick-action tools such as image transformation and content improvement. It serves as a persistent access point for auxiliary editing features, keeping the main interface uncluttered while providing immediate access to utilities [C5].
+
+**10. ImageTransformDialog**
+This component allows users to apply transformations to images by providing an input for the image URL and a selector for the transformation type. It handles the asynchronous process of transforming the image and updating the preview, integrating with the image processing service [C8].
+
+**11. buildImageKitUrl**
+This utility function constructs an ImageKit URL by appending transformation parameters such as width, height, and quality to the base image URL. It returns the original URL if the ImageKit endpoint is not configured, ensuring graceful degradation if the service is unavailable [C4].
+
+**12. Carousel**
+This component wraps the Embla Carousel library to provide a responsive, scrollable container for displaying content in a carousel format. It manages the carousel's orientation, plugins, and scroll state, exposing an API for controlling navigation and selection [C14].
+
+**13. useCarousel**
+This custom hook provides access to the internal context of the Carousel component, ensuring that it is used within a valid `<Carousel />` parent. It throws an error if the context is missing, enforcing proper component hierarchy and providing the necessary state and methods for carousel interactions [C13].
+
+**14. SidebarInset**
+This component defines the main content area of the application layout, applying specific CSS classes to handle margins and shadows when the sidebar is in an inset or collapsed state. It ensures the main content adjusts dynamically to the sidebar's configuration, maintaining a clean visual hierarchy [C9].
+
+**15. SidebarRail**
+This component renders a toggle button positioned on the edge of the sidebar, allowing users to expand or collapse the navigation panel. It utilizes the `useSidebar` hook to trigger the toggle action, providing an accessible and intuitive way to manage screen space [C10].
+
+**16. BreadcrumbItem**
+This component renders a single item within a breadcrumb navigation trail, styled as an inline list element. It serves as a container for breadcrumb links, helping users understand their current location within the application's hierarchy [C17].
+
+**17. PaginationLink**
+This component renders a link for pagination controls, applying specific styling based on whether the link is active or not. It uses button variants to ensure consistent visual design across the application's navigation elements [C18].
+
+**18. genId**
+This utility function generates a unique string identifier by incrementing a module-level counter and converting it to a string. It is used within the toast system to assign unique IDs to notifications, ensuring that each toast can be individually tracked and dismissed [C2].

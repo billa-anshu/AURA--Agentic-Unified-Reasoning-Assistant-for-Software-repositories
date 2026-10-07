@@ -1,0 +1,49 @@
+Based on the provided evidence, here is an analysis of the key functions and classes in the Smart Pet Care application.
+
+### Frontend Components and Pages
+
+**Navigation Component**
+The `Navigation` component serves as the main header for the application. It utilizes the `AuthContext` to access the current user and the `logout` function. When the `handleLogout` function is triggered, it calls `logout()` and redirects the user to the `/login` route using `useNavigate` [C1]. The component renders a dark-themed `Navbar` with a brand link to the home page labeled "Smart Pet Care" [C1].
+
+**Login Page**
+The `Login` component manages the user authentication process. It maintains state for email, password, and error messages. The `handleSubmit` function prevents the default form submission, clears previous errors, and attempts to log in by calling the `login` function from `AuthContext` [C8]. Upon successful login, the user is redirected to the home page (`/`); if it fails, an error message is displayed [C8].
+
+**BookAppointment Page**
+The `BookAppointment` component allows users to schedule appointments. It retrieves the `doctorId` from URL parameters using `useParams` [C4]. On mount, it fetches the user's pets via `UserService.getMyPets()` and stores them in state [C4]. The component manages state for the selected pet, date/time, loading status, and potential errors [C4].
+
+**MyAppointments Page**
+The `MyAppointments` component displays a list of the user's scheduled appointments. It uses `useEffect` to fetch data from `UserService.getMyAppointments()` upon mounting and stores the result in the `appointments` state [C5]. The data is rendered within a Bootstrap `Table` component [C5].
+
+**DoctorList Page**
+The `DoctorList` component displays a list of available doctors. It fetches data using `UserService.getAllDoctors()` inside a `useEffect` hook and stores the results in the `doctors` state [C6]. The component uses `useNavigate` for potential navigation actions and renders the doctors within a `Container` and `Row` layout [C6].
+
+**MyPets Page**
+The `MyPets` component allows users to manage their pet profiles. It initializes state for the list of pets, a modal visibility flag, and a `newPet` object containing fields for name, breed, age, and medical history [C7]. A `loadPets` function is defined to fetch data via `UserService.getMyPets()` and update the state, which is called on component mount [C7].
+
+### Frontend Services
+
+**Auth Service**
+The `register` function in the auth service sends a POST request to `/api/auth/register` with user details including name, email, password, phone, and an optional role [C3]. The `login` function sends a POST request to `/api/auth/login` with email and password. If the response contains a token, it stores the response data in `localStorage` under the key 'user' [C3].
+
+**User Service**
+The `UserService` object aggregates various API calls for user-related data:
+*   `getAllDoctors`: Performs a GET request to `/doctors` [C13].
+*   `getMyPets`: Performs a GET request to `/pets` [C13].
+*   `addPet`: Performs a POST request to `/pets` with pet data [C13].
+*   `bookAppointment`: Performs a POST request to `/appointments` with appointment data [C13].
+*   `getMyAppointments`: Performs a GET request to `/appointments` [C13].
+
+### Backend Application and Security
+
+**SmartPetCareApplication**
+The `SmartPetCareApplication` class is the entry point for the Spring Boot backend. It is annotated with `@SpringBootApplication` and contains a `main` method that executes `SpringApplication.run` to start the application [C9, C10].
+
+**AppointmentController**
+The `AppointmentController` handles HTTP requests for the `/api/appointments` endpoint [C2]. It autowires repositories for appointments, pets, and doctors [C2]. The `getAppointments` method is a GET endpoint protected by `@PreAuthorize`, requiring the user to have either 'USER' or 'DOCTOR' authority [C2]. It retrieves the current authentication context from `SecurityContextHolder` [C2].
+
+**WebSecurityConfig**
+The `WebSecurityConfig` class configures Spring Security. It is annotated with `@EnableMethodSecurity` and autowires `UserDetailsServiceImpl` and `AuthEntryPointJwt` [C11].
+*   **Authentication Provider**: It defines a `DaoAuthenticationProvider` bean configured with the user details service [C11].
+*   **Password Encoder**: It defines a `PasswordEncoder` bean using `BCryptPasswordEncoder` [C12].
+*   **Filter Chain**: The `filterChain` bean configures `HttpSecurity` to enable CORS, disable CSRF, and set up exception handling with the unauthorized handler [C12].
+*   **JWT Filter**: It defines an `AuthTokenFilter` bean for JWT authentication [C11].

@@ -1,0 +1,53 @@
+**Review**
+This JPA entity represents a user's review of a book, storing the rating, comment, and references to the associated `User` and `Book`. It automatically manages `createdAt` and `updatedAt` timestamps using `@PrePersist` and `@PreUpdate` lifecycle callbacks to ensure data integrity. [C1]
+
+**ReviewWithBookDTO**
+This Data Transfer Object encapsulates review details along with nested `BookDTO` and `UserDTO` objects, allowing the API to return comprehensive review data in a single response. Its constructor maps fields from the `Review` entity, ensuring that related book and user information is included when available. [C2]
+
+**UserService**
+This service class handles user registration logic by checking for duplicate emails and preparing user data for persistence. It utilizes `BCryptPasswordEncoder` to securely hash passwords before storing them in the database via `UserRepository`. [C3]
+
+**BookController**
+This REST controller exposes endpoints for managing books, specifically providing a paginated and sorted list of all books via the `getAllBooks` method. It accepts parameters for page number, size, sorting field, and direction to facilitate efficient data retrieval from the `BookRepository`. [C4]
+
+**UserController**
+This controller manages user-related API endpoints, including retrieving all users (restricted to admins) and identifying the current user via the `SecurityContextHolder`. It relies on `UserRepository` to fetch user details based on the authenticated principal's ID. [C5]
+
+**ReviewController**
+This controller handles review creation and management, injecting repositories for reviews, books, and users to maintain data consistency. It includes a helper method `updateBookRating` to recalculate and update the average rating of a book whenever a review is added or modified. [C6]
+
+**AuthController**
+This controller provides authentication endpoints such as registration, extracting user details from the request body and delegating the process to `UserService`. It uses `JwtUtil` to generate tokens, facilitating stateless authentication for the application. [C7]
+
+**UserProfileController**
+This controller manages user profile operations, specifically allowing users to upload profile pictures via a multipart file endpoint. It retrieves the current user's ID from the security context and uses a configurable upload directory to store the files. [C8]
+
+**main**
+This method serves as the entry point for the Spring Boot application, invoking `SpringApplication.run` to bootstrap the context and start the server. It is essential for initializing all beans and configurations defined in the application. [C9]
+
+**BookreviewApiApplication**
+This is the primary Spring Boot application class annotated with `@SpringBootApplication`, which triggers component scanning and auto-configuration. It defines the `main` method that launches the entire Book Review API service. [C10]
+
+**SwaggerConfig**
+This configuration class customizes the OpenAPI documentation for the application, setting the title, version, and contact information for the "Book Review API". It ensures that the generated Swagger UI provides accurate metadata about the service. [C11]
+
+**customOpenAPI**
+This method within the Swagger configuration returns a customized `OpenAPI` object that defines the API's title, version, description, and contact details. It is crucial for generating a professional and informative API documentation page. [C12]
+
+**getReviewId**
+This getter method returns the unique identifier for a review within the `ReviewWithBookDTO`. It is part of a series of accessors that allow clients to retrieve specific fields of the review data, including rating and comments. [C13]
+
+**getComment**
+This method provides access to the textual comment associated with a review in the DTO. It works alongside other getters to expose the full content of the review, including timestamps and nested user/book data. [C14]
+
+**webSecurityCustomizer**
+This method configures Spring Security to ignore specific request matchers, such as Swagger UI paths and static upload directories. By excluding these paths from security filters, it allows public access to documentation and media files without authentication. [C15]
+
+**corsConfigurationSource**
+This method defines the Cross-Origin Resource Sharing (CORS) policy, explicitly allowing requests from specific frontend origins like localhost and Vercel deployments. It ensures that the API can be safely accessed by the designated web clients while blocking unauthorized origins. [C16]
+
+**SecurityConfig**
+This class configures the overall security framework, integrating `JwtFilter` for token validation and `CustomOAuth2SuccessHandler` for OAuth2 flows. It establishes the security rules and filters that protect the application's endpoints. [C17]
+
+**HealthController**
+This controller exposes a simple health check endpoint at `/api/health` that returns the current status and a timestamp. It is useful for monitoring the application's availability and uptime in production environments. [C18]

@@ -1,21 +1,68 @@
 {
   "AURA": {
-    "01_Attendance-Management-System": null,
-    "02_RecipeBook": {
-      "completeness": 3,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 3
+    "01_Attendance-Management-System": {
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
-    "03_Bpcs-stego": null,
-    "04_ResumeRise": null,
-    "05_bookreview-api": null,
-    "06_Virtual-Tour-Creater": null,
-    "07_ai-ppt-generator": null,
-    "08_Ai_Health_Recommedation": null,
-    "09_trading_bot": null,
-    "10_HomeServicesBooking": null,
+    "02_RecipeBook": {
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "03_Bpcs-stego": {
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "04_ResumeRise": {
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "06_Virtual-Tour-Creater": {
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 4.0
+    },
+    "07_ai-ppt-generator": {
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "08_Ai_Health_Recommedation": {
+      "completeness": 2.0,
+      "accuracy": 1.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "09_trading_bot": {
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "10_HomeServicesBooking": {
+      "completeness": 4.0,
+      "accuracy": 4.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
     "11_AIResumeScreeningSystem": null,
     "12_AI-Study-Assistant": null,
     "13_Image-generator": null,
@@ -24,433 +71,432 @@
     "16_studyvault": null,
     "17_MajorProjectFirstDraft": null,
     "18_diabetes_predictor": null,
-    "19_AI-COACHING-PLATFORM": null,
+    "19_AI-COACHING-PLATFORM": {
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 5.0,
+      "structure": 4.0
+    },
     "20_smart-pet-care": null
   },
   "chatgpt": {
     "01_Attendance-Management-System": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "02_RecipeBook": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "03_Bpcs-stego": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "04_ResumeRise": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "05_bookreview-api": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "06_Virtual-Tour-Creater": {
-      "completeness": 3,
-      "accuracy": 3,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "07_ai-ppt-generator": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "08_Ai_Health_Recommedation": {
-      "completeness": 3,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 2.0,
+      "accuracy": 1.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "09_trading_bot": {
-      "completeness": 2,
-      "accuracy": 1,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "10_HomeServicesBooking": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 4
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "11_AIResumeScreeningSystem": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "12_AI-Study-Assistant": {
-      "completeness": 4,
-      "accuracy": 4,
-      "clarity": 5,
-      "depth": 3,
-      "structure": 5
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "13_Image-generator": {
-      "completeness": 3,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "14_customerfeedback": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 2
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "15_whatsappchatanalyzer": {
-      "completeness": 3,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 4
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "16_studyvault": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 3
+      "completeness": 2.0,
+      "accuracy": 1.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "17_MajorProjectFirstDraft": {
-      "completeness": 4,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 5
+      "completeness": 5.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "18_diabetes_predictor": {
-      "completeness": 3,
-      "accuracy": 5,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 2.0,
+      "clarity": 5.0,
+      "depth": 5.0,
+      "structure": 5.0
     },
     "19_AI-COACHING-PLATFORM": {
-      "completeness": 3,
-      "accuracy": 2,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "20_smart-pet-care": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     }
   },
   "claude": {
     "01_Attendance-Management-System": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "02_RecipeBook": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 2
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 4.0
     },
     "03_Bpcs-stego": {
-      "completeness": 2,
-      "accuracy": 5,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "04_ResumeRise": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "05_bookreview-api": {
-      "completeness": 2,
-      "accuracy": 2,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 5.0
     },
     "06_Virtual-Tour-Creater": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "07_ai-ppt-generator": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 4.0
     },
     "08_Ai_Health_Recommedation": {
-      "completeness": 4,
-      "accuracy": 5,
-      "clarity": 5,
-      "depth": 4,
-      "structure": 5
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "09_trading_bot": {
-      "completeness": 2,
-      "accuracy": 2,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 2
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "10_HomeServicesBooking": {
-      "completeness": 2,
-      "accuracy": 2,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 4
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "11_AIResumeScreeningSystem": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "12_AI-Study-Assistant": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 2
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "13_Image-generator": {
-      "completeness": 3,
-      "accuracy": 2,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "14_customerfeedback": {
-      "completeness": 2,
-      "accuracy": 2,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 4
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "15_whatsappchatanalyzer": {
-      "completeness": 3,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 2.0,
+      "structure": 4.0
     },
     "16_studyvault": {
-      "completeness": 3,
-      "accuracy": 5,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "17_MajorProjectFirstDraft": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "18_diabetes_predictor": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "19_AI-COACHING-PLATFORM": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "20_smart-pet-care": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     }
   },
   "deepseek": {
     "01_Attendance-Management-System": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "02_RecipeBook": {
-      "completeness": 2,
-      "accuracy": 2,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 2
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "03_Bpcs-stego": {
-      "completeness": 3,
-      "accuracy": 2,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 4
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "04_ResumeRise": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 5.0
     },
     "05_bookreview-api": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 5.0,
+      "structure": 5.0
     },
     "06_Virtual-Tour-Creater": {
-      "completeness": 3,
-      "accuracy": 2,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 4
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "07_ai-ppt-generator": {
-      "completeness": 2,
-      "accuracy": 2,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "08_Ai_Health_Recommedation": {
-      "completeness": 3,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 1.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 5.0
     },
     "09_trading_bot": {
-      "completeness": 3,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "10_HomeServicesBooking": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "11_AIResumeScreeningSystem": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "12_AI-Study-Assistant": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "13_Image-generator": {
-      "completeness": 2,
-      "accuracy": 2,
-      "clarity": 4,
-      "depth": 2,
-      "structure": 4
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "14_customerfeedback": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 3,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "15_whatsappchatanalyzer": {
-      "completeness": 3,
-      "accuracy": 2,
-      "clarity": 4,
-      "depth": 3,
-      "structure": 4
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "16_studyvault": {
-      "completeness": 3,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "17_MajorProjectFirstDraft": {
-      "completeness": 2,
-      "accuracy": 3,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 2
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     },
     "18_diabetes_predictor": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
     },
     "19_AI-COACHING-PLATFORM": {
-      "completeness": 2,
-      "accuracy": 2,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
-    },
-    "20_smart-pet-care": {
-      "completeness": 2,
-      "accuracy": 4,
-      "clarity": 3,
-      "depth": 2,
-      "structure": 3
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
     }
   }
 }

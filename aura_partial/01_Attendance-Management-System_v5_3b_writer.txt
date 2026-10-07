@@ -1,0 +1,27 @@
+## 3. Notable functions/classes
+
+The `AttendanceService` class is central to the application's core functionality, managing the recording of student presence. It operates by first retrieving the relevant list of students for a specific course using the `studentRepo.findStudentsByCourseId` method. It then iterates through this list, comparing each student against a provided list of present IDs to update their status for a given date, ensuring accurate participation tracking [C13].
+
+The `TeacherService` handles role-specific data retrieval for the teacher interface. Its `viewAttendance` method validates the existence of a course and classroom before fetching records; if either entity is missing, it throws a runtime exception to maintain data consistency, otherwise returning the attendance records for the specified date [C16]. This service also retrieves the currently logged-in teacher from the HTTP session to personalize dashboard views [C1].
+
+In the administrative domain, `AdminServiceImpl` aggregates access to multiple repositories, including those for students, teachers, classrooms, and holidays [C2]. The `getAllCourses` method within this service directly invokes `courseRepo.findAll()` to return a list of all course entities, providing bulk data to the controller layer [C19]. Similarly, `getClassroomById` uses the `findById` method which returns an `Optional`, throwing an `IllegalArgumentException` if the classroom is not found, thereby preventing null pointer issues in the upper layers [C21].
+
+The `AdminController` manages high-level administrative requests. The `markHoliday` endpoint parses date and reason parameters from the HTTP request, converts the date string to a `LocalDate` object, and delegates the saving process to the `adminService.markHoliday` method before redirecting the user [C17]. For editing entities, the `editTeacher` method retrieves a specific teacher by ID and fetches all available courses to populate the edit form, demonstrating how the controller prepares view data [C22].
+
+The `Teacher` entity includes helper methods to manage relationships. The `addCourse` method adds a course to the teacher's list and simultaneously sets the teacher reference on the course object, ensuring the bidirectional relationship is maintained correctly [C14]. The `Student` entity uses validation annotations such as `@NotBlank` on its constructor parameters to enforce data integrity for name, email, and password fields [C4].
+
+## 4. Data flow and design patterns
+
+A typical request flow begins when a user accesses the admin dashboard. The `AdminController` intercepts the HTTP request and delegates business logic to the `AdminService` [C7]. For example, when editing a classroom, the `editClassroom` method extracts the `id` path variable and calls `adminService.getClassroomById` to retrieve the entity [C24]. The service layer then interacts with the `ClassroomRepository` to fetch the data from the database [C20]. This separation ensures the controller remains free of direct database access, adhering to the **MVC pattern** where the controller handles request/response cycles and view resolution [C22, C24].
+
+The **Repository pattern** is evident in the service layer's dependency on Spring Data JPA repositories like `courseRepo` and `classroomRepo` for all CRUD operations [C19, C20]. The `AdminServiceImpl` class also exhibits a **Facade pattern**, as it aggregates access to multiple repositories (courses, classrooms, teachers, students) behind a single service interface, simplifying the dependencies for the controller [C19, C20, C23].
+
+Another flow involves the student dashboard. The `StudentDashboardController` handles requests for student-specific data, utilizing `AuthService` and `AttendanceRecordRepository` to fetch information based on the session and optional date parameters [C6]. The `LoginController` initiates this session by verifying credentials via `AuthService` and storing the user role and ID in the HTTP session upon successful login [C8].
+
+## 5. Technology stack and dependencies
+
+The application is built on **Spring Boot**, as indicated by the parent artifact `spring-boot-starter-parent` in the project configuration. The entry point, `FinalProjectApplication`, uses the `SpringApplication.run` method to initialize the context and start the server [C10].
+
+**Spring MVC** is used for web handling, with controllers like `LoginController` and `AdminController` annotated with `@Controller` and mapping HTTP requests to specific methods [C7, C8]. The **Spring Data JPA** framework is utilized for persistence, evidenced by the use of repositories such as `StudentRepository` and `CourseRepository` within the service layer [C11, C12].
+
+The view layer relies heavily on **JSP (JavaServer Pages)**, which constitute nearly half of the codebase, allowing for dynamic HTML generation. **Java** is the primary language for the backend logic, including entities and services [C4, C5]. The project uses **Maven** for build management and dependency resolution, as shown by the presence of `pom.xml` and Maven wrapper scripts [C10]. Validation is handled through **Bean Validation** annotations like `@NotBlank` within the entity classes [C4, C5].

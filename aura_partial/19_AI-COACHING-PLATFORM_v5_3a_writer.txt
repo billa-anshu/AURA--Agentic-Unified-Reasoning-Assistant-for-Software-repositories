@@ -1,0 +1,25 @@
+Based on the provided evidence, here is the report on the AI Coaching Platform's architecture and implementation.
+
+### Authentication and User Provisioning
+The application establishes user identity through a centralized authentication layer. The `AuthProvider` component wraps the application and utilizes the `useUser` hook to detect authenticated sessions [C9]. When a user is detected, the system triggers the `createNewUser` callback, which executes the `api.users.CreateUser` mutation to persist user details, such as name and email, into the backend [C9]. This process ensures that all subsequent interactions are associated with a specific user identity.
+
+### Session Initiation and Room Creation
+The primary entry point for starting a new coaching session is the `UserInputDialog` component, which manages local state for the selected expert, topic, and loading status [C7]. This component receives `children` and a `coachingOption` as props to customize its behavior [C7]. When the user proceeds, the `onClickNext` handler invokes the `api.DiscussionRoom.CreateNewRoom` mutation via `useMutation` [C7]. This action generates a new discussion room, and the application then navigates to the specific room view identified by the `roomid` parameter [C7].
+
+### Real-Time Interaction and Data Management
+Within the `DiscussionRoom` view, the system orchestrates real-time data retrieval and state management. The component retrieves the `roomid` from URL parameters using `useParams` [C2]. It utilizes React Query hooks to fetch discussion room data and previous transcripts, and to manage the saving of new transcripts via a mutation [C2]. The component maintains local state for the selected `expert`, microphone enablement (`enableMic`), and the current `transcript` string [C2].
+
+The core voice interaction logic is handled by the `startListening` function, which leverages the Web Speech API [C10]. It checks for browser support, instantiates `webkitSpeechRecognition`, and configures it for continuous listening with interim results [C10]. As audio is processed, the `onresult` event handler updates the local `transcript` state with the recognized text [C10].
+
+### AI Processing and Response Generation
+The raw text from the voice recognition is passed to the `AIModel` service for processing. This asynchronous function constructs a prompt by finding a matching `CoachingOption` and replacing a `{user_topic}` placeholder with the provided `topic` [C3]. It sends a request to the OpenAI API using the model `deepseek/deepseek-chat-v3-0324:free` with a message array containing the constructed prompt as an assistant message and the user's `msg` as a user message [C3].
+
+### User Interface and Output
+The conversation interface is rendered by the `ChatComponent`, which displays a header with a "Conversation" title and a bot icon [C6]. This component accepts props including `chatHistory`, `expert`, `transcript`, `interimTranscript`, `language`, and a `chatEndRef` [C6]. It is styled with a white background, rounded corners, and a maximum height of 70vh [C6].
+
+For multimodal output, the system converts the AI's text response into audio using the `speakResponse` function. This function utilizes the `SpeechSynthesisUtterance` API to vocalize the generated text, handling specific language code mappings (e.g., mapping 'te-IN' to 'te') to ensure correct pronunciation [C13]. It also manages the speech synthesis lifecycle by canceling any ongoing speech before starting a new utterance [C13].
+
+### Supporting UI Components
+The application includes various UI components to enhance the user experience. The `Dialog` component serves as a wrapper for `DialogPrimitive.Root`, applying a specific `data-slot` attribute for styling or testing purposes [C1]. It is part of a suite of related components including `DialogTrigger`, `DialogPortal`, `DialogClose`, and `DialogOverlay`, all of which similarly wrap primitive counterparts with `data-slot` attributes [C1]. Additionally, the `BlurFade` component is an animated UI element that uses a `useRef` and the `useInView` hook to detect when the element enters the viewport [C5]. It accepts configuration props such as `duration`, `delay`, `offset`, `direction`, and `blur` to control the animation behavior [C5]. The component determines its visibility state by checking if the `inView` prop is false or if the `useInView` result is true [C5].
+
+Utility functions also support the application's functionality. The `cn` function is a utility that merges CSS class names by passing its arguments through `clsx` and then `twMerge` [C4].

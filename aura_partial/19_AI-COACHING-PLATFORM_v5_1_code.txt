@@ -1,0 +1,28 @@
+Based on the provided evidence, here is an analysis of the key functions and classes:
+
+### UI Components
+
+**`Dialog` and related primitives**
+The `Dialog` component serves as a wrapper for `DialogPrimitive.Root`, applying a specific `data-slot` attribute for styling or testing purposes [C1]. It is part of a suite of related components including `DialogTrigger`, `DialogPortal`, `DialogClose`, and `DialogOverlay`, all of which similarly wrap primitive counterparts with `data-slot` attributes [C1].
+
+**`BlurFade`**
+The `BlurFade` component is an animated UI element that uses a `useRef` and the `useInView` hook to detect when the element enters the viewport [C5]. It accepts configuration props such as `duration`, `delay`, `offset`, `direction`, and `blur` to control the animation behavior [C5]. The component determines its visibility state by checking if the `inView` prop is false or if the `useInView` result is true [C5].
+
+### Application Pages and Features
+
+**`DiscussionRoom`**
+The `DiscussionRoom` component retrieves the `roomid` from URL parameters using `useParams` [C2]. It utilizes React Query hooks to fetch discussion room data and previous transcripts, and to manage the saving of new transcripts via a mutation [C2]. The component maintains local state for an `expert`, microphone enablement (`enableMic`), and the current `transcript` string [C2].
+
+**`ChatComponent`**
+The `ChatComponent` renders a conversation interface with a header displaying a "Conversation" title and a bot icon [C6]. It accepts props including `chatHistory`, `expert`, `transcript`, `interimTranscript`, `language`, and a `chatEndRef` [C6]. The component is styled with a white background, rounded corners, and a maximum height of 70vh [C6].
+
+**`UserInputDialog`**
+The `UserInputDialog` component manages local state for a `selectedExpert`, a `topic`, and a `loading` status [C7]. It receives `children` and a `coachingOption` as props [C7].
+
+### Services and Utilities
+
+**`AIModel`**
+The `AIModel` function is an asynchronous service that constructs a prompt by finding a matching `CoachingOption` and replacing a `{user_topic}` placeholder with the provided `topic` [C3]. It sends a request to the OpenAI API using the model `deepseek/deepseek-chat-v3-0324:free` with a message array containing the constructed prompt as an assistant message and the user's `msg` as a user message [C3].
+
+**`cn`**
+The `cn` function is a utility that merges CSS class names by passing its arguments through `clsx` and then `twMerge` [C4].

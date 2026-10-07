@@ -1,0 +1,39 @@
+Based on the provided code analysis and background information, here is the final repository report.
+
+### 1. Application Overview and Architecture
+
+The project is a React-based web application designed for BPCS (Bit-Plane Complexity Segmentation) steganography, utilizing Supabase for backend services and a Python-based tool for quality analysis. The frontend is built with React 19, React Router, and Axios, while the backend logic for steganography is implemented in Python [C2, C14]. The application architecture separates concerns into a React frontend for user interaction and authentication, a Python backend for image processing, and a Supabase integration for data storage and user management [C4, C6].
+
+The main entry point for the user interface is the `App` component, which manages routing and authentication state [C4]. It determines whether to display the login page or the main application interface based on the user's authentication status [C4]. The application defines specific routes for `/login` and `/app` to ensure unauthenticated users are directed to the login screen [C4].
+
+### 2. Frontend Components and User Flow
+
+**Landing and Authentication**
+The `HomePage` component serves as the landing page, featuring a hero section that describes the BPCS steganography tool [C7]. It includes a "Start" button that navigates users to the main application interface [C7].
+
+User authentication is handled through a simulated login process. The `handleLogin` function simulates a successful login by setting the user state and notifying the parent component via the `onLoginSuccess` callback [C8]. Upon successful login, the `handleLoginSuccess` function updates the application state to mark the user as authenticated and triggers a navigation redirect to the main app route [C15]. Similarly, the `handleSignup` function handles user registration by simulating a successful signup and updating the local user state [C16]. Users can log out using the `handleLogout` function, which clears the current user state by setting it to null, effectively logging the user out and triggering a re-render of the login interface [C17].
+
+**Steganography Interface**
+The core steganography functionality is managed through specific handler functions. The `handleDecode` function manages the frontend decoding process by validating that a cover image and decryption key are present before initiating the request [C12]. It reads the image file as a Base64 string and sends it along with the key to the backend for processing [C12].
+
+For decoding images embedded within other images, the `handleImageInImageDecode` function handles the specific logic by creating a canvas and utilizing a `FileReader` to process the uploaded stego image [C11]. This function initializes the decoding workflow by setting up necessary DOM elements and image loading events [C11].
+
+**Data Upload and Storage**
+The application integrates with Supabase for storing stego images. The `uploadImageToSupabase` utility function uploads stego images to Supabase Storage after verifying the user's authentication session [C6]. It constructs a unique file path using the timestamp and filename, then returns the storage URL or an error message [C6]. The `handleUpload` component method triggers this process by calling `uploadImageToSupabase` with the selected file and a hardcoded user email [C18]. It updates the UI status to reflect whether the upload was successful or if an error occurred [C18].
+
+**Database Diagnostics**
+To troubleshoot database connectivity, the application includes diagnostic tools. The `testDatabaseInsert` function verifies database connectivity and user authentication by retrieving the current Supabase user and attempting to log the result [C3]. This function is executed upon component mount by the `runTestInsert` effect hook, which logs the result to the console to help developers verify backend database integration [C5].
+
+### 3. Backend Steganography Logic
+
+The backend implements the core BPCS steganography algorithm in Python. The `encode_with_bpcs` function converts an input image to a NumPy array and identifies complex regions in the lower bit-planes to hide a message [C2]. It tracks the embedding map and conjugation details to ensure the data can be accurately extracted later [C2].
+
+The decoding process is handled by the `decode_with_bpcs` function, which extracts hidden messages from a stego image by parsing the provided key to reconstruct the embedding map used during encoding [C14]. It converts the image to a NumPy array and uses the map coordinates to retrieve the embedded data [C14].
+
+For backward compatibility, the `encode_to_image` function provides legacy LSB (Least Significant Bit) encoding [C13]. It converts the message to binary and embeds it into the image pixels, including a check to ensure the message length does not exceed the maximum capacity of the image [C13].
+
+### 4. PSNR Analysis Tool
+
+A separate Python-based tool is provided for analyzing the Peak Signal-to-Noise Ratio (PSNR) of images used in BPCS steganography. The `PSNRAnalyzer` class initializes a Tkinter-based GUI for this purpose [C1]. It sets up the main window and frames to allow users to select files and view analysis results [C1].
+
+The `run` method starts the main event loop for the Tkinter GUI application, making the window interactive and responsive to user input [C9]. This method serves as the entry point for running the PSNR analysis tool independently [C10].

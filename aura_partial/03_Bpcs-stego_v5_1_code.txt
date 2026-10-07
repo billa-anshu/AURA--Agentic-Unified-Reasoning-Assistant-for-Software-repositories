@@ -1,0 +1,53 @@
+**1. `encode_with_bpcs`**
+This function implements the core BPCS steganography algorithm by converting an input image to a NumPy array and identifying complex regions in the lower bit-planes to hide a message. It tracks the embedding map and conjugation details to ensure the data can be accurately extracted later, serving as the primary encoding engine for the backend. [C2]
+
+**2. `decode_with_bpcs`**
+This function extracts hidden messages from a stego image by parsing the provided key to reconstruct the embedding map used during encoding. It converts the image to a NumPy array and uses the map coordinates to retrieve the embedded data, completing the steganographic cycle alongside the encoder. [C14]
+
+**3. `handleDecode`**
+This asynchronous function manages the frontend decoding process by validating that a cover image and decryption key are present before initiating the request. It reads the image file as a Base64 string and sends it along with the key to the backend for processing, providing user feedback on the decoding status. [C12]
+
+**4. `handleImageInImageDecode`**
+This function handles the specific logic for decoding images embedded within other images by creating a canvas and utilizing a FileReader to process the uploaded stego image. It initializes the decoding workflow by setting up the necessary DOM elements and image loading events to prepare for bit-plane analysis. [C11]
+
+**5. `uploadImageToSupabase`**
+This utility function uploads stego images to Supabase Storage after verifying the user's authentication session. It constructs a unique file path using the timestamp and filename, then returns the storage URL or an error message to the caller. [C6]
+
+**6. `handleUpload`**
+This component method triggers the image upload process by calling `uploadImageToSupabase` with the selected file and a hardcoded user email. It updates the UI status to reflect whether the upload was successful or if an error occurred, providing immediate feedback to the user. [C18]
+
+**7. `testDatabaseInsert`**
+This diagnostic function verifies database connectivity and user authentication by retrieving the current Supabase user and attempting to log the result. It is used to troubleshoot potential issues with data insertion permissions or session validity in the development environment. [C3]
+
+**8. `runTestInsert`**
+This effect hook executes the `testDatabaseInsert` function upon component mount to automatically diagnose database issues. It logs the result of the test to the console, helping developers verify that the backend database integration is functioning correctly during initialization. [C5]
+
+**9. `App`**
+This main React component manages the application's routing and authentication state, determining whether to display the login page or the main application interface. It uses React Router to define paths for `/login` and `/app`, ensuring that unauthenticated users are directed to the login screen. [C4]
+
+**10. `handleLoginSuccess`**
+This function updates the application's state to mark the user as authenticated, which triggers a navigation redirect to the main app route. It acts as the bridge between the login component and the main application logic, enabling access to protected features. [C15]
+
+**11. `handleLogin`**
+This function simulates a successful login by setting the user state and notifying the parent component via the `onLoginSuccess` callback. It then navigates the user directly to the `/app` route, bypassing the need for a full page reload in the single-page application. [C8]
+
+**12. `handleSignup`**
+This function handles the user registration process by simulating a successful signup and updating the local user state. It notifies the parent component of the successful authentication and navigates the user to the main application interface. [C16]
+
+**13. `handleLogout`**
+This function clears the current user state by setting it to null, effectively logging the user out of the application. It triggers a re-render of the login interface, allowing the user to sign in again or create a new account. [C17]
+
+**14. `HomePage`**
+This component serves as the landing page for the application, featuring a hero section that describes the BPCS steganography tool. It includes a "Start" button that navigates the user to the main application interface, acting as the entry point for new visitors. [C7]
+
+**15. `PSNRAnalyzer`**
+This class initializes a Tkinter-based GUI for analyzing the Peak Signal-to-Noise Ratio (PSNR) of images used in BPCS steganography. It sets up the main window and frames to allow users to select files and view analysis results, providing a visual interface for quality assessment. [C1]
+
+**16. `run`**
+This method starts the main event loop for the Tkinter GUI application, making the window interactive and responsive to user input. It is called to launch the PSNR analyzer interface, allowing users to perform their analysis tasks. [C9]
+
+**17. `PSNRAnalyzer.run`**
+This method is responsible for executing the main loop of the graphical user interface, ensuring the application remains active and responsive. It serves as the entry point for running the PSNR analysis tool independently. [C10]
+
+**18. `encode_to_image`**
+This function provides legacy LSB (Least Significant Bit) encoding for backward compatibility by converting the message to binary and embedding it into the image pixels. It includes a check to ensure the message length does not exceed the maximum capacity of the image, raising an error if it does. [C13]

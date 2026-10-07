@@ -1,0 +1,41 @@
+1. **match_resume_ml** (backend/main.py)
+This FastAPI endpoint accepts a PDF resume and a job description, extracting text from the PDF using PyPDF2 to prepare data for skill matching. It serves as the core backend logic for the dynamic resume matching feature, leveraging the Groq service for AI-driven analysis. [C1]
+
+2. **handleStartInterview** (frontend/src/pages/InterviewSetupPage.jsx)
+This function validates that a resume file and job description are provided before constructing a FormData object to initiate the interview setup process. It acts as the primary trigger for generating interview questions, ensuring necessary inputs are present before proceeding. [C5]
+
+3. **generateFinalReport** (frontend/src/pages/InterviewReviewPage.jsx)
+This asynchronous function compiles user responses, transcriptions, feedback, scores, and emotional data into a payload to generate a final interview report. It is responsible for aggregating the results of the mock interview session for review and analysis. [C2]
+
+4. **App** (frontend/src/App.js)
+This component defines the main routing structure of the application, mapping specific URLs to pages such as Home, Resume Match, and Mock Interview. It ensures that users can navigate between the different functional modules of the ResumeRise platform. [C7]
+
+5. **loadInterviewConfig** (frontend/src/pages/MockInterviewPage.jsx)
+This useEffect hook retrieves interview configuration and questions from either the location state or sessionStorage to initialize the mock interview environment. It ensures that the interview session is properly configured with the correct questions and settings before starting. [C3]
+
+6. **handleFileChange** (frontend/src/pages/ResumeMatchPage.jsx)
+This event handler validates that the uploaded file is a valid PDF, setting the file state if correct or displaying an error otherwise. It is a critical input validation step for the resume matching feature, preventing non-PDF files from being processed. [C6]
+
+7. **groq_client** (backend/main.py)
+This variable initializes the Groq API client using an API key retrieved from environment variables. It provides the necessary connection for the backend to utilize Groq's AI capabilities for processing resume and job description data. [C13]
+
+8. **app** (backend/main.py)
+This variable instantiates the FastAPI application titled "ResumeRise API" and adds middleware to handle cross-origin requests. It serves as the central entry point for all backend API routes and services in the application. [C12]
+
+9. **getScoreColor** (frontend/src/pages/ResumeMatchPage.jsx)
+This utility function returns a specific text color class based on a numerical score, using green for high scores, yellow for medium, and red for low. It enhances the user interface by providing immediate visual feedback on resume match quality. [C10]
+
+10. **getEmotionColor** (frontend/src/pages/MockInterviewPage.jsx)
+This function maps detected emotional states, such as confident or nervous, to corresponding Tailwind CSS color classes. It allows the interface to visually represent the candidate's emotional tone during the mock interview. [C9]
+
+11. **getScoreBg** (frontend/src/pages/ResumeMatchPage.jsx)
+This function determines the border and background color classes for score indicators based on performance thresholds. It complements the text color logic to create a cohesive visual representation of the resume match results. [C11]
+
+12. **stopCapturingFrames** (frontend/src/pages/MockInterviewPage.jsx)
+This function halts the video frame capture process by clearing the interval reference and updating the state to stop capturing. It is essential for managing browser resources and stopping the video feed when the interview segment ends. [C14]
+
+13. **handleScroll** (frontend/src/pages/HomePage.jsx)
+This event listener monitors the window's scroll position to update the header's styling when the user scrolls more than 50 pixels. It enables a dynamic header effect that improves the user experience on the homepage. [C4]
+
+14. **handleInputChange** (frontend/src/pages/InterviewSetupPage.jsx)
+This generic handler updates the state of input fields and clears any existing error messages when the user types. It ensures that the form remains responsive and that previous validation errors are dismissed as the user corrects their input. [C8]

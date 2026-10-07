@@ -1,0 +1,17 @@
+Based on the provided code analysis, here is the report on the repository's functionality:
+
+**Virtual Tour Management and Navigation**
+
+The application provides a comprehensive interface for creating, editing, and viewing virtual tours. The **VirtualTourForm** component facilitates the creation of new tours by generating unique identifiers using `uuidv4` and processing image uploads via `FileReader` to create previews [C2]. For existing tours, the **TourEditorPage** allows users to manage room lists, panorama URLs, and full panorama data objects, utilizing `useParams` to identify the specific tour and `useRef` to manage panorama references [C4].
+
+**User Interaction and Editing Features**
+
+Users can modify tour elements through specific handler functions. The **handleRemoveMarker** function asynchronously deletes navigation markers from the Supabase `markers` table, requiring user confirmation to prevent accidental removal [C12]. Additionally, **handleSelectRoomForTooltipEdit** prepares the UI state for editing tooltips by setting the active room and resetting inputs for new content and placement positions [C11].
+
+**Authentication and Access Control**
+
+The system implements user authentication through Supabase. The **handleSignup** function processes registration by calling `supabase.auth.signUp` and handles errors or successful account creation prompts [C3]. The **handleLogin** function authenticates users via `supabase.auth.signInWithPassword` and verifies email confirmation before granting access [C5]. Access to creation features is controlled by **handleCreateClick**, which checks authentication status and redirects unauthenticated users to the login page [C6].
+
+**Data Retrieval and Display**
+
+Data flow between the frontend and backend is managed through specific endpoints and components. The **get_tour_data_endpoint** Flask function retrieves tour data such as the `start_room` from the Supabase `tour` table for initial loading [C1]. The **AllToursPage** component displays a list of available tours by fetching `tour_id` and `tour_name` from the Supabase `tour` table, ordered by creation date [C7]. Finally, the **PanoramaViewer** component serves as the primary interface for navigating the 3D viewer, managing node states, and handling audio playback [C8].

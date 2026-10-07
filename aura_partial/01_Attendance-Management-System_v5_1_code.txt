@@ -1,0 +1,50 @@
+1. **FinalProjectApplication**
+This class serves as the entry point for the Spring Boot application, initializing the context and starting the server. It uses the `SpringApplication.run` method to boot up the system, which is essential for executing the web application. [C10]
+
+2. **AttendanceService**
+This service manages attendance records by marking students as present or absent for a specific course and date. It retrieves students via `studentRepo.findStudentsByCourseId` and updates their status based on the provided list of present IDs, playing a critical role in tracking student participation. [C13]
+
+3. **TeacherService**
+This service handles teacher-specific operations, including retrieving the currently logged-in teacher from the HTTP session and viewing attendance records for specific courses and classrooms. It interacts with `TeacherRepository`, `CourseRepository`, and `AttendanceRecordRepository` to provide data for the teacher dashboard and attendance views. [C1]
+
+4. **TeacherDashboardController**
+This controller manages the user interface for teachers, specifically handling the dashboard request at `/teacher/dashboard`. It retrieves the teacher's email from the session to verify authentication and populates the model with teacher details for display. [C18]
+
+5. **AdminController**
+This controller oversees administrative functions, such as displaying counts of students, teachers, and classrooms on the dashboard, and managing holidays. It delegates business logic to `AdminService` and handles requests for student search and holiday marking. [C7]
+
+6. **AdminServiceImpl**
+This implementation class provides the concrete logic for administrative tasks, utilizing repositories for students, teachers, classrooms, holidays, attendance, and courses. It supports the `AdminController` by fetching data and managing system-wide entities like holidays. [C2]
+
+7. **AttendanceRecord**
+This entity represents a single attendance entry, linking a student and a classroom to a specific date and status. It provides getters and setters for managing these relationships, serving as the core data structure for attendance tracking. [C3]
+
+8. **Student**
+This entity defines the student profile, including name, email, password, and associated classrooms. It uses validation annotations like `@NotBlank` to ensure data integrity and provides methods for accessing and modifying student attributes. [C4]
+
+9. **Teacher**
+This entity models the teacher profile, containing personal details and a list of courses. It includes helper methods like `addCourse` and `removeCourse` to maintain bidirectional relationships between teachers and their assigned courses. [C5]
+
+10. **StudentDashboardController**
+This controller handles requests for the student dashboard, allowing students to view their attendance and other relevant information. It utilizes `AuthService` and `AttendanceRecordRepository` to fetch data based on the session and optional date parameters. [C6]
+
+11. **LoginController**
+This controller manages the authentication process, displaying the login page and handling login submissions. It verifies user credentials via `AuthService` and stores user role and ID in the HTTP session upon successful login. [C8]
+
+12. **ClassroomService**
+This service provides methods to retrieve classrooms, such as finding all classrooms associated with a specific teacher or fetching a classroom by its ID. It relies on `ClassroomRepository` to query the database for classroom data. [C12]
+
+13. **StudentService**
+This service offers functionality to retrieve lists of students, specifically those belonging to a particular classroom. It uses `StudentRepository` to execute the query `findByClassrooms_ClassroomId`, supporting features like class rosters. [C11]
+
+14. **Teacher (addCourse)**
+This helper method within the `Teacher` entity adds a course to the teacher's list and sets the teacher reference on the course object. It ensures that the relationship between a teacher and a course is maintained bidirectionally. [C14]
+
+15. **Teacher (setCourses)**
+This method allows for the direct replacement of the list of courses assigned to a teacher. It is part of the standard getter/setter pattern for the `courses` attribute, facilitating bulk updates to a teacher's course load. [C15]
+
+16. **TeacherService (viewAttendance)**
+This method retrieves attendance records for a specific course, classroom, and date by first validating the course and classroom existence. It throws runtime exceptions if the course or classroom is not found, ensuring data consistency before returning the records. [C16]
+
+17. **AdminController (markHoliday)**
+This endpoint handles the creation of new holiday records by parsing the date and reason from the request parameters. It delegates the saving process to `adminService.markHoliday` and redirects the user to the holidays management page. [C17]

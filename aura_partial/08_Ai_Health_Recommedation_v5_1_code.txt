@@ -1,0 +1,8 @@
+**1. `helper` function**
+This function retrieves the textual description for a specific disease by filtering a `description` DataFrame where the 'Disease' column matches the input argument. It processes the resulting data into a single space-separated string, which is then returned as part of a tuple containing other medical details like prescriptions and diet advice. This is critical for providing the user with detailed, human-readable information about their predicted condition [C3].
+
+**2. `predicted_disease` (POST request handler logic)**
+This code block handles incoming HTTP POST requests by extracting the 'disease' value from the form data and assigning it to the `predicted_disease` variable. It immediately invokes the `helper` function with this value to fetch associated medical descriptions, prescriptions, and other recommendations. This step is essential for bridging the user's input with the backend data retrieval process [C2].
+
+**3. `symptoms_dict` variable**
+This dictionary serves as a mapping structure that associates specific symptom names (such as 'itching' and 'joint_pain') with unique integer indices. It likely functions as a lookup table to convert textual symptom inputs into numerical features required for machine learning model prediction. Its presence indicates the application uses a data-driven approach to translate user-reported symptoms into a format suitable for algorithmic analysis [C1].
