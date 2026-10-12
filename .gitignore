@@ -46,3 +46,6 @@ metadata/
 # ---------- OS ----------
 .DS_Store
 Thumbs.db
+
+# Frontend config (Supabase URL/key)
+aura/aura_frontend/config.js
