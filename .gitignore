@@ -1,0 +1,48 @@
+# ---------- Secrets ----------
+.env
+.env.*
+!.env.example
+*.key
+secrets.json
+secrets.*
+GROQ_API_KEY*
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# ---------- Jupyter ----------
+.ipynb_checkpoints/
+
+# ---------- AURA backend runtime (generated) ----------
+# uploaded user code and job results
+aura_jobs/
+# LLM stage cache
+aura_agent_cache.json
+
+# ---------- Experiment data ----------
+# cloned repos (large, other people's code)
+repositories/
+metadata/
+*.log
+*.tmp
+
+# ---------- IDE ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---------- OS ----------
+.DS_Store
+Thumbs.db

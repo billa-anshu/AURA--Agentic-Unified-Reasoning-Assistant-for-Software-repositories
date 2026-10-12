@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AURA – Agentic AI Unified Reasoning Assistant</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--tx:#1b1f2a;--mu:#6b7280;--bd:#e3e6ee;--ac:#4f46e5;--ac2:#eef0ff;--ok:#16a34a;--bad:#dc2626}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1117;--card:#181b24;--tx:#e8eaf0;--mu:#9aa1b2;--bd:#2a2e3b;--ac:#818cf8;--ac2:#232744;--ok:#4ade80;--bad:#f87171}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:26px;margin:0}.sub{color:var(--mu);margin:4px 0 22px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:16px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.brand{font-size:22px;font-weight:700;color:var(--ac)}
+.nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav button{padding:7px 14px;border:1px solid var(--bd);border-radius:9px;background:none;color:var(--tx);cursor:pointer;font:inherit}
+.nav button.on{background:var(--ac2);border-color:var(--ac);color:var(--ac);font-weight:600}
+.who{color:var(--mu);font-size:13px;margin-left:6px}
+.tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.tab{flex:1;min-width:110px;padding:10px;border:1px solid var(--bd);border-radius:10px;background:none;color:var(--tx);cursor:pointer;font:inherit}
+.tab.on{background:var(--ac2);border-color:var(--ac);color:var(--ac);font-weight:600}
+.drop{border:2px dashed var(--bd);border-radius:12px;padding:34px 16px;text-align:center;cursor:pointer;color:var(--mu)}
+.drop.over,.drop:hover{border-color:var(--ac);background:var(--ac2)}
+.drop b{color:var(--tx);display:block;margin-bottom:4px}
+.picked{margin-top:10px;font-size:14px;color:var(--ok)}
+label{display:block;font-size:13px;color:var(--mu);margin:12px 0 4px}
+input[type=text],input[type=password],input[type=email]{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+.seg{display:inline-flex;border:1px solid var(--bd);border-radius:10px;overflow:hidden}
+.seg button{padding:8px 18px;border:0;background:none;color:var(--tx);cursor:pointer;font:inherit}
+.seg button.on{background:var(--ac);color:#fff}
+.row{display:flex;justify-content:flex-end;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+.btn{padding:11px 24px;border:0;border-radius:10px;background:var(--ac);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:not-allowed}.btn.ghost{background:var(--ac2);color:var(--ac)}
+.btn.sm{padding:6px 12px;font-size:13px}.btn.danger{background:none;color:var(--bad);border:1px solid var(--bd)}
+.hide{display:none!important}.err{color:var(--bad);margin-top:10px;font-size:14px;white-space:pre-wrap}.okmsg{color:var(--ok);margin-top:10px;font-size:14px}
+.link{color:var(--ac);cursor:pointer;font-size:13px;background:none;border:0;padding:0;font:inherit;font-size:13px}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:flex;gap:10px;align-items:center;padding:8px 0;color:var(--mu)}
+.steps li i{width:20px;height:20px;border-radius:50%;border:2px solid var(--bd);display:inline-block;flex:none}
+.steps li.run{color:var(--tx)}.steps li.run i{border-color:var(--ac);border-top-color:transparent;animation:sp 1s linear infinite}
+.steps li.done{color:var(--tx)}.steps li.done i{background:var(--ok);border-color:var(--ok)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:14px 0}
+.stat{background:var(--bg);border-radius:10px;padding:12px}.stat b{font-size:22px;display:block}.stat span{color:var(--mu);font-size:13px}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:8px 0}
+.leg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--mu)}.leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+h2{font-size:18px;margin:0 0 8px}h3{font-size:14px;margin:18px 0 6px}
+.claim{border-left:3px solid var(--ok);padding:6px 12px;margin:8px 0;background:var(--bg);border-radius:0 8px 8px 0}
+.cite{display:inline-block;font:12px ui-monospace,Menlo,monospace;background:var(--ac2);color:var(--ac);padding:1px 7px;border-radius:6px;margin:4px 4px 0 0;word-break:break-all}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:12px;background:var(--ac2);color:var(--ac);vertical-align:middle}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.vtabs{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 10px;border-bottom:1px solid var(--bd);padding-bottom:10px}
+.vtabs button{padding:7px 14px;border:1px solid var(--bd);border-radius:9px;background:none;color:var(--tx);cursor:pointer;font:inherit;font-size:14px}
+.vtabs button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.md h2{font-size:17px;margin:4px 0 8px}.md h3{font-size:15px;margin:16px 0 6px}.md ul,.md ol{padding-left:22px}
+.md code{background:var(--bg);padding:1px 5px;border-radius:5px;font-size:13px}
+.md pre{background:var(--bg);padding:12px;border-radius:10px;overflow:auto}
+.mermaid{background:var(--bg);border-radius:10px;padding:12px;text-align:center;overflow:auto}
+.hist{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--bd)}
+.hist:first-of-type{border-top:0}.hist .t{font-weight:600;cursor:pointer}.hist .t:hover{color:var(--ac)}.hist small{color:var(--mu)}
+.authbox{max-width:400px;margin:60px auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== LOGIN ===== -->
+  <section id="authView" class="hide">
+    <div class="authbox card">
+      <h1>AURA</h1>
+      <p class="sub">Citation-grounded repository summaries. Sign in to run analyses and keep all your results.</p>
+      <form id="authForm">
+        <label for="em">Email</label><input type="email" id="em" required autocomplete="email">
+        <label for="pw">Password</label><input type="password" id="pw" required minlength="6" autocomplete="current-password">
+        <div class="row" style="justify-content:space-between">
+          <button type="button" class="link" id="forgot">Forgot password?</button>
+          <button class="btn" id="authBtn">Sign in</button>
+        </div>
+      </form>
+      <div class="err" id="authErr"></div><div class="okmsg" id="authOk"></div>
+      <p style="margin:16px 0 0;font-size:14px;color:var(--mu)"><span id="authSwitchText">No account?</span> <button class="link" id="authSwitch">Create one</button></p>
+    </div>
+  </section>
+
+  <!-- ===== APP ===== -->
+  <section id="appView" class="hide">
+    <div class="top">
+      <div class="brand">AURA</div>
+      <div class="nav">
+        <button id="nav-analyze" class="on">Analyze</button>
+        <button id="nav-history">My results</button>
+        <span class="who" id="who"></span>
+        <button id="signout">Sign out</button>
+      </div>
+    </div>
+
+    <!-- INPUT -->
+    <section class="card" id="inputCard">
+      <h2>Analyze a repository</h2>
+      <div class="tabs" id="tabs" style="margin-top:12px">
+        <button class="tab on" data-m="folder">📁 Local folder</button>
+        <button class="tab" data-m="zip">🗜️ ZIP file</button>
+        <button class="tab" data-m="github">🐙 GitHub link</button>
+      </div>
+
+      <div id="p-folder">
+        <div class="drop" id="dz-folder"><b>Click to choose a folder, or drag &amp; drop it here</b>.git and node_modules are skipped</div>
+        <input type="file" id="in-folder" webkitdirectory multiple hidden>
+      </div>
+      <div id="p-zip" class="hide">
+        <div class="drop" id="dz-zip"><b>Click to choose a .zip, or drag &amp; drop it here</b>Repository archive</div>
+        <input type="file" id="in-zip" accept=".zip" hidden>
+      </div>
+      <div id="p-github" class="hide">
+        <label for="url">Repository URL</label>
+        <input type="text" id="url" placeholder="https://github.com/owner/repo">
+        <label>Visibility</label>
+        <div class="seg" id="vis"><button class="on" data-v="public">Public</button><button data-v="private">Private</button></div>
+        <div id="tokBox" class="hide">
+          <label for="tok">GitHub personal access token (fine-grained: Contents read-only, or classic “repo”)</label>
+          <input type="password" id="tok" placeholder="github_pat_… or ghp_…" autocomplete="off">
+          <div style="font-size:12px;color:var(--mu);margin-top:4px">Sent once to your AURA backend to clone the repo. It is never saved.</div>
+        </div>
+      </div>
+
+      <div class="picked" id="picked"></div>
+      <div class="err" id="err"></div>
+      <div class="row"><button class="btn" id="go" disabled>Analyze repository</button></div>
+    </section>
+
+    <!-- PROGRESS -->
+    <section class="card hide" id="progCard">
+      <h2 id="progTitle">Agents working…</h2>
+      <p class="sub" style="margin:0 0 8px" id="progSub">This usually takes a few minutes. You can keep this tab open.</p>
+      <ul class="steps" id="steps"></ul>
+    </section>
+
+    <!-- RESULT -->
+    <section class="card hide" id="result"></section>
+
+    <!-- HISTORY -->
+    <section class="card hide" id="historyCard">
+      <h2>My results</h2>
+      <div id="histList" style="margin-top:8px"></div>
+    </section>
+  </section>
+</div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+const CFG = window.AURA_CONFIG || {};
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const COLORS = ["#4f46e5","#16a34a","#f59e0b","#ef4444","#06b6d4","#a855f7","#64748b"];
+const SKIP = /(^|\/)(\.git|node_modules|__pycache__|\.venv|venv|dist|build)(\/|$)/;
+const STEPS = ["Fetching & indexing source","Planner agent","Investigator agent (tool loop)","Extractor + Verifier agents","Audience writers"];
+const MAX_UPLOAD = 100 * 1024 * 1024;
+
+const configured = CFG.SUPABASE_URL && CFG.SUPABASE_ANON_KEY && !/YOUR/.test(CFG.SUPABASE_URL + CFG.SUPABASE_ANON_KEY);
+let sb = null, session = null, signup = false;
+
+/* ================= AUTH ================= */
+function authMsg(err, ok){ $("authErr").textContent = err || ""; $("authOk").textContent = ok || ""; }
+function showAuth(){ $("appView").classList.add("hide"); $("authView").classList.remove("hide"); }
+function showApp(){ $("authView").classList.add("hide"); $("appView").classList.remove("hide"); $("who").textContent = session?.user?.email || ""; }
+
+if (!configured){
+  $("authView").classList.remove("hide");
+  authMsg("Supabase is not configured. Edit config.js and set SUPABASE_URL and SUPABASE_ANON_KEY.");
+  $("authBtn").disabled = true;
+} else {
+  sb = supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY);
+  sb.auth.getSession().then(({data}) => { session = data.session; session ? showApp() : showAuth(); });
+  sb.auth.onAuthStateChange((_e, s) => {
+    const had = !!session; session = s;
+    if (s && !had) { showApp(); setView("analyze"); }
+    if (!s) showAuth();
+  });
+}
+$("authSwitch").onclick = () => {
+  signup = !signup; authMsg("");
+  $("authBtn").textContent = signup ? "Create account" : "Sign in";
+  $("authSwitch").textContent = signup ? "Sign in" : "Create one";
+  $("authSwitchText").textContent = signup ? "Already have an account?" : "No account?";
+  $("pw").autocomplete = signup ? "new-password" : "current-password";
+};
+$("authForm").onsubmit = async e => {
+  e.preventDefault(); authMsg("");
+  const email = $("em").value.trim(), password = $("pw").value;
+  $("authBtn").disabled = true;
+  try {
+    if (signup){
+      const {data, error} = await sb.auth.signUp({email, password});
+      if (error) throw error;
+      if (!data.session) authMsg("", "Account created. Check your email to confirm it, then sign in.");
+    } else {
+      const {error} = await sb.auth.signInWithPassword({email, password});
+      if (error) throw error;
+    }
+  } catch (err) { authMsg(err.message); }
+  $("authBtn").disabled = false;
+};
+$("forgot").onclick = async () => {
+  const email = $("em").value.trim();
+  if (!email) return authMsg("Enter your email above first.");
+  const {error} = await sb.auth.resetPasswordForEmail(email, {redirectTo: location.href.split("#")[0]});
+  error ? authMsg(error.message) : authMsg("", "Password reset email sent.");
+};
+$("signout").onclick = async () => { await sb.auth.signOut(); };
+
+/* ================= NAV ================= */
+function setView(v){
+  ["inputCard","progCard","result","historyCard"].forEach(id => $(id).classList.add("hide"));
+  $("nav-analyze").classList.toggle("on", v === "analyze");
+  $("nav-history").classList.toggle("on", v === "history");
+  if (v === "analyze") $("inputCard").classList.remove("hide");
+  if (v === "progress") $("progCard").classList.remove("hide");
+  if (v === "result") $("result").classList.remove("hide");
+  if (v === "history"){ $("historyCard").classList.remove("hide"); loadHistory(); }
+}
+$("nav-analyze").onclick = () => { if (!busy) setView("analyze"); };
+$("nav-history").onclick = () => { if (!busy) setView("history"); };
+
+/* ================= INPUT ================= */
+let mode = "folder", files = [], zip = null, vis = "public", busy = false;
+
+$("tabs").onclick = e => {
+  const b = e.target.closest(".tab"); if (!b) return;
+  mode = b.dataset.m;
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t === b));
+  ["folder","zip","github"].forEach(m => $("p-"+m).classList.toggle("hide", m !== mode));
+  refresh();
+};
+$("vis").onclick = e => {
+  const b = e.target.closest("button"); if (!b) return;
+  vis = b.dataset.v;
+  document.querySelectorAll("#vis button").forEach(x => x.classList.toggle("on", x === b));
+  $("tokBox").classList.toggle("hide", vis !== "private");
+  refresh();
+};
+["url","tok"].forEach(i => $(i).oninput = refresh);
+
+function wireDrop(dz, input, onDrop){
+  dz.onclick = () => input.click();
+  dz.ondragover = e => { e.preventDefault(); dz.classList.add("over"); };
+  dz.ondragleave = () => dz.classList.remove("over");
+  dz.ondrop = async e => { e.preventDefault(); dz.classList.remove("over"); await onDrop(e.dataTransfer); refresh(); };
+}
+$("in-folder").onchange = e => { files = [...e.target.files].filter(f => !SKIP.test(f.webkitRelativePath)); refresh(); };
+$("in-zip").onchange = e => { zip = e.target.files[0] || null; refresh(); };
+
+async function walk(entry, path = ""){
+  if (entry.isFile) return new Promise(r => entry.file(f => { Object.defineProperty(f, "webkitRelativePath", {value: path + f.name}); r([f]); }));
+  if (SKIP.test(path + entry.name)) return [];
+  const rd = entry.createReader(), all = [];
+  for (;;) { const b = await new Promise(r => rd.readEntries(r)); if (!b.length) break; all.push(...b); }
+  return (await Promise.all(all.map(c => walk(c, path + entry.name + "/")))).flat();
+}
+wireDrop($("dz-folder"), $("in-folder"), async dt => {
+  const ents = [...dt.items].map(i => i.webkitGetAsEntry && i.webkitGetAsEntry()).filter(Boolean);
+  files = (await Promise.all(ents.map(e => walk(e)))).flat();
+});
+wireDrop($("dz-zip"), $("in-zip"), async dt => {
+  const f = dt.files[0];
+  zip = f && /\.zip$/i.test(f.name) ? f : null;
+  if (!zip) showErr("Please drop a .zip file.");
+});
+
+function showErr(m){ $("err").textContent = m; }
+function refresh(){
+  showErr("");
+  let ok = false, msg = "";
+  if (mode === "folder"){
+    const size = files.reduce((s, f) => s + f.size, 0);
+    ok = files.length > 0; msg = ok ? `✓ ${files.length} files selected (${files[0].webkitRelativePath.split("/")[0]}, ${(size/1048576).toFixed(1)} MB)` : "";
+    if (size > MAX_UPLOAD){ ok = false; showErr("Folder is over 100 MB. Remove large/generated files or use a GitHub link."); }
+  }
+  if (mode === "zip"){
+    ok = !!zip; msg = ok ? `✓ ${zip.name} (${(zip.size/1048576).toFixed(1)} MB)` : "";
+    if (zip && zip.size > MAX_UPLOAD){ ok = false; showErr("Zip is over 100 MB."); }
+  }
+  if (mode === "github"){
+    ok = /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+(\/tree\/[^\s]+)?\/?(\.git)?$/.test($("url").value.trim()) && (vis === "public" || $("tok").value.trim().length > 10);
+  }
+  $("picked").textContent = msg; $("go").disabled = !ok || busy;
+}
+
+/* ================= API ================= */
+async function api(path, opts = {}){
+  const {data} = await sb.auth.getSession();
+  const token = data.session?.access_token;
+  if (!token) throw new Error("Session expired. Please sign in again.");
+  const r = await fetch(CFG.API_URL + path, {...opts, headers: {...(opts.headers || {}), Authorization: "Bearer " + token}});
+  if (!r.ok){
+    let m = await r.text();
+    try { const j = JSON.parse(m); m = j.detail || j.error || m; } catch {}
+    throw new Error(typeof m === "string" ? m : JSON.stringify(m));
+  }
+  return r;
+}
+
+function setProgress(j){
+  const queued = j.status === "queued";
+  $("progTitle").textContent = queued ? "Waiting in queue…" : "Agents working…";
+  const cur = queued ? -1 : (j.stage || 0);
+  [...$("steps").children].forEach((li, i) => li.className = i < cur ? "done" : i === cur ? "run" : "");
+}
+
+$("go").onclick = async () => {
+  const fd = new FormData();
+  let name = "repository", detail = "";
+  if (mode === "folder"){ files.forEach(f => fd.append("files", f, f.webkitRelativePath)); name = files[0].webkitRelativePath.split("/")[0]; detail = `${files.length} files`; }
+  if (mode === "zip"){ fd.append("file", zip); name = zip.name.replace(/\.zip$/i, ""); detail = zip.name; }
+  if (mode === "github"){
+    const u = $("url").value.trim().replace(/\.git$|\/$/g, "");
+    fd.append("github_url", u);
+    if (vis === "private") fd.append("github_token", $("tok").value.trim());
+    name = u.replace(/^https:\/\/github\.com\//, "").split("/").slice(0, 2).join("/"); detail = u;
+  }
+  busy = true; $("go").disabled = true;
+  $("steps").innerHTML = STEPS.map(s => `<li><i></i>${s}</li>`).join("");
+  setView("progress"); setProgress({status: "queued"});
+  try {
+    const {job_id} = await (await api("/api/summaries", {method: "POST", body: fd})).json();
+    await pollJob(job_id);
+    const result = await (await api(`/api/summaries/${job_id}/result`)).json();
+    [...$("steps").children].forEach(li => li.className = "done");
+    await sleep(300);
+    const saved = await saveResult(name, mode, detail, result);
+    renderResult({name, source: mode, result, note: saved});
+    setView("result");
+  } catch (e) {
+    setView("analyze");
+    showErr("Analysis failed: " + e.message);
+  } finally { busy = false; refresh(); }
+};
+
+async function pollJob(id){
+  const t0 = Date.now(); let fails = 0;
+  for (;;){
+    await sleep(3000);
+    let j;
+    try { j = await (await api(`/api/summaries/${id}`)).json(); fails = 0; }
+    catch (e) { if (++fails > 5) throw e; continue; }
+    setProgress(j);
+    if (j.status === "done") return;
+    if (j.status === "failed") throw new Error(j.error || "analysis failed");
+    if (Date.now() - t0 > 40 * 60 * 1000) throw new Error("timed out after 40 minutes");
+  }
+}
+
+/* ================= SUPABASE: save + history ================= */
+async function saveResult(name, source, detail, result){
+  const {error} = await sb.from("analyses").insert({name, source, source_detail: detail, stats: result.stats, result});
+  return error ? {ok: false, msg: "Could not save to My results: " + error.message} : {ok: true, msg: "Saved to My results."};
+}
+async function loadHistory(){
+  const box = $("histList"); box.innerHTML = '<div class="sub">Loading…</div>';
+  const {data, error} = await sb.from("analyses").select("id,name,source,source_detail,stats,created_at").order("created_at", {ascending: false});
+  if (error){ box.innerHTML = `<div class="err">${esc(error.message)}</div>`; return; }
+  if (!data.length){ box.innerHTML = '<div class="sub">No saved results yet. Run an analysis and it will appear here.</div>'; return; }
+  box.innerHTML = data.map(a => {
+    const s = a.stats || {};
+    return `<div class="hist" data-id="${a.id}">
+      <div><span class="t" data-open="${a.id}">${esc(a.name)}</span> <span class="pill">${esc(a.source)}</span><br>
+      <small>${new Date(a.created_at).toLocaleString()} · ${s.verified_claims ?? "–"} claims · ${s.citations ?? "–"} citations</small></div>
+      <button class="btn sm danger" data-del="${a.id}">Delete</button></div>`;
+  }).join("");
+}
+$("histList").onclick = async e => {
+  const open = e.target.closest("[data-open]"), del = e.target.closest("[data-del]");
+  if (open){
+    const {data, error} = await sb.from("analyses").select("name,source,result").eq("id", open.dataset.open).single();
+    if (error) return alert(error.message);
+    renderResult({name: data.name, source: data.source, result: data.result}); setView("result");
+  }
+  if (del && confirm("Delete this result permanently?")){
+    const {error} = await sb.from("analyses").delete().eq("id", del.dataset.del);
+    error ? alert(error.message) : loadHistory();
+  }
+};
+
+/* ================= RESULT RENDERING ================= */
+const TOPICS = {purpose:"Purpose", module:"Main modules", flow:"How data flows", stack:"Tech stack", run:"How to run it", highlight:"Worth a closer look"};
+const TAG = /\[cite:file=([^;\]]+);symbol=(.*?);lines=(\d+-\d+)\]/g;
+
+function splitReport(md){
+  const parts = md.split(/\n(?=## )/); parts.shift();
+  const out = {};
+  parts.forEach(p => {
+    const t = p.split("\n", 1)[0].toLowerCase();
+    const k = t.includes("plain english") ? "beginner" : t.includes("students") ? "student" :
+              t.includes("recruiters") ? "interviewer" : t.includes("developers") ? "developer" : null;
+    if (k) out[k] = p;
+  });
+  return out;
+}
+function mdToHtml(md){
+  md = md.replace(TAG, (_, f, s, l) => `<span class="cite" title="${esc(s)}">${esc(f)}:${l}</span>`);
+  return DOMPurify.sanitize(marked.parse(md));
+}
+function chips(tags){
+  if (!tags || !tags.length) return '<span class="cite">README / dependency files</span>';
+  return tags.map(t => { const m = /\[cite:file=([^;\]]+);symbol=(.*?);lines=(\d+-\d+)\]/.exec(t);
+    return m ? `<span class="cite" title="${esc(m[2])}">${esc(m[1])}:${m[3]}</span>` : ""; }).join("");
+}
+function runMermaid(root){
+  const dark = matchMedia("(prefers-color-scheme: dark)").matches;
+  try { mermaid.initialize({startOnLoad: false, theme: dark ? "dark" : "default", securityLevel: "strict"}); } catch {}
+  root.querySelectorAll("pre code.language-mermaid").forEach(c => {
+    const d = document.createElement("div"); d.className = "mermaid"; d.textContent = c.textContent; c.parentElement.replaceWith(d);
+  });
+  const nodes = [...root.querySelectorAll(".mermaid:not([data-processed])")];
+  if (nodes.length) mermaid.run({nodes, suppressErrors: true}).catch(() => {});
+}
+
+let current = null;
+function renderResult({name, source, result: d, note}){
+  current = {name, d};
+  const s = d.stats || {};
+  const L = Object.entries(s.languages || {}).sort((a, b) => b[1] - a[1]);
+  const tot = L.reduce((x, y) => x + y[1], 0) || 1;
+  const faith = s.first_pass_faithfulness == null ? "–" : Math.round(s.first_pass_faithfulness * 100) + "%";
+  const views = splitReport(d.report_markdown || "");
+  const VT = [["beginner","Beginner"],["student","Student"],["interviewer","Interviewer"],["developer","Developer"],["claims","Claims & citations"]];
+
+  const byTopic = {};
+  (d.claims || []).forEach(c => (byTopic[c.topic] = byTopic[c.topic] || []).push(c));
+  const claimsHtml = Object.entries(TOPICS).filter(([k]) => byTopic[k]).map(([k, t]) =>
+    `<h3>${t}</h3>` + byTopic[k].map(c => `<div class="claim">${esc(c.claim)} <small style="color:var(--mu)">[${c.n}]</small><br>${chips(c.citations)}</div>`).join("")).join("");
+
+  const r = $("result");
+  r.innerHTML = `
+    <h2>${esc(name)} <span class="pill">${esc(source)}</span></h2>
+    <div class="stats">
+      <div class="stat"><b>${s.files ?? "–"}</b><span>Files</span></div>
+      <div class="stat"><b>${s.lines ?? "–"}</b><span>Lines of code</span></div>
+      <div class="stat"><b>${L.length || "–"}</b><span>Languages</span></div>
+      <div class="stat"><b>${s.verified_claims ?? "–"}</b><span>Verified claims</span></div>
+      <div class="stat"><b>${s.citations ?? "–"}</b><span>Citations</span></div>
+      <div class="stat"><b>${faith}</b><span>First-pass faithfulness</span></div>
+    </div>
+    ${L.length ? `<h3>Language distribution</h3>
+    <div class="bar">${L.map((x, i) => `<div style="width:${x[1]/tot*100}%;background:${COLORS[i%7]}"></div>`).join("")}</div>
+    <div class="leg">${L.map((x, i) => `<span><i style="background:${COLORS[i%7]}"></i>${esc(x[0])} ${Math.round(x[1]/tot*100)}%</span>`).join("")}</div>` : ""}
+    <div class="vtabs" id="vtabs">${VT.map(([k, t], i) => `<button data-v="${k}" class="${i === 0 ? "on" : ""}">${t}</button>`).join("")}</div>
+    ${VT.map(([k], i) => `<div class="md ${i ? "hide" : ""}" id="v-${k}">${
+      k === "claims" ? (claimsHtml || "<p>No claims.</p>") : (views[k] ? mdToHtml(views[k]) : "<p>This view was not generated.</p>")}</div>`).join("")}
+    ${note ? `<div class="${note.ok ? "okmsg" : "err"}">${esc(note.msg)}</div>` : ""}
+    <div class="acts">
+      <button class="btn ghost" id="dl-json">Download JSON</button>
+      <button class="btn ghost" id="dl-md">Download Markdown</button>
+      <button class="btn" id="again">Analyze another</button>
+    </div>`;
+  $("vtabs").onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    document.querySelectorAll("#vtabs button").forEach(x => x.classList.toggle("on", x === b));
+    VT.forEach(([k]) => $("v-" + k).classList.toggle("hide", k !== b.dataset.v));
+    runMermaid($("v-" + b.dataset.v));
+  };
+  runMermaid($("v-beginner"));
+  $("dl-json").onclick = () => save(JSON.stringify(d, null, 2), `${safe(name)}-aura.json`, "application/json");
+  $("dl-md").onclick = () => save(d.report_markdown, `${safe(name)}-aura.md`, "text/markdown");
+  $("again").onclick = () => setView("analyze");
+}
+const safe = s => String(s).replace(/[^\w.-]+/g, "_");
+function save(txt, name, type){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([txt], {type})); a.download = name; a.click();
+}
+</script>
+</body>
+</html>
