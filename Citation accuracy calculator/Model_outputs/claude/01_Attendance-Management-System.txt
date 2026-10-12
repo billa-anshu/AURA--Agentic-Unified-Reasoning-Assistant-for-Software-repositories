@@ -1,0 +1,79 @@
+## 1. In plain English
+
+This is a school attendance website. Administrators set up students, teachers, courses and classes, and teachers record who showed up each day. Students log in to see how often they attended.
+
+Analogy: It works like a paper roll-call register, moved onto a website where everyone sees only their own page.
+
+What you can do with it:
+- Admins add and edit students, teachers, courses and classrooms, and mark holidays.
+- Teachers mark which students are present in each class.
+- Students check their attendance for a chosen day.
+
+## 2. For students: how to read this project
+
+1. `entity/Student.java`, `Teacher.java`, `Course.java`, `Classroom.java`: these show what information the app stores and how the pieces relate. [cite:file=src/main/java/com/example/demo/entity/Classroom.java;symbol=Classroom;lines=34-55]
+2. `controller/LoginController.java`: shows how a user logs in and gets sent to the right page. [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=LoginController;lines=15-55]
+3. `service/AuthService.java`: shows how credentials are checked. [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=AuthService;lines=16-53]
+4. `controller/TeacherDashboardController.java`: shows the teacher attendance workflow. [cite:file=src/main/java/com/example/demo/controller/TeacherDashboardController.java;symbol=TeacherDashboardController;lines=24-64]
+5. `service/impl/AdminServiceImpl.java`: shows the admin business logic. [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56]
+
+```mermaid
+flowchart LR
+    A[Login page] --> B[Login controller]
+    B --> C[Admin pages]
+    B --> D[Teacher pages]
+    B --> E[Student page]
+    C --> F[Services]
+    D --> F
+    F --> G[Database]
+```
+
+Key terms:
+- **Controller:** code that receives a web request and chooses which page to show.
+- **Entity:** a Java class that maps to a database table.
+- **Session:** the server's short-term memory of who is logged in.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Layered Spring MVC design, with controllers, services and repositories kept separate. [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60]
+- JPA data modelling with one-to-many and many-to-many relationships and a uniqueness rule on attendance. [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]
+- Role-based flows for three user types (admin, teacher, student) using sessions. [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=LoginController;lines=15-55]
+
+Stack: Java, Spring Boot 3.4.12 (Maven), Spring MVC, JPA/Hibernate entities, JSP pages.
+
+Most interesting part: attendance is tracked per student, per classroom, per date. Re-submitting a day updates the existing record instead of duplicating it. [cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=markAttendance;lines=52-92]
+
+## 4. For developers
+
+**Purpose**
+- A role-based attendance management web app for admins, teachers and students. [cite:file=src/main/java/com/example/demo/FinalProjectApplication.java;symbol=FinalProjectApplication;lines=7-13]
+
+**Main modules**
+- `AdminController` handles CRUD pages for students, teachers, courses, classrooms and holidays, plus student search and a per-student attendance view. [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=studentsPage;lines=37-77] [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=markHoliday;lines=273-298]
+- `LoginController` has one login form for all roles. It stores role, email and ids in the HTTP session, and logout invalidates the session. [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=logout;lines=66-70]
+- `TeacherDashboardController` lists the teacher's courses with classrooms, and lets them mark and view attendance. [cite:file=src/main/java/com/example/demo/controller/TeacherDashboardController.java;symbol=teacherDashboard;lines=31-71]
+- `StudentDashboardController` builds a course-by-course attendance map for a selected date and computes a present percentage. [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63]
+- `AdminServiceImpl` holds admin logic, including teacher-to-course assignment. [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=updateTeacherWithCourseAssignments;lines=115-155]
+
+**How data flows**
+- Login: the controller calls `AuthService`, which looks users up by email and compares the stored password. On success, the session is populated and the user is redirected to their dashboard. [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=validateStudent;lines=40-53]
+- Teacher marks attendance: the form posts the present student ids. `TeacherService` finds the classroom through the course, then creates or updates a PRESENT or ABSENT record for every enrolled student. [cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=markAttendance;lines=52-92]
+- Student views attendance: the controller loops over the student's classrooms and looks up the record for each one on the chosen date. [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63]
+- Admin saves a student: the controller attaches the selected classrooms on both sides of the many-to-many relationship, then saves through the service. [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=newStudentForm;lines=43-83]
+
+**Tech stack**
+- Spring Boot 3.4.12 parent POM, Spring MVC controllers, and Jakarta Persistence entities with validation annotations. [cite:file=src/main/java/com/example/demo/entity/Student.java;symbol=Student;lines=35-75]
+- Server-rendered JSP views under `src/main/webapp`.
+- The POM shown is truncated and `application.properties` is not included, so the database and JSP dependencies cannot be confirmed here.
+
+**How to run it**
+- The repo includes the Maven wrapper (`mvnw`, `mvnw.cmd`), so `./mvnw spring-boot:run` is the likely route. A database must be configured in `application.properties`, which is not shown here.
+- The only test is a context-load smoke test. [cite:file=src/test/java/com/example/demo/FinalProjectApplicationTests.java;symbol=contextLoads;lines=10-13]
+
+**Worth a closer look**
+- Passwords are stored and compared as plain text, with no hashing. [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=validateAdmin;lines=28-53]
+- No Spring Security or interceptor appears in the code shown. Only the teacher and student controllers check the session, and `AdminController` shows no login check in the code provided. [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=dashboard;lines=26-66]
+- `AttendanceService.markAttendance` is a course-level version that never sets a classroom. It looks superseded by the per-classroom logic in `TeacherService`. [cite:file=src/main/java/com/example/demo/service/AttendanceService.java;symbol=markAttendance;lines=28-52]
+- `assignTeacherToClass` throws `UnsupportedOperationException`, and its comment says Classroom has no teacher field, which contradicts the entity. `lockAttendance` is also unimplemented. [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=assignTeacherToClass;lines=236-276] [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=lockAttendance;lines=261-281]
+- `saveStudent` rejects any existing email, yet the controller's update route also calls `saveStudent`, so editing an existing student may fail. [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=saveStudent;lines=42-82]

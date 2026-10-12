@@ -1,0 +1,78 @@
+## 1. In plain English
+
+This is a website for building virtual tours of real places. Someone, such as an estate agent or a venue owner, uploads several photos of each room. The site joins them into one wide 360° picture. Visitors can then look around and walk from room to room.
+
+Analogy: It's like a photo-stitching app, with doorways added so you can step from one room into the next.
+
+What you can do with it:
+- Upload photos for each room and have them joined into a panorama. [cite:file=backend/app.py;symbol=stitch_tour_endpoint;lines=204-283]
+- Browse a list of existing tours and open any of them. [cite:file=frontend/src/pages/AllToursPage.js;symbol=AllToursPage;lines=5-45]
+- Look around a tour, jump between rooms, read notes and play audio. [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=PanoramaViewer;lines=15-55]
+
+## 2. For students: how to read this project
+
+1. `frontend/src/App.js`: it lists every page and its web address, so you see the app's layout first. [cite:file=frontend/src/App.js;symbol=App;lines=16-32]
+2. `frontend/src/pages/VirtualTourForm.js`: the starting point, where photos are picked and sent to the server. [cite:file=frontend/src/pages/VirtualTourForm.js;symbol=handleGeneratePanorama;lines=46-86]
+3. `backend/stitcher.py`: a short file showing how OpenCV joins photos and crops the black edges. [cite:file=backend/stitcher.py;symbol=stitch_images;lines=4-33]
+4. `backend/app.py`: all the server endpoints, which tie stitching to cloud storage and the database. [cite:file=backend/app.py;symbol=process_room_images;lines=104-199]
+5. `frontend/src/pages/PanoramaViewer.js`: how the saved tour data becomes a walkable 360° viewer. [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=fetchTourData;lines=31-71]
+
+```mermaid
+flowchart LR
+    A[Upload photos] --> B[Python server]
+    B --> C[Stitch panorama]
+    C --> D[Cloud storage and database]
+    D --> E[Tour viewer]
+```
+
+Key terms:
+- **Panorama:** one wide image made by joining several overlapping photos.
+- **Stitching:** the process of matching and blending those photos together.
+- **Marker:** a clickable spot in a panorama that links to another room.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Image processing: OpenCV stitching and automatic black-border cropping. [cite:file=backend/stitcher.py;symbol=remove_black_borders;lines=35-60]
+- Full-stack integration: React front end, Flask API, and Supabase for storage, database and sign-up/login. [cite:file=frontend/src/pages/Login.js;symbol=handleLogin;lines=12-52]
+- Interactive 360° UI built with Photo Sphere Viewer plugins, including room links, tooltips and per-room audio. [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=PanoramaViewer;lines=15-55]
+
+Stack: React, react-router, axios, Bootstrap, Photo Sphere Viewer, Flask, OpenCV, NumPy, Supabase.
+
+Most interesting part: the viewer turns saved marker positions (0–1 fractions of the image) into yaw and pitch angles. It then feeds them to the virtual-tour plugin as links between rooms. [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=yaw;lines=64-104]
+
+## 4. For developers
+
+**Purpose**
+- A virtual-tour builder. Users upload photos per room, the server stitches and stores panoramas, and a viewer plays the result. [cite:file=backend/app.py;symbol=app;lines=18-18]
+
+**Main modules**
+- `process_room_images` saves uploads to a temp folder, stitches them, JPEG-encodes the result, uploads it to a Supabase storage bucket, and returns a public URL. It cleans up temp files in a `finally` block. [cite:file=backend/app.py;symbol=process_room_images;lines=104-199]
+- `/stitch` creates the tour row if missing, processes each room, upserts panorama URLs, and sets the first room as the start room. [cite:file=backend/app.py;symbol=stitch_tour_endpoint;lines=204-283]
+- `/restitch-room`, `/rename-room` and `/delete-room` edit a single room. A re-stitch clears that room's markers and tooltips, and a delete also removes audio and picks a new start room. [cite:file=backend/app.py;symbol=restitch_room_endpoint;lines=286-339] [cite:file=backend/app.py;symbol=rename_room_endpoint;lines=343-422] [cite:file=backend/app.py;symbol=delete_room_endpoint;lines=426-498]
+- `/save-markers` and `/save-tooltips` replace a room's rows by deleting the old ones and inserting the new ones. [cite:file=backend/app.py;symbol=save_markers_endpoint;lines=634-675] [cite:file=backend/app.py;symbol=save_tooltips_endpoint;lines=678-719]
+- `/upload-audio`, `/delete-audio` and `/update-start-room` handle per-room narration and the starting room. [cite:file=backend/app.py;symbol=upload_audio_endpoint;lines=722-778] [cite:file=backend/app.py;symbol=update_start_room_endpoint;lines=816-842]
+- `stitch_images` needs at least two images, uses `cv2.Stitcher_create`, and then crops borders. [cite:file=backend/stitcher.py;symbol=stitch_images;lines=4-33]
+
+**How data flows**
+- The form generates a tour ID in the browser and posts photos as `roomName[]` fields. On success it opens the editor page. [cite:file=frontend/src/pages/VirtualTourForm.js;symbol=handleGeneratePanorama;lines=46-86]
+- `/get-tour-data` collects panoramas, markers, tooltips and audio per room into one response, and falls back to the first valid room if the start room is invalid. [cite:file=backend/app.py;symbol=get_tour_data_endpoint;lines=502-631]
+- The viewer fetches that response and builds a node for each room. [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=fetchTourData;lines=31-71]
+- The tour list reads directly from Supabase, bypassing the Flask API. [cite:file=frontend/src/pages/AllToursPage.js;symbol=fetchTours;lines=10-50]
+
+**Tech stack**
+- Python Flask with flask-cors, OpenCV, NumPy and the Supabase client. [cite:file=backend/app.py;symbol=app;lines=18-18]
+- React front end with Supabase auth. `package.json` and `requirements.txt` aren't shown, so versions are unknown. [cite:file=frontend/src/pages/Signup.js;symbol=handleSignup;lines=12-52]
+
+**How to run it**
+- No README exists. The server's `__main__` block runs Flask on port 5000. The front end hard-codes a deployed Render backend URL. [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=PanoramaViewer;lines=15-55]
+- You would need your own Supabase project with the tables and buckets named in the configuration. [cite:file=backend/app.py;symbol=SUPABASE_TOURS_TABLE;lines=40-40]
+
+**Worth a closer look**
+- A Supabase URL and key are hard-coded in source. The key looks like a public anon key, but it should still move to environment variables. [cite:file=backend/app.py;symbol=SUPABASE_KEY;lines=34-34]
+- CORS allows all origins, and no endpoint checks who the caller is. Anyone who knows a tour ID could edit or delete rooms. [cite:file=backend/app.py;symbol=app;lines=18-18]
+- `calculate_view_constraints` is defined but never called in the code shown. [cite:file=backend/app.py;symbol=calculate_view_constraints;lines=52-100]
+- `save_markers_endpoint` inserts an `id` column, but the read endpoint selects `marker_id`. The two may not match the real schema. [cite:file=backend/app.py;symbol=save_markers_endpoint;lines=634-675]
+- `remove_black_borders` crops to the first contour, not necessarily the largest. [cite:file=backend/stitcher.py;symbol=remove_black_borders;lines=35-60]
+- The home page hard-codes `isAuthenticated` to false, so "Create Your Own Tour" always redirects to login. [cite:file=frontend/src/pages/Home.js;symbol=handleCreateClick;lines=8-48]
+- `VirtualTourForm` calls `uuidv4()` in the component body, so the tour ID changes on every re-render. [cite:file=frontend/src/pages/VirtualTourForm.js;symbol=VirtualTourForm;lines=6-46]

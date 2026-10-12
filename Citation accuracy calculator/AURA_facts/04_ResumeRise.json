@@ -1,0 +1,335 @@
+{
+  "repo": "04_ResumeRise",
+  "plan": {
+    "repo_type": "web app",
+    "purpose": "A full-stack application that allows users to upload resumes for AI-powered job matching and conduct mock interviews with automated feedback.",
+    "questions": [
+      "How does the backend integrate with the Groq API to process resume data and generate interview questions?",
+      "What is the specific logic in `match_resume_ml` for scoring resume-job fit?",
+      "How does the frontend handle the state transition between the mock interview and the final review report?",
+      "Are there any security measures in place for handling uploaded PDF files in `resume_parser.py`?",
+      "How is the application configured for deployment on both Vercel (frontend) and Render/Heroku (backend)?"
+    ],
+    "focus_files": [
+      "backend/main.py",
+      "backend/resume_parser.py",
+      "frontend/src/pages/MockInterviewPage.jsx",
+      "frontend/src/pages/ResumeMatchPage.jsx"
+    ]
+  },
+  "agent_trace": [
+    {
+      "step": 1,
+      "action": "search",
+      "query": "Groq API resume interview",
+      "new": [
+        "C8",
+        "C9",
+        "C10"
+      ]
+    },
+    {
+      "step": 2,
+      "action": "read",
+      "id": "C1"
+    },
+    {
+      "step": 3,
+      "action": "read",
+      "id": "C1"
+    },
+    {
+      "step": 4,
+      "action": "read",
+      "id": "C1"
+    }
+  ],
+  "verifier_rounds": [
+    {
+      "round": 0,
+      "extracted": 10,
+      "supported": 8,
+      "partial": 2,
+      "unsupported": 0,
+      "verifier_failed": false,
+      "kept": 10
+    },
+    {
+      "round": 1,
+      "extracted": 9,
+      "supported": 8,
+      "partial": 1,
+      "unsupported": 0,
+      "verifier_failed": false,
+      "kept": 8
+    }
+  ],
+  "first_pass_faithfulness": 0.842,
+  "claims": [
+    {
+      "t": "purpose",
+      "c": "The application features Mock Interview, Dynamic Resume Matcher, and Emotion Detection.",
+      "ids": [
+        "C9"
+      ],
+      "w": 3,
+      "verdict": "P-fixed",
+      "tags": [
+        "[cite:file=backend/main.py;symbol=health_check;lines=602-608]"
+      ],
+      "labels": [
+        "backend/main.py :: health_check"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The backend defines a POST endpoint for dynamic resume matching that accepts a resume file and job description.",
+      "ids": [
+        "C1"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]"
+      ],
+      "labels": [
+        "backend/main.py :: match_resume_ml"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The backend exposes a FastAPI service titled ResumeRise API with a health check endpoint.",
+      "ids": [
+        "C8",
+        "C9",
+        "C10"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=backend/main.py;symbol=groq_client;lines=17-17]",
+        "[cite:file=backend/main.py;symbol=health_check;lines=602-608]",
+        "[cite:file=backend/main.py;symbol=app;lines=19-19]"
+      ],
+      "labels": [
+        "backend/main.py :: groq_client",
+        "backend/main.py :: health_check",
+        "backend/main.py :: app"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The frontend routes users to pages for home, resume matching, and mock interviews.",
+      "ids": [
+        "C7"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/App.js;symbol=App;lines=7-21]"
+      ],
+      "labels": [
+        "frontend/src/App.js :: App"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The ResumeMatchPage validates that uploaded files are PDFs before processing them.",
+      "ids": [
+        "C6"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleFileChange;lines=16-56]"
+      ],
+      "labels": [
+        "frontend/src/pages/ResumeMatchPage.jsx :: handleFileChange"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The InterviewSetupPage requires both a resume file and job description to start an interview.",
+      "ids": [
+        "C5"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/pages/InterviewSetupPage.jsx;symbol=handleStartInterview;lines=24-64]"
+      ],
+      "labels": [
+        "frontend/src/pages/InterviewSetupPage.jsx :: handleStartInterview"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The frontend MockInterviewPage loads interview configuration from session storage or location state on mount.",
+      "ids": [
+        "C3"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=loadInterviewConfig;lines=44-84]"
+      ],
+      "labels": [
+        "frontend/src/pages/MockInterviewPage.jsx :: loadInterviewConfig"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The frontend ResumeMatchPage handles file input changes and stores the selected PDF file in state.",
+      "ids": [
+        "C6"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleFileChange;lines=16-56]"
+      ],
+      "labels": [
+        "frontend/src/pages/ResumeMatchPage.jsx :: handleFileChange"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "The backend extracts skills from job descriptions using Groq to match resumes dynamically.",
+      "ids": [
+        "C1"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]"
+      ],
+      "labels": [
+        "backend/main.py :: match_resume_ml"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "The InterviewReviewPage generates a final report by mapping question responses and transcripts.",
+      "ids": [
+        "C2"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62]"
+      ],
+      "labels": [
+        "frontend/src/pages/InterviewReviewPage.jsx :: generateFinalReport"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "The InterviewSetupPage prevents interview start and displays an error if resume or job description is missing.",
+      "ids": [
+        "C5"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/pages/InterviewSetupPage.jsx;symbol=handleStartInterview;lines=24-64]"
+      ],
+      "labels": [
+        "frontend/src/pages/InterviewSetupPage.jsx :: handleStartInterview"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "The InterviewReviewPage sets loading state and constructs a payload with question responses for report generation.",
+      "ids": [
+        "C2"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62]"
+      ],
+      "labels": [
+        "frontend/src/pages/InterviewReviewPage.jsx :: generateFinalReport"
+      ]
+    },
+    {
+      "t": "stack",
+      "c": "The project uses FastAPI, Uvicorn, Groq, and PyPDF2.",
+      "ids": [],
+      "w": 3,
+      "verdict": "P-fixed",
+      "tags": [],
+      "labels": []
+    },
+    {
+      "t": "stack",
+      "c": "The project uses python-dotenv and python-multipart as dependencies for environment configuration and file uploads.",
+      "ids": [],
+      "w": 1,
+      "verdict": "S",
+      "tags": [],
+      "labels": []
+    },
+    {
+      "t": "run",
+      "c": "The backend requires the GROQ_API_KEY environment variable to initialize the Groq client for AI services.",
+      "ids": [
+        "C8"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=backend/main.py;symbol=groq_client;lines=17-17]"
+      ],
+      "labels": [
+        "backend/main.py :: groq_client"
+      ]
+    },
+    {
+      "t": "run",
+      "c": "The backend initializes a Groq client using the GROQ_API_KEY environment variable.",
+      "ids": [
+        "C8"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=backend/main.py;symbol=groq_client;lines=17-17]"
+      ],
+      "labels": [
+        "backend/main.py :: groq_client"
+      ]
+    },
+    {
+      "t": "highlight",
+      "c": "The HomePage tracks scroll position to update UI state when the user scrolls down.",
+      "ids": [
+        "C4"
+      ],
+      "w": 1,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=frontend/src/pages/HomePage.jsx;symbol=handleScroll;lines=8-48]"
+      ],
+      "labels": [
+        "frontend/src/pages/HomePage.jsx :: handleScroll"
+      ]
+    },
+    {
+      "t": "highlight",
+      "c": "The backend health check endpoint returns a JSON response listing the service name and available features.",
+      "ids": [
+        "C9"
+      ],
+      "w": 1,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=backend/main.py;symbol=health_check;lines=602-608]"
+      ],
+      "labels": [
+        "backend/main.py :: health_check"
+      ]
+    }
+  ],
+  "llm_calls_this_run": 12
+}

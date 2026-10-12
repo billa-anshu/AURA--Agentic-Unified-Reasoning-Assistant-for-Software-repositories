@@ -1,0 +1,87 @@
+## 1. In plain English
+
+The WhatsApp Chat Analyzer is a website where people can upload a text file of an exported WhatsApp conversation and discover patterns in their chats. It is useful for individuals or groups who want to understand how often people communicate, which words and emojis appear most often, and how the tone of messages changes over time.
+
+Analogy: Think of it as a smart diary reader that counts conversations, spots patterns, and turns them into easy-to-understand charts.
+
+What you can do with it:
+
+- See message counts, word counts, shared media, and links.
+- Find the busiest days, months, and hours for conversations.
+- Explore common words, emojis, and estimated positive or negative sentiment.
+
+## 2. For students: how to read this project
+
+Read these files in order to understand the project from the data-processing stage to the finished application.
+
+1. `README.md` — Start here to understand the project's purpose, features, and setup instructions.
+2. `preprocessor.py` — Learn how exported chat text is split into messages and organized with dates, users, and time information. [cite:file=preprocessor.py;symbol=preprocess;lines=6-60]
+3. `helper.py` — Understand the calculations for message statistics, word frequencies, emoji categories, timelines, heatmaps, and sentiment. [cite:file=helper.py;symbol=fetch_stats;lines=13-29]
+4. `app.py` — See how the upload interface, navigation, user selection, and analysis results are connected. [cite:file=app.py;symbol=uploaded_file;lines=26-26]
+5. `requirements.txt` — Review the Python libraries required for the application, including Streamlit, pandas, plotting libraries, WordCloud, emoji, URL extraction, and VADER sentiment analysis.
+
+How the main pieces connect:
+
+```
+flowchart LR
+    A[Chat text file] --> B[Clean and organize messages]
+    B --> C[Calculate chat statistics]
+    C --> D[Analyze words and emojis]
+    C --> E[Analyze dates and sentiment]
+    D --> F[Show charts and results]
+    E --> F
+```
+
+Key terms:
+
+- Preprocessing: Turning raw chat text into organized information that a program can analyze.
+- Data visualization: Showing information through charts, graphs, and heatmaps.
+- Sentiment analysis: Estimating whether text expresses positive, neutral, or negative language.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+
+- Python application development: Building a working interactive application with Streamlit, file uploads, navigation, and user-selected analysis. [cite:file=app.py;symbol=nav_selection;lines=20-20]
+- Data processing and analytics: Using pandas to group messages by date, calculate statistics, identify active users, and summarize frequent words. [cite:file=helper.py;symbol=fetch_most_active_users;lines=32-35]
+- Text analysis and visualization: Applying VADER for sentiment scoring, categorizing emojis, and presenting results through charts, word clouds, and heatmaps. [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+
+Stack: Python, Streamlit, pandas, Matplotlib, Seaborn, WordCloud, URLExtract, emoji, and VADER Sentiment.
+
+Most interesting part: The project combines several types of analysis in one interface. It goes beyond counting messages by examining communication timing, vocabulary, emojis, and estimated sentiment, making the same uploaded conversation useful for multiple kinds of exploration.
+
+## 4. For developers
+
+### Purpose
+
+- Interactive analysis dashboard: `app.py` creates a wide Streamlit interface with three sections: Dashboard, Chat Insights, and NLP Analysis. The user uploads a `.txt` export, chooses an overall or individual-user view, and clicks Analyze Chat to generate results. [cite:file=app.py;symbol=nav_selection;lines=20-20] [cite:file=app.py;symbol=uploaded_file;lines=26-26]
+- Presentation styling: The application attempts to load `assets/style.css` to customize the interface; it silently continues if loading fails. [cite:file=app.py;symbol=local_css;lines=9-11]
+
+### Main modules
+
+- `preprocessor.py`: Uses a regular expression to separate messages from timestamps, extracts sender names, identifies group notifications, and creates date, month, weekday, hour, and hourly-period columns. It returns an empty DataFrame when no messages match the expected timestamp pattern. [cite:file=preprocessor.py;symbol=preprocess;lines=6-60]
+- `helper.py`: Provides reusable analysis functions. These calculate totals, find common words, generate word clouds, count emojis, build timelines and heatmaps, and estimate message sentiment using VADER. Many functions use Streamlit's data cache to avoid repeating expensive calculations for unchanged inputs. [cite:file=helper.py;symbol=create_wordcloud;lines=37-49] [cite:file=helper.py;symbol=emoji_analysis;lines=69-95] [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+- `app.py`: Presents the helper results as metric cards, pie charts, timelines, heatmaps, tables, and sentiment summaries. [cite:file=app.py;symbol=fetch_stats;lines=17-29] [cite:file=app.py;symbol=timeline;lines=122-122] [cite:file=app.py;symbol=user_heatmap;lines=153-153]
+
+### How data flows
+
+- The uploaded file is read as UTF-8 text and passed to `preprocessor.preprocess()`. If parsing returns an empty DataFrame, the application displays an error and stops analysis. [cite:file=app.py;symbol=bytes_data;lines=29-29] [cite:file=app.py;symbol=df;lines=31-31]
+- The processed DataFrame is filtered according to the selected user, unless the analysis scope is Overall. Statistics then count messages, split message text into words, identify media placeholders, and extract URLs. [cite:file=helper.py;symbol=fetch_stats;lines=13-29]
+- The dashboard calculates monthly and daily activity, while NLP Analysis creates a word cloud, lists common words, categorizes selected emojis, and plots average daily sentiment scores. [cite:file=app.py;symbol=daily_timeline;lines=142-142] [cite:file=app.py;symbol=sentiment_velocity;lines=229-245]
+
+### Tech stack
+
+- Streamlit provides the interface; pandas organizes and aggregates data; Matplotlib and Seaborn render charts; WordCloud creates keyword imagery; URLExtract identifies links; emoji recognizes emoji characters; and VADER scores sentiment. These libraries are listed in `requirements.txt` and used by the source modules.
+- The application uses a rule-based mapping to classify selected emojis into laughter/joy, approval/like, surprise/shock, and other categories. [cite:file=helper.py;symbol=spectrum;lines=88-93]
+
+### How to run it
+
+- Install Python and the dependencies listed in `requirements.txt`, then run `streamlit run app.py` from the project directory. The README provides the local setup section; the supplied excerpt is incomplete, so verify any additional environment instructions in the full README.
+- Export a WhatsApp conversation as a `.txt` file, preferably without media, then upload it through the sidebar. [cite:file=app.py;symbol=uploaded_file;lines=26-26]
+
+### Worth a closer look
+
+- Parsing assumptions: The timestamp pattern expects a particular date-and-time format. Exports with different formats may not parse correctly, and the source does not show comprehensive handling for every WhatsApp export variant. [cite:file=preprocessor.py;symbol=pattern;lines=7-7]
+- Media estimates: The media distribution function estimates images as 60% and voice notes as 25% of media placeholders, assigning the remainder to documents. These are assumptions, not actual identification of each omitted attachment's type. [cite:file=helper.py;symbol=get_media_distribution;lines=171-186]
+- Sentiment limitations: VADER produces language-based estimates, so sarcasm, context, and mixed-language messages may not be interpreted accurately. [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+- Privacy: Chat exports can contain sensitive personal conversations. The provided source shows local upload and analysis logic but does not establish a complete privacy or data-retention policy. Users should handle exported chats carefully.

@@ -1,0 +1,2272 @@
+You are analyzing a software repository. You are given:
+A. background (README and dependency file), B. the file tree, C. a SYMBOL INDEX produced by a code
+parser, D. the source code with line numbers (shown as "N | code").
+
+=== A. BACKGROUND ===
+(none)
+
+=== B. FILE TREE ===
+backend/Procfile
+backend/app.py
+backend/requirements.txt
+backend/stitcher.py
+frontend/README.md
+frontend/package.json
+frontend/public/Rose Colored Lenses.jpg
+frontend/public/Venice.jpg
+frontend/public/bg.jpg
+frontend/public/denim.webp
+frontend/public/favicon.ico
+frontend/public/index.html
+frontend/public/logo192.png
+frontend/public/logo512.png
+frontend/public/manifest.json
+frontend/public/robots.txt
+frontend/src/App.css
+frontend/src/App.js
+frontend/src/App.test.js
+frontend/src/Supabase.js
+frontend/src/components/Modal.js
+frontend/src/components/ProtectedRoute.js
+frontend/src/index.css
+frontend/src/index.js
+frontend/src/logo.svg
+frontend/src/pages/AllToursPage.js
+frontend/src/pages/Home.js
+frontend/src/pages/Login.js
+frontend/src/pages/PanoramaViewer.js
+frontend/src/pages/Signup.js
+frontend/src/pages/TourEditorPage.js
+frontend/src/pages/VirtualTourForm.js
+frontend/src/reportWebVitals.js
+frontend/src/setupTests.js
+frontend/test images/1.1.jpg
+frontend/test images/1.10.jpg
+frontend/test images/1.2.jpg
+frontend/test images/1.3.jpg
+frontend/test images/1.4.jpg
+frontend/test images/1.5.jpg
+frontend/test images/1.6.jpg
+frontend/test images/1.7.jpg
+frontend/test images/1.8.jpg
+frontend/test images/1.9.jpg
+frontend/test images/e1.jpg
+frontend/test images/e2.jpg
+frontend/test images/e3.jpg
+frontend/test images/h1.jpg
+frontend/test images/h2.jpg
+frontend/test images/h3.jpg
+frontend/test images/ig1.jpg
+frontend/test images/ig2.jpg
+frontend/test images/image1.jpg
+frontend/test images/image2.jpg
+frontend/test images/l1.png
+frontend/test images/l2.png
+frontend/test images/l3.png
+frontend/test images/p1.jpg
+frontend/test images/p2.jpg
+frontend/test images/r1.png
+frontend/test images/r2.png
+frontend/test images/r3.png
+frontend/test images/t1 - Copy.png
+frontend/test images/t1.png
+frontend/test images/t2 - Copy.png
+frontend/test images/t2.png
+frontend/test images/t3.png
+frontend/test images/u1.png
+frontend/test images/u2.png
+frontend/test images/u3.png
+frontend/test images/w1.jpg
+frontend/test images/w2.jpg
+frontend/test images/w3.jpg
+
+=== C. SYMBOL INDEX (each line is a ready-made citation tag) ===
+[cite:file=backend/app.py;symbol=app;lines=18-18]
+[cite:file=backend/app.py;symbol=UPLOAD_FOLDER;lines=23-23]
+[cite:file=backend/app.py;symbol=TEMP_OUTPUT_FOLDER;lines=24-24]
+[cite:file=backend/app.py;symbol=SUPABASE_URL;lines=33-33]
+[cite:file=backend/app.py;symbol=SUPABASE_KEY;lines=34-34]
+[cite:file=backend/app.py;symbol=SUPABASE_BUCKET_NAME;lines=35-35]
+[cite:file=backend/app.py;symbol=SUPABASE_AUDIO_BUCKET_NAME;lines=36-36]
+[cite:file=backend/app.py;symbol=SUPABASE_PANORAMAS_TABLE;lines=37-37]
+[cite:file=backend/app.py;symbol=SUPABASE_MARKERS_TABLE;lines=38-38]
+[cite:file=backend/app.py;symbol=SUPABASE_TOOLTIPS_TABLE;lines=39-39]
+[cite:file=backend/app.py;symbol=SUPABASE_TOURS_TABLE;lines=40-40]
+[cite:file=backend/app.py;symbol=SUPABASE_TOUR_AUDIO_TABLE;lines=41-41]
+[cite:file=backend/app.py;symbol=calculate_view_constraints;lines=52-100]
+[cite:file=backend/app.py;symbol=gray;lines=60-60]
+[cite:file=backend/app.py;symbol=thresh;lines=62-62]
+[cite:file=backend/app.py;symbol=c;lines=70-70]
+[cite:file=backend/app.py;symbol=mask;lines=71-71]
+[cite:file=backend/app.py;symbol=center_x;lines=82-82]
+[cite:file=backend/app.py;symbol=center_y;lines=83-83]
+[cite:file=backend/app.py;symbol=left_angle;lines=90-90]
+[cite:file=backend/app.py;symbol=right_angle;lines=91-91]
+[cite:file=backend/app.py;symbol=top_angle;lines=92-92]
+[cite:file=backend/app.py;symbol=bottom_angle;lines=93-93]
+[cite:file=backend/app.py;symbol=process_room_images;lines=104-199]
+[cite:file=backend/app.py;symbol=image_paths;lines=110-110]
+[cite:file=backend/app.py;symbol=temp_upload_dir;lines=112-112]
+[cite:file=backend/app.py;symbol=filename;lines=118-118]
+[cite:file=backend/app.py;symbol=save_path;lines=119-119]
+[cite:file=backend/app.py;symbol=stitched_output_filename_local;lines=132-132]
+[cite:file=backend/app.py;symbol=stitched_output_path_local;lines=133-133]
+[cite:file=backend/app.py;symbol=stitched_image_np;lines=136-136]
+[cite:file=backend/app.py;symbol=img_bytes;lines=157-157]
+[cite:file=backend/app.py;symbol=supabase_file_path;lines=163-163]
+[cite:file=backend/app.py;symbol=panorama_url;lines=166-166]
+[cite:file=backend/app.py;symbol=upload_result;lines=168-172]
+[cite:file=backend/app.py;symbol=public_url;lines=178-178]
+[cite:file=backend/app.py;symbol=stitch_tour_endpoint;lines=204-283]
+[cite:file=backend/app.py;symbol=room_panorama_urls;lines=206-206]
+[cite:file=backend/app.py;symbol=tour_id;lines=207-207]
+[cite:file=backend/app.py;symbol=tour_entry_response;lines=218-218]
+[cite:file=backend/app.py;symbol=existing_tour_data;lines=219-219]
+[cite:file=backend/app.py;symbol=tour_name;lines=223-223]
+[cite:file=backend/app.py;symbol=insert_tour_data;lines=226-226]
+[cite:file=backend/app.py;symbol=insert_tour_res;lines=231-231]
+[cite:file=backend/app.py;symbol=room_files_map;lines=240-240]
+[cite:file=backend/app.py;symbol=first_room_processed;lines=250-250]
+[cite:file=backend/app.py;symbol=restitch_room_endpoint;lines=286-339]
+[cite:file=backend/app.py;symbol=room_name;lines=289-289]
+[cite:file=backend/app.py;symbol=files;lines=290-290]
+[cite:file=backend/app.py;symbol=processed_result;lines=301-301]
+[cite:file=backend/app.py;symbol=new_panorama_url;lines=302-302]
+[cite:file=backend/app.py;symbol=update_response;lines=309-311]
+[cite:file=backend/app.py;symbol=insert_response;lines=317-319]
+[cite:file=backend/app.py;symbol=rename_room_endpoint;lines=343-422]
+[cite:file=backend/app.py;symbol=data;lines=345-345]
+[cite:file=backend/app.py;symbol=old_room_name;lines=353-353]
+[cite:file=backend/app.py;symbol=new_room_name;lines=354-354]
+[cite:file=backend/app.py;symbol=pan_res;lines=373-373]
+[cite:file=backend/app.py;symbol=tour_check_res;lines=391-391]
+[cite:file=backend/app.py;symbol=old_file_path_in_bucket;lines=396-396]
+[cite:file=backend/app.py;symbol=new_file_path_in_bucket;lines=397-397]
+[cite:file=backend/app.py;symbol=new_public_url;lines=407-407]
+[cite:file=backend/app.py;symbol=delete_room_endpoint;lines=426-498]
+[cite:file=backend/app.py;symbol=file_path_in_bucket;lines=447-447]
+[cite:file=backend/app.py;symbol=pan_del_res;lines=457-457]
+[cite:file=backend/app.py;symbol=mark_from_del_res;lines=461-461]
+[cite:file=backend/app.py;symbol=mark_to_del_res;lines=462-462]
+[cite:file=backend/app.py;symbol=tip_del_res;lines=466-466]
+[cite:file=backend/app.py;symbol=audio_del_res;lines=471-471]
+[cite:file=backend/app.py;symbol=audio_file_path_in_bucket;lines=475-475]
+[cite:file=backend/app.py;symbol=tour_res;lines=486-486]
+[cite:file=backend/app.py;symbol=remaining_panoramas;lines=489-489]
+[cite:file=backend/app.py;symbol=get_tour_data_endpoint;lines=502-631]
+[cite:file=backend/app.py;symbol=tour_response;lines=505-505]
+[cite:file=backend/app.py;symbol=tour_data;lines=506-506]
+[cite:file=backend/app.py;symbol=start_room;lines=511-511]
+[cite:file=backend/app.py;symbol=panoramas_response;lines=515-515]
+[cite:file=backend/app.py;symbol=panoramas;lines=516-516]
+[cite:file=backend/app.py;symbol=panorama_urls;lines=520-520]
+[cite:file=backend/app.py;symbol=final_start_room;lines=529-529]
+[cite:file=backend/app.py;symbol=first_valid_room;lines=534-534]
+[cite:file=backend/app.py;symbol=markers_response;lines=549-549]
+[cite:file=backend/app.py;symbol=markers_raw;lines=550-550]
+[cite:file=backend/app.py;symbol=markers_data;lines=554-554]
+[cite:file=backend/app.py;symbol=required_marker_keys;lines=556-556]
+[cite:file=backend/app.py;symbol=from_room;lines=561-561]
+[cite:file=backend/app.py;symbol=tooltips_response;lines=576-576]
+[cite:file=backend/app.py;symbol=tooltips_raw;lines=577-577]
+[cite:file=backend/app.py;symbol=tooltips_data;lines=581-581]
+[cite:file=backend/app.py;symbol=required_tooltip_keys;lines=583-583]
+[cite:file=backend/app.py;symbol=audio_response;lines=604-604]
+[cite:file=backend/app.py;symbol=audio_raw;lines=605-605]
+[cite:file=backend/app.py;symbol=audio_data;lines=608-608]
+[cite:file=backend/app.py;symbol=response_data;lines=617-624]
+[cite:file=backend/app.py;symbol=save_markers_endpoint;lines=634-675]
+[cite:file=backend/app.py;symbol=room_from;lines=639-639]
+[cite:file=backend/app.py;symbol=new_markers;lines=640-640]
+[cite:file=backend/app.py;symbol=delete_res;lines=649-649]
+[cite:file=backend/app.py;symbol=markers_to_insert;lines=653-653]
+[cite:file=backend/app.py;symbol=marker_id;lines=655-655]
+[cite:file=backend/app.py;symbol=insert_res;lines=665-665]
+[cite:file=backend/app.py;symbol=save_tooltips_endpoint;lines=678-719]
+[cite:file=backend/app.py;symbol=new_tooltips;lines=684-684]
+[cite:file=backend/app.py;symbol=tooltips_to_insert;lines=697-697]
+[cite:file=backend/app.py;symbol=tooltip_id;lines=699-699]
+[cite:file=backend/app.py;symbol=upload_audio_endpoint;lines=722-778]
+[cite:file=backend/app.py;symbol=audio_file;lines=727-727]
+[cite:file=backend/app.py;symbol=supabase_audio_path;lines=737-737]
+[cite:file=backend/app.py;symbol=audio_url;lines=750-750]
+[cite:file=backend/app.py;symbol=db_response;lines=760-764]
+[cite:file=backend/app.py;symbol=delete_audio_endpoint;lines=781-813]
+[cite:file=backend/app.py;symbol=update_start_room_endpoint;lines=816-842]
+[cite:file=backend/app.py;symbol=new_start_room;lines=821-821]
+[cite:file=backend/app.py;symbol=response;lines=830-830]
+[cite:file=backend/stitcher.py;symbol=stitch_images;lines=4-33]
+[cite:file=backend/stitcher.py;symbol=images;lines=17-17]
+[cite:file=backend/stitcher.py;symbol=stitcher;lines=22-22]
+[cite:file=backend/stitcher.py;symbol=stitched_image;lines=26-26]
+[cite:file=backend/stitcher.py;symbol=remove_black_borders;lines=35-60]
+[cite:file=backend/stitcher.py;symbol=gray;lines=46-46]
+[cite:file=backend/stitcher.py;symbol=cropped_image;lines=59-59]
+[cite:file=frontend/src/App.js;symbol=App;lines=16-32]
+[cite:file=frontend/src/components/Modal.js;symbol=Modal;lines=4-34]
+[cite:file=frontend/src/pages/AllToursPage.js;symbol=AllToursPage;lines=5-45]
+[cite:file=frontend/src/pages/AllToursPage.js;symbol=fetchTours;lines=10-50]
+[cite:file=frontend/src/pages/Home.js;symbol=handleCreateClick;lines=8-48]
+[cite:file=frontend/src/pages/Home.js;symbol=LandingButton;lines=71-95]
+[cite:file=frontend/src/pages/Login.js;symbol=handleLogin;lines=12-52]
+[cite:file=frontend/src/pages/PanoramaViewer.js;symbol=PanoramaViewer;lines=15-55]
+[cite:file=frontend/src/pages/PanoramaViewer.js;symbol=fetchTourData;lines=31-71]
+[cite:file=frontend/src/pages/PanoramaViewer.js;symbol=yaw;lines=64-104]
+[cite:file=frontend/src/pages/PanoramaViewer.js;symbol=pitch;lines=65-105]
+[cite:file=frontend/src/pages/Signup.js;symbol=handleSignup;lines=12-52]
+[cite:file=frontend/src/pages/VirtualTourForm.js;symbol=VirtualTourForm;lines=6-46]
+[cite:file=frontend/src/pages/VirtualTourForm.js;symbol=handleImageUpload;lines=13-53]
+[cite:file=frontend/src/pages/VirtualTourForm.js;symbol=handleAddRoom;lines=32-72]
+[cite:file=frontend/src/pages/VirtualTourForm.js;symbol=handleRemoveImage;lines=39-79]
+[cite:file=frontend/src/pages/VirtualTourForm.js;symbol=handleGeneratePanorama;lines=46-86]
+
+=== D. SOURCE CODE WITH LINE NUMBERS ===
+--- backend/app.py ---
+   1 | import sys
+   2 | import os
+   3 | from flask import Flask, request, jsonify
+   4 | from flask_cors import CORS
+   5 | from werkzeug.utils import secure_filename
+   6 | from urllib.parse import quote
+   7 | 
+   8 | from supabase import create_client, Client
+   9 | import uuid
+  10 | import io
+  11 | import shutil
+  12 | import cv2
+  13 | import json
+  14 | import traceback
+  15 | import numpy as np # Import numpy for image processing
+  16 | from stitcher import stitch_images
+  17 | 
+  18 | app = Flask(__name__)
+  19 | # CORRECTED: Allow all origins explicitly for debugging, or specify your Vercel domain
+  20 | CORS(app, resources={r"/*": {"origins": "*"}})
+  21 | 
+  22 | # --- Configuration for temporary local storage ---
+  23 | UPLOAD_FOLDER = 'uploads'
+  24 | TEMP_OUTPUT_FOLDER = 'temp_panoramas'
+  25 | 
+  26 | os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+  27 | os.makedirs(TEMP_OUTPUT_FOLDER, exist_ok=True)
+  28 | 
+  29 | app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+  30 | app.config['TEMP_OUTPUT_FOLDER'] = TEMP_OUTPUT_FOLDER
+  31 | 
+  32 | # --- Supabase Configuration ---
+  33 | SUPABASE_URL = 'https://fogqiruqayzamorywwkl.supabase.co'
+  34 | SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZvZ3FpcnVxYXl6YW1vcnl3d2tsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA5NjAxODAsImV4cCI6MjA2NjUzNjE4MH0.fa0st9V3allcHbD-Nklnh9ajYLRXgwSXWMnxBhp81hA'
+  35 | SUPABASE_BUCKET_NAME = "tour-images"
+  36 | SUPABASE_AUDIO_BUCKET_NAME = "tour-audio" # New: Supabase bucket for audio
+  37 | SUPABASE_PANORAMAS_TABLE = "panoramas"
+  38 | SUPABASE_MARKERS_TABLE = "markers"
+  39 | SUPABASE_TOOLTIPS_TABLE = "tooltips"
+  40 | SUPABASE_TOURS_TABLE = "tour"
+  41 | SUPABASE_TOUR_AUDIO_TABLE = "tour_audio" # New: Supabase table for audio URLs
+  42 | 
+  43 | # Initialize Supabase Client
+  44 | try:
+  45 |     supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+  46 |     print("✅ Supabase client initialized successfully.")
+  47 | except Exception as e:
+  48 |     print(f"❌ Error initializing Supabase client: {e}")
+  49 |     pass
+  50 | 
+  51 | 
+  52 | def calculate_view_constraints(image):
+  53 |     """
+  54 |     Calculates view constraints based on non-black pixel boundaries.
+  55 |     Uses more robust contour detection and handles potential edge cases.
+  56 |     """
+  57 |     if image is None:
+  58 |         return {'minYaw': 0, 'maxYaw': 2 * np.pi, 'minPitch': -np.pi / 2, 'maxPitch': np.pi / 2}
+  59 | 
+  60 |     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+  61 |     _, thresh = cv2.threshold(gray, 10, 255, cv2.THRESH_BINARY)
+  62 |     thresh = cv2.erode(thresh, None, iterations=2)  # Reduce noise
+  63 |     thresh = cv2.dilate(thresh, None, iterations=2) # Fill gaps
+  64 | 
+  65 |     contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+  66 | 
+  67 |     if not contours:
+  68 |         return {'minYaw': 0, 'maxYaw': 2 * np.pi, 'minPitch': -np.pi / 2, 'maxPitch': np.pi / 2}
+  69 | 
+  70 |     c = max(contours, key=cv2.contourArea)
+  71 |     mask = np.zeros_like(gray)
+  72 |     cv2.drawContours(mask, [c], -1, 255, -1)
+  73 |     y_coords, x_coords = np.where(mask > 0)
+  74 | 
+  75 |     if not x_coords.size or not y_coords.size:
+  76 |         return {'minYaw': 0, 'maxYaw': 2 * np.pi, 'minPitch': -np.pi / 2, 'maxPitch': np.pi / 2}
+  77 | 
+  78 |     min_x, max_x = np.min(x_coords), np.max(x_coords)
+  79 |     min_y, max_y = np.min(y_coords), np.max(y_coords)
+  80 | 
+  81 |     height, width = image.shape[:2]
+  82 |     center_x = width / 2
+  83 |     center_y = height / 2
+  84 | 
+  85 |     # Convert pixel coordinates to angles (simplified)
+  86 |     # These calculations are approximations and might need fine-tuning
+  87 |     # based on the specific panorama projection and desired behavior.
+  88 |     # For a perfect equirectangular projection, more complex formulas are needed.
+  89 |     # Here, we're doing a linear mapping based on bounding box.
+  90 |     left_angle = np.arctan2(min_x - center_x, center_y)
+  91 |     right_angle = np.arctan2(max_x - center_x, center_y)
+  92 |     top_angle = np.arctan2(center_x, min_y - center_y)
+  93 |     bottom_angle = np.arctan2(center_x, max_y - center_y)
+  94 | 
+  95 |     return {
+  96 |         'minYaw': left_angle,
+  97 |         'maxYaw': right_angle,
+  98 |         'minPitch': -bottom_angle, # Pitch usually goes from -pi/2 (down) to pi/2 (up)
+  99 |         'maxPitch': -top_angle,
+ 100 |     }
+ 101 | 
+ 102 | 
+ 103 | # --- Helper Function for Image Processing and Supabase Upload ---
+ 104 | def process_room_images(tour_id, room_name, room_files):
+ 105 |     """
+ 106 |     Handles saving raw images locally, stitching them, and uploading the panorama
+ 107 |     to Supabase Storage. Returns the public URL of the uploaded panorama.
+ 108 |     """
+ 109 |     print(f"\n➡️ [process_room_images] Processing Room: {room_name} for Tour ID: {tour_id}")
+ 110 |     image_paths = []
+ 111 | 
+ 112 |     temp_upload_dir = os.path.join(app.config['UPLOAD_FOLDER'], str(tour_id), secure_filename(room_name) + "_" + str(uuid.uuid4()))
+ 113 |     os.makedirs(temp_upload_dir, exist_ok=True)
+ 114 |     print(f"    [process_room_images] Created temporary upload directory: {temp_upload_dir}")
+ 115 | 
+ 116 |     for idx, file in enumerate(room_files):
+ 117 |         if file and file.filename:
+ 118 |             filename = secure_filename(file.filename)
+ 119 |             save_path = os.path.join(temp_upload_dir, f"IMG-{idx+1}_{filename}")
+ 120 |             file.save(save_path)
+ 121 |             image_paths.append(save_path)
+ 122 |             print(f"    [process_room_images] ✅ Saved temporary image: {save_path}")
+ 123 |         else:
+ 124 |             print(f"    [process_room_images] ⚠️ Skipping empty or invalid file at index {idx}.")
+ 125 | 
+ 126 |     if not image_paths:
+ 127 |         if os.path.exists(temp_upload_dir):
+ 128 |             shutil.rmtree(temp_upload_dir)
+ 129 |             print(f"    [process_room_images] Cleaned up empty temporary upload directory: {temp_upload_dir}")
+ 130 |         raise Exception(f"No valid images uploaded for {room_name}")
+ 131 | 
+ 132 |     stitched_output_filename_local = f"{secure_filename(room_name)}_panorama_temp_{uuid.uuid4()}.jpg"
+ 133 |     stitched_output_path_local = os.path.join(app.config['TEMP_OUTPUT_FOLDER'], stitched_output_filename_local)
+ 134 | 
+ 135 |     print(f"    [process_room_images] 🧵 Stitching images locally → {stitched_output_path_local}")
+ 136 |     stitched_image_np = None
+ 137 |     try:
+ 138 |         success, stitched_image_np = stitch_images(image_paths, stitched_output_path_local)
+ 139 |         if not success:
+ 140 |             raise Exception(f"Stitching failed for {room_name}. Check stitcher.py logs for details.")
+ 141 |         print(f"    [process_room_images] Stitching completed successfully for {room_name}.")
+ 142 |     except Exception as e:
+ 143 |         print(f"    [process_room_images] ❌ Error during stitching: {e}")
+ 144 |         if os.path.exists(temp_upload_dir):
+ 145 |             shutil.rmtree(temp_upload_dir)
+ 146 |             print(f"    [process_room_images] Cleaned up temporary upload directory on stitch error: {temp_upload_dir}")
+ 147 |         if os.path.exists(stitched_output_path_local):
+ 148 |             os.remove(stitched_output_path_local)
+ 149 |             print(f"    [process_room_images] Cleaned up temporary stitched file on stitch error: {stitched_output_path_local}")
+ 150 |         raise e
+ 151 | 
+ 152 |     if stitched_image_np is None:
+ 153 |         raise Exception(f"Stitched image (numpy array) is None for room {room_name}.")
+ 154 | 
+ 155 |     try:
+ 156 |         _, img_encoded = cv2.imencode('.jpg', stitched_image_np)
+ 157 |         img_bytes = img_encoded.tobytes()
+ 158 |         print(f"    [process_room_images] Converted stitched image to bytes (size: {len(img_bytes)} bytes).")
+ 159 |     except Exception as e:
+ 160 |         print(f"    [process_room_images] ❌ Error encoding image to bytes: {e}")
+ 161 |         raise Exception(f"Error encoding image for upload: {e}")
+ 162 | 
+ 163 |     supabase_file_path = f"{tour_id}/{quote(room_name.replace(' ', '_'))}_panorama.jpg"
+ 164 | 
+ 165 |     print(f"    [process_room_images] ☁️ Uploading stitched panorama to Supabase Storage: {supabase_file_path}")
+ 166 |     panorama_url = None
+ 167 |     try:
+ 168 |         upload_result = supabase.storage.from_(SUPABASE_BUCKET_NAME).upload(
+ 169 |             file=img_bytes,
+ 170 |             path=supabase_file_path,
+ 171 |             file_options={"content-type": "image/jpeg", "upsert": "true"}
+ 172 |         )
+ 173 | 
+ 174 |         print(f"    [process_room_images] Raw upload_result from Supabase: {upload_result}")
+ 175 | 
+ 176 |         if hasattr(upload_result, 'path') and upload_result.path:
+ 177 |             print(f"    [process_room_images] ✅ Supabase Storage upload successful. Response: {upload_result}")
+ 178 |             public_url = supabase.storage.from_(SUPABASE_BUCKET_NAME).get_public_url(supabase_file_path)
+ 179 |             if public_url:
+ 180 |                 panorama_url = public_url
+ 181 |                 print(f"    [process_room_images] ✅ Supabase Public URL: {panorama_url}")
+ 182 |             else:
+ 183 |                 raise Exception("Failed to get public URL from Supabase after upload.")
+ 184 |         else:
+ 185 |             print(f"    [process_room_images] ❌ Supabase Storage upload failed. Unexpected response: {upload_result}")
+ 186 |             raise Exception(f"Supabase Storage upload failed: Unexpected response type or content. Raw response: {upload_result}")
+ 187 | 
+ 188 |     except Exception as e:
+ 189 |         print(f"    [process_room_images] ❌ Supabase upload failed: {e}")
+ 190 |         raise Exception(f"Failed to upload panorama to Supabase: {e}")
+ 191 |     finally:
+ 192 |         if os.path.exists(temp_upload_dir):
+ 193 |             shutil.rmtree(temp_upload_dir)
+ 194 |             print(f"    [process_room_images] Cleaned up temporary upload directory: {temp_upload_dir}")
+ 195 |         if os.path.exists(stitched_output_path_local):
+ 196 |             os.remove(stitched_output_path_local)
+ 197 |             print(f"    [process_room_images] Cleaned up temporary stitched file: {stitched_output_path_local}")
+ 198 | 
+ 199 |     return panorama_url, stitched_image_np
+ 200 | 
+ 201 | # --- Flask Routes ---
+ 202 | 
+ 203 | @app.route('/stitch', methods=['POST'])
+ 204 | def stitch_tour_endpoint():
+ 205 |     print("\n--- Received POST request to /stitch ---")
+ 206 |     room_panorama_urls = {}
+ 207 |     tour_id = request.form.get('tourId')
+ 208 | 
+ 209 |     print(f"    [stitch_tour_endpoint] Received tourId: {tour_id}")
+ 210 | 
+ 211 |     if not tour_id:
+ 212 |         print("    [stitch_tour_endpoint] Error: Tour ID is missing in request form data.")
+ 213 |         return jsonify({'success': False, 'error': 'Tour ID is missing. Please provide a tourId.'}), 400
+ 214 | 
+ 215 |     try:
+ 216 |         print(f"    [stitch_tour_endpoint] Verifying/Creating tour entry for Tour ID: {tour_id}")
+ 217 | 
+ 218 |         tour_entry_response = supabase.table(SUPABASE_TOURS_TABLE).select("tour_id, start_room").eq("tour_id", tour_id).limit(1).execute()
+ 219 |         existing_tour_data = tour_entry_response.data[0] if tour_entry_response.data else None
+ 220 | 
+ 221 |         if not existing_tour_data:
+ 222 |             print(f"    [stitch_tour_endpoint] Tour ID {tour_id} not found in '{SUPABASE_TOURS_TABLE}'. Inserting new tour entry.")
+ 223 |             tour_name = request.form.get('tour_name')
+ 224 |             print(f"    [stitch_tour_endpoint] Received tour_name: {tour_name}")
+ 225 | 
+ 226 |             insert_tour_data = {"tour_id": tour_id}
+ 227 |             if tour_name:
+ 228 |                 insert_tour_data["tour_name"] = tour_name
+ 229 |             # Do NOT set start_room here. It will be set after the first panorama is processed.
+ 230 | 
+ 231 |             insert_tour_res = supabase.table(SUPABASE_TOURS_TABLE).insert(insert_tour_data).execute()
+ 232 | 
+ 233 |             if not insert_tour_res.data:
+ 234 |                 print(f"    [stitch_tour_endpoint] ❌ Failed to create tour entry for {tour_id}. Error: {insert_tour_res.error}")
+ 235 |                 raise Exception(f"Failed to create tour entry in '{SUPABASE_TOURS_TABLE}': {insert_tour_res.error}")
+ 236 |             print(f"    [stitch_tour_endpoint] ✅ Tour entry created for {tour_id}.")
+ 237 |         else:
+ 238 |             print(f"    [stitch_tour_endpoint] Tour ID {tour_id} already exists in '{SUPABASE_TOURS_TABLE}'.")
+ 239 | 
+ 240 |         room_files_map = {}
+ 241 |         if not request.files:
+ 242 |             print("    [stitch_tour_endpoint] No files found in request.files.")
+ 243 |             return jsonify({'success': False, 'error': 'No image files uploaded.'}), 400
+ 244 | 
+ 245 |         for key in request.files:
+ 246 |             room_name = key.rstrip('[]')
+ 247 |             room_files_map[room_name] = request.files.getlist(key)
+ 248 |             print(f"    [stitch_tour_endpoint] Found files for room '{room_name}': {len(room_files_map[room_name])} files.")
+ 249 | 
+ 250 |         first_room_processed = None
+ 251 |         for room_name, room_files in room_files_map.items():
+ 252 |             print(f"    [stitch_tour_endpoint] Initiating processing for room: {room_name}")
+ 253 |             url, stitched_image = process_room_images(tour_id, room_name, room_files)
+ 254 | 
+ 255 |             print(f"    [stitch_tour_endpoint] Upserting panorama URL to {SUPABASE_PANORAMAS_TABLE} for room: {room_name}")
+ 256 |             response = supabase.table(SUPABASE_PANORAMAS_TABLE).upsert({
+ 257 |                 "tour_id": tour_id,
+ 258 |                 "room_name": room_name,
+ 259 |                 "panorama_url": url
+ 260 |             }, on_conflict="tour_id, room_name").execute()
+ 261 | 
+ 262 |             if response.data:
+ 263 |                 room_panorama_urls[room_name] = url
+ 264 |                 print(f"    [stitch_tour_endpoint] ✅ Saved panorama URL to Supabase DB for room: {room_name}. Response: {response.data}")
+ 265 | 
+ 266 |                 # If this is the first room processed and no start_room is set for the tour, set it
+ 267 |                 if first_room_processed is None and (not existing_tour_data or existing_tour_data.get('start_room') is None):
+ 268 |                     print(f"    [stitch_tour_endpoint] Setting '{room_name}' as start_room for tour '{tour_id}'.")
+ 269 |                     supabase.table(SUPABASE_TOURS_TABLE).update({"start_room": room_name}).eq("tour_id", tour_id).execute()
+ 270 |                     first_room_processed = room_name # Mark that a start room has been set
+ 271 |             else:
+ 272 |                 print(f"    [stitch_tour_endpoint] ❌ Failed to save panorama URL to Supabase DB for room: {room_name}. Error: {response.error}")
+ 273 |                 raise Exception(f"Failed to save panorama URL for {room_name} to database: {response.error}")
+ 274 | 
+ 275 |         print("--- All rooms processed and panoramas/metadata handled. Sending success response. ---")
+ 276 |         return jsonify({
+ 277 |             'success': True,
+ 278 |             'panoramaUrls': room_panorama_urls,
+ 279 |             'roomConnections': {}
+ 280 |         })
+ 281 |     except Exception as e:
+ 282 |         print(f"--- ❌ Stitch error in /stitch endpoint: {e} ---")
+ 283 |         return jsonify({'success': False, 'error': str(e)}), 500
+ 284 | 
+ 285 | @app.route('/restitch-room', methods=['POST'])
+ 286 | def restitch_room_endpoint():
+ 287 |     print("\n--- Received POST request to /restitch-room ---")
+ 288 |     tour_id = request.form.get('tourId')
+ 289 |     room_name = request.form.get('roomName')
+ 290 |     files = request.files.getlist('files')
+ 291 | 
+ 292 |     print(f"    [restitch_room_endpoint] Received tourId: {tour_id}, roomName: {room_name}, files: {len(files)}")
+ 293 | 
+ 294 |     if not tour_id or not room_name or not files:
+ 295 |         print("[restitch_room_endpoint] Error: Missing tour ID, room name, or files.")
+ 296 |         return jsonify({"success": False, "error": "Missing tour ID, room name, or files."}), 400
+ 297 | 
+ 298 |     print(f"    [restitch_room_endpoint] 🔁 Restitching single room: {room_name} for Tour ID: {tour_id}")
+ 299 | 
+ 300 |     try:
+ 301 |         processed_result = process_room_images(tour_id, room_name, files)
+ 302 |         new_panorama_url = processed_result[0]
+ 303 |         if not new_panorama_url:
+ 304 |             raise Exception("Failed to get new panorama URL after processing images.")
+ 305 | 
+ 306 |         print(f"    [restitch_room_endpoint] New panorama URL after processing: {new_panorama_url}")
+ 307 | 
+ 308 |         print("    [restitch_room_endpoint] Attempting to update panorama URL in panoramas table.")
+ 309 |         update_response = supabase.table(SUPABASE_PANORAMAS_TABLE).update(
+ 310 |             {"panorama_url": new_panorama_url}
+ 311 |         ).eq("tour_id", tour_id).eq("room_name", room_name).execute()
+ 312 | 
+ 313 |         if update_response.data and len(update_response.data) > 0:
+ 314 |             print("    [restitch_room_endpoint] ✅ Panorama URL updated in Supabase DB.")
+ 315 |         else:
+ 316 |             print("    [restitch_room_endpoint] No existing panorama found, inserting new one.")
+ 317 |             insert_response = supabase.table(SUPABASE_PANORAMAS_TABLE).insert(
+ 318 |                 {"tour_id": tour_id, "room_name": room_name, "panorama_url": new_panorama_url}
+ 319 |             ).execute()
+ 320 |             if not insert_response.data:
+ 321 |                 print(f"    [restitch_room_endpoint] ❌ Failed to insert new panorama. Error: {insert_response.error}")
+ 322 |                 raise Exception(f"Failed to insert new panorama for {room_name}: {insert_response.error}")
+ 323 |             print("    [restitch_room_endpoint] ✅ New panorama inserted into Supabase DB.")
+ 324 | 
+ 325 |         print(f"    [restitch_room_endpoint] Clearing markers from/to room: {room_name}")
+ 326 |         supabase.table(SUPABASE_MARKERS_TABLE).delete().eq("tour_id", tour_id).eq("from_room", room_name).execute()
+ 327 |         supabase.table(SUPABASE_MARKERS_TABLE).delete().eq("tour_id", tour_id).eq("to_room", room_name).execute()
+ 328 |         print("    [restitch_room_endpoint] ✅ Markers associated with room cleared from DB.")
+ 329 | 
+ 330 |         print(f"    [restitch_room_endpoint] Clearing tooltips from room: {room_name}")
+ 331 |         supabase.table(SUPABASE_TOOLTIPS_TABLE).delete().eq("tour_id", tour_id).eq("room_name", room_name).execute()
+ 332 |         print("    [restitch_room_endpoint] ✅ Tooltips associated with room cleared from DB.")
+ 333 | 
+ 334 |         print("--- Room re-stitch and associated data clear completed. Sending success response. ---")
+ 335 |         return jsonify({"success": True, "message": "Room re-stitched successfully and markers/tooltips cleared!", "panoramaUrl": new_panorama_url}), 200
+ 336 | 
+ 337 |     except Exception as e:
+ 338 |         print(f"--- ❌ Error in /restitch-room endpoint: {e} ---")
+ 339 |         return jsonify({"success": False, "message": f"Server error re-stitching room: {str(e)}"}), 500
+ 340 | 
+ 341 | 
+ 342 | @app.route('/rename-room', methods=['POST'])
+ 343 | def rename_room_endpoint():
+ 344 |     print("\n--- Received POST request to /rename-room ---")
+ 345 |     data = request.json
+ 346 | 
+ 347 |     if not data:
+ 348 |         print("[rename_room_endpoint] Error: No JSON data received.")
+ 349 |         return jsonify({"success": False, "error": "No JSON data received in request body."}), 400
+ 350 | 
+ 351 |     try:
+ 352 |         tour_id = data['tourId']
+ 353 |         old_room_name = data['oldRoomName']
+ 354 |         new_room_name = data['newRoomName']
+ 355 |     except KeyError as e:
+ 356 |         print(f"[rename_room_endpoint] KeyError: Missing expected JSON key: {e}")
+ 357 |         return jsonify({"success": False, "error": f"Missing data in request body: {e}. Check key names in frontend POST request."}), 400
+ 358 | 
+ 359 |     if not tour_id:
+ 360 |         print("    [rename_room_endpoint] Error: Tour ID is missing.")
+ 361 |         return jsonify({'success': False, 'error': 'Tour ID is missing'}), 400
+ 362 |     if not old_room_name or not new_room_name:
+ 363 |         print("    [rename_room_endpoint] Error: Invalid old or new room names provided.")
+ 364 |         return jsonify({"success": False, "message": "Invalid room names!"}), 400
+ 365 |     if old_room_name == new_room_name:
+ 366 |         print("    [rename_room_endpoint] Room name is the same, no action taken.")
+ 367 |         return jsonify({"success": True, "message": "Room name is the same, no action taken."})
+ 368 | 
+ 369 |     print(f"    [rename_room_endpoint] 🔁 Renaming room for Tour ID: {tour_id} from '{old_room_name}' to '{new_room_name}'")
+ 370 | 
+ 371 |     try:
+ 372 |         print(f"    [rename_room_endpoint] Updating room_name in {SUPABASE_PANORAMAS_TABLE} from '{old_room_name}' to '{new_room_name}'.")
+ 373 |         pan_res = supabase.table(SUPABASE_PANORAMAS_TABLE).update({"room_name": new_room_name}).eq("tour_id", tour_id).eq("room_name", old_room_name).execute()
+ 374 |         if not pan_res.data:
+ 375 |             print(f"    [rename_room_endpoint] ⚠️ Could not find panorama entry to update for '{old_room_name}'. It might not exist or already be renamed.")
+ 376 |         else:
+ 377 |             print(f"    [rename_room_endpoint] ✅ Panorama entry updated in DB. Affected rows: {len(pan_res.data)}")
+ 378 | 
+ 379 |         print(f"    [rename_room_endpoint] Updating from_room in {SUPABASE_MARKERS_TABLE}.")
+ 380 |         supabase.table(SUPABASE_MARKERS_TABLE).update({"from_room": new_room_name}).eq("tour_id", tour_id).eq("from_room", old_room_name).execute()
+ 381 |         print(f"    [rename_room_endpoint] Updating to_room in {SUPABASE_MARKERS_TABLE}.")
+ 382 |         supabase.table(SUPABASE_MARKERS_TABLE).update({"to_room": new_room_name}).eq("tour_id", tour_id).eq("to_room", old_room_name).execute()
+ 383 |         print("    [rename_room_endpoint] ✅ Markers updated in DB.")
+ 384 | 
+ 385 |         print(f"    [rename_room_endpoint] Updating room_name in {SUPABASE_TOOLTIPS_TABLE}.")
+ 386 |         supabase.table(SUPABASE_TOOLTIPS_TABLE).update({"room_name": new_room_name}).eq("tour_id", tour_id).eq("room_name", old_room_name).execute()
+ 387 |         print("    [rename_room_endpoint] ✅ Tooltips updated in DB.")
+ 388 | 
+ 389 |         # Check and update start_room in SUPABASE_TOURS_TABLE
+ 390 |         print(f"    [rename_room_endpoint] Checking and updating start_room in {SUPABASE_TOURS_TABLE}.")
+ 391 |         tour_check_res = supabase.table(SUPABASE_TOURS_TABLE).select("start_room").eq("tour_id", tour_id).limit(1).execute()
+ 392 |         if tour_check_res.data and tour_check_res.data[0]['start_room'] == old_room_name:
+ 393 |             supabase.table(SUPABASE_TOURS_TABLE).update({"start_room": new_room_name}).eq("tour_id", tour_id).execute()
+ 394 |             print(f"    [rename_room_endpoint] ✅ Start room updated in DB.")
+ 395 | 
+ 396 |         old_file_path_in_bucket = f"{tour_id}/{quote(old_room_name.replace(' ', '_'))}_panorama.jpg"
+ 397 |         new_file_path_in_bucket = f"{tour_id}/{quote(new_room_name.replace(' ', '_'))}_panorama.jpg"
+ 398 | 
+ 399 |         print(f"    [rename_room_endpoint] Attempting to rename file in Supabase Storage from '{old_file_path_in_bucket}' to '{new_file_path_in_bucket}'")
+ 400 |         try:
+ 401 |             supabase.storage.from_(SUPABASE_BUCKET_NAME).copy(old_file_path_in_bucket, new_file_path_in_bucket)
+ 402 |             print(f"    [rename_room_endpoint] ✅ File copied in Supabase Storage.")
+ 403 | 
+ 404 |             supabase.storage.from_(SUPABASE_BUCKET_NAME).remove([old_file_path_in_bucket])
+ 405 |             print(f"    [rename_room_endpoint] ✅ Old file deleted from Supabase Storage.")
+ 406 | 
+ 407 |             new_public_url = supabase.storage.from_(SUPABASE_BUCKET_NAME).get_public_url(new_file_path_in_bucket)
+ 408 |             if new_public_url:
+ 409 |                 supabase.table(SUPABASE_PANORAMAS_TABLE).update({"panorama_url": new_public_url}).eq("tour_id", tour_id).eq("room_name", new_room_name).execute()
+ 410 |                 print(f"    [rename_room_endpoint] ✅ Panorama URL updated in DB to new file path: {new_public_url}.")
+ 411 |             else:
+ 412 |                 print(f"    [rename_room_endpoint] ⚠️ Could not get new public URL for '{new_file_path_in_bucket}'.")
+ 413 | 
+ 414 |         except Exception as e:
+ 415 |             print(f"    [rename_room_endpoint] ❌ Error renaming file in Supabase Storage: {e}")
+ 416 |             pass
+ 417 | 
+ 418 |         print("--- Room rename and associated data updates completed. Sending success response. ---")
+ 419 |         return jsonify({"success": True, "message": "Room and associated data renamed successfully!"})
+ 420 |     except Exception as e:
+ 421 |         print(f"--- ❌ Error in /rename-room endpoint: {e} ---")
+ 422 |         return jsonify({"success": False, "message": f"Server error renaming room: {str(e)}"}), 500
+ 423 | 
+ 424 | 
+ 425 | @app.route('/delete-room', methods=['POST'])
+ 426 | def delete_room_endpoint():
+ 427 |     print("\n--- Received POST request to /delete-room ---")
+ 428 |     try:
+ 429 |         data = request.get_json()
+ 430 | 
+ 431 |         if not data:
+ 432 |             print("[delete_room_endpoint] Error: No JSON data received.")
+ 433 |             return jsonify({"success": False, "error": "No JSON data received in request body."}), 400
+ 434 | 
+ 435 |         tour_id = data.get('tourId')
+ 436 |         room_name = data.get('roomName')
+ 437 | 
+ 438 |         if not tour_id:
+ 439 |             print("    [delete_room_endpoint] Error: Tour ID is missing.")
+ 440 |             return jsonify({'success': False, 'error': 'Tour ID is missing'}), 400
+ 441 |         if not room_name:
+ 442 |             print("    [delete_room_endpoint] Error: Room name not provided.")
+ 443 |             return jsonify({"success": False, "message": "Room name not provided."}), 400
+ 444 | 
+ 445 |         print(f"    [delete_room_endpoint] 🗑️ Deleting room: {room_name} for Tour ID: {tour_id}")
+ 446 | 
+ 447 |         file_path_in_bucket = f"{tour_id}/{quote(room_name.replace(' ', '_'))}_panorama.jpg"
+ 448 |         try:
+ 449 |             print(f"    [delete_room_endpoint] ☁️ Deleting file from Supabase Storage: {file_path_in_bucket}")
+ 450 |             supabase.storage.from_(SUPABASE_BUCKET_NAME).remove([file_path_in_bucket])
+ 451 |             print("    [delete_room_endpoint] ✅ Panorama file deleted from Supabase Storage.")
+ 452 |         except Exception as e:
+ 453 |             print(f"    [delete_room_endpoint] ⚠️ Could not delete file from Supabase Storage (might not exist or other error): {e}")
+ 454 |             pass
+ 455 | 
+ 456 |         print(f"    [delete_room_endpoint] Deleting panorama entries from {SUPABASE_PANORAMAS_TABLE}.")
+ 457 |         pan_del_res = supabase.table(SUPABASE_PANORAMAS_TABLE).delete().eq("tour_id", tour_id).eq("room_name", room_name).execute()
+ 458 |         print(f"    [delete_room_endpoint] ✅ Deleted {len(pan_del_res.data)} panorama entries from DB.")
+ 459 | 
+ 460 |         print(f"    [delete_room_endpoint] Deleting markers from/to room: {room_name} in {SUPABASE_MARKERS_TABLE}.")
+ 461 |         mark_from_del_res = supabase.table(SUPABASE_MARKERS_TABLE).delete().eq("tour_id", tour_id).eq("from_room", room_name).execute()
+ 462 |         mark_to_del_res = supabase.table(SUPABASE_MARKERS_TABLE).delete().eq("tour_id", tour_id).eq("to_room", room_name).execute()
+ 463 |         print(f"    [delete_room_endpoint] ✅ Deleted {len(mark_from_del_res.data) + len(mark_to_del_res.data)} marker entries from DB.")
+ 464 | 
+ 465 |         print(f"    [delete_room_endpoint] Deleting tooltips for room: {room_name} in {SUPABASE_TOOLTIPS_TABLE}.")
+ 466 |         tip_del_res = supabase.table(SUPABASE_TOOLTIPS_TABLE).delete().eq("tour_id", tour_id).eq("room_name", room_name).execute()
+ 467 |         print(f"    [delete_room_endpoint] ✅ Deleted {len(tip_del_res.data)} tooltip entries from DB.")
+ 468 | 
+ 469 |         # New: Delete audio entry from tour_audio table
+ 470 |         print(f"    [delete_room_endpoint] Deleting audio for room: {room_name} in {SUPABASE_TOUR_AUDIO_TABLE}.")
+ 471 |         audio_del_res = supabase.table(SUPABASE_TOUR_AUDIO_TABLE).delete().eq("tour_id", tour_id).eq("room_name", room_name).execute()
+ 472 |         print(f"    [delete_room_endpoint] ✅ Deleted {len(audio_del_res.data)} audio entries from DB.")
+ 473 | 
+ 474 |         # New: Delete audio file from Supabase Storage
+ 475 |         audio_file_path_in_bucket = f"{tour_id}/{quote(room_name.replace(' ', '_'))}_audio.mp3"
+ 476 |         try:
+ 477 |             print(f"    [delete_room_endpoint] ☁️ Deleting audio file from Supabase Storage: {audio_file_path_in_bucket}")
+ 478 |             supabase.storage.from_(SUPABASE_AUDIO_BUCKET_NAME).remove([audio_file_path_in_bucket])
+ 479 |             print("    [delete_room_endpoint] ✅ Audio file deleted from Supabase Storage.")
+ 480 |         except Exception as e:
+ 481 |             print(f"    [delete_room_endpoint] ⚠️ Could not delete audio file from Supabase Storage (might not exist or other error): {e}")
+ 482 |             pass
+ 483 | 
+ 484 | 
+ 485 |         print(f"    [delete_room_endpoint] Checking if deleted room was start_room in {SUPABASE_TOURS_TABLE}.")
+ 486 |         tour_res = supabase.table(SUPABASE_TOURS_TABLE).select("start_room").eq("tour_id", tour_id).limit(1).execute()
+ 487 |         if tour_res.data and tour_res.data[0]['start_room'] == room_name:
+ 488 |             print(f"    [delete_room_endpoint] Deleted room '{room_name}' was the start room. Finding new start room.")
+ 489 |             remaining_panoramas = supabase.table(SUPABASE_PANORAMAS_TABLE).select("room_name").eq("tour_id", tour_id).limit(1).execute()
+ 490 |             new_start_room = remaining_panoramas.data[0]['room_name'] if remaining_panoramas.data else None
+ 491 |             supabase.table(SUPABASE_TOURS_TABLE).update({"start_room": new_start_room}).eq("tour_id", tour_id).execute()
+ 492 |             print(f"    [delete_room_endpoint] ✅ Updated tour's start room to: {new_start_room}")
+ 493 | 
+ 494 |         print("--- Room deletion and associated data cleanup completed. Sending success response. ---")
+ 495 |         return jsonify({"success": True, "message": f"Room '{room_name}' and all associated data deleted."})
+ 496 |     except Exception as e:
+ 497 |         print(f"--- ❌ Error in /delete-room endpoint: {e} ---")
+ 498 |         return jsonify({"success": False, "message": f"Server error deleting room: {str(e)}"}), 500
+ 499 | 
+ 500 | 
+ 501 | @app.route('/get-tour-data/<tour_id>', methods=['GET'])
+ 502 | def get_tour_data_endpoint(tour_id):
+ 503 |     print(f"--- Received GET request to /get-tour-data/{tour_id} ---")
+ 504 |     try:
+ 505 |         tour_response= supabase.from_('tour').select('start_room').eq('tour_id', tour_id).single().execute()
+ 506 |         tour_data = tour_response.data
+ 507 |         if tour_response.count == 0 or not tour_data:
+ 508 |             print(f"[get_tour_data_endpoint] No tour found with ID: {tour_id}")
+ 509 |             return jsonify({'success': False, 'error': 'Tour not found.'}), 404
+ 510 | 
+ 511 |         start_room = tour_data.get('start_room')
+ 512 |         print(f"[get_tour_data_endpoint] Start room from tours table (raw): '{start_room}'")
+ 513 | 
+ 514 |         print("[get_tour_data_endpoint] Fetching panoramas from panoramas.")
+ 515 |         panoramas_response = supabase.from_('panoramas').select('room_name, panorama_url').eq('tour_id', tour_id).execute()
+ 516 |         panoramas = panoramas_response.data
+ 517 |         print(f"[get_tour_data_endpoint] Fetched {len(panoramas)} panoramas.")
+ 518 |         print(f"[get_tour_data_endpoint] Raw Panoramas Data: {json.dumps(panoramas, indent=2)}")
+ 519 | 
+ 520 |         panorama_urls = {}
+ 521 |         for p in panoramas:
+ 522 |             if 'room_name' in p and p['room_name'] is not None and 'panorama_url' in p and p['panorama_url'] is not None:
+ 523 |                 panorama_urls[p['room_name']] = p['panorama_url']
+ 524 |             else:
+ 525 |                 print(f"[get_tour_data_endpoint] Warning: Skipping panorama with missing room_name or panorama_url: {p}")
+ 526 | 
+ 527 |         print(f"[get_tour_data_endpoint] Panorama URLs compiled (valid rooms only): {list(panorama_urls.keys())}")
+ 528 | 
+ 529 |         final_start_room = None
+ 530 |         if start_room and start_room in panorama_urls:
+ 531 |             final_start_room = start_room
+ 532 |         else:
+ 533 |             if panoramas:
+ 534 |                 first_valid_room = next((p['room_name'] for p in panoramas if p.get('room_name') and p['room_name'] in panorama_urls), None)
+ 535 |                 if first_valid_room:
+ 536 |                     final_start_room = first_valid_room
+ 537 |                     print(f"[get_tour_data_endpoint] Defaulting start room to first valid panorama: '{final_start_room}'")
+ 538 |                 else:
+ 539 |                     print("[get_tour_data_endpoint] No valid panoramas found to set as start room.")
+ 540 |                     return jsonify({'success': False, 'error': 'No valid panoramas uploaded for this tour or all have invalid names/URLs.'}), 404
+ 541 |             else:
+ 542 |                 print("[get_tour_data_endpoint] No panoramas found at all for this tour.")
+ 543 |                 return jsonify({'success': False, 'error': 'No panoramas uploaded for this tour.'}), 404
+ 544 | 
+ 545 |         print(f"[get_tour_data_endpoint] Final determined start room: '{final_start_room}'")
+ 546 | 
+ 547 | 
+ 548 |         print("[get_tour_data_endpoint] Fetching markers from markers.")
+ 549 |         markers_response = supabase.from_('markers').select('marker_id, from_room, to_room, position_x, position_y').eq('tour_id', tour_id).execute()
+ 550 |         markers_raw = markers_response.data
+ 551 |         print(f"[get_tour_data_endpoint] Fetched {len(markers_raw)} raw markers.")
+ 552 |         print(f"[get_tour_data_endpoint] Raw Markers Data: {json.dumps(markers_raw, indent=2)}")
+ 553 | 
+ 554 |         markers_data = {}
+ 555 |         for marker_item in markers_raw:
+ 556 |             required_marker_keys = ['from_room', 'to_room', 'position_x', 'position_y']
+ 557 |             if not all(key in marker_item and marker_item[key] is not None for key in required_marker_keys):
+ 558 |                 print(f"[get_tour_data_endpoint] Warning: Skipping malformed marker (missing required data): {marker_item}")
+ 559 |                 continue
+ 560 | 
+ 561 |             from_room = marker_item['from_room']
+ 562 |             if from_room in panorama_urls:
+ 563 |                 if from_room not in markers_data:
+ 564 |                     markers_data[from_room] = []
+ 565 |                 markers_data[from_room].append({
+ 566 |                     'id': marker_item.get('marker_id', str(uuid.uuid4())),
+ 567 |                     'linkTo': marker_item['to_room'],
+ 568 |                     'position': {'x': marker_item['position_x'], 'y': marker_item['position_y']}
+ 569 |                 })
+ 570 |             else:
+ 571 |                 print(f"[get_tour_data_endpoint] Warning: Skipping marker from unknown room '{from_room}' (not in panoramas): {marker_item}")
+ 572 | 
+ 573 |         print(f"[get_tour_data_endpoint] Organized markers for rooms: {list(markers_data.keys())}")
+ 574 | 
+ 575 |         print("[get_tour_data_endpoint] Fetching tooltips from tooltips.")
+ 576 |         tooltips_response=supabase.from_('tooltips').select('tooltip_id, room_name, content, position_x, position_y').eq('tour_id', tour_id).execute()
+ 577 |         tooltips_raw = tooltips_response.data
+ 578 |         print(f"[get_tour_data_endpoint] Fetched {len(tooltips_raw)} raw tooltips.")
+ 579 |         print(f"[get_tour_data_endpoint] Raw Tooltips Data: {json.dumps(tooltips_raw, indent=2)}")
+ 580 | 
+ 581 |         tooltips_data = {}
+ 582 |         for tooltip_item in tooltips_raw:
+ 583 |             required_tooltip_keys = ['room_name', 'content', 'position_x', 'position_y']
+ 584 |             if not all(key in tooltip_item and tooltip_item[key] is not None for key in required_tooltip_keys):
+ 585 |                 print(f"[get_tour_data_endpoint] Warning: Skipping malformed tooltip (missing required data): {tooltip_item}")
+ 586 |                 continue
+ 587 | 
+ 588 |             room_name = tooltip_item['room_name']
+ 589 |             if room_name in panorama_urls:
+ 590 |                 if room_name not in tooltips_data:
+ 591 |                     tooltips_data[room_name] = []
+ 592 |                 tooltips_data[room_name].append({
+ 593 |                     'id': tooltip_item.get('tooltip_id', str(uuid.uuid4())),
+ 594 |                     'content': tooltip_item['content'],
+ 595 |                     'position': {'x': tooltip_item['position_x'], 'y': tooltip_item['position_y']}
+ 596 |                 })
+ 597 |             else:
+ 598 |                 print(f"[get_tour_data_endpoint] Warning: Skipping tooltip from unknown room '{room_name}' (not in panoramas): {tooltip_item}")
+ 599 | 
+ 600 |         print(f"[get_tour_data_endpoint] Organized tooltips for rooms: {list(tooltips_data.keys())}")
+ 601 | 
+ 602 |         # New: Fetch audio data
+ 603 |         print("[get_tour_data_endpoint] Fetching audio from tour_audio.")
+ 604 |         audio_response = supabase.from_('tour_audio').select('room_name, audio_url').eq('tour_id', tour_id).execute()
+ 605 |         audio_raw = audio_response.data
+ 606 |         print(f"[get_tour_data_endpoint] Fetched {len(audio_raw)} raw audio entries.")
+ 607 | 
+ 608 |         audio_data = {}
+ 609 |         for audio_item in audio_raw:
+ 610 |             if 'room_name' in audio_item and 'audio_url' in audio_item:
+ 611 |                 audio_data[audio_item['room_name']] = audio_item['audio_url']
+ 612 |             else:
+ 613 |                 print(f"[get_tour_data_endpoint] Warning: Skipping malformed audio entry: {audio_item}")
+ 614 |         print(f"[get_tour_data_endpoint] Organized audio data for rooms: {list(audio_data.keys())}")
+ 615 | 
+ 616 | 
+ 617 |         response_data = {
+ 618 |             'success': True,
+ 619 |             'panoramaUrls': panorama_urls,
+ 620 |             'markers': markers_data,
+ 621 |             'tooltips': tooltips_data,
+ 622 |             'startRoom': final_start_room,
+ 623 |             'audioUrls': audio_data # New: Include audio URLs in the response
+ 624 |         }
+ 625 |         print("--- Tour data fetched successfully. Sending success response. ---")
+ 626 |         return jsonify(response_data), 200
+ 627 | 
+ 628 |     except Exception as e:
+ 629 |         print(f"--- ❌ Error in /get-tour-data endpoint: '{e}' ---")
+ 630 |         traceback.print_exc()
+ 631 |         return jsonify({'success': False, 'error': str(e)}), 500
+ 632 | 
+ 633 | @app.route('/save-markers', methods=['POST'])
+ 634 | def save_markers_endpoint():
+ 635 |     print("\n--- Received POST request to /save-markers ---")
+ 636 |     try:
+ 637 |         data = request.get_json()
+ 638 |         tour_id = data.get('tourId')
+ 639 |         room_from = data.get('roomFrom')
+ 640 |         new_markers = data.get('markers')
+ 641 | 
+ 642 |         print(f"    [save_markers_endpoint] Received tourId: {tour_id}, roomFrom: {room_from}, markers count: {len(new_markers) if new_markers else 0}")
+ 643 | 
+ 644 |         if not tour_id or not room_from or not isinstance(new_markers, list):
+ 645 |             print("    [save_markers_endpoint] Error: Invalid data provided for saving markers.")
+ 646 |             return jsonify({'success': False, 'error': 'Invalid data provided for saving markers.'}), 400
+ 647 | 
+ 648 |         print(f"    [save_markers_endpoint] Deleting existing markers for tourId {tour_id}, roomFrom {room_from}.")
+ 649 |         delete_res = supabase.table(SUPABASE_MARKERS_TABLE).delete().eq("tour_id", tour_id).eq("from_room", room_from).execute()
+ 650 |         print(f"    [save_markers_endpoint] Deleted {len(delete_res.data)} existing markers.")
+ 651 | 
+ 652 |         if new_markers:
+ 653 |             markers_to_insert = []
+ 654 |             for marker in new_markers:
+ 655 |                 marker_id = marker.get('id', str(uuid.uuid4()))
+ 656 |                 markers_to_insert.append({
+ 657 |                     "id": marker_id,
+ 658 |                     "tour_id": tour_id,
+ 659 |                     "from_room": room_from,
+ 660 |                     "to_room": marker['linkTo'],
+ 661 |                     "position_x": marker['position_x'],
+ 662 |                     "position_y": marker['position_y']
+ 663 |                 })
+ 664 |             print(f"    [save_markers_endpoint] Inserting {len(markers_to_insert)} new markers.")
+ 665 |             insert_res = supabase.table(SUPABASE_MARKERS_TABLE).insert(markers_to_insert).execute()
+ 666 |             if not insert_res.data:
+ 667 |                 print(f"    [save_markers_endpoint] ❌ Failed to insert new markers. Error: {insert_res.error}")
+ 668 |                 raise Exception(f"Failed to insert new markers: {insert_res.error}")
+ 669 |             print(f"    [save_markers_endpoint] ✅ Inserted {len(insert_res.data)} new markers.")
+ 670 | 
+ 671 |         print("--- Markers saved successfully. ---")
+ 672 |         return jsonify({'success': True, 'message': 'Markers saved successfully.'})
+ 673 |     except Exception as e:
+ 674 |         print(f"--- ❌ Error in /save-markers endpoint: {e} ---")
+ 675 |         return jsonify({'success': False, 'error': f"Server error saving markers: {str(e)}"}), 500
+ 676 | 
+ 677 | @app.route('/save-tooltips', methods=['POST'])
+ 678 | def save_tooltips_endpoint():
+ 679 |     print("\n--- Received POST request to /save-tooltips ---")
+ 680 |     try:
+ 681 |         data = request.get_json()
+ 682 |         tour_id = data.get('tourId')
+ 683 |         room_name = data.get('roomName')
+ 684 |         new_tooltips = data.get('tooltips')
+ 685 | 
+ 686 |         print(f"    [save_tooltips_endpoint] Received tourId: {tour_id}, roomName: {room_name}, tooltips count: {len(new_tooltips) if new_tooltips else 0}")
+ 687 | 
+ 688 |         if not tour_id or not room_name or not isinstance(new_tooltips, list):
+ 689 |             print("    [save_tooltips_endpoint] Error: Invalid data provided for saving tooltips.")
+ 690 |             return jsonify({'success': False, 'error': 'Invalid data provided for saving tooltips.'}), 400
+ 691 | 
+ 692 |         print(f"    [save_tooltips_endpoint] Deleting existing tooltips for tourId {tour_id}, roomName {room_name}.")
+ 693 |         delete_res = supabase.table(SUPABASE_TOOLTIPS_TABLE).delete().eq("tour_id", tour_id).eq("room_name", room_name).execute()
+ 694 |         print(f"    [save_tooltips_endpoint] Deleted {len(delete_res.data)} existing tooltips.")
+ 695 | 
+ 696 |         if new_tooltips:
+ 697 |             tooltips_to_insert = []
+ 698 |             for tooltip in new_tooltips:
+ 699 |                 tooltip_id = tooltip.get('id', str(uuid.uuid4()))
+ 700 |                 tooltips_to_insert.append({
+ 701 |                     "id": tooltip_id,
+ 702 |                     "tour_id": tour_id,
+ 703 |                     "room_name": room_name,
+ 704 |                     "content": tooltip['content'],
+ 705 |                     "position_x": tooltip['position_x'],
+ 706 |                     "position_y": tooltip['position_y']
+ 707 |                 })
+ 708 |             print(f"    [save_tooltips_endpoint] Inserting {len(tooltips_to_insert)} new tooltips.")
+ 709 |             insert_res = supabase.table(SUPABASE_TOOLTIPS_TABLE).insert(tooltips_to_insert).execute()
+ 710 |             if not insert_res.data:
+ 711 |                 print(f"    [save_tooltips_endpoint] ❌ Failed to insert new tooltips. Error: {insert_res.error}")
+ 712 |                 raise Exception(f"Failed to insert new tooltips: {insert_res.error}")
+ 713 |             print(f"    [save_tooltips_endpoint] ✅ Inserted {len(insert_res.data)} new tooltips.")
+ 714 | 
+ 715 |         print("--- Tooltips saved successfully. ---")
+ 716 |         return jsonify({'success': True, 'message': 'Tooltips saved successfully.'})
+ 717 |     except Exception as e:
+ 718 |         print(f"--- ❌ Error in /save-tooltips endpoint: {e} ---")
+ 719 |         return jsonify({'success': False, 'error': f"Server error saving tooltips: {str(e)}"}), 500
+ 720 | 
+ 721 | @app.route('/upload-audio', methods=['POST'])
+ 722 | def upload_audio_endpoint():
+ 723 |     print("\n--- Received POST request to /upload-audio ---")
+ 724 |     try:
+ 725 |         tour_id = request.form.get('tourId')
+ 726 |         room_name = request.form.get('roomName')
+ 727 |         audio_file = request.files.get('audio')
+ 728 | 
+ 729 |         print(f"    [upload_audio_endpoint] Received tourId: {tour_id}, roomName: {room_name}")
+ 730 | 
+ 731 |         if not tour_id or not room_name or not audio_file:
+ 732 |             print("    [upload_audio_endpoint] Error: Missing tour ID, room name, or audio file.")
+ 733 |             return jsonify({'success': False, 'error': 'Missing tour ID, room name, or audio file.'}), 400
+ 734 | 
+ 735 |         # Define Supabase Storage path for audio
+ 736 |         # Ensure room_name is URL-safe for the path
+ 737 |         supabase_audio_path = f"{tour_id}/{quote(room_name.replace(' ', '_'))}_audio.mp3"
+ 738 | 
+ 739 |         print(f"    [upload_audio_endpoint] ☁️ Uploading audio to Supabase Storage: {supabase_audio_path}")
+ 740 |         upload_result = supabase.storage.from_(SUPABASE_AUDIO_BUCKET_NAME).upload(
+ 741 |             file=audio_file.read(), # Read the file content
+ 742 |             path=supabase_audio_path,
+ 743 |             file_options={"content-type": "audio/mpeg", "upsert": "true"} # Upsert to overwrite if exists
+ 744 |         )
+ 745 | 
+ 746 |         if hasattr(upload_result, 'path') and upload_result.path:
+ 747 |             print(f"    [upload_audio_endpoint] ✅ Supabase Storage audio upload successful. Response: {upload_result}")
+ 748 |             public_url = supabase.storage.from_(SUPABASE_AUDIO_BUCKET_NAME).get_public_url(supabase_audio_path)
+ 749 |             if public_url:
+ 750 |                 audio_url = public_url
+ 751 |                 print(f"    [upload_audio_endpoint] ✅ Supabase Public Audio URL: {audio_url}")
+ 752 |             else:
+ 753 |                 raise Exception("Failed to get public URL for audio from Supabase after upload.")
+ 754 |         else:
+ 755 |             print(f"    [upload_audio_endpoint] ❌ Supabase Storage audio upload failed. Unexpected response: {upload_result}")
+ 756 |             raise Exception(f"Supabase Storage audio upload failed: Unexpected response type or content. Raw response: {upload_result}")
+ 757 | 
+ 758 |         # Store audio URL in the Supabase database
+ 759 |         print(f"    [upload_audio_endpoint] Upserting audio URL to {SUPABASE_TOUR_AUDIO_TABLE} for room: {room_name}")
+ 760 |         db_response = supabase.table(SUPABASE_TOUR_AUDIO_TABLE).upsert({
+ 761 |             "tour_id": tour_id,
+ 762 |             "room_name": room_name,
+ 763 |             "audio_url": audio_url
+ 764 |         }, on_conflict="tour_id, room_name").execute() # Use on_conflict to update if exists
+ 765 | 
+ 766 |         if db_response.data:
+ 767 |             print(f"    [upload_audio_endpoint] ✅ Saved audio URL to Supabase DB for room: {room_name}. Response: {db_response.data}")
+ 768 |         else:
+ 769 |             print(f"    [upload_audio_endpoint] ❌ Failed to save audio URL to Supabase DB for room: {room_name}. Error: {db_response.error}")
+ 770 |             raise Exception(f"Failed to save audio URL for {room_name} to database: {db_response.error}")
+ 771 | 
+ 772 |         print("--- Audio uploaded and metadata saved successfully. ---")
+ 773 |         return jsonify({'success': True, 'message': 'Audio uploaded successfully!', 'audioUrl': audio_url}), 200
+ 774 | 
+ 775 |     except Exception as e:
+ 776 |         print(f"--- ❌ Error in /upload-audio endpoint: {e} ---")
+ 777 |         traceback.print_exc() # Print full traceback for debugging
+ 778 |         return jsonify({'success': False, 'error': f"Server error uploading audio: {str(e)}"}), 500
+ 779 | 
+ 780 | @app.route('/delete-audio', methods=['POST'])
+ 781 | def delete_audio_endpoint():
+ 782 |     print("\n--- Received POST request to /delete-audio ---")
+ 783 |     try:
+ 784 |         data = request.get_json()
+ 785 |         tour_id = data.get('tourId')
+ 786 |         room_name = data.get('roomName')
+ 787 | 
+ 788 |         if not tour_id or not room_name:
+ 789 |             return jsonify({'success': False, 'error': 'Missing tour ID or room name.'}), 400
+ 790 | 
+ 791 |         # Delete from Supabase Storage
+ 792 |         supabase_audio_path = f"{tour_id}/{quote(room_name.replace(' ', '_'))}_audio.mp3"
+ 793 |         try:
+ 794 |             supabase.storage.from_(SUPABASE_AUDIO_BUCKET_NAME).remove([supabase_audio_path])
+ 795 |             print(f"✅ Audio file '{supabase_audio_path}' deleted from Supabase Storage.")
+ 796 |         except Exception as e:
+ 797 |             print(f"⚠️ Could not delete audio file from Supabase Storage (might not exist): {e}")
+ 798 |             # Continue even if file deletion fails, as DB entry might still need to be removed
+ 799 | 
+ 800 |         # Delete from Supabase Database
+ 801 |         db_response = supabase.table(SUPABASE_TOUR_AUDIO_TABLE).delete().eq("tour_id", tour_id).eq("room_name", room_name).execute()
+ 802 | 
+ 803 |         if db_response.data:
+ 804 |             print(f"✅ Audio entry for room '{room_name}' deleted from Supabase DB.")
+ 805 |             return jsonify({'success': True, 'message': 'Audio removed successfully!'}), 200
+ 806 |         else:
+ 807 |             print(f"❌ Failed to delete audio entry from Supabase DB: {db_response.error}")
+ 808 |             return jsonify({'success': False, 'error': f"Failed to remove audio from database: {db_response.error}"}), 500
+ 809 | 
+ 810 |     except Exception as e:
+ 811 |         print(f"--- ❌ Error in /delete-audio endpoint: {e} ---")
+ 812 |         traceback.print_exc()
+ 813 |         return jsonify({'success': False, 'error': f"Server error deleting audio: {str(e)}"}), 500
+ 814 | 
+ 815 | @app.route('/update-start-room', methods=['POST'])
+ 816 | def update_start_room_endpoint():
+ 817 |     print("\n--- Received POST request to /update-start-room ---")
+ 818 |     try:
+ 819 |         data = request.get_json()
+ 820 |         tour_id = data.get('tourId')
+ 821 |         new_start_room = data.get('newStartRoom')
+ 822 | 
+ 823 |         print(f"    [update_start_room_endpoint] Received tourId: {tour_id}, newStartRoom: {new_start_room}")
+ 824 | 
+ 825 |         if not tour_id or not new_start_room:
+ 826 |             print("    [update_start_room_endpoint] Error: Missing tour ID or new start room.")
+ 827 |             return jsonify({'success': False, 'error': 'Missing tour ID or new start room.'}), 400
+ 828 | 
+ 829 |         print(f"    [update_start_room_endpoint] Updating start_room for tour '{tour_id}' to '{new_start_room}'.")
+ 830 |         response = supabase.table(SUPABASE_TOURS_TABLE).update({"start_room": new_start_room}).eq("tour_id", tour_id).execute()
+ 831 | 
+ 832 |         if response.data:
+ 833 |             print(f"    [update_start_room_endpoint] ✅ Start room updated successfully in {SUPABASE_TOURS_TABLE}. Response: {response.data}")
+ 834 |             return jsonify({'success': True, 'message': 'Start room updated successfully.'}), 200
+ 835 |         else:
+ 836 |             print(f"    [update_start_room_endpoint] ❌ Failed to update start room. Error: {response.error}")
+ 837 |             return jsonify({'success': False, 'error': f"Failed to update start room: {response.error}"}), 500
+ 838 | 
+ 839 |     except Exception as e:
+ 840 |         print(f"--- ❌ Error in /update-start-room endpoint: {e} ---")
+ 841 |         traceback.print_exc()
+ 842 |         return jsonify({'success': False, 'error': f"Server error updating start room: {str(e)}"}), 500
+ 843 | 
+ 844 | 
+ 845 | if __name__ == '__main__':
+ 846 |     print("--- Starting Flask Application ---")
+ 847 |     print(f"Upload Folder: {app.config['UPLOAD_FOLDER']}")
+ 848 |     print(f"Temp Output Folder: {app.config['TEMP_OUTPUT_FOLDER']}")
+ 849 |     print(f"Supabase URL: {SUPABASE_URL}")
+ 850 |     print(f"Supabase Image Bucket: {SUPABASE_BUCKET_NAME}")
+ 851 |     print(f"Supabase Audio Bucket: {SUPABASE_AUDIO_BUCKET_NAME}") # New: Log audio bucket
+ 852 |     print(f"Supabase Tours Table: {SUPABASE_TOURS_TABLE}")
+ 853 |     print(f"Supabase Audio Table: {SUPABASE_TOUR_AUDIO_TABLE}") # New: Log audio table
+ 854 |     print("--- Flask Application Ready ---")
+ 855 |     app.run(debug=True, host='0.0.0.0', port=5000)
+
+--- backend/stitcher.py ---
+   1 | import cv2
+   2 | import numpy as np
+   3 | 
+   4 | def stitch_images(image_paths, output_path):
+   5 |     """
+   6 |     Stitches images together to create a panorama and attempts to remove black areas.
+   7 | 
+   8 |     Args:
+   9 |         image_paths (list): List of paths to the images to stitch.
+  10 |         output_path (str): Path to save the stitched panorama.
+  11 | 
+  12 |     Returns:
+  13 |         tuple: (bool, numpy.ndarray)
+  14 |             - The first element is a boolean indicating success (True) or failure (False).
+  15 |             - The second element is the stitched image as a numpy.ndarray if successful, None otherwise.
+  16 |     """
+  17 |     images = [cv2.imread(path) for path in image_paths if path]
+  18 | 
+  19 |     if len(images) < 2:
+  20 |         return False, None  # Need at least 2 images to stitch
+  21 | 
+  22 |     stitcher = cv2.Stitcher_create()
+  23 |     status, stitched = stitcher.stitch(images)
+  24 | 
+  25 |     if status == cv2.Stitcher_OK:
+  26 |         stitched_image = stitched
+  27 |         # Attempt to remove black borders
+  28 |         stitched_image = remove_black_borders(stitched_image)
+  29 |         cv2.imwrite(output_path, stitched_image)
+  30 |         return True, stitched_image
+  31 |     else:
+  32 |         print("Stitching failed with status code:", status)
+  33 |         return False, None
+  34 | 
+  35 | def remove_black_borders(image):
+  36 |     """
+  37 |     Removes black borders from a stitched image.
+  38 | 
+  39 |     Args:
+  40 |         image (numpy.ndarray): The stitched image.
+  41 | 
+  42 |     Returns:
+  43 |         numpy.ndarray: The image with black borders removed, or the original image if no borders were found.
+  44 |     """
+  45 |     # 1. Convert to grayscale
+  46 |     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+  47 | 
+  48 |     # 2. Find the non-black regions
+  49 |     _, thresh = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
+  50 |     contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+  51 | 
+  52 |     if not contours:
+  53 |         return image  # No non-black regions found
+  54 | 
+  55 |     # 3. Get the bounding rectangle of the non-black region
+  56 |     x, y, w, h = cv2.boundingRect(contours[0])
+  57 | 
+  58 |     # 4. Crop the image to the bounding rectangle
+  59 |     cropped_image = image[y:y+h, x:x+w]
+  60 |     return cropped_image
+
+--- frontend/src/App.js ---
+   1 | // App.jsx
+   2 | import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+   3 | import VirtualTourForm from "./pages/VirtualTourForm";
+   4 | import TourEditorPage from "./pages/TourEditorPage";
+   5 | import PanoramaViewer from "./pages/PanoramaViewer";
+   6 | import AllToursPage from './pages/AllToursPage';
+   7 | 
+   8 | 
+   9 | import Home from "./pages/Home";
+  10 | import Signup from "./pages/Signup";
+  11 | import Login from "./pages/Login";
+  12 | import 'bootstrap/dist/css/bootstrap.min.css';
+  13 | 
+  14 | 
+  15 | 
+  16 | function App() {
+  17 |   return (
+  18 |     <Router>
+  19 |       <Routes>
+  20 |         <Route path="/" element={<Home />} />
+  21 |         <Route path="/signup" element={<Signup />} />
+  22 |         <Route path="/login" element={<Login />} />
+  23 |         <Route path="/create" element={<VirtualTourForm />} />
+  24 |         <Route path="/editor/:tourId" element={<TourEditorPage />} />
+  25 |         <Route path="/tour/:tourId" element={<PanoramaViewer />} />
+  26 |         <Route path="/tours" element={<AllToursPage />} />
+  27 | 
+  28 |       </Routes>
+  29 |     </Router>
+  30 |   );
+  31 | }
+  32 | export default App;
+
+--- frontend/src/components/Modal.js ---
+   1 | // src/components/Modal.js
+   2 | import React from 'react';
+   3 | 
+   4 | const Modal = ({ message, onClose, onSignUp }) => {
+   5 |   return (
+   6 |     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+   7 |       <div className="bg-white p-8 rounded-lg shadow-xl max-w-md w-full">
+   8 |         <h2 className="text-3xl font-semibold text-center text-red-600 mb-6">
+   9 |           Sign In Required
+  10 |         </h2>
+  11 |         <p className="text-center text-lg text-gray-600 mb-8">
+  12 |           {message}
+  13 |         </p>
+  14 |         <div className="flex justify-center gap-6">
+  15 |           <button
+  16 |             onClick={onClose}
+  17 |             className="bg-gray-300 hover:bg-gray-400 text-gray-700 px-6 py-3 rounded-lg font-medium transition duration-200 transform hover:scale-105"
+  18 |           >
+  19 |             Close
+  20 |           </button>
+  21 | 
+  22 |           <button
+  23 |             onClick={onSignUp}
+  24 |             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-200 transform hover:scale-105"
+  25 |           >
+  26 |             Sign Up
+  27 |           </button>
+  28 |         </div>
+  29 |       </div>
+  30 |     </div>
+  31 |   );
+  32 | };
+  33 | 
+  34 | export default Modal;
+
+--- frontend/src/pages/AllToursPage.js ---
+   1 | import React, { useEffect, useState } from 'react';
+   2 | import { Link } from 'react-router-dom';
+   3 | import { supabase } from '../Supabase'; // ✅ Ensure correct import path
+   4 | 
+   5 | const AllToursPage = () => {
+   6 |   const [tours, setTours] = useState([]);
+   7 |   const [loading, setLoading] = useState(true);
+   8 | 
+   9 |   useEffect(() => {
+  10 |     const fetchTours = async () => {
+  11 |       setLoading(true);
+  12 |       const { data, error } = await supabase
+  13 |         .from('tour')
+  14 |         .select('tour_id, tour_name')
+  15 |         .order('created_at', { ascending: false });
+  16 | 
+  17 |       if (error) {
+  18 |         console.error("❌ Error fetching tours:", error.message);
+  19 |         setLoading(false);
+  20 |         return;
+  21 |       }
+  22 | 
+  23 |       setTours(data || []);
+  24 |       setLoading(false);
+  25 |     };
+  26 | 
+  27 |     fetchTours();
+  28 |   }, []);
+  29 | 
+  30 |   return (
+  31 |     <div style={styles.page}>
+  32 |       <div style={styles.container}>
+  33 |         <h1 style={styles.title}>🌐 Explore All Virtual Tours</h1>
+  34 |         <p style={styles.subtitle}>Select any tour to view its immersive 360° experience</p>
+  35 | 
+  36 |         {loading ? (
+  37 |           <p style={styles.message}>Loading tours...</p>
+  38 |         ) : tours.length === 0 ? (
+  39 |           <p style={styles.message}>No tours found.</p>
+  40 |         ) : (
+  41 |           <div className="row g-4 justify-content-center">
+  42 |             {tours.map((tour, index) => (
+  43 |               <div key={tour.tour_id} className="col-md-6 col-lg-4">
+  44 |                 <div
+  45 |                   className="card h-100 shadow-sm border-0"
+  46 |                   style={styles.card}
+  47 |                   onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.02)"}
+  48 |                   onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+  49 |                 >
+  50 |                   <div className="card-body text-center">
+  51 |                     <h5 className="card-title text-primary fw-semibold">
+  52 |                       {tour.tour_name || `Untitled Tour #${index + 1}`}
+  53 |                     </h5>
+  54 |                     <p className="text-muted mb-3">
+  55 |                       <span className="badge bg-light text-dark">ID:</span>{' '}
+  56 |                       <code>{tour.tour_id}</code>
+  57 |                     </p>
+  58 |                     <Link to={`/tour/${tour.tour_id}`} className="btn btn-outline-primary w-100">
+  59 |                       ▶️ View Tour
+  60 |                     </Link>
+  61 |                   </div>
+  62 |                 </div>
+  63 |               </div>
+  64 |             ))}
+  65 |           </div>
+  66 |         )}
+  67 |       </div>
+  68 |     </div>
+  69 |   );
+  70 | };
+  71 | 
+  72 | // 🎨 Styling
+  73 | const styles = {
+  74 |   page: {
+  75 |     backgroundColor: '#f8f9fb',
+  76 |     minHeight: '100vh',
+  77 |     padding: '60px 20px',
+  78 |     fontFamily: "'Segoe UI', sans-serif",
+  79 |   },
+  80 |   container: {
+  81 |     maxWidth: '1100px',
+  82 |     margin: '0 auto',
+  83 |   },
+  84 |   title: {
+  85 |     textAlign: 'center',
+  86 |     fontSize: '2.5rem',
+  87 |     fontWeight: '700',
+  88 |     marginBottom: '12px',
+  89 |     color: '#2c3e50',
+  90 |     textShadow: '0 1px 3px rgba(0,0,0,0.1)',
+  91 |   },
+  92 |   subtitle: {
+  93 |     textAlign: 'center',
+  94 |     color: '#666',
+  95 |     fontSize: '1.125rem',
+  96 |     marginBottom: '40px',
+  97 |   },
+  98 |   message: {
+  99 |     textAlign: 'center',
+ 100 |     color: '#999',
+ 101 |     fontSize: '1.2rem',
+ 102 |   },
+ 103 |   card: {
+ 104 |     transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+ 105 |     borderRadius: '14px',
+ 106 |   },
+ 107 | };
+ 108 | 
+ 109 | export default AllToursPage;
+
+--- frontend/src/pages/Home.js ---
+   1 | import React, { useState } from 'react';
+   2 | import { useNavigate } from 'react-router-dom';
+   3 | 
+   4 | export default function LandingPage() {
+   5 |   const navigate = useNavigate();
+   6 |   const [isAuthenticated] = useState(false); // Replace with real auth check
+   7 | 
+   8 |   const handleCreateClick = () => {
+   9 |     if (!isAuthenticated) {
+  10 |       alert("Please log in to create your own tour.");
+  11 |       navigate('/login');
+  12 |     } else {
+  13 |       navigate('/create');
+  14 |     }
+  15 |   };
+  16 | 
+  17 |   return (
+  18 |     <div
+  19 |       style={{
+  20 |         backgroundImage: "url('bg.jpg')",
+  21 |         backgroundSize: "cover",
+  22 |         backgroundPosition: "center",
+  23 |         backgroundRepeat: "no-repeat",
+  24 |         minHeight: "100vh",
+  25 |         width: "100%",
+  26 |         display: "flex",
+  27 |         alignItems: "center",
+  28 |         justifyContent: "center",
+  29 |       }}
+  30 |     >
+  31 |       <div
+  32 |         style={{
+  33 |           backgroundColor: "rgba(255, 255, 255, 0.2)",
+  34 |           borderRadius: "1rem",
+  35 |           boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
+  36 |           backdropFilter: "blur(10px)",
+  37 |           maxWidth: "400px",
+  38 |           width: "100%",
+  39 |           padding: "2.5rem",
+  40 |           textAlign: "center",
+  41 |           color: "white",
+  42 |         }}
+  43 |       >
+  44 |         <h1
+  45 |           style={{
+  46 |             fontSize: "2.5rem",
+  47 |             fontWeight: "bold",
+  48 |             marginBottom: "1.5rem",
+  49 |             textShadow: "0 2px 6px rgba(0,0,0,0.5)",
+  50 |           }}
+  51 |         >
+  52 |           Virtual Tour Creator
+  53 |         </h1>
+  54 | 
+  55 |         <p style={{ fontSize: "1.125rem", marginBottom: "2rem" }}>
+  56 |           Dive into immersive 360° experiences or create your own virtual
+  57 |           journey instantly.
+  58 |         </p>
+  59 | 
+  60 |         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+  61 |           {/* ✅ Corrected route */}
+  62 |           <LandingButton text="View Existing Tours" onClick={() => navigate('/tours')} />
+  63 |           <LandingButton text="Create Your Own Tour" onClick={handleCreateClick} />
+  64 |         </div>
+  65 |       </div>
+  66 |     </div>
+  67 |   );
+  68 | }
+  69 | 
+  70 | // Reusable styled button component
+  71 | function LandingButton({ text, onClick }) {
+  72 |   const [hovered, setHovered] = useState(false);
+  73 | 
+  74 |   return (
+  75 |     <button
+  76 |       onClick={onClick}
+  77 |       onMouseEnter={() => setHovered(true)}
+  78 |       onMouseLeave={() => setHovered(false)}
+  79 |       style={{
+  80 |         padding: "0.75rem 2rem",
+  81 |         backgroundColor: hovered ? "#e0e7ff" : "white",
+  82 |         color: "#4f46e5",
+  83 |         fontWeight: "600",
+  84 |         borderRadius: "9999px",
+  85 |         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+  86 |         transform: hovered ? "scale(1.05)" : "scale(1)",
+  87 |         transition: "transform 0.3s ease, background-color 0.3s ease",
+  88 |         border: "none",
+  89 |         cursor: "pointer",
+  90 |       }}
+  91 |     >
+  92 |       {text}
+  93 |     </button>
+  94 |   );
+  95 | }
+
+--- frontend/src/pages/Login.js ---
+   1 | import { useState } from "react";
+   2 | import { useNavigate } from "react-router-dom";
+   3 | import { supabase } from "../Supabase"; // Ensure this path is correct for your setup
+   4 | 
+   5 | export default function Login() {
+   6 |   const [email, setEmail] = useState("");
+   7 |   const [password, setPassword] = useState("");
+   8 |   const [showPassword, setShowPassword] = useState(false);
+   9 |   const [alert, setAlert] = useState({ type: "", message: "" });
+  10 |   const navigate = useNavigate();
+  11 | 
+  12 |   const handleLogin = async (e) => {
+  13 |     e.preventDefault();
+  14 |     setAlert({ type: "", message: "" });
+  15 | 
+  16 |     try {
+  17 |       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  18 | 
+  19 |       if (error) {
+  20 |         console.error("Supabase Login Error:", error); // Log the actual Supabase error
+  21 |         setAlert({ type: "danger", message: error.message });
+  22 |       } else if (data.user && !data.user.email_confirmed_at) {
+  23 |         // This check assumes Supabase returns email_confirmed_at in user metadata
+  24 |         setAlert({ type: "danger", message: "Please verify your email address before logging in." });
+  25 |       } else {
+  26 |         setAlert({ type: "success", message: "Logged in successfully! Redirecting..." });
+  27 |         setTimeout(() => navigate("/create"), 1500);
+  28 |       }
+  29 |     } catch (err) {
+  30 |       console.error("Unexpected Login Error:", err);
+  31 |       setAlert({ type: "danger", message: "An unexpected error occurred during login." });
+  32 |     }
+  33 |   };
+  34 | 
+  35 |   return (
+  36 |     <div
+  37 |       style={{
+  38 |         minHeight: "100vh",
+  39 |         width: "100%",
+  40 |         display: "flex",
+  41 |         alignItems: "center",
+  42 |         justifyContent: "center",
+  43 |         backgroundColor: "#f8f9fa", // Light gray background
+  44 |         fontFamily: "sans-serif", // Ensure font consistency
+  45 |       }}
+  46 |     >
+  47 |       {/* Container for the login form */}
+  48 |       <div
+  49 |         style={{
+  50 |           backgroundColor: "#ffffff", // White background for the card
+  51 |           borderRadius: "1rem",
+  52 |           boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)", // Clean shadow
+  53 |           maxWidth: "400px",
+  54 |           width: "100%",
+  55 |           padding: "2.5rem",
+  56 |           textAlign: "center",
+  57 |           color: "#333", // Default text color
+  58 |         }}
+  59 |       >
+  60 |         <h3
+  61 |           style={{
+  62 |             fontSize: "2rem",
+  63 |             fontWeight: "bold",
+  64 |             marginBottom: "1.5rem",
+  65 |             color: "#4f46e5", // Primary color for heading
+  66 |           }}
+  67 |         >
+  68 |           Login
+  69 |         </h3>
+  70 |         {alert.message && (
+  71 |           <div
+  72 |             style={{
+  73 |               backgroundColor:
+  74 |                 alert.type === "danger"
+  75 |                   ? "#f8d7da" // Light red for danger
+  76 |                   : "#d4edda", // Light green for success
+  77 |               color:
+  78 |                 alert.type === "danger"
+  79 |                   ? "#721c24" // Dark red text
+  80 |                   : "#155724", // Dark green text
+  81 |               padding: "10px",
+  82 |               borderRadius: "8px",
+  83 |               marginBottom: "15px",
+  84 |               fontSize: "0.9rem",
+  85 |               border: `1px solid ${alert.type === "danger" ? "#f5c6cb" : "#c3e6cb"}`,
+  86 |             }}
+  87 |           >
+  88 |             {alert.message}
+  89 |           </div>
+  90 |         )}
+  91 |         <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+  92 |           <div style={{ marginBottom: "10px", textAlign: "left" }}>
+  93 |             <label style={{ display: "block", marginBottom: "5px", fontSize: "0.9rem", fontWeight: "500" }}>Email address</label>
+  94 |             <input
+  95 |               type="email"
+  96 |               style={{
+  97 |                 width: "100%",
+  98 |                 padding: "12px",
+  99 |                 borderRadius: "8px",
+ 100 |                 border: "1px solid #ced4da",
+ 101 |                 backgroundColor: "#f8f9fa", // Light input background
+ 102 |                 color: "#333",
+ 103 |                 boxSizing: "border-box",
+ 104 |                 fontSize: "1rem",
+ 105 |               }}
+ 106 |               required
+ 107 |               value={email}
+ 108 |               onChange={(e) => setEmail(e.target.value)}
+ 109 |               placeholder="Enter email"
+ 110 |             />
+ 111 |           </div>
+ 112 |           <div style={{ marginBottom: "10px", textAlign: "left" }}>
+ 113 |             <label style={{ display: "block", marginBottom: "5px", fontSize: "0.9rem", fontWeight: "500" }}>Password</label>
+ 114 |             <div style={{ display: "flex", width: "100%" }}>
+ 115 |               <input
+ 116 |                 type={showPassword ? "text" : "password"}
+ 117 |                 style={{
+ 118 |                   flexGrow: 1,
+ 119 |                   padding: "12px",
+ 120 |                   borderRadius: "8px 0 0 8px",
+ 121 |                   border: "1px solid #ced4da",
+ 122 |                   backgroundColor: "#f8f9fa",
+ 123 |                   color: "#333",
+ 124 |                   boxSizing: "border-box",
+ 125 |                   fontSize: "1rem",
+ 126 |                   outline: "none",
+ 127 |                 }}
+ 128 |                 required
+ 129 |                 value={password}
+ 130 |                 onChange={(e) => setPassword(e.target.value)}
+ 131 |                 placeholder="Password"
+ 132 |               />
+ 133 |               <button
+ 134 |                 type="button"
+ 135 |                 style={{
+ 136 |                   backgroundColor: "#e9ecef",
+ 137 |                   border: "1px solid #ced4da",
+ 138 |                   borderLeft: "none",
+ 139 |                   borderRadius: "0 8px 8px 0",
+ 140 |                   padding: "12px 15px",
+ 141 |                   color: "#495057",
+ 142 |                   fontWeight: "500",
+ 143 |                   cursor: "pointer",
+ 144 |                   transition: "background-color 0.3s ease",
+ 145 |                   fontSize: "0.9rem",
+ 146 |                 }}
+ 147 |                 onClick={() => setShowPassword(!showPassword)}
+ 148 |                 onMouseOver={(e) => e.currentTarget.style.backgroundColor = "#dee2e6"}
+ 149 |                 onMouseOut={(e) => e.currentTarget.style.backgroundColor = "#e9ecef"}
+ 150 |               >
+ 151 |                 {showPassword ? "Hide" : "Show"}
+ 152 |               </button>
+ 153 |             </div>
+ 154 |           </div>
+ 155 |           <button
+ 156 |             type="submit"
+ 157 |             style={{
+ 158 |               display: "inline-block",
+ 159 |               padding: "0.75rem 2rem",
+ 160 |               backgroundColor: "#4f46e5",
+ 161 |               color: "white",
+ 162 |               fontWeight: "600",
+ 163 |               borderRadius: "9999px",
+ 164 |               textDecoration: "none",
+ 165 |               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+ 166 |               transition: "background-color 0.3s ease, transform 0.2s ease",
+ 167 |               border: "none",
+ 168 |               cursor: "pointer",
+ 169 |               width: "100%",
+ 170 |               marginTop: "10px",
+ 171 |               fontSize: "1.1rem",
+ 172 |             }}
+ 173 |             onMouseOver={(e) => {
+ 174 |               e.currentTarget.style.backgroundColor = "#3b33b0";
+ 175 |               e.currentTarget.style.transform = "scale(1.02)";
+ 176 |             }}
+ 177 |             onMouseOut={(e) => {
+ 178 |               e.currentTarget.style.backgroundColor = "#4f46e5";
+ 179 |               e.currentTarget.style.transform = "scale(1)";
+ 180 |             }}
+ 181 |           >
+ 182 |             Login
+ 183 |           </button>
+ 184 |         </form>
+ 185 |         <p style={{ marginTop: "20px", fontSize: "0.9rem", color: "#6c757d" }}>
+ 186 |           Don’t have an account?{" "}
+ 187 |           <span
+ 188 |             style={{
+ 189 |               color: "#4f46e5",
+ 190 |               cursor: "pointer",
+ 191 |               fontWeight: "bold",
+ 192 |               textDecoration: "underline",
+ 193 |               transition: "color 0.2s ease",
+ 194 |             }}
+ 195 |             role="button"
+ 196 |             onClick={() => navigate("/signup")}
+ 197 |             onMouseOver={(e) => e.currentTarget.style.color = "#3b33b0"}
+ 198 |             onMouseOut={(e) => e.currentTarget.style.color = "#4f46e5"}
+ 199 |           >
+ 200 |             Sign Up
+ 201 |           </span>
+ 202 |         </p>
+ 203 |       </div>
+ 204 |     </div>
+ 205 |   );
+ 206 | }
+
+--- frontend/src/pages/PanoramaViewer.js ---
+   1 | import React, { useEffect, useRef, useState } from 'react';
+   2 | import { useParams } from 'react-router-dom';
+   3 | import axios from 'axios';
+   4 | import { Viewer } from '@photo-sphere-viewer/core';
+   5 | import { VirtualTourPlugin } from '@photo-sphere-viewer/virtual-tour-plugin';
+   6 | import { MarkersPlugin } from '@photo-sphere-viewer/markers-plugin';
+   7 | 
+   8 | import '@photo-sphere-viewer/core/index.css';
+   9 | import '@photo-sphere-viewer/virtual-tour-plugin/index.css';
+  10 | import '@photo-sphere-viewer/markers-plugin/index.css';
+  11 | 
+  12 | const BACKEND_URL = "https://virtual-tour-creater-backend.onrender.com";
+  13 | 
+  14 | 
+  15 | const PanoramaViewer = () => {
+  16 |   const containerRef = useRef(null);
+  17 |   const { tourId } = useParams();
+  18 | 
+  19 |   const [viewer, setViewer] = useState(null);
+  20 |   const [nodes, setNodes] = useState([]);
+  21 |   const [startNodeId, setStartNodeId] = useState(null);
+  22 |   const [loading, setLoading] = useState(true);
+  23 |   const [error, setError] = useState(null);
+  24 |   const audioRef = useRef(new Audio());
+  25 |   const [audioEnabled, setAudioEnabled] = useState(false);
+  26 |   const [currentActiveNodeId, setCurrentActiveNodeId] = useState(null);
+  27 |   const [markersPluginInstance, setMarkersPluginInstance] = useState(null);
+  28 |   const [navbarConfig, setNavbarConfig] = useState([]);
+  29 | 
+  30 |   useEffect(() => {
+  31 |     const fetchTourData = async () => {
+  32 |       setLoading(true);
+  33 |       setError(null);
+  34 |       try {
+  35 |         const response = await axios.get(`${BACKEND_URL}/get-tour-data/${tourId}`);
+  36 |         const { success, panoramaUrls, markers, tooltips, startRoom, audioUrls, error: backendError } = response.data;
+  37 | 
+  38 |         if (!success) {
+  39 |           throw new Error(backendError || 'Failed to load tour data from backend.');
+  40 |         }
+  41 | 
+  42 |         if (!panoramaUrls || Object.keys(panoramaUrls).length === 0) {
+  43 |           throw new Error('No panoramas found for this tour.');
+  44 |         }
+  45 | 
+  46 |         const allRoomNodes = Object.keys(panoramaUrls).map(roomName => {
+  47 |           const roomMarkers = markers[roomName] || [];
+  48 |           const roomTooltips = tooltips[roomName] || [];
+  49 |           const roomAudioUrl = audioUrls ? audioUrls[roomName] : null;
+  50 | 
+  51 |           return {
+  52 |             id: roomName,
+  53 |             panorama: panoramaUrls[roomName],
+  54 |             links: roomMarkers.filter(marker => marker.linkTo && panoramaUrls[marker.linkTo]).map(marker => {
+  55 |               const yaw = (marker.position.x - 0.5) * 2 * Math.PI;
+  56 |               const pitch = (0.5 - marker.position.y) * Math.PI;
+  57 |               return {
+  58 |                 nodeId: marker.linkTo,
+  59 |                 position: { yaw, pitch },
+  60 |                 label: `Go to ${marker.linkTo}`
+  61 |               };
+  62 |             }),
+  63 |             markers: roomTooltips.map(tooltip => {
+  64 |               const yaw = (tooltip.position.x - 0.5) * 2 * Math.PI;
+  65 |               const pitch = (0.5 - tooltip.position.y) * Math.PI;
+  66 |               return {
+  67 |                 id: tooltip.id,
+  68 |                 position: { yaw, pitch },
+  69 |                 html: `<div class="tooltip-marker-icon">💡</div>`,
+  70 |                 tooltip: {
+  71 |                   content: tooltip.content,
+  72 |                   position: 'top'
+  73 |                 }
+  74 |               };
+  75 |             }),
+  76 |             audioUrl: roomAudioUrl
+  77 |           };
+  78 |         });
+  79 | 
+  80 |         setNodes(allRoomNodes);
+  81 |         setStartNodeId(startRoom || Object.keys(panoramaUrls)[0]);
+  82 |         setLoading(false);
+  83 |       } catch (err) {
+  84 |         setError(err.message || 'Unexpected error occurred.');
+  85 |         setLoading(false);
+  86 |       }
+  87 |     };
+  88 | 
+  89 |     fetchTourData();
+  90 |   }, [tourId]);
+  91 | 
+  92 |   useEffect(() => {
+  93 |     if (!loading && !error && nodes.length > 0 && startNodeId && containerRef.current) {
+  94 |       const initialNode = nodes.find(n => n.id === startNodeId);
+  95 |       if (!initialNode || !initialNode.panorama) {
+  96 |         setError(`Initial panorama for room '${startNodeId}' not found.`);
+  97 |         return;
+  98 |       }
+  99 | 
+ 100 |       const initialNavbarButtons = [
+ 101 |         'zoom', 'move', 'caption',
+ 102 |         {
+ 103 |           id: 'audio-toggle',
+ 104 |           title: audioEnabled ? 'Audio: ON' : 'Audio: OFF',
+ 105 |           content: audioEnabled ? '🔊 Audio ON' : '🔈 Audio OFF',
+ 106 |           className: 'custom-audio-toggle',
+ 107 |           onClick: () => setAudioEnabled(prev => !prev),
+ 108 |           visible: initialNode.audioUrl ? true : false
+ 109 |         },
+ 110 |         'fullscreen'
+ 111 |       ].filter(Boolean);
+ 112 | 
+ 113 |       setNavbarConfig(initialNavbarButtons);
+ 114 | 
+ 115 |       const instance = new Viewer({
+ 116 |         container: containerRef.current,
+ 117 |         panorama: initialNode.panorama,
+ 118 |         plugins: [
+ 119 |           [VirtualTourPlugin, { nodes, startNodeId }],
+ 120 |           [MarkersPlugin, {}]
+ 121 |         ],
+ 122 |         navbar: initialNavbarButtons,
+ 123 |         defaultYaw: 0,
+ 124 |         defaultPitch: 0,
+ 125 |       });
+ 126 | 
+ 127 |       setViewer(instance);
+ 128 |       setCurrentActiveNodeId(initialNode.id);
+ 129 |       const markersPlugin = instance.getPlugin(MarkersPlugin);
+ 130 |       setMarkersPluginInstance(markersPlugin);
+ 131 | 
+ 132 |       const virtualTourPlugin = instance.getPlugin(VirtualTourPlugin);
+ 133 |       virtualTourPlugin.addEventListener('node-changed', (e) => {
+ 134 |         console.log('🔁 Switching to node:', e.node.id);
+ 135 |         setCurrentActiveNodeId(e.node.id);
+ 136 |         audioRef.current.pause();
+ 137 |         audioRef.current.src = "";
+ 138 |       });
+ 139 | 
+ 140 |       return () => {
+ 141 |         instance.destroy();
+ 142 |         audioRef.current.pause();
+ 143 |         audioRef.current.src = "";
+ 144 |         setViewer(null);
+ 145 |         setMarkersPluginInstance(null);
+ 146 |         setCurrentActiveNodeId(null);
+ 147 |       };
+ 148 |     }
+ 149 |   }, [nodes, startNodeId, loading, error]);
+ 150 | 
+ 151 |   useEffect(() => {
+ 152 |     if (!viewer || !currentActiveNodeId || nodes.length === 0) return;
+ 153 | 
+ 154 |     const currentNode = nodes.find(n => n.id === currentActiveNodeId);
+ 155 |     const hasAudio = !!currentNode?.audioUrl;
+ 156 | 
+ 157 |     audioRef.current.pause();
+ 158 |     audioRef.current.src = "";
+ 159 | 
+ 160 |     if (hasAudio) {
+ 161 |       audioRef.current.src = currentNode.audioUrl;
+ 162 |       audioRef.current.load();
+ 163 |       if (audioEnabled) {
+ 164 |         audioRef.current.play().catch(err => console.error("Audio play error:", err));
+ 165 |       }
+ 166 |     }
+ 167 | 
+ 168 |     if (viewer && viewer.navbar) {
+ 169 |       const newNavbar = navbarConfig.map(button => {
+ 170 |         if (typeof button === 'object' && button.id === 'audio-toggle') {
+ 171 |           return {
+ 172 |             ...button,
+ 173 |             visible: hasAudio,
+ 174 |             title: audioEnabled ? 'Audio: ON' : 'Audio: OFF',
+ 175 |             content: audioEnabled ? '🔊 Audio ON' : '🔈 Audio OFF'
+ 176 |           };
+ 177 |         }
+ 178 |         return button;
+ 179 |       });
+ 180 |       viewer.navbar.setButtons(newNavbar);
+ 181 |     }
+ 182 |   }, [audioEnabled, currentActiveNodeId, nodes, viewer]);
+ 183 | 
+ 184 |   if (loading) return <div className="text-center mt-5"><p>Loading tour...</p></div>;
+ 185 |   if (error) {
+ 186 |     return (
+ 187 |       <div className="text-center mt-5 text-danger">
+ 188 |         <p>Error: {error}</p>
+ 189 |         <p>Please verify the tour ID, ensure panoramas are uploaded, and room names/start room are correct in Supabase.</p>
+ 190 |       </div>
+ 191 |     );
+ 192 |   }
+ 193 | 
+ 194 |   return <div ref={containerRef} style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}></div>;
+ 195 | };
+ 196 | 
+ 197 | export default PanoramaViewer;
+
+--- frontend/src/pages/Signup.js ---
+   1 | import { useState } from "react";
+   2 | import { useNavigate } from "react-router-dom";
+   3 | import { supabase } from "../Supabase"; // Assuming your Supabase client is initialized and exported here
+   4 | 
+   5 | export default function Signup() {
+   6 |   const [email, setEmail] = useState("");
+   7 |   const [password, setPassword] = useState("");
+   8 |   const [showPassword, setShowPassword] = useState(false);
+   9 |   const [alert, setAlert] = useState({ type: "", message: "" });
+  10 |   const navigate = useNavigate();
+  11 | 
+  12 |   const handleSignup = async (e) => {
+  13 |     e.preventDefault();
+  14 |     setAlert({ type: "", message: "" });
+  15 | 
+  16 |     try {
+  17 |       const { error } = await supabase.auth.signUp({ email, password });
+  18 | 
+  19 |       if (error) {
+  20 |         setAlert({ type: "danger", message: error.message });
+  21 |       } else {
+  22 |         setAlert({ type: "success", message: "Account created successfully! Please check your email for verification." });
+  23 |         // Optionally navigate to a success page or login after a delay
+  24 |         setTimeout(() => navigate("/login"), 3000); // Redirect to login after successful signup
+  25 |       }
+  26 |     } catch (err) {
+  27 |       console.error("Signup error:", err);
+  28 |       setAlert({ type: "danger", message: "An unexpected error occurred during signup." });
+  29 |     }
+  30 |   };
+  31 | 
+  32 |   return (
+  33 |     <div
+  34 |       style={{
+  35 |         minHeight: "100vh",
+  36 |         width: "100%",
+  37 |         display: "flex",
+  38 |         alignItems: "center",
+  39 |         justifyContent: "center",
+  40 |         backgroundColor: "#f8f9fa", // Light gray background
+  41 |         fontFamily: "sans-serif", // Ensure font consistency
+  42 |       }}
+  43 |     >
+  44 |       {/* Container for the signup form */}
+  45 |       <div
+  46 |         style={{
+  47 |           backgroundColor: "#ffffff", // White background for the card
+  48 |           borderRadius: "1rem",
+  49 |           boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)", // Clean shadow
+  50 |           maxWidth: "400px",
+  51 |           width: "100%",
+  52 |           padding: "2.5rem",
+  53 |           textAlign: "center",
+  54 |           color: "#333", // Default text color
+  55 |         }}
+  56 |       >
+  57 |         <h3
+  58 |           style={{
+  59 |             fontSize: "2rem",
+  60 |             fontWeight: "bold",
+  61 |             marginBottom: "1.5rem",
+  62 |             color: "#4f46e5", // Primary color for heading
+  63 |           }}
+  64 |         >
+  65 |           Sign Up
+  66 |         </h3>
+  67 |         {alert.message && (
+  68 |           <div
+  69 |             style={{
+  70 |               backgroundColor:
+  71 |                 alert.type === "danger"
+  72 |                   ? "#f8d7da" // Light red for danger
+  73 |                   : "#d4edda", // Light green for success
+  74 |               color:
+  75 |                 alert.type === "danger"
+  76 |                   ? "#721c24" // Dark red text
+  77 |                   : "#155724", // Dark green text
+  78 |               padding: "10px",
+  79 |               borderRadius: "8px",
+  80 |               marginBottom: "15px",
+  81 |               fontSize: "0.9rem",
+  82 |               border: `1px solid ${alert.type === "danger" ? "#f5c6cb" : "#c3e6cb"}`,
+  83 |             }}
+  84 |           >
+  85 |             {alert.message}
+  86 |           </div>
+  87 |         )}
+  88 |         <form onSubmit={handleSignup} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+  89 |           <div style={{ marginBottom: "10px", textAlign: "left" }}>
+  90 |             <label style={{ display: "block", marginBottom: "5px", fontSize: "0.9rem", fontWeight: "500" }}>Email address</label>
+  91 |             <input
+  92 |               type="email"
+  93 |               style={{
+  94 |                 width: "100%",
+  95 |                 padding: "12px",
+  96 |                 borderRadius: "8px",
+  97 |                 border: "1px solid #ced4da",
+  98 |                 backgroundColor: "#f8f9fa", // Light input background
+  99 |                 color: "#333",
+ 100 |                 boxSizing: "border-box",
+ 101 |                 fontSize: "1rem",
+ 102 |               }}
+ 103 |               required
+ 104 |               value={email}
+ 105 |               onChange={(e) => setEmail(e.target.value)}
+ 106 |               placeholder="Enter email"
+ 107 |             />
+ 108 |           </div>
+ 109 |           <div style={{ marginBottom: "10px", textAlign: "left" }}>
+ 110 |             <label style={{ display: "block", marginBottom: "5px", fontSize: "0.9rem", fontWeight: "500" }}>Password</label>
+ 111 |             <div style={{ display: "flex", width: "100%" }}>
+ 112 |               <input
+ 113 |                 type={showPassword ? "text" : "password"}
+ 114 |                 style={{
+ 115 |                   flexGrow: 1,
+ 116 |                   padding: "12px",
+ 117 |                   borderRadius: "8px 0 0 8px",
+ 118 |                   border: "1px solid #ced4da",
+ 119 |                   backgroundColor: "#f8f9fa",
+ 120 |                   color: "#333",
+ 121 |                   boxSizing: "border-box",
+ 122 |                   fontSize: "1rem",
+ 123 |                   outline: "none",
+ 124 |                 }}
+ 125 |                 required
+ 126 |                 value={password}
+ 127 |                 onChange={(e) => setPassword(e.target.value)}
+ 128 |                 placeholder="Password"
+ 129 |               />
+ 130 |               <button
+ 131 |                 type="button"
+ 132 |                 style={{
+ 133 |                   backgroundColor: "#e9ecef",
+ 134 |                   border: "1px solid #ced4da",
+ 135 |                   borderLeft: "none",
+ 136 |                   borderRadius: "0 8px 8px 0",
+ 137 |                   padding: "12px 15px",
+ 138 |                   color: "#495057",
+ 139 |                   fontWeight: "500",
+ 140 |                   cursor: "pointer",
+ 141 |                   transition: "background-color 0.3s ease",
+ 142 |                   fontSize: "0.9rem",
+ 143 |                 }}
+ 144 |                 onClick={() => setShowPassword(!showPassword)}
+ 145 |                 onMouseOver={(e) => e.currentTarget.style.backgroundColor = "#dee2e6"}
+ 146 |                 onMouseOut={(e) => e.currentTarget.style.backgroundColor = "#e9ecef"}
+ 147 |               >
+ 148 |                 {showPassword ? "Hide" : "Show"}
+ 149 |               </button>
+ 150 |             </div>
+ 151 |           </div>
+ 152 |           <button
+ 153 |             type="submit"
+ 154 |             style={{
+ 155 |               display: "inline-block",
+ 156 |               padding: "0.75rem 2rem",
+ 157 |               backgroundColor: "#4f46e5",
+ 158 |               color: "white",
+ 159 |               fontWeight: "600",
+ 160 |               borderRadius: "9999px",
+ 161 |               textDecoration: "none",
+ 162 |               boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+ 163 |               transition: "background-color 0.3s ease, transform 0.2s ease",
+ 164 |               border: "none",
+ 165 |               cursor: "pointer",
+ 166 |               width: "100%",
+ 167 |               marginTop: "10px",
+ 168 |               fontSize: "1.1rem",
+ 169 |             }}
+ 170 |             onMouseOver={(e) => {
+ 171 |               e.currentTarget.style.backgroundColor = "#3b33b0";
+ 172 |               e.currentTarget.style.transform = "scale(1.02)";
+ 173 |             }}
+ 174 |             onMouseOut={(e) => {
+ 175 |               e.currentTarget.style.backgroundColor = "#4f46e5";
+ 176 |               e.currentTarget.style.transform = "scale(1)";
+ 177 |             }}
+ 178 |           >
+ 179 |             Create Account
+ 180 |           </button>
+ 181 |         </form>
+ 182 |         <p style={{ marginTop: "20px", fontSize: "0.9rem", color: "#6c757d" }}>
+ 183 |           Already have an account?{" "}
+ 184 |           <span
+ 185 |             style={{
+ 186 |               color: "#4f46e5",
+ 187 |               cursor: "pointer",
+ 188 |               fontWeight: "bold",
+ 189 |               textDecoration: "underline",
+ 190 |               transition: "color 0.2s ease",
+ 191 |             }}
+ 192 |             role="button"
+ 193 |             onClick={() => navigate("/login")}
+ 194 |             onMouseOver={(e) => e.currentTarget.style.color = "#3b33b0"}
+ 195 |             onMouseOut={(e) => e.currentTarget.style.color = "#4f46e5"}
+ 196 |           >
+ 197 |             Login
+ 198 |           </span>
+ 199 |         </p>
+ 200 |       </div>
+ 201 |     </div>
+ 202 |   );
+ 203 | }
+
+--- frontend/src/pages/VirtualTourForm.js ---
+   1 | import React, { useState } from "react";
+   2 | import { useNavigate } from "react-router-dom";
+   3 | import axios from "axios";
+   4 | import { v4 as uuidv4 } from 'uuid';
+   5 | 
+   6 | const VirtualTourForm = () => {
+   7 |   const [rooms, setRooms] = useState([]);
+   8 |   const [roomImages, setRoomImages] = useState({});
+   9 |   const [tourName, setTourName] = useState("");
+  10 |   const navigate = useNavigate();
+  11 |   const tourId = uuidv4();
+  12 | 
+  13 |   const handleImageUpload = (e, roomName) => {
+  14 |     const selectedFiles = Array.from(e.target.files);
+  15 |     const previewPromises = selectedFiles.map((file) => {
+  16 |       return new Promise((resolve, reject) => {
+  17 |         const reader = new FileReader();
+  18 |         reader.onload = (e) => resolve({ file, preview: e.target.result });
+  19 |         reader.onerror = reject;
+  20 |         reader.readAsDataURL(file);
+  21 |       });
+  22 |     });
+  23 | 
+  24 |     Promise.all(previewPromises).then((results) => {
+  25 |       setRoomImages((prev) => ({
+  26 |         ...prev,
+  27 |         [roomName]: prev[roomName] ? [...prev[roomName], ...results] : results,
+  28 |       }));
+  29 |     });
+  30 |   };
+  31 | 
+  32 |   const handleAddRoom = () => {
+  33 |     const newRoomName = prompt("Enter a name for the new room:");
+  34 |     if (newRoomName) {
+  35 |       setRooms((prev) => [...prev, newRoomName]);
+  36 |     }
+  37 |   };
+  38 | 
+  39 |   const handleRemoveImage = (roomName, index) => {
+  40 |     setRoomImages((prev) => ({
+  41 |       ...prev,
+  42 |       [roomName]: prev[roomName].filter((_, i) => i !== index),
+  43 |     }));
+  44 |   };
+  45 | 
+  46 |   const handleGeneratePanorama = async () => {
+  47 |     if (!tourName.trim()) {
+  48 |       alert("Please enter a name for your tour.");
+  49 |       return;
+  50 |     }
+  51 | 
+  52 |     if (rooms.length === 0 || Object.keys(roomImages).length === 0) {
+  53 |       alert("Please upload at least one image for each room.");
+  54 |       return;
+  55 |     }
+  56 | 
+  57 |     const formData = new FormData();
+  58 |     formData.append('tourId', tourId);
+  59 |     formData.append('tour_name', tourName.trim());
+  60 | 
+  61 |     rooms.forEach((room) => {
+  62 |       roomImages[room]?.forEach((img) => {
+  63 |         formData.append(`${room}[]`, img.file);
+  64 |       });
+  65 |     });
+  66 | 
+  67 |     try {
+  68 |       const response = await axios.post("https://virtual-tour-creater-backend.onrender.com/stitch", formData);
+  69 | 
+  70 |       if (response.data.success) {
+  71 |         navigate(`/editor/${tourId}`);
+  72 |       } else {
+  73 |         alert("Stitching failed.");
+  74 |       }
+  75 |     } catch (err) {
+  76 |       console.error("Error during panorama generation:", err);
+  77 |       alert("Failed to generate tour. Check backend connection.");
+  78 |     }
+  79 |   };
+  80 | 
+  81 |   return (
+  82 |     <div style={{ backgroundColor: "#f8f9fb", minHeight: "100vh", padding: "40px 20px" }}>
+  83 |       <div style={{ maxWidth: "880px", margin: "0 auto", background: "#fff", padding: "40px", borderRadius: "20px", boxShadow: "0 6px 24px rgba(0,0,0,0.08)" }}>
+  84 |         <h1 style={{ textAlign: "center", marginBottom: "20px", fontWeight: "600" }}>Build Your Virtual Tour</h1>
+  85 |         <p style={{ textAlign: "center", color: "#666", marginBottom: "30px" }}>
+  86 |           Upload room images and we’ll stitch them into interactive panoramas.
+  87 |         </p>
+  88 | 
+  89 |         {/* Tour Name Input */}
+  90 |         <div style={{ marginBottom: "30px" }}>
+  91 |           <label htmlFor="tourName" style={{ fontWeight: "500", display: "block", marginBottom: "8px" }}>
+  92 |             Tour Name:
+  93 |           </label>
+  94 |           <input
+  95 |             id="tourName"
+  96 |             type="text"
+  97 |             placeholder="Enter a name for your tour"
+  98 |             value={tourName}
+  99 |             onChange={(e) => setTourName(e.target.value)}
+ 100 |             style={{
+ 101 |               width: "100%",
+ 102 |               padding: "12px",
+ 103 |               borderRadius: "8px",
+ 104 |               border: "1px solid #ccc",
+ 105 |               fontSize: "16px",
+ 106 |             }}
+ 107 |           />
+ 108 |         </div>
+ 109 | 
+ 110 |         {rooms.map((room, index) => (
+ 111 |           <div key={index} style={{ marginBottom: "50px" }}>
+ 112 |             <h3 style={{ borderBottom: "1px solid #eaeaea", paddingBottom: "10px", marginBottom: "20px" }}>
+ 113 |               Room {index + 1}: <span style={{ fontWeight: 500 }}>{room}</span>
+ 114 |             </h3>
+ 115 | 
+ 116 |             <input
+ 117 |               type="file"
+ 118 |               multiple
+ 119 |               accept="image/*"
+ 120 |               onChange={(e) => handleImageUpload(e, room)}
+ 121 |               style={{
+ 122 |                 marginBottom: "20px",
+ 123 |                 padding: "10px",
+ 124 |                 borderRadius: "8px",
+ 125 |                 border: "1px solid #ccc",
+ 126 |                 width: "100%"
+ 127 |               }}
+ 128 |             />
+ 129 | 
+ 130 |             {roomImages[room]?.length > 0 && (
+ 131 |               <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+ 132 |                 {roomImages[room].map((item, i) => (
+ 133 |                   <div key={i} style={{
+ 134 |                     position: "relative",
+ 135 |                     width: "160px",
+ 136 |                     height: "120px",
+ 137 |                     borderRadius: "8px",
+ 138 |                     overflow: "hidden",
+ 139 |                     border: "1px solid #ddd",
+ 140 |                     background: "#fafafa"
+ 141 |                   }}>
+ 142 |                     <img
+ 143 |                       src={item.preview}
+ 144 |                       alt={`Preview ${room} - ${i}`}
+ 145 |                       style={{
+ 146 |                         width: "100%",
+ 147 |                         height: "100%",
+ 148 |                         objectFit: "cover"
+ 149 |                       }}
+ 150 |                     />
+ 151 |                     <button
+ 152 |                       onClick={() => handleRemoveImage(room, i)}
+ 153 |                       style={{
+ 154 |                         position: "absolute",
+ 155 |                         top: "6px",
+ 156 |                         right: "6px",
+ 157 |                         background: "#ffffffee",
+ 158 |                         border: "1px solid #ccc",
+ 159 |                         borderRadius: "4px",
+ 160 |                         padding: "2px 8px",
+ 161 |                         fontSize: "12px",
+ 162 |                         cursor: "pointer"
+ 163 |                       }}
+ 164 |                     >
+ 165 |                       Remove
+ 166 |                     </button>
+ 167 |                   </div>
+ 168 |                 ))}
+ 169 |               </div>
+ 170 |             )}
+ 171 |           </div>
+ 172 |         ))}
+ 173 | 
+ 174 |         <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginTop: "30px" }}>
+ 175 |           <button
+ 176 |             onClick={handleAddRoom}
+ 177 |             style={{
+ 178 |               backgroundColor: "#edf3ff",
+ 179 |               border: "1px solid #bdd6ff",
+ 180 |               color: "#2457a7",
+ 181 |               fontWeight: "500",
+ 182 |               borderRadius: "10px",
+ 183 |               padding: "12px",
+ 184 |               cursor: "pointer"
+ 185 |             }}
+ 186 |           >
+ 187 |             Add New Room
+ 188 |           </button>
+ 189 | 
+ 190 |           <button
+ 191 |             onClick={handleGeneratePanorama}
+ 192 |             style={{
+ 193 |               backgroundColor: "#4a6ee0",
+ 194 |               border: "none",
+ 195 |               color: "white",
+ 196 |               fontWeight: "600",
+ 197 |               borderRadius: "10px",
+ 198 |               padding: "14px",
+ 199 |               fontSize: "16px",
+ 200 |               cursor: "pointer"
+ 201 |             }}
+ 202 |           >
+ 203 |             Generate Panorama & Start Tour
+ 204 |           </button>
+ 205 |         </div>
+ 206 |       </div>
+ 207 |     </div>
+ 208 |   );
+ 209 | };
+ 210 | 
+ 211 | export default VirtualTourForm;
+=== END OF REPOSITORY ===
+
+TASK: Write ONE report with exactly these four parts, about 700-900 words in total (tags not counted):
+
+## 1. In plain English
+For someone who has never programmed: 2-3 sentences on what the project is and who would use it,
+one line starting "Analogy:", and "What you can do with it:" with 3 short bullets. No jargon.
+
+## 2. For students: how to read this project
+A numbered reading order of 4-5 files with one line each on why to read it; a Mermaid diagram in a
+```mermaid code fence (flowchart LR, at most 7 nodes, plain-word labels); "Key terms:" 3 short glossary entries.
+
+## 3. For recruiters and interviewers
+"What it demonstrates:" 3 bullets of concrete skills; "Stack:" one line; "Most interesting part:" 1-2 sentences.
+
+## 4. For developers
+Short bullets grouped under: Purpose, Main modules, How data flows, Tech stack, How to run it,
+Worth a closer look. Explain what the code does and how or why.
+
+CITATION RULES (important):
+- To cite, COPY a tag from section C exactly, character for character, and put it right after the claim
+  it supports. Never type a tag from memory and never edit its file, symbol or line numbers.
+- Every bullet in part 4 that describes code must carry at least one tag. Parts 1-3 may carry tags where natural.
+- Cite only when that code really supports the claim. If no tag in section C fits, either leave the
+  claim out or base it on the README and give no tag.
+- Do not invent files, functions, or behaviour that are not in the material above.
+
+Write the report now.

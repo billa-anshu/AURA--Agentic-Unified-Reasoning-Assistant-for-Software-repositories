@@ -1,0 +1,72 @@
+## Virtual Tour Creator – Project Explanation
+
+Based on the uploaded source code, this project is a web-based Virtual Tour Creator that allows users to create and explore virtual tours of places using panoramic images, room navigation, and audio.
+
+### 1. Main technologies used
+
+| Technology   | Purpose                                                                        |
+| ------------ | ------------------------------------------------------------------------------ |
+| React.js     | Builds the frontend user interface.                                            |
+| Python Flask | Handles backend APIs and server-side operations.                               |
+| Supabase     | Stores tour data, panorama URLs, navigation markers, and audio metadata.       |
+| OpenCV       | Combines multiple images into a panorama and attempts to remove black borders. |
+| Bootstrap    | Styles the frontend pages.                                                     |
+| React Router | Navigates between pages.                                                       |
+
+### 2. Main modules
+
+1\. User Authentication
+
+- Users can sign up and log in.
+- Supabase Authentication handles account creation and authentication.
+- Users can access features through the frontend.
+
+2\. Virtual Tour Creation
+
+- Users can create tours and upload panorama images.
+- The backend processes uploaded images and stores tour information.
+- Tour data is retrieved from Supabase when required.
+
+3\. Image Stitching
+
+- The `stitcher.py` file uses OpenCV to combine two or more images into a panorama.
+- It checks whether stitching succeeds.
+- It attempts to crop black borders from the resulting image.
+
+4\. Panorama Viewer
+
+- The React frontend displays panoramic scenes.
+- Navigation markers connect different rooms.
+- Users can move between rooms to explore the virtual environment.
+- Audio can be played when it is available for a room.
+
+5\. Audio Management
+
+- The backend provides endpoints to upload and delete tour audio.
+- Audio files are stored in Supabase Storage.
+- Their URLs and associated room details are saved in the database.
+
+### 3. How the system works
+
+React FrontendLogin, tour creation, editing and viewing
+
+Flask BackendAPI requests, image processing and tour management
+
+Supabase
+
+Database, image and audio storage
+
+OpenCV
+
+Panorama stitching and cropping
+
+### 4. Important backend files
+
+- `app.py` — Main Flask application containing API endpoints for tour data, panorama retrieval, and audio management.
+- `stitcher.py` — Image-stitching functionality using OpenCV.
+- `requirements.txt` — Lists the Python dependencies.
+- `Procfile` — Defines the command used to start the backend service.
+
+### 5. Conclusion
+
+The project combines a React frontend, Flask backend, Supabase storage, and OpenCV image processing to provide an interactive virtual-tour experience. Its main purpose is to let users create tours from panoramic images and explore connected rooms with optional audio.

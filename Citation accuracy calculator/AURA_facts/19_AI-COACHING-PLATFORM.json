@@ -1,0 +1,324 @@
+{
+  "repo": "19_AI-COACHING-PLATFORM",
+  "plan": {
+    "repo_type": "web app",
+    "purpose": "A Next.js web application that provides users with AI-powered voice coaching sessions for interviews, lectures, and language learning.",
+    "questions": [
+      "How does the application handle real-time audio streaming and transcription between the user and the AI model?",
+      "What is the role of the Convex backend in managing user sessions, transcripts, and discussion rooms?",
+      "How does the frontend manage the state of the active coaching session and user context across different components?",
+      "How are the different coaching modes (e.g., Mock Interview vs. Meditation) differentiated in the AI prompt engineering or service layer?",
+      "How does the authentication flow using Clerk integrate with the protected dashboard and discussion room routes?"
+    ],
+    "focus_files": [
+      "app/(main)/discussion-room/[roomid]/page.jsx",
+      "app/(main)/_components/ChatSession.jsx",
+      "convex/schema.js",
+      "app/(main)/dashboard/page.jsx"
+    ]
+  },
+  "agent_trace": [
+    {
+      "step": 1,
+      "action": "search",
+      "query": "audio streaming transcription websocket",
+      "new": []
+    },
+    {
+      "step": 2,
+      "action": "search",
+      "query": "convex session transcript room",
+      "new": [
+        "C10",
+        "C11",
+        "C12"
+      ]
+    },
+    {
+      "step": 3,
+      "action": "search",
+      "query": "clerk auth middleware protected route",
+      "new": []
+    },
+    {
+      "step": 4,
+      "action": "done"
+    }
+  ],
+  "verifier_rounds": [
+    {
+      "round": 0,
+      "extracted": 10,
+      "supported": 10,
+      "partial": 0,
+      "unsupported": 0,
+      "verifier_failed": false,
+      "kept": 10
+    },
+    {
+      "round": 1,
+      "extracted": 9,
+      "supported": 8,
+      "partial": 0,
+      "unsupported": 1,
+      "verifier_failed": false,
+      "kept": 8
+    }
+  ],
+  "first_pass_faithfulness": 0.947,
+  "claims": [
+    {
+      "t": "purpose",
+      "c": "The application provides AI-powered voice coaching sessions for interviews, lectures, and language learning.",
+      "ids": [],
+      "w": 3,
+      "verdict": "S",
+      "tags": [],
+      "labels": []
+    },
+    {
+      "t": "module",
+      "c": "The AIModel service constructs prompts based on coaching options and calls OpenAI for completions.",
+      "ids": [
+        "C3"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]"
+      ],
+      "labels": [
+        "services/GlobalServices.jsx :: AIModel"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The DiscussionRoom page fetches room data and previous transcripts using React Query hooks.",
+      "ids": [
+        "C2"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=DiscussionRoom;lines=13-53]"
+      ],
+      "labels": [
+        "app/(main)/discussion-room/[roomid]/page.jsx :: DiscussionRoom"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The UserInputDialog component manages state for expert selection and topic input before starting a session.",
+      "ids": [
+        "C7"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=UserInputDialog;lines=21-61]"
+      ],
+      "labels": [
+        "app/(main)/dashboard/_components/UserInputDialog.jsx :: UserInputDialog"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The ChatComponent renders the chat interface displaying history, expert info, and live transcripts.",
+      "ids": [
+        "C6"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45]"
+      ],
+      "labels": [
+        "app/(main)/_components/ChatSession.jsx :: ChatComponent"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The cn utility function merges Tailwind CSS classes using clsx and tailwind-merge.",
+      "ids": [
+        "C4"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=lib/utils.js;symbol=cn;lines=4-6]"
+      ],
+      "labels": [
+        "lib/utils.js :: cn"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The Dialog component wraps Radix UI primitives to provide accessible modal interactions.",
+      "ids": [
+        "C1"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=components/ui/dialog.jsx;symbol=Dialog;lines=9-49]"
+      ],
+      "labels": [
+        "components/ui/dialog.jsx :: Dialog"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The Dashboard page composes FeatureAssistants, History, and Feedback components to display user data.",
+      "ids": [
+        "C9"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/dashboard/page.jsx;symbol=Dashboard;lines=6-18]"
+      ],
+      "labels": [
+        "app/(main)/dashboard/page.jsx :: Dashboard"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "The FeatureAssistants component displays coaching options and uses Clerk's useUser hook for authentication context.",
+      "ids": [
+        "C8"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/dashboard/_components/FeatureAssistants.jsx;symbol=FeatureAssistants;lines=10-50]"
+      ],
+      "labels": [
+        "app/(main)/dashboard/_components/FeatureAssistants.jsx :: FeatureAssistants"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "Clicking next in the input dialog creates a new discussion room with the selected expert and topic.",
+      "ids": [
+        "C12"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69]"
+      ],
+      "labels": [
+        "app/(main)/dashboard/_components/UserInputDialog.jsx :: onClickNext"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "The startListening function initializes Web Speech Recognition to capture user voice input in the browser.",
+      "ids": [
+        "C11"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144]"
+      ],
+      "labels": [
+        "app/(main)/discussion-room/[roomid]/page.jsx :: startListening"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "The AIModel service selects a prompt template based on the chosen coaching option before calling OpenAI.",
+      "ids": [
+        "C3"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]"
+      ],
+      "labels": [
+        "services/GlobalServices.jsx :: AIModel"
+      ]
+    },
+    {
+      "t": "stack",
+      "c": "The project uses Next.js, Clerk for authentication, and AWS Polly for speech synthesis.",
+      "ids": [],
+      "w": 2,
+      "verdict": "S",
+      "tags": [],
+      "labels": []
+    },
+    {
+      "t": "run",
+      "c": "The application is developed and built using standard Next.js scripts defined in package.json.",
+      "ids": [],
+      "w": 2,
+      "verdict": "S",
+      "tags": [],
+      "labels": []
+    },
+    {
+      "t": "highlight",
+      "c": "The checkVoices function polls the speech synthesizer until available voices are loaded.",
+      "ids": [
+        "C10"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=checkVoices;lines=56-96]"
+      ],
+      "labels": [
+        "app/(main)/discussion-room/[roomid]/page.jsx :: checkVoices"
+      ]
+    },
+    {
+      "t": "highlight",
+      "c": "The ChatComponent displays chat history, expert information, and live transcripts in a scrollable container.",
+      "ids": [
+        "C6"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=app/(main)/_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45]"
+      ],
+      "labels": [
+        "app/(main)/_components/ChatSession.jsx :: ChatComponent"
+      ]
+    },
+    {
+      "t": "highlight",
+      "c": "The BlurFade component uses Intersection Observer to animate elements when they enter the viewport.",
+      "ids": [
+        "C5"
+      ],
+      "w": 1,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=components/magicui/blur-fade.jsx;symbol=BlurFade;lines=5-45]"
+      ],
+      "labels": [
+        "components/magicui/blur-fade.jsx :: BlurFade"
+      ]
+    },
+    {
+      "t": "highlight",
+      "c": "The BlurFade component animates elements with a blur effect when they enter the viewport.",
+      "ids": [
+        "C5"
+      ],
+      "w": 1,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=components/magicui/blur-fade.jsx;symbol=BlurFade;lines=5-45]"
+      ],
+      "labels": [
+        "components/magicui/blur-fade.jsx :: BlurFade"
+      ]
+    }
+  ],
+  "llm_calls_this_run": 12
+}

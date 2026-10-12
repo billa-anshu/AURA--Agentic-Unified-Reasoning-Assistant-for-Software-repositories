@@ -1,0 +1,1639 @@
+You are analyzing a software repository. You are given:
+A. background (README and dependency file), B. the file tree, C. a SYMBOL INDEX produced by a code
+parser, D. the source code with line numbers (shown as "N | code").
+
+=== A. BACKGROUND ===
+pom.xml:
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>4.0.6</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.bookreview</groupId>
+	<artifactId>bookreview-api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<
+
+=== B. FILE TREE ===
+.github/workflows
+Dockerfile
+HELP.md
+mvnw
+mvnw.cmd
+pom.xml
+src/main/java/bookreview_api/BookreviewApiApplication.java
+src/main/java/bookreview_api/WebConfig.java
+src/main/java/bookreview_api/config/SwaggerConfig.java
+src/main/java/bookreview_api/controller/AuthController.java
+src/main/java/bookreview_api/controller/BookController.java
+src/main/java/bookreview_api/controller/HealthController.java
+src/main/java/bookreview_api/controller/ReviewController.java
+src/main/java/bookreview_api/controller/UserController.java
+src/main/java/bookreview_api/controller/UserProfileController.java
+src/main/java/bookreview_api/dto/ReviewWithBookDTO.java
+src/main/java/bookreview_api/model/Book.java
+src/main/java/bookreview_api/model/Review.java
+src/main/java/bookreview_api/model/User.java
+src/main/java/bookreview_api/repository/BookRepository.java
+src/main/java/bookreview_api/repository/ReviewRepository.java
+src/main/java/bookreview_api/repository/UserRepository.java
+src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java
+src/main/java/bookreview_api/security/JwtFilter.java
+src/main/java/bookreview_api/security/JwtUtil.java
+src/main/java/bookreview_api/security/SecurityConfig.java
+src/main/java/bookreview_api/service/UserService.java
+src/main/resources/application.properties
+src/test/java/bookreview_api/BookreviewApiApplicationTests.java
+
+=== C. SYMBOL INDEX (each line is a ready-made citation tag) ===
+[cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=BookreviewApiApplication;lines=7-12]
+[cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=main;lines=9-12]
+[cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=WebConfig;lines=8-16]
+[cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=addResourceHandlers;lines=11-16]
+[cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=SwaggerConfig;lines=14-38]
+[cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=customOpenAPI;lines=17-38]
+[cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54]
+[cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54]
+[cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=getBookById;lines=38-76]
+[cite:file=src/main/java/bookreview_api/controller/HealthController.java;symbol=HealthController;lines=10-19]
+[cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=ReviewController;lines=22-62]
+[cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getCurrentUserId;lines=33-73]
+[cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77]
+[cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getReviewsByBookId;lines=55-95]
+[cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getAllReviews;lines=68-108]
+[cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getMyReviews;lines=74-114]
+[cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=UserController;lines=21-61]
+[cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getCurrentUserId;lines=26-66]
+[cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getCurrentUser;lines=30-70]
+[cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getAllUsers;lines=36-76]
+[cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getCurrentUserProfile;lines=46-86]
+[cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getUserById;lines=119-159]
+[cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=deleteUser;lines=136-163]
+[cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=updateUserRole;lines=148-163]
+[cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=UserProfileController;lines=19-59]
+[cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=getCurrentUserId;lines=27-67]
+[cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=uploadProfilePicture;lines=33-73]
+[cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=getProfilePictureUrl;lines=66-93]
+[cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=updateProfile;lines=78-93]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=ReviewWithBookDTO;lines=17-57]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getReviewId;lines=34-74]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getComment;lines=36-76]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getCreatedAt;lines=37-77]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getUpdatedAt;lines=38-78]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getBook;lines=39-79]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getUser;lines=40-80]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=BookDTO;lines=53-93]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getTitle;lines=66-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getAuthor;lines=67-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getGenre;lines=68-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getCoverImage;lines=69-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getPublishYear;lines=70-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getRating;lines=71-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getReviewCount;lines=72-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=UserDTO;lines=81-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getId;lines=89-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getName;lines=90-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getEmail;lines=91-94]
+[cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=getRole;lines=92-94]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=Book;lines=30-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getId;lines=41-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setId;lines=42-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getTitle;lines=43-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setTitle;lines=44-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getAuthor;lines=45-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setAuthor;lines=46-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getGenre;lines=47-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setGenre;lines=48-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getDescription;lines=49-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setDescription;lines=50-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getCoverImage;lines=51-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setCoverImage;lines=52-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getPublishYear;lines=53-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setPublishYear;lines=54-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getRating;lines=55-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setRating;lines=56-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getReviewCount;lines=57-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setReviewCount;lines=58-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=getReviews;lines=59-61]
+[cite:file=src/main/java/bookreview_api/model/Book.java;symbol=setReviews;lines=60-61]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=43-83]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=onCreate;lines=51-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=onUpdate;lines=58-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=getReviewId;lines=63-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=setReviewId;lines=64-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=getRating;lines=66-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=setRating;lines=67-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=getComment;lines=69-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=setComment;lines=70-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=getCreatedAt;lines=72-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=setCreatedAt;lines=73-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=getUpdatedAt;lines=76-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=setUpdatedAt;lines=77-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=getUser;lines=79-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=setUser;lines=80-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=getBook;lines=82-84]
+[cite:file=src/main/java/bookreview_api/model/Review.java;symbol=setBook;lines=83-84]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=39-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=onCreate;lines=47-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=getId;lines=53-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=setId;lines=54-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=getName;lines=55-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=setName;lines=56-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=getEmail;lines=57-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=setEmail;lines=58-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=getPassword;lines=59-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=setPassword;lines=60-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=getRole;lines=61-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=setRole;lines=62-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=getProfilePictureUrl;lines=63-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=setProfilePictureUrl;lines=64-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=getCreatedAt;lines=65-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=setCreatedAt;lines=66-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=getReviews;lines=67-69]
+[cite:file=src/main/java/bookreview_api/model/User.java;symbol=setReviews;lines=68-69]
+[cite:file=src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java;symbol=CustomOAuth2SuccessHandler;lines=17-57]
+[cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61]
+[cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=JwtUtil;lines=13-53]
+[cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=getSigningKey;lines=23-63]
+[cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=generateToken;lines=29-63]
+[cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=extractUserId;lines=42-63]
+[cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=validateToken;lines=52-63]
+[cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=22-62]
+[cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=corsConfigurationSource;lines=31-71]
+[cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=webSecurityCustomizer;lines=51-91]
+[cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=passwordEncoder;lines=105-108]
+[cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=UserService;lines=14-54]
+[cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=register;lines=22-62]
+[cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=authenticate;lines=42-82]
+[cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=findById;lines=55-83]
+[cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=findByEmail;lines=60-83]
+[cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=emailExists;lines=65-83]
+[cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=updateUser;lines=70-83]
+[cite:file=src/test/java/bookreview_api/BookreviewApiApplicationTests.java;symbol=BookreviewApiApplicationTests;lines=7-13]
+[cite:file=src/test/java/bookreview_api/BookreviewApiApplicationTests.java;symbol=contextLoads;lines=10-13]
+
+=== D. SOURCE CODE WITH LINE NUMBERS ===
+--- src/main/java/bookreview_api/BookreviewApiApplication.java ---
+   1 | package com.bookreview.api;
+   2 | 
+   3 | import org.springframework.boot.SpringApplication;
+   4 | import org.springframework.boot.autoconfigure.SpringBootApplication;
+   5 | 
+   6 | @SpringBootApplication  // Tells Spring this is the main class
+   7 | public class BookreviewApiApplication {
+   8 | 
+   9 |     public static void main(String[] args) {
+  10 |         SpringApplication.run(BookreviewApiApplication.class, args);
+  11 |     }
+  12 | }
+
+--- src/main/java/bookreview_api/WebConfig.java ---
+   1 | package com.bookreview.api.config;
+   2 | 
+   3 | import org.springframework.context.annotation.Configuration;
+   4 | import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+   5 | import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+   6 | 
+   7 | @Configuration
+   8 | public class WebConfig implements WebMvcConfigurer {
+   9 | 
+  10 |     @Override
+  11 |     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+  12 |         // Serve files from the uploads directory
+  13 |         registry.addResourceHandler("/uploads/**")
+  14 |                 .addResourceLocations("file:uploads/");
+  15 |     }
+  16 | }
+
+--- src/main/java/bookreview_api/config/SwaggerConfig.java ---
+   1 | package com.bookreview.api.config;
+   2 | 
+   3 | import io.swagger.v3.oas.models.Components;
+   4 | import io.swagger.v3.oas.models.OpenAPI;
+   5 | import io.swagger.v3.oas.models.info.Contact;
+   6 | import io.swagger.v3.oas.models.info.Info;
+   7 | import io.swagger.v3.oas.models.info.License;
+   8 | import io.swagger.v3.oas.models.security.SecurityRequirement;
+   9 | import io.swagger.v3.oas.models.security.SecurityScheme;
+  10 | import org.springframework.context.annotation.Bean;
+  11 | import org.springframework.context.annotation.Configuration;
+  12 | 
+  13 | @Configuration
+  14 | public class SwaggerConfig {
+  15 | 
+  16 |     @Bean
+  17 |     public OpenAPI customOpenAPI() {
+  18 |         return new OpenAPI()
+  19 |             .info(new Info()
+  20 |                 .title("Book Review API")
+  21 |                 .version("1.0")
+  22 |                 .description("Complete REST API for Book Review Application")
+  23 |                 .contact(new Contact()
+  24 |                     .name("Anshu")
+  25 |                     .email("anshu@example.com")
+  26 |                     .url("https://github.com/anshu"))
+  27 |                 .license(new License()
+  28 |                     .name("MIT License")
+  29 |                     .url("https://opensource.org/licenses/MIT")))
+  30 |             .addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
+  31 |             .components(new Components()
+  32 |                 .addSecuritySchemes("Bearer Authentication", new SecurityScheme()
+  33 |                     .name("Bearer Authentication")
+  34 |                     .type(SecurityScheme.Type.HTTP)
+  35 |                     .scheme("bearer")
+  36 |                     .bearerFormat("JWT")));
+  37 |     }
+  38 | }
+
+--- src/main/java/bookreview_api/controller/AuthController.java ---
+   1 | package com.bookreview.api.controller;
+   2 | 
+   3 | import com.bookreview.api.model.User;
+   4 | import com.bookreview.api.security.JwtUtil;
+   5 | import com.bookreview.api.service.UserService;
+   6 | import org.springframework.beans.factory.annotation.Autowired;
+   7 | import org.springframework.web.bind.annotation.*;
+   8 | 
+   9 | import java.util.HashMap;
+  10 | import java.util.Map;
+  11 | 
+  12 | @RestController
+  13 | @RequestMapping("/api/auth")
+  14 | public class AuthController {
+  15 | 
+  16 |     @Autowired
+  17 |     private UserService userService;
+  18 | 
+  19 |     @Autowired
+  20 |     private JwtUtil jwtUtil;
+  21 | 
+  22 |     // Register endpoint
+  23 |     @PostMapping("/register")
+  24 |     public Map<String, String> register(@RequestBody Map<String, String> request) {
+  25 |         String name = request.get("name");
+  26 |         String email = request.get("email");
+  27 |         String password = request.get("password");
+  28 |         String role = request.getOrDefault("role", "USER");
+  29 | 
+  30 |         User newUser = userService.register(name, email, password, role);
+  31 | 
+  32 |         Map<String, String> response = new HashMap<>();
+  33 | 
+  34 |         if (newUser == null) {
+  35 |             response.put("error", "Email already exists");
+  36 |             return response;
+  37 |         }
+  38 | 
+  39 |         String token = jwtUtil.generateToken(newUser.getId());
+  40 |         response.put("token", token);
+  41 |         response.put("userId", newUser.getId());
+  42 |         response.put("name", newUser.getName());
+  43 |         response.put("email", newUser.getEmail());
+  44 |         response.put("role", newUser.getRole());
+  45 |         response.put("message", "Registration successful");
+  46 |         return response;
+  47 |     }
+  48 | 
+  49 |     // Login endpoint
+  50 |     @PostMapping("/login")
+  51 |     public Map<String, String> login(@RequestBody Map<String, String> request) {
+  52 |         String email = request.get("email");
+  53 |         String password = request.get("password");
+  54 | 
+  55 |         User user = userService.authenticate(email, password);
+  56 | 
+  57 |         Map<String, String> response = new HashMap<>();
+  58 | 
+  59 |         if (user == null) {
+  60 |             response.put("error", "Invalid email or password");
+  61 |             return response;
+  62 |         }
+  63 | 
+  64 |         String token = jwtUtil.generateToken(user.getId());
+  65 |         response.put("token", token);
+  66 |         response.put("userId", user.getId());
+  67 |         response.put("name", user.getName());
+  68 |         response.put("email", user.getEmail());
+  69 |         response.put("role", user.getRole());
+  70 |         response.put("message", "Login successful");
+  71 |         return response;
+  72 |     }
+  73 | 
+  74 |     // Logout endpoint
+  75 |     @PostMapping("/logout")
+  76 |     public Map<String, String> logout() {
+  77 |         Map<String, String> response = new HashMap<>();
+  78 |         response.put("message", "Logged out successfully");
+  79 |         return response;
+  80 |     }
+  81 | }
+
+--- src/main/java/bookreview_api/controller/BookController.java ---
+   1 | package com.bookreview.api.controller;
+   2 | 
+   3 | import com.bookreview.api.model.Book;
+   4 | import com.bookreview.api.repository.BookRepository;
+   5 | import org.springframework.beans.factory.annotation.Autowired;
+   6 | import org.springframework.data.domain.Page;
+   7 | import org.springframework.data.domain.PageRequest;
+   8 | import org.springframework.data.domain.Pageable;
+   9 | import org.springframework.data.domain.Sort;
+  10 | import org.springframework.web.bind.annotation.*;
+  11 | 
+  12 | @RestController
+  13 | @RequestMapping("/api/books")
+  14 | public class BookController {
+  15 | 
+  16 |     @Autowired
+  17 |     private BookRepository bookRepository;
+  18 | 
+  19 |     // Get all books with pagination and sorting
+  20 |     @GetMapping
+  21 |     public Page<Book> getAllBooks(
+  22 |             @RequestParam(defaultValue = "0") int page,
+  23 |             @RequestParam(defaultValue = "10") int size,
+  24 |             @RequestParam(defaultValue = "id") String sortBy,
+  25 |             @RequestParam(defaultValue = "asc") String direction) {
+  26 |         
+  27 |         // Valid sort fields: id, title, author, genre, publishYear, rating
+  28 |         Sort sort = direction.equalsIgnoreCase("asc") ? 
+  29 |                     Sort.by(sortBy).ascending() : 
+  30 |                     Sort.by(sortBy).descending();
+  31 |         
+  32 |         Pageable pageable = PageRequest.of(page, size, sort);
+  33 |         return bookRepository.findAll(pageable);
+  34 |     }
+  35 | 
+  36 |     // Get book by ID
+  37 |     @GetMapping("/{id}")
+  38 |     public Book getBookById(@PathVariable String id) {
+  39 |         return bookRepository.findById(id).orElse(null);
+  40 |     }
+  41 | 
+  42 |     // Search books
+  43 |     @GetMapping("/search")
+  44 |     public Page<Book> searchBooks(
+  45 |             @RequestParam String keyword,
+  46 |             @RequestParam(defaultValue = "0") int page,
+  47 |             @RequestParam(defaultValue = "10") int size) {
+  48 |         Pageable pageable = PageRequest.of(page, size);
+  49 |         return bookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(keyword, keyword, pageable);
+  50 |     }
+  51 | 
+  52 |     // Filter books
+  53 |     @GetMapping("/filter")
+  54 |     public Page<Book> filterBooks(
+  55 |             @RequestParam(required = false) String genre,
+  56 |             @RequestParam(required = false) String author,
+  57 |             @RequestParam(required = false) Integer minRating,
+  58 |             @RequestParam(defaultValue = "0") int page,
+  59 |             @RequestParam(defaultValue = "10") int size) {
+  60 |         
+  61 |         Pageable pageable = PageRequest.of(page, size);
+  62 |         
+  63 |         if (genre != null && author != null) {
+  64 |             return bookRepository.findByGenreAndAuthor(genre, author, pageable);
+  65 |         } else if (genre != null) {
+  66 |             return bookRepository.findByGenre(genre, pageable);
+  67 |         } else if (author != null) {
+  68 |             return bookRepository.findByAuthor(author, pageable);
+  69 |         } else if (minRating != null) {
+  70 |             // Filter by minimum rating
+  71 |             return bookRepository.findByRatingGreaterThanEqual((double) minRating, pageable);
+  72 |         }
+  73 |         
+  74 |         return bookRepository.findAll(pageable);
+  75 |     }
+  76 | }
+
+--- src/main/java/bookreview_api/controller/HealthController.java ---
+   1 | // HealthController.java
+   2 | package com.bookreview.api.controller;
+   3 | 
+   4 | import org.springframework.web.bind.annotation.GetMapping;
+   5 | import org.springframework.web.bind.annotation.RestController;
+   6 | import java.util.HashMap;
+   7 | import java.util.Map;
+   8 | 
+   9 | @RestController
+  10 | public class HealthController {
+  11 | 
+  12 |     @GetMapping("/api/health")
+  13 |     public Map<String, String> health() {
+  14 |         Map<String, String> response = new HashMap<>();
+  15 |         response.put("status", "ok");
+  16 |         response.put("timestamp", String.valueOf(System.currentTimeMillis()));
+  17 |         return response;
+  18 |     }
+  19 | }
+
+--- src/main/java/bookreview_api/controller/ReviewController.java ---
+   1 | package com.bookreview.api.controller;
+   2 | 
+   3 | import com.bookreview.api.dto.ReviewWithBookDTO;
+   4 | import com.bookreview.api.model.Book;
+   5 | import com.bookreview.api.model.Review;
+   6 | import com.bookreview.api.model.User;
+   7 | import com.bookreview.api.repository.BookRepository;
+   8 | import com.bookreview.api.repository.ReviewRepository;
+   9 | import com.bookreview.api.repository.UserRepository;
+  10 | import org.springframework.beans.factory.annotation.Autowired;
+  11 | import org.springframework.security.core.context.SecurityContextHolder;
+  12 | import org.springframework.web.bind.annotation.*;
+  13 | import org.hibernate.Hibernate;
+  14 | 
+  15 | import java.util.HashMap;
+  16 | import java.util.List;
+  17 | import java.util.Map;
+  18 | import java.util.stream.Collectors;
+  19 | 
+  20 | @RestController
+  21 | @RequestMapping("/api/reviews")
+  22 | public class ReviewController {
+  23 | 
+  24 |     @Autowired
+  25 |     private ReviewRepository reviewRepository;
+  26 | 
+  27 |     @Autowired
+  28 |     private BookRepository bookRepository;
+  29 | 
+  30 |     @Autowired
+  31 |     private UserRepository userRepository;
+  32 | 
+  33 |     private String getCurrentUserId() {
+  34 |         return (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+  35 |     }
+  36 | 
+  37 |     private void updateBookRating(String bookId) {
+  38 |         Book book = bookRepository.findById(bookId).orElse(null);
+  39 |         if (book != null) {
+  40 |             List<Review> bookReviews = reviewRepository.findByBook(book);
+  41 |             if (bookReviews.isEmpty()) {
+  42 |                 book.setRating(0.0);
+  43 |                 book.setReviewCount(0);
+  44 |             } else {
+  45 |                 double avg = bookReviews.stream().mapToInt(Review::getRating).average().orElse(0.0);
+  46 |                 book.setRating(Math.round(avg * 10) / 10.0);
+  47 |                 book.setReviewCount(bookReviews.size());
+  48 |             }
+  49 |             bookRepository.save(book);
+  50 |         }
+  51 |     }
+  52 | 
+  53 |     // Get reviews by book ID - PUBLIC
+  54 |     @GetMapping
+  55 |     public List<Review> getReviewsByBookId(@RequestParam(value = "id", required = false) String bookId) {
+  56 |         if (bookId == null) {
+  57 |             return reviewRepository.findAll();
+  58 |         }
+  59 |         Book book = bookRepository.findById(bookId).orElse(null);
+  60 |         if (book == null) {
+  61 |             return List.of();
+  62 |         }
+  63 |         return reviewRepository.findByBook(book);
+  64 |     }
+  65 | 
+  66 |     // Get all reviews - ADMIN only
+  67 |     @GetMapping("/all")
+  68 |     public List<Review> getAllReviews() {
+  69 |         return reviewRepository.findAll();
+  70 |     }
+  71 | 
+  72 |     // Get current user's own reviews - RETURN DTO
+  73 |     @GetMapping("/my")
+  74 |     public List<ReviewWithBookDTO> getMyReviews() {
+  75 |         String currentUserId = getCurrentUserId();
+  76 |         // ✅ FIXED: Changed from findByUser_Id to findByUserId
+  77 |         List<Review> myReviews = reviewRepository.findByUserId(currentUserId);
+  78 |         
+  79 |         // Force initialization of book details
+  80 |         for (Review review : myReviews) {
+  81 |             Hibernate.initialize(review.getBook());
+  82 |             Hibernate.initialize(review.getUser());
+  83 |         }
+  84 |         
+  85 |         // Convert to DTO
+  86 |         return myReviews.stream()
+  87 |             .map(ReviewWithBookDTO::new)
+  88 |             .collect(Collectors.toList());
+  89 |     }
+  90 | 
+  91 |     // Add a review
+  92 |     @PostMapping
+  93 |     public Map<String, String> addReview(@RequestBody Review review) {
+  94 |         String currentUserId = getCurrentUserId();
+  95 |         Map<String, String> response = new HashMap<>();
+  96 |         
+  97 |         Book book = bookRepository.findById(review.getBook().getId()).orElse(null);
+  98 |         if (book == null) {
+  99 |             response.put("error", "Book not found");
+ 100 |             return response;
+ 101 |         }
+ 102 |         
+ 103 |         User user = userRepository.findById(currentUserId).orElse(null);
+ 104 |         if (user == null) {
+ 105 |             response.put("error", "User not found");
+ 106 |             return response;
+ 107 |         }
+ 108 |         
+ 109 |         Review newReview = new Review();
+ 110 |         newReview.setRating(review.getRating());
+ 111 |         newReview.setComment(review.getComment());
+ 112 |         newReview.setBook(book);
+ 113 |         newReview.setUser(user);
+ 114 |         
+ 115 |         reviewRepository.save(newReview);
+ 116 |         
+ 117 |         updateBookRating(book.getId());
+ 118 |         
+ 119 |         response.put("message", "Review added successfully");
+ 120 |         response.put("reviewId", newReview.getReviewId());
+ 121 |         return response;
+ 122 |     }
+ 123 | 
+ 124 |     // Delete a review
+ 125 |     @DeleteMapping("/{reviewId}")
+ 126 |     public Map<String, String> deleteReview(@PathVariable String reviewId) {
+ 127 |         String currentUserId = getCurrentUserId();
+ 128 |         User currentUser = userRepository.findById(currentUserId).orElse(null);
+ 129 |         Map<String, String> response = new HashMap<>();
+ 130 |         
+ 131 |         Review review = reviewRepository.findById(reviewId).orElse(null);
+ 132 |         if (review == null) {
+ 133 |             response.put("error", "Review not found");
+ 134 |             return response;
+ 135 |         }
+ 136 |         
+ 137 |         String bookId = review.getBook().getId();
+ 138 |         
+ 139 |         if (review.getUser().getId().equals(currentUserId) || 
+ 140 |             (currentUser != null && "ADMIN".equals(currentUser.getRole()))) {
+ 141 |             reviewRepository.delete(review);
+ 142 |             updateBookRating(bookId);
+ 143 |             response.put("message", "Review deleted successfully");
+ 144 |             return response;
+ 145 |         } else {
+ 146 |             response.put("error", "You can only delete your own reviews");
+ 147 |             return response;
+ 148 |         }
+ 149 |     }
+ 150 | 
+ 151 |     // Update a review
+ 152 |     @PutMapping("/{reviewId}")
+ 153 |     public Map<String, String> updateReview(@PathVariable String reviewId, @RequestBody Review updatedReview) {
+ 154 |         String currentUserId = getCurrentUserId();
+ 155 |         User currentUser = userRepository.findById(currentUserId).orElse(null);
+ 156 |         Map<String, String> response = new HashMap<>();
+ 157 |         
+ 158 |         Review review = reviewRepository.findById(reviewId).orElse(null);
+ 159 |         if (review == null) {
+ 160 |             response.put("error", "Review not found");
+ 161 |             return response;
+ 162 |         }
+ 163 |         
+ 164 |         String bookId = review.getBook().getId();
+ 165 |         
+ 166 |         if (review.getUser().getId().equals(currentUserId) || 
+ 167 |             (currentUser != null && "ADMIN".equals(currentUser.getRole()))) {
+ 168 |             review.setRating(updatedReview.getRating());
+ 169 |             review.setComment(updatedReview.getComment());
+ 170 |             reviewRepository.save(review);
+ 171 |             updateBookRating(bookId);
+ 172 |             response.put("message", "Review updated successfully");
+ 173 |             return response;
+ 174 |         } else {
+ 175 |             response.put("error", "You can only update your own reviews");
+ 176 |             return response;
+ 177 |         }
+ 178 |     }
+ 179 | }
+
+--- src/main/java/bookreview_api/controller/UserController.java ---
+   1 | package com.bookreview.api.controller;
+   2 | 
+   3 | import com.bookreview.api.model.User;
+   4 | import com.bookreview.api.repository.UserRepository;
+   5 | import org.springframework.beans.factory.annotation.Autowired;
+   6 | import org.springframework.security.core.context.SecurityContextHolder;
+   7 | import org.springframework.web.bind.annotation.*;
+   8 | import org.springframework.web.multipart.MultipartFile;
+   9 | 
+  10 | import java.io.File;
+  11 | import java.io.IOException;
+  12 | import java.nio.file.Files;
+  13 | import java.nio.file.Path;
+  14 | import java.nio.file.Paths;
+  15 | import java.util.List;
+  16 | import java.util.Map;
+  17 | import java.util.HashMap;
+  18 | 
+  19 | @RestController
+  20 | @RequestMapping("/api/users")
+  21 | public class UserController {
+  22 | 
+  23 |     @Autowired
+  24 |     private UserRepository userRepository;
+  25 | 
+  26 |     private String getCurrentUserId() {
+  27 |         return (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+  28 |     }
+  29 | 
+  30 |     private User getCurrentUser() {
+  31 |         return userRepository.findById(getCurrentUserId()).orElse(null);
+  32 |     }
+  33 | 
+  34 |     // Get all users - ADMIN only
+  35 |     @GetMapping
+  36 |     public List<User> getAllUsers() {
+  37 |         User currentUser = getCurrentUser();
+  38 |         if (currentUser == null || !"ADMIN".equals(currentUser.getRole())) {
+  39 |             throw new RuntimeException("Access denied. Admin only.");
+  40 |         }
+  41 |         return userRepository.findAll();
+  42 |     }
+  43 | 
+  44 |     // Get current user's profile
+  45 |     @GetMapping("/me")
+  46 |     public User getCurrentUserProfile() {
+  47 |         User currentUser = getCurrentUser();
+  48 |         if (currentUser == null) {
+  49 |             throw new RuntimeException("User not found");
+  50 |         }
+  51 |         return currentUser;
+  52 |     }
+  53 | 
+  54 |     // Update current user's profile
+  55 |     @PutMapping("/me")
+  56 |     public Map<String, String> updateCurrentUser(@RequestBody Map<String, String> updates) {
+  57 |         String currentUserId = getCurrentUserId();
+  58 |         User user = userRepository.findById(currentUserId).orElse(null);
+  59 |         Map<String, String> response = new HashMap<>();
+  60 |         
+  61 |         if (user == null) {
+  62 |             response.put("error", "User not found");
+  63 |             return response;
+  64 |         }
+  65 |         
+  66 |         if (updates.containsKey("name") && updates.get("name") != null) {
+  67 |             user.setName(updates.get("name"));
+  68 |         }
+  69 |         
+  70 |         userRepository.save(user);
+  71 |         
+  72 |         response.put("message", "Profile updated successfully");
+  73 |         response.put("name", user.getName());
+  74 |         response.put("userId", user.getId());
+  75 |         response.put("email", user.getEmail());
+  76 |         
+  77 |         return response;
+  78 |     }
+  79 | 
+  80 |     // Upload profile picture
+  81 |     @PostMapping("/profile/picture")
+  82 |     public Map<String, String> uploadProfilePicture(@RequestParam("file") MultipartFile file) {
+  83 |         String currentUserId = getCurrentUserId();
+  84 |         User user = userRepository.findById(currentUserId).orElse(null);
+  85 |         Map<String, String> response = new HashMap<>();
+  86 |         
+  87 |         if (user == null) {
+  88 |             response.put("error", "User not found");
+  89 |             return response;
+  90 |         }
+  91 |         
+  92 |         try {
+  93 |             // Create upload directory
+  94 |             String uploadDir = "uploads/profiles/";
+  95 |             File dir = new File(uploadDir);
+  96 |             if (!dir.exists()) dir.mkdirs();
+  97 |             
+  98 |             // Generate unique filename
+  99 |             String filename = currentUserId + "_" + System.currentTimeMillis() + ".jpg";
+ 100 |             Path filePath = Paths.get(uploadDir + filename);
+ 101 |             Files.write(filePath, file.getBytes());
+ 102 |             
+ 103 |             // Save URL to user
+ 104 |             String fileUrl = "/uploads/profiles/" + filename;
+ 105 |             user.setProfilePictureUrl(fileUrl);
+ 106 |             userRepository.save(user);
+ 107 |             
+ 108 |             response.put("message", "Profile picture uploaded successfully");
+ 109 |             response.put("profilePictureUrl", fileUrl);
+ 110 |         } catch (IOException e) {
+ 111 |             response.put("error", "Failed to upload file: " + e.getMessage());
+ 112 |         }
+ 113 |         
+ 114 |         return response;
+ 115 |     }
+ 116 | 
+ 117 |     // Get user by ID - ADMIN can see any, USER can see only themselves
+ 118 |     @GetMapping("/{userId}")
+ 119 |     public User getUserById(@PathVariable String userId) {
+ 120 |         User currentUser = getCurrentUser();
+ 121 |         String currentUserId = getCurrentUserId();
+ 122 |         
+ 123 |         if (currentUser != null && "ADMIN".equals(currentUser.getRole())) {
+ 124 |             return userRepository.findById(userId).orElse(null);
+ 125 |         }
+ 126 |         
+ 127 |         if (!userId.equals(currentUserId)) {
+ 128 |             throw new RuntimeException("Access denied. You can only view your own profile.");
+ 129 |         }
+ 130 |         
+ 131 |         return userRepository.findById(userId).orElse(null);
+ 132 |     }
+ 133 | 
+ 134 |     // Delete user - ADMIN only
+ 135 |     @DeleteMapping("/{userId}")
+ 136 |     public String deleteUser(@PathVariable String userId) {
+ 137 |         User currentUser = getCurrentUser();
+ 138 |         if (currentUser == null || !"ADMIN".equals(currentUser.getRole())) {
+ 139 |             throw new RuntimeException("Access denied. Admin only.");
+ 140 |         }
+ 141 |         
+ 142 |         userRepository.deleteById(userId);
+ 143 |         return "User deleted successfully: " + userId;
+ 144 |     }
+ 145 | 
+ 146 |     // Update user role - ADMIN only
+ 147 |     @PutMapping("/{userId}/role")
+ 148 |     public String updateUserRole(@PathVariable String userId, @RequestParam String role) {
+ 149 |         User currentUser = getCurrentUser();
+ 150 |         if (currentUser == null || !"ADMIN".equals(currentUser.getRole())) {
+ 151 |             throw new RuntimeException("Access denied. Admin only.");
+ 152 |         }
+ 153 |         
+ 154 |         User user = userRepository.findById(userId).orElse(null);
+ 155 |         if (user == null) {
+ 156 |             return "User not found: " + userId;
+ 157 |         }
+ 158 |         
+ 159 |         user.setRole(role);
+ 160 |         userRepository.save(user);
+ 161 |         return "User role updated to: " + role;
+ 162 |     }
+ 163 | }
+
+--- src/main/java/bookreview_api/controller/UserProfileController.java ---
+   1 | package com.bookreview.api.controller;
+   2 | 
+   3 | import com.bookreview.api.model.User;
+   4 | import com.bookreview.api.repository.UserRepository;
+   5 | import org.springframework.beans.factory.annotation.Autowired;
+   6 | import org.springframework.beans.factory.annotation.Value;
+   7 | import org.springframework.security.core.context.SecurityContextHolder;
+   8 | import org.springframework.web.bind.annotation.*;
+   9 | import org.springframework.web.multipart.MultipartFile;
+  10 | import java.io.File;
+  11 | import java.io.IOException;
+  12 | import java.nio.file.Files;
+  13 | import java.nio.file.Path;
+  14 | import java.nio.file.Paths;
+  15 | import java.util.UUID;
+  16 | 
+  17 | @RestController
+  18 | @RequestMapping("/api/profile")
+  19 | public class UserProfileController {
+  20 | 
+  21 |     @Autowired
+  22 |     private UserRepository userRepository;
+  23 | 
+  24 |     @Value("${upload.dir:uploads}")
+  25 |     private String uploadDir;
+  26 | 
+  27 |     private String getCurrentUserId() {
+  28 |         return (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+  29 |     }
+  30 | 
+  31 |     // Upload profile picture
+  32 |     @PostMapping("/picture")
+  33 |     public String uploadProfilePicture(@RequestParam("file") MultipartFile file) {
+  34 |         try {
+  35 |             String currentUserId = getCurrentUserId();
+  36 |             User user = userRepository.findById(currentUserId).orElse(null);
+  37 |             
+  38 |             if (user == null) {
+  39 |                 return "User not found";
+  40 |             }
+  41 |             
+  42 |             // Create upload directory if not exists
+  43 |             File directory = new File(uploadDir);
+  44 |             if (!directory.exists()) {
+  45 |                 directory.mkdirs();
+  46 |             }
+  47 |             
+  48 |             // Generate unique filename
+  49 |             String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+  50 |             Path path = Paths.get(uploadDir + File.separator + filename);
+  51 |             Files.write(path, file.getBytes());
+  52 |             
+  53 |             // Save file path to user
+  54 |             String fileUrl = "/uploads/" + filename;
+  55 |             user.setProfilePictureUrl(fileUrl);
+  56 |             userRepository.save(user);
+  57 |             
+  58 |             return "Profile picture uploaded: " + fileUrl;
+  59 |         } catch (IOException e) {
+  60 |             return "Upload failed: " + e.getMessage();
+  61 |         }
+  62 |     }
+  63 | 
+  64 |     // Get profile picture URL
+  65 |     @GetMapping("/picture")
+  66 |     public String getProfilePictureUrl() {
+  67 |         String currentUserId = getCurrentUserId();
+  68 |         User user = userRepository.findById(currentUserId).orElse(null);
+  69 |         
+  70 |         if (user == null || user.getProfilePictureUrl() == null) {
+  71 |             return "No profile picture set";
+  72 |         }
+  73 |         return user.getProfilePictureUrl();
+  74 |     }
+  75 | 
+  76 |     // Update profile
+  77 |     @PutMapping
+  78 |     public String updateProfile(@RequestBody User profileUpdate) {
+  79 |         String currentUserId = getCurrentUserId();
+  80 |         User user = userRepository.findById(currentUserId).orElse(null);
+  81 |         
+  82 |         if (user == null) {
+  83 |             return "User not found";
+  84 |         }
+  85 |         
+  86 |         if (profileUpdate.getName() != null) {
+  87 |             user.setName(profileUpdate.getName());
+  88 |         }
+  89 |         
+  90 |         userRepository.save(user);
+  91 |         return "Profile updated successfully";
+  92 |     }
+  93 | }
+
+--- src/main/java/bookreview_api/dto/ReviewWithBookDTO.java ---
+   1 | package com.bookreview.api.dto;
+   2 | 
+   3 | import com.bookreview.api.model.Book;
+   4 | import com.bookreview.api.model.Review;
+   5 | import com.bookreview.api.model.User;
+   6 | import java.time.LocalDateTime;
+   7 | 
+   8 | public class ReviewWithBookDTO {
+   9 |     private String reviewId;
+  10 |     private int rating;
+  11 |     private String comment;
+  12 |     private LocalDateTime createdAt;
+  13 |     private LocalDateTime updatedAt;
+  14 |     private BookDTO book;
+  15 |     private UserDTO user;
+  16 |     
+  17 |     public ReviewWithBookDTO(Review review) {
+  18 |         this.reviewId = review.getReviewId();
+  19 |         this.rating = review.getRating();
+  20 |         this.comment = review.getComment();
+  21 |         this.createdAt = review.getCreatedAt();
+  22 |         this.updatedAt = review.getUpdatedAt();
+  23 |         
+  24 |         if (review.getBook() != null) {
+  25 |             this.book = new BookDTO(review.getBook());
+  26 |         }
+  27 |         
+  28 |         if (review.getUser() != null) {
+  29 |             this.user = new UserDTO(review.getUser());
+  30 |         }
+  31 |     }
+  32 |     
+  33 |     // Getters
+  34 |     public String getReviewId() { return reviewId; }
+  35 |     public int getRating() { return rating; }
+  36 |     public String getComment() { return comment; }
+  37 |     public LocalDateTime getCreatedAt() { return createdAt; }
+  38 |     public LocalDateTime getUpdatedAt() { return updatedAt; }
+  39 |     public BookDTO getBook() { return book; }
+  40 |     public UserDTO getUser() { return user; }
+  41 |     
+  42 |     // Inner DTO classes
+  43 |     public static class BookDTO {
+  44 |         private String id;
+  45 |         private String title;
+  46 |         private String author;
+  47 |         private String genre;
+  48 |         private String coverImage;
+  49 |         private Integer publishYear;
+  50 |         private Double rating;
+  51 |         private Integer reviewCount;
+  52 |         
+  53 |         public BookDTO(Book book) {
+  54 |             this.id = book.getId();
+  55 |             this.title = book.getTitle();
+  56 |             this.author = book.getAuthor();
+  57 |             this.genre = book.getGenre();
+  58 |             this.coverImage = book.getCoverImage();
+  59 |             this.publishYear = book.getPublishYear();
+  60 |             this.rating = book.getRating();
+  61 |             this.reviewCount = book.getReviewCount();
+  62 |         }
+  63 |         
+  64 |         // Getters
+  65 |         public String getId() { return id; }
+  66 |         public String getTitle() { return title; }
+  67 |         public String getAuthor() { return author; }
+  68 |         public String getGenre() { return genre; }
+  69 |         public String getCoverImage() { return coverImage; }
+  70 |         public Integer getPublishYear() { return publishYear; }
+  71 |         public Double getRating() { return rating; }
+  72 |         public Integer getReviewCount() { return reviewCount; }
+  73 |     }
+  74 |     
+  75 |     public static class UserDTO {
+  76 |         private String id;
+  77 |         private String name;
+  78 |         private String email;
+  79 |         private String role;
+  80 |         
+  81 |         public UserDTO(User user) {
+  82 |             this.id = user.getId();
+  83 |             this.name = user.getName();
+  84 |             this.email = user.getEmail();
+  85 |             this.role = user.getRole();
+  86 |         }
+  87 |         
+  88 |         // Getters
+  89 |         public String getId() { return id; }
+  90 |         public String getName() { return name; }
+  91 |         public String getEmail() { return email; }
+  92 |         public String getRole() { return role; }
+  93 |     }
+  94 | }
+
+--- src/main/java/bookreview_api/model/Book.java ---
+   1 | package com.bookreview.api.model;
+   2 | 
+   3 | import jakarta.persistence.*;
+   4 | import java.util.ArrayList;
+   5 | import java.util.List;
+   6 | import com.fasterxml.jackson.annotation.JsonIgnore;
+   7 | 
+   8 | @Entity
+   9 | @Table(name = "books")
+  10 | public class Book {
+  11 |     @Id
+  12 |     private String id;
+  13 |     private String title;
+  14 |     private String author;
+  15 |     private String genre;
+  16 |     private String description;
+  17 |     private String coverImage;
+  18 |     private Integer publishYear;
+  19 |     
+  20 |     // Add these two fields
+  21 |     private Double rating = 0.0;
+  22 |     private Integer reviewCount = 0;
+  23 |     
+  24 |     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  25 |     @JsonIgnore 
+  26 |     private List<Review> reviews = new ArrayList<>();
+  27 |     
+  28 |     public Book() {}
+  29 |     
+  30 |     public Book(String id, String title, String author, String genre, String description) {
+  31 |         this.id = id;
+  32 |         this.title = title;
+  33 |         this.author = author;
+  34 |         this.genre = genre;
+  35 |         this.description = description;
+  36 |         this.rating = 0.0;
+  37 |         this.reviewCount = 0;
+  38 |     }
+  39 |     
+  40 |     // Getters and Setters
+  41 |     public String getId() { return id; }
+  42 |     public void setId(String id) { this.id = id; }
+  43 |     public String getTitle() { return title; }
+  44 |     public void setTitle(String title) { this.title = title; }
+  45 |     public String getAuthor() { return author; }
+  46 |     public void setAuthor(String author) { this.author = author; }
+  47 |     public String getGenre() { return genre; }
+  48 |     public void setGenre(String genre) { this.genre = genre; }
+  49 |     public String getDescription() { return description; }
+  50 |     public void setDescription(String description) { this.description = description; }
+  51 |     public String getCoverImage() { return coverImage; }
+  52 |     public void setCoverImage(String coverImage) { this.coverImage = coverImage; }
+  53 |     public Integer getPublishYear() { return publishYear; }
+  54 |     public void setPublishYear(Integer publishYear) { this.publishYear = publishYear; }
+  55 |     public Double getRating() { return rating; }
+  56 |     public void setRating(Double rating) { this.rating = rating; }
+  57 |     public Integer getReviewCount() { return reviewCount; }
+  58 |     public void setReviewCount(Integer reviewCount) { this.reviewCount = reviewCount; }
+  59 |     public List<Review> getReviews() { return reviews; }
+  60 |     public void setReviews(List<Review> reviews) { this.reviews = reviews; }
+  61 | }
+
+--- src/main/java/bookreview_api/model/Review.java ---
+   1 | package com.bookreview.api.model;
+   2 | 
+   3 | import com.fasterxml.jackson.annotation.JsonIgnore;
+   4 | import jakarta.persistence.*;
+   5 | import org.hibernate.annotations.GenericGenerator;
+   6 | import java.time.LocalDateTime;
+   7 | 
+   8 | @Entity
+   9 | @Table(name = "reviews", uniqueConstraints = {
+  10 |     @UniqueConstraint(columnNames = {"user_id", "book_id"}, name = "unique_user_book_review")
+  11 | })
+  12 | public class Review {
+  13 |     
+  14 |     @Id
+  15 |     @GeneratedValue(generator = "uuid2")
+  16 |     @GenericGenerator(name = "uuid2", strategy = "uuid2")
+  17 |     @Column(columnDefinition = "VARCHAR(36)")
+  18 |     private String reviewId;
+  19 |     
+  20 |     @Column(nullable = false)
+  21 |     private Integer rating;
+  22 |     
+  23 |     @Column(length = 2000)
+  24 |     private String comment;
+  25 |     
+  26 |     @Column(name = "created_at")
+  27 |     private LocalDateTime createdAt;
+  28 |     
+  29 |     @Column(name = "updated_at")  // ✅ ADD THIS FIELD
+  30 |     private LocalDateTime updatedAt;
+  31 |     
+  32 |     @ManyToOne(fetch = FetchType.LAZY)
+  33 |     @JoinColumn(name = "user_id", nullable = false)
+  34 |     @JsonIgnore
+  35 |     private User user;
+  36 |     
+  37 |     @ManyToOne(fetch = FetchType.LAZY)
+  38 |     @JoinColumn(name = "book_id", nullable = false)
+  39 |     private Book book;
+  40 |     
+  41 |     public Review() {}
+  42 |     
+  43 |     public Review(Integer rating, String comment, User user, Book book) {
+  44 |         this.rating = rating;
+  45 |         this.comment = comment;
+  46 |         this.user = user;
+  47 |         this.book = book;
+  48 |     }
+  49 |     
+  50 |     @PrePersist
+  51 |     protected void onCreate() {
+  52 |         if (createdAt == null) {
+  53 |             createdAt = LocalDateTime.now();
+  54 |         }
+  55 |     }
+  56 |     
+  57 |     @PreUpdate  // ✅ ADD THIS - updates updatedAt when review is modified
+  58 |     protected void onUpdate() {
+  59 |         updatedAt = LocalDateTime.now();
+  60 |     }
+  61 |     
+  62 |     // Getters and Setters
+  63 |     public String getReviewId() { return reviewId; }
+  64 |     public void setReviewId(String reviewId) { this.reviewId = reviewId; }
+  65 |     
+  66 |     public Integer getRating() { return rating; }
+  67 |     public void setRating(Integer rating) { this.rating = rating; }
+  68 |     
+  69 |     public String getComment() { return comment; }
+  70 |     public void setComment(String comment) { this.comment = comment; }
+  71 |     
+  72 |     public LocalDateTime getCreatedAt() { return createdAt; }
+  73 |     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+  74 |     
+  75 |     // ✅ ADD THIS GETTER
+  76 |     public LocalDateTime getUpdatedAt() { return updatedAt; }
+  77 |     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+  78 |     
+  79 |     public User getUser() { return user; }
+  80 |     public void setUser(User user) { this.user = user; }
+  81 |     
+  82 |     public Book getBook() { return book; }
+  83 |     public void setBook(Book book) { this.book = book; }
+  84 | }
+
+--- src/main/java/bookreview_api/model/User.java ---
+   1 | package com.bookreview.api.model;
+   2 | 
+   3 | import com.fasterxml.jackson.annotation.JsonIgnore;
+   4 | import jakarta.persistence.*;
+   5 | import org.hibernate.annotations.GenericGenerator;
+   6 | import java.time.LocalDateTime;
+   7 | import java.util.ArrayList;
+   8 | import java.util.List;
+   9 | 
+  10 | @Entity
+  11 | @Table(name = "users")
+  12 | public class User {
+  13 |     
+  14 |     @Id
+  15 |     @GeneratedValue(generator = "uuid2")
+  16 |     @GenericGenerator(name = "uuid2", strategy = "uuid2")
+  17 |     @Column(columnDefinition = "VARCHAR(36)")
+  18 |     private String id;
+  19 |     
+  20 |     @Column(unique = true, nullable = false)
+  21 |     private String name;
+  22 |     
+  23 |     @Column(unique = true, nullable = false)
+  24 |     private String email;
+  25 |     
+  26 |     private String password;
+  27 |     private String role;
+  28 |     private String profilePictureUrl;
+  29 |     
+  30 |     @Column(name = "created_at")
+  31 |     private LocalDateTime createdAt;
+  32 |     
+  33 |     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  34 |     @JsonIgnore
+  35 |     private List<Review> reviews = new ArrayList<>();
+  36 |     
+  37 |     public User() {}
+  38 |     
+  39 |     public User(String name, String email, String password, String role) {
+  40 |         this.name = name;
+  41 |         this.email = email;
+  42 |         this.password = password;
+  43 |         this.role = role;
+  44 |     }
+  45 |     
+  46 |     @PrePersist
+  47 |     protected void onCreate() {
+  48 |         createdAt = LocalDateTime.now();
+  49 |         if (role == null) role = "USER";
+  50 |     }
+  51 |     
+  52 |     // Getters and Setters
+  53 |     public String getId() { return id; }
+  54 |     public void setId(String id) { this.id = id; }
+  55 |     public String getName() { return name; }
+  56 |     public void setName(String name) { this.name = name; }
+  57 |     public String getEmail() { return email; }
+  58 |     public void setEmail(String email) { this.email = email; }
+  59 |     public String getPassword() { return password; }
+  60 |     public void setPassword(String password) { this.password = password; }
+  61 |     public String getRole() { return role; }
+  62 |     public void setRole(String role) { this.role = role; }
+  63 |     public String getProfilePictureUrl() { return profilePictureUrl; }
+  64 |     public void setProfilePictureUrl(String profilePictureUrl) { this.profilePictureUrl = profilePictureUrl; }
+  65 |     public LocalDateTime getCreatedAt() { return createdAt; }
+  66 |     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+  67 |     public List<Review> getReviews() { return reviews; }
+  68 |     public void setReviews(List<Review> reviews) { this.reviews = reviews; }
+  69 | }
+
+--- src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java ---
+   1 | package com.bookreview.api.security;
+   2 | 
+   3 | import com.bookreview.api.model.User;
+   4 | import com.bookreview.api.repository.UserRepository;
+   5 | import org.springframework.beans.factory.annotation.Autowired;
+   6 | import org.springframework.beans.factory.annotation.Value;
+   7 | import org.springframework.security.core.Authentication;
+   8 | import org.springframework.security.oauth2.core.user.OAuth2User;
+   9 | import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+  10 | import org.springframework.stereotype.Component;
+  11 | import jakarta.servlet.http.HttpServletRequest;
+  12 | import jakarta.servlet.http.HttpServletResponse;
+  13 | import java.io.IOException;
+  14 | import java.net.URLEncoder;
+  15 | 
+  16 | @Component
+  17 | public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler {
+  18 | 
+  19 |     @Autowired
+  20 |     private UserRepository userRepository;
+  21 | 
+  22 |     @Autowired
+  23 |     private JwtUtil jwtUtil;
+  24 |     
+  25 |     @Value("${frontend.url:http://localhost:3000}")
+  26 |     private String frontendUrl;
+  27 | 
+  28 |     @Override
+  29 |     public void onAuthenticationSuccess(HttpServletRequest request,
+  30 |                                         HttpServletResponse response,
+  31 |                                         Authentication authentication) throws IOException {
+  32 |         
+  33 |         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+  34 |         
+  35 |         String email = oAuth2User.getAttribute("email");
+  36 |         String name = oAuth2User.getAttribute("name");
+  37 |         if (name == null) {
+  38 |             name = oAuth2User.getAttribute("login");
+  39 |         }
+  40 |         
+  41 |         if (email == null || email.isEmpty()) {
+  42 |             String login = oAuth2User.getAttribute("login");
+  43 |             email = login + "@github.com";
+  44 |         }
+  45 |         
+  46 |         // Let JPA generate the ID automatically - DON'T manually create IDs!
+  47 |         User user = userRepository.findByEmail(email).orElse(null);
+  48 |         
+  49 |         if (user == null) {
+  50 |             user = new User();
+  51 |             user.setEmail(email);
+  52 |             user.setName(name);
+  53 |             user.setPassword("");
+  54 |             user.setRole("USER");
+  55 |             // DON'T set ID here - JPA will generate it automatically
+  56 |             user = userRepository.save(user);
+  57 |             System.out.println("Created new OAuth user with ID: " + user.getId());
+  58 |         }
+  59 |         
+  60 |         String jwtToken = jwtUtil.generateToken(user.getId());
+  61 |         
+  62 |         String redirectUrl = String.format(
+  63 |             "%s/login?token=%s&userId=%s&name=%s&email=%s&role=%s",
+  64 |             frontendUrl,
+  65 |             jwtToken,
+  66 |             user.getId(),
+  67 |             URLEncoder.encode(user.getName(), "UTF-8"),
+  68 |             user.getEmail(),
+  69 |             user.getRole()
+  70 |         );
+  71 |         
+  72 |         System.out.println("OAuth Success - Redirecting to: " + redirectUrl);
+  73 |         response.sendRedirect(redirectUrl);
+  74 |     }
+  75 | }
+
+--- src/main/java/bookreview_api/security/JwtFilter.java ---
+   1 | package com.bookreview.api.security;
+   2 | 
+   3 | import jakarta.servlet.FilterChain;
+   4 | import jakarta.servlet.ServletException;
+   5 | import jakarta.servlet.http.HttpServletRequest;
+   6 | import jakarta.servlet.http.HttpServletResponse;
+   7 | import org.springframework.beans.factory.annotation.Autowired;
+   8 | import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+   9 | import org.springframework.security.core.GrantedAuthority;
+  10 | import org.springframework.security.core.authority.SimpleGrantedAuthority;
+  11 | import org.springframework.security.core.context.SecurityContextHolder;
+  12 | import org.springframework.stereotype.Component;
+  13 | import org.springframework.web.filter.OncePerRequestFilter;
+  14 | import com.bookreview.api.model.User;
+  15 | import com.bookreview.api.repository.UserRepository;
+  16 | import java.io.IOException;
+  17 | import java.util.ArrayList;
+  18 | import java.util.List;
+  19 | 
+  20 | @Component
+  21 | public class JwtFilter extends OncePerRequestFilter {
+  22 | 
+  23 |     @Autowired
+  24 |     private JwtUtil jwtUtil;
+  25 | 
+  26 |     @Autowired
+  27 |     private UserRepository userRepository;
+  28 | 
+  29 |     @Override
+  30 |     protected void doFilterInternal(HttpServletRequest request,
+  31 |                                     HttpServletResponse response,
+  32 |                                     FilterChain chain)
+  33 |             throws ServletException, IOException {
+  34 |     // Skip multipart requests for debugging
+  35 |     String contentType = request.getContentType();
+  36 |     if (contentType != null && contentType.startsWith("multipart/")) {
+  37 |         System.out.println("Multipart request detected: " + request.getRequestURI());
+  38 |     }
+  39 | 
+  40 |         String authHeader = request.getHeader("Authorization");
+  41 | 
+  42 |         if (authHeader != null && authHeader.startsWith("Bearer ")) {
+  43 |             String token = authHeader.substring(7);
+  44 | 
+  45 |             if (jwtUtil.validateToken(token)) {
+  46 |                 String userId = jwtUtil.extractUserId(token);
+  47 | 
+  48 |                 // Get user role from database
+  49 |                 User user = userRepository.findById(userId).orElse(null);
+  50 |                 String role = (user != null && user.getRole() != null) ? user.getRole() : "USER";
+  51 | 
+  52 |                 // Create authorities list with ROLE_ prefix
+  53 |                 List<GrantedAuthority> authorities = new ArrayList<>();
+  54 |                 authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
+  55 | 
+  56 |                 // Create authentication token
+  57 |                 UsernamePasswordAuthenticationToken authToken =
+  58 |                         new UsernamePasswordAuthenticationToken(userId, null, authorities);
+  59 | 
+  60 |                 // Set authentication in SecurityContext
+  61 |                 SecurityContextHolder.getContext().setAuthentication(authToken);
+  62 |             }
+  63 |         }
+  64 | 
+  65 |         chain.doFilter(request, response);
+  66 |     }
+  67 | }
+
+--- src/main/java/bookreview_api/security/JwtUtil.java ---
+   1 | package com.bookreview.api.security;
+   2 | 
+   3 | import io.jsonwebtoken.Claims;
+   4 | import io.jsonwebtoken.Jwts;
+   5 | import io.jsonwebtoken.SignatureAlgorithm;
+   6 | import io.jsonwebtoken.security.Keys;
+   7 | import org.springframework.stereotype.Component;
+   8 | import java.security.Key;
+   9 | import java.util.Date;
+  10 | import org.springframework.beans.factory.annotation.Value; 
+  11 | 
+  12 | @Component
+  13 | public class JwtUtil {
+  14 |     
+  15 |     // 1. Constants
+  16 |     @Value("${jwt.secret}")
+  17 |     private String secret;  
+  18 | 
+  19 |     @Value("${jwt.expiration:3600000}")
+  20 |     private long expirationTime;
+  21 |     
+  22 |     // 2. Helper method to get signing key (you can copy this exactly)
+  23 |     private Key getSigningKey() { 
+  24 |             byte[] keyBytes = secret.getBytes();
+  25 |             return Keys.hmacShaKeyFor(keyBytes);
+  26 |     }
+  27 |     
+  28 |     // 3. Generate token 
+  29 |     public String generateToken(String userId) {
+  30 |         Date now = new Date();
+  31 |         Date expiryDate = new Date(now.getTime() +expirationTime );
+  32 |         
+  33 |         return Jwts.builder()
+  34 |                 .setSubject(userId)
+  35 |                 .setIssuedAt(now)
+  36 |                 .setExpiration(expiryDate)
+  37 |                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+  38 |                 .compact();
+  39 |      }
+  40 |     
+  41 |     // 4. Extract user ID 
+  42 |     public String extractUserId(String token) {
+  43 |          Claims claims = Jwts.parserBuilder()
+  44 |                 .setSigningKey(getSigningKey())
+  45 |                 .build()
+  46 |                 .parseClaimsJws(token)
+  47 |                 .getBody();
+  48 |         return claims.getSubject();
+  49 |     }
+  50 |     
+  51 |     // 5. Validate token 
+  52 |     public boolean validateToken(String token) { 
+  53 |         try {
+  54 |             Jwts.parserBuilder()
+  55 |                 .setSigningKey(getSigningKey())
+  56 |                 .build()
+  57 |                 .parseClaimsJws(token);
+  58 |             return true;
+  59 |         } catch (Exception e) {
+  60 |             return false;
+  61 |         }
+  62 |      }
+  63 | }
+
+--- src/main/java/bookreview_api/security/SecurityConfig.java ---
+   1 | package com.bookreview.api.security;
+   2 | 
+   3 | import org.springframework.context.annotation.Bean;
+   4 | import org.springframework.context.annotation.Configuration;
+   5 | import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+   6 | import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+   7 | import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+   8 | import org.springframework.security.config.http.SessionCreationPolicy;
+   9 | import org.springframework.security.web.SecurityFilterChain;
+  10 | import org.springframework.beans.factory.annotation.Autowired;
+  11 | import org.springframework.http.HttpMethod;
+  12 | import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+  13 | import org.springframework.security.crypto.password.PasswordEncoder;
+  14 | import org.springframework.web.cors.CorsConfiguration;
+  15 | import org.springframework.web.cors.CorsConfigurationSource;
+  16 | import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+  17 | 
+  18 | import java.util.Arrays;
+  19 | 
+  20 | @Configuration
+  21 | @EnableWebSecurity
+  22 | public class SecurityConfig {
+  23 | 
+  24 |     @Autowired
+  25 |     private JwtFilter jwtFilter;
+  26 |     
+  27 |     @Autowired
+  28 |     private CustomOAuth2SuccessHandler oAuth2SuccessHandler;
+  29 | 
+  30 |     @Bean
+  31 |     public CorsConfigurationSource corsConfigurationSource() {
+  32 |         CorsConfiguration configuration = new CorsConfiguration();
+  33 |         // Use setAllowedOriginPatterns instead of setAllowedOrigins for wildcard support
+  34 |         configuration.setAllowedOriginPatterns(Arrays.asList(
+  35 |             "http://localhost:3000",
+  36 |             "https://bookreview-frontend-kqrml77n0-billa-anshus-projects.vercel.app",
+  37 |             "https://bookreview-frontend-sepia.vercel.app",
+  38 |             "https://*.vercel.app"  // Allows all Vercel preview deployments
+  39 |         ));
+  40 |         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+  41 |         configuration.setAllowedHeaders(Arrays.asList("*"));
+  42 |         configuration.setAllowCredentials(true);
+  43 |         configuration.setMaxAge(3600L);
+  44 |         
+  45 |         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+  46 |         source.registerCorsConfiguration("/**", configuration);
+  47 |         return source;
+  48 |     }
+  49 | 
+  50 |     @Bean
+  51 |     public WebSecurityCustomizer webSecurityCustomizer() {
+  52 |         return (web) -> web.ignoring().requestMatchers(
+  53 |             "/swagger-ui/**",
+  54 |             "/swagger-ui.html",
+  55 |             "/swagger-ui/index.html",
+  56 |             "/v3/api-docs/**",
+  57 |             "/v3/api-docs",
+  58 |             "/api-docs/**",
+  59 |             "/api-docs",
+  60 |             "/swagger-resources/**",
+  61 |             "/webjars/**",
+  62 |             "/uploads/**" 
+  63 |         );
+  64 |     }
+  65 | 
+  66 |     @Bean
+  67 |     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+  68 |         http
+  69 |             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+  70 |             .csrf(csrf -> csrf.disable())
+  71 |             .authorizeHttpRequests(auth -> auth
+  72 |                 // Public endpoints
+  73 |                 .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
+  74 |                 .requestMatchers("/api/books/**").permitAll()
+  75 |                 .requestMatchers(HttpMethod.GET, "/api/reviews").permitAll()
+  76 |                 .requestMatchers("/oauth2/**", "/login/oauth2/**").permitAll()
+  77 |                 .requestMatchers("/api/health", "/api/auth/**", "/oauth2/**", "/login/oauth2/**").permitAll()
+  78 |                 
+  79 |                 // Profile picture upload - allow authenticated users
+  80 |                 .requestMatchers(HttpMethod.POST, "/api/users/profile/picture").authenticated()
+  81 |                 .requestMatchers("/api/users/me").authenticated()
+  82 |                 
+  83 |                 // Admin only
+  84 |                 .requestMatchers("/api/users/**").hasRole("ADMIN")
+  85 |                 .requestMatchers(HttpMethod.GET, "/api/reviews/all").hasRole("ADMIN")
+  86 |                 
+  87 |                 // Authenticated users only
+  88 |                 .requestMatchers(HttpMethod.POST, "/api/reviews").authenticated()
+  89 |                 .requestMatchers(HttpMethod.PUT, "/api/reviews/**").authenticated()
+  90 |                 .requestMatchers(HttpMethod.DELETE, "/api/reviews/**").authenticated()
+  91 |                 .requestMatchers(HttpMethod.PUT, "/api/users/me").authenticated()
+  92 |                 
+  93 |                 .anyRequest().authenticated()
+  94 |             )
+  95 |             .oauth2Login(oauth2 -> oauth2
+  96 |                 .successHandler(oAuth2SuccessHandler)
+  97 |             )
+  98 |             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+  99 |             .addFilterBefore(jwtFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
+ 100 |         
+ 101 |         return http.build();
+ 102 |     }
+ 103 | 
+ 104 |     @Bean
+ 105 |     public PasswordEncoder passwordEncoder() {
+ 106 |         return new BCryptPasswordEncoder();
+ 107 |     }
+ 108 | }
+
+--- src/main/java/bookreview_api/service/UserService.java ---
+   1 | package com.bookreview.api.service;
+   2 | 
+   3 | import com.bookreview.api.model.User;
+   4 | import com.bookreview.api.repository.UserRepository;
+   5 | import org.springframework.beans.factory.annotation.Autowired;
+   6 | import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+   7 | import org.springframework.security.crypto.password.PasswordEncoder;
+   8 | import org.springframework.stereotype.Service;
+   9 | 
+  10 | import java.time.LocalDateTime;
+  11 | import java.util.Optional;
+  12 | 
+  13 | @Service
+  14 | public class UserService {
+  15 | 
+  16 |     @Autowired
+  17 |     private UserRepository userRepository;
+  18 | 
+  19 |     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+  20 | 
+  21 |     // Register new user - Let JPA generate UUID automatically
+  22 |     public User register(String name, String email, String rawPassword, String role) {
+  23 |         // Check if email already exists
+  24 |         if (userRepository.existsByEmail(email)) {
+  25 |             return null;
+  26 |         }
+  27 | 
+  28 |         // Create user WITHOUT setting ID - JPA will generate UUID automatically
+  29 |         User newUser = new User();
+  30 |         newUser.setName(name);
+  31 |         newUser.setEmail(email);
+  32 |         newUser.setPassword(passwordEncoder.encode(rawPassword));
+  33 |         newUser.setRole(role != null ? role : "USER");
+  34 |         newUser.setCreatedAt(LocalDateTime.now());
+  35 |         
+  36 |         // Don't set ID here! Let JPA/Hibernate generate it
+  37 |         
+  38 |         return userRepository.save(newUser);
+  39 |     }
+  40 | 
+  41 |     // Authenticate user (login)
+  42 |     public User authenticate(String email, String rawPassword) {
+  43 |         Optional<User> userOpt = userRepository.findByEmail(email);
+  44 |         
+  45 |         if (userOpt.isPresent()) {
+  46 |             User user = userOpt.get();
+  47 |             if (passwordEncoder.matches(rawPassword, user.getPassword())) {
+  48 |                 return user;
+  49 |             }
+  50 |         }
+  51 |         return null;
+  52 |     }
+  53 | 
+  54 |     // Find user by ID
+  55 |     public User findById(String userId) {
+  56 |         return userRepository.findById(userId).orElse(null);
+  57 |     }
+  58 |     
+  59 |     // Find user by email
+  60 |     public User findByEmail(String email) {
+  61 |         return userRepository.findByEmail(email).orElse(null);
+  62 |     }
+  63 |     
+  64 |     // Check if email exists
+  65 |     public boolean emailExists(String email) {
+  66 |         return userRepository.existsByEmail(email);
+  67 |     }
+  68 |     
+  69 |     // Update user profile
+  70 |     public User updateUser(String userId, String name, String profilePictureUrl) {
+  71 |         User user = findById(userId);
+  72 |         if (user != null) {
+  73 |             if (name != null && !name.isEmpty()) {
+  74 |                 user.setName(name);
+  75 |             }
+  76 |             if (profilePictureUrl != null) {
+  77 |                 user.setProfilePictureUrl(profilePictureUrl);
+  78 |             }
+  79 |             return userRepository.save(user);
+  80 |         }
+  81 |         return null;
+  82 |     }
+  83 | }
+
+--- src/test/java/bookreview_api/BookreviewApiApplicationTests.java ---
+   1 | package bookreview_api;
+   2 | 
+   3 | import org.junit.jupiter.api.Test;
+   4 | import org.springframework.boot.test.context.SpringBootTest;
+   5 | 
+   6 | @SpringBootTest
+   7 | class BookreviewApiApplicationTests {
+   8 | 
+   9 | 	@Test
+  10 | 	void contextLoads() {
+  11 | 	}
+  12 | 
+  13 | }
+=== END OF REPOSITORY ===
+
+TASK: Write ONE report with exactly these four parts, about 700-900 words in total (tags not counted):
+
+## 1. In plain English
+For someone who has never programmed: 2-3 sentences on what the project is and who would use it,
+one line starting "Analogy:", and "What you can do with it:" with 3 short bullets. No jargon.
+
+## 2. For students: how to read this project
+A numbered reading order of 4-5 files with one line each on why to read it; a Mermaid diagram in a
+```mermaid code fence (flowchart LR, at most 7 nodes, plain-word labels); "Key terms:" 3 short glossary entries.
+
+## 3. For recruiters and interviewers
+"What it demonstrates:" 3 bullets of concrete skills; "Stack:" one line; "Most interesting part:" 1-2 sentences.
+
+## 4. For developers
+Short bullets grouped under: Purpose, Main modules, How data flows, Tech stack, How to run it,
+Worth a closer look. Explain what the code does and how or why.
+
+CITATION RULES (important):
+- To cite, COPY a tag from section C exactly, character for character, and put it right after the claim
+  it supports. Never type a tag from memory and never edit its file, symbol or line numbers.
+- Every bullet in part 4 that describes code must carry at least one tag. Parts 1-3 may carry tags where natural.
+- Cite only when that code really supports the claim. If no tag in section C fits, either leave the
+  claim out or base it on the README and give no tag.
+- Do not invent files, functions, or behaviour that are not in the material above.
+
+Write the report now.

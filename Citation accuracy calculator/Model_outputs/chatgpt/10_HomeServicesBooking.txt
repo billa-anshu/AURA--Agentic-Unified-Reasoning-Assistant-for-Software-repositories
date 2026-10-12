@@ -1,0 +1,100 @@
+# Home Services Booking Application — Repository Report
+
+## 1. In plain English
+
+The Home Services Booking Application is a website where customers can find people to help with household tasks such as plumbing, electrical repairs, and cleaning. Customers can create an account, choose a service, select a worker, and track their booking, while workers can log in to accept or reject requests.
+
+Analogy: Think of it as a digital noticeboard that connects people who need home repairs with workers who can do them.
+
+What you can do with it:
+
+- Browse available home services and find suitable workers.
+- Book a worker and view your booking history.
+- Log in as a worker to manage incoming requests and notify customers of decisions.
+
+## 2. For students: how to read this project
+
+Follow this order to understand the application from its starting point to its main features.
+
+1. `src/main/java/com/app/HomeServicesApplication.java` — Start here to see how the application launches.
+2. `src/main/java/com/app/controller/HomeController.java` — Understand how the home page retrieves available services and displays customer information.
+3. `src/main/java/com/app/controller/AuthController.java` — Learn how customer registration, login, and logout are handled.
+4. `src/main/java/com/app/controller/BookingController.java` — Follow the main booking process, including validation, saving requests, and sending emails.
+5. `src/main/java/com/app/model/Booking.java` — Understand how a booking stores its customer, service, worker, date, and status.
+
+### How the application works
+
+```
+flowchart LR
+    A[Customer] --> B[Choose a service]
+    B --> C[Select a worker]
+    C --> D[Create booking]
+    D --> E[Worker reviews request]
+    E --> F[Accept or reject]
+    F --> G[Customer gets email]
+```
+
+### Key terms
+
+- Controller: The part that receives a user's request and decides what action to perform.
+- Database: Where information about customers, services, workers, and bookings is stored.
+- Session: A way for the application to remember that a user has logged in while moving between pages.
+
+## 3. For recruiters and interviewers
+
+### What it demonstrates:
+
+- Java and Spring Boot development: Uses a structured Java application with separate controllers, models, repositories, and service classes.
+- Database-backed application design: Represents customers, workers, services, and bookings as database entities, with repository interfaces for accessing stored information.
+- Workflow implementation and communication: Handles booking creation, prevents duplicate pending requests for the same customer-service-worker combination, allows workers to accept or reject requests, and sends email notifications. [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52] [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=acceptBooking;lines=71-111]
+
+Stack: Java 17, Spring Boot 3.3.5, Spring Data JPA, Hibernate, MySQL, Maven, JSP, Spring Mail, and Git/GitHub, as described in the README and available project material.
+
+### Most interesting part:
+
+The booking lifecycle connects several parts of the application: customers create requests, workers make decisions, booking records are updated, and email notifications communicate the outcome. This makes the project a useful example of connecting a user-facing workflow with database operations and notifications.
+
+One important interview discussion point is security: although the README describes Spring Security, BCrypt password encryption, and role-based access control, the supplied code shows customer passwords being saved and compared directly. The shown worker login also checks only the worker's email. These implementation details should be reviewed before claiming that the advertised security features are fully implemented. [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=register;lines=24-56] [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=login;lines=37-56] [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=workerLoginPage;lines=33-73]
+
+## 4. For developers
+
+### Purpose
+
+- Provides a server-rendered home-services booking website. The home page loads services from the repository, places them in the page model, and returns the `index` view. [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=index;lines=19-24]
+- Supports customer and worker workflows through separate controller classes, using HTTP routes to handle page navigation and actions. [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=AuthController;lines=13-53] [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=WorkerController;lines=18-58]
+
+### Main modules
+
+- Application entry point: `HomeServicesApplication` uses `SpringApplication.run` to start the Spring Boot application. [cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=main;lines=8-11]
+- Authentication: `AuthController` registers customers, checks credentials against the customer repository, stores the logged-in customer in the session, and invalidates that session on logout. [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=register;lines=24-56] [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=logout;lines=52-56]
+- Services and workers: `ServiceController` finds workers associated with a selected service and passes the worker list, service, and service ID to the view. [cite:file=src/main/java/com/app/controller/ServiceController.java;symbol=workers;lines=32-40]
+- Bookings: `BookingController` creates pending bookings, checks for an existing pending request, and displays a customer's booking history. [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52] [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=myBookings;lines=120-136]
+- Worker dashboard: `WorkerController` retrieves bookings assigned to the logged-in worker and updates their status when the worker accepts or rejects a request. [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=workerDashboard;lines=54-94] [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=rejectBooking;lines=115-155]
+
+### How data flows
+
+- Customer registration: Submitted details are used to create a `Customer` object, which is saved through `CustomerRepository`. The supplied code assigns the password directly without showing encryption. [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=register;lines=24-56]
+- Booking creation: The controller retrieves the customer from the session, loads the selected service and worker, creates a `Booking`, sets its status to `PENDING`, and saves it. [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52]
+- Booking relationships: Each booking has references to a customer, service, and worker. Its `@ManyToOne` relationships connect the booking record to these entities. [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=8-48]
+- Email notifications: After a booking is created or its status is changed, the controllers call `EmailService.sendMail` to notify the relevant recipient. The service catches exceptions and returns a success or failure boolean. [cite:file=src/main/java/com/app/service/EmailService.java;symbol=sendMail;lines=37-52]
+
+### Tech stack
+
+- Java and Spring Boot: Provide the application entry point and web request handling. The Maven configuration identifies Spring Boot 3.3.5 as the parent version.
+- Spring Data JPA and Hibernate: Support persistence through entity classes such as `Customer`, `Worker`, `HomeService`, and `Booking`. [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=7-28] [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=7-33]
+- JSP and CSS: The project contains JSP views for the home page, login, registration, bookings, and worker dashboard, along with a stylesheet.
+- Spring Mail: Uses `JavaMailSender` and `SimpleMailMessage` to send plain-text emails. [cite:file=src/main/java/com/app/service/EmailService.java;symbol=sendMail;lines=37-52]
+
+### How to run it
+
+- Install Java 17, Maven, and MySQL, then configure the database and any required mail settings in `src/main/resources/application.properties`.
+- Build and start the project using the Maven wrapper if present, or an installed Maven command such as `mvn spring-boot:run`. The application entry point is `HomeServicesApplication`. [cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=main;lines=8-11]
+- Check that the database connection and mail configuration are valid before testing registration, booking, worker login, and notifications. The supplied material does not include the full `pom.xml` or `application.properties` contents, so the exact configuration and dependency completeness cannot be confirmed.
+
+### Worth a closer look
+
+- Security: Replace plaintext password storage and comparison with BCrypt-based password encoding and verification; review session protections, authorization, and Spring Security configuration.
+- Request safety: Worker acceptance and rejection are mapped to GET routes. Prefer POST requests for state-changing operations and add appropriate CSRF protection.
+- Data consistency: `Booking.beforeSave()` supplies a default date and status, but the booking controller explicitly sets `PENDING`; verify that the database and application use consistent status values. [cite:file=src/main/java/com/app/model/Booking.java;symbol=beforeSave;lines=31-48] [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52]
+- Initialization: `DataLoader` inserts sample services and workers only when the service repository is empty, which is convenient for demonstrations but should be handled carefully in production. [cite:file=src/main/java/com/app/service/DataLoader.java;symbol=run;lines=21-50]
+- Email reliability: The controllers do not check the boolean returned by `sendMail`, so a failed notification may not be clearly reported to the user. Consider logging failures and adding retry or monitoring support. [cite:file=src/main/java/com/app/service/EmailService.java;symbol=sendMail;lines=37-52]

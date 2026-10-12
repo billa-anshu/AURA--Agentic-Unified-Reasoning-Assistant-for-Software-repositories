@@ -1,0 +1,76 @@
+# Repository Report: FinalProject (Spring Boot School Attendance System)
+
+## 1. In plain English
+
+This is a web application for a school that lets three kinds of people log in and do different jobs: an administrator manages students, teachers, courses, classrooms and holidays; a teacher marks who was present or absent in a class; and a student checks their own attendance record. It would be used by school office staff, teaching staff, and pupils through a normal web browser. Analogy: it works like a school's front office with three separate counters — one for the manager, one for the teacher taking the register, and one for the pupil checking their own record card. What you can do with it:
+
+- Sign in as admin, teacher or student and be taken to the right dashboard [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=showLogin;lines=21-61]
+- As a teacher, pick a course and classroom, tick who is present, and save the register for today [cite:file=src/main/java/com/example/demo/controller/TeacherDashboardController.java;symbol=teacherDashboard;lines=31-71]
+- As a student, see a course-by-course attendance view for any date, plus an overall percentage [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63]
+
+## 2. For students: how to read this project
+
+1. `FinalProjectApplication.java` — the tiny entry point; read this first to see how a Spring Boot app starts [cite:file=src/main/java/com/example/demo/FinalProjectApplication.java;symbol=main;lines=9-13].
+2. `entity/Student.java` — shows how a "thing" in the system (a pupil) is modelled and linked to classrooms [cite:file=src/main/java/com/example/demo/entity/Student.java;symbol=Student;lines=35-75].
+3. `entity/AttendanceRecord.java` — the heart of the domain: one row per student, per classroom, per date [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78].
+4. `service/TeacherService.java` — read the business rules for marking and viewing attendance [cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=markAttendance;lines=52-92].
+5. `controller/TeacherDashboardController.java` — see how a web request reaches those rules [cite:file=src/main/java/com/example/demo/controller/TeacherDashboardController.java;symbol=teacherDashboard;lines=31-71].
+
+```mermaid
+flowchart LR
+  Browser[Browser] --> Login[Login page]
+  Login --> Admin[Admin dashboard]
+  Login --> Teacher[Teacher dashboard]
+  Login --> Student[Student dashboard]
+  Teacher --> Mark[Mark attendance]
+  Student --> View[View attendance]
+  Admin --> Manage[Manage records]
+```
+
+Key terms:
+- **Entity**: a Java class that maps to a database table, e.g. Student or Classroom.
+- **Controller**: the class that receives a web request and decides which page to return [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60].
+- **Service**: the class holding the real logic, keeping controllers thin [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=AuthService;lines=16-53].
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- A full three-role MVC web application with session-based login and role routing, not a toy single-page demo [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=showLogin;lines=21-61].
+- Careful JPA domain modelling: many-to-many students/classrooms, one-to-many teacher/courses, and a unique constraint preventing duplicate attendance rows [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78].
+- Service-layer separation with an interface and implementation, plus defensive checks like duplicate-email rejection [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=saveTeacher;lines=76-116].
+
+Stack: Java + Spring Boot 3.4.12 (Maven), Spring MVC, Spring Data JPA, JSP views, JUnit for tests.
+
+Most interesting part: the teacher's attendance flow, where a submitted list of present student IDs is reconciled against the classroom roster and saved as PRESENT/ABSENT records, reusing an existing record for the same student, classroom and date so re-marking edits rather than duplicates [cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=markAttendance;lines=52-92].
+
+## 4. For developers
+
+**Purpose**
+- Admin CRUD over students, teachers, classrooms, courses and holidays, plus dashboards with counts for each [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=dashboard;lines=26-66].
+- Teacher-facing marking and viewing of attendance per course/classroom/date [cite:file=src/main/java/com/example/demo/controller/TeacherDashboardController.java;symbol=teacherDashboard;lines=31-71].
+- Student-facing read-only attendance summary with a computed percentage [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63].
+
+**Main modules**
+- Controllers: `LoginController`, `AdminController`, `TeacherDashboardController`, `StudentDashboardController` — request routing and model population [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60].
+- Services: `AuthService` for credential checks, `TeacherService` for attendance logic, `AdminServiceImpl` for admin CRUD [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=validateAdmin;lines=28-53].
+- Entities: `Student`, `Teacher`, `Course`, `Classroom`, `AttendanceRecord`, `HolidayCalendar`, `Admin` [cite:file=src/main/java/com/example/demo/entity/Classroom.java;symbol=Classroom;lines=34-55].
+- Repositories: Spring Data interfaces consumed by the services (referenced throughout `AdminServiceImpl`) [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56].
+
+**How data flows**
+- Login posts email/password/role; the controller calls `AuthService`, stores role and identity in the HTTP session, and redirects to the matching dashboard [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=showLogin;lines=21-61].
+- Admin form posts bind a `Student` plus optional classroom IDs, wire both sides of the relationship, and persist [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=newStudentForm;lines=43-83].
+- Attendance save reads the course's classrooms, iterates the roster, and upserts one record per student [cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=markAttendance;lines=52-92].
+- Student dashboard looks up records by student + classroom + date and builds a course-keyed map [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63].
+
+**Tech stack**
+- Spring Boot parent 3.4.12 with Jakarta persistence annotations, JSP views under `src/main/webapp`, and a single context-load test [cite:file=src/test/java/com/example/demo/FinalProjectApplicationTests.java;symbol=contextLoads;lines=10-13].
+
+**How to run it**
+- Standard Maven Spring Boot launch via `main` in `FinalProjectApplication`; database and view settings live in `application.properties` (not shown) [cite:file=src/main/java/com/example/demo/FinalProjectApplication.java;symbol=main;lines=9-13].
+
+**Worth a closer look**
+- `lockAttendance` and `assignTeacherToClass` deliberately throw `UnsupportedOperationException`, marking them as unfinished/removed behaviour rather than silently failing [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=lockAttendance;lines=261-281].
+- Teacher update carefully diffs currently-assigned vs selected courses so unselected courses get their teacher cleared before reassignment [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=updateTeacherWithCourseAssignments;lines=115-155].
+- Two overloaded `assignTeacherToCourse` methods exist, one taking an ID and one taking an unsaved `Course`, to suit different controller call sites [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=assignTeacherToCourse;lines=196-236].
+- Note that `AdminController.logout` just returns the login view without invalidating the session, unlike `LoginController.logout` [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=logout;lines=295-298].
+- Several JSP paths in the file tree duplicate layouts (e.g. multiple `layout.jsp` and `student-list.jsp` copies), worth tidying.

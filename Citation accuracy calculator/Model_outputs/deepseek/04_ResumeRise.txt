@@ -1,0 +1,78 @@
+# Repository Report: ResumeRise
+
+## 1. In plain English
+
+ResumeRise is a career-preparation website that helps job seekers do two things: check how well their resume matches a job advert, and practise a mock interview with a camera and microphone while an AI asks questions and gives feedback. It would be used by anyone applying for jobs who wants quick, automated practice and advice before the real thing. Analogy: it is like a rehearsal room with a friendly coach — you show your CV, the coach reads the job advert, then asks you questions out loud while watching how you come across, and hands you a written report at the end. What you can do with it:
+
+- Upload a PDF resume and a job description, then see a match score with matched and missing skills [cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleSubmit;lines=26-66]
+- Run a spoken mock interview where your audio is transcribed and your facial expressions are sampled from the webcam [cite:file:frontend/src/pages/MockInterviewPage.jsx;symbol=handleSubmitAnswer;lines=325-365]
+- Get a final written report scoring each answer and summarising your emotional tone [cite:file:frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62]
+
+## 2. For students: how to read this project
+
+1. `backend/main.py` — the whole server lives here; skim the route decorators first to see the five endpoints [cite:file=backend/main.py;symbol=app;lines=19-19].
+2. `frontend/src/App.js` — the smallest file and the map of the site, showing which page answers which URL [cite:file:frontend/src/App.js;symbol=App;lines=7-21].
+3. `frontend/src/pages/ResumeMatchPage.jsx` — the simplest full feature end-to-end: form, upload, results display [cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleSubmit;lines=26-66].
+4. `backend/main.py` again, the `match_resume_ml` function — read it as a five-step recipe to understand the AI pipeline [cite:file:backend/main.py;symbol=match_resume_ml;lines=401-595].
+5. `frontend/src/pages/MockInterviewPage.jsx` — the most complex page, worth reading last [cite:file:frontend/src/pages/MockInterviewPage.jsx;symbol=loadInterviewConfig;lines=44-84].
+
+```mermaid
+flowchart LR
+  User[Job seeker] --> Home[Home page]
+  Home --> Match[Resume match page]
+  Home --> Setup[Interview setup]
+  Setup --> Mock[Mock interview room]
+  Mock --> Review[Feedback report]
+  Match --> Server[AI server]
+  Mock --> Server
+```
+
+Key terms:
+- **Endpoint**: a URL on the server that does one job, e.g. `/transcribe-audio` [cite:file:backend/main.py;symbol=transcribe_audio;lines=64-114].
+- **JSON**: the text format the frontend and backend use to exchange data.
+- **Fallback**: a safe default returned when the AI call fails, so the app never crashes [cite:file:backend/main.py;symbol=fallback;lines=209-215].
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Full-stack delivery across two languages: a FastAPI/Python backend with several AI-backed endpoints, and a React single-page frontend with routing and state management [cite:file:frontend/src/App.js;symbol=App;lines=7-21].
+- Real LLM integration work — Groq chat and vision models driven by carefully written prompts, with markdown code-fence stripping and JSON parsing around the responses [cite:file:backend/main.py;symbol=jd_content;lines=444-444].
+- Browser media APIs: webcam/microphone capture, timed frame sampling, and audio recording with `MediaRecorder` [cite:file:frontend/src/pages/MockInterviewPage.jsx;symbol=startCapturingFrames;lines=172-212].
+
+Stack: Python + FastAPI + Uvicorn + Groq SDK + PyPDF2; React + React Router + Axios + Tailwind CSS; deployed via Docker/Render (backend) and Vercel (frontend).
+
+Most interesting part: the resume matcher avoids any hardcoded skills list — it asks the LLM to extract skills from both the job advert and the resume, normalises them to lowercase, and then does exact plus partial string matching to compute a score [cite:file:backend/main.py;symbol=match_resume_ml;lines=401-595].
+
+## 4. For developers
+
+**Purpose**
+- Two features: a resume-to-job-description matcher and a multi-turn mock interview with audio transcription and facial-emotion sampling [cite:file:backend/main.py;symbol=health_check;lines=602-608].
+- The frontend is a five-route SPA: home, resume match, interview setup, mock interview, and review [cite:file:frontend/src/App.js;symbol=App;lines=7-21].
+
+**Main modules**
+- `transcribe_audio` writes the upload to a temp file, calls Groq's Whisper model, then asks an LLM for an emotion label and paragraph [cite:file:backend/main.py;symbol=transcribe_audio;lines=64-114].
+- `analyze_face_emotion_batch` base64-encodes up to five frames and sends them to a vision model as `image_url` content parts [cite:file:backend/main.py;symbol=analyze_face_emotion_batch;lines=121-164].
+- `start_interview` generates 5 questions for technical interviews or 4 otherwise, falling back to a fixed list on error [cite:file:backend/main.py;symbol=start_interview;lines=171-219].
+- `generate_next_question` reads the history, computes an average score, and asks for one non-repeating follow-up [cite:file:backend/main.py;symbol=generate_next_question;lines=271-314].
+
+**How data flows**
+- Setup page posts resume, job text and type to `/start-interview`, stores the returned questions in `sessionStorage`, and navigates with state [cite:file:frontend/src/pages/InterviewSetupPage.jsx;symbol=handleStartInterview;lines=24-64].
+- On submit, the page transcribes audio, then posts captured frames for face analysis, then posts everything to `/submit-response` for a score [cite:file:frontend/src/pages/MockInterviewPage.jsx;symbol=handleSubmitAnswer;lines=325-365].
+- After the fifth response (or manual end) it navigates to the review page, which posts the whole transcript to `/generate-final-feedback` [cite:file:frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62].
+- The matcher extracts PDF text with PyPDF2, runs two skill-extraction prompts, matches them, scores, then asks for human-readable feedback [cite:file:backend/main.py;symbol=match_resume_ml;lines=401-595].
+
+**Tech stack**
+- Backend pinned to FastAPI 0.104.1, Uvicorn, `groq`, `python-dotenv`, PyPDF2 and `python-multipart` per requirements; CORS is wide open on all origins [cite:file:backend/main.py;symbol=app;lines=19-19].
+- Client uses Axios and reads the API base from `REACT_APP_API_URL` with a localhost fallback [cite:file:frontend/src/pages/ResumeMatchPage.jsx;symbol=handleSubmit;lines=26-66].
+
+**How to run it**
+- The backend runs under Uvicorn on host `0.0.0.0` and a `PORT` environment variable defaulting to 10000 [cite:file:backend/main.py;symbol=port;lines=613-613].
+- The API key is read from `GROQ_API_KEY` via `load_dotenv`, so a `.env` file is required [cite:file:backend/main.py;symbol=groq_client;lines=17-17].
+
+**Worth a closer look**
+- Nearly every endpoint wraps its body in try/except and returns a sensible default rather than a 500 — good for demos, but it can hide real failures [cite:file:backend/main.py;symbol=transcribe_audio;lines=64-114].
+- The matcher clamps the score between 25 and 95, so it can never report a perfect or zero match [cite:file:backend/main.py;symbol=score;lines=519-519].
+- `MockInterviewPage` manages many intervals and refs (recording timer, frame capture) and cleans them up in effect returns — worth checking for leaks [cite:file:frontend/src/pages/MockInterviewPage.jsx;symbol=stopCapturingFrames;lines=191-231].
+- Emotion styling is duplicated across two pages with slightly different colour maps, a candidate for extraction [cite:file:frontend/src/pages/InterviewReviewPage.jsx;symbol=getEmotionColor;lines=80-120].
+- The ResumeMatchPage still renders `skill_score` and `semantic_score` fields that the backend never returns, so those tiles fall back to derived numbers [cite:file:frontend/src/pages/ResumeMatchPage.jsx;symbol=getScoreBg;lines=64-104].
+- `InterviewSetupPage.jsx` exports a component named `App`, which works but is misleading [cite:file:frontend/src/pages/InterviewSetupPage.jsx;symbol=handleInputChange;lines=89-129].

@@ -1,0 +1,80 @@
+# Repository Report: AI Coaching Platform
+
+## 1. In plain English
+
+This is a website where you pick a kind of coaching — a lecture on a topic, a practice job interview, question-and-answer drill, language practice, or a guided meditation — choose a virtual "expert" to talk to, and then hold a spoken conversation with an AI that answers out loud while your own words appear as text. It would be used by learners, job seekers and anyone wanting cheap, private practice in a subject. Analogy: it is like a friendly tutor sitting across the table — you speak, they listen and reply in their own voice, and a written transcript of everything said is filed away so you can look back on it later. What you can do with it:
+
+- Sign in, pick a coaching option and an expert, and name the topic you want to work on [cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69]
+- Talk out loud and watch your speech appear as live text in the conversation panel [cite:file=app/(main)/_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45]
+- Hear the AI's reply spoken back in English, Telugu, Tamil or Hindi [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=speakResponse;lines=220-260]
+
+## 2. For students: how to read this project
+
+1. `app/(main)/dashboard/page.jsx` — the smallest page; read first to see how three components compose a screen [cite:file=app/(main)/dashboard/page.jsx;symbol=Dashboard;lines=6-18].
+2. `app/(main)/dashboard/_components/UserInputDialog.jsx` — the entry form; shows a dialog, local state, and a database write [cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=UserInputDialog;lines=21-61].
+3. `services/GlobalServices.jsx` — the only file that calls the AI; short and instructive [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28].
+4. `app/(main)/discussion-room/[roomid]/page.jsx` — the longest file; read in slices, starting with `startListening` and `handleSendToAI` [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144].
+5. `app/AuthProvider.jsx` — read last; it explains how a signed-in person becomes a database record [cite:file=app/AuthProvider.jsx;symbol=AuthProvider;lines=9-34].
+
+```mermaid
+flowchart LR
+  User[Learner] --> SignIn[Sign in]
+  SignIn --> Pick[Pick coaching option]
+  Pick --> Room[Discussion room opens]
+  Room --> Speak[Speak into mic]
+  Speak --> AI[AI answers]
+  AI --> Hear[Reply spoken aloud]
+```
+
+Key terms:
+- **Speech recognition**: the browser turning your spoken words into text [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144].
+- **Mutation**: a call that writes data to the backend database [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209].
+- **Context**: React's way of sharing a value, here the current user, across many components [cite:file=app/AuthProvider.jsx;symbol=AuthProvider;lines=9-34].
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Genuine browser platform work: the Web Speech API for continuous dictation with interim results, and `speechSynthesis` with a voice-readiness polling loop because browsers populate voices asynchronously [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=checkVoices;lines=56-96].
+- A backendless architecture: authentication by Clerk, data and serverless functions by Convex, consumed through generated typed API references rather than hand-written fetch calls [cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69].
+- Sensible component decomposition with shadcn/ui-style primitives (Button, Dialog, Textarea) built on Radix and class-variance-authority, plus a reusable blur-fade animation wrapper [cite:file:components/ui/dialog.jsx;symbol=DialogContent;lines=48-88].
+
+Stack: Next.js 15.2.3 App Router with React, Clerk authentication, Convex database and serverless functions, OpenAI SDK pointed at OpenRouter, Tailwind CSS, Radix UI, lucide icons, motion for animation, AWS Polly SDK also installed.
+
+Most interesting part: the multilingual voice path — a small language-code map normalises browser codes like `te-IN` down to `te` for utterance configuration, then falls back through three tiers of voice matching (exact code, language prefix, any Indian voice) so an Indian-language reply is spoken even when the exact locale voice is missing [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol:speakResponse;lines=220-260].
+
+## 4. For developers
+
+**Purpose**
+- Five coaching modes, each with its own system prompt, selected from a dashboard grid [cite:file=app/(main)/dashboard/_components/FeatureAssistants.jsx;symbol=FeatureAssistants;lines=10-50].
+- Each session becomes a "discussion room" with a topic and chosen expert, addressed by its room ID in the URL [cite:file:app/(main)/discussion-room/[roomid]/page.jsx;symbol=DiscussionRoom;lines=13-53].
+
+**Main modules**
+- `UserInputDialog` collects topic and expert, then creates the room and routes to it, disabling the Next button until both are supplied [cite:file:app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69].
+- `ChatComponent` is a presentational list of messages plus a live-transcription block, auto-scrolled via a forwarded ref [cite:file:app/(main)/_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45].
+- `AIModel` looks up the coaching option, substitutes the user's topic into the prompt template, and calls the model through OpenRouter [cite:file:services/GlobalServices.jsx;symbol=AIModel;lines=9-28].
+- `AppHeader`, `History` and `Feedback` are placeholders, with History and Feedback rendering hardcoded empty states [cite:file:app/(main)/dashboard/_components/History.jsx;symbol=History;lines=3-12].
+
+**How data flows**
+- On sign-in, `AuthProvider` calls a Convex mutation to create or fetch the user and stores the result in a React context [cite:file:app/AuthProvider.jsx;symbol=AuthProvider;lines=9-34].
+- `Provider` instantiates the Convex client from a public environment variable and wraps the app [cite:file:app/provider.js;symbol=Provider;lines=7-17].
+- Inside the room, previous transcripts are fetched and sorted by timestamp into the chat history [cite:file:app/(main)/discussion-room/[roomid]/page.jsx;symbol=DiscussionRoom;lines=13-53].
+- When the browser finalises a speech chunk, it appends the user message, then calls `handleSendToAI`, which saves the user line, calls the AI, saves the reply, appends it, and speaks it [cite:file:app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209].
+- An `isSending` guard prevents overlapping requests while a reply is in flight [cite:file:app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209].
+
+**Tech stack**
+- Next.js App Router with route groups separating auth pages from the main shell, and a `middleware.js` for Clerk route protection.
+- Convex schema plus `DiscussionRoom.js`, `transcripts.js` and `users.js` server functions generate the typed `api` object imported throughout [cite:file:app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69].
+- Styling is Tailwind with `cn` merging clsx and tailwind-merge [cite:file:lib/utils.js;symbol=cn;lines=4-6].
+
+**How to run it**
+- Standard Next.js scripts — `next dev`, `next build`, `next start` — with `NEXT_PUBLIC_CONVEX_URL` and Clerk keys required as environment variables.
+- The AI key is read from `NEXT_PUBLIC_AI_OPENROUTER` [cite:file:services/GlobalServices.jsx;symbol=AIModel;lines=9-28].
+
+**Worth a closer look**
+- The OpenAI client is constructed with `dangerouslyAllowBrowser: true` and a `NEXT_PUBLIC_` key, so the AI credential ships to every visitor's browser [cite:file:services/GlobalServices.jsx;symbol=AIModel;lines=9-28].
+- Speech recognition is Chrome-only in practice and the code alerts and returns when `webkitSpeechRecognition` is absent [cite:file:app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144].
+- `handleSendToAI` is defined after `startListening` uses it, relying on function hoisting within the component body, which is fragile to reorder [cite:file:app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209].
+- The `AuthProvider` recreates the user on every change of the `user` object, since `createNewUser` is a dependency of the effect [cite:file:app/AuthProvider.jsx;symbol=AuthProvider;lines=9-34].
+- `checkVoiceSupport` is invoked inside the render of the language dropdown on every option, calling `getVoices()` repeatedly [cite:file:app/(main)/discussion-room/[roomid]/page.jsx;symbol=checkVoiceSupport;lines=163-203].
+- The `@aws-sdk/client-polly` dependency is installed but no Polly usage appears anywhere in the provided code.
+- `History` and `Feedback` are static placeholders despite the README claiming real-time transcripts and stored sessions [cite:file:app/(main)/dashboard/_components/Feedback.jsx;symbol=Feedback;lines=3-12].

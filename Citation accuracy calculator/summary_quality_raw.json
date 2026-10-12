@@ -1,0 +1,206 @@
+{
+  "AURA": {
+    "01_Attendance-Management-System": {
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "04_ResumeRise": {
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "05_bookreview-api": {
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "06_Virtual-Tour-Creater": {
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "10_HomeServicesBooking": {
+      "completeness": 4.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "15_whatsappchatanalyzer": {
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "19_AI-COACHING-PLATFORM": {
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 4.0
+    }
+  },
+  "chatgpt": {
+    "01_Attendance-Management-System": {
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "04_ResumeRise": {
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "05_bookreview-api": {
+      "completeness": 4.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 5.0,
+      "structure": 5.0
+    },
+    "06_Virtual-Tour-Creater": {
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "10_HomeServicesBooking": {
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "15_whatsappchatanalyzer": {
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "19_AI-COACHING-PLATFORM": {
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    }
+  },
+  "claude": {
+    "01_Attendance-Management-System": {
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "04_ResumeRise": {
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "05_bookreview-api": {
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "06_Virtual-Tour-Creater": {
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "10_HomeServicesBooking": {
+      "completeness": 5.0,
+      "accuracy": 5.0,
+      "clarity": 5.0,
+      "depth": 5.0,
+      "structure": 5.0
+    },
+    "15_whatsappchatanalyzer": {
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "19_AI-COACHING-PLATFORM": {
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    }
+  },
+  "deepseek": {
+    "01_Attendance-Management-System": {
+      "completeness": 4.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 4.0,
+      "structure": 4.0
+    },
+    "04_ResumeRise": {
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "05_bookreview-api": {
+      "completeness": 5.0,
+      "accuracy": 4.0,
+      "clarity": 5.0,
+      "depth": 4.0,
+      "structure": 5.0
+    },
+    "06_Virtual-Tour-Creater": {
+      "completeness": 4.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "10_HomeServicesBooking": {
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    },
+    "15_whatsappchatanalyzer": {
+      "completeness": 5.0,
+      "accuracy": 3.0,
+      "clarity": 5.0,
+      "depth": 5.0,
+      "structure": 5.0
+    },
+    "19_AI-COACHING-PLATFORM": {
+      "completeness": 3.0,
+      "accuracy": 2.0,
+      "clarity": 4.0,
+      "depth": 3.0,
+      "structure": 4.0
+    }
+  }
+}

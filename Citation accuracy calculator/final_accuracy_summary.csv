@@ -1,0 +1,5 @@
+system,repos_covered,total_citations,total_passed,overall_accuracy_pct
+AURA,7,129,129,100.0
+chatgpt,7,188,153,81.4
+claude,7,221,221,100.0
+deepseek,7,126,125,99.2

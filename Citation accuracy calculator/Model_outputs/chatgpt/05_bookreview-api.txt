@@ -1,0 +1,90 @@
+# 1. In plain English
+
+The Book Review API is the back-end system for an application where people can discover books, rate them, and write reviews. Readers can create accounts, manage their profiles, and share their opinions, while administrators can manage users and control certain activities.
+
+Analogy: Think of an online library noticeboard where readers recommend books, give star ratings, and share comments, with a librarian managing access.
+
+What you can do with it:
+
+- Find books by title, author, or genre, and explore their ratings.
+- Create an account, sign in, and post, edit, or delete book reviews.
+- Manage your profile and profile picture, with additional controls for administrators.
+
+# 2. For students: how to read this project
+
+Read these files in order to understand how the application starts, handles requests, stores information, and protects user accounts.
+
+1. `BookreviewApiApplication.java` — Start here to see the main entry point that launches the Spring Boot application. [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=main;lines=9-12]
+2. `BookController.java` — Learn how the application retrieves books, searches by title or author, filters results, and supports pagination and sorting. [cite:file=src/main/java/bookreview_api/BookController.java;symbol=BookController;lines=14-54]
+3. `Book.java` — Understand how book information is represented, including the title, author, genre, publication year, rating, and review count. [cite:file=src/main/java/bookreview_api/model/Book.java;symbol=Book;lines=30-61]
+4. `ReviewController.java` — Follow the logic for adding, updating, deleting, and retrieving reviews, including how book ratings are recalculated. [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=ReviewController;lines=22-62]
+5. `SecurityConfig.java` — Finish by examining the application's security configuration, including access rules and password encoding. [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=22-62]
+
+### How the main parts connect
+
+```
+flowchart LR
+    A[Reader] --> B[Book API]
+    B --> C[Book data]
+    A --> D[Review API]
+    D --> E[Review data]
+    E --> F[Book ratings]
+    A --> G[Account security]
+```
+
+The diagram shows the main concepts rather than every internal connection. The book and review controllers handle requests, while the stored information supplies book details and reviews. [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54] [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77]
+
+Key terms:
+
+- API: A way for one application to request information or actions from another system.
+- Controller: The part of the application that receives requests and decides what operation to perform.
+- Repository: The component used to access stored information, such as books, reviews, and users.
+
+# 3. For recruiters and interviewers
+
+What it demonstrates:
+
+- Backend development: Building REST endpoints for book discovery, searching, filtering, pagination, and review management. [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54]
+- Authentication and authorization: Implementing registration and login, JWT-based authentication, and role-aware access for users and administrators. [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54] [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61]
+- Data modelling and business logic: Connecting users, books, and reviews, maintaining review timestamps, and recalculating average ratings and review counts when reviews change. [cite:file=src/main/java/bookreview_api/model/Review\.java;symbol=Review;lines=43-83] [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77]
+
+Stack: Java, Spring Boot, Spring MVC, Spring Security, Spring Data JPA, Hibernate, JWT, Maven, and OpenAPI/Swagger, as evidenced by the supplied source and dependency context. [cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=customOpenAPI;lines=17-38]
+
+Most interesting part: The review system connects user activity to book ratings. Whenever a review is added, edited, or deleted, the application recalculates the book's average rating and review count, keeping those values aligned with the remaining reviews. [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77]
+
+# 4. For developers
+
+### Purpose
+
+- The project provides a Java-based backend for a book-review application. Its main entry point starts the Spring Boot application, which discovers and configures the application's components. [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=BookreviewApiApplication;lines=7-12]
+- It separates HTTP request handling, data models, database access, and security into different classes and packages, making the code easier to navigate and maintain. [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54] [cite:file=src/main/java/bookreview_api/model/Book.java;symbol=Book;lines=30-61]
+
+### Main modules
+
+- Books: `BookController` provides endpoints for listing books, retrieving a book by ID, searching titles or authors, and filtering by genre, author, or minimum rating. Listing and searching support pagination. [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54]
+- Reviews: `ReviewController` retrieves reviews and implements review creation, editing, and deletion. It checks whether the review belongs to the current user or the current user has the administrator role before allowing modifications. [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=ReviewController;lines=22-62]
+- Accounts and profiles: `AuthController` handles registration, login, and a logout response. `UserController` provides profile operations and administrator-specific user management. [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54] [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=UserController;lines=21-61]
+- Security and documentation: `JwtUtil` creates and validates tokens, while `SwaggerConfig` describes the API and configures bearer-token authentication in its OpenAPI documentation. [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=JwtUtil;lines=13-53] [cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=customOpenAPI;lines=17-38]
+
+### How data flows
+
+- A client sends an HTTP request to a controller, which calls a repository or service to retrieve or save information. For example, the review endpoint looks up the relevant book and user before saving a new review. [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=ReviewController;lines=22-62]
+- After a review changes, the rating-update method calculates the average of the book's reviews, rounds it to one decimal place, updates the review count, and saves the book. [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77]
+- The JWT filter reads the authorization header, validates a bearer token, retrieves the associated user's role, and places the authentication details in Spring Security's context. [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61]
+
+### Tech stack
+
+- Java and Spring Boot: Application language and framework for starting the service and defining web endpoints. [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=main;lines=9-12]
+- JPA and Hibernate: Map Java entities to stored records and represent relationships between books, users, and reviews. [cite:file=src/main/java/bookreview_api/model/Book.java;symbol=Book;lines=30-61] [cite:file=src/main/java/bookreview_api/model/Review\.java;symbol=Review;lines=43-83]
+- JWT and Swagger/OpenAPI: Support token-based authentication and API documentation. [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=JwtUtil;lines=13-53] [cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=customOpenAPI;lines=17-38]
+
+### How to run it
+
+- Check `pom.xml` for dependencies and use the included Maven wrapper (`mvnw` on Unix-like systems or `mvnw.cmd` on Windows) to build and run the project. The exact commands and required configuration should be verified against `HELP.md` and `application.properties`; the supplied excerpt does not establish all runtime prerequisites.
+- Start the application through its main class, which calls `SpringApplication.run(...)`. [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=main;lines=9-12]
+
+### Worth a closer look
+
+- Duplicate reviews: The `Review` entity defines a unique constraint on the user and book columns, intended to prevent the same user from creating multiple review records for one book. [cite:file=src/main/java/bookreview_api/model/Review\.java;symbol=Review;lines=43-83]
+- Profile-picture handling: Both profile controllers save uploaded files locally, but use different upload paths and filename-generation approaches. Review these implementations together before extending uploads. [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=uploadProfilePicture;lines=80-114] [cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=uploadProfilePicture;lines=31-62]
+- Testing: The supplied test class checks that the Spring application context loads. Add controller, security, and review-rating tests to verify important behaviours beyond application startup. [cite:file=src/test/java/bookreview_api/BookreviewApiApplicationTests.java;symbol=contextLoads;lines=10-13]

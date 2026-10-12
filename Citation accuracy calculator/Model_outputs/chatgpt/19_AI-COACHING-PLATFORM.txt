@@ -1,0 +1,86 @@
+## 1. In plain English
+
+The AI Coaching Platform is a website where people can practise skills and learn through conversations with an AI coach. Users can choose a coaching activity, enter a topic, select an expert with an avatar, and speak with the AI instead of only typing. It is designed for students, job seekers preparing for interviews, people learning languages, and anyone who wants guided practice.
+
+Analogy: Think of it as a personal tutor available on your computer who listens to you, answers your questions, and helps you practise different subjects.
+
+What you can do with it:
+
+- Choose a coaching activity, such as interview practice or language learning.
+- Speak to an AI expert and hear its replies aloud.
+- View conversation transcripts and revisit earlier sessions where history is available.
+
+## 2. For students: how to read this project
+
+Read these files in order to understand how a user moves from choosing a coaching activity to having a conversation with the AI.
+
+1. `app/(main)/dashboard/page.jsx` — Start here to see how the dashboard brings together coaching options, history, and feedback. [cite:file=app/(main)/dashboard/page.jsx;symbol=Dashboard;lines=6-18]
+2. `app/(main)/dashboard/_components/FeatureAssistants.jsx` — Learn how coaching choices are displayed and connected to the session setup dialog. [cite:file=app/(main)/dashboard/\_components/FeatureAssistants.jsx;symbol=FeatureAssistants;lines=10-50]
+3. `app/(main)/dashboard/_components/UserInputDialog.jsx` — Follow how the user enters a topic, selects an expert, creates a discussion room, and navigates to it. [cite:file=app/(main)/dashboard/\_components/UserInputDialog.jsx;symbol=UserInputDialog;lines=21-61]
+4. `app/(main)/discussion-room/[roomid]/page.jsx` — Study the main conversation logic, including speech recognition, AI requests, spoken replies, and transcript storage. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209]
+5. `services/GlobalServices.jsx` — Understand how the application builds a prompt and sends the user's message to an AI model. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+
+How the main flow works:
+
+```
+flowchart LR
+    A[Dashboard] --> B[Choose activity]
+    B --> C[Enter topic and expert]
+    C --> D[Create discussion room]
+    D --> E[Speak to AI]
+    E --> F[Hear AI reply]
+    E --> G[Save transcript]
+```
+
+Key terms:
+
+- Component: A reusable piece of the website, such as a dashboard card or conversation window.
+- Prompt: Instructions that guide how the AI should respond to a topic or activity.
+- Transcript: A saved record of the user's and AI's conversation.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+
+- Frontend development: Building a multi-page interface using React and Next.js, reusable components, interactive dialogs, and state management. [cite:file=app/(main)/dashboard/\_components/UserInputDialog.jsx;symbol=UserInputDialog;lines=21-61]
+- AI integration: Constructing prompts from selected coaching options and sending messages to a language model through an OpenAI-compatible client. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+- Voice interaction and data persistence: Handling speech input, speaking AI-generated answers, and saving both sides of the conversation using Convex. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209]
+
+Stack: React, Next.js 15, JavaScript/JSX, Clerk authentication, Convex database and server functions, OpenAI-compatible SDK, an OpenRouter endpoint, DeepSeek Chat model, Tailwind CSS utilities, and browser speech recognition and speech synthesis.
+
+Most interesting part: The discussion room combines spoken input, AI-generated responses, text-to-speech, language selection, and transcript retrieval in one interface. This makes the project more than a conventional chatbot, although speech recognition and voice availability depend on browser support.
+
+## 4. For developers
+
+### Purpose
+
+\- The repository implements a web-based coaching workflow: select an activity and expert, create a discussion room, converse with an AI, and store conversation messages for later retrieval. [cite:file=app/(main)/dashboard/\_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69]
+
+### Main modules
+
+- Dashboard: `app/(main)/dashboard/page.jsx` composes the coaching assistant, history, and feedback sections. The history and feedback components currently display placeholder messages rather than populated records. [cite:file=app/(main)/dashboard/page.jsx;symbol=Dashboard;lines=6-18] [cite:file=app/(main)/dashboard/\_components/History.jsx;symbol=History;lines=3-12] [cite:file=app/(main)/dashboard/\_components/Feedback.jsx;symbol=Feedback;lines=3-12]
+- Session setup: `UserInputDialog.jsx` maintains the selected topic and expert in React state, calls the Convex `CreateNewRoom` mutation, and navigates to the returned room identifier. [cite:file=app/(main)/dashboard/\_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69]
+- Conversation interface: `app/(main)/_components/ChatSession.jsx` renders user and AI messages, timestamps, language labels, and interim speech transcripts. [cite:file=app/(main)/\_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45]
+- Authentication and user setup: `AuthProvider.jsx` uses Clerk's user information to call a Convex mutation and expose returned user data through React context. [cite:file=app/AuthProvider.jsx;symbol=AuthProvider;lines=9-34]
+
+### How data flows
+
+- The session setup submits the activity name, topic, and expert name to Convex. The resulting room ID becomes the discussion page's route parameter. [cite:file=app/(main)/dashboard/\_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69]
+- On the discussion page, Convex queries retrieve room details and prior transcripts. When speech recognition produces a final transcript, the application saves the user message, requests an AI response, saves that response, and updates the visible chat history. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=DiscussionRoom;lines=13-53] [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209]
+- `GlobalServices.jsx` finds the selected coaching option, inserts the user's topic into its prompt template, and sends the prompt and message to the configured model endpoint. Errors are logged and rethrown. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+
+### Tech stack
+
+- Next.js provides the application structure and routing; React manages interactive components and state. Convex supplies the client-side query and mutation interface, while Clerk supplies authentication components. [cite:file=app/provider.js;symbol=Provider;lines=7-17] [cite:file=app/AuthProvider.jsx;symbol=AuthProvider;lines=9-34]
+- Browser `webkitSpeechRecognition` handles speech input, and `speechSynthesis` generates spoken responses. The code explicitly checks recognition support and reports when it is unavailable. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144] [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=speakResponse;lines=220-260]
+
+### How to run it
+
+- Install a compatible Node.js version and the dependencies using `npm install`, configure the required Convex URL and AI endpoint credentials, then start the development server with `npm run dev`. The package scripts confirm the development command; successful startup also depends on valid service configuration.
+- Review `package.json`, `README.md`, and the Convex deployment configuration before running the project. The supplied material does not include enough configuration detail to guarantee that all external services are ready to use.
+
+### Worth a closer look
+
+- Credential exposure: The AI client uses `NEXT_PUBLIC_AI_OPENROUTER` and enables `dangerouslyAllowBrowser: true`. Because public environment variables can be exposed to browser code, the API credential should not be treated as secret; move authenticated model requests to a protected server-side function. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+- Error handling: `handleSendToAI` catches errors and logs them, but does not display a clear failure message to the user. Add visible feedback and ensure loading states recover predictably. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209]
+- Feature completeness: The supplied `History.jsx` and `Feedback.jsx` are placeholders, so the README's broader progress-review ambitions should not be assumed to be fully implemented. [cite:file=app/(main)/dashboard/\_components/History.jsx;symbol=History;lines=3-12] [cite:file=app/(main)/dashboard/\_components/Feedback.jsx;symbol=Feedback;lines=3-12]

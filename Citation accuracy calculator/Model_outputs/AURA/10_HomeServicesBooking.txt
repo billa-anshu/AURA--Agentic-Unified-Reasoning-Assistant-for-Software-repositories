@@ -1,0 +1,96 @@
+# HomeServicesBooking - AURA report
+
+> A full-stack Spring Boot application that allows customers to browse and book home services while enabling admins to manage providers and bookings.  
+> Type: web app | Languages: .java: 59%, .jsp: 26%, .xml: 4%, .md: 4%, .properties: 4%, .css: 4%
+
+This project is a website where customers can find and hire professionals for home repairs or cleaning. It also lets managers organize these workers and track all appointments securely. [1][12]
+
+Analogy: Think of it as an online marketplace that connects people needing house help with trusted local experts, while keeping a digital record of every job.
+
+What you can do with it:
+- Browse available home services and book a provider directly. [1]
+- Log in to view your personal history of past and upcoming bookings. [10]
+- Register a new account, which automatically checks to ensure your email is unique. [9][11]
+
+## For students: how to read this project
+
+1. **src/main/java/com/app/controller/AuthController.java**: Start here to see how users register and log in, including email uniqueness checks [4][9][11].
+2. **src/main/java/com/app/model/Worker.java**: Understand the data structure for service providers, such as name and experience [6].
+3. **src/main/java/com/app/controller/ServiceController.java**: See how customers select services using repositories for services and workers [7].
+4. **src/main/java/com/app/controller/BookingController.java**: Examine the core logic for creating bookings and retrieving personal history from the session [2][10].
+5. **src/main/java/com/app/service/EmailService.java**: Learn how the system sends confirmation messages after a booking is made [15][17].
+
+```mermaid
+flowchart LR
+    A[Browser] --> B[Auth Controller]
+    B --> C[Service Controller]
+    C --> D[Booking Controller]
+    D --> E[Email Service]
+    D --> F[Database]
+    E --> G[Mail Server]
+```
+
+Key terms:
+*   **Repository**: A component that interacts with the database to save and retrieve data, such as bookings or workers [2][5].
+*   **Lazy Loading**: A strategy where related data, like customer details in a booking, is fetched only when explicitly requested [3][16].
+*   **Session**: A temporary storage area on the server that remembers who the current logged-in user is [8][10].
+
+## For recruiters and interviewers
+- **What it demonstrates:**
+  - Implements secure session management by retrieving customer data from the session to display personal booking history and redirecting unauthenticated users to login [8][10].
+  - Applies data integrity checks by validating email uniqueness during registration and preventing duplicate customer accounts [9][11].
+  - Integrates automated communication by using JavaMailSender to construct and send simple mail messages for booking confirmations [15][17].
+- **Stack:** Spring Boot, Maven, Java, JSP, and JavaMailSender [12][15].
+- **Most interesting part:** The system automates the post-booking workflow by directly integrating email notifications into worker management logic, ensuring customers receive immediate confirmation via JavaMailSender [15][18].
+
+## For developers: verified claims
+
+### Purpose
+- The application allows customers to browse home services, book service providers, and manage bookings securely. [1]
+
+### Main modules
+- BookingController handles booking logic using repositories for bookings, services, and workers. [2]
+- The Booking entity links customers and services via ManyToOne relationships with lazy fetching. [3]
+- AuthController manages user registration and login pages via GET and POST mappings. [4]
+- WorkerController uses WorkerRepository, BookingRepository, and EmailService. [5]
+- The Worker entity maps to the 'workers' table and stores name, email, phone, and experience. [6]
+- ServiceController handles service selection requests using HomeServiceRepository and WorkerRepository. [7]
+
+### How data flows
+- The myBookings endpoint redirects unauthenticated users to the login page. [8]
+- Registration fails and redirects if a customer with the same email already exists. [9]
+- BookingController retrieves the customer from the session to display personal booking history. [10]
+- AuthController validates email uniqueness before creating a new customer account. [11]
+
+### Tech stack
+- The project uses Spring Boot and Maven for dependency management. [12]
+
+### How to run it
+- DataLoader implements a run method to initialize data. [13]
+- DataLoader initializes application data by interacting with service and worker repositories on startup. [14]
+
+### Worth a closer look
+- EmailService sends booking confirmation emails using JavaMailSender. [15]
+- The Booking entity uses lazy loading for its customer relationship. [16]
+- EmailService constructs and sends simple mail messages for booking confirmations. [17]
+- WorkerController integrates email notifications directly into its worker management logic. [18]
+
+## Sources (each [n] is a claim checked against this code)
+[1] README / dependency files
+[2] [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52]
+[3] [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=8-48] [cite:file=src/main/java/com/app/model/Booking.java;symbol=setCustomer;lines=39-48]
+[4] [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=AuthController;lines=13-53] [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=register;lines=24-56]
+[5] [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=WorkerController;lines=18-58]
+[6] [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=7-33]
+[7] [cite:file=src/main/java/com/app/controller/ServiceController.java;symbol=ServiceController;lines=16-40]
+[8] [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=myBookings;lines=120-136]
+[9] [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=register;lines=24-56]
+[10] [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=myBookings;lines=120-136]
+[11] [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=register;lines=24-56]
+[12] README / dependency files
+[13] [cite:file=src/main/java/com/app/service/DataLoader.java;symbol=DataLoader;lines=15-50]
+[14] [cite:file=src/main/java/com/app/service/DataLoader.java;symbol=DataLoader;lines=15-50]
+[15] [cite:file=src/main/java/com/app/service/EmailService.java;symbol=EmailService;lines=12-52]
+[16] [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=8-48]
+[17] [cite:file=src/main/java/com/app/service/EmailService.java;symbol=EmailService;lines=12-52]
+[18] [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=WorkerController;lines=18-58]

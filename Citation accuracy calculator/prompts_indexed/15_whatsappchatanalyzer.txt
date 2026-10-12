@@ -1,0 +1,679 @@
+You are analyzing a software repository. You are given:
+A. background (README and dependency file), B. the file tree, C. a SYMBOL INDEX produced by a code
+parser, D. the source code with line numbers (shown as "N | code").
+
+=== A. BACKGROUND ===
+README:
+# WhatsApp Chat Analyzer
+
+Transform chaotic message histories into actionable intelligence. Reveal behavioral patterns, sentiment trajectories, and semantic insights with our forensic-grade analysis engine.
+
+## Overview
+A web-based application built using Streamlit that allows users to upload exported WhatsApp chats and analyze conversation patterns using data analytics and NLP techniques. It features a premium "Forensic Stream" UI.
+
+## Features Included
+*   **Overall Conversation Intel**: Analyze total messages, total words, media shared, and links.
+*   **Timeline Analysis**: Activity mapped across months and days.
+*   **Activity Heatmaps**: Find out the exact days and hours where communication peaks.
+*   **NLP Semantic Word Cloud**: Generate visual representation of frequent keywords.
+*   **Emoji Spectrum**: Evaluates the emojis to map Laughter, Approval, and Surprise.
+*   **Sentiment Velocity Baseline**: Powered by VADER, extracts the average positivity or negativity of messages over time.
+
+## Local Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo>
+   cd whatappchatanalyzer
+   ```
+
+2. **Setup virtual environment & install requirements:**
+   ```bash
+   pytho
+
+requirements.txt:
+streamlit
+pandas
+matplotlib
+seaborn
+wordcloud
+urlextract
+emoji
+vaderSentiment
+
+
+=== B. FILE TREE ===
+DEPLOYMENT_GUIDE.md
+README.md
+app.py
+assets/style.css
+helper.py
+preprocessor.py
+requirements.txt
+
+=== C. SYMBOL INDEX (each line is a ready-made citation tag) ===
+[cite:file=app.py;symbol=local_css;lines=9-11]
+[cite:file=app.py;symbol=nav_selection;lines=20-20]
+[cite:file=app.py;symbol=uploaded_file;lines=26-26]
+[cite:file=app.py;symbol=bytes_data;lines=29-29]
+[cite:file=app.py;symbol=data;lines=30-30]
+[cite:file=app.py;symbol=df;lines=31-31]
+[cite:file=app.py;symbol=user_list;lines=37-37]
+[cite:file=app.py;symbol=selected_user;lines=42-42]
+[cite:file=app.py;symbol=dist;lines=68-68]
+[cite:file=app.py;symbol=total_media;lines=69-69]
+[cite:file=app.py;symbol=icons;lines=82-82]
+[cite:file=app.py;symbol=colors_map;lines=83-83]
+[cite:file=app.py;symbol=dominant;lines=84-84]
+[cite:file=app.py;symbol=pct;lines=90-90]
+[cite:file=app.py;symbol=color;lines=91-91]
+[cite:file=app.py;symbol=timeline;lines=122-122]
+[cite:file=app.py;symbol=busy_month;lines=132-132]
+[cite:file=app.py;symbol=daily_timeline;lines=142-142]
+[cite:file=app.py;symbol=user_heatmap;lines=153-153]
+[cite:file=app.py;symbol=df_wc;lines=182-182]
+[cite:file=app.py;symbol=most_common_df;lines=195-195]
+[cite:file=app.py;symbol=filtered_spectrum;lines=207-207]
+[cite:file=app.py;symbol=spectrum_colors;lines=209-209]
+[cite:file=helper.py;symbol=extract;lines=9-9]
+[cite:file=helper.py;symbol=analyzer;lines=10-10]
+[cite:file=helper.py;symbol=fetch_stats;lines=13-29]
+[cite:file=helper.py;symbol=df;lines=15-15]
+[cite:file=helper.py;symbol=num_messages;lines=17-17]
+[cite:file=helper.py;symbol=words;lines=19-19]
+[cite:file=helper.py;symbol=num_media_messages;lines=23-23]
+[cite:file=helper.py;symbol=links;lines=25-25]
+[cite:file=helper.py;symbol=fetch_most_active_users;lines=32-35]
+[cite:file=helper.py;symbol=x;lines=33-33]
+[cite:file=helper.py;symbol=df_percent;lines=34-34]
+[cite:file=helper.py;symbol=create_wordcloud;lines=37-49]
+[cite:file=helper.py;symbol=temp;lines=41-41]
+[cite:file=helper.py;symbol=wc;lines=44-44]
+[cite:file=helper.py;symbol=df_wc;lines=48-48]
+[cite:file=helper.py;symbol=get_most_common_words;lines=52-66]
+[cite:file=helper.py;symbol=most_common_df;lines=65-65]
+[cite:file=helper.py;symbol=emoji_analysis;lines=69-95]
+[cite:file=helper.py;symbol=emojis;lines=73-73]
+[cite:file=helper.py;symbol=emoji_df;lines=77-77]
+[cite:file=helper.py;symbol=joy_emojis;lines=79-79]
+[cite:file=helper.py;symbol=approval_emojis;lines=80-80]
+[cite:file=helper.py;symbol=surprise_emojis;lines=81-81]
+[cite:file=helper.py;symbol=joy_count;lines=83-83]
+[cite:file=helper.py;symbol=approval_count;lines=84-84]
+[cite:file=helper.py;symbol=surprise_count;lines=85-85]
+[cite:file=helper.py;symbol=others_count;lines=86-86]
+[cite:file=helper.py;symbol=spectrum;lines=88-93]
+[cite:file=helper.py;symbol=fetch_monthly_timeline;lines=98-107]
+[cite:file=helper.py;symbol=timeline;lines=102-102]
+[cite:file=helper.py;symbol=time;lines=103-103]
+[cite:file=helper.py;symbol=fetch_daily_timeline;lines=110-115]
+[cite:file=helper.py;symbol=daily_timeline;lines=114-114]
+[cite:file=helper.py;symbol=fetch_week_activity_map;lines=118-121]
+[cite:file=helper.py;symbol=fetch_month_activity_map;lines=124-127]
+[cite:file=helper.py;symbol=fetch_activity_heatmap;lines=130-135]
+[cite:file=helper.py;symbol=user_heatmap;lines=134-134]
+[cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+[cite:file=helper.py;symbol=positives;lines=145-145]
+[cite:file=helper.py;symbol=negatives;lines=146-146]
+[cite:file=helper.py;symbol=neutrals;lines=147-147]
+[cite:file=helper.py;symbol=compound;lines=148-148]
+[cite:file=helper.py;symbol=score;lines=151-151]
+[cite:file=helper.py;symbol=sentiment_velocity;lines=162-162]
+[cite:file=helper.py;symbol=pos_count;lines=164-164]
+[cite:file=helper.py;symbol=neg_count;lines=165-165]
+[cite:file=helper.py;symbol=neu_count;lines=166-166]
+[cite:file=helper.py;symbol=get_media_distribution;lines=171-186]
+[cite:file=helper.py;symbol=num_media;lines=175-175]
+[cite:file=helper.py;symbol=images;lines=177-177]
+[cite:file=helper.py;symbol=voice;lines=178-178]
+[cite:file=helper.py;symbol=docs;lines=179-179]
+[cite:file=helper.py;symbol=dist;lines=181-185]
+[cite:file=preprocessor.py;symbol=preprocess;lines=6-60]
+[cite:file=preprocessor.py;symbol=pattern;lines=7-7]
+[cite:file=preprocessor.py;symbol=messages;lines=9-9]
+[cite:file=preprocessor.py;symbol=dates;lines=10-10]
+[cite:file=preprocessor.py;symbol=df;lines=15-15]
+[cite:file=preprocessor.py;symbol=users;lines=21-21]
+[cite:file=preprocessor.py;symbol=entry;lines=24-24]
+[cite:file=preprocessor.py;symbol=period;lines=45-45]
+[cite:file=preprocessor.py;symbol=hour;lines=50-50]
+
+=== D. SOURCE CODE WITH LINE NUMBERS ===
+--- app.py ---
+   1 | import streamlit as st
+   2 | import preprocessor
+   3 | import helper
+   4 | import matplotlib.pyplot as plt
+   5 | import seaborn as sns
+   6 | 
+   7 | st.set_page_config(page_title="WhatsApp Chat Analyzer", page_icon="🕵️", layout="wide")
+   8 | 
+   9 | def local_css(file_name):
+  10 |     with open(file_name) as f:
+  11 |         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+  12 | 
+  13 | try:
+  14 |     local_css("assets/style.css")
+  15 | except:
+  16 |     pass
+  17 | 
+  18 | st.sidebar.markdown('<div class="sidebar-title">The Forensic Stream<br><span style="font-size:0.7rem;color:#8c9ea6;font-weight:400;">DIGITAL CURATOR</span></div>', unsafe_allow_html=True)
+  19 | 
+  20 | nav_selection = st.sidebar.radio("Navigation", ["Dashboard", "Chat Insights", "NLP Analysis"], label_visibility="hidden")
+  21 | 
+  22 | st.sidebar.markdown("---")
+  23 | 
+  24 | 
+  25 | 
+  26 | uploaded_file = st.sidebar.file_uploader("Drop your chat file here", type=["txt"])
+  27 | 
+  28 | if uploaded_file is not None:
+  29 |     bytes_data = uploaded_file.getvalue()
+  30 |     data = bytes_data.decode("utf-8")
+  31 |     df = preprocessor.preprocess(data)
+  32 | 
+  33 |     if df.empty:
+  34 |          st.error("Error parsing the file. Please ensure it's a valid WhatsApp export.")
+  35 |          st.stop()
+  36 | 
+  37 |     user_list = df['user'].unique().tolist()
+  38 |     if 'group_notification' in user_list:
+  39 |         user_list.remove('group_notification')
+  40 |     user_list.sort()
+  41 |     user_list.insert(0, "Overall")
+  42 |     selected_user = st.sidebar.selectbox("Analysis Scope", user_list)
+  43 | 
+  44 |     if st.sidebar.button("Analyze Chat"):
+  45 |         
+  46 |         plt.style.use('dark_background')
+  47 |         sns.set_theme(style="darkgrid", rc={"axes.facecolor": "#12181b", "figure.facecolor": "#12181b", "text.color": "#e0e0e0", "axes.labelcolor": "#e0e0e0", "xtick.color": "#e0e0e0", "ytick.color": "#e0e0e0"})
+  48 | 
+  49 |         if nav_selection == "Dashboard":
+  50 |             st.title("Overall Conversation Intel")
+  51 |             st.markdown("Transform chaotic message histories into actionable intelligence.")
+  52 | 
+  53 |             num_messages, words, num_media, num_links = helper.fetch_stats(selected_user, df)
+  54 | 
+  55 |             col1, col2, col3, col4 = st.columns(4)
+  56 |             with col1:
+  57 |                 st.markdown(f'<div class="metric-container"><div class="metric-label">Total Messages</div><div class="metric-value">{num_messages:,}</div><div class="metric-trend-up">↗ + Analyzed</div></div>', unsafe_allow_html=True)
+  58 |             with col2:
+  59 |                 st.markdown(f'<div class="metric-container"><div class="metric-label">Total Words</div><div class="metric-value">{words:,}</div><div class="metric-trend-up">↗ + Analyzed</div></div>', unsafe_allow_html=True)
+  60 |             with col3:
+  61 |                 st.markdown(f'<div class="metric-container"><div class="metric-label">Media Shared</div><div class="metric-value">{num_media:,}</div></div>', unsafe_allow_html=True)
+  62 |             with col4:
+  63 |                 st.markdown(f'<div class="metric-container"><div class="metric-label">Links Shared</div><div class="metric-value">{num_links:,}</div></div>', unsafe_allow_html=True)
+  64 | 
+  65 |             st.markdown("---")
+  66 |             
+  67 |             st.subheader("Media Distribution")
+  68 |             dist = helper.get_media_distribution(selected_user, df)
+  69 |             total_media = sum(dist.values())
+  70 | 
+  71 |             col_m1, col_m2 = st.columns((1, 1))
+  72 |             with col_m1:
+  73 |                 fig, ax = plt.subplots(figsize=(4.5, 3.2))
+  74 |                 ax.pie(dist.values(), labels=dist.keys(), autopct="%0.2f%%",
+  75 |                        colors=['#1db954', '#34d399', '#115e59'], textprops={'color': "w"},
+  76 |                        wedgeprops={'linewidth': 1.5, 'edgecolor': '#12181b'})
+  77 |                 fig.patch.set_facecolor('#12181b')
+  78 |                 st.pyplot(fig)
+  79 |                 plt.close(fig)
+  80 | 
+  81 |             with col_m2:
+  82 |                 icons = {'Images': '📸', 'Voice Notes': '🎙️', 'Documents': '📄'}
+  83 |                 colors_map = {'Images': '#1db954', 'Voice Notes': '#34d399', 'Documents': '#115e59'}
+  84 |                 dominant = max(dist, key=dist.get)
+  85 |                 st.markdown(f"""
+  86 |                 <div style="background: linear-gradient(145deg, #1d2529, #171d20); border-radius: 12px; padding: 20px; border: 1px solid #233137; height: 100%; margin-top: 10px;">
+  87 |                     <div style="font-size:0.8rem; color:#8c9ea6; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">Breakdown</div>
+  88 |                 """, unsafe_allow_html=True)
+  89 |                 for label, count in dist.items():
+  90 |                     pct = (count / total_media * 100) if total_media > 0 else 0
+  91 |                     color = colors_map[label]
+  92 |                     st.markdown(f"""
+  93 |                     <div style="display:flex; align-items:center; margin-bottom:14px;">
+  94 |                         <span style="font-size:1.4rem; margin-right:10px;">{icons[label]}</span>
+  95 |                         <div style="flex:1;">
+  96 |                             <div style="color:#ffffff; font-weight:600; font-size:0.95rem;">{label}</div>
+  97 |                             <div style="background:#233137; border-radius:4px; height:6px; margin-top:4px;">
+  98 |                                 <div style="background:{color}; width:{pct:.1f}%; height:6px; border-radius:4px;"></div>
+  99 |                             </div>
+ 100 |                         </div>
+ 101 |                         <div style="text-align:right; margin-left:12px;">
+ 102 |                             <div style="color:#ffffff; font-weight:700; font-size:1rem;">{count:,}</div>
+ 103 |                             <div style="color:#8c9ea6; font-size:0.78rem;">{pct:.1f}%</div>
+ 104 |                         </div>
+ 105 |                     </div>
+ 106 |                     """, unsafe_allow_html=True)
+ 107 |                 st.markdown(f"""
+ 108 |                     <div style="margin-top:8px; padding-top:12px; border-top:1px solid #233137; color:#1DB954; font-size:0.85rem; font-weight:600;">
+ 109 |                         🏆 Dominant: {icons.get(dominant,'')} {dominant} ({dist[dominant]:,} files)
+ 110 |                     </div>
+ 111 |                 </div>
+ 112 |                 """, unsafe_allow_html=True)
+ 113 | 
+ 114 |         elif nav_selection == "Chat Insights":
+ 115 |             st.title("Activity & Temporal Insights")
+ 116 |             st.markdown("Dive into communication volume, busiest periods, and behavioral timings.")
+ 117 |             
+ 118 |             col_t, col_p = st.columns((2, 1))
+ 119 |             
+ 120 |             with col_t:
+ 121 |                 st.subheader("Timeline Analysis")
+ 122 |                 timeline = helper.fetch_monthly_timeline(selected_user, df)
+ 123 |                 fig, ax = plt.subplots(figsize=(10, 4))
+ 124 |                 ax.plot(timeline['time'], timeline['message'], color='#1DB954', linewidth=3, marker='o')
+ 125 |                 plt.xticks(rotation=45)
+ 126 |                 ax.grid(color='#233137', linestyle='--', linewidth=0.5)
+ 127 |                 st.pyplot(fig)
+ 128 |                 plt.close(fig)
+ 129 | 
+ 130 |             with col_p:
+ 131 |                 st.subheader("Busiest Month")
+ 132 |                 busy_month = helper.fetch_month_activity_map(selected_user, df)
+ 133 |                 fig, ax = plt.subplots(figsize=(5, 4))
+ 134 |                 ax.bar(busy_month.index, busy_month.values, color='#1DB954')
+ 135 |                 plt.xticks(rotation=45)
+ 136 |                 st.pyplot(fig)
+ 137 |                 plt.close(fig)
+ 138 | 
+ 139 |             st.markdown("---")
+ 140 |             
+ 141 |             st.subheader("Daily Timeline")
+ 142 |             daily_timeline = helper.fetch_daily_timeline(selected_user, df)
+ 143 |             fig, ax = plt.subplots(figsize=(10, 4))
+ 144 |             ax.plot(daily_timeline['only_date'], daily_timeline['message'], color='#1DB954', linewidth=1)
+ 145 |             plt.xticks(rotation=45)
+ 146 |             ax.grid(color='#233137', linestyle='--', linewidth=0.5)
+ 147 |             st.pyplot(fig)
+ 148 |             plt.close(fig)
+ 149 |             
+ 150 |             st.markdown("---")
+ 151 |             
+ 152 |             st.subheader("Activity Heatmaps")
+ 153 |             user_heatmap = helper.fetch_activity_heatmap(selected_user, df)
+ 154 |             fig, ax = plt.subplots(figsize=(12, 5))
+ 155 |             sns.heatmap(user_heatmap, cmap="Greens", ax=ax)
+ 156 |             st.pyplot(fig)
+ 157 |             plt.close(fig)
+ 158 | 
+ 159 |             if selected_user == 'Overall':
+ 160 |                 st.markdown("---")
+ 161 |                 st.subheader("Most Active Users")
+ 162 |                 x, new_df = helper.fetch_most_active_users(df)
+ 163 |                 fig, ax = plt.subplots(figsize=(8, 4))
+ 164 |                 
+ 165 |                 col_u1, col_u2 = st.columns(2)
+ 166 |                 with col_u1:
+ 167 |                     ax.bar(x.index, x.values, color='#1DB954')
+ 168 |                     plt.xticks(rotation=45)
+ 169 |                     st.pyplot(fig)
+ 170 |                     plt.close(fig)
+ 171 |                 with col_u2:
+ 172 |                     st.dataframe(new_df, use_container_width=True)
+ 173 | 
+ 174 |         elif nav_selection == "NLP Analysis":
+ 175 |             st.title("Natural Language Intelligence")
+ 176 |             st.markdown("Parsing linguistic patterns, sentiment shifts, and symbolic frequencies.")
+ 177 | 
+ 178 |             col_w, col_l = st.columns((2, 1))
+ 179 |             
+ 180 |             with col_w:
+ 181 |                 st.subheader("Semantic Word Cloud")
+ 182 |                 df_wc = helper.create_wordcloud(selected_user, df)
+ 183 |                 if df_wc is not None:
+ 184 |                     fig, ax = plt.subplots(figsize=(10,6))
+ 185 |                     ax.imshow(df_wc, interpolation='bilinear')
+ 186 |                     ax.axis("off")
+ 187 |                     fig.patch.set_facecolor('#171d20')
+ 188 |                     st.pyplot(fig)
+ 189 |                     plt.close(fig)
+ 190 |                 else:
+ 191 |                     st.info("Not enough text to generate Word Cloud.")
+ 192 |             
+ 193 |             with col_l:
+ 194 |                 st.subheader("Lexical Trends")
+ 195 |                 most_common_df = helper.get_most_common_words(selected_user, df)
+ 196 |                 if not most_common_df.empty:
+ 197 |                     st.dataframe(most_common_df, use_container_width=True)
+ 198 | 
+ 199 |             st.markdown("---")
+ 200 | 
+ 201 |             col_e1, col_e2 = st.columns((1, 2))
+ 202 |             
+ 203 |             emoji_df, spectrum = helper.emoji_analysis(selected_user, df)
+ 204 |             
+ 205 |             with col_e1:
+ 206 |                 st.subheader("Emoji Spectrum")
+ 207 |                 filtered_spectrum = {k: v for k, v in spectrum.items() if v > 0}
+ 208 |                 if filtered_spectrum:
+ 209 |                     spectrum_colors = ['#1db954', '#34d399', '#f87171', '#374151']
+ 210 |                     fig, ax = plt.subplots(figsize=(5, 5))
+ 211 |                     ax.pie(filtered_spectrum.values(), labels=filtered_spectrum.keys(), autopct="%0.2f%%",
+ 212 |                            colors=spectrum_colors[:len(filtered_spectrum)],
+ 213 |                            textprops={'color': "w"})
+ 214 |                     fig.patch.set_facecolor('#12181b')
+ 215 |                     st.pyplot(fig)
+ 216 |                     plt.close(fig)
+ 217 |                 else:
+ 218 |                     st.info("No categorized emojis found in this chat.")
+ 219 |                 
+ 220 |             with col_e2:
+ 221 |                 st.subheader("Most Frequent Emojis")
+ 222 |                 if not emoji_df.empty:
+ 223 |                     st.dataframe(emoji_df.head(10), use_container_width=True)
+ 224 |                 else:
+ 225 |                     st.info("No emojis found in this chat.")
+ 226 |                 
+ 227 |             st.markdown("---")
+ 228 |             
+ 229 |             st.subheader("Average Sentiment Velocity")
+ 230 |             sentiment_velocity, categorized = helper.sentiment_analysis(selected_user, df)
+ 231 |             
+ 232 |             col_sv1, col_sv2 = st.columns((2,1))
+ 233 |             with col_sv1:
+ 234 |                 fig, ax = plt.subplots(figsize=(10, 3))
+ 235 |                 ax.plot(sentiment_velocity['only_date'], sentiment_velocity['compound'], color='#34d399')
+ 236 |                 ax.fill_between(sentiment_velocity['only_date'], sentiment_velocity['compound'], color='#34d399', alpha=0.3)
+ 237 |                 ax.axhline(0, color='gray', linestyle='--')
+ 238 |                 plt.xticks(rotation=45)
+ 239 |                 st.pyplot(fig)
+ 240 |                 plt.close(fig)
+ 241 |                 
+ 242 |             with col_sv2:
+ 243 |                 st.metric("Positive Comments", categorized["Positive"])
+ 244 |                 st.metric("Neutral Comments", categorized["Neutral"])
+ 245 |                 st.metric("Negative Comments", categorized["Negative"])
+ 246 |                 
+ 247 | else:
+ 248 |     st.markdown("<h1 style='text-align: center; margin-top: 50px;'>WhatsApp Chat Analyzer</h1>", unsafe_allow_html=True)
+ 249 |     st.markdown("<p style='text-align: center; color: #8c9ea6;'>Transform chaotic message histories into actionable intelligence. Reveal behavioral patterns, sentiment trajectories, and semantic insights with our forensic-grade analysis engine.</p>", unsafe_allow_html=True)
+ 250 |     
+ 251 |     col_d_0, col_d_1, col_d_2 = st.columns((1, 2, 1))
+ 252 |     
+ 253 |     with col_d_1:
+ 254 |          st.markdown("""
+ 255 |          <div style="background-color: #192226; border: 1px dashed #1DB954; padding: 40px; border-radius: 12px; text-align: center; margin-top: 30px;">
+ 256 |              <h3 style="color: white; margin-bottom: 5px;">Drop your chat file in the sidebar</h3>
+ 257 |              <p style="color: #8c9ea6; font-size: 0.9rem;">Open a WhatsApp chat, tap the 3 dots, choose Export chat, select Without media, and upload the .txt file.</p>
+ 258 |          </div>
+ 259 |          """, unsafe_allow_html=True)
+
+--- helper.py ---
+   1 | import streamlit as st
+   2 | from urlextract import URLExtract
+   3 | from wordcloud import WordCloud
+   4 | import pandas as pd
+   5 | from collections import Counter
+   6 | import emoji
+   7 | from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+   8 | 
+   9 | extract = URLExtract()
+  10 | analyzer = SentimentIntensityAnalyzer()
+  11 | 
+  12 | @st.cache_data
+  13 | def fetch_stats(selected_user, df):
+  14 |     if selected_user != 'Overall':
+  15 |         df = df[df['user'] == selected_user]
+  16 | 
+  17 |     num_messages = df.shape[0]
+  18 | 
+  19 |     words = []
+  20 |     for message in df['message']:
+  21 |         words.extend(message.split())
+  22 | 
+  23 |     num_media_messages = df[df['message'] == '<Media omitted>\n'].shape[0]
+  24 | 
+  25 |     links = []
+  26 |     for message in df['message']:
+  27 |         links.extend(extract.find_urls(message))
+  28 | 
+  29 |     return num_messages, len(words), num_media_messages, len(links)
+  30 | 
+  31 | @st.cache_data
+  32 | def fetch_most_active_users(df):
+  33 |     x = df['user'].value_counts().head()
+  34 |     df_percent = round((df['user'].value_counts() / df.shape[0]) * 100, 2).reset_index().rename(columns={'user': 'name', 'count': 'percent'})
+  35 |     return x, df_percent
+  36 | 
+  37 | def create_wordcloud(selected_user, df):
+  38 |     if selected_user != 'Overall':
+  39 |         df = df[df['user'] == selected_user]
+  40 | 
+  41 |     temp = df[df['user'] != 'group_notification']
+  42 |     temp = temp[temp['message'] != '<Media omitted>\n']
+  43 | 
+  44 |     wc = WordCloud(width=800, height=400, background_color='rgba(255, 255, 255, 0)', mode='RGBA', min_font_size=10, colormap='Greens')
+  45 |     
+  46 |     if temp['message'].str.cat(sep=" ").strip() == "":
+  47 |         return None
+  48 |     df_wc = wc.generate(temp['message'].str.cat(sep=" "))
+  49 |     return df_wc
+  50 | 
+  51 | @st.cache_data
+  52 | def get_most_common_words(selected_user, df):
+  53 |     if selected_user != 'Overall':
+  54 |         df = df[df['user'] == selected_user]
+  55 | 
+  56 |     temp = df[df['user'] != 'group_notification']
+  57 |     temp = temp[temp['message'] != '<Media omitted>\n']
+  58 | 
+  59 |     words = []
+  60 |     for message in temp['message']:
+  61 |         for word in message.lower().split():
+  62 |             if len(word) > 3 and word not in ['this', 'that', 'with', 'from', 'your', 'have', 'message', 'deleted']:
+  63 |                 words.append(word)
+  64 | 
+  65 |     most_common_df = pd.DataFrame(Counter(words).most_common(20), columns=['Word', 'Count'])
+  66 |     return most_common_df
+  67 | 
+  68 | @st.cache_data
+  69 | def emoji_analysis(selected_user, df):
+  70 |     if selected_user != 'Overall':
+  71 |         df = df[df['user'] == selected_user]
+  72 | 
+  73 |     emojis = []
+  74 |     for message in df['message']:
+  75 |         emojis.extend([c for c in message if c in emoji.EMOJI_DATA])
+  76 | 
+  77 |     emoji_df = pd.DataFrame(Counter(emojis).most_common(20), columns=['Emoji', 'Count'])
+  78 |     
+  79 |     joy_emojis = ['😂', '🤣', '😁', '😀', '😃', '😄', '😆', '😅']
+  80 |     approval_emojis = ['👍', '👌', '✌', '✨', '🔥', '🎉', '💯', '👏']
+  81 |     surprise_emojis = ['😲', '😮', '😯', '😧', '😱', '😳']
+  82 |     
+  83 |     joy_count = sum([row['Count'] for i, row in emoji_df.iterrows() if row['Emoji'] in joy_emojis])
+  84 |     approval_count = sum([row['Count'] for i, row in emoji_df.iterrows() if row['Emoji'] in approval_emojis])
+  85 |     surprise_count = sum([row['Count'] for i, row in emoji_df.iterrows() if row['Emoji'] in surprise_emojis])
+  86 |     others_count = len(emojis) - (joy_count + approval_count + surprise_count)
+  87 |     
+  88 |     spectrum = {
+  89 |         'Laughter / Joy': joy_count,
+  90 |         'Approval / Like': approval_count,
+  91 |         'Surprise / Shock': surprise_count,
+  92 |         'Others': others_count
+  93 |     }
+  94 |     
+  95 |     return emoji_df, spectrum
+  96 | 
+  97 | @st.cache_data
+  98 | def fetch_monthly_timeline(selected_user, df):
+  99 |     if selected_user != 'Overall':
+ 100 |         df = df[df['user'] == selected_user]
+ 101 |         
+ 102 |     timeline = df.groupby(['year', 'month_num', 'month']).count()['message'].reset_index()
+ 103 |     time = []
+ 104 |     for i in range(timeline.shape[0]):
+ 105 |         time.append(timeline['month'][i] + "-" + str(timeline['year'][i]))
+ 106 |     timeline['time'] = time
+ 107 |     return timeline
+ 108 | 
+ 109 | @st.cache_data
+ 110 | def fetch_daily_timeline(selected_user, df):
+ 111 |     if selected_user != 'Overall':
+ 112 |         df = df[df['user'] == selected_user]
+ 113 | 
+ 114 |     daily_timeline = df.groupby('only_date').count()['message'].reset_index()
+ 115 |     return daily_timeline
+ 116 | 
+ 117 | @st.cache_data
+ 118 | def fetch_week_activity_map(selected_user, df):
+ 119 |     if selected_user != 'Overall':
+ 120 |         df = df[df['user'] == selected_user]
+ 121 |     return df['day_name'].value_counts()
+ 122 | 
+ 123 | @st.cache_data
+ 124 | def fetch_month_activity_map(selected_user, df):
+ 125 |     if selected_user != 'Overall':
+ 126 |         df = df[df['user'] == selected_user]
+ 127 |     return df['month'].value_counts()
+ 128 | 
+ 129 | @st.cache_data
+ 130 | def fetch_activity_heatmap(selected_user, df):
+ 131 |     if selected_user != 'Overall':
+ 132 |         df = df[df['user'] == selected_user]
+ 133 | 
+ 134 |     user_heatmap = df.pivot_table(index='day_name', columns='period', values='message', aggfunc='count').fillna(0)
+ 135 |     return user_heatmap
+ 136 | 
+ 137 | @st.cache_data
+ 138 | def sentiment_analysis(selected_user, df):
+ 139 |     if selected_user != 'Overall':
+ 140 |         df = df[df['user'] == selected_user]
+ 141 |         
+ 142 |     temp = df[df['user'] != 'group_notification']
+ 143 |     temp = temp[temp['message'] != '<Media omitted>\n']
+ 144 |     
+ 145 |     positives = []
+ 146 |     negatives = []
+ 147 |     neutrals = []
+ 148 |     compound = []
+ 149 |     
+ 150 |     for message in temp['message']:
+ 151 |         score = analyzer.polarity_scores(message)
+ 152 |         positives.append(score['pos'])
+ 153 |         negatives.append(score['neg'])
+ 154 |         neutrals.append(score['neu'])
+ 155 |         compound.append(score['compound'])
+ 156 |         
+ 157 |     temp['pos'] = positives
+ 158 |     temp['neg'] = negatives
+ 159 |     temp['neu'] = neutrals
+ 160 |     temp['compound'] = compound
+ 161 |     
+ 162 |     sentiment_velocity = temp.groupby('only_date').mean(numeric_only=True)['compound'].reset_index()
+ 163 |     
+ 164 |     pos_count = temp[temp['compound'] >= 0.05].shape[0]
+ 165 |     neg_count = temp[temp['compound'] <= -0.05].shape[0]
+ 166 |     neu_count = temp[(temp['compound'] > -0.05) & (temp['compound'] < 0.05)].shape[0]
+ 167 |     
+ 168 |     return sentiment_velocity, {'Positive': pos_count, 'Neutral': neu_count, 'Negative': neg_count}
+ 169 | 
+ 170 | @st.cache_data
+ 171 | def get_media_distribution(selected_user, df):
+ 172 |     if selected_user != 'Overall':
+ 173 |         df = df[df['user'] == selected_user]
+ 174 |         
+ 175 |     num_media = df[df['message'] == '<Media omitted>\n'].shape[0]
+ 176 |     
+ 177 |     images = int(num_media * 0.6)
+ 178 |     voice = int(num_media * 0.25)
+ 179 |     docs = num_media - images - voice
+ 180 |     
+ 181 |     dist = {
+ 182 |         'Images': images,
+ 183 |         'Voice Notes': voice,
+ 184 |         'Documents': docs
+ 185 |     }
+ 186 |     return dist
+
+--- preprocessor.py ---
+   1 | import streamlit as st
+   2 | import re
+   3 | import pandas as pd
+   4 | 
+   5 | @st.cache_data
+   6 | def preprocess(data):
+   7 |     pattern = r'\d{1,2}/\d{1,2}/\d{2,4},\s\d{1,2}:\d{2}\s?(?:AM|PM|am|pm)?\s-\s'
+   8 |     
+   9 |     messages = re.split(pattern, data)[1:] 
+  10 |     dates = re.findall(pattern, data)
+  11 |     
+  12 |     if len(messages) == 0:
+  13 |         return pd.DataFrame()
+  14 |         
+  15 |     df = pd.DataFrame({'user_message': messages, 'message_date': dates})
+  16 |     
+  17 |     df['message_date'] = df['message_date'].apply(lambda x: x.strip(' - '))
+  18 |     
+  19 |     df['date'] = pd.to_datetime(df['message_date'], format='mixed', dayfirst=True)
+  20 |     
+  21 |     users = []
+  22 |     messages = []
+  23 |     for message in df['user_message']:
+  24 |         entry = re.split('([\w\W]+?):\s', message, maxsplit=1)
+  25 |         if len(entry) > 2: 
+  26 |             users.append(entry[1])
+  27 |             messages.append(entry[2])
+  28 |         else:
+  29 |             users.append('group_notification')
+  30 |             messages.append(entry[0])
+  31 | 
+  32 |     df['user'] = users
+  33 |     df['message'] = messages
+  34 |     df.drop(columns=['user_message', 'message_date'], inplace=True)
+  35 |     
+  36 |     df['only_date'] = df['date'].dt.date
+  37 |     df['year'] = df['date'].dt.year
+  38 |     df['month_num'] = df['date'].dt.month
+  39 |     df['month'] = df['date'].dt.month_name()
+  40 |     df['day'] = df['date'].dt.day
+  41 |     df['day_name'] = df['date'].dt.day_name()
+  42 |     df['hour'] = df['date'].dt.hour
+  43 |     df['minute'] = df['date'].dt.minute
+  44 |     
+  45 |     period = []
+  46 |     for hour in df['hour']:
+  47 |         if pd.isna(hour):
+  48 |             period.append("Unknown")
+  49 |             continue
+  50 |         hour = int(hour)
+  51 |         if hour == 23:
+  52 |             period.append("23-00")
+  53 |         elif hour == 0:
+  54 |             period.append("00-01")
+  55 |         else:
+  56 |             period.append(f"{hour}-{hour+1}")
+  57 |             
+  58 |     df['period'] = period
+  59 |     
+  60 |     return df
+=== END OF REPOSITORY ===
+
+TASK: Write ONE report with exactly these four parts, about 700-900 words in total (tags not counted):
+
+## 1. In plain English
+For someone who has never programmed: 2-3 sentences on what the project is and who would use it,
+one line starting "Analogy:", and "What you can do with it:" with 3 short bullets. No jargon.
+
+## 2. For students: how to read this project
+A numbered reading order of 4-5 files with one line each on why to read it; a Mermaid diagram in a
+```mermaid code fence (flowchart LR, at most 7 nodes, plain-word labels); "Key terms:" 3 short glossary entries.
+
+## 3. For recruiters and interviewers
+"What it demonstrates:" 3 bullets of concrete skills; "Stack:" one line; "Most interesting part:" 1-2 sentences.
+
+## 4. For developers
+Short bullets grouped under: Purpose, Main modules, How data flows, Tech stack, How to run it,
+Worth a closer look. Explain what the code does and how or why.
+
+CITATION RULES (important):
+- To cite, COPY a tag from section C exactly, character for character, and put it right after the claim
+  it supports. Never type a tag from memory and never edit its file, symbol or line numbers.
+- Every bullet in part 4 that describes code must carry at least one tag. Parts 1-3 may carry tags where natural.
+- Cite only when that code really supports the claim. If no tag in section C fits, either leave the
+  claim out or base it on the README and give no tag.
+- Do not invent files, functions, or behaviour that are not in the material above.
+
+Write the report now.

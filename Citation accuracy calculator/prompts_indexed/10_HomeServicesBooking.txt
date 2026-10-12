@@ -1,0 +1,911 @@
+You are analyzing a software repository. You are given:
+A. background (README and dependency file), B. the file tree, C. a SYMBOL INDEX produced by a code
+parser, D. the source code with line numbers (shown as "N | code").
+
+=== A. BACKGROUND ===
+README:
+Home Services Booking Application
+
+
+
+A full-stack Home Services Booking Application developed using Spring Boot, Spring Data JPA, Spring Security, MySQL, and REST APIs. The application allows customers to browse home services, book service providers, and manage bookings securely.
+
+
+
+Features
+
+Customer Features
+
+User Registration and Login
+
+Secure Authentication
+
+Browse Available Services
+
+View Service Providers
+
+Book Home Services
+
+View Booking History
+
+Admin Features
+
+Manage Services
+
+Manage Service Providers
+
+View Customer Bookings
+
+Monitor Application Data
+
+Security Features
+
+Spring Security Authentication
+
+Password Encryption using BCrypt
+
+Role-Based Access Control
+
+Technologies Used
+
+Backend
+
+Java 17
+
+Spring Boot
+
+Spring Data JPA
+
+Spring Security
+
+Hibernate
+
+Maven
+
+Database
+
+MySQL
+
+Tools
+
+Eclipse IDE
+
+Postman
+
+Git \& GitHub
+
+
+
+pom.xml:
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.5</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.app</groupId>
+    <artifactId>HomeServicesSpringBoot</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging
+
+=== B. FILE TREE ===
+README.md
+pom.xml
+src/main/java/com/app/HomeServicesApplication.java
+src/main/java/com/app/controller/AuthController.java
+src/main/java/com/app/controller/BookingController.java
+src/main/java/com/app/controller/HomeController.java
+src/main/java/com/app/controller/ServiceController.java
+src/main/java/com/app/controller/WorkerController.java
+src/main/java/com/app/model/Booking.java
+src/main/java/com/app/model/Customer.java
+src/main/java/com/app/model/HomeService.java
+src/main/java/com/app/model/Worker.java
+src/main/java/com/app/repository/BookingRepository.java
+src/main/java/com/app/repository/CustomerRepository.java
+src/main/java/com/app/repository/HomeServiceRepository.java
+src/main/java/com/app/repository/WorkerRepository.java
+src/main/java/com/app/service/DataLoader.java
+src/main/java/com/app/service/EmailService.java
+src/main/resources/META-INF/resources/WEB-INF/jsp/index.jsp
+src/main/resources/META-INF/resources/WEB-INF/jsp/login.jsp
+src/main/resources/META-INF/resources/WEB-INF/jsp/myBookings.jsp
+src/main/resources/META-INF/resources/WEB-INF/jsp/register.jsp
+src/main/resources/META-INF/resources/WEB-INF/jsp/workerDashboard.jsp
+src/main/resources/META-INF/resources/WEB-INF/jsp/workerLogin.jsp
+src/main/resources/META-INF/resources/WEB-INF/jsp/workers.jsp
+src/main/resources/application.properties
+src/main/resources/static/assets/style.css
+
+=== C. SYMBOL INDEX (each line is a ready-made citation tag) ===
+[cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=HomeServicesApplication;lines=7-11]
+[cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=main;lines=8-11]
+[cite:file=src/main/java/com/app/controller/AuthController.java;symbol=AuthController;lines=13-53]
+[cite:file=src/main/java/com/app/controller/AuthController.java;symbol=loginPage;lines=18-56]
+[cite:file=src/main/java/com/app/controller/AuthController.java;symbol=registerPage;lines=21-56]
+[cite:file=src/main/java/com/app/controller/AuthController.java;symbol=register;lines=24-56]
+[cite:file=src/main/java/com/app/controller/AuthController.java;symbol=login;lines=37-56]
+[cite:file=src/main/java/com/app/controller/AuthController.java;symbol=logout;lines=52-56]
+[cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52]
+[cite:file=src/main/java/com/app/controller/BookingController.java;symbol=myBookings;lines=120-136]
+[cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=14-24]
+[cite:file=src/main/java/com/app/controller/HomeController.java;symbol=index;lines=19-24]
+[cite:file=src/main/java/com/app/controller/ServiceController.java;symbol=ServiceController;lines=16-40]
+[cite:file=src/main/java/com/app/controller/ServiceController.java;symbol=selectService;lines=22-40]
+[cite:file=src/main/java/com/app/controller/ServiceController.java;symbol=workers;lines=32-40]
+[cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=WorkerController;lines=18-58]
+[cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=workerLoginPage;lines=33-73]
+[cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=workerDashboard;lines=54-94]
+[cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=acceptBooking;lines=71-111]
+[cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=rejectBooking;lines=115-155]
+[cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=workerLogout;lines=158-162]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=8-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=beforeSave;lines=31-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=getId;lines=36-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=setId;lines=37-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=getCustomer;lines=38-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=setCustomer;lines=39-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=getService;lines=40-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=setService;lines=41-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=getWorker;lines=42-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=setWorker;lines=43-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=getBookingDate;lines=44-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=setBookingDate;lines=45-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=getStatus;lines=46-48]
+[cite:file=src/main/java/com/app/model/Booking.java;symbol=setStatus;lines=47-48]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=7-28]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=getId;lines=20-28]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=setId;lines=21-28]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=getName;lines=22-28]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=setName;lines=23-28]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=getEmail;lines=24-28]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=setEmail;lines=25-28]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=getPassword;lines=26-28]
+[cite:file=src/main/java/com/app/model/Customer.java;symbol=setPassword;lines=27-28]
+[cite:file=src/main/java/com/app/model/HomeService.java;symbol=HomeService;lines=7-24]
+[cite:file=src/main/java/com/app/model/HomeService.java;symbol=getId;lines=18-24]
+[cite:file=src/main/java/com/app/model/HomeService.java;symbol=setId;lines=19-24]
+[cite:file=src/main/java/com/app/model/HomeService.java;symbol=getServiceName;lines=20-24]
+[cite:file=src/main/java/com/app/model/HomeService.java;symbol=setServiceName;lines=21-24]
+[cite:file=src/main/java/com/app/model/HomeService.java;symbol=getDescription;lines=22-24]
+[cite:file=src/main/java/com/app/model/HomeService.java;symbol=setDescription;lines=23-24]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=7-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=getId;lines=21-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=setId;lines=22-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=getName;lines=23-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=setName;lines=24-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=getEmail;lines=25-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=setEmail;lines=26-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=getPhone;lines=27-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=setPhone;lines=28-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=getExperience;lines=29-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=setExperience;lines=30-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=getService;lines=31-33]
+[cite:file=src/main/java/com/app/model/Worker.java;symbol=setService;lines=32-33]
+[cite:file=src/main/java/com/app/service/DataLoader.java;symbol=DataLoader;lines=15-50]
+[cite:file=src/main/java/com/app/service/DataLoader.java;symbol=run;lines=21-50]
+[cite:file=src/main/java/com/app/service/DataLoader.java;symbol=createService;lines=34-50]
+[cite:file=src/main/java/com/app/service/DataLoader.java;symbol=createWorker;lines=41-50]
+[cite:file=src/main/java/com/app/service/EmailService.java;symbol=EmailService;lines=12-52]
+[cite:file=src/main/java/com/app/service/EmailService.java;symbol=sendBookingMail;lines=16-52]
+[cite:file=src/main/java/com/app/service/EmailService.java;symbol=sendMail;lines=37-52]
+
+=== D. SOURCE CODE WITH LINE NUMBERS ===
+--- src/main/java/com/app/HomeServicesApplication.java ---
+   1 | package com.app;
+   2 | 
+   3 | import org.springframework.boot.SpringApplication;
+   4 | import org.springframework.boot.autoconfigure.SpringBootApplication;
+   5 | 
+   6 | @SpringBootApplication
+   7 | public class HomeServicesApplication {
+   8 |     public static void main(String[] args) {
+   9 |         SpringApplication.run(HomeServicesApplication.class, args);
+  10 |     }
+  11 | }
+
+--- src/main/java/com/app/controller/AuthController.java ---
+   1 | package com.app.controller;
+   2 | 
+   3 | import com.app.model.Customer;
+   4 | import com.app.repository.CustomerRepository;
+   5 | import jakarta.servlet.http.HttpSession;
+   6 | import org.springframework.stereotype.Controller;
+   7 | import org.springframework.web.bind.annotation.*;
+   8 | 
+   9 | @Controller
+  10 | public class AuthController {
+  11 |     private final CustomerRepository customerRepository;
+  12 | 
+  13 |     public AuthController(CustomerRepository customerRepository) {
+  14 |         this.customerRepository = customerRepository;
+  15 |     }
+  16 | 
+  17 |     @GetMapping("/login")
+  18 |     public String loginPage() { return "login"; }
+  19 | 
+  20 |     @GetMapping("/register")
+  21 |     public String registerPage() { return "register"; }
+  22 | 
+  23 |     @PostMapping("/register")
+  24 |     public String register(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+  25 |         if (customerRepository.existsByEmail(email)) {
+  26 |             return "redirect:/register?msg=failed";
+  27 |         }
+  28 |         Customer customer = new Customer();
+  29 |         customer.setName(name);
+  30 |         customer.setEmail(email);
+  31 |         customer.setPassword(password);
+  32 |         customerRepository.save(customer);
+  33 |         return "redirect:/login?msg=registered";
+  34 |     }
+  35 | 
+  36 |     @PostMapping("/login")
+  37 |     public String login(@RequestParam String email, @RequestParam String password, HttpSession session) {
+  38 |         return customerRepository.findByEmailAndPassword(email, password)
+  39 |                 .map(customer -> {
+  40 |                     session.setAttribute("customer", customer);
+  41 |                     Integer pendingServiceId = (Integer) session.getAttribute("pendingServiceId");
+  42 |                     if (pendingServiceId != null) {
+  43 |                         session.removeAttribute("pendingServiceId");
+  44 |                         return "redirect:/workers?serviceId=" + pendingServiceId;
+  45 |                     }
+  46 |                     return "redirect:/index";
+  47 |                 })
+  48 |                 .orElse("redirect:/login?msg=invalid");
+  49 |     }
+  50 | 
+  51 |     @GetMapping("/logout")
+  52 |     public String logout(HttpSession session) {
+  53 |         session.invalidate();
+  54 |         return "redirect:/login?msg=logout";
+  55 |     }
+  56 | }
+
+--- src/main/java/com/app/controller/BookingController.java ---
+   1 | package com.app.controller;
+   2 | 
+   3 | import com.app.model.*;
+   4 | import com.app.repository.*;
+   5 | import com.app.service.EmailService;
+   6 | import jakarta.servlet.http.HttpSession;
+   7 | import org.springframework.stereotype.Controller;
+   8 | import org.springframework.ui.Model;
+   9 | import org.springframework.web.bind.annotation.*;
+  10 | 
+  11 | @Controller
+  12 | public class BookingController {
+  13 | 
+  14 |     private final BookingRepository bookingRepository;
+  15 |     private final HomeServiceRepository serviceRepository;
+  16 |     private final WorkerRepository workerRepository;
+  17 |     private final EmailService emailService;
+  18 | 
+  19 |     public BookingController(
+  20 |             BookingRepository bookingRepository,
+  21 |             HomeServiceRepository serviceRepository,
+  22 |             WorkerRepository workerRepository,
+  23 |             EmailService emailService
+  24 |     ) {
+  25 |         this.bookingRepository = bookingRepository;
+  26 |         this.serviceRepository = serviceRepository;
+  27 |         this.workerRepository = workerRepository;
+  28 |         this.emailService = emailService;
+  29 |     }
+  30 | 
+  31 |     @PostMapping("/bookWorker")
+  32 |     public String bookWorker(
+  33 |             @RequestParam Integer serviceId,
+  34 |             @RequestParam Integer workerId,
+  35 |             HttpSession session
+  36 |     ) {
+  37 |         Customer customer = (Customer) session.getAttribute("customer");
+  38 | 
+  39 |         if (customer == null) {
+  40 |             return "redirect:/login";
+  41 |         }
+  42 | 
+  43 |         boolean exists = bookingRepository.existsByCustomerIdAndServiceIdAndWorkerIdAndStatus(
+  44 |                 customer.getId(),
+  45 |                 serviceId,
+  46 |                 workerId,
+  47 |                 "PENDING"
+  48 |         );
+  49 | 
+  50 |         if (exists) {
+  51 |             return "redirect:/workers?serviceId=" + serviceId + "&msg=exists";
+  52 |         }
+  53 | 
+  54 |         HomeService service = serviceRepository.findById(serviceId).orElse(null);
+  55 |         Worker worker = workerRepository.findById(workerId).orElse(null);
+  56 | 
+  57 |         if (service == null || worker == null) {
+  58 |             return "redirect:/workers?serviceId=" + serviceId + "&msg=error";
+  59 |         }
+  60 | 
+  61 |         Booking booking = new Booking();
+  62 |         booking.setCustomer(customer);
+  63 |         booking.setService(service);
+  64 |         booking.setWorker(worker);
+  65 | 
+  66 |         // CUSTOMER BOOKS → STATUS IS PENDING
+  67 |         booking.setStatus("PENDING");
+  68 | 
+  69 |         bookingRepository.save(booking);
+  70 | 
+  71 |         // Email to customer with worker details
+  72 |         if (customer.getEmail() != null && !customer.getEmail().isBlank()) {
+  73 |             String customerSubject = "Booking Confirmation - " + service.getServiceName();
+  74 | 
+  75 |             String customerMessage =
+  76 |                     "Hello " + customer.getName() + ",\n\n" +
+  77 |                     "Your booking request has been created successfully.\n\n" +
+  78 | 
+  79 |                     "Service Details:\n" +
+  80 |                     "Service: " + service.getServiceName() + "\n\n" +
+  81 | 
+  82 |                     "Worker Details:\n" +
+  83 |                     "Name: " + worker.getName() + "\n" +
+  84 |                     "Email: " + worker.getEmail() + "\n" +
+  85 |                     "Phone: " + worker.getPhone() + "\n" +
+  86 |                     "Experience: " + worker.getExperience() + "\n\n" +
+  87 | 
+  88 |                     "Booking Status: PENDING\n\n" +
+  89 |                     "The worker will accept or reject your booking soon.\n\n" +
+  90 |                     "Thank you for using our Home Services.";
+  91 | 
+  92 |             emailService.sendMail(customer.getEmail(), customerSubject, customerMessage);
+  93 |         }
+  94 | 
+  95 |         // Email to worker with customer details
+  96 |         if (worker.getEmail() != null && !worker.getEmail().isBlank()) {
+  97 |             String workerSubject = "New Booking Request - " + service.getServiceName();
+  98 | 
+  99 |             String workerMessage =
+ 100 |                     "Hello " + worker.getName() + ",\n\n" +
+ 101 |                     "You have received a new booking request.\n\n" +
+ 102 | 
+ 103 |                     "Customer Details:\n" +
+ 104 |                     "Name: " + customer.getName() + "\n" +
+ 105 |                     "Email: " + customer.getEmail() + "\n\n" +
+ 106 | 
+ 107 |                     "Service Details:\n" +
+ 108 |                     "Service: " + service.getServiceName() + "\n\n" +
+ 109 | 
+ 110 |                     "Booking Status: PENDING\n\n" +
+ 111 |                     "Please login and accept or reject the booking.";
+ 112 | 
+ 113 |             emailService.sendMail(worker.getEmail(), workerSubject, workerMessage);
+ 114 |         }
+ 115 | 
+ 116 |         return "redirect:/myBookings?msg=success";
+ 117 |     }
+ 118 | 
+ 119 |     @GetMapping("/myBookings")
+ 120 |     public String myBookings(Model model, HttpSession session) {
+ 121 |         Customer customer = (Customer) session.getAttribute("customer");
+ 122 | 
+ 123 |         if (customer == null) {
+ 124 |             return "redirect:/login";
+ 125 |         }
+ 126 | 
+ 127 |         model.addAttribute(
+ 128 |                 "bookings",
+ 129 |                 bookingRepository.findByCustomerIdOrderByIdDesc(customer.getId())
+ 130 |         );
+ 131 | 
+ 132 |         model.addAttribute("customer", customer);
+ 133 | 
+ 134 |         return "myBookings";
+ 135 |     }
+ 136 | }
+
+--- src/main/java/com/app/controller/HomeController.java ---
+   1 | package com.app.controller;
+   2 | 
+   3 | import com.app.model.Customer;
+   4 | import com.app.repository.HomeServiceRepository;
+   5 | import jakarta.servlet.http.HttpSession;
+   6 | import org.springframework.stereotype.Controller;
+   7 | import org.springframework.ui.Model;
+   8 | import org.springframework.web.bind.annotation.GetMapping;
+   9 | 
+  10 | @Controller
+  11 | public class HomeController {
+  12 |     private final HomeServiceRepository serviceRepository;
+  13 | 
+  14 |     public HomeController(HomeServiceRepository serviceRepository) {
+  15 |         this.serviceRepository = serviceRepository;
+  16 |     }
+  17 | 
+  18 |     @GetMapping({"/", "/index"})
+  19 |     public String index(Model model, HttpSession session) {
+  20 |         model.addAttribute("services", serviceRepository.findAll());
+  21 |         model.addAttribute("customer", session.getAttribute("customer"));
+  22 |         return "index";
+  23 |     }
+  24 | }
+
+--- src/main/java/com/app/controller/ServiceController.java ---
+   1 | package com.app.controller;
+   2 | 
+   3 | import com.app.repository.HomeServiceRepository;
+   4 | import com.app.repository.WorkerRepository;
+   5 | import jakarta.servlet.http.HttpSession;
+   6 | import org.springframework.stereotype.Controller;
+   7 | import org.springframework.ui.Model;
+   8 | import org.springframework.web.bind.annotation.GetMapping;
+   9 | import org.springframework.web.bind.annotation.RequestParam;
+  10 | 
+  11 | @Controller
+  12 | public class ServiceController {
+  13 |     private final HomeServiceRepository serviceRepository;
+  14 |     private final WorkerRepository workerRepository;
+  15 | 
+  16 |     public ServiceController(HomeServiceRepository serviceRepository, WorkerRepository workerRepository) {
+  17 |         this.serviceRepository = serviceRepository;
+  18 |         this.workerRepository = workerRepository;
+  19 |     }
+  20 | 
+  21 |     @GetMapping("/selectService")
+  22 |     public String selectService(@RequestParam(required = false) Integer serviceId, HttpSession session) {
+  23 |         if (serviceId == null) return "redirect:/index";
+  24 |         if (session.getAttribute("customer") == null) {
+  25 |             session.setAttribute("pendingServiceId", serviceId);
+  26 |             return "redirect:/login";
+  27 |         }
+  28 |         return "redirect:/workers?serviceId=" + serviceId;
+  29 |     }
+  30 | 
+  31 |     @GetMapping("/workers")
+  32 |     public String workers(@RequestParam(required = false) Integer serviceId, Model model, HttpSession session) {
+  33 |         if (serviceId == null) return "redirect:/index";
+  34 |         model.addAttribute("workers", workerRepository.findByServiceId(serviceId));
+  35 |         model.addAttribute("service", serviceRepository.findById(serviceId).orElse(null));
+  36 |         model.addAttribute("serviceId", serviceId);
+  37 |         model.addAttribute("customer", session.getAttribute("customer"));
+  38 |         return "workers";
+  39 |     }
+  40 | }
+
+--- src/main/java/com/app/controller/WorkerController.java ---
+   1 | package com.app.controller;
+   2 | 
+   3 | import com.app.model.Booking;
+   4 | import com.app.model.Customer;
+   5 | import com.app.model.HomeService;
+   6 | import com.app.model.Worker;
+   7 | import com.app.repository.BookingRepository;
+   8 | import com.app.repository.WorkerRepository;
+   9 | import com.app.service.EmailService;
+  10 | import jakarta.servlet.http.HttpSession;
+  11 | import org.springframework.stereotype.Controller;
+  12 | import org.springframework.ui.Model;
+  13 | import org.springframework.web.bind.annotation.*;
+  14 | 
+  15 | import java.util.List;
+  16 | 
+  17 | @Controller
+  18 | public class WorkerController {
+  19 | 
+  20 |     private final WorkerRepository workerRepository;
+  21 |     private final BookingRepository bookingRepository;
+  22 |     private final EmailService emailService;
+  23 | 
+  24 |     public WorkerController(WorkerRepository workerRepository,
+  25 |                             BookingRepository bookingRepository,
+  26 |                             EmailService emailService) {
+  27 |         this.workerRepository = workerRepository;
+  28 |         this.bookingRepository = bookingRepository;
+  29 |         this.emailService = emailService;
+  30 |     }
+  31 | 
+  32 |     @GetMapping("/worker/login")
+  33 |     public String workerLoginPage() {
+  34 |         return "workerLogin";
+  35 |     }
+  36 | 
+  37 |     @PostMapping("/worker/login")
+  38 |     public String workerLogin(@RequestParam String email,
+  39 |                               HttpSession session,
+  40 |                               Model model) {
+  41 | 
+  42 |         Worker worker = workerRepository.findByEmail(email);
+  43 | 
+  44 |         if (worker == null) {
+  45 |             model.addAttribute("error", "Invalid worker email");
+  46 |             return "workerLogin";
+  47 |         }
+  48 | 
+  49 |         session.setAttribute("worker", worker);
+  50 |         return "redirect:/worker/dashboard";
+  51 |     }
+  52 | 
+  53 |     @GetMapping("/worker/dashboard")
+  54 |     public String workerDashboard(HttpSession session, Model model) {
+  55 |         Worker worker = (Worker) session.getAttribute("worker");
+  56 | 
+  57 |         if (worker == null) {
+  58 |             return "redirect:/worker/login";
+  59 |         }
+  60 | 
+  61 |         List<Booking> bookings =
+  62 |                 bookingRepository.findByWorkerIdOrderByIdDesc(worker.getId());
+  63 | 
+  64 |         model.addAttribute("worker", worker);
+  65 |         model.addAttribute("bookings", bookings);
+  66 | 
+  67 |         return "workerDashboard";
+  68 |     }
+  69 | 
+  70 |     @GetMapping("/worker/accept/{id}")
+  71 |     public String acceptBooking(@PathVariable Integer id, HttpSession session) {
+  72 |         Worker worker = (Worker) session.getAttribute("worker");
+  73 | 
+  74 |         if (worker == null) {
+  75 |             return "redirect:/worker/login";
+  76 |         }
+  77 | 
+  78 |         Booking booking = bookingRepository.findById(id).orElse(null);
+  79 | 
+  80 |         if (booking != null && booking.getWorker().getId().equals(worker.getId())) {
+  81 |             booking.setStatus("ACCEPTED");
+  82 |             bookingRepository.save(booking);
+  83 | 
+  84 |             Customer customer = booking.getCustomer();
+  85 |             HomeService service = booking.getService();
+  86 | 
+  87 |             if (customer.getEmail() != null && !customer.getEmail().isBlank()) {
+  88 |                 String subject = "Booking Accepted - " + service.getServiceName();
+  89 | 
+  90 |                 String message =
+  91 |                         "Hello " + customer.getName() + ",\n\n" +
+  92 |                         "Your booking has been ACCEPTED by the worker.\n\n" +
+  93 | 
+  94 |                         "Service Details:\n" +
+  95 |                         "Service: " + service.getServiceName() + "\n\n" +
+  96 | 
+  97 |                         "Worker Details:\n" +
+  98 |                         "Name: " + worker.getName() + "\n" +
+  99 |                         "Email: " + worker.getEmail() + "\n" +
+ 100 |                         "Phone: " + worker.getPhone() + "\n" +
+ 101 |                         "Experience: " + worker.getExperience() + "\n\n" +
+ 102 | 
+ 103 |                         "Status: ACCEPTED\n\n" +
+ 104 |                         "The worker will contact you soon.\n\n" +
+ 105 |                         "Thank you.";
+ 106 | 
+ 107 |                 emailService.sendMail(customer.getEmail(), subject, message);
+ 108 |             }
+ 109 |         }
+ 110 | 
+ 111 |         return "redirect:/worker/dashboard";
+ 112 |     }
+ 113 | 
+ 114 |     @GetMapping("/worker/reject/{id}")
+ 115 |     public String rejectBooking(@PathVariable Integer id, HttpSession session) {
+ 116 |         Worker worker = (Worker) session.getAttribute("worker");
+ 117 | 
+ 118 |         if (worker == null) {
+ 119 |             return "redirect:/worker/login";
+ 120 |         }
+ 121 | 
+ 122 |         Booking booking = bookingRepository.findById(id).orElse(null);
+ 123 | 
+ 124 |         if (booking != null && booking.getWorker().getId().equals(worker.getId())) {
+ 125 |             booking.setStatus("REJECTED");
+ 126 |             bookingRepository.save(booking);
+ 127 | 
+ 128 |             Customer customer = booking.getCustomer();
+ 129 |             HomeService service = booking.getService();
+ 130 | 
+ 131 |             if (customer.getEmail() != null && !customer.getEmail().isBlank()) {
+ 132 |                 String subject = "Booking Rejected - " + service.getServiceName();
+ 133 | 
+ 134 |                 String message =
+ 135 |                         "Hello " + customer.getName() + ",\n\n" +
+ 136 |                         "Your booking has been REJECTED by the worker.\n\n" +
+ 137 | 
+ 138 |                         "Service Details:\n" +
+ 139 |                         "Service: " + service.getServiceName() + "\n\n" +
+ 140 | 
+ 141 |                         "Worker Details:\n" +
+ 142 |                         "Name: " + worker.getName() + "\n" +
+ 143 |                         "Email: " + worker.getEmail() + "\n" +
+ 144 |                         "Phone: " + worker.getPhone() + "\n\n" +
+ 145 | 
+ 146 |                         "Status: REJECTED\n\n" +
+ 147 |                         "Please try booking another worker.\n\n" +
+ 148 |                         "Thank you.";
+ 149 | 
+ 150 |                 emailService.sendMail(customer.getEmail(), subject, message);
+ 151 |             }
+ 152 |         }
+ 153 | 
+ 154 |         return "redirect:/worker/dashboard";
+ 155 |     }
+ 156 | 
+ 157 |     @GetMapping("/worker/logout")
+ 158 |     public String workerLogout(HttpSession session) {
+ 159 |         session.removeAttribute("worker");
+ 160 |         return "redirect:/worker/login";
+ 161 |     }
+ 162 | }
+
+--- src/main/java/com/app/model/Booking.java ---
+   1 | package com.app.model;
+   2 | 
+   3 | import jakarta.persistence.*;
+   4 | import java.time.LocalDateTime;
+   5 | 
+   6 | @Entity
+   7 | @Table(name = "bookings")
+   8 | public class Booking {
+   9 |     @Id
+  10 |     @GeneratedValue(strategy = GenerationType.IDENTITY)
+  11 |     private Integer id;
+  12 | 
+  13 |     @ManyToOne(fetch = FetchType.LAZY)
+  14 |     @JoinColumn(name = "customer_id")
+  15 |     private Customer customer;
+  16 | 
+  17 |     @ManyToOne(fetch = FetchType.LAZY)
+  18 |     @JoinColumn(name = "service_id")
+  19 |     private HomeService service;
+  20 | 
+  21 |     @ManyToOne(fetch = FetchType.LAZY)
+  22 |     @JoinColumn(name = "worker_id")
+  23 |     private Worker worker;
+  24 | 
+  25 |     @Column(name = "booking_date")
+  26 |     private LocalDateTime bookingDate;
+  27 | 
+  28 |     private String status;
+  29 | 
+  30 |     @PrePersist
+  31 |     public void beforeSave() {
+  32 |         if (bookingDate == null) bookingDate = LocalDateTime.now();
+  33 |         if (status == null || status.isBlank()) status = "Booked";
+  34 |     }
+  35 | 
+  36 |     public Integer getId() { return id; }
+  37 |     public void setId(Integer id) { this.id = id; }
+  38 |     public Customer getCustomer() { return customer; }
+  39 |     public void setCustomer(Customer customer) { this.customer = customer; }
+  40 |     public HomeService getService() { return service; }
+  41 |     public void setService(HomeService service) { this.service = service; }
+  42 |     public Worker getWorker() { return worker; }
+  43 |     public void setWorker(Worker worker) { this.worker = worker; }
+  44 |     public LocalDateTime getBookingDate() { return bookingDate; }
+  45 |     public void setBookingDate(LocalDateTime bookingDate) { this.bookingDate = bookingDate; }
+  46 |     public String getStatus() { return status; }
+  47 |     public void setStatus(String status) { this.status = status; }
+  48 | }
+
+--- src/main/java/com/app/model/Customer.java ---
+   1 | package com.app.model;
+   2 | 
+   3 | import jakarta.persistence.*;
+   4 | 
+   5 | @Entity
+   6 | @Table(name = "customers")
+   7 | public class Customer {
+   8 |     @Id
+   9 |     @GeneratedValue(strategy = GenerationType.IDENTITY)
+  10 |     private Integer id;
+  11 | 
+  12 |     private String name;
+  13 | 
+  14 |     @Column(unique = true, nullable = false)
+  15 |     private String email;
+  16 | 
+  17 |     @Column(nullable = false)
+  18 |     private String password;
+  19 | 
+  20 |     public Integer getId() { return id; }
+  21 |     public void setId(Integer id) { this.id = id; }
+  22 |     public String getName() { return name; }
+  23 |     public void setName(String name) { this.name = name; }
+  24 |     public String getEmail() { return email; }
+  25 |     public void setEmail(String email) { this.email = email; }
+  26 |     public String getPassword() { return password; }
+  27 |     public void setPassword(String password) { this.password = password; }
+  28 | }
+
+--- src/main/java/com/app/model/HomeService.java ---
+   1 | package com.app.model;
+   2 | 
+   3 | import jakarta.persistence.*;
+   4 | 
+   5 | @Entity
+   6 | @Table(name = "services")
+   7 | public class HomeService {
+   8 |     @Id
+   9 |     @GeneratedValue(strategy = GenerationType.IDENTITY)
+  10 |     private Integer id;
+  11 | 
+  12 |     @Column(name = "service_name")
+  13 |     private String serviceName;
+  14 | 
+  15 |     @Column(length = 1000)
+  16 |     private String description;
+  17 | 
+  18 |     public Integer getId() { return id; }
+  19 |     public void setId(Integer id) { this.id = id; }
+  20 |     public String getServiceName() { return serviceName; }
+  21 |     public void setServiceName(String serviceName) { this.serviceName = serviceName; }
+  22 |     public String getDescription() { return description; }
+  23 |     public void setDescription(String description) { this.description = description; }
+  24 | }
+
+--- src/main/java/com/app/model/Worker.java ---
+   1 | package com.app.model;
+   2 | 
+   3 | import jakarta.persistence.*;
+   4 | 
+   5 | @Entity
+   6 | @Table(name = "workers")
+   7 | public class Worker {
+   8 |     @Id
+   9 |     @GeneratedValue(strategy = GenerationType.IDENTITY)
+  10 |     private Integer id;
+  11 | 
+  12 |     private String name;
+  13 |     private String email;
+  14 |     private String phone;
+  15 |     private String experience;
+  16 | 
+  17 |     @ManyToOne(fetch = FetchType.LAZY)
+  18 |     @JoinColumn(name = "service_id")
+  19 |     private HomeService service;
+  20 | 
+  21 |     public Integer getId() { return id; }
+  22 |     public void setId(Integer id) { this.id = id; }
+  23 |     public String getName() { return name; }
+  24 |     public void setName(String name) { this.name = name; }
+  25 |     public String getEmail() { return email; }
+  26 |     public void setEmail(String email) { this.email = email; }
+  27 |     public String getPhone() { return phone; }
+  28 |     public void setPhone(String phone) { this.phone = phone; }
+  29 |     public String getExperience() { return experience; }
+  30 |     public void setExperience(String experience) { this.experience = experience; }
+  31 |     public HomeService getService() { return service; }
+  32 |     public void setService(HomeService service) { this.service = service; }
+  33 | }
+
+--- src/main/java/com/app/service/DataLoader.java ---
+   1 | package com.app.service;
+   2 | 
+   3 | import com.app.model.HomeService;
+   4 | import com.app.model.Worker;
+   5 | import com.app.repository.HomeServiceRepository;
+   6 | import com.app.repository.WorkerRepository;
+   7 | import org.springframework.boot.CommandLineRunner;
+   8 | import org.springframework.stereotype.Component;
+   9 | 
+  10 | @Component
+  11 | public class DataLoader implements CommandLineRunner {
+  12 |     private final HomeServiceRepository serviceRepository;
+  13 |     private final WorkerRepository workerRepository;
+  14 | 
+  15 |     public DataLoader(HomeServiceRepository serviceRepository, WorkerRepository workerRepository) {
+  16 |         this.serviceRepository = serviceRepository;
+  17 |         this.workerRepository = workerRepository;
+  18 |     }
+  19 | 
+  20 |     @Override
+  21 |     public void run(String... args) {
+  22 |         if (serviceRepository.count() > 0) return;
+  23 | 
+  24 |         HomeService plumbing = createService("Plumbing", "Professional plumbing repair and installation services.");
+  25 |         HomeService electrical = createService("Electrical", "Safe electrical repair, wiring and maintenance services.");
+  26 |         HomeService cleaning = createService("Cleaning", "Reliable home cleaning professionals near you.");
+  27 | 
+  28 |         createWorker("Ramesh Kumar", "worker1@example.com", "9876543210", "5 Years", plumbing);
+  29 |         createWorker("Suresh Patel", "worker2@example.com", "9876543211", "3 Years", plumbing);
+  30 |         createWorker("Anil Sharma", "worker3@example.com", "9876543212", "4 Years", electrical);
+  31 |         createWorker("Priya Singh", "worker4@example.com", "9876543213", "2 Years", cleaning);
+  32 |     }
+  33 | 
+  34 |     private HomeService createService(String name, String description) {
+  35 |         HomeService service = new HomeService();
+  36 |         service.setServiceName(name);
+  37 |         service.setDescription(description);
+  38 |         return serviceRepository.save(service);
+  39 |     }
+  40 | 
+  41 |     private void createWorker(String name, String email, String phone, String experience, HomeService service) {
+  42 |         Worker worker = new Worker();
+  43 |         worker.setName(name);
+  44 |         worker.setEmail(email);
+  45 |         worker.setPhone(phone);
+  46 |         worker.setExperience(experience);
+  47 |         worker.setService(service);
+  48 |         workerRepository.save(worker);
+  49 |     }
+  50 | }
+
+--- src/main/java/com/app/service/EmailService.java ---
+   1 | package com.app.service;
+   2 | 
+   3 | import org.springframework.mail.SimpleMailMessage;
+   4 | import org.springframework.mail.javamail.JavaMailSender;
+   5 | import org.springframework.stereotype.Service;
+   6 | 
+   7 | @Service
+   8 | public class EmailService {
+   9 | 
+  10 |     private final JavaMailSender mailSender;
+  11 | 
+  12 |     public EmailService(JavaMailSender mailSender) {
+  13 |         this.mailSender = mailSender;
+  14 |     }
+  15 | 
+  16 |     public boolean sendBookingMail(String toEmail, String workerName, String customerName, String serviceName) {
+  17 |         try {
+  18 |             SimpleMailMessage message = new SimpleMailMessage();
+  19 |             message.setTo(toEmail);
+  20 |             message.setSubject("New Service Booking Assigned");
+  21 |             message.setText("Hello " + workerName + ",\n\n"
+  22 |                     + "A new booking has been assigned to you.\n\n"
+  23 |                     + "Customer Name: " + customerName + "\n"
+  24 |                     + "Service: " + serviceName + "\n\n"
+  25 |                     + "Please login/check your assigned work.\n\n"
+  26 |                     + "Thank you.");
+  27 | 
+  28 |             mailSender.send(message);
+  29 |             return true;
+  30 | 
+  31 |         } catch (Exception e) {
+  32 |             e.printStackTrace();
+  33 |             return false;
+  34 |         }
+  35 |     }
+  36 | 
+  37 |     public boolean sendMail(String toEmail, String subject, String body) {
+  38 |         try {
+  39 |             SimpleMailMessage message = new SimpleMailMessage();
+  40 |             message.setTo(toEmail);
+  41 |             message.setSubject(subject);
+  42 |             message.setText(body);
+  43 | 
+  44 |             mailSender.send(message);
+  45 |             return true;
+  46 | 
+  47 |         } catch (Exception e) {
+  48 |             e.printStackTrace();
+  49 |             return false;
+  50 |         }
+  51 |     }
+  52 | }
+=== END OF REPOSITORY ===
+
+TASK: Write ONE report with exactly these four parts, about 700-900 words in total (tags not counted):
+
+## 1. In plain English
+For someone who has never programmed: 2-3 sentences on what the project is and who would use it,
+one line starting "Analogy:", and "What you can do with it:" with 3 short bullets. No jargon.
+
+## 2. For students: how to read this project
+A numbered reading order of 4-5 files with one line each on why to read it; a Mermaid diagram in a
+```mermaid code fence (flowchart LR, at most 7 nodes, plain-word labels); "Key terms:" 3 short glossary entries.
+
+## 3. For recruiters and interviewers
+"What it demonstrates:" 3 bullets of concrete skills; "Stack:" one line; "Most interesting part:" 1-2 sentences.
+
+## 4. For developers
+Short bullets grouped under: Purpose, Main modules, How data flows, Tech stack, How to run it,
+Worth a closer look. Explain what the code does and how or why.
+
+CITATION RULES (important):
+- To cite, COPY a tag from section C exactly, character for character, and put it right after the claim
+  it supports. Never type a tag from memory and never edit its file, symbol or line numbers.
+- Every bullet in part 4 that describes code must carry at least one tag. Parts 1-3 may carry tags where natural.
+- Cite only when that code really supports the claim. If no tag in section C fits, either leave the
+  claim out or base it on the README and give no tag.
+- Do not invent files, functions, or behaviour that are not in the material above.
+
+Write the report now.

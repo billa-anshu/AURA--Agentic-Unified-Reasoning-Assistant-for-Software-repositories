@@ -1,0 +1,75 @@
+## 1. In plain English
+
+This is a web page that reads an exported WhatsApp chat file and turns it into charts and numbers. Someone curious about their group chat or a long conversation can see who talks most, when people are busiest, which words and emojis come up, and whether the mood is positive or negative.
+
+Analogy: It's like a fitness tracker, but for a chat history instead of your steps.
+
+What you can do with it:
+- Upload a chat and see totals for messages, words, media and links. [cite:file=helper.py;symbol=fetch_stats;lines=13-29]
+- See when the chat is busiest, by month, by day and by hour. [cite:file=helper.py;symbol=fetch_activity_heatmap;lines=130-135]
+- See common words, emoji use and the overall mood of the messages. [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+
+## 2. For students: how to read this project
+
+1. `README.md`: it explains the idea and lists the features, so you know what to look for.
+2. `preprocessor.py`: it turns raw chat text into a table, which is the key step everything else depends on. [cite:file=preprocessor.py;symbol=preprocess;lines=6-60]
+3. `helper.py`: one small function per analysis, each filtering by person and then calculating. [cite:file=helper.py;symbol=fetch_stats;lines=13-29]
+4. `app.py`: the screen layout, showing how the user's choices call the helper functions and draw charts. [cite:file=app.py;symbol=selected_user;lines=42-42]
+5. `assets/style.css`: the custom look applied on top of the default Streamlit style. [cite:file=app.py;symbol=local_css;lines=9-11]
+
+```mermaid
+flowchart LR
+    A[Chat file] --> B[Parse messages]
+    B --> C[Table of messages]
+    C --> D[Helper analyses]
+    D --> E[Charts on page]
+```
+
+Key terms:
+- **Streamlit:** a Python tool that turns a script into an interactive web page.
+- **DataFrame:** a table of data in the pandas library, with one row per message here.
+- **VADER:** a ready-made scorer that rates how positive or negative a piece of text is.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Data cleaning: regular expressions split a raw export into dates, senders and messages, then derive year, month, weekday and hour columns. [cite:file=preprocessor.py;symbol=preprocess;lines=6-60]
+- Analytics and NLP with pandas: timelines, a day-by-hour heatmap, word frequency, emoji categories and VADER sentiment. [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+- Building a usable dashboard in Streamlit, with three navigation views, per-user filtering, dark-themed charts and caching. [cite:file=app.py;symbol=nav_selection;lines=20-20]
+
+Stack: Python, Streamlit, pandas, matplotlib, seaborn, wordcloud, urlextract, emoji, vaderSentiment.
+
+Most interesting part: the sentiment view scores every message with VADER, averages the scores per day to draw a mood trend line, and counts messages as positive, neutral or negative using fixed thresholds. [cite:file=helper.py;symbol=sentiment_velocity;lines=162-162]
+
+## 4. For developers
+
+**Purpose**
+- A single-page Streamlit app that analyses an exported WhatsApp `.txt` chat. [cite:file=app.py;symbol=uploaded_file;lines=26-26]
+
+**Main modules**
+- `app.py` handles the sidebar (navigation, file upload, user selector), then renders the Dashboard, Chat Insights or NLP Analysis view from the helper results. [cite:file=app.py;symbol=nav_selection;lines=20-20]
+- `preprocessor.py` splits the text with a date regex, separates sender from message, and labels lines with no sender as `group_notification`. It also builds an hour-range `period` column. [cite:file=preprocessor.py;symbol=pattern;lines=7-7] [cite:file=preprocessor.py;symbol=period;lines=45-45]
+- `helper.py` holds the analysis functions. Most take `(selected_user, df)`, filter to one user unless "Overall", and use `st.cache_data`. [cite:file=helper.py;symbol=fetch_monthly_timeline;lines=98-107]
+
+**How data flows**
+- The uploaded bytes are decoded as UTF-8 and passed to `preprocess`. An empty result stops the app with an error. [cite:file=app.py;symbol=df;lines=31-31]
+- The user list is built from the `user` column, minus `group_notification`, with "Overall" first. [cite:file=app.py;symbol=user_list;lines=37-37]
+- Nothing is drawn until the "Analyze Chat" button is pressed. After that, the selected view calls the matching helper functions and plots the results. [cite:file=app.py;symbol=selected_user;lines=42-42]
+- Word clouds and word counts drop notifications and `<Media omitted>` rows first. [cite:file=helper.py;symbol=create_wordcloud;lines=37-49] [cite:file=helper.py;symbol=get_most_common_words;lines=52-66]
+
+**Tech stack**
+- Streamlit UI, pandas for data, matplotlib and seaborn for charts, WordCloud, URLExtract for links, `emoji` for emoji detection and VADER for sentiment. Versions aren't pinned in `requirements.txt`. [cite:file=helper.py;symbol=analyzer;lines=10-10]
+
+**How to run it**
+- The README's setup steps are cut off in the material shown, so these steps are inferred. Create a virtual environment, install `requirements.txt` and start the app with `streamlit run app.py`. Then upload an export made without media. [cite:file=app.py;symbol=uploaded_file;lines=26-26]
+- `DEPLOYMENT_GUIDE.md` exists, but its contents aren't shown.
+
+**Worth a closer look**
+- The media breakdown isn't measured. It assumes 60% images, 25% voice notes and the rest documents, so the pie chart and "Dominant" label are invented. [cite:file=helper.py;symbol=images;lines=177-177] [cite:file=helper.py;symbol=voice;lines=178-178]
+- Emoji categories are counted only from the top 20 emojis. "Others" is the total minus those counts, so it is overstated whenever a category emoji falls outside the top 20. [cite:file=helper.py;symbol=others_count;lines=86-86]
+- The date regex assumes a `d/m/yy, h:mm - ` style header, and parsing uses `dayfirst=True`. Exports in other locales or formats may parse wrongly or not at all. [cite:file=preprocessor.py;symbol=pattern;lines=7-7]
+- Hour labels are strings such as "9-10" and "10-11", so the heatmap's columns likely sort alphabetically instead of by time. [cite:file=helper.py;symbol=user_heatmap;lines=134-134]
+- Media detection compares against the exact text `<Media omitted>\n`, which depends on the export's wording. [cite:file=helper.py;symbol=num_media_messages;lines=23-23]
+- Results disappear if the navigation radio changes, because everything sits inside the button's branch. A user must click "Analyze Chat" again. [cite:file=app.py;symbol=nav_selection;lines=20-20]
+- `fetch_week_activity_map` is defined but never used in `app.py`. [cite:file=helper.py;symbol=fetch_week_activity_map;lines=118-121]
+- `sentiment_analysis` assigns new columns onto a filtered slice, which can trigger pandas copy warnings. [cite:file=helper.py;symbol=compound;lines=148-148]

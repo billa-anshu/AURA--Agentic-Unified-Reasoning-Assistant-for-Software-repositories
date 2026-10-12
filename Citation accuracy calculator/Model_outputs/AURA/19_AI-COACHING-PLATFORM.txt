@@ -1,0 +1,96 @@
+# AI-COACHING-PLATFORM - AURA report
+
+> A Next.js web application that provides users with AI-powered voice coaching sessions for interviews, lectures, and language learning.  
+> Type: web app | Languages: .jsx: 32%, .js: 18%, .png: 18%, .svg: 8%, .json: 5%, .ts: 5%
+
+## In plain English
+This is a web tool that helps people practice speaking for job interviews, lectures, or learning new languages using artificial intelligence [1]. It is designed for anyone who wants to improve their communication skills or prepare for important conversations [1].
+
+Analogy: It acts like a personal voice coach in your pocket who listens to you and gives instant feedback.
+
+What you can do with it:
+- Choose a specific topic and an expert to guide your practice session [4][10].
+- Speak naturally while the system listens and records your words in real-time [11][16].
+- View your conversation history and receive AI-generated responses to help you improve [3][5].
+
+## For students: how to read this project
+
+1. **app/(main)/dashboard/_components/UserInputDialog.jsx**: Start here to see how users select an expert and topic before a session begins [4].
+2. **services/GlobalServices.jsx**: Read this to understand how the system builds prompts and calls the AI for responses [2][12].
+3. **app/(main)/discussion-room/[roomid]/page.jsx**: Examine this page to see how room data and past transcripts are fetched [3].
+4. **app/(main)/_components/ChatSession.jsx**: Look at this component to see how the chat interface displays history and live transcripts [5][16].
+5. **lib/utils.js**: Check this utility to understand how CSS classes are merged for consistent styling [6].
+
+```mermaid
+flowchart LR
+    A[User Browser] --> B[Next.js App]
+    B --> C[AI Service]
+    C --> D[OpenAI API]
+    B --> E[Speech Synthesis]
+    B --> F[Authentication]
+```
+
+Key terms:
+*   **React Query**: A library used to fetch and cache data from servers, ensuring the UI stays in sync with the backend [3].
+*   **Web Speech Recognition**: A browser API that converts spoken audio into text, allowing the app to capture user voice input [11].
+*   **Clerk**: An authentication service that manages user identities and provides context for who is currently logged in [9][13].
+
+## For recruiters and interviewers
+- **What it demonstrates:**
+  - Integrating AI services by constructing dynamic prompts and managing API calls for voice coaching [2][12].
+  - Implementing real-time browser features, including Web Speech Recognition and polling for speech synthesis readiness [11][15].
+  - Building accessible, responsive UIs with React Query for data fetching and Radix UI for modal interactions [3][7].
+- **Stack:** Next.js, Clerk, AWS Polly, OpenAI, Tailwind CSS, and React Query [13][6][3].
+- **Most interesting part:** The system orchestrates a seamless loop where user voice input is captured, processed by AI with context-specific templates, and returned as synthesized speech. This highlights strong full-stack capability in handling asynchronous audio and AI workflows [1][11][12].
+
+## For developers: verified claims
+
+### Purpose
+- The application provides AI-powered voice coaching sessions for interviews, lectures, and language learning. [1]
+
+### Main modules
+- The AIModel service constructs prompts based on coaching options and calls OpenAI for completions. [2]
+- The DiscussionRoom page fetches room data and previous transcripts using React Query hooks. [3]
+- The UserInputDialog component manages state for expert selection and topic input before starting a session. [4]
+- The ChatComponent renders the chat interface displaying history, expert info, and live transcripts. [5]
+- The cn utility function merges Tailwind CSS classes using clsx and tailwind-merge. [6]
+- The Dialog component wraps Radix UI primitives to provide accessible modal interactions. [7]
+- The Dashboard page composes FeatureAssistants, History, and Feedback components to display user data. [8]
+- The FeatureAssistants component displays coaching options and uses Clerk's useUser hook for authentication context. [9]
+
+### How data flows
+- Clicking next in the input dialog creates a new discussion room with the selected expert and topic. [10]
+- The startListening function initializes Web Speech Recognition to capture user voice input in the browser. [11]
+- The AIModel service selects a prompt template based on the chosen coaching option before calling OpenAI. [12]
+
+### Tech stack
+- The project uses Next.js, Clerk for authentication, and AWS Polly for speech synthesis. [13]
+
+### How to run it
+- The application is developed and built using standard Next.js scripts defined in package.json. [14]
+
+### Worth a closer look
+- The checkVoices function polls the speech synthesizer until available voices are loaded. [15]
+- The ChatComponent displays chat history, expert information, and live transcripts in a scrollable container. [16]
+- The BlurFade component uses Intersection Observer to animate elements when they enter the viewport. [17]
+- The BlurFade component animates elements with a blur effect when they enter the viewport. [18]
+
+## Sources (each [n] is a claim checked against this code)
+[1] README / dependency files
+[2] [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+[3] [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=DiscussionRoom;lines=13-53]
+[4] [cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=UserInputDialog;lines=21-61]
+[5] [cite:file=app/(main)/_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45]
+[6] [cite:file=lib/utils.js;symbol=cn;lines=4-6]
+[7] [cite:file=components/ui/dialog.jsx;symbol=Dialog;lines=9-49]
+[8] [cite:file=app/(main)/dashboard/page.jsx;symbol=Dashboard;lines=6-18]
+[9] [cite:file=app/(main)/dashboard/_components/FeatureAssistants.jsx;symbol=FeatureAssistants;lines=10-50]
+[10] [cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69]
+[11] [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144]
+[12] [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+[13] README / dependency files
+[14] README / dependency files
+[15] [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=checkVoices;lines=56-96]
+[16] [cite:file=app/(main)/_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45]
+[17] [cite:file=components/magicui/blur-fade.jsx;symbol=BlurFade;lines=5-45]
+[18] [cite:file=components/magicui/blur-fade.jsx;symbol=BlurFade;lines=5-45]

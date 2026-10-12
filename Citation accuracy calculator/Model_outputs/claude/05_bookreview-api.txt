@@ -1,0 +1,78 @@
+## 1. In plain English
+
+This is the behind-the-scenes engine for a book review website. Readers browse and search books, sign in, and leave star ratings and comments. Site admins can manage users and see all reviews.
+
+Analogy: It works like a library's front desk. It checks your card at the door, hands out the book list, and keeps each book's average rating up to date.
+
+What you can do with it:
+- Browse, search and filter a catalogue of books. [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54]
+- Sign up or log in, including through GitHub-style sign-in. [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54]
+- Write, edit and delete your own reviews, and upload a profile picture.
+
+## 2. For students: how to read this project
+
+1. `model/Book.java`, `Review.java`, `User.java`: these show what the app stores and how the three relate. [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=43-83]
+2. `controller/AuthController.java`: the simplest entry point, covering register and login. [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54]
+3. `security/JwtUtil.java` and `JwtFilter.java`: how a login token is created and then checked on every request. [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61]
+4. `security/SecurityConfig.java`: the rule list saying who may call which URL. [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=22-62]
+5. `controller/ReviewController.java`: the main feature, with a review changing the book's rating. [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77]
+
+```mermaid
+flowchart LR
+    A[Website] --> B[Security filter]
+    B --> C[Controllers]
+    C --> D[Database]
+    E[Login or GitHub] --> F[Token]
+    F --> B
+```
+
+Key terms:
+- **JWT (token):** a signed ticket the server gives you at login, which you show with each request.
+- **REST API:** a set of web addresses that a website or app calls to get or change data.
+- **Entity:** a Java class that maps to a database table.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Token-based security with Spring Security: a JWT filter, role rules per URL, BCrypt-hashed passwords, and OAuth2 login. [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=22-62]
+- REST design with pagination, sorting, search and filtering, plus a DTO to shape one response. [cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=ReviewWithBookDTO;lines=17-57]
+- Deployment awareness: a Dockerfile, a CI workflow folder, Swagger docs with a bearer-token scheme, and CORS for hosted front ends. [cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=customOpenAPI;lines=17-38]
+
+Stack: Java, Spring Boot, Spring Security (JWT and OAuth2), JPA/Hibernate, Swagger/OpenAPI, Maven, Docker.
+
+Most interesting part: every review change recalculates the book's average rating and review count. The rating is rounded to one decimal place. [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77]
+
+## 4. For developers
+
+**Purpose**
+- A stateless REST backend for a book review app. A separate front end is expected, since CORS allows localhost:3000 and Vercel domains. [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=corsConfigurationSource;lines=31-71]
+
+**Main modules**
+- `BookController` is read-only: paged and sorted listing, search by title or author, and genre/author/minimum-rating filters. [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=getBookById;lines=38-76]
+- `ReviewController` offers public listing by book, an admin-only list of all reviews, "my reviews" returned as DTOs, and add/update/delete. Edits are allowed for the review's owner or an admin. [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getMyReviews;lines=74-114]
+- `UserController` handles the current user's profile and admin-only user listing, deletion and role changes. [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getAllUsers;lines=36-76]
+- `UserProfileController` has a second profile-picture upload that writes files to a configurable directory. [cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=uploadProfilePicture;lines=33-73]
+- `WebConfig` serves saved uploads under `/uploads/**`. [cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=addResourceHandlers;lines=11-16]
+
+**How data flows**
+- Register hashes the password with BCrypt and returns a token. Login checks the hash and returns a token. [cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=register;lines=22-62] [cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=authenticate;lines=42-82]
+- Tokens carry the user ID and expire after one hour by default. [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=generateToken;lines=29-63]
+- On each request, the filter validates the Bearer token. It then looks the user up to get the role and sets the security context. [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61]
+- OAuth login finds or creates a user by email. It then redirects to the front end with the token in the URL. [cite:file=src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java;symbol=CustomOAuth2SuccessHandler;lines=17-57]
+
+**Tech stack**
+- Spring Boot parent 4.0.6, Spring Security, and JPA entities with UUID string IDs. [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=39-69]
+- The POM is truncated and `application.properties` isn't shown, so the database and library versions can't be confirmed.
+
+**How to run it**
+- The Maven wrapper is present. `jwt.secret` has no default, so the app can't start without it. [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=JwtUtil;lines=13-53]
+- A database, OAuth client settings and an optional `frontend.url` must be configured. The Dockerfile and workflow contents aren't shown.
+
+**Worth a closer look**
+- Registration reads `role` from the request body, so anyone could register as ADMIN. [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54]
+- `User.password` has no `@JsonIgnore`, so profile and user-list endpoints likely return password hashes. [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getCurrentUserProfile;lines=46-86]
+- Errors come back as HTTP 200 with an `error` field. Access denial throws a plain `RuntimeException`, which will likely surface as a 500.
+- Two profile-picture endpoints overlap. One keeps the client's original filename, which deserves a path-safety review. [cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=uploadProfilePicture;lines=33-73]
+- `/uploads/**` bypasses security entirely, so uploaded files are publicly readable. [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=webSecurityCustomizer;lines=51-91]
+- Reviews have a one-per-user-per-book constraint, but `addReview` doesn't check for duplicates first. Ratings are also not range-checked. [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=43-83]
+- Source files sit in `bookreview_api/` but declare `com.bookreview.api`, and the test uses a different package. The context-load test may fail to find the application class. [cite:file=src/test/java/bookreview_api/BookreviewApiApplicationTests.java;symbol=contextLoads;lines=10-13]

@@ -1,0 +1,95 @@
+# whatsappchatanalyzer - AURA report
+
+> A Streamlit-based web application that allows users to upload WhatsApp chat exports to generate visual analytics on conversation patterns, sentiment, and activity.  
+> Type: web app | Languages: .py: 43%, .md: 29%, .txt: 14%, .css: 14%
+
+## In plain English
+This tool lets you upload a saved text chat from WhatsApp to see clear pictures of how people talk, feel, and interact over time [1]. It is useful for anyone wanting to understand the mood and habits within their group conversations without reading every single message [2].
+
+Analogy: It acts like a health checkup for your group chat, turning messy text into easy-to-read charts.
+
+What you can do with it:
+- View word clouds that show the most common words used by specific people [6].
+- See bar charts highlighting the busiest months and overall media sharing habits [11][17].
+- Track how the emotional tone of the conversation changes over time [2].
+
+## For students: how to read this project
+
+1. **preprocessor.py**: Start here to see how raw text is split into structured messages using regex patterns [3][4].
+2. **helper.py**: Next, examine how data is cleaned of noise and how sentiment scores are calculated for specific users [5][7].
+3. **app.py**: Finally, review the main entry point to understand how file uploads are decoded and how visualizations are rendered [9][16].
+
+```mermaid
+flowchart LR
+    A[Browser] --> B[Streamlit Interface]
+    B --> C[File Decoder]
+    C --> D[Preprocessor]
+    D --> E[Data Frame]
+    E --> F[Helper Functions]
+    F --> G[Visual Analytics]
+```
+
+**Key terms:**
+*   **Regex**: A pattern-matching tool used to parse unstructured chat text into distinct messages and dates [3].
+*   **DataFrame**: A tabular data structure used to store and manipulate the processed chat messages for analysis [10][15].
+*   **Sentiment Analysis**: The process of evaluating the emotional tone of messages to reveal user behavior and trajectories [2][7].
+
+## For recruiters and interviewers
+- **What it demonstrates:**
+  - Proficiency in data preprocessing using regular expressions to parse unstructured text into structured DataFrames [3][4].
+  - Ability to implement data cleaning pipelines that filter noise like group notifications before sentiment analysis [5][7].
+  - Experience building interactive web interfaces with Streamlit, including custom CSS injection and dynamic visualization rendering [8][16].
+- **Stack:** Streamlit, pandas, matplotlib, seaborn, wordcloud, urlextract, emoji, and vaderSentiment [13].
+- **Most interesting part:** The system transforms raw chat exports into forensic-grade behavioral insights, visualizing sentiment trajectories and activity patterns [1][2]. It handles the full pipeline from decoding uploaded bytes to generating immediate visual analytics within the browser [9][15].
+
+## For developers: verified claims
+
+### Purpose
+- The application analyzes uploaded WhatsApp chat exports to visualize conversation patterns, sentiment, and activity. [1]
+- The application provides forensic-grade analysis of WhatsApp chats to reveal behavioral patterns and sentiment trajectories. [2]
+
+### Main modules
+- preprocessor.py parses raw chat text using a regex pattern to split messages and extract dates. [3]
+- The preprocess function in preprocessor.py uses regex to split raw chat text into individual messages and dates. [4]
+- helper.py filters out group notifications and media placeholders before performing sentiment analysis. [5]
+- helper.py generates word clouds with specific dimensions, transparent backgrounds, and a Greens colormap. [6]
+- The sentiment_analysis function in helper.py filters data by selected user and excludes group notifications and media placeholders. [7]
+- The local_css function in app.py reads CSS files and injects them into the Streamlit interface via markdown. [8]
+
+### How data flows
+- app.py decodes uploaded file bytes to UTF-8 strings before passing them to the preprocessor. [9]
+- Uploaded file bytes are decoded to UTF-8 strings before being passed to the preprocessor to create a DataFrame. [10]
+- app.py calculates total media count by summing values from the media distribution helper function. [11]
+- The application checks if the processed DataFrame is empty to handle cases where no valid messages are parsed. [12]
+
+### Tech stack
+- The project uses Streamlit, pandas, matplotlib, seaborn, wordcloud, urlextract, emoji, and vaderSentiment. [13]
+- The project relies on Streamlit for the web interface and pandas for data manipulation. [14]
+
+### How to run it
+- Users upload chat files which are processed into DataFrames for immediate analysis within the web interface. [15]
+
+### Worth a closer look
+- app.py renders custom CSS files into the Streamlit interface using unsafe markdown injection. [16]
+- app.py visualizes the busiest month using a bar chart with a specific green color code. [17]
+- Media distribution is calculated by summing values from a helper function that analyzes media types per user. [18]
+
+## Sources (each [n] is a claim checked against this code)
+[1] README / dependency files
+[2] README / dependency files
+[3] [cite:file=preprocessor.py;symbol=preprocess;lines=6-60] [cite:file=preprocessor.py;symbol=pattern;lines=7-7]
+[4] [cite:file=preprocessor.py;symbol=preprocess;lines=6-60] [cite:file=preprocessor.py;symbol=pattern;lines=7-7]
+[5] [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+[6] [cite:file=helper.py;symbol=wc;lines=44-44]
+[7] [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+[8] [cite:file=app.py;symbol=local_css;lines=9-11]
+[9] [cite:file=app.py;symbol=df;lines=31-31] [cite:file=app.py;symbol=data;lines=30-30] [cite:file=app.py;symbol=bytes_data;lines=29-29]
+[10] [cite:file=app.py;symbol=df;lines=31-31] [cite:file=app.py;symbol=data;lines=30-30] [cite:file=app.py;symbol=bytes_data;lines=29-29]
+[11] [cite:file=app.py;symbol=total_media;lines=69-69] [cite:file=app.py;symbol=dist;lines=68-68]
+[12] [cite:file=app.py;symbol=df;lines=31-31]
+[13] README / dependency files
+[14] README / dependency files
+[15] [cite:file=app.py;symbol=bytes_data;lines=29-29]
+[16] [cite:file=app.py;symbol=local_css;lines=9-11]
+[17] [cite:file=app.py;symbol=busy_month;lines=132-132]
+[18] [cite:file=app.py;symbol=total_media;lines=69-69] [cite:file=app.py;symbol=dist;lines=68-68]

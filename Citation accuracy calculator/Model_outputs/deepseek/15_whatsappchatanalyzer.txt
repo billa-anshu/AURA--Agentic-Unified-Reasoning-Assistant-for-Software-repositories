@@ -1,0 +1,79 @@
+# Repository Report: WhatsApp Chat Analyzer
+
+## 1. In plain English
+
+This is a web page where you upload the text file WhatsApp gives you when you export a chat, and it draws charts about that conversation: how many messages were sent, when people were busiest, which words and emojis came up most, and whether the tone was mostly happy or gloomy. It would be used by anyone curious about a group chat or a friendship — a data hobbyist, a student, or someone writing about communication habits. Analogy: it is like tipping a shoebox of old letters onto a table and having a friend quickly sort them into piles by date, by author and by mood, then draw a picture of each pile. What you can do with it:
+
+- See totals for messages, words, media files and shared links in one dashboard [cite:file=app.py;symbol=df;lines=31-31]
+- Look at activity over months, over days, and as a day-versus-hour heatmap [cite:file=helper.py;symbol=fetch_activity_heatmap;lines=130-135]
+- Check which words dominate and whether sentiment drifted up or down over time [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168]
+
+## 2. For students: how to read this project
+
+1. `preprocessor.py` — read first; it turns a messy text file into a tidy table, which is the foundation of everything else [cite:file=preprocessor.py;symbol=preprocess;lines=6-60].
+2. `helper.py` — the analysis toolbox; each function takes the table and returns a number, a chart-ready series or a dataframe [cite:file=helper.py;symbol=fetch_stats;lines=13-29].
+3. `app.py` — the user interface; read the sidebar and the three navigation branches to see how pages are chosen [cite:file=app.py;symbol=nav_selection;lines=20-20].
+4. `helper.py` again, the `sentiment_analysis` function — the most interesting single function in the project [cite:file=helper.py;symbol=sentiment_analysis;lines=138-168].
+5. `assets/style.css` — skim last to see how the "Forensic Stream" look is layered on top of plain Streamlit [cite:file=app.py;symbol=local_css;lines=9-11].
+
+```mermaid
+flowchart LR
+  User[User] --> Upload[Upload chat file]
+  Upload --> Parse[Parse into table]
+  Parse --> Choose[Choose a person or everyone]
+  Choose --> Stats[Compute numbers]
+  Stats --> Charts[Draw charts]
+  Charts --> Read[Read insights]
+```
+
+Key terms:
+- **Dataframe**: a table of rows and columns, the shape all the analysis works on [cite:file=helper.py;symbol=df;lines=15-15].
+- **Sentiment**: a score saying how positive or negative a piece of text sounds [cite:file=helper.py;symbol=compound;lines=148-148].
+- **Word cloud**: a picture where frequently used words are drawn larger [cite:file=helper.py;symbol=create_wordcloud;lines=37-49].
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Text parsing with regular expressions: a single pattern splits the export into per-message records and extracts the sender name from each [cite:file=preprocessor.py;symbol=pattern;lines=7-7].
+- Feature engineering for time-series analysis — year, month number, month name, day, weekday, hour, minute and a custom hour bucket are all derived so later charts can group by any of them [cite:file=preprocessor.py;symbol=period;lines=45-45].
+- Practical use of caching decorators on nearly every analysis function, showing awareness that recomputing a word cloud or a sentiment pass on every widget interaction would be slow [cite:file=helper.py;symbol=get_most_common_words;lines=52-66].
+
+Stack: Python + Streamlit for the UI, pandas for tabular work, matplotlib and seaborn for charts, wordcloud for the visual, URLExtract, the emoji library and VADER sentiment.
+
+Most interesting part: `emoji_analysis` builds a small taxonomy — grouping emojis into Laughter/Joy, Approval/Like and Surprise/Shock by hardcoded lists, then computes an "Others" remainder by subtracting from the true total rather than summing the listed groups, so uncategorised emojis are still accounted for [cite:file=helper.py;symbol=emoji_analysis;lines=69-95].
+
+## 4. For developers
+
+**Purpose**
+- A single-page Streamlit app with three views — Dashboard, Chat Insights and NLP Analysis — chosen from a sidebar radio [cite:file=app.py;symbol=uploaded_file;lines=26-26].
+- Everything is driven from one uploaded `.txt` file; with no file, only a landing panel with export instructions is shown [cite:file=app.py;symbol=bytes_data;lines=29-29].
+
+**Main modules**
+- `preprocessor.preprocess` returns an empty dataframe when no messages match, which the app checks for and turns into a user-facing error [cite:file=preprocessor.py;symbol=messages;lines=9-9].
+- `helper.fetch_stats` counts messages, word tokens, `<Media omitted>` markers and extracted URLs [cite:file=helper.py;symbol=fetch_stats;lines=13-29].
+- `helper.fetch_most_active_users` returns both a value-count series for a bar chart and a percentage dataframe for display [cite:file=helper.py;symbol=fetch_most_active_users;lines=32-35].
+- `helper.get_media_distribution` splits media into images, voice notes and documents using fixed proportions rather than inspecting the files [cite:file=helper.py;symbol=dist;lines=181-185].
+
+**How data flows**
+- The upload is decoded to text, handed to the preprocessor, and the resulting dataframe is checked for emptiness before anything else runs [cite:file=app.py;symbol=df;lines=31-31].
+- A user list is derived from the dataframe, `group_notification` is removed, and "Overall" is prepended so the user can analyse everyone or one person [cite:file=app.py;symbol=user_list;lines=37-37].
+- Analysis only begins when the "Analyze Chat" button is pressed, keeping the initial load cheap [cite:file=app.py;symbol=selected_user;lines=42-42].
+- Each helper re-filters the dataframe by the selected user at its own top, so every function is independently scoped [cite:file=helper.py;symbol=links;lines=25-25].
+- Sentiment is computed per message, averaged by date to produce a "velocity" series, then thresholded at ±0.05 to categorise each message [cite:file=helper.py;symbol=sentiment_velocity;lines=162-162].
+
+**Tech stack**
+- Requirements pin Streamlit, pandas, matplotlib, seaborn, wordcloud, urlextract, emoji and vaderSentiment, plus a small custom stylesheet loaded with `unsafe_allow_html` [cite:file=app.py;symbol=local_css;lines=9-11].
+- A `DEPLOYMENT_GUIDE.md` sits alongside the README, indicating the project was prepared for hosting rather than just local use.
+
+**How to run it**
+- Standard Streamlit launch: install the requirements, then run the app file; there is no separate backend or database.
+- Only `.txt` files are accepted by the uploader, matching WhatsApp's "export without media" output [cite:file=app.py;symbol=uploaded_file;lines=26-26].
+
+**Worth a closer look**
+- `get_media_distribution` invents a 60/25/15 split of media counts rather than reading real file types, so the pie chart is an estimate presented as fact [cite:file=helper.py;symbol=images;lines=177-177].
+- `create_wordcloud` is the one analysis function without `@st.cache_data`, so it regenerates on every rerun despite being the slowest operation [cite:file=helper.py;symbol=create_wordcloud;lines=37-49].
+- The stopword list in `get_most_common_words` is a hardcoded eight-word array rather than a library list, and there is no handling of punctuation attached to words [cite:file=helper.py;symbol=most_common_df;lines=65-65].
+- `fetch_week_activity_map` is defined but never called from `app.py`, since the busiest-month chart is used instead [cite:file=helper.py;symbol=fetch_week_activity_map;lines=118-121].
+- The date pattern accepts several formats, and the parser relies on `format='mixed'` with `dayfirst=True`, which can misread ambiguous dates from US-locale exports [cite:file=preprocessor.py;symbol=dates;lines=10-10].
+- A bare `except: pass` wraps the stylesheet load, silently hiding a missing CSS file and losing the intended look with no warning [cite:file=app.py;symbol=local_css;lines=9-11].
+- Sidebar navigation uses radio buttons whose label visibility is hidden, so the three sections are invisible to screen readers relying on that label [cite:file=app.py;symbol=nav_selection;lines=20-20].

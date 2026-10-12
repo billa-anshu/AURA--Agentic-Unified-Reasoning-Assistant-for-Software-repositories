@@ -1,0 +1,330 @@
+{
+  "repo": "01_Attendance-Management-System",
+  "plan": {
+    "repo_type": "web app",
+    "purpose": "A Spring Boot-based school management system that allows admins, teachers, and students to manage courses, classrooms, and attendance records.",
+    "questions": [
+      "How does the authentication flow work for different user roles (Admin, Teacher, Student) in the LoginController?",
+      "What is the relationship between the Classroom, Course, and Student entities in the database schema?",
+      "How is attendance recorded and managed through the AttendanceService and AttendanceRecord entity?",
+      "What specific administrative tasks can be performed via the AdminController and AdminServiceImpl?",
+      "How do the JSP views interact with the controllers to display dashboards for students and teachers?"
+    ],
+    "focus_files": [
+      "src/main/java/com/example/demo/controller/LoginController.java",
+      "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java",
+      "src/main/java/com/example/demo/entity/AttendanceRecord.java",
+      "src/main/java/com/example/demo/controller/StudentDashboardController.java"
+    ]
+  },
+  "agent_trace": [
+    {
+      "step": 1,
+      "action": "read",
+      "id": "C8"
+    },
+    {
+      "step": 2,
+      "action": "read",
+      "id": "C8"
+    },
+    {
+      "step": 3,
+      "action": "read",
+      "id": "C8"
+    },
+    {
+      "step": 4,
+      "action": "read",
+      "id": "C8"
+    }
+  ],
+  "verifier_rounds": [
+    {
+      "round": 0,
+      "extracted": 10,
+      "supported": 9,
+      "partial": 0,
+      "unsupported": 1,
+      "verifier_failed": false,
+      "kept": 9
+    },
+    {
+      "round": 1,
+      "extracted": 6,
+      "supported": 5,
+      "partial": 0,
+      "unsupported": 1,
+      "verifier_failed": false,
+      "kept": 5
+    },
+    {
+      "round": 2,
+      "extracted": 4,
+      "supported": 3,
+      "partial": 0,
+      "unsupported": 1,
+      "verifier_failed": false,
+      "kept": 3
+    }
+  ],
+  "first_pass_faithfulness": 0.85,
+  "claims": [
+    {
+      "t": "purpose",
+      "c": "The system manages school entities including students, teachers, classrooms, and attendance records.",
+      "ids": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=TeacherService;lines=14-54]",
+        "[cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56]",
+        "[cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/service/TeacherService.java :: TeacherService",
+        "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java :: AdminServiceImpl",
+        "src/main/java/com/example/demo/entity/AttendanceRecord.java :: AttendanceRecord"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "TeacherService coordinates teacher, course, and attendance repositories for business logic.",
+      "ids": [
+        "C1"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=TeacherService;lines=14-54]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/service/TeacherService.java :: TeacherService"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "AdminServiceImpl handles administrative operations using student, teacher, classroom, and holiday repositories.",
+      "ids": [
+        "C2"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java :: AdminServiceImpl"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "AttendanceRecord entity links a student and classroom to a specific date and status.",
+      "ids": [
+        "C3"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/entity/AttendanceRecord.java :: AttendanceRecord"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "Student entity stores name, email, password, and associated classrooms.",
+      "ids": [
+        "C4"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/entity/Student.java;symbol=Student;lines=35-75]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/entity/Student.java :: Student"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "Teacher entity stores name, email, and password with validation constraints.",
+      "ids": [
+        "C5"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/entity/Teacher.java;symbol=Teacher;lines=33-73]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/entity/Teacher.java :: Teacher"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "Student entity constructor enforces non-blank name, email, and password fields.",
+      "ids": [
+        "C4"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/entity/Student.java;symbol=Student;lines=35-75]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/entity/Student.java :: Student"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "TeacherService autowires repositories for teachers, courses, and attendance records.",
+      "ids": [
+        "C1"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=TeacherService;lines=14-54]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/service/TeacherService.java :: TeacherService"
+      ]
+    },
+    {
+      "t": "module",
+      "c": "AdminServiceImpl uses final fields for student, teacher, classroom, and holiday repositories.",
+      "ids": [
+        "C2"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/service/impl/AdminServiceImpl.java :: AdminServiceImpl"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "StudentDashboardController provides student-specific dashboard data using authentication and attendance repositories.",
+      "ids": [
+        "C6"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/controller/StudentDashboardController.java :: StudentDashboardController"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "AdminController serves the main dashboard by injecting AdminService and adding student counts to the model.",
+      "ids": [
+        "C7"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/controller/AdminController.java :: AdminController"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "LoginController processes POST requests to handle user authentication logic.",
+      "ids": [
+        "C8"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=LoginController;lines=15-55]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/controller/LoginController.java :: LoginController"
+      ]
+    },
+    {
+      "t": "flow",
+      "c": "AdminController injects AdminService via constructor to manage dashboard data.",
+      "ids": [
+        "C7"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/controller/AdminController.java :: AdminController"
+      ]
+    },
+    {
+      "t": "run",
+      "c": "The project uses Maven for dependency management and build configuration.",
+      "ids": [],
+      "w": 2,
+      "verdict": "S",
+      "tags": [],
+      "labels": []
+    },
+    {
+      "t": "highlight",
+      "c": "AttendanceRecord constructor initializes student, classroom, date, and status fields.",
+      "ids": [
+        "C3"
+      ],
+      "w": 3,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/entity/AttendanceRecord.java :: AttendanceRecord"
+      ]
+    },
+    {
+      "t": "highlight",
+      "c": "LoginController handles login requests by returning a JSP view and processing form submissions.",
+      "ids": [
+        "C8"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=LoginController;lines=15-55]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/controller/LoginController.java :: LoginController"
+      ]
+    },
+    {
+      "t": "highlight",
+      "c": "StudentDashboardController maps requests to the /student path for dashboard access.",
+      "ids": [
+        "C6"
+      ],
+      "w": 2,
+      "verdict": "S",
+      "tags": [
+        "[cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63]"
+      ],
+      "labels": [
+        "src/main/java/com/example/demo/controller/StudentDashboardController.java :: StudentDashboardController"
+      ]
+    }
+  ],
+  "llm_calls_this_run": 14
+}

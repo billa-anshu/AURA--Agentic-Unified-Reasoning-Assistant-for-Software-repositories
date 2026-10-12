@@ -1,0 +1,86 @@
+# 1. In plain English
+
+ResumeRise is an AI-powered career preparation tool that helps job seekers compare their resumes with job descriptions and practise job interviews. It is designed for students, fresh graduates, and other candidates who want to understand their strengths, identify missing skills, and improve their interview answers.
+
+Analogy: Think of ResumeRise as a career coach that checks your resume against a job advertisement and then conducts a practice interview with you.
+
+What you can do with it:
+
+- Check your resume: Upload a PDF resume and compare your skills with a job description.
+- Practise interviews: Answer AI-generated interview questions using your voice.
+- Review your performance: Receive scores, feedback, and suggestions for improvement.
+
+# 2. For students: how to read this project
+
+Read these five files in order to understand the application from its overall structure to its main features.
+
+1. `frontend/src/App.js` — Start here to understand the different pages and how users navigate between them. [cite:file=frontend/src/App.js;symbol=App;lines=7-21]
+2. `frontend/src/pages/ResumeMatchPage.jsx` — Learn how the resume-matching screen handles uploaded files and submits them for analysis. [cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleSubmit;lines=26-66]
+3. `backend/main.py` — Study the main backend, which defines the API endpoints and connects the application to AI services. [cite:file=backend/main.py;symbol=app;lines=19-19]
+4. `backend/main.py` — Read `match_resume_ml` to follow PDF text extraction, skill comparison, score calculation, and feedback generation. [cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+5. `frontend/src/pages/MockInterviewPage.jsx` — Explore the interview interface, including recording answers, capturing camera frames, and requesting the next question. [cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=handleSubmitAnswer;lines=325-365]
+
+### How the main pieces connect
+
+```
+flowchart LR
+    A[Job Seeker] --> B[React Website]
+    B --> C[FastAPI Backend]
+    C --> D[Groq AI Services]
+    C --> E[Resume and Interview Results]
+    E --> B
+```
+
+Key terms:
+
+- Frontend: The website people see and interact with.
+- API: A connection that allows the website to send information to the backend and receive results.
+- Large language model (LLM): An AI model that can generate interview questions, evaluate answers, and produce written feedback.
+
+# 3. For recruiters and interviewers
+
+What it demonstrates:
+
+- Full-stack development: Building a React-based interface connected to a Python backend through API requests.
+- AI integration: Using Groq-hosted language and vision models for resume analysis, interview feedback, speech transcription, and face-frame analysis. [cite:file=backend/main.py;symbol=transcribe_audio;lines=64-114] [cite:file=backend/main.py;symbol=analyze_face_emotion_batch;lines=121-164]
+- Data processing and application logic: Extracting skills from documents, comparing lists, calculating a match score, and generating structured feedback. [cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+
+Stack: Python, FastAPI, Uvicorn, React, JavaScript, React Router, Axios, Tailwind CSS, Groq API, Llama models, Whisper, PyPDF2, and python-dotenv. The listed Python dependencies are in `requirements.txt`; frontend dependencies are managed separately.
+
+Most interesting part: ResumeRise combines resume screening with interactive interview practice. Instead of using only a fixed list of job skills, the resume matcher asks an AI model to extract skills from the supplied job description and resume, then compares the resulting lists and produces a match score and personalised recommendations. [cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+
+# 4. For developers
+
+### Purpose
+
+\- The backend exposes a FastAPI application named `ResumeRise API`, with endpoints for resume matching, interview questions, answer evaluation, audio transcription, face-frame analysis, and final feedback. [cite:file=backend/main.py;symbol=app;lines=19-19] [cite:file=backend/main.py;symbol=generate_final_feedback;lines=321-394]
+
+### Main modules
+
+- Resume matching: `match_resume_ml` extracts PDF text with PyPDF2, asks Groq to identify skills in the job description and resume, compares normalized skill strings, calculates a percentage, and generates recommendations. [cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+- Interview generation and evaluation: `start_interview` generates questions from the job description, while `submit_response` requests a score out of 10 and written feedback for an answer. [cite:file=backend/main.py;symbol=start_interview;lines=171-219] [cite:file=backend/main.py;symbol=submit_response;lines=226-264]
+- Speech and face analysis: `transcribe_audio` sends recorded audio to Whisper and uses a language model to produce an emotion label and summary. `analyze_face_emotion_batch` sends up to five encoded images to a vision model for analysis. [cite:file=backend/main.py;symbol=transcribe_audio;lines=64-114] [cite:file=backend/main.py;symbol=analyze_face_emotion_batch;lines=121-164]
+- Frontend navigation: `App.js` maps URLs to the home, resume-matching, interview-setup, mock-interview, and interview-review pages. [cite:file=frontend/src/App.js;symbol=App;lines=7-21]
+
+### How data flows
+
+- Resume matching: The frontend submits a resume PDF and job description; the backend extracts skills, compares them, calculates a score, and returns results for the interface to display. [cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleSubmit;lines=26-66] [cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+- Interview practice: The backend generates questions, evaluates submitted answers, and uses interview history and previous scores to generate follow-up questions. [cite:file=backend/main.py;symbol=generate_next_question;lines=271-314]
+- Final review: The frontend sends collected interview responses to the final-feedback endpoint and displays the resulting report. [cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62]
+
+### Tech stack
+
+- Backend: FastAPI handles asynchronous endpoints and request validation; Pydantic models define structures for interview responses and feedback requests. [cite:file=backend/main.py;symbol=SubmitResponse;lines=33-39] [cite:file=backend/main.py;symbol=NextQuestionRequest;lines=49-53]
+- AI integration: The backend reads `GROQ_API_KEY` from the environment and creates a Groq client. [cite:file=backend/main.py;symbol=groq_client;lines=17-17]
+- Frontend: React Router handles page navigation, while Axios makes HTTP requests to the backend. [cite:file=frontend/src/App.js;symbol=App;lines=7-21] [cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62]
+
+### How to run it
+
+- Install the Python dependencies listed in `requirements.txt`, configure `GROQ_API_KEY`, and start the backend with Uvicorn using the application entry point. [cite:file=backend/main.py;symbol=groq_client;lines=17-17] [cite:file=backend/main.py;symbol=port;lines=613-613]
+- Install the frontend dependencies using the project's package configuration and start the React development server. The exact frontend commands and deployment configuration should be checked in the relevant package and deployment files.
+
+### Worth a closer look
+
+- The resume match score is calculated from the proportion of matched skills, then constrained to a range of 25–95; it is a rule-based score based on extracted skill lists, not a validated prediction of hiring success. [cite:file=backend/main.py;symbol=score;lines=519-519]
+- Error handling includes fallback interview questions, default answer scores, and fallback final feedback when AI processing fails. These improve continuity but can make an unsuccessful analysis look like a completed evaluation. [cite:file=backend/main.py;symbol=fallback;lines=209-215] [cite:file=backend/main.py;symbol=submit_response;lines=226-264]
+- Review the wildcard CORS configuration and ensure secrets are configured securely. Also assess the limitations and privacy implications of interpreting emotion from voice and facial images before using these outputs in consequential hiring decisions. [cite:file=backend/main.py;symbol=app;lines=19-19] [cite:file=backend/main.py;symbol=analyze_face_emotion_batch;lines=121-164]

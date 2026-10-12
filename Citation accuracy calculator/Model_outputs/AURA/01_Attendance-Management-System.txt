@@ -1,0 +1,92 @@
+# Attendance-Management-System - AURA report
+
+> A Spring Boot-based school management system that allows admins, teachers, and students to manage courses, classrooms, and attendance records.  
+> Type: web app | Languages: .jsp: 49%, .java: 43%, .properties: 3%, (no ext): 2%, .cmd: 2%, .xml: 2%
+
+## In plain English
+This is a digital tool for schools that helps administrators, teachers, and students manage classes and track who shows up to lessons [1]. It acts as a central hub where staff can organize classrooms and monitor daily attendance records [1][4].
+
+Analogy: It works like a digital roll-call book that automatically updates when a student walks into the classroom.
+
+What you can do with it:
+- Log in securely to access your specific role’s dashboard [12][16].
+- View student counts and manage school data from the main admin view [11][13].
+- Check personal attendance history and classroom assignments on the student page [10][17].
+
+## For students: how to read this project
+
+1. **src/main/java/com/example/demo/entity/Student.java**: Start here to see how user data is stored and validated with non-blank fields [5][7].
+2. **src/main/java/com/example/demo/entity/AttendanceRecord.java**: Understand how a student and classroom are linked to a specific date and status [4][15].
+3. **src/main/java/com/example/demo/service/TeacherService.java**: Observe how business logic coordinates multiple repositories for teachers and courses [2][8].
+4. **src/main/java/com/example/demo/service/impl/AdminServiceImpl.java**: See how administrative operations use final fields for various school repositories [3][9].
+5. **src/main/java/com/example/demo/controller/LoginController.java**: Finish by seeing how POST requests handle user authentication and return views [12][16].
+
+```mermaid
+flowchart LR
+    A[Browser] --> B[Login Controller]
+    B --> C[Authentication Logic]
+    C --> D[Student Dashboard]
+    D --> E[Attendance Data]
+    E --> F[Database]
+```
+
+Key terms:
+*   **Repository**: A component that provides data access to entities like students or classrooms [2][9].
+*   **Autowiring**: A mechanism where the framework automatically injects required dependencies like repositories into services [8].
+*   **JSP**: A technology used to generate dynamic web pages, making up nearly half of the project's files [16].
+
+## For recruiters and interviewers
+- **What it demonstrates:**
+  - **Spring Boot Architecture:** Demonstrates dependency injection by autowiring repositories into services for coordinated business logic [2][8].
+  - **Data Integrity:** Enforces data quality through entity constructors that validate non-blank fields for critical user information [7].
+  - **Role-Based Access:** Implements distinct controllers to serve specific dashboard data for admins and students based on their roles [10][11].
+- **Stack:** Java, Spring Boot, JSP, and Maven [14].
+- **Most interesting part:** The system links students and classrooms to specific dates and statuses to track attendance [4]. Analogy: It acts like a digital roll call sheet that automatically records who was present in which room on a given day.
+
+## For developers: verified claims
+
+### Purpose
+- The system manages school entities including students, teachers, classrooms, and attendance records. [1]
+
+### Main modules
+- TeacherService coordinates teacher, course, and attendance repositories for business logic. [2]
+- AdminServiceImpl handles administrative operations using student, teacher, classroom, and holiday repositories. [3]
+- AttendanceRecord entity links a student and classroom to a specific date and status. [4]
+- Student entity stores name, email, password, and associated classrooms. [5]
+- Teacher entity stores name, email, and password with validation constraints. [6]
+- Student entity constructor enforces non-blank name, email, and password fields. [7]
+- TeacherService autowires repositories for teachers, courses, and attendance records. [8]
+- AdminServiceImpl uses final fields for student, teacher, classroom, and holiday repositories. [9]
+
+### How data flows
+- StudentDashboardController provides student-specific dashboard data using authentication and attendance repositories. [10]
+- AdminController serves the main dashboard by injecting AdminService and adding student counts to the model. [11]
+- LoginController processes POST requests to handle user authentication logic. [12]
+- AdminController injects AdminService via constructor to manage dashboard data. [13]
+
+### How to run it
+- The project uses Maven for dependency management and build configuration. [14]
+
+### Worth a closer look
+- AttendanceRecord constructor initializes student, classroom, date, and status fields. [15]
+- LoginController handles login requests by returning a JSP view and processing form submissions. [16]
+- StudentDashboardController maps requests to the /student path for dashboard access. [17]
+
+## Sources (each [n] is a claim checked against this code)
+[1] [cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=TeacherService;lines=14-54] [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56] [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]
+[2] [cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=TeacherService;lines=14-54]
+[3] [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56]
+[4] [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]
+[5] [cite:file=src/main/java/com/example/demo/entity/Student.java;symbol=Student;lines=35-75]
+[6] [cite:file=src/main/java/com/example/demo/entity/Teacher.java;symbol=Teacher;lines=33-73]
+[7] [cite:file=src/main/java/com/example/demo/entity/Student.java;symbol=Student;lines=35-75]
+[8] [cite:file=src/main/java/com/example/demo/service/TeacherService.java;symbol=TeacherService;lines=14-54]
+[9] [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56]
+[10] [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63]
+[11] [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60]
+[12] [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=LoginController;lines=15-55]
+[13] [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60]
+[14] README / dependency files
+[15] [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]
+[16] [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=LoginController;lines=15-55]
+[17] [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=StudentDashboardController;lines=23-63]

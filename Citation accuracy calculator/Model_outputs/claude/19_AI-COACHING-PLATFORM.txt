@@ -1,0 +1,76 @@
+## 1. In plain English
+
+This is a website where you practise speaking with an AI coach. You pick a coaching type, such as a mock interview, a lecture or language practice. You also enter a topic and choose an on-screen expert, then talk out loud while the AI answers in text and speech. It suits students, job seekers and language learners.
+
+Analogy: It's like rehearsing with a patient tutor who listens to you, answers back, and keeps a written record of the session.
+
+What you can do with it:
+- Choose a coaching type, a topic and an expert from a pop-up. [cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=UserInputDialog;lines=21-61]
+- Speak in English, Telugu, Tamil or Hindi and hear the AI reply. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=speakResponse;lines=220-260]
+- See the whole conversation as chat bubbles, with a live view of what you are saying. [cite:file=app/(main)/_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45]
+
+## 2. For students: how to read this project
+
+1. `app/(main)/dashboard/page.jsx`: a short page that shows how the dashboard is assembled from smaller parts. [cite:file=app/(main)/dashboard/page.jsx;symbol=Dashboard;lines=6-18]
+2. `dashboard/_components/UserInputDialog.jsx`: how a form creates a "room" and moves you to a new page. [cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69]
+3. `services/GlobalServices.jsx`: the small function that sends your words to the AI model. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+4. `discussion-room/[roomid]/page.jsx`: the core feature, which handles listening, calling the AI and speaking. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=DiscussionRoom;lines=13-53]
+5. `_components/ChatSession.jsx`: a plain display component for the conversation. [cite:file=app/(main)/_components/ChatSession.jsx;symbol=ChatComponent;lines=5-45]
+
+```mermaid
+flowchart LR
+    A[Dashboard] --> B[Pick option and expert]
+    B --> C[Discussion room]
+    C --> D[Speech to text]
+    D --> E[AI reply]
+    E --> F[Spoken answer]
+```
+
+Key terms:
+- **Web Speech API:** browser features that turn speech into text and read text aloud.
+- **Convex:** a hosted backend that stores data such as rooms and transcripts.
+- **Component:** a reusable piece of a web page, written in React.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Browser voice features: continuous speech recognition with live partial text, and speech synthesis with voice selection per language. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144]
+- Full-stack structure with Next.js route groups, Clerk sign-in, and Convex queries and mutations for rooms and transcripts. [cite:file=app/AuthProvider.jsx;symbol=AuthProvider;lines=9-34]
+- Using shadcn-style UI parts and an animated wrapper to build a polished dashboard. [cite:file=app/(main)/dashboard/_components/FeatureAssistants.jsx;symbol=FeatureAssistants;lines=10-50]
+
+Stack: Next.js 15, React, Clerk, Convex, OpenAI SDK pointed at OpenRouter, Radix UI, Tailwind, lucide-react, motion.
+
+Most interesting part: the room page links speech recognition to the AI, saves both sides of each exchange, and then speaks the answer. It falls back through exact, language-only and Indian-voice matches. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209]
+
+## 4. For developers
+
+**Purpose**
+- A voice-based AI coaching app where users choose a coaching option, topic and expert, then hold a spoken conversation. [cite:file=app/(main)/dashboard/_components/FeatureAssistants.jsx;symbol=FeatureAssistants;lines=10-50]
+
+**Main modules**
+- `FeatureAssistants` renders one card per coaching option, each wrapped in the input dialog. [cite:file=app/(main)/dashboard/_components/FeatureAssistants.jsx;symbol=FeatureAssistants;lines=10-50]
+- `UserInputDialog` collects a topic and expert, calls the Convex `CreateNewRoom` mutation, and routes to `/discussion-room/<id>`. [cite:file=app/(main)/dashboard/_components/UserInputDialog.jsx;symbol=onClickNext;lines=29-69]
+- `DiscussionRoom` loads the room and previous transcripts, finds the matching expert, and runs recognition and speech. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=DiscussionRoom;lines=13-53]
+- `AIModel` builds a prompt from the option's template by substituting `{user_topic}`. It calls a chat completion and returns the result. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+- `AuthProvider` creates or fetches the user in Convex after Clerk sign-in and shares it through context. [cite:file=app/AuthProvider.jsx;symbol=AuthProvider;lines=9-34]
+- `History` and `Feedback` only show placeholder text for now. [cite:file=app/(main)/dashboard/_components/History.jsx;symbol=History;lines=3-12] [cite:file=app/(main)/dashboard/_components/Feedback.jsx;symbol=Feedback;lines=3-12]
+
+**How data flows**
+- Recognition runs continuously with interim results. Each final chunk goes into local chat history and is sent to the AI. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144]
+- `handleSendToAI` saves the user line, calls the model, saves the AI line, appends it to history, and speaks it. A flag prevents overlapping sends. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=handleSendToAI;lines=169-209]
+- Stored transcripts are sorted by time and loaded into history when the room opens. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=DiscussionRoom;lines=13-53]
+
+**Tech stack**
+- Next.js 15.2.3 with Clerk, Convex, the `openai` package, Radix, Tailwind and motion, per `package.json`. The Convex schema and function files aren't shown.
+
+**How to run it**
+- The scripts are `npm run dev`, `build` and `start`. You would also need Clerk keys, a Convex deployment URL and an OpenRouter key set as environment variables. The Convex URL is read in [cite:file=app/provider.js;symbol=Provider;lines=7-17]
+
+**Worth a closer look**
+- The API key is a `NEXT_PUBLIC_` variable and the client uses `dangerouslyAllowBrowser`, so anyone can read the key in the browser. It should go behind a server route. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+- Only the latest message is sent, with the prompt as an `assistant` message. The model gets no conversation history, so it can't follow earlier turns. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]
+- `Provider` creates a new `ConvexReactClient` on every render, which should be memoised. [cite:file=app/provider.js;symbol=Provider;lines=7-17]
+- Speech recognition uses `webkitSpeechRecognition`, so it works only in Chrome and Edge. The code alerts otherwise. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=startListening;lines=104-144]
+- Voice initialisation is done twice in separate effects, and `checkVoices` can poll forever if no voices load. [cite:file=app/(main)/discussion-room/[roomid]/page.jsx;symbol=checkVoices;lines=56-96]
+- `Provider` doesn't wrap Convex with Clerk's token, so Convex functions may be called without user identity. [cite:file=app/provider.js;symbol=Provider;lines=7-17]
+- The AI reply is spoken with a free DeepSeek model through OpenRouter, so rate limits may apply. [cite:file=services/GlobalServices.jsx;symbol=AIModel;lines=9-28]

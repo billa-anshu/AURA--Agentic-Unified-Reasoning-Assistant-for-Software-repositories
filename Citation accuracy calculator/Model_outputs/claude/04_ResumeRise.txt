@@ -1,0 +1,78 @@
+## 1. In plain English
+
+ResumeRise is a career-practice website. Job seekers upload a resume, paste a job ad, and get a score for how well the two match. They can also rehearse an interview with an AI interviewer that listens and watches them, then gives feedback.
+
+Analogy: It's like a mock-interview coach and a resume proofreader rolled into one website.
+
+What you can do with it:
+- Check how well your resume fits a job ad and see which skills are missing. [cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+- Practice a spoken interview with questions made for a specific job. [cite:file=backend/main.py;symbol=start_interview;lines=171-219]
+- Read a written report on how the interview went. [cite:file=backend/main.py;symbol=generate_final_feedback;lines=321-394]
+
+## 2. For students: how to read this project
+
+1. `frontend/src/App.js`: a short file listing every page and its web address, so you see the app's shape first. [cite:file=frontend/src/App.js;symbol=App;lines=7-21]
+2. `frontend/src/pages/InterviewSetupPage.jsx`: the first step of an interview, a form that sends the resume and job text to the server. [cite:file=frontend/src/pages/InterviewSetupPage.jsx;symbol=handleStartInterview;lines=24-64]
+3. `frontend/src/pages/MockInterviewPage.jsx`: the busiest page, with camera, microphone, and the answer-and-next-question loop. [cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=handleSubmitAnswer;lines=325-365]
+4. `backend/main.py`: every server endpoint, each following the same pattern of building a prompt, calling the AI, and cleaning the reply. [cite:file=backend/main.py;symbol=app;lines=19-19]
+5. `frontend/src/pages/ResumeMatchPage.jsx`: a simpler page, good for seeing how a form talks to the server. [cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleSubmit;lines=26-66]
+
+```mermaid
+flowchart LR
+    A[Home page] --> B[Resume match page]
+    A --> C[Interview setup]
+    C --> D[Mock interview]
+    D --> E[Review page]
+    B --> F[Python server]
+    D --> F
+```
+
+Key terms:
+- **Endpoint:** a web address on the server that does one job, such as scoring an answer.
+- **LLM (large language model):** the AI that writes questions and feedback, here accessed through Groq.
+- **Transcription:** turning recorded speech into text.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Full-stack work: a React front end talking to a FastAPI back end over several endpoints. [cite:file=backend/main.py;symbol=health_check;lines=602-608]
+- Handling live media in the browser: camera access, audio recording, and periodic frame capture. [cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=captureFrame;lines=152-192]
+- Practical LLM integration: speech-to-text, vision, and text generation, with fallbacks when the AI fails. [cite:file=backend/main.py;symbol=fallback;lines=209-215]
+
+Stack: React (react-router, axios, Tailwind classes), Python FastAPI, Groq API, PyPDF2.
+
+Most interesting part: the resume matcher has the AI extract skills from both the job ad and the resume. It then compares the two lists in plain code and turns the overlap into a score and a match level. [cite:file=backend/main.py;symbol=matched_skills;lines=494-494]
+
+## 4. For developers
+
+**Purpose**
+- A resume-to-job matcher plus an AI mock-interview simulator. The API is titled "ResumeRise API". [cite:file=backend/main.py;symbol=app;lines=19-19]
+
+**Main modules**
+- `/match-resume-ml` extracts text from a PDF and asks the model for skill lists from the job ad and the resume (first 3000 characters of each). It then computes matched and missing skills, a clamped score, and LLM-written feedback. [cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+- `/transcribe-audio` writes the upload to a temp file, runs Whisper through Groq, and asks Llama for a one-word emotion label plus a short paragraph. [cite:file=backend/main.py;symbol=transcribe_audio;lines=64-114]
+- `/face-emotion-batch` base64-encodes up to five frames and sends them to a Groq vision model. [cite:file=backend/main.py;symbol=analyze_face_emotion_batch;lines=121-164]
+- `/start-interview`, `/submit-response`, `/next-question` and `/generate-final-feedback` generate questions, score answers 1–10, ask follow-ups from the last answer and average score, and write the final report. [cite:file=backend/main.py;symbol=generate_next_question;lines=271-314] [cite:file=backend/main.py;symbol=submit_response;lines=226-264]
+
+**How data flows**
+- Setup posts the resume, job text and interview type as a form. The returned questions go into `sessionStorage` and the user moves to the interview page. [cite:file=frontend/src/pages/InterviewSetupPage.jsx;symbol=handleStartInterview;lines=24-64]
+- Each submitted answer is transcribed if audio exists, then face frames are analysed, then the answer is scored, and finally the next question is requested. After five answers the app navigates to the review page. [cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=handleSubmitAnswer;lines=325-365]
+- The review page posts all responses to the server and shows the returned report. [cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62]
+
+**Tech stack**
+- Backend pins fastapi 0.104.1, uvicorn, groq, python-dotenv, PyPDF2 and python-multipart, per `requirements.txt`. The Groq client reads `GROQ_API_KEY` from the environment. [cite:file=backend/main.py;symbol=groq_client;lines=17-17]
+- The front end uses react-router, axios and Tailwind-style classes. `package.json` isn't shown, so versions are unknown.
+
+**How to run it**
+- The README is empty. The backend's `__main__` block starts uvicorn on `PORT`, defaulting to 10000. [cite:file=backend/main.py;symbol=port;lines=613-613]
+- The front end reads `REACT_APP_API_URL` and otherwise falls back to `http://localhost:8000`. Without that variable set, the front end and back end defaults don't line up. [cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62]
+- The tree includes a Dockerfile, Procfile and `render.yaml`, but their contents aren't shown.
+
+**Worth a closer look**
+- Frame capture likely stops after the first frame. The interval callback checks `isCapturingFrames`, which is a stale `false` value captured when recording starts. [cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=startCapturingFrames;lines=172-212]
+- `/start-interview` reads the resume file but never uses it. Questions come only from the job text. [cite:file=backend/main.py;symbol=start_interview;lines=171-219]
+- In `/transcribe-audio`, a malformed JSON reply from the emotion step falls into the catch-all handler. The endpoint then returns empty text even though transcription may have succeeded. [cite:file=backend/main.py;symbol=transcribe_audio;lines=64-114]
+- The match score is clamped between 25 and 95, so it never reads as 0% or 100%. [cite:file=backend/main.py;symbol=score;lines=519-519]
+- The results page reads `skill_score` and `semantic_score`, which the endpoint doesn't return. The UI falls back to `final_score` minus 5 or 3 (invented numbers). [cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+- The home page links to `/resume-builder`, but no such route exists. [cite:file=frontend/src/App.js;symbol=App;lines=7-21]
+- CORS allows every origin together with credentials. [cite:file=backend/main.py;symbol=app;lines=19-19]

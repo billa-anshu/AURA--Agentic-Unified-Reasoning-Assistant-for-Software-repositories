@@ -1,0 +1,93 @@
+# bookreview-api - AURA report
+
+> A Spring Boot REST API for managing books, user reviews, and authentication using JWT and OAuth2.  
+> Type: web app | Languages: .java: 76%, (no ext): 10%, .md: 3%, .cmd: 3%, .xml: 3%, .properties: 3%
+
+## In plain English
+This is a digital library system that lets people sign up, browse books, and leave comments. It is designed for readers who want to track their reading history and share opinions with others. The system securely manages user accounts and book information.
+
+Analogy: It acts like a secure community bulletin board where members can post notes about their favorite books.
+
+What you can do with it:
+- Create a personal account to securely store your reading preferences [1][4].
+- Browse organized lists of books and read comments left by other members [2][3].
+- Update your personal details and add profile pictures to your account [16].
+
+## For students: how to read this project
+
+1. **src/main/java/bookreview_api/service/UserService.java**: Start here to understand how user registration works and how passwords are securely encoded using BCrypt [1].
+2. **src/main/java/bookreview_api/controller/AuthController.java**: Next, see how registration requests are processed by delegating to the service and generating JWT tokens [4][10].
+3. **src/main/java/bookreview_api/security/SecurityConfig.java**: Read this to learn how the app integrates JWT filtering with OAuth2 flows and manages web security [8][11].
+4. **src/main/java/bookreview_api/controller/BookController.java**: Explore how endpoints under /api/books retrieve paginated and sorted book lists [2].
+5. **src/main/java/bookreview_api/controller/ReviewController.java**: Finally, examine how review operations interact with the Review, Book, and User repositories [3].
+
+```mermaid
+flowchart LR
+    A[Browser] --> B[Security Filter]
+    B --> C[Auth Controller]
+    C --> D[User Service]
+    D --> E[Database]
+    B --> F[Book Controller]
+    F --> E
+```
+
+**Key terms:**
+*   **JWT**: A token used to validate identity on every incoming request to secure API endpoints [9][14].
+*   **BCrypt**: A password encoding method used during user registration to store secure credentials [1].
+*   **DTO**: A transfer object that maps entity data, such as reviews, for API responses [5].
+
+## For recruiters and interviewers
+- **What it demonstrates:**
+  - Implements robust security by integrating JWT validation on every request with OAuth2 flows and BCrypt password encoding [1][8][9][14].
+  - Designs RESTful APIs with paginated book retrieval and structured data transfer objects for review responses [2][3][5].
+  - Manages user profiles including file uploads and leverages Spring Security context for identity resolution [6][16].
+- **Stack:** Java, Spring Boot, Maven, JWT, OAuth2
+- **Most interesting part:** The system seamlessly blends custom JWT filtering with OAuth2 success handlers to redirect users to a configurable frontend URL after login [8][15][17]. This approach ensures secure, stateless authentication while maintaining a smooth user experience across different authentication methods [11][14].
+
+## For developers: verified claims
+
+### Main modules
+- UserService handles user registration and uses BCryptPasswordEncoder for password encoding. [1]
+- BookController exposes endpoints under /api/books to retrieve paginated and sorted book lists. [2]
+- ReviewController manages review operations by interacting with Review, Book, and User repositories. [3]
+- AuthController provides a registration endpoint that utilizes UserService and JwtUtil. [4]
+- ReviewWithBookDTO maps Review entity data to a transfer object for API responses. [5]
+- UserController retrieves the current user ID from the Spring Security context. [6]
+- Review entity initializes the createdAt timestamp automatically during the pre-persist lifecycle event. [7]
+
+### How data flows
+- SecurityConfig integrates JwtFilter and CustomOAuth2SuccessHandler to manage web security and OAuth2 flows. [8]
+- JwtFilter extends OncePerRequestFilter to process JWT tokens for every incoming HTTP request. [9]
+- AuthController processes registration requests by delegating to UserService and generating tokens via JwtUtil. [10]
+- SecurityConfig configures CORS and integrates JWT filtering with OAuth2 success handling for web security. [11]
+
+### Tech stack
+- The project uses Maven for dependency management. [12]
+
+### How to run it
+- The application is built and managed using Maven. [13]
+
+### Worth a closer look
+- JwtFilter validates JWT tokens on every incoming request to secure API endpoints. [14]
+- CustomOAuth2SuccessHandler redirects users to a configurable frontend URL after successful OAuth2 authentication. [15]
+- UserProfileController allows users to manage their profile, including handling file uploads to a specified directory. [16]
+- CustomOAuth2SuccessHandler manages post-login redirection to a configurable frontend URL. [17]
+
+## Sources (each [n] is a claim checked against this code)
+[1] [cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=UserService;lines=14-54]
+[2] [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54]
+[3] [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=ReviewController;lines=22-62]
+[4] [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54]
+[5] [cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=ReviewWithBookDTO;lines=17-57]
+[6] [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=UserController;lines=21-61]
+[7] [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=Review;lines=43-83]
+[8] [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=22-62]
+[9] [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61]
+[10] [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54]
+[11] [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=22-62]
+[12] README / dependency files
+[13] README / dependency files
+[14] [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61]
+[15] [cite:file=src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java;symbol=CustomOAuth2SuccessHandler;lines=17-57]
+[16] [cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=UserProfileController;lines=19-59]
+[17] [cite:file=src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java;symbol=CustomOAuth2SuccessHandler;lines=17-57]

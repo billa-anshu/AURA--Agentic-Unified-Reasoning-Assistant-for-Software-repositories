@@ -1,0 +1,63 @@
+1. In plain English
+This project is a Student Attendance Management System that helps a school or college manage students, teachers, courses, classrooms, holidays, and attendance in one application. Administrators maintain academic information, teachers record and view student attendance, and students check their attendance records and overall attendance percentage.
+Analogy: It is like a digital attendance register combined with a college office management system.
+What you can do with it:
+- Manage students, teachers, courses, and classrooms.
+- Mark and view attendance for a selected date.
+- Check student attendance percentages and manage holiday records.
+2. For students: how to read this project
+Read the following files in order to understand the application from its entry point to its main features.
+1. FinalProjectApplication.java — Start here to understand how the Spring Boot application starts. [cite:file=src/main/java/com/example/demo/FinalProjectApplication.java;symbol=main;lines=9-13]
+2. LoginController.java — Learn how users log in with their email, password, and selected role, and how they are redirected to their dashboards. [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=handleLogin;lines=25-63]
+3. AdminController.java — Explore how administrators manage students, teachers, courses, classrooms, and holidays. [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60]
+4. TeacherDashboardController.java — Understand how teachers access their courses and classrooms, mark attendance, and view attendance records. [cite:file=src/main/java/com/example/demo/controller/TeacherDashboardController.java;symbol=teacherDashboard;lines=31-71]
+5. StudentDashboardController.java — Learn how a student views course-wise attendance and how the application calculates the displayed attendance percentage. [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=studentDashboard;lines=31-77]
+How the application works
+flowchart LR
+    A[User login] --> B[Role check]
+    B --> C[Admin]
+    B --> D[Teacher]
+    B --> E[Student]
+    C --> F[Manage college records]
+    D --> G[Mark attendance]
+    E --> H[View attendance]
+
+
+Key terms
+- Controller: Handles user requests and decides which page to display or which operation to perform.
+- Entity: Represents information stored in the database, such as a student, teacher, classroom, or attendance record.
+- Repository: Provides methods for accessing and retrieving stored information.
+3. For recruiters and interviewers
+What it demonstrates
+- Backend development: Uses Java and Spring Boot to organize application logic into controllers, services, and database entities. [cite:file=src/main/java/com/example/demo/FinalProjectApplication.java;symbol=FinalProjectApplication;lines=7-13]
+- Database modelling: Represents students, teachers, courses, classrooms, and attendance records with entity relationships and constraints. [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]
+- Role-based workflows: Implements separate login flows and dashboards for administrators, teachers, and students, using session attributes to retain user information. [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=handleLogin;lines=25-63]
+Stack: Java, Spring Boot 3.4.12, Spring MVC, Spring Data JPA, Jakarta Persistence, JSP, Maven, and a relational database configured through application.properties. The supplied material identifies the Maven and Spring Boot setup, but the specific database engine should be confirmed from the full configuration.
+Most interesting part
+The most interesting feature is the connection between academic organisation and attendance tracking. Teachers can work with their assigned courses and classrooms, while students can view attendance by course and date; the system also defines a uniqueness constraint to prevent duplicate attendance records for the same student, classroom, and date. [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]
+4. For developers
+Purpose
+- The application centralises academic administration and attendance tracking. The administrator dashboard gathers counts of students, teachers, classrooms, holidays, and courses for a quick overview. [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=dashboard;lines=26-66]
+- The project follows a layered structure, separating web requests, business operations, data entities, and database access into different packages. [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=AdminController;lines=20-60]
+Main modules
+- Authentication: AuthService checks administrator, teacher, and student credentials against their respective repositories. [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=AuthService;lines=16-53]
+- Administration: AdminServiceImpl implements operations for students, teachers, courses, classrooms, holidays, and attendance-related records. [cite:file=src/main/java/com/example/demo/service/impl/AdminServiceImpl.java;symbol=AdminServiceImpl;lines=16-56]
+- Teacher module: Teachers can access their courses, select a classroom, mark attendance, and view records for a date. [cite:file=src/main/java/com/example/demo/controller/TeacherDashboardController.java;symbol=teacherDashboard;lines=31-71]
+- Student module: The dashboard retrieves attendance for the selected date and calculates the percentage of courses marked present. [cite:file=src/main/java/com/example/demo/controller/StudentDashboardController.java;symbol=studentDashboard;lines=31-77]
+How data flows
+- A user submits login details, the authentication service validates them, and the controller stores role and user information in the session before redirecting to the appropriate dashboard. [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=handleLogin;lines=25-63]
+- When an administrator saves a classroom, the controller retrieves the selected course and teacher, associates them with the classroom, and delegates saving to the service. [cite:file=src/main/java/com/example/demo/controller/AdminController.java;symbol=newClassroomForm;lines=174-214]
+- When a teacher marks attendance, the controller passes the selected course, classroom, date, and present-student IDs to the service. [cite:file=src/main/java/com/example/demo/controller/TeacherDashboardController.java;symbol=saveAttendance;lines=75-83]
+Tech stack
+- Java and Spring Boot: Provide the application entry point and framework for running the backend. [cite:file=src/main/java/com/example/demo/FinalProjectApplication.java;symbol=FinalProjectApplication;lines=7-13]
+- JPA and entity relationships: Model database tables and relationships, including courses associated with teachers and classrooms. [cite:file=src/main/java/com/example/demo/entity/Course.java;symbol=Course;lines=30-61]
+- JSP and Spring MVC: Support server-rendered pages for login, administration, and role-specific dashboards, as indicated by the controllers and JSP file tree.
+- Maven: The pom.xml declares Spring Boot 3.4.12 as the parent version; Maven wrapper scripts are included in the repository.
+How to run it
+- Install a compatible JDK and ensure Maven configuration and database settings are available. Inspect pom.xml and src/main/resources/application.properties before running.
+- From the project root, try ./mvnw spring-boot:run on Linux/macOS or mvnw.cmd spring-boot:run on Windows. These are standard Maven wrapper commands; successful startup depends on the project's complete configuration and database availability.
+- After startup, open the application's /login route and sign in using valid credentials. The login controller maps this route to the login page. [cite:file=src/main/java/com/example/demo/controller/LoginController.java;symbol=showLogin;lines=21-61]
+Worth a closer look
+- Attendance integrity: The database mapping defines a unique combination of student, classroom, and date to help prevent duplicate attendance entries. [cite:file=src/main/java/com/example/demo/entity/AttendanceRecord.java;symbol=AttendanceRecord;lines=38-78]
+- Security improvements: Review password storage and authentication before deployment. The shown authentication service compares supplied passwords directly with stored values, so password hashing and appropriate access controls deserve attention. [cite:file=src/main/java/com/example/demo/service/AuthService.java;symbol=validateAdmin;lines=28-53]
+- Testing: The test class contains a basic Spring application-context loading test, which is a useful starting point for adding tests for login, attendance calculations, and administrative operations. [cite:file=src/test/java/com/example/demo/FinalProjectApplicationTests.java;symbol=contextLoads;lines=10-13]

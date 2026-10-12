@@ -1,0 +1,78 @@
+## 1. In plain English
+
+This is a website for booking home repair and cleaning help. Customers browse services such as plumbing, electrical work or cleaning, pick a worker, and send a booking request. Workers log in to accept or reject requests, and both sides get emails about it.
+
+Analogy: It works like a neighbourhood noticeboard of tradespeople, where you pick someone, ask them to come, and they reply yes or no.
+
+What you can do with it:
+- Register, log in and browse the available services. [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=index;lines=19-24]
+- Pick a worker and book them, then see your booking history. [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=myBookings;lines=120-136]
+- Log in as a worker to accept or reject incoming requests. [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=workerDashboard;lines=54-94]
+
+## 2. For students: how to read this project
+
+1. `model/` (Customer, HomeService, Worker, Booking): they show what the app stores and how the four relate. [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=8-48]
+2. `controller/HomeController.java`: a tiny example of a page that loads data and shows it. [cite:file=src/main/java/com/app/controller/HomeController.java;symbol=HomeController;lines=14-24]
+3. `controller/AuthController.java`: register, log in and log out, using a session to remember the user. [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=AuthController;lines=13-53]
+4. `controller/BookingController.java`: the core feature, where a booking is created and emails go out. [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52]
+5. `controller/WorkerController.java`: the worker's side, where a booking becomes accepted or rejected. [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=acceptBooking;lines=71-111]
+
+```mermaid
+flowchart LR
+    A[Customer] --> B[Pick service]
+    B --> C[Pick worker]
+    C --> D[Booking saved]
+    D --> E[Emails sent]
+    D --> F[Worker accepts or rejects]
+```
+
+Key terms:
+- **Session:** the server's short-term memory of who is logged in.
+- **Controller:** code that receives a web request and chooses what page to show next.
+- **Repository:** a helper that saves and finds records in the database.
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- Spring MVC with JPA entities and relationships between customers, services, workers and bookings. [cite:file=src/main/java/com/app/model/Worker.java;symbol=Worker;lines=7-33]
+- A multi-step workflow: pending, accepted or rejected, with a duplicate-request check. [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52]
+- Email notifications to both customer and worker. [cite:file=src/main/java/com/app/service/EmailService.java;symbol=sendMail;lines=37-52]
+
+Stack: Java 17, Spring Boot 3.3.5, Spring Data JPA/Hibernate, MySQL, JSP views, Maven (per the README and POM).
+
+Most interesting part: booking is a two-sided flow. A customer's request starts as PENDING and emails both people. The assigned worker's decision then updates the status and emails the customer. [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=rejectBooking;lines=115-155]
+
+## 4. For developers
+
+**Purpose**
+- A server-rendered home-services booking app where customers book workers and workers respond. [cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=HomeServicesApplication;lines=7-11]
+
+**Main modules**
+- `AuthController` handles registration, login and logout, and resumes a pending service selection after login. [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=login;lines=37-56]
+- `ServiceController` redirects anonymous users to login while remembering the chosen service. It lists workers for a service. [cite:file=src/main/java/com/app/controller/ServiceController.java;symbol=selectService;lines=22-40]
+- `BookingController` checks for a duplicate pending booking, saves a PENDING booking, and emails both parties. [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52]
+- `WorkerController` provides worker login, a dashboard, and accept/reject actions that check the booking belongs to that worker. [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=acceptBooking;lines=71-111]
+- `DataLoader` seeds three services and four workers when the services table is empty. [cite:file=src/main/java/com/app/service/DataLoader.java;symbol=run;lines=21-50]
+- `EmailService` wraps `JavaMailSender` and returns false on failure instead of throwing. [cite:file=src/main/java/com/app/service/EmailService.java;symbol=EmailService;lines=12-52]
+
+**How data flows**
+- A customer logs in and the `Customer` object is stored in the HTTP session. [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=login;lines=37-56]
+- They choose a service and the workers for it are loaded by service ID. [cite:file=src/main/java/com/app/controller/ServiceController.java;symbol=workers;lines=32-40]
+- Booking saves a `Booking` linking customer, service and worker, and sends two emails. [cite:file=src/main/java/com/app/controller/BookingController.java;symbol=BookingController;lines=12-52]
+- The worker's dashboard lists bookings by worker ID, newest first. [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=workerDashboard;lines=54-94]
+
+**Tech stack**
+- Spring Boot, Spring MVC controllers returning JSP view names, JPA entities with MySQL per the README. [cite:file=src/main/java/com/app/model/Customer.java;symbol=Customer;lines=7-28]
+- `application.properties` and the full POM aren't shown, so the dependency list and database settings can't be confirmed.
+
+**How to run it**
+- The README gives no run steps. You would likely need MySQL, mail settings and JSP support configured, with `main` as the entry point. [cite:file=src/main/java/com/app/HomeServicesApplication.java;symbol=main;lines=8-11]
+
+**Worth a closer look**
+- The README claims BCrypt hashing and Spring Security, but registration stores the raw password and login matches it in plain text. [cite:file=src/main/java/com/app/controller/AuthController.java;symbol=register;lines=24-56]
+- Worker login needs only an email, with no password. Anyone who knows a worker's email can open their dashboard. [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=workerLoginPage;lines=33-73]
+- Accept and reject are state-changing GET links, which is a CSRF risk. [cite:file=src/main/java/com/app/controller/WorkerController.java;symbol=rejectBooking;lines=115-155]
+- The README lists admin features, but the code shown has no admin controller.
+- Status is a free-text string. The entity defaults it to "Booked", but the controller sets "PENDING", and the duplicate check compares against that literal. [cite:file=src/main/java/com/app/model/Booking.java;symbol=beforeSave;lines=31-48]
+- `sendBookingMail` is defined but unused in the code shown. [cite:file=src/main/java/com/app/service/EmailService.java;symbol=sendBookingMail;lines=16-52]
+- The session stores whole entity objects. Their lazy relations may cause problems when read later outside a transaction. [cite:file=src/main/java/com/app/model/Booking.java;symbol=Booking;lines=8-48]

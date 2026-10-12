@@ -1,0 +1,97 @@
+# Virtual-Tour-Creater - AURA report
+
+> A full-stack virtual tour platform that allows users to create, stitch, and view 360-degree panoramic tours using React and Flask.  
+> Type: web app | Languages: .jpg: 38%, .png: 22%, .js: 21%, .py: 3%, .txt: 3%, .json: 3%
+
+## In plain English
+This is a website that lets anyone build and explore immersive 360-degree virtual tours of real spaces. It is designed for real estate agents, museum curators, or travelers who want to showcase locations without physical visits. The system handles the technical work of joining photos into a seamless view so users can simply click and look around.
+
+Analogy: It is like a digital dollhouse where you can walk through rooms and look in every direction, just like standing in the actual place.
+
+What you can do with it:
+- Create new tours by uploading photos of different rooms [1][4]
+- Explore existing tours by clicking to move between connected spaces [5][17]
+- Sign up or log in to save your work and access the platform [8][16]
+
+## For students: how to read this project
+
+1. **frontend/src/pages/VirtualTourForm.js**: Start here to see how users input data and how a unique ID is generated for each new tour. [4][6]
+2. **backend/stitcher.py**: Read this to understand how the server combines multiple images into a single panorama and cleans up the result. [2]
+3. **backend/app.py**: Examine this to see how the backend retrieves tour data from the database and handles incoming requests. [3][18]
+4. **frontend/src/pages/PanoramaViewer.js**: Look here to learn how the interactive 360-degree view is initialized and how node states are managed. [5][17]
+5. **frontend/src/pages/Home.js**: Finish with this to understand how the app checks if a user is logged in before allowing them to create tours. [8][9]
+
+```mermaid
+flowchart LR
+    A[Browser] --> B[React Frontend]
+    B --> C[Flask Backend]
+    C --> D[Supabase Database]
+    C --> E[Image Stitcher]
+    B --> F[Authentication Service]
+    F --> D
+```
+
+Key terms:
+*   **Stitching**: The process of combining separate image files into one continuous panoramic view. [2]
+*   **Node**: A specific point or room within a virtual tour that the viewer can navigate to. [5]
+*   **UUID**: A unique identifier automatically generated to distinguish each new tour from others. [6]
+
+## For recruiters and interviewers
+- **What it demonstrates:**
+  - Full-stack integration using React for the frontend and Flask for backend services [13].
+  - Implementation of secure user authentication and database management via Supabase [14][16].
+  - State management for complex UI interactions, including image uploads and tour data retrieval [4][10].
+- **Stack:** React, Flask, Supabase, and React Router [13][14].
+- **Most interesting part:** The system stitches multiple images into a single 360-degree panorama while removing black areas [2]. This creates an interactive virtual tour experience managed through specific viewer components [5][17].
+
+## For developers: verified claims
+
+### Purpose
+- The platform allows users to create, stitch, and view 360-degree panoramic tours. [1]
+
+### Main modules
+- The backend stitcher function combines image paths into a single panorama and removes black areas. [2]
+- The backend provides an endpoint to retrieve tour data including the start room from Supabase. [3]
+- The frontend form component manages room states and image uploads for creating new tours. [4]
+- The PanoramaViewer component initializes a viewer instance and manages node states for displaying tours. [5]
+- The VirtualTourForm component generates a unique UUID for each new tour upon initialization. [6]
+- The TourEditorPage component uses a ref to manage the panorama element and stores panorama URLs in state. [7]
+- The Home page component checks authentication status before allowing navigation to the tour creation page. [8]
+
+### How data flows
+- Users must be authenticated to create tours; otherwise, they are redirected to the login page. [9]
+- The AllToursPage fetches tour data from Supabase and manages loading states for display. [10]
+- The signup process calls Supabase auth to register users with email and password, handling errors via state. [11]
+- The login process authenticates users via Supabase using email and password, logging errors to the console. [12]
+
+### Tech stack
+- The application uses React for the frontend and Flask for the backend services. [13]
+- The frontend utilizes React Router for navigation and Supabase for database and authentication services. [14]
+
+### How to run it
+- The application routes are defined in App.js, mapping paths to specific page components. [15]
+
+### Worth a closer look
+- Authentication is handled via Supabase, supporting both signup and login with email and password. [16]
+- The PanoramaViewer component manages loading states and node data to render the interactive tour experience. [17]
+- The backend endpoint logs incoming GET requests to the console for debugging tour data retrieval. [18]
+
+## Sources (each [n] is a claim checked against this code)
+[1] [cite:file=frontend/src/pages/VirtualTourForm.js;symbol=VirtualTourForm;lines=6-46] [cite:file=backend/stitcher.py;symbol=stitch_images;lines=4-33] [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=PanoramaViewer;lines=15-55]
+[2] [cite:file=backend/stitcher.py;symbol=stitch_images;lines=4-33]
+[3] [cite:file=backend/app.py;symbol=get_tour_data_endpoint;lines=502-631]
+[4] [cite:file=frontend/src/pages/VirtualTourForm.js;symbol=VirtualTourForm;lines=6-46]
+[5] [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=PanoramaViewer;lines=15-55]
+[6] [cite:file=frontend/src/pages/VirtualTourForm.js;symbol=VirtualTourForm;lines=6-46]
+[7] [cite:file=frontend/src/pages/TourEditorPage.js;symbol=TourEditorPage;lines=27-67]
+[8] [cite:file=frontend/src/pages/Home.js;symbol=handleCreateClick;lines=8-48]
+[9] [cite:file=frontend/src/pages/Home.js;symbol=handleCreateClick;lines=8-48]
+[10] [cite:file=frontend/src/pages/AllToursPage.js;symbol=AllToursPage;lines=5-45]
+[11] [cite:file=frontend/src/pages/Signup.js;symbol=handleSignup;lines=12-52]
+[12] [cite:file=frontend/src/pages/Login.js;symbol=handleLogin;lines=12-52]
+[13] [cite:file=backend/app.py;symbol=get_tour_data_endpoint;lines=502-631] [cite:file=frontend/src/App.js;symbol=App;lines=16-32]
+[14] [cite:file=frontend/src/App.js;symbol=App;lines=16-32] [cite:file=frontend/src/pages/Signup.js;symbol=handleSignup;lines=12-52]
+[15] [cite:file=frontend/src/App.js;symbol=App;lines=16-32]
+[16] [cite:file=frontend/src/pages/Signup.js;symbol=handleSignup;lines=12-52] [cite:file=frontend/src/pages/Login.js;symbol=handleLogin;lines=12-52]
+[17] [cite:file=frontend/src/pages/PanoramaViewer.js;symbol=PanoramaViewer;lines=15-55]
+[18] [cite:file=backend/app.py;symbol=get_tour_data_endpoint;lines=502-631]

@@ -1,0 +1,78 @@
+# Repository Report: bookreview-api
+
+## 1. In plain English
+
+This is the engine behind a book review website: it stores books and members, lets people sign up and log in, and lets logged-in readers post, edit and delete their own star ratings and comments about books. It would be used by the developers building the reading-site front end, and behind the scenes by two kinds of people — ordinary readers and site administrators who can see every user and every review. Analogy: it is like the back office of a library — readers can write their thoughts in the margins of a book, but only the reader who wrote a note (or the head librarian) is allowed to rub it out, and the front desk keeps a running average of every book's score. What you can do with it:
+
+- Register and log in as a reader, receiving a signed token that proves who you are [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54]
+- Browse, search and filter books by title, author, genre or minimum rating, with paging [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54]
+- Post a review and have the book's average rating and review count recalculated automatically [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77]
+
+## 2. For students: how to read this project
+
+1. `BookreviewApiApplication.java` — the two-line starting point; read first to see how a Spring Boot app boots [cite:file=src/main/java/bookreview_api/BookreviewApiApplication.java;symbol=main;lines=9-12].
+2. `model/User.java` and `model/Review.java` — the data shapes and their relationship rules, including the unique-email and timestamp hooks [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=onCreate;lines=51-84].
+3. `security/JwtUtil.java` — read this early to understand what the "token" handed out at login actually contains [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=generateToken;lines=29-63].
+4. `security/SecurityConfig.java` — the rulebook saying which URLs are public, which need a login, and which need admin [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=SecurityConfig;lines=22-62].
+5. `controller/ReviewController.java` — the richest controller; read last, as it combines identity, ownership checks and rating maths [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=ReviewController;lines=22-62].
+
+```mermaid
+flowchart LR
+  Reader[Reader] --> Login[Sign up or log in]
+  Login --> Token[Signed pass]
+  Token --> Books[Browse books]
+  Token --> Write[Write a review]
+  Write --> Avg[Book score recalculated]
+  Admin[Administrator] --> Manage[Manage all users]
+```
+
+Key terms:
+- **Entity**: a Java class mapped to a database table, e.g. `Book` or `User` [cite:file=src/main/java/bookreview_api/model/Book.java;symbol=Book;lines=30-61].
+- **JWT**: a signed pass the server issues after login so later requests need no session [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=validateToken;lines=52-63].
+- **Filter**: code that runs before every request; here it reads the pass and sets the current user [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61].
+
+## 3. For recruiters and interviewers
+
+What it demonstrates:
+- A complete stateless REST API with JWT auth, role-based URL rules and an OAuth2 login path that mints the same token for social sign-ins [cite:file=src/main/java/bookreview_api/security/CustomOAuth2SuccessHandler.java;symbol=CustomOAuth2SuccessHandler;lines=17-57].
+- Deliberate DTO usage to avoid leaking lazy-loaded relations, with a hand-written mapper building nested book and user views [cite:file=src/main/java/bookreview_api/dto/ReviewWithBookDTO.java;symbol=ReviewWithBookDTO;lines=17-57].
+- Denormalised aggregate upkeep: a helper recomputes a book's average rating and count on every add, edit and delete [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=updateBookRating;lines=37-77].
+
+Stack: Java + Spring Boot 4.0.6 (Maven), Spring Web MVC, Spring Security with JWT and OAuth2, Spring Data JPA/Hibernate, BCrypt password hashing, springdoc OpenAPI (Swagger), Docker; CI via GitHub Actions.
+
+Most interesting part: ownership is enforced inside the controller rather than by annotations — delete and update both compare the review's author ID with the caller's and only additionally allow an ADMIN through, returning a friendly error map otherwise [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getCurrentUserId;lines=33-73].
+
+## 4. For developers
+
+**Purpose**
+- A REST API for a book review product: public browsing of books and reviews, authenticated writing, and admin-only user management [cite:file=src/main/java/bookreview_api/controller/HealthController.java;symbol=HealthController;lines=10-19].
+- Ships a Swagger UI definition with a Bearer-authentication scheme so the API is self-documenting [cite:file=src/main/java/bookreview_api/config/SwaggerConfig.java;symbol=customOpenAPI;lines=17-38].
+
+**Main modules**
+- `UserService` centralises registration and login, checking email uniqueness and BCrypt-matching passwords [cite:file=src/main/java/bookreview_api/service/UserService.java;symbol=register;lines=22-62].
+- `JwtFilter` intercepts each request, validates the bearer token, loads the user to fetch the current role, and populates the security context [cite:file=src/main/java/bookreview_api/security/JwtFilter.java;symbol=JwtFilter;lines=21-61].
+- `BookController` exposes paged listing, search, and a filter endpoint that branches between genre, author and minimum-rating queries [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=getBookById;lines=38-76].
+- `UserController` and `UserProfileController` both handle profiles and picture upload; they overlap in responsibility [cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=uploadProfilePicture;lines=33-73].
+
+**How data flows**
+- Register checks for an existing email, encodes the password, saves the user, then returns a generated token plus basic profile fields [cite:file=src/main/java/bookreview_api/controller/AuthController.java;symbol=AuthController;lines=14-54].
+- Every protected request carries `Authorization: Bearer …`; the filter extracts the user ID, which controllers read back from the security context [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getCurrentUserId;lines=26-66].
+- Adding a review resolves the book and user, constructs a fresh `Review`, saves it, then recomputes the book's rating [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getReviewsByBookId;lines=55-95].
+- "My reviews" manually forces initialisation of the lazy book and user associations before mapping to the DTO, avoiding serialisation errors [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getMyReviews;lines=74-114].
+- Uploaded pictures are written to disk and served back through a resource handler mapping `/uploads/**` to the `uploads` folder [cite:file=src/main/java/bookreview_api/WebConfig.java;symbol=addResourceHandlers;lines=11-16].
+
+**Tech stack**
+- Spring Boot parent 4.0.6, Spring Data JPA with Hibernate, Spring Security, JJWT, and a `@SpringBootTest` context test as the only test [cite:file=src/test/java/bookreview_api/BookreviewApiApplicationTests.java;symbol=contextLoads;lines=10-13].
+- CORS is explicitly whitelisted for localhost plus several Vercel deployment host patterns, with credentials allowed [cite:file=src/main/java/bookreview_api/security/SecurityConfig.java;symbol=corsConfigurationSource;lines=31-71].
+
+**How to run it**
+- Standard Spring Boot launch through `main`; the JWT secret and expiration come from properties, so those must be configured [cite:file=src/main/java/bookreview_api/security/JwtUtil.java;symbol=getSigningKey;lines=23-63].
+- A `/api/health` endpoint returns status and a timestamp for uptime checks [cite:file=src/main/java/bookreview_api/controller/HealthController.java;symbol=HealthController;lines=10-19].
+
+**Worth a closer look**
+- `SecurityConfig` routes `/api/users/**` to ADMIN, yet individual methods inside `UserController` also re-check the role in code — double enforcement that is easy to desynchronise [cite:file=src/main/java/bookreview_api/controller/UserController.java;symbol=getAllUsers;lines=36-76].
+- The `User` entity marks `name` as `unique`, which will reject two genuinely different people who share a name [cite:file=src/main/java/bookreview_api/model/User.java;symbol=User;lines=39-69].
+- `ReviewController.getReviewsByBookId` returns the raw `Review` entity list, so lazy book/user fields may serialise inconsistently compared with the DTO-based `/my` endpoint [cite:file=src/main/java/bookreview_api/controller/ReviewController.java;symbol=getReviewsByBookId;lines=55-95].
+- Two parallel profile-picture implementations write to different folders (`uploads/profiles/` vs `uploads/`), which is a consolidation candidate [cite:file=src/main/java/bookreview_api/controller/UserProfileController.java;symbol=getProfilePictureUrl;lines=66-93].
+- `BookController.filterBooks` silently ignores `minRating` whenever a genre or author is also supplied, since the branches are exclusive [cite:file=src/main/java/bookreview_api/controller/BookController.java;symbol=BookController;lines=14-54].
+- The `Review` table carries a database-level unique constraint on (user, book), but the controller never catches the resulting violation, so a duplicate post would surface as a raw error [cite:file=src/main/java/bookreview_api/model/Review.java;symbol=onCreate;lines=51-84].

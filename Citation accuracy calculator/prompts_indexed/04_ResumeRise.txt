@@ -1,0 +1,2467 @@
+You are analyzing a software repository. You are given:
+A. background (README and dependency file), B. the file tree, C. a SYMBOL INDEX produced by a code
+parser, D. the source code with line numbers (shown as "N | code").
+
+=== A. BACKGROUND ===
+README:
+
+
+requirements.txt:
+fastapi==0.104.1
+uvicorn==0.24.0
+groq>=1.0.0
+python-dotenv==1.0.0
+PyPDF2==3.0.1
+python-multipart==0.0.6
+
+
+=== B. FILE TREE ===
+README.md
+backend/Dockerfile
+backend/Procfile
+backend/main.py
+backend/render.yaml
+backend/requirements.txt
+backend/resume_parser.py
+backend/runtime.txt
+backend/test_ml.py
+frontend/README.md
+frontend/package.json
+frontend/postcss.config.js
+frontend/public/favicon.ico
+frontend/public/index.html
+frontend/public/logo192.png
+frontend/public/logo512.png
+frontend/public/manifest.json
+frontend/public/robots.txt
+frontend/src/App.css
+frontend/src/App.js
+frontend/src/App.test.js
+frontend/src/index.css
+frontend/src/index.js
+frontend/src/logo.svg
+frontend/src/pages/HomePage.jsx
+frontend/src/pages/InterviewReviewPage.jsx
+frontend/src/pages/InterviewSetupPage.jsx
+frontend/src/pages/MockInterviewPage.jsx
+frontend/src/pages/ResumeMatchPage.jsx
+frontend/src/reportWebVitals.js
+frontend/src/setupTests.js
+frontend/tailwind.config.js
+frontend/vercel.json
+package.json
+requirements.txt
+vercel.json
+
+=== C. SYMBOL INDEX (each line is a ready-made citation tag) ===
+[cite:file=backend/main.py;symbol=groq_client;lines=17-17]
+[cite:file=backend/main.py;symbol=app;lines=19-19]
+[cite:file=backend/main.py;symbol=SubmitResponse;lines=33-39]
+[cite:file=backend/main.py;symbol=InterviewTurn;lines=41-47]
+[cite:file=backend/main.py;symbol=NextQuestionRequest;lines=49-53]
+[cite:file=backend/main.py;symbol=FinalFeedbackRequest;lines=55-57]
+[cite:file=backend/main.py;symbol=transcribe_audio;lines=64-114]
+[cite:file=backend/main.py;symbol=audio_bytes;lines=66-66]
+[cite:file=backend/main.py;symbol=tmp_file_path;lines=70-70]
+[cite:file=backend/main.py;symbol=transcription;lines=74-77]
+[cite:file=backend/main.py;symbol=transcribed_text;lines=79-79]
+[cite:file=backend/main.py;symbol=analysis_prompt;lines=81-86]
+[cite:file=backend/main.py;symbol=analysis;lines=88-93]
+[cite:file=backend/main.py;symbol=analyze_face_emotion_batch;lines=121-164]
+[cite:file=backend/main.py;symbol=encoded_images;lines=123-123]
+[cite:file=backend/main.py;symbol=img_bytes;lines=125-125]
+[cite:file=backend/main.py;symbol=img_base64;lines=126-126]
+[cite:file=backend/main.py;symbol=content;lines=134-134]
+[cite:file=backend/main.py;symbol=response;lines=141-146]
+[cite:file=backend/main.py;symbol=result;lines=148-148]
+[cite:file=backend/main.py;symbol=start_interview;lines=171-219]
+[cite:file=backend/main.py;symbol=questions;lines=199-199]
+[cite:file=backend/main.py;symbol=fallback;lines=209-215]
+[cite:file=backend/main.py;symbol=submit_response;lines=226-264]
+[cite:file=backend/main.py;symbol=generate_next_question;lines=271-314]
+[cite:file=backend/main.py;symbol=history;lines=272-272]
+[cite:file=backend/main.py;symbol=total_score;lines=280-280]
+[cite:file=backend/main.py;symbol=avg_score;lines=281-281]
+[cite:file=backend/main.py;symbol=asked_questions;lines=282-282]
+[cite:file=backend/main.py;symbol=last_answer;lines=283-283]
+[cite:file=backend/main.py;symbol=prompt;lines=285-291]
+[cite:file=backend/main.py;symbol=next_question;lines=301-301]
+[cite:file=backend/main.py;symbol=generate_final_feedback;lines=321-394]
+[cite:file=backend/main.py;symbol=responses;lines=322-322]
+[cite:file=backend/main.py;symbol=transcript;lines=330-330]
+[cite:file=backend/main.py;symbol=feedback;lines=366-366]
+[cite:file=backend/main.py;symbol=match_resume_ml;lines=401-595]
+[cite:file=backend/main.py;symbol=pdf_bytes;lines=412-412]
+[cite:file=backend/main.py;symbol=pdf_reader;lines=413-413]
+[cite:file=backend/main.py;symbol=resume_text;lines=414-414]
+[cite:file=backend/main.py;symbol=text;lines=416-416]
+[cite:file=backend/main.py;symbol=jd_skill_prompt;lines=427-435]
+[cite:file=backend/main.py;symbol=jd_response;lines=437-442]
+[cite:file=backend/main.py;symbol=jd_content;lines=444-444]
+[cite:file=backend/main.py;symbol=job_skills;lines=451-451]
+[cite:file=backend/main.py;symbol=resume_skill_prompt;lines=459-467]
+[cite:file=backend/main.py;symbol=resume_response;lines=469-474]
+[cite:file=backend/main.py;symbol=resume_content;lines=476-476]
+[cite:file=backend/main.py;symbol=resume_skills;lines=483-483]
+[cite:file=backend/main.py;symbol=resume_skills_lower;lines=491-491]
+[cite:file=backend/main.py;symbol=job_skills_lower;lines=492-492]
+[cite:file=backend/main.py;symbol=matched_skills;lines=494-494]
+[cite:file=backend/main.py;symbol=missing_skills;lines=495-495]
+[cite:file=backend/main.py;symbol=found;lines=502-502]
+[cite:file=backend/main.py;symbol=score;lines=519-519]
+[cite:file=backend/main.py;symbol=match_level;lines=525-525]
+[cite:file=backend/main.py;symbol=recommendation;lines=526-526]
+[cite:file=backend/main.py;symbol=feedback_prompt;lines=541-554]
+[cite:file=backend/main.py;symbol=feedback_response;lines=556-561]
+[cite:file=backend/main.py;symbol=feedback_content;lines=563-563]
+[cite:file=backend/main.py;symbol=llm_feedback;lines=570-570]
+[cite:file=backend/main.py;symbol=health_check;lines=602-608]
+[cite:file=backend/main.py;symbol=port;lines=613-613]
+[cite:file=frontend/src/App.js;symbol=App;lines=7-21]
+[cite:file=frontend/src/pages/HomePage.jsx;symbol=handleScroll;lines=8-48]
+[cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=generateFinalReport;lines=22-62]
+[cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=avgScore;lines=77-117]
+[cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=getEmotionColor;lines=80-120]
+[cite:file=frontend/src/pages/InterviewReviewPage.jsx;symbol=getEmotionBg;lines=94-134]
+[cite:file=frontend/src/pages/InterviewSetupPage.jsx;symbol=handleStartInterview;lines=24-64]
+[cite:file=frontend/src/pages/InterviewSetupPage.jsx;symbol=handleInputChange;lines=89-129]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=loadInterviewConfig;lines=44-84]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=initCamera;lines=84-124]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=formatTime;lines=145-185]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=captureFrame;lines=152-192]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=startCapturingFrames;lines=172-212]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=stopCapturingFrames;lines=191-231]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=startRecording;lines=200-240]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=stopRecording;lines=240-280]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=analyzeFacialExpressions;lines=249-289]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=generateNextQuestion;lines=273-313]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=handleSubmitAnswer;lines=325-365]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=handleEndInterview;lines=424-464]
+[cite:file=frontend/src/pages/MockInterviewPage.jsx;symbol=getEmotionColor;lines=443-483]
+[cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleFileChange;lines=16-56]
+[cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=handleSubmit;lines=26-66]
+[cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=getScoreColor;lines=58-98]
+[cite:file=frontend/src/pages/ResumeMatchPage.jsx;symbol=getScoreBg;lines=64-104]
+
+=== D. SOURCE CODE WITH LINE NUMBERS ===
+--- backend/main.py ---
+   1 | import json
+   2 | import os
+   3 | import base64
+   4 | import tempfile
+   5 | import re
+   6 | from fastapi import FastAPI, UploadFile, File, HTTPException, Form
+   7 | from fastapi.middleware.cors import CORSMiddleware
+   8 | from fastapi.responses import JSONResponse
+   9 | from pydantic import BaseModel
+  10 | from typing import List, Optional, Dict, Any
+  11 | from datetime import datetime
+  12 | import groq
+  13 | from dotenv import load_dotenv
+  14 | 
+  15 | load_dotenv()
+  16 | 
+  17 | groq_client = groq.Groq(api_key=os.getenv("GROQ_API_KEY"))
+  18 | 
+  19 | app = FastAPI(title="ResumeRise API")
+  20 | 
+  21 | app.add_middleware(
+  22 |     CORSMiddleware,
+  23 |     allow_origins=["*"],
+  24 |     allow_credentials=True,
+  25 |     allow_methods=["*"],
+  26 |     allow_headers=["*"],
+  27 | )
+  28 | 
+  29 | # =============================
+  30 | # PYDANTIC MODELS
+  31 | # =============================
+  32 | 
+  33 | class SubmitResponse(BaseModel):
+  34 |     question_text: str
+  35 |     response_text: str
+  36 |     audio_emotion: Optional[str] = None
+  37 |     face_emotion: Optional[str] = None
+  38 |     interview_type: str
+  39 |     response_time_seconds: Optional[float] = None
+  40 | 
+  41 | class InterviewTurn(BaseModel):
+  42 |     question: str
+  43 |     transcription: str
+  44 |     emotion: str
+  45 |     score: float
+  46 |     feedback: str
+  47 |     timestamp: Optional[str] = None
+  48 | 
+  49 | class NextQuestionRequest(BaseModel):
+  50 |     interview_history: List[InterviewTurn]
+  51 |     interview_type: str
+  52 |     job_role: Optional[str] = None
+  53 |     difficulty: Optional[str] = "medium"
+  54 | 
+  55 | class FinalFeedbackRequest(BaseModel):
+  56 |     responses: List[Dict[str, Any]]
+  57 |     config: Dict[str, Any]
+  58 | 
+  59 | # =============================
+  60 | # TRANSCRIBE AUDIO
+  61 | # =============================
+  62 | 
+  63 | @app.post("/transcribe-audio")
+  64 | async def transcribe_audio(file: UploadFile = File(...)):
+  65 |     try:
+  66 |         audio_bytes = await file.read()
+  67 |         
+  68 |         with tempfile.NamedTemporaryFile(delete=False, suffix=".webm") as tmp_file:
+  69 |             tmp_file.write(audio_bytes)
+  70 |             tmp_file_path = tmp_file.name
+  71 |         
+  72 |         try:
+  73 |             with open(tmp_file_path, "rb") as audio_file:
+  74 |                 transcription = groq_client.audio.transcriptions.create(
+  75 |                     file=(file.filename, audio_file),
+  76 |                     model="whisper-large-v3-turbo",
+  77 |                 )
+  78 |             
+  79 |             transcribed_text = transcription.text
+  80 |             
+  81 |             analysis_prompt = f"""You're a friendly interviewer. Based on this answer, write a brief paragraph:
+  82 | 
+  83 | Candidate said: "{transcribed_text}"
+  84 | 
+  85 | Return JSON: 
+  86 | {{"emotion_label": "one word summary", "emotion_summary": "your paragraph here"}}"""
+  87 | 
+  88 |             analysis = groq_client.chat.completions.create(
+  89 |                 model="llama-3.3-70b-versatile",
+  90 |                 temperature=0.7,
+  91 |                 max_tokens=250,
+  92 |                 messages=[{"role": "user", "content": analysis_prompt}],
+  93 |             )
+  94 |             
+  95 |             result = json.loads(analysis.choices[0].message.content.strip())
+  96 |             
+  97 |             return JSONResponse(content={
+  98 |                 "text": transcribed_text,
+  99 |                 "audio_emotion": result.get("emotion_label", "neutral"),
+ 100 |                 "emotion_analysis": result.get("emotion_summary", ""),
+ 101 |                 "timestamp": datetime.now().isoformat()
+ 102 |             })
+ 103 |             
+ 104 |         finally:
+ 105 |             os.unlink(tmp_file_path)
+ 106 |         
+ 107 |     except Exception as e:
+ 108 |         print(f"Transcription error: {e}")
+ 109 |         return JSONResponse(content={
+ 110 |             "text": "",
+ 111 |             "audio_emotion": "neutral",
+ 112 |             "emotion_analysis": "Could not transcribe audio.",
+ 113 |             "timestamp": datetime.now().isoformat()
+ 114 |         })
+ 115 | 
+ 116 | # =============================
+ 117 | # FACE EMOTION BATCH
+ 118 | # =============================
+ 119 | 
+ 120 | @app.post("/face-emotion-batch")
+ 121 | async def analyze_face_emotion_batch(images: List[UploadFile] = File(...)):
+ 122 |     try:
+ 123 |         encoded_images = []
+ 124 |         for img in images[:5]:
+ 125 |             img_bytes = await img.read()
+ 126 |             img_base64 = base64.b64encode(img_bytes).decode('utf-8')
+ 127 |             encoded_images.append(img_base64)
+ 128 |         
+ 129 |         prompt = f"""You have {len(encoded_images)} frames of a candidate's face during an answer.
+ 130 | Write a natural paragraph about their emotional state.
+ 131 | 
+ 132 | Return JSON: {{"emotion": "one word", "analysis": "paragraph"}}"""
+ 133 |         
+ 134 |         content = [{"type": "text", "text": prompt}]
+ 135 |         for img_base64 in encoded_images:
+ 136 |             content.append({
+ 137 |                 "type": "image_url",
+ 138 |                 "image_url": {"url": f"data:image/jpeg;base64,{img_base64}"}
+ 139 |             })
+ 140 |         
+ 141 |         response = groq_client.chat.completions.create(
+ 142 |             model="llama-3.2-11b-vision-preview",
+ 143 |             messages=[{"role": "user", "content": content}],
+ 144 |             temperature=0.6,
+ 145 |             max_tokens=300,
+ 146 |         )
+ 147 |         
+ 148 |         result = json.loads(response.choices[0].message.content.strip())
+ 149 |         
+ 150 |         return JSONResponse(content={
+ 151 |             "face_emotion": result.get("emotion", "neutral"),
+ 152 |             "face_analysis": result.get("analysis", "Candidate appeared composed."),
+ 153 |             "frames_analyzed": len(encoded_images),
+ 154 |             "timestamp": datetime.now().isoformat()
+ 155 |         })
+ 156 |         
+ 157 |     except Exception as e:
+ 158 |         print(f"Face analysis error: {e}")
+ 159 |         return JSONResponse(content={
+ 160 |             "face_emotion": "neutral",
+ 161 |             "face_analysis": "Candidate maintained neutral expression.",
+ 162 |             "frames_analyzed": 0,
+ 163 |             "timestamp": datetime.now().isoformat()
+ 164 |         })
+ 165 | 
+ 166 | # =============================
+ 167 | # START INTERVIEW
+ 168 | # =============================
+ 169 | 
+ 170 | @app.post("/start-interview")
+ 171 | async def start_interview(
+ 172 |     resume_file: UploadFile = File(...),
+ 173 |     job_text: str = Form(...),
+ 174 |     interview_type: str = Form(...)
+ 175 | ):
+ 176 |     try:
+ 177 |         await resume_file.read()
+ 178 |         
+ 179 |         prompt = f"""Create {5 if interview_type == 'technical' else 4} interview questions.
+ 180 | 
+ 181 | Job Description: {job_text[:1500]}
+ 182 | 
+ 183 | Return ONLY a JSON array of questions: ["Question 1", "Question 2", ...]"""
+ 184 | 
+ 185 |         response = groq_client.chat.completions.create(
+ 186 |             model="llama-3.3-70b-versatile",
+ 187 |             temperature=0.8,
+ 188 |             max_tokens=600,
+ 189 |             messages=[{"role": "user", "content": prompt}],
+ 190 |         )
+ 191 |         
+ 192 |         content = response.choices[0].message.content.strip()
+ 193 |         
+ 194 |         if '```json' in content:
+ 195 |             content = content.split('```json')[1].split('```')[0]
+ 196 |         elif '```' in content:
+ 197 |             content = content.split('```')[1].split('```')[0]
+ 198 |         
+ 199 |         questions = json.loads(content)
+ 200 |         
+ 201 |         return JSONResponse(content={
+ 202 |             "questions": [{"question": q} for q in questions],
+ 203 |             "interview_type": interview_type,
+ 204 |             "timestamp": datetime.now().isoformat()
+ 205 |         })
+ 206 |         
+ 207 |     except Exception as e:
+ 208 |         print(f"Start error: {e}")
+ 209 |         fallback = [
+ 210 |             "Tell me about your experience.",
+ 211 |             "What technical skills do you have?",
+ 212 |             "Describe a project you're proud of.",
+ 213 |             "Why are you interested in this role?",
+ 214 |             "Where do you see yourself in 5 years?"
+ 215 |         ]
+ 216 |         return JSONResponse(content={
+ 217 |             "questions": [{"question": q} for q in fallback[:5]],
+ 218 |             "interview_type": interview_type
+ 219 |         })
+ 220 | 
+ 221 | # =============================
+ 222 | # SUBMIT RESPONSE
+ 223 | # =============================
+ 224 | 
+ 225 | @app.post("/submit-response")
+ 226 | async def submit_response(data: SubmitResponse):
+ 227 |     try:
+ 228 |         prompt = f"""Question: "{data.question_text}"
+ 229 | Answer: "{data.response_text}"
+ 230 | 
+ 231 | Give score (1-10) and brief feedback.
+ 232 | Return JSON: {{"score": number, "feedback": "your feedback"}}"""
+ 233 | 
+ 234 |         response = groq_client.chat.completions.create(
+ 235 |             model="llama-3.3-70b-versatile",
+ 236 |             temperature=0.5,
+ 237 |             max_tokens=150,
+ 238 |             messages=[{"role": "user", "content": prompt}],
+ 239 |         )
+ 240 |         
+ 241 |         content = response.choices[0].message.content.strip()
+ 242 |         
+ 243 |         if '```json' in content:
+ 244 |             content = content.split('```json')[1].split('```')[0]
+ 245 |         elif '```' in content:
+ 246 |             content = content.split('```')[1].split('```')[0]
+ 247 |         
+ 248 |         result = json.loads(content)
+ 249 |         
+ 250 |         return JSONResponse(content={
+ 251 |             "score": result.get("score", 5),
+ 252 |             "emotion": data.audio_emotion or "neutral",
+ 253 |             "feedback": result.get("feedback", "Good attempt."),
+ 254 |             "analyzed_at": datetime.now().isoformat()
+ 255 |         })
+ 256 |         
+ 257 |     except Exception as e:
+ 258 |         print(f"Analysis error: {e}")
+ 259 |         return JSONResponse(content={
+ 260 |             "score": 5,
+ 261 |             "emotion": data.audio_emotion or "neutral",
+ 262 |             "feedback": "Try to add more specific examples next time.",
+ 263 |             "analyzed_at": datetime.now().isoformat()
+ 264 |         })
+ 265 | 
+ 266 | # =============================
+ 267 | # NEXT QUESTION
+ 268 | # =============================
+ 269 | 
+ 270 | @app.post("/next-question")
+ 271 | async def generate_next_question(data: NextQuestionRequest):
+ 272 |     history = data.interview_history
+ 273 |     
+ 274 |     if not history:
+ 275 |         return JSONResponse(content={
+ 276 |             "question": "Tell me about yourself.",
+ 277 |             "affirmation": ""
+ 278 |         })
+ 279 |     
+ 280 |     total_score = sum(turn.score for turn in history)
+ 281 |     avg_score = total_score / len(history)
+ 282 |     asked_questions = [turn.question for turn in history]
+ 283 |     last_answer = history[-1].transcription
+ 284 |     
+ 285 |     prompt = f"""Last answer: "{last_answer[:200]}"
+ 286 | Average score: {avg_score:.1f}/10
+ 287 | 
+ 288 | Ask ONE natural follow-up question. Don't repeat:
+ 289 | {chr(10).join([f"- {q}" for q in asked_questions[-3:]])}
+ 290 | 
+ 291 | Return ONLY the question."""
+ 292 | 
+ 293 |     try:
+ 294 |         response = groq_client.chat.completions.create(
+ 295 |             model="llama-3.3-70b-versatile",
+ 296 |             temperature=0.85,
+ 297 |             max_tokens=150,
+ 298 |             messages=[{"role": "user", "content": prompt}],
+ 299 |         )
+ 300 |         
+ 301 |         next_question = response.choices[0].message.content.strip()
+ 302 |         next_question = next_question.strip('"').strip("'")
+ 303 |         
+ 304 |         return JSONResponse(content={
+ 305 |             "question": next_question,
+ 306 |             "affirmation": ""
+ 307 |         })
+ 308 |         
+ 309 |     except Exception as e:
+ 310 |         print(f"Next question error: {e}")
+ 311 |         return JSONResponse(content={
+ 312 |             "question": "Can you tell me more about your experience?",
+ 313 |             "affirmation": ""
+ 314 |         })
+ 315 | 
+ 316 | # =============================
+ 317 | # FINAL FEEDBACK
+ 318 | # =============================
+ 319 | 
+ 320 | @app.post("/generate-final-feedback")
+ 321 | async def generate_final_feedback(request: FinalFeedbackRequest):
+ 322 |     responses = request.responses
+ 323 |     
+ 324 |     if not responses:
+ 325 |         raise HTTPException(status_code=400, detail="No responses found")
+ 326 |     
+ 327 |     total_score = sum(r.get('score', 0) for r in responses)
+ 328 |     avg_score = total_score / len(responses)
+ 329 |     
+ 330 |     transcript = ""
+ 331 |     for i, r in enumerate(responses, 1):
+ 332 |         transcript += f"Q{i}: {r.get('question', 'N/A')}\nA: {r.get('transcription', 'N/A')}\nScore: {r.get('score', 0)}/10\n---\n"
+ 333 |     
+ 334 |     prompt = f"""Based on this interview, write feedback.
+ 335 | 
+ 336 | TRANSCRIPT:
+ 337 | {transcript}
+ 338 | Average score: {avg_score:.1f}/10
+ 339 | 
+ 340 | Return JSON:
+ 341 | {{
+ 342 |   "overall_score": "X/10 - rating",
+ 343 |   "overall_summary": "paragraph",
+ 344 |   "how_they_came_across": "paragraph",
+ 345 |   "strengths": "paragraph",
+ 346 |   "improvement_areas": "paragraph",
+ 347 |   "verdict": "paragraph"
+ 348 | }}"""
+ 349 | 
+ 350 |     try:
+ 351 |         response = groq_client.chat.completions.create(
+ 352 |             model="llama-3.3-70b-versatile",
+ 353 |             temperature=0.7,
+ 354 |             max_tokens=800,
+ 355 |             messages=[{"role": "user", "content": prompt}],
+ 356 |         )
+ 357 |         
+ 358 |         content = response.choices[0].message.content.strip()
+ 359 |         
+ 360 |         if '```json' in content:
+ 361 |             content = content.split('```json')[1].split('```')[0]
+ 362 |         elif '```' in content:
+ 363 |             content = content.split('```')[1].split('```')[0]
+ 364 |         
+ 365 |         content = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', content)
+ 366 |         feedback = json.loads(content)
+ 367 |         
+ 368 |         return JSONResponse(content={
+ 369 |             "overall_score": feedback.get("overall_score", f"{avg_score:.1f}/10"),
+ 370 |             "overall_summary": feedback.get("overall_summary", f"You completed {len(responses)} questions."),
+ 371 |             "emotional_summary": feedback.get("how_they_came_across", "You seemed generally composed."),
+ 372 |             "strengths": feedback.get("strengths", "You answered all questions."),
+ 373 |             "improvement_areas": feedback.get("improvement_areas", "Add more specific examples."),
+ 374 |             "verdict": feedback.get("verdict", f"Average score: {avg_score:.1f}/10."),
+ 375 |             "statistics": {
+ 376 |                 "average_score": round(avg_score, 2),
+ 377 |                 "total_questions": len(responses)
+ 378 |             }
+ 379 |         })
+ 380 |         
+ 381 |     except Exception as e:
+ 382 |         print(f"Final feedback error: {e}")
+ 383 |         return JSONResponse(content={
+ 384 |             "overall_score": f"{avg_score:.1f}/10",
+ 385 |             "overall_summary": f"You completed {len(responses)} questions.",
+ 386 |             "emotional_summary": "You seemed generally composed.",
+ 387 |             "strengths": "You answered all questions.",
+ 388 |             "improvement_areas": "Add more specific examples.",
+ 389 |             "verdict": f"Average score: {avg_score:.1f}/10. Keep practicing.",
+ 390 |             "statistics": {
+ 391 |                 "average_score": round(avg_score, 2),
+ 392 |                 "total_questions": len(responses)
+ 393 |             }
+ 394 |         })
+ 395 | 
+ 396 | # =============================
+ 397 | # DYNAMIC RESUME MATCHER (100% Groq-powered)
+ 398 | # =============================
+ 399 | 
+ 400 | @app.post("/match-resume-ml")
+ 401 | async def match_resume_ml(
+ 402 |     resume: UploadFile = File(...),
+ 403 |     job_description: str = Form(...)
+ 404 | ):
+ 405 |     """Dynamic resume matcher - extracts skills directly from job description using Groq"""
+ 406 |     
+ 407 |     try:
+ 408 |         import PyPDF2
+ 409 |         import io
+ 410 |         
+ 411 |         # Extract text from PDF
+ 412 |         pdf_bytes = await resume.read()
+ 413 |         pdf_reader = PyPDF2.PdfReader(io.BytesIO(pdf_bytes))
+ 414 |         resume_text = ""
+ 415 |         for page in pdf_reader.pages:
+ 416 |             text = page.extract_text()
+ 417 |             if text:
+ 418 |                 resume_text += text
+ 419 |         
+ 420 |         if not resume_text.strip():
+ 421 |             raise HTTPException(status_code=400, detail="Could not extract text from PDF")
+ 422 |         
+ 423 |         # ============================================================
+ 424 |         # STEP 1: Extract skills from Job Description using Groq
+ 425 |         # ============================================================
+ 426 |         
+ 427 |         jd_skill_prompt = f"""Extract ALL technical skills, tools, frameworks, and competencies from this job description.
+ 428 | 
+ 429 | Job Description:
+ 430 | {job_description[:3000]}
+ 431 | 
+ 432 | Return ONLY a JSON array of unique skills.
+ 433 | Example: ["Python", "AWS", "React", "PostgreSQL", "Docker", "Kubernetes"]
+ 434 | 
+ 435 | Skills:"""
+ 436 | 
+ 437 |         jd_response = groq_client.chat.completions.create(
+ 438 |             model="llama-3.3-70b-versatile",
+ 439 |             temperature=0.3,
+ 440 |             max_tokens=800,
+ 441 |             messages=[{"role": "user", "content": jd_skill_prompt}],
+ 442 |         )
+ 443 |         
+ 444 |         jd_content = jd_response.choices[0].message.content.strip()
+ 445 |         if '```json' in jd_content:
+ 446 |             jd_content = jd_content.split('```json')[1].split('```')[0]
+ 447 |         elif '```' in jd_content:
+ 448 |             jd_content = jd_content.split('```')[1].split('```')[0]
+ 449 |         
+ 450 |         try:
+ 451 |             job_skills = json.loads(jd_content)
+ 452 |         except:
+ 453 |             job_skills = []
+ 454 |         
+ 455 |         # ============================================================
+ 456 |         # STEP 2: Extract skills from Resume using Groq
+ 457 |         # ============================================================
+ 458 |         
+ 459 |         resume_skill_prompt = f"""Extract ALL technical skills, tools, frameworks, and technologies from this resume.
+ 460 | 
+ 461 | Resume:
+ 462 | {resume_text[:3000]}
+ 463 | 
+ 464 | Return ONLY a JSON array of unique skills.
+ 465 | Example: ["Python", "Django", "AWS", "Docker", "PostgreSQL", "REST APIs"]
+ 466 | 
+ 467 | Skills:"""
+ 468 | 
+ 469 |         resume_response = groq_client.chat.completions.create(
+ 470 |             model="llama-3.3-70b-versatile",
+ 471 |             temperature=0.3,
+ 472 |             max_tokens=800,
+ 473 |             messages=[{"role": "user", "content": resume_skill_prompt}],
+ 474 |         )
+ 475 |         
+ 476 |         resume_content = resume_response.choices[0].message.content.strip()
+ 477 |         if '```json' in resume_content:
+ 478 |             resume_content = resume_content.split('```json')[1].split('```')[0]
+ 479 |         elif '```' in resume_content:
+ 480 |             resume_content = resume_content.split('```')[1].split('```')[0]
+ 481 |         
+ 482 |         try:
+ 483 |             resume_skills = json.loads(resume_content)
+ 484 |         except:
+ 485 |             resume_skills = []
+ 486 |         
+ 487 |         # ============================================================
+ 488 |         # STEP 3: Match skills
+ 489 |         # ============================================================
+ 490 |         
+ 491 |         resume_skills_lower = [s.lower().strip() for s in resume_skills]
+ 492 |         job_skills_lower = [s.lower().strip() for s in job_skills]
+ 493 |         
+ 494 |         matched_skills = []
+ 495 |         missing_skills = []
+ 496 |         
+ 497 |         for job_skill in job_skills_lower:
+ 498 |             if job_skill in resume_skills_lower:
+ 499 |                 matched_skills.append(job_skill)
+ 500 |             else:
+ 501 |                 # Check for partial match
+ 502 |                 found = False
+ 503 |                 for resume_skill in resume_skills_lower:
+ 504 |                     if job_skill in resume_skill or resume_skill in job_skill:
+ 505 |                         matched_skills.append(job_skill)
+ 506 |                         found = True
+ 507 |                         break
+ 508 |                 if not found:
+ 509 |                     missing_skills.append(job_skill)
+ 510 |         
+ 511 |         matched_skills = list(set(matched_skills))
+ 512 |         missing_skills = list(set(missing_skills))
+ 513 |         
+ 514 |         # ============================================================
+ 515 |         # STEP 4: Calculate score
+ 516 |         # ============================================================
+ 517 |         
+ 518 |         if job_skills_lower:
+ 519 |             score = int((len(matched_skills) / len(job_skills_lower)) * 100)
+ 520 |             score = min(95, max(25, score))
+ 521 |         else:
+ 522 |             score = 50
+ 523 |         
+ 524 |         if score >= 75:
+ 525 |             match_level = "Excellent Match"
+ 526 |             recommendation = "Excellent match! Your skills align very well with the job requirements."
+ 527 |         elif score >= 55:
+ 528 |             match_level = "Good Match"
+ 529 |             recommendation = "Good match. Consider adding the missing skills highlighted below."
+ 530 |         elif score >= 35:
+ 531 |             match_level = "Moderate Match"
+ 532 |             recommendation = "Moderate match. Focus on adding key skills from the job description."
+ 533 |         else:
+ 534 |             match_level = "Low Match"
+ 535 |             recommendation = "Low match. Significant updates needed to align with this role."
+ 536 |         
+ 537 |         # ============================================================
+ 538 |         # STEP 5: Generate feedback using Groq
+ 539 |         # ============================================================
+ 540 |         
+ 541 |         feedback_prompt = f"""Based on the skill analysis, provide helpful feedback.
+ 542 | 
+ 543 | MATCH SCORE: {score}% ({match_level})
+ 544 | MATCHED SKILLS: {', '.join(matched_skills[:10]) if matched_skills else 'None'}
+ 545 | MISSING SKILLS: {', '.join(missing_skills[:10]) if missing_skills else 'None'}
+ 546 | 
+ 547 | Write a JSON response with:
+ 548 | 1. overall: One sentence about overall fit
+ 549 | 2. strengths: One sentence about what matches well
+ 550 | 3. gaps: One sentence about missing skills
+ 551 | 4. improvements: One sentence with actionable advice
+ 552 | 5. ats_tips: One sentence ATS optimization tip
+ 553 | 
+ 554 | Return ONLY valid JSON."""
+ 555 | 
+ 556 |         feedback_response = groq_client.chat.completions.create(
+ 557 |             model="llama-3.3-70b-versatile",
+ 558 |             temperature=0.5,
+ 559 |             max_tokens=400,
+ 560 |             messages=[{"role": "user", "content": feedback_prompt}],
+ 561 |         )
+ 562 |         
+ 563 |         feedback_content = feedback_response.choices[0].message.content.strip()
+ 564 |         if '```json' in feedback_content:
+ 565 |             feedback_content = feedback_content.split('```json')[1].split('```')[0]
+ 566 |         elif '```' in feedback_content:
+ 567 |             feedback_content = feedback_content.split('```')[1].split('```')[0]
+ 568 |         
+ 569 |         try:
+ 570 |             llm_feedback = json.loads(feedback_content)
+ 571 |         except:
+ 572 |             llm_feedback = {
+ 573 |                 "overall": f"Your resume matches {score}% of the job requirements.",
+ 574 |                 "strengths": f"You have {len(matched_skills)} relevant skills including {', '.join(matched_skills[:3]) if matched_skills else 'some basic skills'}.",
+ 575 |                 "gaps": f"Consider adding: {', '.join(missing_skills[:5]) if missing_skills else 'None - great match!'}",
+ 576 |                 "improvements": "Add more specific examples and metrics to your experience section.",
+ 577 |                 "ats_tips": "Use standard section headings and include keywords from the job description."
+ 578 |             }
+ 579 |         
+ 580 |         return JSONResponse(content={
+ 581 |             "final_score": score,
+ 582 |             "match_level": match_level,
+ 583 |             "recommendation": recommendation,
+ 584 |             "matched_skills": matched_skills[:20],
+ 585 |             "missing_skills": missing_skills[:20],
+ 586 |             "resume_skills": resume_skills[:25],
+ 587 |             "job_skills": job_skills[:25],
+ 588 |             "analysis": f"Matched {len(matched_skills)} skills out of {len(job_skills_lower)}. Skills extracted dynamically from job description using Groq.",
+ 589 |             "method": "Dynamic JD Skill Extraction + Groq Analysis (No static skills)",
+ 590 |             "llm_feedback": llm_feedback
+ 591 |         })
+ 592 |         
+ 593 |     except Exception as e:
+ 594 |         print(f"Matching error: {e}")
+ 595 |         raise HTTPException(status_code=500, detail=str(e))
+ 596 | 
+ 597 | # =============================
+ 598 | # HEALTH CHECK
+ 599 | # =============================
+ 600 | 
+ 601 | @app.get("/health")
+ 602 | async def health_check():
+ 603 |     return JSONResponse(content={
+ 604 |         "status": "healthy",
+ 605 |         "service": "ResumeRise API",
+ 606 |         "features": ["Mock Interview", "Dynamic Resume Matcher", "Emotion Detection"],
+ 607 |         "timestamp": datetime.now().isoformat()
+ 608 |     })
+ 609 | 
+ 610 | if __name__ == "__main__":
+ 611 |     import uvicorn
+ 612 |     import os
+ 613 |     port = int(os.environ.get("PORT", 10000))
+ 614 |     uvicorn.run(app, host="0.0.0.0", port=port)
+
+--- frontend/src/App.js ---
+   1 | import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+   2 | import HomePage from "./pages/HomePage";
+   3 | import ResumeMatchPage from "./pages/ResumeMatchPage";
+   4 | import MockInterviewPage from "./pages/MockInterviewPage";
+   5 | import InterviewSetupPage from './pages/InterviewSetupPage';
+   6 | import InterviewReviewPage from "./pages/InterviewReviewPage.jsx"; 
+   7 | function App() {
+   8 |   return (
+   9 |     <Router>
+  10 |       <Routes>
+  11 |         <Route path="/" element={<HomePage />} />
+  12 |         <Route path="/resume-match" element={<ResumeMatchPage />} /> 
+  13 |         <Route path="/mock-interview" element={<MockInterviewPage />} />
+  14 |         <Route path="/interview-setup" element={<InterviewSetupPage />} /> 
+  15 |         <Route path="/interview-review" element={<InterviewReviewPage />} />
+  16 |       </Routes>
+  17 |     </Router>
+  18 |   );
+  19 | }
+  20 | 
+  21 | export default App;
+
+--- frontend/src/pages/HomePage.jsx ---
+   1 | import React, { useState, useEffect } from "react";
+   2 | import { Link } from "react-router-dom";
+   3 | 
+   4 | export default function HomePage() {
+   5 |   const [isScrolled, setIsScrolled] = useState(false);
+   6 | 
+   7 |   useEffect(() => {
+   8 |     const handleScroll = () => setIsScrolled(window.scrollY > 50);
+   9 |     window.addEventListener("scroll", handleScroll);
+  10 |     return () => window.removeEventListener("scroll", handleScroll);
+  11 |   }, []);
+  12 | 
+  13 |   return (
+  14 |     <div className="bg-gradient-to-b from-[#0f172a] to-[#4c1d95] text-white min-h-screen flex flex-col font-sans">
+  15 |       
+  16 |       {/* Dynamic Header */}
+  17 |       <header
+  18 |         className={`fixed w-full z-50 px-10 py-4 flex justify-between items-center transition-all duration-300 ${
+  19 |           isScrolled ? "bg-[#1e293b]/90 backdrop-blur-md shadow-lg" : "bg-transparent"
+  20 |         }`}
+  21 |       >
+  22 |         <h1 className="text-3xl font-extrabold text-[#22c55e] tracking-wide transition-colors duration-300">
+  23 |           ResumeRise
+  24 |         </h1>
+  25 |         <nav className="space-x-8 hidden md:flex text-lg">
+  26 |           <a href="#home" className="hover:text-[#fcd34d] transition">Home</a>
+  27 |           <a href="#purpose" className="hover:text-[#fcd34d] transition">Purpose</a>
+  28 |           <a href="#about" className="hover:text-[#fcd34d] transition">About</a>
+  29 |           {/*<Link to="/resume-builder" className="hover:text-[#fcd34d] transition">Create Resume</Link>*/}
+  30 |         </nav>
+  31 |         <div className="w-10 h-10 bg-[#22c55e] rounded-full border-2 border-[#fcd34d]" />
+  32 |       </header>
+  33 | 
+  34 |       {/* Hero Section */}
+  35 |       <section id="home" className="h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20">
+  36 |         <h2 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight animate-fade-in">
+  37 |           ResumeRise
+  38 |         </h2>
+  39 |         <p className="text-lg md:text-2xl text-gray-300 mb-8 max-w-3xl animate-fade-in delay-200">
+  40 |           AI-powered Resume Matching & Mock Interviews. Discover your strengths, improve your skills, and land your dream job faster.
+  41 |         </p>
+  42 |         <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 animate-fade-in delay-400">
+  43 |           <Link to="/resume-match">
+  44 |             <button className="bg-[#2563eb] hover:bg-[#fcd34d] text-xl px-8 py-4 rounded-lg shadow-xl hover:shadow-[#fcd34d]/50 transition duration-300 transform hover:-translate-y-1">
+  45 |               Resume Match
+  46 |             </button>
+  47 |           </Link>
+  48 |           {/* Changed navigation to go to the setup page */}
+  49 |           <Link to="/interview-setup">
+  50 |             <button className="bg-[#7c3aed] hover:bg-[#fcd34d] text-xl px-8 py-4 rounded-lg shadow-xl hover:shadow-[#fcd34d]/50 transition duration-300 transform hover:-translate-y-1">
+  51 |               Mock Interviews
+  52 |             </button>
+  53 |           </Link>
+  54 |           {/*<Link to="/resume-builder">
+  55 |             <button className="bg-[#22c55e] hover:bg-[#fcd34d] text-xl px-8 py-4 rounded-lg shadow-xl hover:shadow-[#fcd34d]/50 transition duration-300 transform hover:-translate-y-1">
+  56 |               Create Resume
+  57 |             </button>
+  58 |           </Link>*/}
+  59 |           
+  60 |         </div>
+  61 |       </section>
+  62 | 
+  63 |       {/* Purpose Section */}
+  64 |       <section id="purpose" className="px-10 py-20 bg-[#1e293b]">
+  65 |         <h3 className="text-4xl font-bold mb-12 text-center text-[#22c55e]">Choose Your Purpose</h3>
+  66 |         <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+  67 |           {/* Resume Matching Card */}
+  68 |           <div className="bg-[#0f172a] p-10 rounded-2xl shadow-lg hover:shadow-[#fcd34d]/40 transition transform hover:scale-105 relative overflow-hidden">
+  69 |             <h4 className="text-3xl font-bold mb-4 text-[#2563eb]">📄 Resume Matching</h4>
+  70 |             <p className="text-gray-300 mb-8 text-lg">
+  71 |               Upload your resume, compare it with job descriptions, and discover matched & missing skills instantly.
+  72 |             </p>
+  73 |             <Link to="/resume-match">
+  74 |               <button className="bg-[#2563eb] hover:bg-[#fcd34d] w-full py-3 text-lg rounded-lg shadow-md transition duration-200">
+  75 |                 Start Matching
+  76 |               </button>
+  77 |             </Link>
+  78 |             <div className="absolute top-0 right-0 w-40 h-40 bg-[#2563eb]/20 rounded-full blur-3xl" />
+  79 |           </div>
+  80 | 
+  81 |           {/* Mock Interviews Card */}
+  82 |           <div className="bg-[#0f172a] p-10 rounded-2xl shadow-lg hover:shadow-[#fcd34d]/40 transition transform hover:scale-105 relative overflow-hidden">
+  83 |             <h4 className="text-3xl font-bold mb-4 text-[#7c3aed]">🎤 Mock Interviews</h4>
+  84 |             <p className="text-gray-300 mb-8 text-lg">
+  85 |               Practice with AI-driven interviews and get instant feedback on confidence, tone, and clarity.
+  86 |             </p>
+  87 |             {/* Changed navigation to go to the setup page */}
+  88 |             <Link to="/interview-setup">
+  89 |               <button className="bg-[#7c3aed] hover:bg-[#fcd34d] w-full py-3 text-lg rounded-lg shadow-md transition duration-200">
+  90 |                 Start Interview
+  91 |               </button>
+  92 |             </Link>
+  93 |             <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#7c3aed]/20 rounded-full blur-3xl" />
+  94 |           </div>
+  95 | 
+  96 |           {/* Resume Builder Card*/} 
+  97 |           <div className="bg-[#0f172a] p-10 rounded-2xl shadow-lg hover:shadow-[#fcd34d]/40 transition transform hover:scale-105 relative overflow-hidden">
+  98 |             <h4 className="text-3xl font-bold mb-4 text-[#22c55e]">📝 Create Resume</h4>
+  99 |             <p className="text-gray-300 mb-8 text-lg">
+ 100 |               Build a professional resume quickly using our AI-powered templates. Preview and download instantly as PDF.
+ 101 |             </p>
+ 102 |             <Link to="/resume-builder">
+ 103 |               <button className="bg-[#22c55e] hover:bg-[#fcd34d] w-full py-3 text-lg rounded-lg shadow-md transition duration-200">
+ 104 |                 Build Resume
+ 105 |               </button>
+ 106 |             </Link>
+ 107 |             <div className="absolute top-0 left-0 w-40 h-40 bg-[#22c55e]/20 rounded-full blur-3xl" />
+ 108 |           </div>
+ 109 |         </div>
+ 110 |       </section>
+ 111 | 
+ 112 |       {/* About Section */}
+ 113 |       <section id="about" className="px-10 py-20 bg-[#0f172a] text-center">
+ 114 |         <h3 className="text-4xl font-bold mb-6 text-[#22c55e]">About ResumeRise</h3>
+ 115 |         <p className="text-gray-300 max-w-4xl mx-auto leading-relaxed text-lg">
+ 116 |           ResumeRise is your AI-powered career companion. We help job seekers bridge the gap between resumes and job descriptions, while also preparing them for interviews with realistic simulations. Our goal is to provide insights, confidence, and tools to help you land your dream job faster.
+ 117 |         </p>
+ 118 |       </section>
+ 119 | 
+ 120 |       {/* Footer */}
+ 121 |       <footer className="bg-[#1e293b] text-gray-400 text-sm py-6 px-8 text-center border-t border-gray-700">
+ 122 |         © 2025 ResumeRise. All rights reserved.
+ 123 |       </footer>
+ 124 | 
+ 125 |       {/* Tailwind Animations */}
+ 126 |       <style>
+ 127 |         {`
+ 128 |           .animate-fade-in {
+ 129 |             opacity: 0;
+ 130 |             animation: fadeIn 1s forwards;
+ 131 |           }
+ 132 |           .animate-fade-in.delay-200 {
+ 133 |             animation-delay: 0.2s;
+ 134 |           }
+ 135 |           .animate-fade-in.delay-400 {
+ 136 |             animation-delay: 0.4s;
+ 137 |           }
+ 138 |           @keyframes fadeIn {
+ 139 |             to { opacity: 1; }
+ 140 |           }
+ 141 |         `}
+ 142 |       </style>
+ 143 |     </div>
+ 144 | 
+ 145 |   );
+ 146 | }
+
+--- frontend/src/pages/InterviewReviewPage.jsx ---
+   1 | import React, { useState, useEffect } from "react";
+   2 | import { Link, useNavigate, useLocation } from "react-router-dom";
+   3 | import axios from "axios";
+   4 | 
+   5 | // Use environment variable for API URL, fallback to localhost for development
+   6 | const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+   7 | 
+   8 | export default function InterviewReviewPage() {
+   9 |     const location = useLocation();
+  10 |     const navigate = useNavigate();
+  11 | 
+  12 |     const responses = location.state?.responses || [];
+  13 |     const config = location.state?.config || {};
+  14 | 
+  15 |     const [finalFeedback, setFinalFeedback] = useState(null);
+  16 |     const [error, setError] = useState("");
+  17 |     const [isLoading, setIsLoading] = useState(false);
+  18 | 
+  19 |     useEffect(() => {
+  20 |         if (!responses.length || finalFeedback) return;
+  21 | 
+  22 |         const generateFinalReport = async () => {
+  23 |             setError("");
+  24 |             setIsLoading(true);
+  25 | 
+  26 |             const payload = {
+  27 |                 responses: responses.map(r => ({
+  28 |                     question: r.question,
+  29 |                     transcription: r.transcription,
+  30 |                     feedback: r.feedback,
+  31 |                     score: r.score,
+  32 |                     emotion: r.emotion
+  33 |                 })),
+  34 |                 config
+  35 |             };
+  36 | 
+  37 |             try {
+  38 |                 const res = await axios.post(
+  39 |                     `${API_BASE_URL}/generate-final-feedback`,
+  40 |                     payload
+  41 |                 );
+  42 |                 setFinalFeedback(res.data);
+  43 |             } catch (err) {
+  44 |                 const msg = err.response?.data?.detail || "Failed to generate report.";
+  45 |                 setError(msg);
+  46 |                 setFinalFeedback({
+  47 |                     overall_score: "N/A",
+  48 |                     overall_summary: "Could not generate summary.",
+  49 |                     emotional_summary: "Unable to analyze emotional state.",
+  50 |                     strengths: msg,
+  51 |                     improvement_areas: "Could not generate final report.",
+  52 |                     verdict: "Please try again."
+  53 |                 });
+  54 |             } finally {
+  55 |                 setIsLoading(false);
+  56 |             }
+  57 |         };
+  58 | 
+  59 |         generateFinalReport();
+  60 |     }, [responses, config, finalFeedback]);
+  61 | 
+  62 |     if (!responses.length) {
+  63 |         return (
+  64 |             <div className="min-h-screen flex flex-col items-center justify-center bg-[#0f172a] text-white">
+  65 |                 <p className="text-xl">No interview data found. Please complete an interview first.</p>
+  66 |                 <button 
+  67 |                     onClick={() => navigate('/interview-setup')} 
+  68 |                     className="mt-4 text-[#fcd34d] hover:text-white"
+  69 |                 >
+  70 |                     Go to Setup
+  71 |                 </button>
+  72 |             </div>
+  73 |         );
+  74 |     }
+  75 | 
+  76 |     // Calculate average score
+  77 |     const avgScore = (responses.reduce((sum, r) => sum + (r.score || 0), 0) / responses.length).toFixed(1);
+  78 | 
+  79 |     // Get emotion color for styling
+  80 |     const getEmotionColor = (emotion) => {
+  81 |         const colors = {
+  82 |             confident: "text-green-400",
+  83 |             nervous: "text-yellow-400",
+  84 |             neutral: "text-gray-400",
+  85 |             enthusiastic: "text-purple-400",
+  86 |             focused: "text-blue-400",
+  87 |             confused: "text-orange-400",
+  88 |             tired: "text-red-400"
+  89 |         };
+  90 |         return colors[emotion] || "text-white";
+  91 |     };
+  92 | 
+  93 |     // Get emotion background for badge
+  94 |     const getEmotionBg = (emotion) => {
+  95 |         const bg = {
+  96 |             confident: "bg-green-900/30",
+  97 |             nervous: "bg-yellow-900/30",
+  98 |             neutral: "bg-gray-900/30",
+  99 |             enthusiastic: "bg-purple-900/30",
+ 100 |             focused: "bg-blue-900/30",
+ 101 |             confused: "bg-orange-900/30",
+ 102 |             tired: "bg-red-900/30"
+ 103 |         };
+ 104 |         return bg[emotion] || "bg-gray-900/30";
+ 105 |     };
+ 106 | 
+ 107 |     return (
+ 108 |         <div className="min-h-screen bg-gradient-to-b from-[#0f172a] to-[#4c1d95] text-white p-6 pt-20 font-sans">
+ 109 | 
+ 110 |             {/* Header */}
+ 111 |             <header className="fixed top-0 w-full z-50 px-10 py-4 bg-[#1e293b]/90 backdrop-blur-md flex justify-between items-center shadow-lg">
+ 112 |                 <Link to="/interview-setup" className="text-xl text-[#fcd34d] hover:text-white transition-colors">
+ 113 |                     ← New Interview
+ 114 |                 </Link>
+ 115 |                 <h1 className="text-3xl font-extrabold bg-gradient-to-r from-[#22c55e] to-[#4ade80] bg-clip-text text-transparent">
+ 116 |                     Interview Feedback
+ 117 |                 </h1>
+ 118 |                 <p className="text-lg text-gray-400">
+ 119 |                     {config.interviewType || "General"} Interview
+ 120 |                 </p>
+ 121 |             </header>
+ 122 | 
+ 123 |             <main className="container mx-auto px-6 py-4 flex-1">
+ 124 | 
+ 125 |                 {/* Final Report */}
+ 126 |                 <div className="bg-[#1e293b] p-8 rounded-3xl shadow-2xl mb-8">
+ 127 |                     <h2 className="text-3xl font-bold mb-6 text-[#fcd34d] text-center">
+ 128 |                         Final Interview Report
+ 129 |                     </h2>
+ 130 | 
+ 131 |                     {isLoading ? (
+ 132 |                         <div className="text-center py-12">
+ 133 |                             <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent"></div>
+ 134 |                             <p className="text-xl text-gray-400 mt-4">Analyzing your interview performance...</p>
+ 135 |                         </div>
+ 136 |                     ) : error ? (
+ 137 |                         <div className="bg-red-900/50 border border-red-700 rounded-xl p-6 text-center">
+ 138 |                             <p className="text-red-400 text-xl font-bold">{error}</p>
+ 139 |                             <button 
+ 140 |                                 onClick={() => window.location.reload()} 
+ 141 |                                 className="mt-4 text-[#fcd34d] hover:text-white"
+ 142 |                             >
+ 143 |                                 Try Again
+ 144 |                             </button>
+ 145 |                         </div>
+ 146 |                     ) : finalFeedback ? (
+ 147 |                         <div className="space-y-6">
+ 148 |                             
+ 149 |                             {/* Overall Score */}
+ 150 |                             <div className="text-center bg-[#0f172a] p-6 rounded-xl border border-gray-700">
+ 151 |                                 <h3 className="text-lg font-semibold text-gray-400 mb-2">
+ 152 |                                     Overall Score
+ 153 |                                 </h3>
+ 154 |                                 <p className="text-3xl font-bold text-[#22c55e]">
+ 155 |                                     {finalFeedback.overall_score || `${avgScore}/10`}
+ 156 |                                 </p>
+ 157 |                             </div>
+ 158 | 
+ 159 |                             {/* Your Interview Journey - Overall Summary Paragraph */}
+ 160 |                             <div className="bg-[#0f172a] p-6 rounded-xl border border-gray-700">
+ 161 |                                 <h3 className="text-lg font-semibold text-[#fcd34d] mb-2">
+ 162 |                                     Your Interview Journey
+ 163 |                                 </h3>
+ 164 |                                 <p className="text-gray-300 leading-relaxed">
+ 165 |                                     {finalFeedback.overall_summary || finalFeedback.emotion_journey || "You completed the interview and answered all questions. Your responses showed basic understanding of the topics discussed."}
+ 166 |                                 </p>
+ 167 |                             </div>
+ 168 | 
+ 169 |                             {/* Emotional Summary - Separate Paragraph */}
+ 170 |                             <div className="bg-[#0f172a] p-6 rounded-xl border border-gray-700">
+ 171 |                                 <h3 className="text-lg font-semibold text-purple-400 mb-2">
+ 172 |                                     Emotional Summary
+ 173 |                                 </h3>
+ 174 |                                 <p className="text-gray-300 leading-relaxed">
+ 175 |                                     {finalFeedback.emotional_summary || "You maintained composure throughout the interview. Your emotional state was generally stable, which helped you deliver consistent answers."}
+ 176 |                                 </p>
+ 177 |                             </div>
+ 178 | 
+ 179 |                             {/* Strengths */}
+ 180 |                             <div className="bg-[#0f172a] p-6 rounded-xl border border-gray-700">
+ 181 |                                 <h3 className="text-lg font-semibold text-green-400 mb-2">
+ 182 |                                     Strengths
+ 183 |                                 </h3>
+ 184 |                                 <p className="text-gray-300 leading-relaxed">
+ 185 |                                     {finalFeedback.strengths || "You answered all the questions and stayed engaged throughout the conversation."}
+ 186 |                                 </p>
+ 187 |                             </div>
+ 188 | 
+ 189 |                             {/* Areas for Improvement */}
+ 190 |                             <div className="bg-[#0f172a] p-6 rounded-xl border border-gray-700">
+ 191 |                                 <h3 className="text-lg font-semibold text-yellow-400 mb-2">
+ 192 |                                     Areas for Improvement
+ 193 |                                 </h3>
+ 194 |                                 <p className="text-gray-300 leading-relaxed">
+ 195 |                                     {finalFeedback.improvement_areas || "Your answers would benefit from more specific examples and details. Try to share concrete experiences from your work history."}
+ 196 |                                 </p>
+ 197 |                             </div>
+ 198 | 
+ 199 |                             {/* Final Verdict */}
+ 200 |                             {finalFeedback.verdict && (
+ 201 |                                 <div className="bg-[#0f172a] p-6 rounded-xl border border-gray-700">
+ 202 |                                     <h3 className="text-lg font-semibold text-blue-400 mb-2">
+ 203 |                                         Final Verdict
+ 204 |                                     </h3>
+ 205 |                                     <p className="text-gray-300 leading-relaxed">
+ 206 |                                         {finalFeedback.verdict}
+ 207 |                                     </p>
+ 208 |                                 </div>
+ 209 |                             )}
+ 210 |                         </div>
+ 211 |                     ) : (
+ 212 |                         <p className="text-center text-gray-500">
+ 213 |                             Preparing report...
+ 214 |                         </p>
+ 215 |                     )}
+ 216 |                 </div>
+ 217 | 
+ 218 |                 {/* Question-wise Review */}
+ 219 |                 <h2 className="text-2xl font-bold text-[#fcd34d] mb-6 border-b border-gray-700 pb-2">
+ 220 |                     Question by Question Review
+ 221 |                 </h2>
+ 222 | 
+ 223 |                 <div className="space-y-6">
+ 224 |                     {responses.map((res, index) => (
+ 225 |                         <div
+ 226 |                             key={index}
+ 227 |                             className="bg-[#1e293b] p-6 rounded-2xl shadow-xl border border-[#7c3aed]"
+ 228 |                         >
+ 229 |                             <h3 className="text-lg font-bold text-[#22c55e] mb-3">
+ 230 |                                 Question {index + 1}
+ 231 |                             </h3>
+ 232 |                             <p className="text-gray-300 mb-4 italic">
+ 233 |                                 {res.question}
+ 234 |                             </p>
+ 235 | 
+ 236 |                             <div className="bg-[#0f172a] p-4 rounded-lg border border-gray-700 space-y-3">
+ 237 |                                 <div>
+ 238 |                                     <p className="text-gray-400 text-sm mb-1">Your Answer:</p>
+ 239 |                                     <p className="text-gray-300">
+ 240 |                                         {res.transcription || "No answer provided"}
+ 241 |                                     </p>
+ 242 |                                 </div>
+ 243 | 
+ 244 |                                 {/* Score and Emotion side by side */}
+ 245 |                                 <div className="grid grid-cols-2 gap-4 pt-2">
+ 246 |                                     <div>
+ 247 |                                         <p className="text-gray-400 text-sm">Score:</p>
+ 248 |                                         <p className="text-blue-400 font-semibold text-lg">
+ 249 |                                             {res.score || 0}/10
+ 250 |                                         </p>
+ 251 |                                     </div>
+ 252 |                                     <div>
+ 253 |                                         <p className="text-gray-400 text-sm">Emotion:</p>
+ 254 |                                         <p className={`${getEmotionColor(res.emotion)} font-semibold capitalize text-lg flex items-center gap-2`}>
+ 255 |                                             <span className={`px-2 py-0.5 rounded-full text-xs ${getEmotionBg(res.emotion)}`}>
+ 256 |                                                 {res.emotion || "neutral"}
+ 257 |                                             </span>
+ 258 |                                         </p>
+ 259 |                                     </div>
+ 260 |                                 </div>
+ 261 | 
+ 262 |                                 {res.feedback && (
+ 263 |                                     <div className="pt-2 border-t border-gray-700">
+ 264 |                                         <p className="text-gray-400 text-sm mb-1">Feedback:</p>
+ 265 |                                         <p className="text-green-400">
+ 266 |                                             {res.feedback}
+ 267 |                                         </p>
+ 268 |                                     </div>
+ 269 |                                 )}
+ 270 |                             </div>
+ 271 |                         </div>
+ 272 |                     ))}
+ 273 |                 </div>
+ 274 |             </main>
+ 275 | 
+ 276 |             {/* Footer */}
+ 277 |             <footer className="bg-[#1e293b] text-gray-400 py-6 text-center border-t border-gray-700 mt-8">
+ 278 |                 <p>© 2025 ResumeRise. All rights reserved.</p>
+ 279 |             </footer>
+ 280 |         </div>
+ 281 |     );
+ 282 | }
+
+--- frontend/src/pages/InterviewSetupPage.jsx ---
+   1 | import React, { useState } from "react";
+   2 | import { Link, useNavigate } from "react-router-dom";
+   3 | import axios from "axios";
+   4 | 
+   5 | // IMPORTANT: Set FastAPI backend URL - change to your Render URL
+   6 | const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+   7 | 
+   8 | export default function App() {
+   9 |     const [resumeFile, setResumeFile] = useState(null);
+  10 |     const [jobText, setJobText] = useState("");
+  11 |     const [interviewType, setInterviewType] = useState("technical");
+  12 |     const [loading, setLoading] = useState(false);
+  13 |     const [error, setError] = useState("");
+  14 | 
+  15 |     const navigate = useNavigate();
+  16 | 
+  17 |     // Config metadata to send while navigating
+  18 |     const interviewConfig = {
+  19 |         resumeFile: resumeFile ? resumeFile.name : "N/A",
+  20 |         interviewType
+  21 |     };
+  22 | 
+  23 |     // --- Auto-Navigate After Question Generation ---
+  24 |     const handleStartInterview = async (e) => {
+  25 |         e.preventDefault();
+  26 | 
+  27 |         if (!resumeFile || !jobText) {
+  28 |             setError("Please upload a resume and provide a job description.");
+  29 |             return;
+  30 |         }
+  31 | 
+  32 |         setLoading(true);
+  33 |         setError("");
+  34 | 
+  35 |         const formData = new FormData();
+  36 |         formData.append("resume_file", resumeFile);
+  37 |         formData.append("job_text", jobText);
+  38 |         formData.append("interview_type", interviewType);
+  39 | 
+  40 |         try {
+  41 |             const response = await axios.post(`${API_BASE_URL}/start-interview`, formData, {
+  42 |                 headers: {
+  43 |                     "Content-Type": "multipart/form-data",
+  44 |                 },
+  45 |             });
+  46 | 
+  47 |             const questions = response.data.questions || [];
+  48 | 
+  49 |             if (questions.length === 0) {
+  50 |                 setError("No questions generated. Please check backend.");
+  51 |                 setLoading(false);
+  52 |                 return;
+  53 |             }
+  54 | 
+  55 |             // Save to sessionStorage so refresh won't lose them
+  56 |             sessionStorage.setItem(
+  57 |                 "interviewQuestions",
+  58 |                 JSON.stringify(questions)
+  59 |             );
+  60 |             sessionStorage.setItem(
+  61 |                 "interviewConfig",
+  62 |                 JSON.stringify(interviewConfig)
+  63 |             );
+  64 | 
+  65 |             // Auto-navigate to mock interview page
+  66 |             navigate("/mock-interview", {
+  67 |                 state: { questions, config: interviewConfig }
+  68 |             });
+  69 | 
+  70 |         } catch (err) {
+  71 |             console.error("API Error:", err);
+  72 | 
+  73 |             let errorMessage = "Unexpected error occurred.";
+  74 | 
+  75 |             if (err.response?.data?.detail) {
+  76 |                 errorMessage = err.response.data.detail;
+  77 |             } else if (err.request) {
+  78 |                 errorMessage = "Cannot connect to backend. Please make sure the server is running.";
+  79 |             } else {
+  80 |                 errorMessage = err.message;
+  81 |             }
+  82 | 
+  83 |             setError(errorMessage);
+  84 |         } finally {
+  85 |             setLoading(false);
+  86 |         }
+  87 |     };
+  88 | 
+  89 |     const handleInputChange = (setter, value) => {
+  90 |         setter(value);
+  91 |         setError("");
+  92 |     };
+  93 | 
+  94 |     const inputClasses =
+  95 |         "w-full p-4 rounded-xl bg-[#1e293b] text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#fcd34d]";
+  96 |     const labelClasses =
+  97 |         "block text-left text-lg font-semibold mb-2 text-[#22c55e]";
+  98 | 
+  99 |     return (
+ 100 |         <div className="min-h-screen bg-gradient-to-b from-[#0f172a] to-[#4c1d95] text-white flex flex-col font-sans">
+ 101 |             <header className="fixed w-full z-50 px-10 py-4 bg-[#1e293b]/90 backdrop-blur-md shadow-lg flex justify-between items-center">
+ 102 |                 <Link
+ 103 |                     to="/"
+ 104 |                     className="text-xl text-[#fcd34d] hover:text-white transition"
+ 105 |                 >
+ 106 |                     &larr; Home
+ 107 |                 </Link>
+ 108 |                 <h1 className="text-3xl font-extrabold text-[#22c55e] tracking-wide">
+ 109 |                     Setup Mock Interview
+ 110 |                 </h1>
+ 111 |                 <div className="w-10 h-10" />
+ 112 |             </header>
+ 113 | 
+ 114 |             <main className="container mx-auto px-4 py-24 flex-1 flex flex-col items-center justify-start sm:justify-center text-center">
+ 115 |                 <div className="bg-[#0f172a] p-8 md:p-12 rounded-3xl shadow-2xl max-w-xl w-full border border-[#4c1d95]">
+ 116 |                     <h2 className="text-4xl font-bold mb-4 text-[#fcd34d]">
+ 117 |                         Interview Configuration
+ 118 |                     </h2>
+ 119 |                     <p className="text-lg text-gray-300 mb-8">
+ 120 |                         Provide the context for your personalized mock
+ 121 |                         interview.
+ 122 |                     </p>
+ 123 | 
+ 124 |                     <form onSubmit={handleStartInterview} className="space-y-6">
+ 125 |                         {/* Resume Upload */}
+ 126 |                         <div>
+ 127 |                             <label htmlFor="resume_file" className={labelClasses}>
+ 128 |                                 Upload Resume (PDF only)
+ 129 |                             </label>
+ 130 |                             <input
+ 131 |                                 type="file"
+ 132 |                                 id="resume_file"
+ 133 |                                 accept=".pdf"
+ 134 |                                 onChange={(e) =>
+ 135 |                                     handleInputChange(
+ 136 |                                         setResumeFile,
+ 137 |                                         e.target.files[0]
+ 138 |                                     )
+ 139 |                                 }
+ 140 |                                 className="w-full text-gray-400 file:mr-4 file:py-3 file:px-6 file:rounded-full file:border-0 file:text-base file:font-semibold file:bg-[#2563eb] file:text-white hover:file:bg-[#fcd34d] hover:file:text-black file:transition-colors file:cursor-pointer"
+ 141 |                             />
+ 142 | 
+ 143 |                             {resumeFile && (
+ 144 |                                 <p className="text-left text-sm text-gray-400 mt-2">
+ 145 |                                     File selected:{" "}
+ 146 |                                     <span className="font-medium truncate ml-1">
+ 147 |                                         {resumeFile.name}
+ 148 |                                     </span>
+ 149 |                                 </p>
+ 150 |                             )}
+ 151 |                         </div>
+ 152 | 
+ 153 |                         {/* Job Description */}
+ 154 |                         <div>
+ 155 |                             <label htmlFor="job_text" className={labelClasses}>
+ 156 |                                 Job Description
+ 157 |                             </label>
+ 158 |                             <textarea
+ 159 |                                 id="job_text"
+ 160 |                                 value={jobText}
+ 161 |                                 onChange={(e) =>
+ 162 |                                     handleInputChange(
+ 163 |                                         setJobText,
+ 164 |                                         e.target.value
+ 165 |                                     )
+ 166 |                                 }
+ 167 |                                 rows="6"
+ 168 |                                 className={`${inputClasses} resize-none`}
+ 169 |                                 placeholder="Paste the job description here..."
+ 170 |                             />
+ 171 |                         </div>
+ 172 | 
+ 173 |                         {/* Interview Type */}
+ 174 |                         <div>
+ 175 |                             <label
+ 176 |                                 htmlFor="interview_type"
+ 177 |                                 className={labelClasses}
+ 178 |                             >
+ 179 |                                 Interview Type
+ 180 |                             </label>
+ 181 |                             <select
+ 182 |                                 id="interview_type"
+ 183 |                                 value={interviewType}
+ 184 |                                 onChange={(e) =>
+ 185 |                                     handleInputChange(
+ 186 |                                         setInterviewType,
+ 187 |                                         e.target.value
+ 188 |                                     )
+ 189 |                                 }
+ 190 |                                 className={inputClasses}
+ 191 |                             >
+ 192 |                                 <option value="technical">Technical</option>
+ 193 |                                 <option value="hr">HR / Behavioral</option>
+ 194 |                             </select>
+ 195 |                         </div>
+ 196 | 
+ 197 |                         {/* Generate Questions Button */}
+ 198 |                         <button
+ 199 |                             type="submit"
+ 200 |                             disabled={loading || !resumeFile || !jobText}
+ 201 |                             className={`w-full py-4 text-xl font-bold rounded-xl shadow-xl transition duration-300 transform ${
+ 202 |                                 loading
+ 203 |                                     ? "bg-gray-500 cursor-not-allowed"
+ 204 |                                     : "bg-[#7c3aed] hover:bg-[#a78bfa] hover:text-white hover:scale-[1.02]"
+ 205 |                             }`}
+ 206 |                         >
+ 207 |                             {loading ? (
+ 208 |                                 <span className="flex items-center justify-center">
+ 209 |                                     <svg
+ 210 |                                         className="animate-spin h-5 w-5 mr-3 text-white"
+ 211 |                                         xmlns="http://www.w3.org/2000/svg"
+ 212 |                                         fill="none"
+ 213 |                                         viewBox="0 0 24 24"
+ 214 |                                     >
+ 215 |                                         <circle
+ 216 |                                             className="opacity-25"
+ 217 |                                             cx="12"
+ 218 |                                             cy="12"
+ 219 |                                             r="10"
+ 220 |                                             stroke="currentColor"
+ 221 |                                             strokeWidth="4"
+ 222 |                                         ></circle>
+ 223 |                                         <path
+ 224 |                                             className="opacity-75"
+ 225 |                                             fill="currentColor"
+ 226 |                                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+ 227 |                                         ></path>
+ 228 |                                     </svg>
+ 229 |                                     Generating Questions...
+ 230 |                                 </span>
+ 231 |                             ) : (
+ 232 |                                 "Generate Interview Questions"
+ 233 |                             )}
+ 234 |                         </button>
+ 235 | 
+ 236 |                         {/* Error */}
+ 237 |                         {error && (
+ 238 |                             <p className="text-red-400 mt-4 bg-red-900/50 p-4 rounded-xl border border-red-700 text-center">
+ 239 |                                 {error}
+ 240 |                             </p>
+ 241 |                         )}
+ 242 |                     </form>
+ 243 |                 </div>
+ 244 |             </main>
+ 245 | 
+ 246 |             <footer className="bg-[#1e293b] text-gray-400 py-6 text-center border-t border-gray-700">
+ 247 |                 © 2025 ResumeRise. All rights reserved.
+ 248 |             </footer>
+ 249 |         </div>
+ 250 |     );
+ 251 | }
+
+--- frontend/src/pages/MockInterviewPage.jsx ---
+   1 | import React, { useState, useEffect, useRef } from "react";
+   2 | import { Link, useNavigate, useLocation } from "react-router-dom";
+   3 | import axios from "axios";
+   4 | 
+   5 | // Use environment variable for API URL, fallback to localhost for development
+   6 | const API_BASE_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:8000";
+   7 | 
+   8 | export default function MockInterviewPage() {
+   9 |     const navigate = useNavigate();
+  10 |     const location = useLocation();
+  11 | 
+  12 |     // State Management
+  13 |     const [currentQuestion, setCurrentQuestion] = useState("");
+  14 |     const [textualAnswer, setTextualAnswer] = useState("");
+  15 |     const [interviewResponses, setInterviewResponses] = useState([]);
+  16 |     const [conversation, setConversation] = useState([]);
+  17 |     const [aiMessage, setAiMessage] = useState("");
+  18 |     const [isRecording, setIsRecording] = useState(false);
+  19 |     const [isLoading, setIsLoading] = useState(false);
+  20 |     const [error, setError] = useState("");
+  21 |     const [sessionId, setSessionId] = useState(null);
+  22 |     const [emotionDisplay, setEmotionDisplay] = useState(null);
+  23 |     const [isCameraReady, setIsCameraReady] = useState(false);
+  24 |     const [recordingTime, setRecordingTime] = useState(0);
+  25 |     const [showEmotionIndicator, setShowEmotionIndicator] = useState(false);
+  26 |     const [questionCounter, setQuestionCounter] = useState(0);
+  27 |     const [isCapturingFrames, setIsCapturingFrames] = useState(false);
+  28 | 
+  29 |     // Refs
+  30 |     const videoRef = useRef(null);
+  31 |     const streamRef = useRef(null);
+  32 |     const recorderRef = useRef(null);
+  33 |     const chunksRef = useRef([]);
+  34 |     const recordingIntervalRef = useRef(null);
+  35 |     const frameCaptureIntervalRef = useRef(null);
+  36 |     const capturedFramesRef = useRef([]);
+  37 | 
+  38 |     // Constants
+  39 |     const MAX_QUESTIONS = 5;
+  40 |     const FRAME_CAPTURE_INTERVAL = 5000;
+  41 | 
+  42 |     // Load Interview Configuration
+  43 |     useEffect(() => {
+  44 |         const loadInterviewConfig = async () => {
+  45 |             try {
+  46 |                 const storedConfig = sessionStorage.getItem("interviewConfig");
+  47 |                 const interviewConfig = location.state?.config || 
+  48 |                     (storedConfig ? JSON.parse(storedConfig) : {});
+  49 |                 
+  50 |                 const storedQuestions = sessionStorage.getItem("interviewQuestions");
+  51 |                 let questions = [];
+  52 |                 
+  53 |                 if (storedQuestions) {
+  54 |                     questions = JSON.parse(storedQuestions);
+  55 |                 } else if (location.state?.questions) {
+  56 |                     questions = location.state.questions;
+  57 |                 }
+  58 |                 
+  59 |                 if (questions && questions.length > 0) {
+  60 |                     const firstQ = typeof questions[0] === "object" ? questions[0].question : questions[0];
+  61 |                     setCurrentQuestion(firstQ);
+  62 |                 } else {
+  63 |                     setCurrentQuestion("Tell me about yourself and your professional background.");
+  64 |                 }
+  65 |                 
+  66 |                 if (!storedConfig) {
+  67 |                     sessionStorage.setItem("interviewConfig", JSON.stringify(interviewConfig));
+  68 |                 }
+  69 |                 
+  70 |                 setSessionId(Date.now().toString());
+  71 |                 
+  72 |             } catch (err) {
+  73 |                 console.error("Failed to start interview:", err);
+  74 |                 setError("Failed to initialize interview. Please try again.");
+  75 |                 setCurrentQuestion("Tell me about yourself and your professional background.");
+  76 |             }
+  77 |         };
+  78 |         
+  79 |         loadInterviewConfig();
+  80 |     }, [location.state]);
+  81 | 
+  82 |     // Initialize Camera and Microphone
+  83 |     useEffect(() => {
+  84 |         const initCamera = async () => {
+  85 |             try {
+  86 |                 const stream = await navigator.mediaDevices.getUserMedia({
+  87 |                     video: true,
+  88 |                     audio: true,
+  89 |                 });
+  90 |                 
+  91 |                 streamRef.current = stream;
+  92 |                 
+  93 |                 if (videoRef.current) {
+  94 |                     videoRef.current.srcObject = stream;
+  95 |                     setIsCameraReady(true);
+  96 |                 }
+  97 |                 
+  98 |                 const audioTracks = stream.getAudioTracks();
+  99 |                 if (audioTracks.length === 0) {
+ 100 |                     setError("No microphone detected. Please check your audio input.");
+ 101 |                 }
+ 102 |                 
+ 103 |             } catch (err) {
+ 104 |                 console.error("Camera/Microphone error:", err);
+ 105 |                 setError("Camera or microphone permission denied. Please allow access to continue.");
+ 106 |                 setIsCameraReady(false);
+ 107 |             }
+ 108 |         };
+ 109 |         
+ 110 |         initCamera();
+ 111 |         
+ 112 |         return () => {
+ 113 |             if (streamRef.current) {
+ 114 |                 streamRef.current.getTracks().forEach(track => track.stop());
+ 115 |             }
+ 116 |             if (recordingIntervalRef.current) {
+ 117 |                 clearInterval(recordingIntervalRef.current);
+ 118 |             }
+ 119 |             if (frameCaptureIntervalRef.current) {
+ 120 |                 clearInterval(frameCaptureIntervalRef.current);
+ 121 |             }
+ 122 |         };
+ 123 |     }, []);
+ 124 | 
+ 125 |     // Recording Timer
+ 126 |     useEffect(() => {
+ 127 |         if (isRecording) {
+ 128 |             setRecordingTime(0);
+ 129 |             recordingIntervalRef.current = setInterval(() => {
+ 130 |                 setRecordingTime(prev => prev + 1);
+ 131 |             }, 1000);
+ 132 |         } else {
+ 133 |             if (recordingIntervalRef.current) {
+ 134 |                 clearInterval(recordingIntervalRef.current);
+ 135 |             }
+ 136 |         }
+ 137 |         
+ 138 |         return () => {
+ 139 |             if (recordingIntervalRef.current) {
+ 140 |                 clearInterval(recordingIntervalRef.current);
+ 141 |             }
+ 142 |         };
+ 143 |     }, [isRecording]);
+ 144 | 
+ 145 |     const formatTime = (seconds) => {
+ 146 |         const mins = Math.floor(seconds / 60);
+ 147 |         const secs = seconds % 60;
+ 148 |         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+ 149 |     };
+ 150 | 
+ 151 |     // Capture Single Frame
+ 152 |     const captureFrame = async () => {
+ 153 |         if (!videoRef.current || !isCameraReady) return null;
+ 154 |         
+ 155 |         try {
+ 156 |             const canvas = document.createElement("canvas");
+ 157 |             canvas.width = videoRef.current.videoWidth || 640;
+ 158 |             canvas.height = videoRef.current.videoHeight || 480;
+ 159 |             
+ 160 |             const ctx = canvas.getContext("2d");
+ 161 |             ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+ 162 |             
+ 163 |             const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", 0.8));
+ 164 |             return blob;
+ 165 |         } catch (err) {
+ 166 |             console.error("Frame capture error:", err);
+ 167 |             return null;
+ 168 |         }
+ 169 |     };
+ 170 | 
+ 171 |     // Start Capturing Frames Every 5 Seconds
+ 172 |     const startCapturingFrames = () => {
+ 173 |         capturedFramesRef.current = [];
+ 174 |         setIsCapturingFrames(true);
+ 175 |         
+ 176 |         captureFrame().then(frame => {
+ 177 |             if (frame) capturedFramesRef.current.push(frame);
+ 178 |         });
+ 179 |         
+ 180 |         frameCaptureIntervalRef.current = setInterval(async () => {
+ 181 |             if (isCapturingFrames) {
+ 182 |                 const frame = await captureFrame();
+ 183 |                 if (frame) {
+ 184 |                     capturedFramesRef.current.push(frame);
+ 185 |                 }
+ 186 |             }
+ 187 |         }, FRAME_CAPTURE_INTERVAL);
+ 188 |     };
+ 189 | 
+ 190 |     // Stop Capturing Frames
+ 191 |     const stopCapturingFrames = () => {
+ 192 |         setIsCapturingFrames(false);
+ 193 |         if (frameCaptureIntervalRef.current) {
+ 194 |             clearInterval(frameCaptureIntervalRef.current);
+ 195 |             frameCaptureIntervalRef.current = null;
+ 196 |         }
+ 197 |     };
+ 198 | 
+ 199 |     // Audio Recording Controls
+ 200 |     const startRecording = () => {
+ 201 |         if (!streamRef.current) {
+ 202 |             setError("Microphone not available. Please check permissions.");
+ 203 |             return;
+ 204 |         }
+ 205 |         
+ 206 |         try {
+ 207 |             const audioStream = new MediaStream(streamRef.current.getAudioTracks());
+ 208 |             const recorder = new MediaRecorder(audioStream, {
+ 209 |                 mimeType: MediaRecorder.isTypeSupported("audio/webm") ? "audio/webm" : "audio/mp4"
+ 210 |             });
+ 211 |             
+ 212 |             chunksRef.current = [];
+ 213 |             
+ 214 |             recorder.ondataavailable = (e) => {
+ 215 |                 if (e.data.size > 0) {
+ 216 |                     chunksRef.current.push(e.data);
+ 217 |                 }
+ 218 |             };
+ 219 |             
+ 220 |             recorder.onstop = () => {
+ 221 |                 if (chunksRef.current.length > 0) {
+ 222 |                     const audioBlob = new Blob(chunksRef.current, { type: "audio/webm" });
+ 223 |                     recorderRef.current = { audioBlob };
+ 224 |                     setTextualAnswer("Processing audio...");
+ 225 |                 }
+ 226 |             };
+ 227 |             
+ 228 |             recorder.start(1000);
+ 229 |             recorderRef.current = { recorder, audioBlob: null };
+ 230 |             setIsRecording(true);
+ 231 |             setError("");
+ 232 |             startCapturingFrames();
+ 233 |             
+ 234 |         } catch (err) {
+ 235 |             console.error("Recording error:", err);
+ 236 |             setError("Failed to start recording. Please check your microphone.");
+ 237 |         }
+ 238 |     };
+ 239 | 
+ 240 |     const stopRecording = () => {
+ 241 |         if (recorderRef.current && recorderRef.current.recorder) {
+ 242 |             recorderRef.current.recorder.stop();
+ 243 |             setIsRecording(false);
+ 244 |             stopCapturingFrames();
+ 245 |         }
+ 246 |     };
+ 247 | 
+ 248 |     // Analyze Facial Expressions
+ 249 |     const analyzeFacialExpressions = async () => {
+ 250 |         if (capturedFramesRef.current.length === 0) {
+ 251 |             return null;
+ 252 |         }
+ 253 |         
+ 254 |         try {
+ 255 |             const formData = new FormData();
+ 256 |             
+ 257 |             for (let i = 0; i < capturedFramesRef.current.length; i++) {
+ 258 |                 formData.append("images", capturedFramesRef.current[i], `frame_${i}.jpg`);
+ 259 |             }
+ 260 |             
+ 261 |             const faceResponse = await axios.post(`${API_BASE_URL}/face-emotion-batch`, formData, {
+ 262 |                 headers: { "Content-Type": "multipart/form-data" }
+ 263 |             });
+ 264 |             
+ 265 |             return faceResponse.data;
+ 266 |         } catch (err) {
+ 267 |             console.error("Face analysis error:", err);
+ 268 |             return null;
+ 269 |         }
+ 270 |     };
+ 271 | 
+ 272 |     // Generate Next Question
+ 273 |     const generateNextQuestion = async (finalText, analysisData, faceAnalysisData) => {
+ 274 |         try {
+ 275 |             const updatedConversation = [
+ 276 |                 ...conversation,
+ 277 |                 {
+ 278 |                     question: currentQuestion,
+ 279 |                     transcription: finalText,
+ 280 |                     emotion: faceAnalysisData?.face_emotion || analysisData.emotion,
+ 281 |                     score: analysisData.score,
+ 282 |                     feedback: analysisData.feedback,
+ 283 |                     face_analysis: faceAnalysisData?.face_analysis || "",
+ 284 |                     timestamp: new Date().toISOString()
+ 285 |                 }
+ 286 |             ];
+ 287 |             
+ 288 |             setConversation(updatedConversation);
+ 289 |             
+ 290 |             const storedConfig = sessionStorage.getItem("interviewConfig");
+ 291 |             const interviewConfig = storedConfig ? JSON.parse(storedConfig) : {};
+ 292 |             
+ 293 |             const nextQResponse = await axios.post(`${API_BASE_URL}/next-question`, {
+ 294 |                 interview_history: updatedConversation,
+ 295 |                 interview_type: interviewConfig.interviewType || "General",
+ 296 |                 job_role: interviewConfig.jobRole || null,
+ 297 |                 difficulty: interviewConfig.difficulty || "medium"
+ 298 |             });
+ 299 |             
+ 300 |             setCurrentQuestion(nextQResponse.data.question);
+ 301 |             setAiMessage(nextQResponse.data.affirmation || "");
+ 302 |             setQuestionCounter(prev => prev + 1);
+ 303 |             
+ 304 |             recorderRef.current = null;
+ 305 |             chunksRef.current = [];
+ 306 |             capturedFramesRef.current = [];
+ 307 |             setTextualAnswer("");
+ 308 |             
+ 309 |         } catch (err) {
+ 310 |             console.error("Next question generation error:", err);
+ 311 |             setError("Failed to generate next question. Please try again.");
+ 312 |             
+ 313 |             const fallbackQuestions = [
+ 314 |                 "Can you tell me more about your experience?",
+ 315 |                 "What specific skills do you bring to this role?",
+ 316 |                 "Describe a challenging project you worked on.",
+ 317 |                 "How do you handle pressure or tight deadlines?"
+ 318 |             ];
+ 319 |             const randomFallback = fallbackQuestions[Math.floor(Math.random() * fallbackQuestions.length)];
+ 320 |             setCurrentQuestion(randomFallback);
+ 321 |         }
+ 322 |     };
+ 323 | 
+ 324 |     // Submit Answer for Analysis
+ 325 |     const handleSubmitAnswer = async () => {
+ 326 |         if (!textualAnswer.trim() && !recorderRef.current?.audioBlob) {
+ 327 |             setError("Please provide an answer (type or record audio) before submitting.");
+ 328 |             return;
+ 329 |         }
+ 330 |         
+ 331 |         setError("");
+ 332 |         setIsLoading(true);
+ 333 |         setEmotionDisplay(null);
+ 334 |         
+ 335 |         try {
+ 336 |             let finalText = textualAnswer;
+ 337 |             let audioEmotion = "neutral";
+ 338 |             
+ 339 |             // Step 1: Transcribe audio if available
+ 340 |             const audioBlob = recorderRef.current?.audioBlob;
+ 341 |             if (audioBlob) {
+ 342 |                 const formData = new FormData();
+ 343 |                 formData.append("file", audioBlob, "audio.webm");
+ 344 |                 
+ 345 |                 const transcribeResponse = await axios.post(`${API_BASE_URL}/transcribe-audio`, formData, {
+ 346 |                     headers: { "Content-Type": "multipart/form-data" }
+ 347 |                 });
+ 348 |                 
+ 349 |                 finalText = transcribeResponse.data.text;
+ 350 |                 audioEmotion = transcribeResponse.data.audio_emotion;
+ 351 |                 setTextualAnswer(finalText);
+ 352 |             }
+ 353 |             
+ 354 |             // Step 2: Analyze captured face frames
+ 355 |             let faceAnalysisData = null;
+ 356 |             if (capturedFramesRef.current.length > 0) {
+ 357 |                 faceAnalysisData = await analyzeFacialExpressions();
+ 358 |             }
+ 359 |             
+ 360 |             // Step 3: Submit for scoring
+ 361 |             const storedConfig = sessionStorage.getItem("interviewConfig");
+ 362 |             const interviewConfig = storedConfig ? JSON.parse(storedConfig) : {};
+ 363 |             
+ 364 |             const analysisResponse = await axios.post(`${API_BASE_URL}/submit-response`, {
+ 365 |                 question_text: currentQuestion,
+ 366 |                 response_text: finalText,
+ 367 |                 audio_emotion: audioEmotion,
+ 368 |                 face_emotion: faceAnalysisData?.face_emotion || "neutral",
+ 369 |                 interview_type: interviewConfig.interviewType || "General",
+ 370 |                 response_time_seconds: recordingTime
+ 371 |             });
+ 372 |             
+ 373 |             const analysisData = analysisResponse.data;
+ 374 |             
+ 375 |             const displayEmotion = faceAnalysisData?.face_emotion || analysisData.emotion;
+ 376 |             setEmotionDisplay(displayEmotion);
+ 377 |             
+ 378 |             setShowEmotionIndicator(true);
+ 379 |             setTimeout(() => setShowEmotionIndicator(false), 3000);
+ 380 |             
+ 381 |             // Store response (score saved but NOT displayed)
+ 382 |             const updatedResponses = [
+ 383 |                 ...interviewResponses,
+ 384 |                 {
+ 385 |                     question: currentQuestion,
+ 386 |                     transcription: finalText,
+ 387 |                     emotion: displayEmotion,
+ 388 |                     feedback: analysisData.feedback,
+ 389 |                     score: analysisData.score,
+ 390 |                     audio_emotion: audioEmotion,
+ 391 |                     face_emotion: faceAnalysisData?.face_emotion || "neutral",
+ 392 |                     face_analysis: faceAnalysisData?.face_analysis || "",
+ 393 |                     timestamp: new Date().toISOString()
+ 394 |                 }
+ 395 |             ];
+ 396 |             
+ 397 |             setInterviewResponses(updatedResponses);
+ 398 |             
+ 399 |             // End interview if max questions reached
+ 400 |             if (updatedResponses.length >= MAX_QUESTIONS) {
+ 401 |                 sessionStorage.setItem("interviewResponses", JSON.stringify(updatedResponses));
+ 402 |                 navigate("/interview-review", {
+ 403 |                     state: {
+ 404 |                         responses: updatedResponses,
+ 405 |                         config: interviewConfig,
+ 406 |                         sessionId: sessionId
+ 407 |                     }
+ 408 |                 });
+ 409 |                 return;
+ 410 |             }
+ 411 |             
+ 412 |             // Generate next question
+ 413 |             await generateNextQuestion(finalText, analysisData, faceAnalysisData);
+ 414 |             
+ 415 |         } catch (err) {
+ 416 |             console.error("Submission error:", err);
+ 417 |             setError(err.response?.data?.detail || "Failed to process your answer. Please try again.");
+ 418 |         } finally {
+ 419 |             setIsLoading(false);
+ 420 |         }
+ 421 |     };
+ 422 | 
+ 423 |     // End Interview
+ 424 |     const handleEndInterview = () => {
+ 425 |         if (interviewResponses.length === 0) {
+ 426 |             setError("No responses recorded. Please answer at least one question before ending.");
+ 427 |             return;
+ 428 |         }
+ 429 |         
+ 430 |         const storedConfig = sessionStorage.getItem("interviewConfig");
+ 431 |         const interviewConfig = storedConfig ? JSON.parse(storedConfig) : {};
+ 432 |         
+ 433 |         navigate("/interview-review", {
+ 434 |             state: {
+ 435 |                 responses: interviewResponses,
+ 436 |                 config: interviewConfig,
+ 437 |                 sessionId: sessionId,
+ 438 |                 earlyEnd: true
+ 439 |             }
+ 440 |         });
+ 441 |     };
+ 442 | 
+ 443 |     const getEmotionColor = (emotion) => {
+ 444 |         const colors = {
+ 445 |             confident: "text-green-400",
+ 446 |             nervous: "text-yellow-400",
+ 447 |             neutral: "text-gray-400",
+ 448 |             enthusiastic: "text-purple-400",
+ 449 |             focused: "text-blue-400",
+ 450 |             confused: "text-orange-400"
+ 451 |         };
+ 452 |         return colors[emotion] || "text-white";
+ 453 |     };
+ 454 | 
+ 455 |     return (
+ 456 |         <div className="min-h-screen bg-gradient-to-br from-[#0f172a] to-[#1e1b4b] text-white">
+ 457 |             
+ 458 |             {/* Header */}
+ 459 |             <header className="fixed top-0 left-0 right-0 bg-[#1e293b]/95 backdrop-blur-md shadow-lg z-50">
+ 460 |                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+ 461 |                     <Link to="/interview-setup" className="text-yellow-400 hover:text-yellow-300 transition-colors">
+ 462 |                         ← Exit Interview
+ 463 |                     </Link>
+ 464 |                     
+ 465 |                     <h1 className="text-xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+ 466 |                         Mock Interview
+ 467 |                     </h1>
+ 468 |                     
+ 469 |                     <div className="flex items-center gap-4">
+ 470 |                         <div className="bg-[#0f172a] px-4 py-2 rounded-full">
+ 471 |                             <span className="text-green-400 font-bold">
+ 472 |                                 {interviewResponses.length}/{MAX_QUESTIONS}
+ 473 |                             </span>
+ 474 |                         </div>
+ 475 |                     </div>
+ 476 |                 </div>
+ 477 |             </header>
+ 478 |             
+ 479 |             <main className="container mx-auto px-6 pt-24 pb-12">
+ 480 |                 
+ 481 |                 {/* Camera Feed */}
+ 482 |                 <div className="flex justify-center mb-8">
+ 483 |                     <div className="relative">
+ 484 |                         <video
+ 485 |                             ref={videoRef}
+ 486 |                             autoPlay
+ 487 |                             muted
+ 488 |                             playsInline
+ 489 |                             className="w-80 rounded-2xl border-4 border-[#1e293b] shadow-2xl"
+ 490 |                         />
+ 491 |                         {!isCameraReady && (
+ 492 |                             <div className="absolute inset-0 bg-black/80 rounded-2xl flex items-center justify-center">
+ 493 |                                 <p className="text-yellow-400 text-center px-4">
+ 494 |                                     Camera permission required
+ 495 |                                 </p>
+ 496 |                             </div>
+ 497 |                         )}
+ 498 |                         
+ 499 |                         {isRecording && (
+ 500 |                             <div className="absolute top-2 right-2 flex items-center gap-2 bg-red-600/90 backdrop-blur-sm px-3 py-1 rounded-full">
+ 501 |                                 <div className="w-3 h-3 bg-red-400 rounded-full animate-pulse"></div>
+ 502 |                                 <span className="text-sm font-mono">{formatTime(recordingTime)}</span>
+ 503 |                             </div>
+ 504 |                         )}
+ 505 |                         
+ 506 |                         {isCapturingFrames && (
+ 507 |                             <div className="absolute bottom-2 right-2 bg-blue-600/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs">
+ 508 |                                 Frames: {capturedFramesRef.current.length}
+ 509 |                             </div>
+ 510 |                         )}
+ 511 |                         
+ 512 |                         {showEmotionIndicator && emotionDisplay && (
+ 513 |                             <div className={`absolute bottom-2 left-2 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full ${getEmotionColor(emotionDisplay)}`}>
+ 514 |                                 <span className="font-semibold capitalize">{emotionDisplay}</span>
+ 515 |                             </div>
+ 516 |                         )}
+ 517 |                     </div>
+ 518 |                 </div>
+ 519 |                 
+ 520 |                 {/* Current Question */}
+ 521 |                 <div className="question-container bg-[#1e293b] rounded-2xl p-8 mb-6 shadow-xl border border-[#334155]">
+ 522 |                     <p className="text-sm text-green-400 mb-2">Question {questionCounter + 1}:</p>
+ 523 |                     <p className="text-xl leading-relaxed">{currentQuestion || "Loading..."}</p>
+ 524 |                 </div>
+ 525 |                 
+ 526 |                 {/* AI Message */}
+ 527 |                 {aiMessage && (
+ 528 |                     <div className="bg-green-900/50 border border-green-700 rounded-xl p-4 mb-6 text-center">
+ 529 |                         <p className="text-green-300">{aiMessage}</p>
+ 530 |                     </div>
+ 531 |                 )}
+ 532 |                 
+ 533 |                 {/* NO SCORE DISPLAY HERE - Removed intentionally */}
+ 534 |                 
+ 535 |                 {/* Answer Input */}
+ 536 |                 <div className="bg-[#1e293b] rounded-2xl p-6 mb-6 shadow-xl">
+ 537 |                     <label className="block text-sm font-medium text-gray-400 mb-3">
+ 538 |                         Your Answer (Type or Speak)
+ 539 |                     </label>
+ 540 |                     <textarea
+ 541 |                         value={textualAnswer}
+ 542 |                         onChange={(e) => setTextualAnswer(e.target.value)}
+ 543 |                         className="w-full p-4 bg-[#0f172a] border border-[#334155] rounded-xl text-white focus:border-green-500 focus:outline-none transition-colors"
+ 544 |                         rows={6}
+ 545 |                         placeholder="Type your answer here or click 'Start Recording' to speak..."
+ 546 |                         disabled={isLoading}
+ 547 |                     />
+ 548 |                 </div>
+ 549 |                 
+ 550 |                 {/* Buttons */}
+ 551 |                 <div className="flex flex-wrap justify-center gap-4 mb-6">
+ 552 |                     {!isRecording ? (
+ 553 |                         <button
+ 554 |                             onClick={startRecording}
+ 555 |                             disabled={isLoading || !isCameraReady}
+ 556 |                             className="bg-green-600 hover:bg-green-700 disabled:bg-gray-600 px-8 py-3 rounded-xl font-semibold transition-all"
+ 557 |                         >
+ 558 |                             Start Recording
+ 559 |                         </button>
+ 560 |                     ) : (
+ 561 |                         <button
+ 562 |                             onClick={stopRecording}
+ 563 |                             className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-xl font-semibold transition-all"
+ 564 |                         >
+ 565 |                             Stop Recording
+ 566 |                         </button>
+ 567 |                     )}
+ 568 |                     
+ 569 |                     <button
+ 570 |                         onClick={handleSubmitAnswer}
+ 571 |                         disabled={isLoading || (!textualAnswer.trim() && !recorderRef.current?.audioBlob)}
+ 572 |                         className="bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 px-8 py-3 rounded-xl font-semibold transition-all"
+ 573 |                     >
+ 574 |                         {isLoading ? "Analyzing..." : "Submit Answer"}
+ 575 |                     </button>
+ 576 |                     
+ 577 |                     <button
+ 578 |                         onClick={handleEndInterview}
+ 579 |                         disabled={isLoading}
+ 580 |                         className="bg-gray-600 hover:bg-gray-700 disabled:opacity-50 px-8 py-3 rounded-xl font-semibold transition-all"
+ 581 |                     >
+ 582 |                         End Interview
+ 583 |                     </button>
+ 584 |                 </div>
+ 585 |                 
+ 586 |                 {/* Info Box */}
+ 587 |                 <div className="bg-blue-900/30 border border-blue-700 rounded-xl p-4 mb-6">
+ 588 |                     <p className="text-blue-300 text-sm text-center">
+ 589 |                         Your camera captures a frame every 5 seconds during your answer to analyze facial expressions.
+ 590 |                     </p>
+ 591 |                 </div>
+ 592 |                 
+ 593 |                 {/* Error */}
+ 594 |                 {error && (
+ 595 |                     <div className="bg-red-900/50 border border-red-700 rounded-xl p-4 text-center">
+ 596 |                         <p className="text-red-300">{error}</p>
+ 597 |                     </div>
+ 598 |                 )}
+ 599 |                 
+ 600 |                 {/* Progress Bar */}
+ 601 |                 <div className="mt-8">
+ 602 |                     <div className="bg-[#1e293b] rounded-full h-2 overflow-hidden">
+ 603 |                         <div 
+ 604 |                             className="bg-gradient-to-r from-green-500 to-emerald-500 h-full transition-all duration-500"
+ 605 |                             style={{ width: `${(interviewResponses.length / MAX_QUESTIONS) * 100}%` }}
+ 606 |                         />
+ 607 |                     </div>
+ 608 |                     <p className="text-sm text-gray-400 text-center mt-2">
+ 609 |                         Question {interviewResponses.length + 1} of {MAX_QUESTIONS}
+ 610 |                     </p>
+ 611 |                 </div>
+ 612 |                 
+ 613 |             </main>
+ 614 |         </div>
+ 615 |     );
+ 616 | }
+
+--- frontend/src/pages/ResumeMatchPage.jsx ---
+   1 | import React, { useState } from "react";
+   2 | import { Link } from "react-router-dom";
+   3 | import axios from "axios";
+   4 | 
+   5 | // Use environment variable for API URL, fallback to localhost for development
+   6 | const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+   7 | 
+   8 | export default function ResumeMatcherPage() {
+   9 |     const [resumeFile, setResumeFile] = useState(null);
+  10 |     const [jobDescription, setJobDescription] = useState("");
+  11 |     const [result, setResult] = useState(null);
+  12 |     const [loading, setLoading] = useState(false);
+  13 |     const [error, setError] = useState("");
+  14 |     const [activeTab, setActiveTab] = useState("results");
+  15 | 
+  16 |     const handleFileChange = (e) => {
+  17 |         const file = e.target.files[0];
+  18 |         if (file && file.type === "application/pdf") {
+  19 |             setResumeFile(file);
+  20 |             setError("");
+  21 |         } else {
+  22 |             setError("Please upload a valid PDF file");
+  23 |         }
+  24 |     };
+  25 | 
+  26 |     const handleSubmit = async (e) => {
+  27 |         e.preventDefault();
+  28 |         
+  29 |         if (!resumeFile || !jobDescription.trim()) {
+  30 |             setError("Please upload resume and provide job description");
+  31 |             return;
+  32 |         }
+  33 | 
+  34 |         setLoading(true);
+  35 |         setError("");
+  36 |         setResult(null);
+  37 | 
+  38 |         const formData = new FormData();
+  39 |         formData.append("resume", resumeFile);
+  40 |         formData.append("job_description", jobDescription);
+  41 | 
+  42 |         try {
+  43 |             const response = await axios.post(
+  44 |                 `${API_BASE_URL}/match-resume-ml`,
+  45 |                 formData,
+  46 |                 { headers: { "Content-Type": "multipart/form-data" } }
+  47 |             );
+  48 |             setResult(response.data);
+  49 |             setActiveTab("results");
+  50 |         } catch (err) {
+  51 |             console.error("Matching error:", err);
+  52 |             setError(err.response?.data?.detail || "Failed to analyze resume. Please try again.");
+  53 |         } finally {
+  54 |             setLoading(false);
+  55 |         }
+  56 |     };
+  57 | 
+  58 |     const getScoreColor = (score) => {
+  59 |         if (score >= 75) return "text-green-400";
+  60 |         if (score >= 50) return "text-yellow-400";
+  61 |         return "text-red-400";
+  62 |     };
+  63 | 
+  64 |     const getScoreBg = (score) => {
+  65 |         if (score >= 75) return "border-green-500 bg-green-900/20";
+  66 |         if (score >= 50) return "border-yellow-500 bg-yellow-900/20";
+  67 |         return "border-red-500 bg-red-900/20";
+  68 |     };
+  69 | 
+  70 |     return (
+  71 |         <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+  72 |             
+  73 |             {/* Header */}
+  74 |             <header className="fixed top-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md shadow-lg z-50 border-b border-slate-700">
+  75 |                 <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+  76 |                     <Link to="/" className="text-amber-400 hover:text-amber-300 transition-colors font-medium">
+  77 |                         ← Back
+  78 |                     </Link>
+  79 |                     <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+  80 |                         Resume Matcher
+  81 |                     </h1>
+  82 |                     <div className="w-16"></div>
+  83 |                 </div>
+  84 |             </header>
+  85 | 
+  86 |             <main className="container mx-auto px-6 pt-24 pb-12">
+  87 |                 
+  88 |                 {/* Title */}
+  89 |                 <div className="text-center mb-10">
+  90 |                     <h2 className="text-3xl font-bold text-amber-400 mb-2">
+  91 |                         Resume Job Matcher
+  92 |                     </h2>
+  93 |                     <p className="text-gray-400 max-w-2xl mx-auto">
+  94 |                         Upload your resume and paste a job description to see how well they match.
+  95 |                         Skills are extracted dynamically from the job description.
+  96 |                     </p>
+  97 |                 </div>
+  98 | 
+  99 |                 <div className="grid lg:grid-cols-2 gap-8">
+ 100 |                     
+ 101 |                     {/* Input Form */}
+ 102 |                     <div className="bg-slate-800/50 rounded-2xl p-6 shadow-xl border border-slate-700">
+ 103 |                         <h3 className="text-xl font-semibold text-blue-400 mb-4">
+ 104 |                             Upload Documents
+ 105 |                         </h3>
+ 106 |                         
+ 107 |                         <form onSubmit={handleSubmit} className="space-y-5">
+ 108 |                             {/* Resume Upload */}
+ 109 |                             <div>
+ 110 |                                 <label className="block text-sm font-medium text-gray-300 mb-2">
+ 111 |                                     Resume (PDF)
+ 112 |                                 </label>
+ 113 |                                 <div 
+ 114 |                                     className="border-2 border-dashed border-slate-600 rounded-xl p-6 text-center hover:border-blue-500 hover:bg-slate-700/30 transition-all cursor-pointer"
+ 115 |                                     onClick={() => document.getElementById("resume-input").click()}
+ 116 |                                 >
+ 117 |                                     <input
+ 118 |                                         id="resume-input"
+ 119 |                                         type="file"
+ 120 |                                         accept=".pdf"
+ 121 |                                         onChange={handleFileChange}
+ 122 |                                         className="hidden"
+ 123 |                                     />
+ 124 |                                     {resumeFile ? (
+ 125 |                                         <div className="text-green-400">
+ 126 |                                             <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+ 127 |                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+ 128 |                                             </svg>
+ 129 |                                             <p className="font-medium">{resumeFile.name}</p>
+ 130 |                                             <p className="text-xs text-gray-400 mt-1">Click to change</p>
+ 131 |                                         </div>
+ 132 |                                     ) : (
+ 133 |                                         <div className="text-gray-400">
+ 134 |                                             <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+ 135 |                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+ 136 |                                             </svg>
+ 137 |                                             <p>Click to upload PDF</p>
+ 138 |                                             <p className="text-xs mt-1">PDF up to 10MB</p>
+ 139 |                                         </div>
+ 140 |                                     )}
+ 141 |                                 </div>
+ 142 |                             </div>
+ 143 | 
+ 144 |                             {/* Job Description */}
+ 145 |                             <div>
+ 146 |                                 <label className="block text-sm font-medium text-gray-300 mb-2">
+ 147 |                                     Job Description
+ 148 |                                 </label>
+ 149 |                                 <textarea
+ 150 |                                     value={jobDescription}
+ 151 |                                     onChange={(e) => setJobDescription(e.target.value)}
+ 152 |                                     rows={8}
+ 153 |                                     className="w-full p-3 bg-slate-900 border border-slate-600 rounded-xl text-white focus:border-blue-500 focus:outline-none transition-colors resize-none"
+ 154 |                                     placeholder="Paste the job description here..."
+ 155 |                                 />
+ 156 |                             </div>
+ 157 | 
+ 158 |                             {/* Submit Button */}
+ 159 |                             <button
+ 160 |                                 type="submit"
+ 161 |                                 disabled={loading || !resumeFile || !jobDescription.trim()}
+ 162 |                                 className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 disabled:from-gray-600 disabled:to-gray-700 py-3 rounded-xl font-semibold transition-all"
+ 163 |                             >
+ 164 |                                 {loading ? "Analyzing..." : "Match Resume"}
+ 165 |                             </button>
+ 166 | 
+ 167 |                             {error && (
+ 168 |                                 <div className="bg-red-900/50 border border-red-700 rounded-xl p-3 text-center">
+ 169 |                                     <p className="text-red-300 text-sm">{error}</p>
+ 170 |                                 </div>
+ 171 |                             )}
+ 172 |                         </form>
+ 173 |                     </div>
+ 174 | 
+ 175 |                     {/* Results */}
+ 176 |                     <div className="bg-slate-800/50 rounded-2xl p-6 shadow-xl border border-slate-700">
+ 177 |                         <div className="flex border-b border-slate-700 mb-4">
+ 178 |                             <button
+ 179 |                                 onClick={() => setActiveTab("results")}
+ 180 |                                 className={`px-4 py-2 font-medium transition-colors ${
+ 181 |                                     activeTab === "results"
+ 182 |                                         ? "text-blue-400 border-b-2 border-blue-400"
+ 183 |                                         : "text-gray-400 hover:text-gray-300"
+ 184 |                                 }`}
+ 185 |                             >
+ 186 |                                 Results
+ 187 |                             </button>
+ 188 |                             <button
+ 189 |                                 onClick={() => setActiveTab("feedback")}
+ 190 |                                 className={`px-4 py-2 font-medium transition-colors ${
+ 191 |                                     activeTab === "feedback"
+ 192 |                                         ? "text-blue-400 border-b-2 border-blue-400"
+ 193 |                                         : "text-gray-400 hover:text-gray-300"
+ 194 |                                 }`}
+ 195 |                             >
+ 196 |                                 Feedback
+ 197 |                             </button>
+ 198 |                         </div>
+ 199 | 
+ 200 |                         {!result && !loading && (
+ 201 |                             <div className="text-center py-16 text-gray-500">
+ 202 |                                 <svg className="w-16 h-16 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+ 203 |                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+ 204 |                                 </svg>
+ 205 |                                 <p>No results yet</p>
+ 206 |                                 <p className="text-sm">Upload a resume and job description to see matching results</p>
+ 207 |                             </div>
+ 208 |                         )}
+ 209 | 
+ 210 |                         {loading && (
+ 211 |                             <div className="text-center py-12">
+ 212 |                                 <div className="inline-block animate-spin rounded-full h-10 w-10 border-3 border-blue-500 border-t-transparent"></div>
+ 213 |                                 <p className="mt-4 text-gray-400">Analyzing...</p>
+ 214 |                             </div>
+ 215 |                         )}
+ 216 | 
+ 217 |                         {result && activeTab === "results" && (
+ 218 |                             <div className="space-y-5">
+ 219 |                                 {/* Score */}
+ 220 |                                 <div className={`text-center p-5 rounded-xl border-2 ${getScoreBg(result.final_score)}`}>
+ 221 |                                     <p className="text-sm text-gray-400 mb-1">Match Score</p>
+ 222 |                                     <p className={`text-5xl font-bold ${getScoreColor(result.final_score)}`}>
+ 223 |                                         {result.final_score}%
+ 224 |                                     </p>
+ 225 |                                     <p className="text-sm mt-2 text-gray-300">{result.recommendation}</p>
+ 226 |                                 </div>
+ 227 | 
+ 228 |                                 {/* Score Breakdown */}
+ 229 |                                 <div className="grid grid-cols-3 gap-3">
+ 230 |                                     <div className="bg-slate-900 p-3 rounded-xl text-center">
+ 231 |                                         <p className="text-xs text-gray-500">Overall</p>
+ 232 |                                         <p className="text-xl font-bold text-white">{result.final_score}%</p>
+ 233 |                                     </div>
+ 234 |                                     <div className="bg-slate-900 p-3 rounded-xl text-center">
+ 235 |                                         <p className="text-xs text-gray-500">Skills</p>
+ 236 |                                         <p className="text-xl font-bold text-green-400">{result.skill_score || result.final_score - 5}%</p>
+ 237 |                                     </div>
+ 238 |                                     <div className="bg-slate-900 p-3 rounded-xl text-center">
+ 239 |                                         <p className="text-xs text-gray-500">Semantic</p>
+ 240 |                                         <p className="text-xl font-bold text-blue-400">{result.semantic_score || result.final_score - 3}%</p>
+ 241 |                                     </div>
+ 242 |                                 </div>
+ 243 | 
+ 244 |                                 {/* Matched Skills */}
+ 245 |                                 <div className="bg-slate-900 p-4 rounded-xl">
+ 246 |                                     <h4 className="font-semibold text-green-400 mb-2">Matched Skills</h4>
+ 247 |                                     <div className="flex flex-wrap gap-2">
+ 248 |                                         {result.matched_skills?.length > 0 ? (
+ 249 |                                             result.matched_skills.map((skill, i) => (
+ 250 |                                                 <span key={i} className="px-2 py-1 bg-green-900/30 text-green-300 rounded-lg text-sm">
+ 251 |                                                     {skill}
+ 252 |                                                 </span>
+ 253 |                                             ))
+ 254 |                                         ) : (
+ 255 |                                             <p className="text-gray-500 text-sm">No matched skills found</p>
+ 256 |                                         )}
+ 257 |                                     </div>
+ 258 |                                 </div>
+ 259 | 
+ 260 |                                 {/* Missing Skills */}
+ 261 |                                 <div className="bg-slate-900 p-4 rounded-xl">
+ 262 |                                     <h4 className="font-semibold text-yellow-400 mb-2">Missing Skills</h4>
+ 263 |                                     <div className="flex flex-wrap gap-2">
+ 264 |                                         {result.missing_skills?.length > 0 ? (
+ 265 |                                             result.missing_skills.map((skill, i) => (
+ 266 |                                                 <span key={i} className="px-2 py-1 bg-yellow-900/30 text-yellow-300 rounded-lg text-sm">
+ 267 |                                                     {skill}
+ 268 |                                                 </span>
+ 269 |                                             ))
+ 270 |                                         ) : (
+ 271 |                                             <p className="text-green-400 text-sm">Great! No major skills missing</p>
+ 272 |                                         )}
+ 273 |                                     </div>
+ 274 |                                 </div>
+ 275 | 
+ 276 |                                 {/* Method */}
+ 277 |                                 <div className="text-center">
+ 278 |                                     <span className="inline-block px-3 py-1 bg-slate-700 text-gray-300 rounded-full text-xs">
+ 279 |                                         {result.method || "Dynamic Skill Extraction"}
+ 280 |                                     </span>
+ 281 |                                 </div>
+ 282 |                             </div>
+ 283 |                         )}
+ 284 | 
+ 285 |                         {result && activeTab === "feedback" && result.llm_feedback && (
+ 286 |                             <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2">
+ 287 |                                 <div className="bg-slate-900 p-4 rounded-xl">
+ 288 |                                     <h4 className="font-semibold text-blue-400 mb-2">Overall</h4>
+ 289 |                                     <p className="text-gray-300 text-sm">{result.llm_feedback.overall || "Analysis complete"}</p>
+ 290 |                                 </div>
+ 291 |                                 
+ 292 |                                 <div className="bg-slate-900 p-4 rounded-xl">
+ 293 |                                     <h4 className="font-semibold text-green-400 mb-2">Strengths</h4>
+ 294 |                                     <p className="text-gray-300 text-sm">{result.llm_feedback.strengths || "Your resume contains relevant skills"}</p>
+ 295 |                                 </div>
+ 296 | 
+ 297 |                                 <div className="bg-slate-900 p-4 rounded-xl">
+ 298 |                                     <h4 className="font-semibold text-yellow-400 mb-2">Gaps</h4>
+ 299 |                                     <p className="text-gray-300 text-sm">{result.llm_feedback.gaps || "Review missing skills section"}</p>
+ 300 |                                 </div>
+ 301 | 
+ 302 |                                 <div className="bg-slate-900 p-4 rounded-xl">
+ 303 |                                     <h4 className="font-semibold text-purple-400 mb-2">Improvements</h4>
+ 304 |                                     <p className="text-gray-300 text-sm">{result.llm_feedback.improvements || "Add more specific examples"}</p>
+ 305 |                                 </div>
+ 306 | 
+ 307 |                                 <div className="bg-slate-900 p-4 rounded-xl">
+ 308 |                                     <h4 className="font-semibold text-cyan-400 mb-2">ATS Tips</h4>
+ 309 |                                     <p className="text-gray-300 text-sm">{result.llm_feedback.ats_tips || "Use standard section headings"}</p>
+ 310 |                                 </div>
+ 311 |                             </div>
+ 312 |                         )}
+ 313 |                     </div>
+ 314 |                 </div>
+ 315 | 
+ 316 |                 {/* How It Works */}
+ 317 |                 <div className="mt-12 bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+ 318 |                     <h3 className="text-lg font-semibold text-center text-gray-300 mb-4">How It Works</h3>
+ 319 |                     <div className="grid md:grid-cols-3 gap-6 text-center">
+ 320 |                         <div>
+ 321 |                             <div className="w-10 h-10 bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-2">
+ 322 |                                 <span className="text-blue-400 font-bold">1</span>
+ 323 |                             </div>
+ 324 |                             <p className="font-medium text-white">Extract Skills</p>
+ 325 |                             <p className="text-xs text-gray-500">AI extracts skills from job description</p>
+ 326 |                         </div>
+ 327 |                         <div>
+ 328 |                             <div className="w-10 h-10 bg-purple-900/50 rounded-full flex items-center justify-center mx-auto mb-2">
+ 329 |                                 <span className="text-purple-400 font-bold">2</span>
+ 330 |                             </div>
+ 331 |                             <p className="font-medium text-white">Compare Resume</p>
+ 332 |                             <p className="text-xs text-gray-500">Matches against your resume</p>
+ 333 |                         </div>
+ 334 |                         <div>
+ 335 |                             <div className="w-10 h-10 bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-2">
+ 336 |                                 <span className="text-green-400 font-bold">3</span>
+ 337 |                             </div>
+ 338 |                             <p className="font-medium text-white">Get Feedback</p>
+ 339 |                             <p className="text-xs text-gray-500">Actionable improvement suggestions</p>
+ 340 |                         </div>
+ 341 |                     </div>
+ 342 |                 </div>
+ 343 |             </main>
+ 344 | 
+ 345 |             <footer className="bg-slate-900 text-gray-400 py-6 text-center border-t border-slate-700 mt-8">
+ 346 |                 <p>© 2025 ResumeRise | AI-Powered Resume Matching</p>
+ 347 |             </footer>
+ 348 |         </div>
+ 349 |     );
+ 350 | }
+=== END OF REPOSITORY ===
+
+TASK: Write ONE report with exactly these four parts, about 700-900 words in total (tags not counted):
+
+## 1. In plain English
+For someone who has never programmed: 2-3 sentences on what the project is and who would use it,
+one line starting "Analogy:", and "What you can do with it:" with 3 short bullets. No jargon.
+
+## 2. For students: how to read this project
+A numbered reading order of 4-5 files with one line each on why to read it; a Mermaid diagram in a
+```mermaid code fence (flowchart LR, at most 7 nodes, plain-word labels); "Key terms:" 3 short glossary entries.
+
+## 3. For recruiters and interviewers
+"What it demonstrates:" 3 bullets of concrete skills; "Stack:" one line; "Most interesting part:" 1-2 sentences.
+
+## 4. For developers
+Short bullets grouped under: Purpose, Main modules, How data flows, Tech stack, How to run it,
+Worth a closer look. Explain what the code does and how or why.
+
+CITATION RULES (important):
+- To cite, COPY a tag from section C exactly, character for character, and put it right after the claim
+  it supports. Never type a tag from memory and never edit its file, symbol or line numbers.
+- Every bullet in part 4 that describes code must carry at least one tag. Parts 1-3 may carry tags where natural.
+- Cite only when that code really supports the claim. If no tag in section C fits, either leave the
+  claim out or base it on the README and give no tag.
+- Do not invent files, functions, or behaviour that are not in the material above.
+
+Write the report now.
