@@ -1,0 +1,866 @@
+{
+ "citations": {
+  "AURA": {
+   "01_Attendance-Management-System": {
+    "citations": 18,
+    "passed": 18
+   },
+   "04_ResumeRise": {
+    "citations": 18,
+    "passed": 18
+   },
+   "05_bookreview-api": {
+    "citations": 15,
+    "passed": 15
+   },
+   "06_Virtual-Tour-Creater": {
+    "citations": 23,
+    "passed": 23
+   },
+   "10_HomeServicesBooking": {
+    "citations": 18,
+    "passed": 18
+   },
+   "15_whatsappchatanalyzer": {
+    "citations": 22,
+    "passed": 22
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "citations": 15,
+    "passed": 15
+   }
+  },
+  "chatgpt": {
+   "01_Attendance-Management-System": {
+    "citations": 24,
+    "passed": 18
+   },
+   "04_ResumeRise": {
+    "citations": 33,
+    "passed": 33
+   },
+   "05_bookreview-api": {
+    "citations": 36,
+    "passed": 31
+   },
+   "06_Virtual-Tour-Creater": {
+    "citations": 0,
+    "passed": 0
+   },
+   "10_HomeServicesBooking": {
+    "citations": 28,
+    "passed": 28
+   },
+   "15_whatsappchatanalyzer": {
+    "citations": 26,
+    "passed": 24
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "citations": 27,
+    "passed": 16
+   }
+  },
+  "claude": {
+   "01_Attendance-Management-System": {
+    "citations": 28,
+    "passed": 28
+   },
+   "04_ResumeRise": {
+    "citations": 31,
+    "passed": 31
+   },
+   "05_bookreview-api": {
+    "citations": 30,
+    "passed": 30
+   },
+   "06_Virtual-Tour-Creater": {
+    "citations": 38,
+    "passed": 38
+   },
+   "10_HomeServicesBooking": {
+    "citations": 31,
+    "passed": 31
+   },
+   "15_whatsappchatanalyzer": {
+    "citations": 32,
+    "passed": 32
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "citations": 31,
+    "passed": 31
+   }
+  },
+  "deepseek": {
+   "01_Attendance-Management-System": {
+    "citations": 31,
+    "passed": 31
+   },
+   "04_ResumeRise": {
+    "citations": 3,
+    "passed": 3
+   },
+   "05_bookreview-api": {
+    "citations": 36,
+    "passed": 36
+   },
+   "06_Virtual-Tour-Creater": {
+    "citations": 1,
+    "passed": 1
+   },
+   "10_HomeServicesBooking": {
+    "citations": 6,
+    "passed": 5
+   },
+   "15_whatsappchatanalyzer": {
+    "citations": 35,
+    "passed": 35
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "citations": 14,
+    "passed": 14
+   }
+  }
+ },
+ "faithfulness": {
+  "AURA": {
+   "01_Attendance-Management-System": {
+    "cited": 33,
+    "broken": 0,
+    "S": 21,
+    "P": 1,
+    "U": 3,
+    "unjudged": 0
+   },
+   "04_ResumeRise": {
+    "cited": 33,
+    "broken": 0,
+    "S": 21,
+    "P": 3,
+    "U": 1,
+    "unjudged": 0
+   },
+   "05_bookreview-api": {
+    "cited": 31,
+    "broken": 0,
+    "S": 17,
+    "P": 5,
+    "U": 3,
+    "unjudged": 0
+   },
+   "06_Virtual-Tour-Creater": {
+    "cited": 35,
+    "broken": 0,
+    "S": 21,
+    "P": 2,
+    "U": 2,
+    "unjudged": 0
+   },
+   "10_HomeServicesBooking": {
+    "cited": 31,
+    "broken": 0,
+    "S": 19,
+    "P": 2,
+    "U": 1,
+    "unjudged": 3
+   },
+   "15_whatsappchatanalyzer": {
+    "cited": 26,
+    "broken": 0,
+    "S": 17,
+    "P": 2,
+    "U": 5,
+    "unjudged": 1
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "cited": 31,
+    "broken": 0,
+    "S": 20,
+    "P": 4,
+    "U": 1,
+    "unjudged": 0
+   }
+  },
+  "chatgpt": {
+   "01_Attendance-Management-System": {
+    "cited": 24,
+    "broken": 6,
+    "S": 8,
+    "P": 5,
+    "U": 5,
+    "unjudged": 0
+   },
+   "04_ResumeRise": {
+    "cited": 23,
+    "broken": 0,
+    "S": 10,
+    "P": 2,
+    "U": 4,
+    "unjudged": 7
+   },
+   "05_bookreview-api": {
+    "cited": 27,
+    "broken": 2,
+    "S": 11,
+    "P": 7,
+    "U": 5,
+    "unjudged": 0
+   },
+   "06_Virtual-Tour-Creater": {
+    "cited": 0,
+    "broken": 0,
+    "S": 0,
+    "P": 0,
+    "U": 0,
+    "unjudged": 0
+   },
+   "10_HomeServicesBooking": {
+    "cited": 19,
+    "broken": 0,
+    "S": 13,
+    "P": 2,
+    "U": 4,
+    "unjudged": 0
+   },
+   "15_whatsappchatanalyzer": {
+    "cited": 19,
+    "broken": 0,
+    "S": 6,
+    "P": 6,
+    "U": 7,
+    "unjudged": 0
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "cited": 21,
+    "broken": 8,
+    "S": 7,
+    "P": 2,
+    "U": 1,
+    "unjudged": 3
+   }
+  },
+  "claude": {
+   "01_Attendance-Management-System": {
+    "cited": 26,
+    "broken": 0,
+    "S": 12,
+    "P": 6,
+    "U": 4,
+    "unjudged": 3
+   },
+   "04_ResumeRise": {
+    "cited": 30,
+    "broken": 0,
+    "S": 1,
+    "P": 2,
+    "U": 4,
+    "unjudged": 18
+   },
+   "05_bookreview-api": {
+    "cited": 29,
+    "broken": 0,
+    "S": 4,
+    "P": 11,
+    "U": 7,
+    "unjudged": 3
+   },
+   "06_Virtual-Tour-Creater": {
+    "cited": 34,
+    "broken": 0,
+    "S": 14,
+    "P": 4,
+    "U": 7,
+    "unjudged": 0
+   },
+   "10_HomeServicesBooking": {
+    "cited": 31,
+    "broken": 0,
+    "S": 9,
+    "P": 6,
+    "U": 8,
+    "unjudged": 2
+   },
+   "15_whatsappchatanalyzer": {
+    "cited": 29,
+    "broken": 0,
+    "S": 6,
+    "P": 2,
+    "U": 3,
+    "unjudged": 14
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "cited": 30,
+    "broken": 0,
+    "S": 12,
+    "P": 4,
+    "U": 6,
+    "unjudged": 3
+   }
+  },
+  "deepseek": {
+   "01_Attendance-Management-System": {
+    "cited": 31,
+    "broken": 0,
+    "S": 15,
+    "P": 4,
+    "U": 6,
+    "unjudged": 0
+   },
+   "04_ResumeRise": {
+    "cited": 3,
+    "broken": 0,
+    "S": 0,
+    "P": 2,
+    "U": 1,
+    "unjudged": 0
+   },
+   "05_bookreview-api": {
+    "cited": 36,
+    "broken": 0,
+    "S": 7,
+    "P": 6,
+    "U": 12,
+    "unjudged": 0
+   },
+   "06_Virtual-Tour-Creater": {
+    "cited": 1,
+    "broken": 0,
+    "S": 0,
+    "P": 0,
+    "U": 0,
+    "unjudged": 1
+   },
+   "10_HomeServicesBooking": {
+    "cited": 6,
+    "broken": 1,
+    "S": 1,
+    "P": 3,
+    "U": 1,
+    "unjudged": 0
+   },
+   "15_whatsappchatanalyzer": {
+    "cited": 35,
+    "broken": 0,
+    "S": 6,
+    "P": 1,
+    "U": 12,
+    "unjudged": 6
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "cited": 14,
+    "broken": 0,
+    "S": 10,
+    "P": 1,
+    "U": 3,
+    "unjudged": 0
+   }
+  }
+ },
+ "quality": {
+  "AURA": {
+   "01_Attendance-Management-System": {
+    "completeness": 5.0,
+    "accuracy": 4.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "04_ResumeRise": {
+    "completeness": 4.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "05_bookreview-api": {
+    "completeness": 5.0,
+    "accuracy": 5.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "06_Virtual-Tour-Creater": {
+    "completeness": 5.0,
+    "accuracy": 5.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "10_HomeServicesBooking": {
+    "completeness": 4.0,
+    "accuracy": 4.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "15_whatsappchatanalyzer": {
+    "completeness": 4.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "completeness": 4.0,
+    "accuracy": 3.0,
+    "clarity": 4.0,
+    "depth": 4.0,
+    "structure": 4.0
+   }
+  },
+  "chatgpt": {
+   "01_Attendance-Management-System": {
+    "completeness": 5.0,
+    "accuracy": 4.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "04_ResumeRise": {
+    "completeness": 5.0,
+    "accuracy": 5.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "05_bookreview-api": {
+    "completeness": 4.0,
+    "accuracy": 5.0,
+    "clarity": 5.0,
+    "depth": 5.0,
+    "structure": 5.0
+   },
+   "06_Virtual-Tour-Creater": {
+    "completeness": 4.0,
+    "accuracy": 3.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "10_HomeServicesBooking": {
+    "completeness": 5.0,
+    "accuracy": 3.0,
+    "clarity": 4.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "15_whatsappchatanalyzer": {
+    "completeness": 5.0,
+    "accuracy": 3.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "completeness": 3.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   }
+  },
+  "claude": {
+   "01_Attendance-Management-System": {
+    "completeness": 4.0,
+    "accuracy": 3.0,
+    "clarity": 4.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "04_ResumeRise": {
+    "completeness": 3.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "05_bookreview-api": {
+    "completeness": 5.0,
+    "accuracy": 3.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "06_Virtual-Tour-Creater": {
+    "completeness": 4.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "10_HomeServicesBooking": {
+    "completeness": 5.0,
+    "accuracy": 5.0,
+    "clarity": 5.0,
+    "depth": 5.0,
+    "structure": 5.0
+   },
+   "15_whatsappchatanalyzer": {
+    "completeness": 4.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "completeness": 5.0,
+    "accuracy": 4.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   }
+  },
+  "deepseek": {
+   "01_Attendance-Management-System": {
+    "completeness": 4.0,
+    "accuracy": 3.0,
+    "clarity": 4.0,
+    "depth": 4.0,
+    "structure": 4.0
+   },
+   "04_ResumeRise": {
+    "completeness": 3.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "05_bookreview-api": {
+    "completeness": 5.0,
+    "accuracy": 4.0,
+    "clarity": 5.0,
+    "depth": 4.0,
+    "structure": 5.0
+   },
+   "06_Virtual-Tour-Creater": {
+    "completeness": 4.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "10_HomeServicesBooking": {
+    "completeness": 5.0,
+    "accuracy": 3.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   },
+   "15_whatsappchatanalyzer": {
+    "completeness": 5.0,
+    "accuracy": 3.0,
+    "clarity": 5.0,
+    "depth": 5.0,
+    "structure": 5.0
+   },
+   "19_AI-COACHING-PLATFORM": {
+    "completeness": 3.0,
+    "accuracy": 2.0,
+    "clarity": 4.0,
+    "depth": 3.0,
+    "structure": 4.0
+   }
+  }
+ },
+ "meta": {
+  "systems": [
+   "AURA",
+   "chatgpt",
+   "claude",
+   "deepseek"
+  ],
+  "repos": [
+   "01_Attendance-Management-System",
+   "04_ResumeRise",
+   "05_bookreview-api",
+   "06_Virtual-Tour-Creater",
+   "10_HomeServicesBooking",
+   "15_whatsappchatanalyzer",
+   "19_AI-COACHING-PLATFORM"
+  ],
+  "dev_repos": [
+   "19_AI-COACHING-PLATFORM"
+  ],
+  "faith_model": "openai/gpt-oss-120b",
+  "quality_judge": "openai/gpt-oss-120b",
+  "generated": "2026-10-13 12:14"
+ },
+ "tables": [
+  {
+   "title": "1. Citation accuracy",
+   "headers": [
+    "System",
+    "Repos",
+    "Citations",
+    "Valid",
+    "Accuracy"
+   ],
+   "rows": [
+    [
+     "AURA (ours)",
+     "7",
+     "129",
+     "129",
+     "100.0%"
+    ],
+    [
+     "chatgpt",
+     "7",
+     "174",
+     "150",
+     "86.2%"
+    ],
+    [
+     "claude",
+     "7",
+     "221",
+     "221",
+     "100.0%"
+    ],
+    [
+     "deepseek",
+     "7",
+     "126",
+     "125",
+     "99.2%"
+    ]
+   ]
+  },
+  {
+   "title": "2. Summary quality (average over repos, 1-5)",
+   "headers": [
+    "System",
+    "Repos",
+    "Completeness",
+    "Accuracy",
+    "Clarity",
+    "Depth",
+    "Structure",
+    "Overall"
+   ],
+   "rows": [
+    [
+     "AURA (ours)",
+     "7",
+     "4.43",
+     "3.57",
+     "4.57",
+     "3.71",
+     "4.57",
+     "4.17"
+    ],
+    [
+     "chatgpt",
+     "7",
+     "4.43",
+     "3.57",
+     "4.57",
+     "3.86",
+     "4.71",
+     "4.23"
+    ],
+    [
+     "claude",
+     "7",
+     "4.29",
+     "3.00",
+     "4.43",
+     "3.71",
+     "4.57",
+     "4.00"
+    ],
+    [
+     "deepseek",
+     "7",
+     "4.14",
+     "2.71",
+     "4.29",
+     "3.57",
+     "4.29",
+     "3.80"
+    ]
+   ]
+  },
+  {
+   "title": "3. Faithfulness (does the cited code support the sentence?)",
+   "headers": [
+    "System",
+    "Repos",
+    "Claims checked",
+    "Supported",
+    "Partly",
+    "Not supported",
+    "Broken tag",
+    "Faithfulness (valid tags)",
+    "Faithfulness (broken tags fail)"
+   ],
+   "rows": [
+    [
+     "AURA (ours)",
+     "7",
+     "171",
+     "136",
+     "19",
+     "16",
+     "0",
+     "79.5%",
+     "79.5%"
+    ],
+    [
+     "chatgpt",
+     "7",
+     "121",
+     "55",
+     "24",
+     "26",
+     "16",
+     "52.4%",
+     "45.5%"
+    ],
+    [
+     "claude",
+     "7",
+     "132",
+     "58",
+     "35",
+     "39",
+     "0",
+     "43.9%",
+     "43.9%"
+    ],
+    [
+     "deepseek",
+     "7",
+     "92",
+     "39",
+     "17",
+     "35",
+     "1",
+     "42.9%",
+     "42.4%"
+    ]
+   ]
+  },
+  {
+   "title": "4. Per repo: citation accuracy",
+   "headers": [
+    "Repo",
+    "AURA (ours)",
+    "chatgpt",
+    "claude",
+    "deepseek"
+   ],
+   "rows": [
+    [
+     "01_Attendance-Management-System",
+     "100.0% (18)",
+     "75.0% (24)",
+     "100.0% (28)",
+     "100.0% (31)"
+    ],
+    [
+     "04_ResumeRise",
+     "100.0% (18)",
+     "100.0% (33)",
+     "100.0% (31)",
+     "100.0% (3)"
+    ],
+    [
+     "05_bookreview-api",
+     "100.0% (15)",
+     "86.1% (36)",
+     "100.0% (30)",
+     "100.0% (36)"
+    ],
+    [
+     "06_Virtual-Tour-Creater",
+     "100.0% (23)",
+     "-",
+     "100.0% (38)",
+     "100.0% (1)"
+    ],
+    [
+     "10_HomeServicesBooking",
+     "100.0% (18)",
+     "100.0% (28)",
+     "100.0% (31)",
+     "83.3% (6)"
+    ],
+    [
+     "15_whatsappchatanalyzer",
+     "100.0% (22)",
+     "92.3% (26)",
+     "100.0% (32)",
+     "100.0% (35)"
+    ],
+    [
+     "19_AI-COACHING-PLATFORM *",
+     "100.0% (15)",
+     "59.3% (27)",
+     "100.0% (31)",
+     "100.0% (14)"
+    ]
+   ]
+  },
+  {
+   "title": "5. Per repo: summary quality (overall, 1-5)",
+   "headers": [
+    "Repo",
+    "AURA (ours)",
+    "chatgpt",
+    "claude",
+    "deepseek"
+   ],
+   "rows": [
+    [
+     "01_Attendance-Management-System",
+     "4.60",
+     "4.60",
+     "4.00",
+     "3.80"
+    ],
+    [
+     "04_ResumeRise",
+     "3.40",
+     "4.80",
+     "3.20",
+     "3.20"
+    ],
+    [
+     "05_bookreview-api",
+     "4.80",
+     "4.80",
+     "4.40",
+     "4.60"
+    ],
+    [
+     "06_Virtual-Tour-Creater",
+     "4.80",
+     "3.60",
+     "3.40",
+     "3.40"
+    ],
+    [
+     "10_HomeServicesBooking",
+     "4.40",
+     "4.20",
+     "5.00",
+     "3.80"
+    ],
+    [
+     "15_whatsappchatanalyzer",
+     "3.40",
+     "4.40",
+     "3.40",
+     "4.60"
+    ],
+    [
+     "19_AI-COACHING-PLATFORM *",
+     "3.80",
+     "3.20",
+     "4.60",
+     "3.20"
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,438 @@
+Check these by hand: do you agree with the judge's verdict?
+
+[AURA | 19_AI-COACHING-PLATFORM] VERDICT: S
+CLAIM: The checkVoices function polls the speech synthesizer until available voices are loaded.
+CODE:
+# app/(main)/discussion-room/[roomid]/page.jsx :: checkVoices
+  const checkVoices = () => {
+    const voices = synth.getVoices();
+    if (voices.length > 0) {
+      setVoicesReady(true);
+      console.log("Available voices:", voices);
+    } else {
+      setTimeout(checkVoices, 100);
+    }
+  };
+
+  checkVoices();
+
+  // Some browsers need this event listener
+  synth.onvoiceschanged = checkVoices;
+
+  return () => {
+    synth.onvoiceschanged = null;
+  };
+}, []);
+
+  useEffect(() => {
+    if (previousTranscripts) {
+      const formattedHistory = previousTranscripts
+        .map((t) => ({
+          te
+----------------------------------------------------------------------
+[deepseek | 19_AI-COACHING-PLATFORM] VERDICT: S
+CLAIM: Sign in, pick a coaching option and an expert, and name the topic you want to work on
+CODE:
+# app/(main)/dashboard/_components/UserInputDialog.jsx :: onClickNext
+    const onClickNext=async()=>{
+      setLoading(true);
+      const result = await createDiscussionRoom({
+        CoachingOption: coachingOption?.name,
+        topic:topic,
+        expertName:selectedExpert
+      });
+      console.log(result);
+      setLoading(false);
+      setOpenDialog(false);
+      router.push('/discussion-room/'+result)
+    }
+  return (
+    <div>
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+  <DialogTrigger>{children}</DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTit
+----------------------------------------------------------------------
+[AURA | 06_Virtual-Tour-Creater] VERDICT: S
+CLAIM: State management for complex UI interactions, including image uploads and tour data retrieval
+CODE:
+# frontend/src/pages/VirtualTourForm.js :: VirtualTourForm
+const VirtualTourForm = () => {
+  const [rooms, setRooms] = useState([]);
+  const [roomImages, setRoomImages] = useState({});
+  const [tourName, setTourName] = useState("");
+  const navigate = useNavigate();
+  const tourId = uuidv4();
+
+  const handleImageUpload = (e, roomName) => {
+    const selectedFiles = Array.from(e.target.files);
+    const previewPromises = selectedFiles.map((file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve({ file, preview: e
+----------------------------------------------------------------------
+[chatgpt | 04_ResumeRise] VERDICT: P
+CLAIM: Interview practice: The backend generates questions, evaluates submitted answers, and uses interview history and previous scores to generate follow-up questions.
+CODE:
+# backend/main.py :: generate_next_question
+async def generate_next_question(data: NextQuestionRequest):
+    history = data.interview_history
+    
+    if not history:
+        return JSONResponse(content={
+            "question": "Tell me about yourself.",
+            "affirmation": ""
+        })
+    
+    total_score = sum(turn.score for turn in history)
+    avg_score = total_score / len(history)
+    asked_questions = [turn.question for turn in history]
+    last_answer = history[-1].transcription
+    
+    prompt = f"""Last answer: "{last_answer[:200]}"
+Average score: {avg_score:.1f}/10
+
+Ask ONE
+----------------------------------------------------------------------
+[claude | 06_Virtual-Tour-Creater] VERDICT: P
+CLAIM: `/stitch` creates the tour row if missing, processes each room, upserts panorama URLs, and sets the first room as the start room.
+CODE:
+# backend/app.py :: stitch_tour_endpoint
+def stitch_tour_endpoint():
+    print("\n--- Received POST request to /stitch ---")
+    room_panorama_urls = {}
+    tour_id = request.form.get('tourId')
+
+    print(f"    [stitch_tour_endpoint] Received tourId: {tour_id}")
+
+    if not tour_id:
+        print("    [stitch_tour_endpoint] Error: Tour ID is missing in request form data.")
+        return jsonify({'success': False, 'error': 'Tour ID is missing. Please provide a tourId.'}), 400
+
+    try:
+        print(f"    [stitch_tour_endpoint] Verifying/Creating tour entry for Tour ID: {tour_id}")
+
+        to
+----------------------------------------------------------------------
+[AURA | 01_Attendance-Management-System] VERDICT: S
+CLAIM: Data Integrity:** Enforces data quality through entity constructors that validate non-blank fields for critical user information
+CODE:
+# src/main/java/com/example/demo/entity/Student.java :: Student
+	public Student() {
+		super();
+	}
+
+	public Student(@NotBlank String name, @NotBlank String email, @NotBlank String password,
+			List<Classroom> classrooms) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.classrooms = classrooms;
+	}
+
+	public Long getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail
+----------------------------------------------------------------------
+[AURA | 04_ResumeRise] VERDICT: S
+CLAIM: The InterviewReviewPage sets loading state and constructs a payload with question responses for report generation.
+CODE:
+# frontend/src/pages/InterviewReviewPage.jsx :: generateFinalReport
+        const generateFinalReport = async () => {
+            setError("");
+            setIsLoading(true);
+
+            const payload = {
+                responses: responses.map(r => ({
+                    question: r.question,
+                    transcription: r.transcription,
+                    feedback: r.feedback,
+                    score: r.score,
+                    emotion: r.emotion
+                })),
+                config
+            };
+
+            try {
+                const res = await axios.post(
+         
+----------------------------------------------------------------------
+[deepseek | 01_Attendance-Management-System] VERDICT: S
+CLAIM: A full three-role MVC web application with session-based login and role routing, not a toy single-page demo
+CODE:
+# src/main/java/com/example/demo/controller/LoginController.java :: showLogin
+    public String showLogin() {
+        return "login"; // JSP page login.jsp
+    }
+
+    @PostMapping("/login")
+    public String handleLogin(@RequestParam String email,
+                              @RequestParam String password,
+                              @RequestParam String role,
+                              HttpSession session) {
+
+        if ("admin".equals(role)) {
+            if (authService.validateAdmin(email, password)) {
+                session.setAttribute("role", "admin");
+                session.set
+----------------------------------------------------------------------
+[chatgpt | 19_AI-COACHING-PLATFORM] VERDICT: S
+CLAIM: `GlobalServices.jsx` finds the selected coaching option, inserts the user's topic into its prompt template, and sends the prompt and message to the configured model endpoint. Errors are logged and rethrown.
+CODE:
+# services/GlobalServices.jsx :: AIModel
+  export const AIModel = async ({topic, coachingOption, msg}) => {
+    const option = CoachingOptions.find((item) => item.name == coachingOption);
+    const PROMPT = option.prompt.replace('{user_topic}', topic);
+    
+    try {
+        const completion = await openai.chat.completions.create({
+            model: "deepseek/deepseek-chat-v3-0324:free",
+            messages: [
+                {role: "assistant", content: PROMPT},
+                {role: "user", content: msg}
+            ],
+        });
+        
+        console.log("AI Response:", completion.ch
+----------------------------------------------------------------------
+[AURA | 04_ResumeRise] VERDICT: S
+CLAIM: The backend defines a POST endpoint for dynamic resume matching that accepts a resume file and job description.
+CODE:
+# backend/main.py :: match_resume_ml
+async def match_resume_ml(
+    resume: UploadFile = File(...),
+    job_description: str = Form(...)
+):
+    """Dynamic resume matcher - extracts skills directly from job description using Groq"""
+    
+    try:
+        import PyPDF2
+        import io
+        
+        # Extract text from PDF
+        pdf_bytes = await resume.read()
+        pdf_reader = PyPDF2.PdfReader(io.BytesIO(pdf_bytes))
+        resume_text = ""
+        for page in pdf_reader.pages:
+            text = page.extract_text()
+            if text:
+                resume_text += text
+        
+    
+----------------------------------------------------------------------
+[chatgpt | 01_Attendance-Management-System] VERDICT: S
+CLAIM: Security improvements: Review password storage and authentication before deployment. The shown authentication service compares supplied passwords directly with stored values, so password hashing and appropriate access controls deserve attention.
+CODE:
+# src/main/java/com/example/demo/service/AuthService.java :: validateAdmin
+    public boolean validateAdmin(String email, String password) {
+        Optional<Admin> admin = adminRepo.findByEmail(email);
+        return admin.isPresent() && admin.get().getPassword().equals(password);
+    }
+
+    // Validate Teacher
+    public boolean validateTeacher(String email, String password) {
+        Teacher teacher = teacherRepo.findByEmail(email);
+        return teacher != null && teacher.getPassword().equals(password);
+    }
+
+    // Validate Student
+    public boolean validateStudent(String email, String
+----------------------------------------------------------------------
+[claude | 04_ResumeRise] VERDICT: P
+CLAIM: Each submitted answer is transcribed if audio exists, then face frames are analysed, then the answer is scored, and finally the next question is requested. After five answers the app navigates to the review page.
+CODE:
+# frontend/src/pages/MockInterviewPage.jsx :: handleSubmitAnswer
+    const handleSubmitAnswer = async () => {
+        if (!textualAnswer.trim() && !recorderRef.current?.audioBlob) {
+            setError("Please provide an answer (type or record audio) before submitting.");
+            return;
+        }
+        
+        setError("");
+        setIsLoading(true);
+        setEmotionDisplay(null);
+        
+        try {
+            let finalText = textualAnswer;
+            let audioEmotion = "neutral";
+            
+            // Step 1: Transcribe audio if available
+            const audioBlob = 
+----------------------------------------------------------------------
+[AURA | 04_ResumeRise] VERDICT: S
+CLAIM: The frontend routes users to pages for home, resume matching, and mock interviews.
+CODE:
+# frontend/src/App.js :: App
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/resume-match" element={<ResumeMatchPage />} /> 
+        <Route path="/mock-interview" element={<MockInterviewPage />} />
+        <Route path="/interview-setup" element={<InterviewSetupPage />} /> 
+        <Route path="/interview-review" element={<InterviewReviewPage />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+
+----------------------------------------------------------------------
+[deepseek | 10_HomeServicesBooking] VERDICT: U
+CLAIM: `EmailService.sendBookingMail` appears unused, since both controllers call the generic `sendMail` instead
+CODE:
+# src/main/java/com/app/service/EmailService.java :: sendBookingMail
+    public boolean sendBookingMail(String toEmail, String workerName, String customerName, String serviceName) {
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(toEmail);
+            message.setSubject("New Service Booking Assigned");
+            message.setText("Hello " + workerName + ",\n\n"
+                    + "A new booking has been assigned to you.\n\n"
+                    + "Customer Name: " + customerName + "\n"
+                    + "Service: " + serviceName +
+----------------------------------------------------------------------
+[chatgpt | 15_whatsappchatanalyzer] VERDICT: S
+CLAIM: The processed DataFrame is filtered according to the selected user, unless the analysis scope is Overall. Statistics then count messages, split message text into words, identify media placeholders, and extract URLs.
+CODE:
+# helper.py :: fetch_stats
+def fetch_stats(selected_user, df):
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    num_messages = df.shape[0]
+
+    words = []
+    for message in df['message']:
+        words.extend(message.split())
+
+    num_media_messages = df[df['message'] == '<Media omitted>\n'].shape[0]
+
+    links = []
+    for message in df['message']:
+        links.extend(extract.find_urls(message))
+
+    return num_messages, len(words), num_media_messages, len(links)
+
+----------------------------------------------------------------------
+[AURA | 10_HomeServicesBooking] VERDICT: S
+CLAIM: Register a new account, which automatically checks to ensure your email is unique.
+CODE:
+# src/main/java/com/app/controller/AuthController.java :: register
+    public String register(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
+        if (customerRepository.existsByEmail(email)) {
+            return "redirect:/register?msg=failed";
+        }
+        Customer customer = new Customer();
+        customer.setName(name);
+        customer.setEmail(email);
+        customer.setPassword(password);
+        customerRepository.save(customer);
+        return "redirect:/login?msg=registered";
+    }
+
+    @PostMapping("/login")
+    public String login(@
+----------------------------------------------------------------------
+[AURA | 01_Attendance-Management-System] VERDICT: S
+CLAIM: 3. **src/main/java/com/example/demo/service/TeacherService.java**: Observe how business logic coordinates multiple repositories for teachers and courses
+CODE:
+# src/main/java/com/example/demo/service/TeacherService.java :: TeacherService
+public class TeacherService {
+
+    @Autowired
+    private TeacherRepository teacherRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private AttendanceRecordRepository attendanceRepository;
+
+    @Autowired
+    private HttpSession session;
+
+    public Teacher getLoggedInTeacher() {
+        Long teacherId = (Long) session.getAttribute("teacherId");
+        if (teacherId == null) return null;
+        return teacherRepository.findById(teacherId).orElse(null);
+    }
+
+    // Ge
+----------------------------------------------------------------------
+[AURA | 04_ResumeRise] VERDICT: S
+CLAIM: 4. **frontend/src/pages/InterviewSetupPage.jsx**: See how the app enforces that both a resume and job description are present before starting an interview
+CODE:
+# frontend/src/pages/InterviewSetupPage.jsx :: handleStartInterview
+    const handleStartInterview = async (e) => {
+        e.preventDefault();
+
+        if (!resumeFile || !jobText) {
+            setError("Please upload a resume and provide a job description.");
+            return;
+        }
+
+        setLoading(true);
+        setError("");
+
+        const formData = new FormData();
+        formData.append("resume_file", resumeFile);
+        formData.append("job_text", jobText);
+        formData.append("interview_type", interviewType);
+
+        try {
+            const response = await axios.post
+----------------------------------------------------------------------
+[chatgpt | 05_bookreview-api] VERDICT: S
+CLAIM: It separates HTTP request handling, data models, database access, and security into different classes and packages, making the code easier to navigate and maintain.
+CODE:
+# src/main/java/bookreview_api/controller/BookController.java :: BookController
+public class BookController {
+
+    @Autowired
+    private BookRepository bookRepository;
+
+    // Get all books with pagination and sorting
+    @GetMapping
+    public Page<Book> getAllBooks(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String direction) {
+        
+        // Valid sort fields: id, title, author, genre, publishYear, rating
+  
+----------------------------------------------------------------------
+[chatgpt | 05_bookreview-api] VERDICT: S
+CLAIM: After a review changes, the rating-update method calculates the average of the book's reviews, rounds it to one decimal place, updates the review count, and saves the book.
+CODE:
+# src/main/java/bookreview_api/controller/ReviewController.java :: updateBookRating
+    private void updateBookRating(String bookId) {
+        Book book = bookRepository.findById(bookId).orElse(null);
+        if (book != null) {
+            List<Review> bookReviews = reviewRepository.findByBook(book);
+            if (bookReviews.isEmpty()) {
+                book.setRating(0.0);
+                book.setReviewCount(0);
+            } else {
+                double avg = bookReviews.stream().mapToInt(Review::getRating).average().orElse(0.0);
+                book.setRating(Math.round(avg * 10) / 10.
+----------------------------------------------------------------------

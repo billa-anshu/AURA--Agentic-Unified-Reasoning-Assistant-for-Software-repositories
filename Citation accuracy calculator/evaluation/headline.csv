@@ -1,0 +1,10 @@
+metric,AURA,chatgpt,claude,deepseek,AURA_vs_others
+Faithfulness,0.8000,0.5652,0.3774,0.3947,"Ahead of 2, tied with 1"
+Faithfulness (broken tags count as failures),0.8000,0.4194,0.3774,0.3846,Clearly ahead of all
+Citation validity,1.0000,0.8621,1.0000,0.9921,"Ahead of 1, tied with 2"
+"Summary quality (overall, 1-5)",4.1714,4.2286,4.0000,3.8000,On par with all
+Accuracy (1-5),3.5714,3.5714,3.0000,2.7143,On par with all
+Completeness (1-5),4.4286,4.4286,4.2857,4.1429,On par with all
+Clarity (1-5),4.5714,4.5714,4.4286,4.2857,On par with all
+Depth (1-5),3.7143,3.8571,3.7143,3.5714,On par with all
+Structure (1-5),4.5714,4.7143,4.5714,4.2857,On par with all
